@@ -1,0 +1,4 @@
+Benchmark: Flute / XORI.
+Property focus: check that the RISC-V XORI instruction is decoded and executed consistently with the ISA-level intent.
+Instruction source: near_mem$imem_instr, a 32-bit instruction word constrained to {12'bx,5'bx,3'b100,5'bx,7'b0010011}.
+Abstraction hint: logic that only serves other opcodes or unrelated microarchitectural paths can be treated as a candidate for abstraction.

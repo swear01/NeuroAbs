@@ -1,0 +1,4 @@
+Benchmark: Piccolo / BNE.
+Property focus: verify the decode and execution behavior for the RISC-V BNE instruction.
+Instruction source: near_mem$imem_instr, a 32-bit instruction word constrained to {12'bx,5'bx,3'b001,5'bx,7'b1100011}.
+Abstraction hint: signals used only by non-BNE instructions are expected to be safe abstraction candidates after constant propagation.

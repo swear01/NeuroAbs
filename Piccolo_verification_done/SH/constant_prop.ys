@@ -1,0 +1,19 @@
+read_verilog -sv wrapper_constant.v
+#prep -top wrapper
+
+hierarchy -check -top wrapper
+proc -noopt
+flatten
+#future
+#check
+#chformal -assume -early;
+
+#select wrapper/sanitycheck
+#chformal -remove
+#select *
+
+memory
+#flatten
+opt_expr
+opt_clean
+write_verilog problem_1.v

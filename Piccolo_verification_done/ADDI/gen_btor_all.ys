@@ -1,0 +1,11 @@
+read_verilog -formal iter_btor_all/7_bx.v
+#prep -top wrapper
+hierarchy -check -top wrapper
+proc
+chformal -assume -early;
+
+memory;
+flatten
+setundef -undriven -expose;
+sim -clock clk -reset rst -rstlen 1 -n 1 -w wrapper
+write_btor  -s iter_btor_all/7_bx.btor2

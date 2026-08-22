@@ -1,0 +1,17 @@
+read_verilog -formal iter_sanity_btor/21.v
+prep -top wrapper
+
+hierarchy -check
+proc
+flatten
+chformal -assume -early;
+
+select wrapper/normalassert
+chformal -remove
+select *
+
+memory;
+flatten
+setundef -undriven -expose;
+sim -clock clk -reset rst -rstlen 1 -n 1 -w wrapper
+write_btor  -s iter_sanity_btor/21.btor2

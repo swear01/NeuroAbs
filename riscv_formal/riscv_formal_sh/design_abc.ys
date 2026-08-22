@@ -1,0 +1,24 @@
+# running in insn_add_ch0/src/
+read_verilog -sv insn_bge_ch0.sv
+read_verilog -sv wrapper.sv
+read_verilog iter/0_bx.v
+prep -flatten -nordff -top rvfi_testbench
+chformal -early
+
+#memory_nordff
+memory -nordff
+chformal -assume -early
+chformal -live -fair -cover -remove
+opt_clean
+setundef -anyseq
+
+opt -keepdc -fast
+check
+hierarchy -simcheck
+#dffunmap
+delete -output
+techmap
+dffunmap
+abc -fast -g AND
+#write_ilang ../model/design.il
+write_aiger -vmap map.txt iter/0_bx.aig

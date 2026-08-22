@@ -1,0 +1,4 @@
+Benchmark: Piccolo / OR.
+Property focus: verify the decode and execution behavior for the RISC-V OR instruction.
+Instruction source: near_mem$imem_instr, a 32-bit instruction word constrained to {7'b0000000,5'bx,5'bx,3'b110,5'bx,7'b0110011}.
+Abstraction hint: signals used only by non-OR instructions are expected to be safe abstraction candidates after constant propagation.

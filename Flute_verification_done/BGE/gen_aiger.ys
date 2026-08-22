@@ -1,0 +1,22 @@
+read_verilog -formal iter/7_bx.v
+#prep -flatten -top wrapper
+hierarchy -check -top wrapper
+proc
+flatten
+#prep -top wrapper
+
+chformal -assume -early;
+select wrapper/sanitycheck
+chformal -remove
+select *
+
+memory -nordff
+#flatten
+setundef -undriven -expose;
+sim -clock clk -reset rst -rstlen 1 -n 1 -w wrapper
+delete -output
+techmap
+#aigmap
+abc -fast -g AND
+#opt
+write_aiger -zinit -vmap map.txt iter/7_bx.aig

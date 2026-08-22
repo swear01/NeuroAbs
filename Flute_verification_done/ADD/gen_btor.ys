@@ -1,0 +1,14 @@
+read_verilog -formal iter_btor/1_bx.v
+#prep -flatten -top wrapper
+hierarchy -check -top wrapper
+proc
+chformal -assume -early;
+
+select wrapper/sanitycheck
+chformal -remove
+select *
+memory;
+flatten
+setundef -undriven -expose;
+sim -clock clk -reset rst -rstlen 1 -n 1 -w wrapper
+write_btor  -s iter_btor/1_bx.btor2

@@ -1,0 +1,4 @@
+[submodule "Pyverilog_NeuroAbs"]
+	path = Pyverilog_NeuroAbs
+	url = git@github.com:ZhiyuanYan/Pyverilog_NeuroAbs.git
+	branch = develop

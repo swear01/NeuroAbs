@@ -1,0 +1,20 @@
+read_verilog -sv insn_add_ch0.sv
+read_verilog -sv wrapper.sv
+read_verilog -formal iter_btor/1.v
+#prep -top wrapper
+hierarchy -check -top rvfi_testbench
+chformal -early
+flatten
+memory
+#flatten
+async2sync
+chformal -assume -early
+chformal -live -fair -cover -remove
+opt_clean
+setundef -anyseq
+
+opt -keepdc -fast
+check
+hierarchy -simcheck
+dffunmap
+write_btor  -s iter_btor/1.btor2

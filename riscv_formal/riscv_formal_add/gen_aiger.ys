@@ -1,0 +1,30 @@
+read_verilog -sv insn_add_ch0.sv
+read_verilog -sv wrapper.sv
+read_verilog -formal iter/0_bx.v
+#prep -top wrapper
+prep -flatten -nordff -top rvfi_testbench
+chformal -early
+#flatten
+#prep -top wrapper
+
+
+memory -nordff
+flatten
+chformal -assume -early
+chformal -live -fair -cover -remove
+opt_clean
+setundef -anyseq
+
+opt -keepdc -fast
+check
+hierarchy -simcheck
+techmap
+dffunmap
+#write_btor -s iter/5.btor2
+
+#aigmap
+#write_verilog picorv32_temp.v
+abc -fast -g AND
+#write_verilog picorv32_temp_1.v
+#opt
+write_aiger -zinit -vmap map.txt iter/0_bx.aig

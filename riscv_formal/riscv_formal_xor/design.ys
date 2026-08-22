@@ -1,0 +1,18 @@
+# running in insn_and_ch0/src/
+read_verilog -sv insn_xor_ch0.sv
+read_verilog -sv wrapper.sv
+read_verilog picorv32_input.v
+prep -flatten -nordff -top rvfi_testbench
+chformal -early
+
+memory
+async2sync
+chformal -assume -early
+chformal -live -fair -cover -remove
+opt_clean
+setundef -anyseq
+opt -keepdc -fast
+check
+hierarchy -simcheck
+dffunmap
+write_btor  -s problem.btor2

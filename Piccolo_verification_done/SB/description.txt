@@ -1,0 +1,4 @@
+Benchmark: Piccolo / SB.
+Property focus: verify the decode and execution behavior for the RISC-V SB instruction.
+Instruction source: near_mem$imem_instr, a 32-bit instruction word constrained to {7'bx,5'bx,5'bx,3'b000,5'bx,7'b0100011}.
+Abstraction hint: signals used only by non-SB instructions are expected to be safe abstraction candidates after constant propagation.

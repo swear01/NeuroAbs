@@ -1,0 +1,234 @@
+Now you are an expert in hardware design and formal verification. Abstraction in formal verification is correctly described as a technique for simplifying verification by hiding unnecessary details, where properties proven on the abstract model transfer to the concrete model. The key requirement is that the abstraction must be an over-approximation of the original system, meaning that every behavior possible in the original system must be possible in the abstract system (though the abstract system may allow additional behaviors). This relationship is formally verified by checking that !(original_formula -> new_formula) is unsatisfiable. When this holds, any safety properties proven on the abstract system will also hold for the original system. Here is one brief example on the abstraction
+
+Original:
+
+wire[7:0] ex_alu_result =  id_ex_op == OP_ADD ? id_ex_operand1 + id_ex_operand2 :  id_ex_op == OP_SET ? id_ex_operand1 :id_ex_op == OP_NAND ? ~(id_ex_operand1 & id_ex_operand2) :  8'bxxxxxxxx; // OP_NOP
+
+After abstraction:
+
+wire[7:0] ex_alu_result = id_ex_op == `OP_ADD ? id_ex_operand1 + id_ex_operand2 : 'bx;
+
+This is a valid abstraction because any value produced by the original ALU for non-ADD operations will be included in the set of possible values represented by 'x' in the abstract version. Therefore, original_formula -> new_formula always holds true.
+
+Now, we need to check some property, and you need to help me to perform the abstraction based on the semantic information in the property. For example, when verifying the whether the ADD instruciton can be correctly decoded and executed, the statements related to other instructions, such as SUB, can be safely abstracted. Now,  you need to help me perform the abstraction based on the property and RTL semantic information. To begin with, I filter out those potential signals that can perform the abstraction via constant propagation. I manually assign some specific signals as the constant according to the property specification. For example, when verifying the ADD instruction in the RISC-V processor, the instruction signal will be set as the constant {7'b0,5'bx,5'bx,3’b0,5'bx,7’b0110011}. And then we will propagate this constant to see which which signals can become constant. And these signals are the potential signals that can perform the abstraction, and you need to help me carefully check whether the statement of these signal can perform the abstraction, based on the previous analysis, and abstract them correspondingly. Overall, I will give you three components, the first one is the one-line RTL statement that how the target signal is updated in this line, while the second one is still the RTL statement but completely illustrates how the corresponding signal is updated. The third one is the description of the given property. What you need to do is try to carefully analyze input information, and signal names in the RTL code, and background information on the instruction specification (e.g. RISC-V).
+
+Here we will give five different examples and their corresponding abstraction outputs:
+
+Example 1:
+
+One-line RTL statement:
+
+CASE_near_memimem_instr_BITS_14_TO_12_0b0_0_0_ETC__q10 = 4'd11;
+
+Completely statement:
+
+always@(near_mem$imem_instr)
+
+begin
+
+case (near_mem$imem_instr[14:12])
+
+3'b0, 3'b001, 3'b010, 3'b100, 3'b101:
+
+CASE_near_memimem_instr_BITS_14_TO_12_0b0_0_0_ETC__q10 = 4'd0;
+
+default: CASE_near_memimem_instr_BITS_14_TO_12_0b0_0_0_ETC__q10 = 4'd11;
+
+endcase
+
+end
+
+Description:
+
+Now we need to verify one ISA property ADD on the opensource design Piccolo. This design based on the RISC-V. The target property formally verify whether the ADD instruction can be correctly decoded and the executed. The instruction signal in the design is "near_mem$imem_instr". The instruction has 32 bit and the ADD instruction follows the format {7'b0,5'bx,5'bx,3'b0,5'bx,7'b0110011}.
+
+Output:
+
+default: CASE_near_memimem_instr_BITS_14_TO_12_0b0_0_0_ETC__q10 = 'bx;
+
+Example 2:
+
+One-line RTL statement:
+
+IF_near_mem_imem_instr__59_BITS_14_TO_12_81_EQ_ETC___d291 =	      !IF_near_mem_imem_instr__59_BITS_19_TO_15_60_EQ_ETC___d216;
+
+Completely statement:
+
+begin
+
+case (near_mem$imem_instr[14:12])
+
+3'b0:
+
+IF_near_mem_imem_instr__59_BITS_14_TO_12_81_EQ_ETC___d291 =
+
+!IF_near_mem_imem_instr__59_BITS_19_TO_15_60_EQ_ETC___d216;
+
+3'b001:
+
+IF_near_mem_imem_instr__59_BITS_14_TO_12_81_EQ_ETC___d291 =
+
+IF_near_mem_imem_instr__59_BITS_19_TO_15_60_EQ_ETC___d216;
+
+3'b100:
+
+IF_near_mem_imem_instr__59_BITS_14_TO_12_81_EQ_ETC___d291 =
+
+!IF_near_mem_imem_instr__59_BITS_19_TO_15_60_EQ_ETC___d218;
+
+3'b101:
+
+IF_near_mem_imem_instr__59_BITS_14_TO_12_81_EQ_ETC___d291 =
+
+IF_near_mem_imem_instr__59_BITS_19_TO_15_60_EQ_ETC___d218;
+
+3'b110:
+
+IF_near_mem_imem_instr__59_BITS_14_TO_12_81_EQ_ETC___d291 =
+
+!IF_near_mem_imem_instr__59_BITS_19_TO_15_60_EQ_ETC___d220;
+
+default: IF_near_mem_imem_instr__59_BITS_14_TO_12_81_EQ_ETC___d291 =
+
+near_mem$imem_instr[14:12] != 3'b111 ||
+
+IF_near_mem_imem_instr__59_BITS_19_TO_15_60_EQ_ETC___d220;
+
+endcase
+
+Description:
+
+Now we need to verify one ISA property ADD on the opensource design Piccolo. This design based on the RISC-V. The target property formally verify whether the ADD instruction can be correctly decoded and the executed. The instruction signal in the design is "near_mem$imem_instr". The instruction has 32 bit and the ADD instruction follows the format {7'b0,5’bx,5'bx,3’b0,5'bx,7’b0110011}.
+
+Output:
+
+IF_near_mem_imem_instr__59_BITS_14_TO_12_81_EQ_ETC___d291 = !IF_near_mem_imem_instr__59_BITS_19_TO_15_60_EQ_ETC___d216;
+
+Example 3:
+
+One-line RTL statement:
+
+default: IF_near_mem_imem_instr__59_BITS_14_TO_12_81_EQ_ETC___d291 =
+
+near_mem$imem_instr[14:12] != 3'b111 ||
+
+IF_near_mem_imem_instr__59_BITS_19_TO_15_60_EQ_ETC___d220;
+
+Completely statement:
+
+begin
+
+case (near_mem$imem_instr[14:12])
+
+3'b0:
+
+IF_near_mem_imem_instr__59_BITS_14_TO_12_81_EQ_ETC___d291 =
+
+!IF_near_mem_imem_instr__59_BITS_19_TO_15_60_EQ_ETC___d216;
+
+3'b001:
+
+IF_near_mem_imem_instr__59_BITS_14_TO_12_81_EQ_ETC___d291 =
+
+IF_near_mem_imem_instr__59_BITS_19_TO_15_60_EQ_ETC___d216;
+
+3'b100:
+
+IF_near_mem_imem_instr__59_BITS_14_TO_12_81_EQ_ETC___d291 =
+
+!IF_near_mem_imem_instr__59_BITS_19_TO_15_60_EQ_ETC___d218;
+
+3'b101:
+
+IF_near_mem_imem_instr__59_BITS_14_TO_12_81_EQ_ETC___d291 =
+
+IF_near_mem_imem_instr__59_BITS_19_TO_15_60_EQ_ETC___d218;
+
+3'b110:
+
+IF_near_mem_imem_instr__59_BITS_14_TO_12_81_EQ_ETC___d291 =
+
+!IF_near_mem_imem_instr__59_BITS_19_TO_15_60_EQ_ETC___d220;
+
+default: IF_near_mem_imem_instr__59_BITS_14_TO_12_81_EQ_ETC___d291 =
+
+near_mem$imem_instr[14:12] != 3'b111 ||
+
+IF_near_mem_imem_instr__59_BITS_19_TO_15_60_EQ_ETC___d220;
+
+endcase
+
+Description:
+
+Now we need to verify one ISA property ADD on the opensource design Piccolo. This design based on the RISC-V. The target property formally verify whether the ADD instruction can be correctly decoded and the executed. The instruction signal in the design is "near_mem$imem_instr". The instruction has 32 bit and the ADD instruction follows the format {7'b0,5’bx,5'bx,3’b0,5'bx,7’b0110011}.
+
+Output:
+
+default: IF_near_mem_imem_instr__59_BITS_14_TO_12_81_EQ_ETC___d291 = 'bx;
+
+Example 4:
+
+One-line RTL statement:
+
+assign IF_IF_near_mem_imem_instr__59_BITS_6_TO_0_79_E_ETC___d655 =	     ((near_mem$imem_instr[6:0] == 7'b1100011) ?		near_mem_imem_instr__59_BITS_14_TO_12_81_EQ_0b_ETC___d616 :		near_mem$imem_instr[6:0] == 7'b1101111 ||		near_mem$imem_instr[6:0] == 7'b1100111) ?	       data_to_stage2_addr__h5215 :	       ((near_mem$imem_instr[6:0] == 7'b1110011 &&		 near_mem$imem_instr[14:12] == 3'b0 &&		 near_mem$imem_instr[11:7] == 5'd0 &&		 near_mem$imem_instr[19:15] == 5'd0 &&		 near_mem$imem_instr[31:20] == 12'b000000000001) ?		  near_mem$imem_pc :		  32'd0) ;
+
+Completely statement:
+
+assign IF_IF_near_mem_imem_instr__59_BITS_6_TO_0_79_E_ETC___d655 =	     ((near_mem$imem_instr[6:0] == 7'b1100011) ?		near_mem_imem_instr__59_BITS_14_TO_12_81_EQ_0b_ETC___d616 :		near_mem$imem_instr[6:0] == 7'b1101111 ||		near_mem$imem_instr[6:0] == 7'b1100111) ?	       data_to_stage2_addr__h5215 :	       ((near_mem$imem_instr[6:0] == 7'b1110011 &&		 near_mem$imem_instr[14:12] == 3'b0 &&		 near_mem$imem_instr[11:7] == 5'd0 &&		 near_mem$imem_instr[19:15] == 5'd0 &&		 near_mem$imem_instr[31:20] == 12'b000000000001) ?		  near_mem$imem_pc :		  32'd0) ;
+
+Description:
+
+Now we need to verify one ISA property ADD on the opensource design Piccolo. This design based on the RISC-V. The target property formally verify whether the ADD instruction can be correctly decoded and the executed. The instruction signal in the design is "near_mem$imem_instr". The instruction has 32 bit and the ADD instruction follows the format {7'b0,5’bx,5'bx,3’b0,5'bx,7’b0110011}.
+
+Output:
+
+assign IF_IF_near_mem_imem_instr__59_BITS_6_TO_0_79_E_ETC___d655 = near_mem$imem_instr[6:0] == 7'b0110011 ? 32'd0 : 'bx;
+
+Example 5:
+
+One-line RTL statement:
+
+assign x_out_data_to_stage2_rd__h5222 =	     (near_mem$imem_instr[6:0] == 7'b1100011) ?	       5'd0 :	       near_mem$imem_instr[11:7] ;
+
+Complete statement:
+
+assign x_out_data_to_stage2_rd__h5222 =	     (near_mem$imem_instr[6:0] == 7'b1100011) ?	       5'd0 :	       near_mem$imem_instr[11:7] ;
+
+Description:
+
+Now we need to verify one ISA property ADD on the opensource design Piccolo. This design based on the RISC-V. The target property formally verify whether the ADD instruction can be correctly decoded and the executed. The instruction signal in the design is "near_mem$imem_instr". The instruction has 32 bit and the ADD instruction follows the format {7'b0,5’bx,5'bx,3’b0,5'bx,7’b0110011}.
+
+Output:
+
+assign x_out_data_to_stage2_rd__h5222 = (near_mem$imem_instr[6:0] == 7'b0110011) ? near_mem$imem_instr[11:7] : 'bx;
+
+Example  6:
+
+One-line RTL statement:
+
+assign alu_outputs___1_val1__h5480 = (near_mem$imem_instr[14:12] == 3'b001) ?rd_val__h7278 :(near_mem$imem_instr[30] ? rd_val__h7352 : rd_val__h7330) ;
+
+Complete statement:
+
+assign alu_outputs___1_val1__h5480 = (near_mem$imem_instr[14:12] == 3'b001) ?rd_val__h7278 :(near_mem$imem_instr[30] ? rd_val__h7352 : rd_val__h7330) ;
+
+Description:
+
+Now we need to verify one ISA property ADD on the opensource design Piccolo. This design based on the RISC-V. The target property formally verify whether the ADD instruction can be correctly decoded and the executed. The instruction signal in the design is "near_mem$imem_instr". The instruction has 32 bit and the ADD instruction follows the format {7'b0,5’bx,5'bx,3’b0,5'bx,7’b0110011}.
+
+Output:
+assign alu_outputs___1_val1__h5480 = 'bx;
+
+Here are the requirements of output:
+
+(1) Please carefully analyze the semantic information in the RTL code,  property, signal name in the RTL and the instruction specification.
+
+(2) Please only perform the abstraction on the one-line RTL statement.
+
+(3) In addition to representing unknown or undetermined logical values ('bx), other generated constants must provide bit width information, such as 3'b0,5'b1.
+
+(4) You can only output the abstraction code without other natural language. If it cannot perform the abstraction, output the one-line code directly. You can only output the code directly without any markdown code block or formatting.
+
+(5) Please ensure that the generated abstraction is syntax-correct. I need to directly replace the one-line code by your generated code in the RTL model. If the original one-line code contains the condition (e.g. 'b10: in the case), the generated code also need to contain it. Please add ';' at the end of the generated statement, and only use the variables in the one-line code and complete code I provided, do not generate other new variables.
+
+(6) Please carefully the check whether the signal can be abstracted. If you are not confident about the success of your abstraction, you can output the original one-line RTL statement directly.

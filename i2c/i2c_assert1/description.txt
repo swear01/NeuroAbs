@@ -1,0 +1,4 @@
+Benchmark: I2C master / i2c_assert1.
+Property focus: read-after-write consistency for the Wishbone register at address 3'b000.
+When ack_reg is asserted and adr_reg selects this address, dat_i/wb_dat_o should return the value written through dat_o_reg/wb_dat_i.
+Target register: prescaler low-byte register prer[7:0].

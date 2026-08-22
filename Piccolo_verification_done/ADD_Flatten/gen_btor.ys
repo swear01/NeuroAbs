@@ -1,0 +1,15 @@
+read_verilog -formal wrapper.v
+#prep -top wrapper
+hierarchy -check -top wrapper
+proc
+chformal -assume -early;
+
+select wrapper/sanitycheck
+chformal -remove
+select *
+
+memory ;
+flatten
+setundef -undriven -expose;
+sim -clock clk -reset rst -rstlen 1 -n 1 -w wrapper
+write_btor  -s problem_old.btor2

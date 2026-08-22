@@ -1,0 +1,9 @@
+read_verilog -sv tst_bench_top_constant.v
+
+hierarchy -check -top tst_bench_top
+proc -noopt
+flatten
+
+memory
+opt
+write_verilog problem_1.v

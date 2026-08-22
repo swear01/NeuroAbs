@@ -1,0 +1,24 @@
+read_verilog -formal iter/8_bx.v
+#prep -top wrapper
+hierarchy -check -top wrapper
+proc
+flatten
+#prep -top wrapper
+
+chformal -assume -early;
+select wrapper/sanitycheck
+chformal -remove
+select *
+
+memory -nordff
+flatten
+setundef -undriven -expose;
+sim -clock clk -reset rst -rstlen 1 -n 1 -w wrapper
+delete -output
+techmap
+#aigmap
+#write_verilog iter/1_bx_temp.v
+abc -fast -g AND
+#write_verilog iter/1_bx_temp_1.v
+#opt
+write_aiger -zinit -vmap map.txt iter/8_bx.aig

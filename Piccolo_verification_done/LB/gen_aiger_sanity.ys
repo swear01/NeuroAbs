@@ -1,0 +1,22 @@
+read_verilog -formal iter_sanity/8.v
+#prep -flatten -top wrapper
+hierarchy -check -top wrapper
+proc
+flatten
+chformal -assume -early;
+
+select wrapper/normalassert
+chformal -remove
+select *
+
+memory ;
+#flatten
+setundef -undriven -expose;
+sim -clock clk -reset rst -rstlen 1 -n 1 -w wrapper
+delete -output
+techmap
+abc -fast -g AND
+write_aiger -zinit -vmap map.txt iter_sanity/8.aig
+#!yosys-abc -c '&r sanity_abstract_iter1_less_bx.aig; &put; fold; pdr -c -n -t -v'
+#yosys-abc -c '&r sanity_abstract_iter1_less_bx.aig; &put; fold; pdr -v' & \
+#wait

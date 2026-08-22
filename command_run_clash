@@ -1,0 +1,14 @@
+
+
+在一个终端运行 Clash:
+    ./clash -d config -f config/config.yaml
+在需要时打开另一个终端，用一次性代理执行命令：
+    http_proxy=http://127.0.0.1:7890 https_proxy=http://127.0.0.1:7890 你的命令
+这样更直观，也容易控制。不用的时候直接在运行 Clash 的终端按 Ctrl+C 停止就行。
+
+http_proxy=http://127.0.0.1:7890 https_proxy=http://127.0.0.1:7890 python3 gemini.py
+
+python3 src/main.py -t wrapper -d /data/zhiyuany/LLM4Abstraction/Piccolo_verification/verification/ADD_Flatten/description.txt -f RTL /data/zhiyuany/LLM4Abstraction/Piccolo_verification/verification/ADD_Flatten/wrapper.v
+python3 src/run_checker.py "rIC3 -v 3 /data/zhiyuany/LLM4Abstraction/Piccolo_verification_done/ADDI/iter_btor/7.btor2"
+python3 src/main.py -t tst_bench_top -d /data/zhiyuany/LLM4Abstraction/i2c/i2c_assert1/description.txt -f RTL /data/zhiyuany/LLM4Abstraction/i2c/i2c_assert1/tst_bench_top.v
+python3 src/cegar.py -f iter_btor -y gen_btor.ys /data/zhiyuany/LLM4Abstraction/i2c/i2c_assert2/wrapper_abstract_llm_new.v

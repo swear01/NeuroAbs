@@ -1,0 +1,4 @@
+Benchmark: Piccolo / AUIPC.
+Property focus: verify the decode and execution behavior for the RISC-V AUIPC instruction.
+Instruction source: near_mem$imem_instr, a 32-bit instruction word constrained to {20'bx,5'bx,7'b0010111}.
+Abstraction hint: signals used only by non-AUIPC instructions are expected to be safe abstraction candidates after constant propagation.

@@ -1,0 +1,14 @@
+read_verilog -formal iter_btor/0_bx.v
+#prep -top wrapper
+hierarchy -check -top tst_bench_top
+proc
+chformal -assume -early;
+
+
+memory ;
+flatten
+setundef -undriven -expose;
+sim -clock clk -resetn rstn -rstlen 1 -n 1 -w tst_bench_top
+async2sync;
+dffunmap
+write_btor  -s iter_btor/0_bx.btor2

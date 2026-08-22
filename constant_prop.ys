@@ -1,0 +1,9 @@
+read_verilog -sv wrapper.v
+
+hierarchy -check -top wrapper
+proc -noopt
+flatten
+
+memory
+opt
+write_verilog problem_1.v

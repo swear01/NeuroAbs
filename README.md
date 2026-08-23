@@ -52,10 +52,14 @@ ABC/BMC3, but the reproducible path in this README uses only BTOR2 models and
 This project uses the patched PyVerilog fork in `Pyverilog_NeuroAbs`.
 It is part of this repository as a git submodule; use this fork rather than
 upstream PyVerilog. After cloning the repository, initialize the submodule
-before running the Python scripts:
+and install the pinned reproduction dependencies before running the Python
+scripts:
 
 ```bash
 git submodule update --init --recursive
+python3 -m venv .venv
+. .venv/bin/activate
+python3 -m pip install -r requirements-reproduce.txt
 ```
 
 The Python scripts default to local tool paths used during development. For a
@@ -76,7 +80,13 @@ expansion turns the checker command into `-v 3 ...`, which fails with
 
 Yosys can be installed from a standard Yosys build or from oss-cad-suite.
 
-Build the expected ponocca version:
+The public artifact currently points to a `ZhiyuanYan/ponocca` repository that
+is not publicly accessible. The initial public reproduction therefore stops
+after LLM abstraction. Full CEGAR requires the authors' `tacas-2024` ponocca
+build because `src/cegar.py` depends on its custom dynamic-COI and pivot-input
+outputs; stock Pono is not an equivalent replacement.
+
+With access to that repository, build the expected ponocca version:
 
 ```bash
 git clone --branch tacas-2024 --single-branch git@github.com:ZhiyuanYan/ponocca.git
@@ -92,14 +102,15 @@ export PONO_BIN=$PWD/pono
 If you already have a local CoSA2/Pono dependency tree, you can reuse its
 `deps/` directory before running `./configure.sh`.
 
-`src/main.py` calls an LLM through one of the API wrappers, such as
-`gpt_api.py`, `gemini_api.py`, `deepseek_api.py`, or `llama_api.py`. Configure
-the API key and endpoint before running abstraction:
+`src/main.py` calls an LLM through one of the API wrappers. The public initial
+reproduction uses DeepSeek V4 Flash with thinking disabled:
 
 ```bash
-export API_KEY=<your-api-key>
-export API_URL=<your-chat-completions-url>
+export DEEPSEEK_API_KEY=<your-api-key>
 ```
+
+Keep this value in the environment or a permission-`0600` file outside the
+repository. Never commit it.
 
 ## Common Commands
 
@@ -213,6 +224,7 @@ I2C example:
 
 ```bash
 python3 -u src/main.py -t tst_bench_top --constant-template i2c \
+  --api-backend deepseek \
    -f RTL \
   -d i2c/i2c_assert1/description.txt \
   i2c/i2c_assert1/tst_bench_top.v
@@ -243,17 +255,48 @@ python3 src/run_checker.py "$RIC3_BIN -v 3 \
   riscv_formal/riscv_formal_add/readme_iter_btor/1.btor2"
 ```
 
-If you want to avoid spending LLM API quota while checking the CEGAR and BMC
-steps, use the already tracked `wrapper_abstract_llm_new.v`, `statement.json`,
-and `input_line.json` in each case directory and start from the `cegar.py`
-command. The `main.py` command above is still the first step for regenerating
-those files from the original RTL.
+The public tree does not currently contain the generated
+`wrapper_abstract_llm_new.v`, `statement.json`, or `input_line.json` files.
+Run `main.py` to create them before attempting CEGAR.
+
+### Mazu initial reproduction
+
+The verified Mazu setup keeps the repository under `/home/swear01/NeuroAbs`
+and the large tool/runtime files on Mazu-local storage:
+
+```bash
+cd /home/swear01/NeuroAbs
+git submodule update --init --recursive
+
+export OSS_CAD_SUITE=/var/tmp/neuroabs-tools/2026-08-23/oss-cad-suite
+export YOSYS_BIN="$OSS_CAD_SUITE/bin/yosys"
+export VIRTUAL_ENV=/var/tmp/neuroabs-runtime/venv
+export PATH="$VIRTUAL_ENV/bin:$OSS_CAD_SUITE/bin:$PATH"
+export LD_LIBRARY_PATH="$OSS_CAD_SUITE/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+
+uv venv --python "$OSS_CAD_SUITE/py3bin/python3.11" "$VIRTUAL_ENV"
+uv pip install --python "$VIRTUAL_ENV/bin/python" -r requirements-reproduce.txt
+python -m unittest tests/test_deepseek_backend.py
+python -u src/main.py -t tst_bench_top --constant-template i2c \
+  --api-backend deepseek -f RTL \
+  -d i2c/i2c_assert1/description.txt \
+  i2c/i2c_assert1/tst_bench_top.v
+```
+
+`DEEPSEEK_API_KEY` must already be present in the environment for the last
+command. The OSS CAD Suite archive used here is release `2026-08-23`, SHA-256
+`063d7b4f5663271cf04529ba22266e21baa9e3431b236fe71e1bf589d6d8816a`.
+
+The first Mazu run and its candidate-signal artifact are recorded in
+[`results/i2c_assert1/`](results/i2c_assert1/README.md).
 
 ## Runtime Notes
 
 `src/main.py` first parses the RTL, runs constant propagation, extracts
 candidate signals, and then calls the configured LLM to generate abstracted
 RTL. A full run can take a long time and consumes LLM API quota.
+Candidate extraction compares named wires removed by Yosys `OPT_CLEAN` in the
+constant-constrained model against those removed in the normal model.
 
 For CEGAR debugging, set `CEGAR_VERBOSE=1` to print every refined signal. The
 Pono/BTOR2 backend uses bound 25 in `src/cegar.py`; use

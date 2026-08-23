@@ -1,54 +1,21 @@
+import re
+
+
 def get_signal(input_filename, output_filename, prefix):
-    try:
-        with open(input_filename, 'r') as infile:
-            lines = infile.readlines()
+    pattern = re.compile(
+        rf"removing unused non-port wire (\\{re.escape(prefix)}"
+        rf"(?:\.[A-Za-z_][A-Za-z0-9_$]*)+)\b"
+    )
+    with open(input_filename, 'r') as infile:
+        signals = {
+            match.group(1)
+            for line in infile
+            if (match := pattern.search(line))
+        }
 
+    with open(output_filename, 'w') as outfile:
+        for signal in sorted(signals):
+            outfile.write(signal + '\n')
 
-        with open(output_filename, 'w') as outfile:
-            found_expr_key_line = False
-            found_clean_key_line = False
-            lines_after_expr_key = 0
-
-            for line in lines:
-               
-                line = line.rstrip()
-
-
-                if not found_expr_key_line and "Executing OPT_EXPR pass (perform const folding)." in line:
-                    found_expr_key_line = True
-                    continue  
-
-                if found_expr_key_line:
-                    lines_after_expr_key += 1
-                    if lines_after_expr_key <= 2:
-                        continue  
-                   
-
-                    if line.startswith(f'\\{prefix}'):
-                        outfile.write(line + '\n')  
-
-                    if line.strip() == "":
-                        found_expr_key_line = False  
-                        lines_after_expr_key = 0  
-
-                if not found_clean_key_line and "Executing OPT_CLEAN pass (remove unused cells and wires)." in line:
-                    found_clean_key_line = True
-                    continue 
-
-                if found_clean_key_line:
-                    # We assume the optimize part locate in the submodule RTL, so we find whether the signal starts with \RTL
-                    if line.startswith("\\RTL."):
-                        outfile.write(line + '\n') 
-
-                    
-                    if line.strip() == "":
-                        found_clean_key_line = False  
-
-        print(f"Processing complete. Results written to {output_filename}")
-    
-    except FileNotFoundError:
-        print(f"Error: The file {input_filename} was not found.")
-    except Exception as e:
-        print(f"An error occurred: {e}")
-
+    print(f"Processing complete. Results written to {output_filename}")
 

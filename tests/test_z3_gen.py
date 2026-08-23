@@ -23,6 +23,28 @@ class Assignment2SMTTest(unittest.TestCase):
         solver.add(BitVec("c_state", 5) != ZeroExt(4, BitVec("idle", 1)))
         self.assertEqual(solver.check(), unsat)
 
+    def test_binary_expression_infers_symbolic_macro_width(self):
+        builder = Assignment2SMT()
+        builder.traverse(
+            (
+                "BLOCKING_ASSIGN",
+                ("ID", "cmd_stop"),
+                ("BINOP", "==", ("ID", "cmd"), ("ID", "I2C_CMD_STOP")),
+            ),
+            {"cmd_stop": 1, "cmd": 4},
+        )
+
+        self.assertEqual(builder.z3_vars["I2C_CMD_STOP"].size(), 4)
+
+    def test_assignment_infers_symbolic_macro_width_from_lhs(self):
+        builder = Assignment2SMT()
+        builder.traverse(
+            ("BLOCKING_ASSIGN", ("ID", "core_cmd"), ("ID", "I2C_CMD_STOP")),
+            {"core_cmd": 4},
+        )
+
+        self.assertEqual(builder.z3_vars["I2C_CMD_STOP"].size(), 4)
+
 
 if __name__ == "__main__":
     unittest.main()

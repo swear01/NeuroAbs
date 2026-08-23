@@ -287,6 +287,9 @@ python -u src/main.py -t tst_bench_top --constant-template i2c \
 command. The OSS CAD Suite archive used here is release `2026-08-23`, SHA-256
 `063d7b4f5663271cf04529ba22266e21baa9e3431b236fe71e1bf589d6d8816a`.
 
+The first Mazu run and its candidate-signal artifact are recorded in
+[`results/i2c_assert1/`](results/i2c_assert1/README.md).
+
 ## Runtime Notes
 
 `src/main.py` first parses the RTL, runs constant propagation, extracts

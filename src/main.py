@@ -433,7 +433,7 @@ def run_constant_prop_for_file(script_name, output_name):
         os.chdir(script_path)
         yosys_output = output_name.replace('.txt', '_extract.txt')
         with open(yosys_output,'w') as f:
-            subprocess.run([YOSYS_BIN, script_name],
+            subprocess.run([YOSYS_BIN, '-g', script_name],
                     stdout=f,
                     stderr=subprocess.STDOUT,
                     text=True,

@@ -292,6 +292,8 @@ command. The OSS CAD Suite archive used here is release `2026-08-23`, SHA-256
 `src/main.py` first parses the RTL, runs constant propagation, extracts
 candidate signals, and then calls the configured LLM to generate abstracted
 RTL. A full run can take a long time and consumes LLM API quota.
+Candidate extraction compares named wires removed by Yosys `OPT_CLEAN` in the
+constant-constrained model against those removed in the normal model.
 
 For CEGAR debugging, set `CEGAR_VERBOSE=1` to print every refined signal. The
 Pono/BTOR2 backend uses bound 25 in `src/cegar.py`; use

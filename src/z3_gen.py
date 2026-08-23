@@ -119,11 +119,10 @@ class Assignment2SMT():
                 self.unknown_vars[new_lhs] = var
                 return new_lhs == rhs            
             elif (not isinstance(lhs, BoolRef)) and (not isinstance(rhs, BoolRef)) and lhs.size() != rhs.size():
-                assert isinstance(lhs, BitVecNumRef) and isinstance(rhs, BitVecNumRef)
-                if isinstance(rhs, BitVecNumRef):
-                    rhs = BitVecVal(int(rhs.as_string()), left.size())
+                if rhs.size() < lhs.size():
+                    rhs = ZeroExt(lhs.size() - rhs.size(), rhs)
                 else:
-                    lhs = BitVecVal(int(lhs.as_string()), rhs.size())
+                    rhs = Extract(lhs.size() - 1, 0, rhs)
                 return lhs == rhs
             else:    
                 if isinstance(rhs, BoolRef):

@@ -27,12 +27,11 @@ model. Their set difference contains 62 candidate signals, recorded in
 [`candidate_signals.txt`](candidate_signals.txt). Pyverilog localized 37 of
 those signals to source statements.
 
-The run reached the first real LLM abstraction request, then stopped because
-the DeepSeek API returned HTTP 402 `Insufficient Balance`. No alternative
-model or synthetic response was used, so this is a partial reproduction: the
-candidate-discovery stage is reproduced, while LLM abstraction and downstream
-CEGAR remain pending API credit and the unavailable public Pono fork described
-in the root README.
+The run reached the first LLM abstraction request, but that request bypassed
+the required local gateway and incorrectly targeted the official DeepSeek API.
+Its HTTP 402 `Insufficient Balance` response is therefore not a valid gateway
+experiment result. The candidate-discovery measurements above remain valid;
+LLM abstraction must be rerun through `http://127.0.0.1:35001/v1`.
 
 The detached Mazu run was
 `neuroabs-i2c-assert1-20260823T205421Z`; its local log is retained at

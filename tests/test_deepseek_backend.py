@@ -54,9 +54,26 @@ class DeepSeekBackendTest(unittest.TestCase):
     def test_client_is_created_lazily(self):
         self.assertEqual(FakeOpenAI.calls, [])
 
-    def test_missing_key_names_required_secret(self):
-        with self.assertRaisesRegex(RuntimeError, "DEEPSEEK_API_KEY"):
-            self.backend.run_api("bot", "message", "statement", {}, None, {})
+    def test_request_uses_local_gateway_without_external_key(self):
+        with patch.object(
+            self.backend,
+            "check_implies",
+            return_value=("unsat", "replacement", "", {}),
+        ):
+            result = self.backend.run_api(
+                "bot", "message", "statement", {}, None, {}
+            )
+
+        self.assertEqual(result, ("replacement", "unsat", "", {}))
+        self.assertEqual(
+            FakeOpenAI.calls,
+            [
+                {
+                    "api_key": "local-gateway",
+                    "base_url": "http://127.0.0.1:35001/v1",
+                }
+            ],
+        )
 
     def test_request_uses_v4_flash_without_thinking(self):
         os.environ["DEEPSEEK_API_KEY"] = "secret"
@@ -72,11 +89,20 @@ class DeepSeekBackendTest(unittest.TestCase):
         self.assertEqual(result, ("replacement", "unsat", "", {}))
         self.assertEqual(
             FakeOpenAI.calls,
-            [{"api_key": "secret", "base_url": "https://api.deepseek.com"}],
+            [
+                {
+                    "api_key": "local-gateway",
+                    "base_url": "http://127.0.0.1:35001/v1",
+                }
+            ],
         )
         request = FakeOpenAI.completions.requests[0]
         self.assertEqual(request["model"], "deepseek-v4-flash")
         self.assertEqual(request["extra_body"], {"thinking": {"type": "disabled"}})
+
+    def test_deepseek_sources_do_not_bypass_gateway(self):
+        for filename in ("deepseek.py", "deepseek_api.py"):
+            self.assertNotIn("api.deepseek.com", (SRC / filename).read_text())
 
 
 if __name__ == "__main__":

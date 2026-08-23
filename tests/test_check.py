@@ -25,6 +25,9 @@ class PreprocessStringTest(unittest.TestCase):
             "cmd_stop <= cmd == I2C_CMD_STOP;",
         )
 
+    def test_removes_wire_declaration_for_assignment_parser(self):
+        self.assertEqual(preprocess_string("wire rd = cr[5];"), "rd = cr[5];")
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -1,0 +1,3 @@
+-e ./Pyverilog_NeuroAbs
+openai==3.3.1
+z3-solver==5.1.0.0

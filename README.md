@@ -272,8 +272,9 @@ export OSS_CAD_SUITE=/var/tmp/neuroabs-tools/2026-08-23/oss-cad-suite
 export YOSYS_BIN="$OSS_CAD_SUITE/bin/yosys"
 export VIRTUAL_ENV=/var/tmp/neuroabs-runtime/venv
 export PATH="$VIRTUAL_ENV/bin:$OSS_CAD_SUITE/bin:$PATH"
+export LD_LIBRARY_PATH="$OSS_CAD_SUITE/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 
-uv venv --python "$OSS_CAD_SUITE/bin/python3" "$VIRTUAL_ENV"
+uv venv --python "$OSS_CAD_SUITE/py3bin/python3.11" "$VIRTUAL_ENV"
 uv pip install --python "$VIRTUAL_ENV/bin/python" -r requirements-reproduce.txt
 python -m unittest tests/test_deepseek_backend.py
 python -u src/main.py -t tst_bench_top --constant-template i2c \

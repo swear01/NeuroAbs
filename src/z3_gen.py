@@ -99,6 +99,8 @@ class Assignment2SMT():
         # 处理赋值语句
         if node_type in ['CONTINUOUS_ASSIGN', 'BLOCKING_ASSIGN']:
             lhs = self.traverse(node[1],width_map)
+            if node[2][0] == 'ID' and node[2][1] not in width_map:
+                width_map[node[2][1]] = lhs.size()
             rhs = self.traverse(node[2],width_map)
             if rhs in self.unknown_vars: ## 我们对unknown val进行修改
                 width = lhs.size()
@@ -119,11 +121,10 @@ class Assignment2SMT():
                 self.unknown_vars[new_lhs] = var
                 return new_lhs == rhs            
             elif (not isinstance(lhs, BoolRef)) and (not isinstance(rhs, BoolRef)) and lhs.size() != rhs.size():
-                assert isinstance(lhs, BitVecNumRef) and isinstance(rhs, BitVecNumRef)
-                if isinstance(rhs, BitVecNumRef):
-                    rhs = BitVecVal(int(rhs.as_string()), left.size())
+                if rhs.size() < lhs.size():
+                    rhs = ZeroExt(lhs.size() - rhs.size(), rhs)
                 else:
-                    lhs = BitVecVal(int(lhs.as_string()), rhs.size())
+                    rhs = Extract(lhs.size() - 1, 0, rhs)
                 return lhs == rhs
             else:    
                 if isinstance(rhs, BoolRef):
@@ -134,6 +135,10 @@ class Assignment2SMT():
             # 处理二元操作
         if node_type == 'BINOP':
             op = node[1]
+            if node[2][0] == 'ID' and node[2][1] not in width_map and node[3][0] == 'ID' and node[3][1] in width_map:
+                width_map[node[2][1]] = width_map[node[3][1]]
+            if node[3][0] == 'ID' and node[3][1] not in width_map and node[2][0] == 'ID' and node[2][1] in width_map:
+                width_map[node[3][1]] = width_map[node[2][1]]
             left = self.traverse(node[2], width_map)
             right = self.traverse(node[3], width_map)
             if left in self.unknown_vars and right in self.unknown_vars:

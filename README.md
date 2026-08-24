@@ -102,15 +102,16 @@ export PONO_BIN=$PWD/pono
 If you already have a local CoSA2/Pono dependency tree, you can reuse its
 `deps/` directory before running `./configure.sh`.
 
-`src/main.py` calls an LLM through one of the API wrappers. The public initial
-reproduction uses DeepSeek V4 Flash with thinking disabled:
+`src/main.py` calls an LLM through one of the API wrappers. The Mazu
+reproduction uses DeepSeek V4 Flash with thinking disabled through the local
+DeepSeek gateway:
 
 ```bash
-export DEEPSEEK_API_KEY=<your-api-key>
+curl http://127.0.0.1:35001/healthz
 ```
 
-Keep this value in the environment or a permission-`0600` file outside the
-repository. Never commit it.
+The client always targets `http://127.0.0.1:35001/v1`; gateway credentials
+and upstream routing stay outside this repository.
 
 ## Common Commands
 
@@ -283,8 +284,8 @@ python -u src/main.py -t tst_bench_top --constant-template i2c \
   i2c/i2c_assert1/tst_bench_top.v
 ```
 
-`DEEPSEEK_API_KEY` must already be present in the environment for the last
-command. The OSS CAD Suite archive used here is release `2026-08-23`, SHA-256
+`deepseek-gateway` must be active on `127.0.0.1:35001` for the last command.
+The OSS CAD Suite archive used here is release `2026-08-23`, SHA-256
 `063d7b4f5663271cf04529ba22266e21baa9e3431b236fe71e1bf589d6d8816a`.
 
 The first Mazu run and its candidate-signal artifact are recorded in

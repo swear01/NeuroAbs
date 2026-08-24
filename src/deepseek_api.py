@@ -7,12 +7,11 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 with open(os.path.join(SCRIPT_DIR, "initial_context.txt"), "r") as f:
     initial_context = f.read()
 def run_api(bot_name, message, original_statement, width_map, replacer, replace_input_map):
-    api_key = os.environ.get("DEEPSEEK_API_KEY", "")
-    if not api_key:
-        raise RuntimeError("DEEPSEEK_API_KEY is not set.")
-
     print(message + '\n')
-    client = OpenAI(api_key=api_key, base_url="https://api.deepseek.com")
+    client = OpenAI(
+        api_key="local-gateway",
+        base_url="http://127.0.0.1:35001/v1",
+    )
     response = client.chat.completions.create(
         model="deepseek-v4-flash",
         messages=[

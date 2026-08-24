@@ -242,8 +242,9 @@ def preprocess_string(s):
         s = re.sub(r'//.*$', '', s)
     
     if '`' in s:
-        # 移除所有宏
-        return re.sub(r'`\w+\s*', '', s)
+        s = s.replace('`', '')
+    if s.lstrip().startswith('wire '):
+        s = s.lstrip()[5:]
     # 2. 用冒号分割并保留后半部分
     if 'default:' in s:
         s = s.split(':', 1)[1]

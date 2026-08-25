@@ -18,6 +18,26 @@ If you use NeuroAbs in your research, please cite our
 }
 ```
 
+## Validation status and EDA handoff
+
+This fork has validated the public NeuroAbs flow on the I2C prescaler low-byte
+read/write-consistency scenario with Muse Spark 1.2 Contributor. All 184 local
+rewrite attempts are sound over-approximations; 182 are strict and two are
+semantic no-ops. Because repeated statement text can be rewritten more than
+once, the final wrapper contains 121 distinct fresh-input assignment locations.
+The final abstract BTOR2 model was proved `UNSAT` by rIC3.
+
+The authors report 0.08 seconds for rIC3 with LLMAbstractor on this I2C case.
+One retained Muse proof-mode invocation took 0.20 seconds; ten subsequent runs
+had a 0.105-second median, versus 0.100 seconds for the concrete model. This
+validates the flow and proof result on one scenario, but does not reproduce the
+paper's aggregate speedup claim.
+
+See [`docs/eda-handoff.md`](docs/eda-handoff.md) for a shareable EDA summary,
+claim boundaries, evidence, and directions for more aggressive abstraction.
+Follow [`docs/evaluation.md`](docs/evaluation.md) before making effectiveness or
+performance claims.
+
 ## Layout
 
 - `src/`: Python scripts and command-line entry points.

@@ -85,6 +85,47 @@ This run used commit `9d4f6912232974938e635a9b81a985dc0fdfff32`, the
 184 statement requests in 7154.236821 seconds. All 184 soundness implication
 checks were `unsat`; none were `sat`.
 
+### Strict over-approximation audit
+
+The 184 accepted rewrites were rechecked in both directions on 2026-08-26.
+The audit modeled each assignment target as a next-state variable while keeping
+right-hand side references as current-state variables. For each pair, an
+`UNSAT` counterexample query for `S => A` established soundness; a `SAT`
+counterexample to `A => S` established that the over-approximation was strict.
+
+| Metric | Result |
+| --- | ---: |
+| Sound OA | 184/184 |
+| Strict OA | 182/184 (98.91%) |
+| Equivalent no-op | 2/184 (1.09%) |
+| Invalid | 0/184 |
+
+The two no-ops are request 21, `c_state <= idle;`, and request 52,
+`cnt <= cnt;`; Muse changed formatting only. The other 182 rewrites are strict,
+including requests 70, 71, and 110, which replace a nonblocking self-assignment
+with X. This confirms that counting X-values happened to produce the same total
+for this run but is not a semantic strictness check.
+
+The transition-aware report is retained on Mazu at
+`/home/swear01/neuroabs-runs/i2c-meta-contributor-20260825/strict-oa-transition-report.json`,
+SHA-256
+`a345dfe8743357c569fab5077a0cea6ccac04cecbc92638480c3d73cb07d9b09`.
+The exact checker script and run log are retained in the same directory as
+`strict-oa-transition-check.py` and `strict-oa-transition-check.log`, with
+SHA-256 `ff08975ee1b0a4cff165d0bd35722d3ac3f7ad1bddbd1123e6f429ce94a9d258`
+and `13fd53bdfa1331d5c7b0a6ebdf544801361b2bd6470534a017323f6865d20c87`,
+respectively.
+
+A diagnostic reverse run using the repository's current statement encoding
+reported 179 strict and five equivalent rewrites. It incorrectly classified
+requests 70, 71, and 110 because `check_implies()` uses the same symbol for the
+current and next value of a nonblocking assignment, collapsing `q <= q` to a
+tautology. That diagnostic report is retained beside the transition-aware one
+as `strict-oa-report.json`, SHA-256
+`c80d2f1c02347ce85a94e72f2f979d7fe093c1fcc6490ef4d7620a3fba25c0ea`.
+The required evaluation procedure is documented in
+[`docs/evaluation.md`](../../docs/evaluation.md).
+
 The generated wrapper is 30,817 bytes with SHA-256
 `9b4a8430a4eca9720e794a5cccf3ff6a9b55584f90f36c03b576795e5bc5ac43`.
 Modern Pono returned `unknown` through bound 25, so CEGAR completed with zero

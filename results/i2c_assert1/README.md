@@ -49,3 +49,31 @@ The detached Mazu run was
 `neuroabs-i2c-gateway-final-20260823T234146Z`; its log, gateway snapshots,
 generated artifacts, hashes, and Yosys validation log are retained at
 `/var/tmp/neuroabs-runtime/runs/i2c-gateway-final-20260823T234146Z/`.
+
+## Modern Pono CEGAR follow-up
+
+On 2026-08-25, the same generated wrapper was passed to `src/cegar.py` with
+the public `swear01/pono-neuroabs` Dynamic COI port and Yosys 0.68+120. Modern
+Yosys first required `chformal -lower` before reset simulation so that `$check`
+cells remained as formal assertions but were accepted by `sim`.
+
+Pono found no counterexample through bound 25 and printed `unknown`, so the
+default CEGAR loop completed with zero refinement steps. Its timing report
+labels this as one total iteration because it records `iteration + 1`. The run
+produced:
+
+- `0.btor2`: 46,673 bytes, SHA-256
+  `ec8f40ec4672ef50b0f403ed2de9f99638217bf49580e964da7407b5cde7182b`
+- `0_bx.btor2`: 48,897 bytes, SHA-256
+  `2852a4daf30acec5f15289e271f76b581f89699bb669a1feefeee9ffcabe6bfc`
+
+A separate satisfiable smoke test used Pono's `samples/counter.btor` with the
+same NeuroAbs flags. It returned `sat` and wrote 21 deterministic Dynamic COI
+lines, SHA-256
+`a17c746fc50d67f81edbfa38c698b04839f55588fe6207400257548682230d54`.
+This confirms the ported file interface is exercised when a counterexample
+exists. The non-default pivot-input path was not needed.
+
+The retained Mazu artifacts are under
+`/home/swear01/neuroabs-runs/i2c-modern-coi-v2/` and
+`/home/swear01/pono-dynamic-coi-sat.03GNm1/`.

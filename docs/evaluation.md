@@ -7,7 +7,9 @@ effective.
 
 Account for every requested rewrite: total responses, parse/API failures,
 accepted sound rewrites, rejected rewrites, strict over-approximations, and
-equivalent no-ops.
+equivalent no-ops. Separately count distinct fresh-input assignment locations
+in the final generated wrapper; attempt or metadata counts can include rewrites
+that were later superseded at the same textual location.
 
 For an original statement relation `S` and an abstract relation `A`:
 
@@ -28,6 +30,13 @@ Report the strict OA denominator, count, rate, and the request IDs and statement
 for every equivalent no-op. The paper uses sound OA and strict OA as separate RQ1
 metrics; see [Section 4.3](https://arxiv.org/html/2608.17304#S4.SS3).
 
+After the formal checks, manually inspect every accepted pair as a separate
+sanity gate. Confirm that the rewrite preserves the intended assignment target
+and operator, that every X-value becomes a fresh nondeterministic input, and
+that no surrounding RTL was changed. Record the observed rewrite patterns and
+exceptions. Manual inspection supplements the SMT result; it does not replace
+it.
+
 ## End-to-end verification
 
 - Classify the final checker result as `SAT`, `UNSAT`, or `UNKNOWN`; never report
@@ -42,3 +51,12 @@ metrics; see [Section 4.3](https://arxiv.org/html/2608.17304#S4.SS3).
 
 Retain the original/abstract statement pairs, both SMT directions, commands,
 logs, generated models, and SHA-256 hashes needed to reproduce each claim.
+
+## Claim language
+
+Call a run a validated scenario reproduction only after statement soundness,
+strictness/no-op accounting, generated-model validation, and a conclusive final
+checker result all pass. Reserve paper-reproduction or acceleration claims for
+matched benchmark, model, checker version, hardware, timeout, and repeated
+baseline/abstract measurements. Always report an initial wall-clock result and
+the repeated-run distribution separately when both exist.

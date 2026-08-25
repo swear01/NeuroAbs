@@ -149,4 +149,7 @@ Expected `git status` after archiving:
 
 - Follow [`docs/evaluation.md`](docs/evaluation.md) before claiming that an LLM
   abstraction is effective. Forward soundness alone is insufficient: report
-  transition-aware strict OA/no-op results and final checker/baseline evidence.
+  strict OA/no-op results, effective final locations, and checker/baseline
+  evidence.
+- Read [`docs/eda-handoff.md`](docs/eda-handoff.md) for the current validated
+  claim boundary, EDA-facing summary, and next research directions.

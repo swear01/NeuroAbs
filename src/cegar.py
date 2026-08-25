@@ -20,8 +20,8 @@ def resolve_pono_bin():
     if configured:
         candidates.append(configured)
     candidates.extend([
-        os.path.join(PROJECT_ROOT, 'ponocca', 'build', 'pono'),
-        os.path.join(PROJECT_ROOT, 'ponocca', 'pono'),
+        os.path.join(PROJECT_ROOT, 'pono-neuroabs', 'build', 'pono'),
+        os.path.join(PROJECT_ROOT, 'pono-neuroabs', 'pono'),
         'pono',
     ])
     for candidate in candidates:
@@ -32,7 +32,7 @@ def resolve_pono_bin():
             return candidate
     raise FileNotFoundError(
         "Pono executable not found. Set PONO_BIN to the built binary, e.g. "
-        f"{os.path.join(PROJECT_ROOT, 'ponocca', 'build', 'pono')}"
+        f"{os.path.join(PROJECT_ROOT, 'pono-neuroabs', 'build', 'pono')}"
     )
 
 PONO_BIN = resolve_pono_bin()
@@ -52,6 +52,7 @@ def run_yosys_script(yosys_path):
 def write_temp_yosys_script(base_yosys_path, content):
     script_name = os.path.basename(base_yosys_path)
     temp_path = os.path.abspath('.cegar_{:s}'.format(script_name))
+    content = re.sub(r'(?m)^(\s*sim\b)', r'chformal -lower;\n\1', content)
     with open(temp_path, 'w') as f:
         f.write(content)
     return temp_path
@@ -404,7 +405,7 @@ class Strategy_word_level(CounterExampleStrategy):
                     if not os.path.exists('coi-check-rev.txt'):
                         raise RuntimeError(
                             "Pono reported sat but did not write coi-check-rev.txt. "
-                            "Use the tacas24/ponocca build or run with a compatible "
+                            "Use the pono-neuroabs build or run with a compatible "
                             "counterexample strategy."
                         )
                     results, input_mapping = self.find_variable_names('coi-check-rev.txt', model_path)                    

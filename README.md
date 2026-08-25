@@ -39,15 +39,15 @@ Use Python 3 and make sure the following tools and packages are available:
 
 - Yosys
 - Pono, for BTOR2/word-level CEGAR refinement
-- rIC3 with kissat support, for the final BMC checks. A standalone `kissat`
-  executable is not required when using rIC3's `--bmc-kissat` mode.
+- rIC3, for portfolio formal proofs and optional kissat BMC exploration. A
+  standalone `kissat` executable is not required with `--bmc-kissat`.
 - z3, used by the Python abstraction scripts
 - LLM API credentials/configuration
 
 ABC and `.sby`/SymbiYosys are not required for the final experiments described
 below. Some older logs and scripts in the repository use `gen_aiger.ys` and
-ABC/BMC3, but the reproducible path in this README uses only BTOR2 models and
-`rIC3 --bmc-kissat`.
+ABC/BMC3, but the reproducible paths in this README use BTOR2 models with rIC3
+portfolio proof or `rIC3 --engine bmc --bmc-kissat`.
 
 This project uses the patched PyVerilog fork in `Pyverilog_NeuroAbs`.
 It is part of this repository as a git submodule; use this fork rather than
@@ -74,9 +74,8 @@ export PYTHONPATH=$PWD/Pyverilog_NeuroAbs:$PWD/src:$PYTHONPATH
 mkdir -p "$RIC3_TMP_DIR"
 ```
 
-Make sure `RIC3_BIN` points to the executable itself. If it is empty, shell
-expansion turns the checker command into `-v 3 ...`, which fails with
-`-v: not found`.
+Make sure `RIC3_BIN` points to the executable itself. Modern rIC3 does not
+accept the obsolete `-v 3` arguments found in the original artifact commands.
 
 Yosys can be installed from a standard Yosys build or from oss-cad-suite.
 
@@ -137,18 +136,27 @@ For Muse Spark 1.2 Contributor, export `META_API_KEY` and use
 `muse-spark-1.2-contributor`. Contributor prompts and completions may be used
 by Meta to improve its models, so use it only with public benchmark inputs.
 
-Run a final kissat BMC check:
+Run a formal proof with the same 3600-second cap used in the paper's RQ2:
 
 ```bash
-python3 src/run_checker.py "$RIC3_BIN -v 3 --bmc-kissat --engine bmc <file.btor2>"
+"$RIC3_BIN" --engine portfolio --time-limit 3600 path/to/model.btor2
 ```
 
-`src/run_checker.py` can wrap the same command when you want long-running depth
-logging. Set `RIC3_TMP_DIR` to a directory you own before running rIC3; otherwise
-a stale shared `/tmp/rIC3` directory can make rIC3 fail during ABC/kissat
-preprocessing. If ABC preprocessing itself fails after the temporary directory
-is writable, rerun with `--no-abc`; the BMC engine is still selected by
-`--engine bmc --bmc-kissat`.
+rIC3 returns status 20 for an `UNSAT`/safe proof. This is a successful proof
+result even though generic process supervisors display the nonzero status.
+
+Use BMC only for the paper's RQ3-style bounded exploration when formal proof
+does not conclude:
+
+```bash
+python3 src/run_checker.py "$RIC3_BIN --engine bmc --bmc-kissat path/to/model.btor2"
+```
+
+`src/run_checker.py` records long-running BMC depths with a 23,600-second cap.
+Set `RIC3_TMP_DIR` to a directory you own before running rIC3; otherwise a stale
+shared `/tmp/rIC3` directory can make rIC3 fail during ABC/kissat preprocessing.
+If ABC preprocessing itself fails after the temporary directory is writable,
+rerun with `--no-abc`.
 
 Run CEGAR:
 
@@ -175,7 +183,9 @@ The correct experiment order is:
    `input_line.json`.
 2. Run `src/cegar.py` on `wrapper_abstract_llm_new.v` using the case's BTOR2
    Yosys script.
-3. Run rIC3 kissat BMC on the final BTOR2 produced by CEGAR.
+3. Run rIC3 portfolio formal proof on the final BTOR2 produced by CEGAR.
+4. Only when formal proof does not conclude, run kissat BMC to compare bounded
+   exploration depth.
 
 Set tool paths once from the repository root:
 
@@ -200,7 +210,11 @@ python3 src/cegar.py --timeout 30 \
   -y Flute_verification_done/BGE/gen_btor.ys \
   Flute_verification_done/BGE/wrapper_abstract_llm_new.v
 
-python3 src/run_checker.py "$RIC3_BIN -v 3 --bmc-kissat --engine bmc \
+"$RIC3_BIN" --engine portfolio --time-limit 3600 \
+  Flute_verification_done/BGE/readme_iter_btor/1.btor2
+
+# If the formal proof does not conclude:
+python3 src/run_checker.py "$RIC3_BIN --bmc-kissat --engine bmc \
   Flute_verification_done/BGE/readme_iter_btor/1.btor2"
 ```
 
@@ -217,7 +231,11 @@ python3 src/cegar.py --timeout 30 \
   -y Piccolo_verification_done/ANDI/gen_btor.ys \
   Piccolo_verification_done/ANDI/wrapper_abstract_llm_new.v
 
-python3 src/run_checker.py "$RIC3_BIN -v 3 --bmc-kissat --engine bmc \
+"$RIC3_BIN" --engine portfolio --time-limit 3600 \
+  Piccolo_verification_done/ANDI/readme_iter_btor/3.btor2
+
+# If the formal proof does not conclude:
+python3 src/run_checker.py "$RIC3_BIN --bmc-kissat --engine bmc \
   Piccolo_verification_done/ANDI/readme_iter_btor/3.btor2"
 ```
 
@@ -235,8 +253,8 @@ python3 src/cegar.py --timeout 60 \
   -y i2c/i2c_assert1/gen_btor.ys \
   i2c/i2c_assert1/wrapper_abstract_llm_new.v
 
-python3 src/run_checker.py "$RIC3_BIN -v 3 \
-  i2c/i2c_assert1/readme_iter_btor/0.btor2"
+"$RIC3_BIN" --engine portfolio --time-limit 3600 \
+  i2c/i2c_assert1/readme_iter_btor/0.btor2
 ```
 
 Picorv32/riscv-formal example:
@@ -252,8 +270,8 @@ python3 src/cegar.py --timeout 30 \
   -y riscv_formal/riscv_formal_add/design.ys \
   riscv_formal/riscv_formal_add/wrapper_abstract_llm_new.v
 
-python3 src/run_checker.py "$RIC3_BIN -v 3 \
-  riscv_formal/riscv_formal_add/readme_iter_btor/1.btor2"
+"$RIC3_BIN" --engine portfolio --time-limit 3600 \
+  riscv_formal/riscv_formal_add/readme_iter_btor/1.btor2
 ```
 
 The public tree does not currently contain the generated
@@ -304,8 +322,9 @@ Pono/BTOR2 backend uses bound 25 in `src/cegar.py`; use
 `src/cegar.py --timeout <seconds>` to cap each Pono query.
 
 Pono may return `unknown` on a refined BTOR2 model. In that case the script
-stops cleanly and writes the CEGAR timing seen so far. For the final rIC3 BMC
-experiment, use the last refined BTOR2 model listed in the table above.
+stops cleanly and writes the CEGAR timing seen so far. This bounded CEGAR query
+is not a property proof; run rIC3 portfolio proof on the last refined BTOR2.
+Use BMC depth exploration only if that proof does not conclude.
 
 `iter_btor` directories are generated by `src/cegar.py` or related
 Yosys/checker flows. They are not tracked in git. Generate them locally before

@@ -78,7 +78,7 @@ The retained Mazu artifacts are under
 `/home/swear01/neuroabs-runs/i2c-modern-coi-v2/` and
 `/home/swear01/pono-dynamic-coi-sat.03GNm1/`.
 
-## Muse Contributor 1.2 preliminary reproduction
+## Muse Contributor 1.2 reproduction
 
 This run used commit `9d4f6912232974938e635a9b81a985dc0fdfff32`, the
 `meta` backend, and `muse-spark-1.2-contributor` on Mazu. Muse completed all
@@ -91,29 +91,57 @@ Modern Pono returned `unknown` through bound 25, so CEGAR completed with zero
 refinements. Its final `iter/0.btor2` is 53,908 bytes with SHA-256
 `46efa51efec968aefb24cedb2e314ec6f85e852c3439839000f1187b84eb08c2`.
 
-The final checker is rIC3/Kissat BMC with the repository's 23,600-second
-runtime cap. At the 2026-08-26 00:26 Asia/Taipei snapshot, it had completed
-depth 4093 without finding a counterexample and was still solving depth 4094.
-For the deadline report, if no later depth completes before the cap, the
-provisional result is: **timeout after 23,600 seconds; no counterexample found
-through depth 4093; depth 4094 unresolved**. This is bounded evidence, not an
-unbounded proof of the property, and must be replaced with the final checker
-output after the run ends.
+### Formal proof
 
-### Preliminary comparison and conclusion
+The paper's I2C experiment belongs to RQ2, so the final checker must construct
+a formal proof rather than only increase a BMC depth. The concrete model and
+both generated abstract models were therefore checked on Mazu with:
 
-| Run | LLM abstraction time | Soundness checks | Final BMC |
-| --- | ---: | ---: | --- |
-| DeepSeek V4 Flash | 6177.197376 s | 184/184 `unsat` | No same-cap result yet |
-| Muse Contributor 1.2 | 7154.236821 s | 184/184 `unsat` | Ongoing; provisional cap at depth 4093 |
+```bash
+rIC3 --engine portfolio --time-limit 3600 path/to/model.btor2
+```
 
-Muse therefore reproduces the abstraction, soundness, and CEGAR stages. It
-does not yet demonstrate a speedup: its abstraction stage was 977.039445
-seconds (15.8%) slower than the earlier DeepSeek run, and there is no
-same-machine, same-cap final-checker baseline yet.
+All three models returned `UNSAT`, with word-level k-induction
+(`-e wl-kind --step 1 --rseed 16`) winning the portfolio. rIC3 uses exit status
+20 for this successful safe result.
 
-The next required experiment is to run the same rIC3/Kissat command on the
-DeepSeek abstract model and the concrete model on Mazu with the same
-23,600-second cap. Report checker-only time or maximum completed depth at the
-cap separately from end-to-end time, which includes LLM abstraction,
-soundness checking, and CEGAR.
+| Model | First proof | 10-run median | 10-run mean | Result |
+| --- | ---: | ---: | ---: | --- |
+| Concrete, without NeuroAbs | 0.10 s | 0.100 s | 0.094 s | 10/10 `UNSAT` |
+| Muse Contributor 1.2 abstraction | 0.14 s | 0.105 s | 0.100 s | 10/10 `UNSAT` |
+| DeepSeek V4 Flash abstraction | 0.15 s | 0.110 s | 0.112 s | 10/10 `UNSAT` |
+
+The concrete model is the tracked `i2c/i2c_assert1/problem_2.btor2`, 27,709
+bytes with SHA-256
+`275d611e7f17fa0ec29b40559027fa4187dc8103e7093626acff90e136e134bf`.
+The repeat measurements are recorded in
+[`formal-proof-repeats.tsv`](formal-proof-repeats.tsv).
+
+At roughly one tenth of a second, the differences are below a credible timing
+resolution. This case therefore demonstrates successful abstraction and full
+formal proof, but **does not demonstrate a checker speedup**. The paper's RQ2
+result is an aggregate comparison under a 3600-second cap: AVR improves from
+607.03 to 334.56 seconds on average, while rIC3 improves only marginally from
+18.71 to 16.94 seconds because it is already fast on these cases. See the
+[official RQ2 discussion](https://arxiv.org/html/2608.17304#S4.SS4).
+
+Muse also does not improve end-to-end runtime in this reproduction. Its LLM
+abstraction took 7154.236821 seconds, 977.039445 seconds (15.8%) longer than
+DeepSeek's 6177.197376 seconds. These model and hardware choices differ from
+the paper's GPT-4o-mini/Xeon setup, so the result validates the public flow but
+does not reproduce the paper's aggregate acceleration claim.
+
+### Corrected BMC side result
+
+An earlier checker run mistakenly used rIC3/Kissat BMC, which corresponds to
+the paper's RQ3 experiment for cases where formal proof does not conclude. It
+was stopped after 21213.37 seconds once the correct RQ2 procedure was
+identified. Buffered output then showed no counterexample through completed
+depth 5139. The final CSV sample records depth 5139 at 21208.584501 seconds;
+its SHA-256 is
+`a20f181e8596bc023f5a62b6ae6ce7a1ff1e5771983781c71d0c263e438e76a2`.
+
+This BMC run is retained only as bounded side evidence. It neither proves the
+property nor replaces the `UNSAT` portfolio proof above. The paper likewise
+omits I2C and PicoRV32 from RQ3 because their cases concluded with formal proofs
+in RQ2; see the [official BMC table note](https://arxiv.org/html/2608.17304#S4.SS5).

@@ -67,7 +67,7 @@ portable setup, override them with environment variables:
 
 ```bash
 export YOSYS_BIN=/path/to/yosys
-export PONO_BIN=/path/to/ponocca/build/pono
+export PONO_BIN=/path/to/pono-neuroabs/build/pono
 export RIC3_BIN=/path/to/rIC3
 export RIC3_TMP_DIR=$PWD/.tmp/rIC3
 export PYTHONPATH=$PWD/Pyverilog_NeuroAbs:$PWD/src:$PYTHONPATH
@@ -80,27 +80,22 @@ expansion turns the checker command into `-v 3 ...`, which fails with
 
 Yosys can be installed from a standard Yosys build or from oss-cad-suite.
 
-The public artifact currently points to a `ZhiyuanYan/ponocca` repository that
-is not publicly accessible. The initial public reproduction therefore stops
-after LLM abstraction. Full CEGAR requires the authors' `tacas-2024` ponocca
-build because `src/cegar.py` depends on its custom dynamic-COI and pivot-input
-outputs; stock Pono is not an equivalent replacement.
-
-With access to that repository, build the expected ponocca version:
+Full CEGAR uses the public modern-Pono port of the Dynamic COI output expected
+by `src/cegar.py`. Build it as follows:
 
 ```bash
-git clone --branch tacas-2024 --single-branch git@github.com:ZhiyuanYan/ponocca.git
-cd ponocca
+git clone https://github.com/swear01/pono-neuroabs.git
+cd pono-neuroabs
 ./contrib/setup-smt-switch.sh
 ./contrib/setup-btor2tools.sh
 ./configure.sh
-cd build
-make -j64
-export PONO_BIN=$PWD/pono
+cmake --build build --target pono-bin -j
+export PONO_BIN=$PWD/build/pono
 ```
 
-If you already have a local CoSA2/Pono dependency tree, you can reuse its
-`deps/` directory before running `./configure.sh`.
+The default word-level CEGAR path only needs `--dynamic_coi_up_cex`. The old
+`--pivot_input` extension is not ported because `src/cegar.py` does not enable
+its `unsat_core` branch by default.
 
 `src/main.py` calls an LLM through one of the API wrappers. The Mazu
 reproduction uses DeepSeek V4 Flash with thinking disabled through the local
@@ -181,7 +176,7 @@ Set tool paths once from the repository root:
 
 ```bash
 export YOSYS_BIN=/path/to/yosys
-export PONO_BIN=/path/to/ponocca_tacas2024_worktree/build/pono
+export PONO_BIN=/path/to/pono-neuroabs/build/pono
 export RIC3_BIN=/path/to/rIC3
 export RIC3_TMP_DIR=$PWD/.tmp/rIC3
 export PYTHONPATH=$PWD/Pyverilog_NeuroAbs:$PWD/src:$PYTHONPATH

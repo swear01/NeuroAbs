@@ -40,11 +40,10 @@ the generated wrapper and completed `hierarchy -check -top tst_bench_top`.
 The wrapper SHA-256 is
 `198d11250f52c679803c94451a1e4bb9b0fbd425cefa072551524b4ceac9606e`.
 
-This reproduces candidate discovery and LLM abstraction, not the complete
-CEGAR loop. `src/cegar.py` invokes the authors' modified Pono with
-`--dynamic_coi_up_cex` and `--pivot_input`, then requires its custom
-`coi-check-rev.txt` and `pivot_input.txt` outputs. Those interfaces are not in
-the public stock Pono repository.
+This run reproduced candidate discovery and LLM abstraction, not the complete
+CEGAR loop. The later public `swear01/pono-neuroabs` port supplies the default
+`--dynamic_coi_up_cex`/`coi-check-rev.txt` interface on modern Pono. The
+non-default `--pivot_input` branch remains unported.
 
 The detached Mazu run was
 `neuroabs-i2c-gateway-final-20260823T234146Z`; its log, gateway snapshots,

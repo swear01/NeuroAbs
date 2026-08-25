@@ -10,8 +10,11 @@ with open(os.path.join(SCRIPT_DIR, "initial_context.txt"), "r") as f:
 
 def run_api(bot_name, message, original_statement, width_map, replacer, replace_input_map):
     print(message + '\n')
+    api_key = os.environ.get("META_API_KEY")
+    if not api_key:
+        raise RuntimeError("META_API_KEY is not set.")
     client = OpenAI(
-        api_key=os.environ["META_API_KEY"],
+        api_key=api_key,
         base_url="https://api.meta.ai/v1",
     )
     response = client.chat.completions.create(
@@ -23,10 +26,13 @@ def run_api(bot_name, message, original_statement, width_map, replacer, replace_
         stream=False,
     )
     print(response)
-    print(response.choices[0].message.content)
+    if not response.choices or not response.choices[0].message.content:
+        raise RuntimeError("Meta API returned no content.")
+    content = response.choices[0].message.content
+    print(content)
     result, replaced_response, replace_input, replace_input_map = check_implies(
         original_statement,
-        response.choices[0].message.content,
+        content,
         width_map,
         replacer,
         replace_input_map,

@@ -15,3 +15,8 @@
   transition-aware strict-OA procedure in [`evaluation.md`](evaluation.md) and
   count semantic no-ops separately. In particular, X presence is not a valid
   substitute, and assignment targets must be modeled as next-state variables.
+- Keep three abstraction counts separate: verification scenarios, checked LLM
+  statement attempts, and effective final rewrite locations. In the Muse I2C
+  artifact these are 1, 184, and 121 respectively. Identical statement strings
+  currently collide in `update_statement_lineno`, so generated input count is
+  not a reliable effective-abstraction count.

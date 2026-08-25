@@ -79,6 +79,7 @@ API_BACKENDS = {
     'gpt': 'gpt_api',
     'gemini': 'gemini_api',
     'deepseek': 'deepseek_api',
+    'meta': 'meta_api',
     'llama': 'llama_api',
     'poe': 'poe_api',
 }

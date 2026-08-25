@@ -132,6 +132,11 @@ when `--use_register` is used with `--constant-template picorv32`.
 
 Choose the LLM wrapper with `--api-backend`; the default is `gpt`.
 
+For Muse Spark 1.2 Contributor, export `META_API_KEY` and use
+`--api-backend meta`. This backend calls Meta Model API directly with model
+`muse-spark-1.2-contributor`. Contributor prompts and completions may be used
+by Meta to improve its models, so use it only with public benchmark inputs.
+
 Run a final kissat BMC check:
 
 ```bash

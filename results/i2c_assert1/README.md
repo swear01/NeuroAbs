@@ -77,3 +77,43 @@ exists. The non-default pivot-input path was not needed.
 The retained Mazu artifacts are under
 `/home/swear01/neuroabs-runs/i2c-modern-coi-v2/` and
 `/home/swear01/pono-dynamic-coi-sat.03GNm1/`.
+
+## Muse Contributor 1.2 preliminary reproduction
+
+This run used commit `9d4f6912232974938e635a9b81a985dc0fdfff32`, the
+`meta` backend, and `muse-spark-1.2-contributor` on Mazu. Muse completed all
+184 statement requests in 7154.236821 seconds. All 184 soundness implication
+checks were `unsat`; none were `sat`.
+
+The generated wrapper is 30,817 bytes with SHA-256
+`9b4a8430a4eca9720e794a5cccf3ff6a9b55584f90f36c03b576795e5bc5ac43`.
+Modern Pono returned `unknown` through bound 25, so CEGAR completed with zero
+refinements. Its final `iter/0.btor2` is 53,908 bytes with SHA-256
+`46efa51efec968aefb24cedb2e314ec6f85e852c3439839000f1187b84eb08c2`.
+
+The final checker is rIC3/Kissat BMC with the repository's 23,600-second
+runtime cap. At the 2026-08-26 00:26 Asia/Taipei snapshot, it had completed
+depth 4093 without finding a counterexample and was still solving depth 4094.
+For the deadline report, if no later depth completes before the cap, the
+provisional result is: **timeout after 23,600 seconds; no counterexample found
+through depth 4093; depth 4094 unresolved**. This is bounded evidence, not an
+unbounded proof of the property, and must be replaced with the final checker
+output after the run ends.
+
+### Preliminary comparison and conclusion
+
+| Run | LLM abstraction time | Soundness checks | Final BMC |
+| --- | ---: | ---: | --- |
+| DeepSeek V4 Flash | 6177.197376 s | 184/184 `unsat` | No same-cap result yet |
+| Muse Contributor 1.2 | 7154.236821 s | 184/184 `unsat` | Ongoing; provisional cap at depth 4093 |
+
+Muse therefore reproduces the abstraction, soundness, and CEGAR stages. It
+does not yet demonstrate a speedup: its abstraction stage was 977.039445
+seconds (15.8%) slower than the earlier DeepSeek run, and there is no
+same-machine, same-cap final-checker baseline yet.
+
+The next required experiment is to run the same rIC3/Kissat command on the
+DeepSeek abstract model and the concrete model on Mazu with the same
+23,600-second cap. Report checker-only time or maximum completed depth at the
+cap separately from end-to-end time, which includes LLM abstraction,
+soundness checking, and CEGAR.

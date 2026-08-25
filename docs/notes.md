@@ -10,3 +10,8 @@
 - Pono returning `unknown` after the CEGAR bound-25 query only means that query
   found no usable counterexample; it is not a property proof. A modern rIC3
   `UNSAT` result is the proof, and rIC3 reports that result with exit status 20.
+- An `UNSAT` result for every forward statement implication proves sound OA only;
+  it does not show that any rewrite is a useful abstraction. Apply the
+  transition-aware strict-OA procedure in [`evaluation.md`](evaluation.md) and
+  count semantic no-ops separately. In particular, X presence is not a valid
+  substitute, and assignment targets must be modeled as next-state variables.

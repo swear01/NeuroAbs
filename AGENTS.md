@@ -144,3 +144,9 @@ Expected `git status` after archiving:
 
     R  docs/old.md -> archive/docs/old.md
 # END agents_rule-base
+
+## NeuroAbs Evaluation
+
+- Follow [`docs/evaluation.md`](docs/evaluation.md) before claiming that an LLM
+  abstraction is effective. Forward soundness alone is insufficient: report
+  transition-aware strict OA/no-op results and final checker/baseline evidence.

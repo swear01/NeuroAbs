@@ -28,8 +28,9 @@ model. Their set difference contains 62 candidate signals, recorded in
 [`candidate_signals.txt`](candidate_signals.txt). Pyverilog localized 37 of
 those signals to source statements.
 
-The LLM stage completed all 184 statement requests in 6177.197376 seconds.
-All 184 implication checks were `unsat`; none were `sat`. It produced
+The LLM stage completed all 184 statement-rewrite requests for this single
+verification scenario in 6177.197376 seconds. All 184 implication checks were
+`unsat`; none were `sat`. It produced
 `wrapper_abstract_llm_new.v`, `statement.json`, and `input_line.json`. During
 the run window, the gateway reported 186 additional `command-code` attempts,
 184 additional successes, and no route switch. The run log contains no HTTP
@@ -82,8 +83,30 @@ The retained Mazu artifacts are under
 
 This run used commit `9d4f6912232974938e635a9b81a985dc0fdfff32`, the
 `meta` backend, and `muse-spark-1.2-contributor` on Mazu. Muse completed all
-184 statement requests in 7154.236821 seconds. All 184 soundness implication
-checks were `unsat`; none were `sat`.
+184 statement-rewrite requests in 7154.236821 seconds. These requests all
+belong to the single `i2c_assert1` verification scenario; they are not 184
+benchmark cases. Constant propagation localized 37 candidate signal entries,
+and the abstraction loop processed 33 distinct unqualified signal names. Each
+signal can have several RTL assignments, which produced the 184 requests.
+
+All 184 local soundness checks were `unsat`; none were `sat`. Of the accepted
+responses, 182 replaced an expression with an X-value that NeuroAbs converted
+to a fresh unconstrained input. The remaining two reproduced their original
+assignments and introduced no input. Representative effective rewrites include
+`wire sta = cr[7];` to `wire sta = input180;` and
+`al <= i2c_al | (al & ~sta);` to `al <= input3;`. These fresh inputs weaken the
+local transition relation, so the resulting model includes every concrete
+behavior and possibly additional behaviors.
+
+An artifact audit found that the 182 generated inputs map to only 121 distinct
+RTL locations in the final wrapper: 10 in `i2c_master_top`, 74 in
+`i2c_master_bit_ctrl`, and 37 in `i2c_master_byte_ctrl`. The other 61 inputs
+were superseded because identical statement strings collide in the current
+text-keyed `update_statement_lineno` map and repeatedly rewrite the same final
+location. Thus, 184 is the number of checked LLM attempts, while 121 is the
+number of effective fresh-input rewrite locations in this artifact. The
+transition-aware reverse-implication audit below separately establishes that
+182 of the 184 attempted rewrites are strict over-approximations.
 
 ### Strict over-approximation audit
 
@@ -186,3 +209,25 @@ This BMC run is retained only as bounded side evidence. It neither proves the
 property nor replaces the `UNSAT` portfolio proof above. The paper likewise
 omits I2C and PicoRV32 from RQ3 because their cases concluded with formal proofs
 in RQ2; see the [official BMC table note](https://arxiv.org/html/2608.17304#S4.SS5).
+
+## TODO: harder formal-proof case
+
+The paper's [official detailed Figure 7 data](https://doi.org/10.6084/m9.figshare.30633074)
+contains no hundreds-of-seconds rIC3 proof case: its slowest rIC3 baseline is
+PicoRV32 `riscv-formal-BGE` at 59.08 seconds. The next experiment should
+therefore use an external public case rather than over-interpreting this easy
+I2C result.
+
+- Recover the exact RTL and property provenance for HWMCC'24 word-level case
+  `2024/yosyshq/appnote_123/cv32e40x/yosyshq_appnote_123_cv32e40x-p592.btor2`.
+  The [official HWMCC'24 CSV](https://hwmcc.github.io/2024/hwmcc24_btor2_bv.csv)
+  reports rIC3 `UNSAT` in 601.457 seconds, and the
+  [CV32E40X RTL and formal environment](https://github.com/openhwgroup/cv32e40x-dv)
+  are public. Do not start abstraction until the source RTL/property reproduces
+  the published BTOR2 property and a slow concrete proof on Mazu.
+- Replace text-keyed statement identity with source/AST identity and report both
+  sound and strict over-approximation counts, so repeated statements cannot be
+  mistaken for independent effective abstractions.
+- Run the same current rIC3 portfolio, timeout, and Mazu hardware on the
+  concrete and NeuroAbs models. Report checker-only proof time, end-to-end time,
+  circuit-size reduction, CEGAR iterations, and repeated-run medians.

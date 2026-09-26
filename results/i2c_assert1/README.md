@@ -76,8 +76,8 @@ This confirms the ported file interface is exercised when a counterexample
 exists. The non-default pivot-input path was not needed.
 
 The retained Mazu artifacts are under
-`/home/swear01/neuroabs-runs/i2c-modern-coi-v2/` and
-`/home/swear01/pono-dynamic-coi-sat.03GNm1/`.
+`/home/swear01/research-archives/agent-cleanup-20260926/neuroabs/neuroabs-runs/i2c-modern-coi-v2/` and
+`/home/swear01/research-archives/agent-cleanup-20260926/neuroabs/pono-dynamic-coi-sat.03GNm1/`.
 
 ## Muse Contributor 1.2 reproduction
 
@@ -130,7 +130,7 @@ with X. This confirms that counting X-values happened to produce the same total
 for this run but is not a semantic strictness check.
 
 The transition-aware report is retained on Mazu at
-`/home/swear01/neuroabs-runs/i2c-meta-contributor-20260825/strict-oa-transition-report.json`,
+`/home/swear01/research-archives/agent-cleanup-20260926/neuroabs/neuroabs-runs/i2c-meta-contributor-20260825/strict-oa-transition-report.json`,
 SHA-256
 `a345dfe8743357c569fab5077a0cea6ccac04cecbc92638480c3d73cb07d9b09`.
 The exact checker script and run log are retained in the same directory as

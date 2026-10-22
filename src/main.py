@@ -7,7 +7,7 @@ PYVERILOG_ROOT = os.path.join(PROJECT_ROOT, "Pyverilog_NeuroAbs")
 if PYVERILOG_ROOT not in sys.path:
     sys.path.insert(0, PYVERILOG_ROOT)
 
-from example_dataflow_analyzer import lineno_extractor
+from example_dataflow_analyzer import lineno_extractor, property_coi_signals
 import importlib
 import subprocess
 from extract_signal import get_signal
@@ -57,6 +57,7 @@ write_verilog problem_1.v
 
 hierarchy -check -top {topmodule}
 proc
+delete t:$print
 
 memory -nordff
 opt_expr
@@ -66,7 +67,8 @@ opt_clean
 write_verilog problem_0.v
 techmap
 dffunmap
-abc -fast -g AND
+aigmap
+setundef -anyseq
 write_verilog problem_1.v
 write_aiger -vmap map.txt -symbols -zinit -ascii {aag}
 """,
@@ -82,6 +84,9 @@ API_BACKENDS = {
     'meta': 'meta_api',
     'llama': 'llama_api',
     'poe': 'poe_api',
+    'luna': 'luna_api',
+    'luna-decision': 'luna_decision_api',
+    'all-x': 'all_x_api',
 }
 
 
@@ -675,6 +680,20 @@ def main(topmodule, verilog_file):
         return
 
     update_map, width_map, instance_map, module_map = lineno_extractor(file_path_without_assert, topmodule)
+    with open('candidate_signals_constant.txt', 'w') as f:
+        f.writelines(sorted(signal.strip() + '\n' for signal in extract_signals_constant))
+    if options.candidate_scope == 'coi':
+        start_time = time.time()
+        coi_signals = property_coi_signals(file_path_without_assert, topmodule)
+        constant_variables = {get_variable_from_statement(signal) for signal in extract_signals_constant}
+        extract_signals_constant = list(extract_signals_constant) + [
+            signal.split('.', 1)[1] for signal in coi_signals if signal not in constant_variables
+        ]
+        end_time = time.time()
+        with open('candidate_signals_coi.txt', 'w') as f:
+            f.writelines(signal + '\n' for signal in coi_signals)
+        with open('time_candidate_scope.txt', 'w') as f:
+            f.write('The total time of COI candidate extraction is: {:f}\n'.format(end_time - start_time))
     signal_update_statement, signal_helper_statement, update_statement_lineno = gen_signal_update_statement(verilog_map, extract_signals_constant, update_map)
     # new_verilog_map = deepcopy(verilog_map)
     ## Now we iteratively update the verilog code from the LLM
@@ -683,6 +702,7 @@ def main(topmodule, verilog_file):
     replacer = UnknownValReplacer()
     replace_input_map = {}
     replace_input_line = {}
+    replace_input_signal = {}
     replace_input_module_map = {}
     reponse_orginal_statement_map = {}
     run_api = get_api_runner(options.api_backend)
@@ -714,8 +734,9 @@ def main(topmodule, verilog_file):
                   
                 if replaced_input != '':
                     ##Generally, only generate the new input need the futher consideration
-                    
+
                     replace_input_line[replaced_input] = start_end[0]
+                    replace_input_signal[replaced_input] = variable
                     if last_module not in replace_input_module_map :
                         replace_input_module_map[last_module] =[replaced_input]
                     else:
@@ -745,6 +766,8 @@ def main(topmodule, verilog_file):
         print('The average time of abstracting: {:f}'.format((end_time - start_time)/count))
     processed_lines, replace_input_line =  process_verilog_content_new(verilog_map, module_map, instance_map, replace_input_map, replace_input_module_map, replace_input_line)
     save_maps_to_files(reponse_orginal_statement_map, replace_input_line, 'statement.json',  'input_line.json')
+    with open('input_signal.json', 'w') as f:
+        json.dump(replace_input_signal, f, indent=4)
     with open(os.path.join(working_path, 'wrapper_abstract_llm_new.v'),'w') as f:
         for line in processed_lines:
             # print(line)
@@ -788,6 +811,11 @@ if __name__ == '__main__':
                          type="choice",
                          choices=["auto", "flute", "piccolo", "i2c", "picorv32"],
                          help="Constant-propagation Yosys template. Default=auto")
+    optparser.add_option("--candidate-scope", dest="candidate_scope",
+                         default="constant",
+                         type="choice",
+                         choices=["constant", "coi"],
+                         help="Candidate statements: constant-propagation differences, or those plus every assignment in the property COI. Default=constant")
     optparser.add_option("-a", "--aux", dest="auxname",
                          default="", help="The name that can generated to the file")
     (options, args) = optparser.parse_args()

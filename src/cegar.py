@@ -414,10 +414,11 @@ class Strategy_word_level(CounterExampleStrategy):
             
             else:
                 return None, None
-        
+
         except subprocess.TimeoutExpired:
             if process.poll() is None:
                 process.kill()
+            print("Pono timed out after {:d} seconds; stopping CEGAR without a usable counterexample.".format(timeout))
             return None, None
 
 

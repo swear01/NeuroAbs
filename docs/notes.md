@@ -1,8 +1,28 @@
 # Project Notes
 
-- Every LLM backend must prepend `src/initial_context.txt` to the per-statement
-  message. The examples and abstraction rules in that file are part of the
-  NeuroAbs experiment prompt, not optional setup text.
+- Every generative LLM backend must prepend `src/initial_context.txt` to the
+  per-statement message. The examples and abstraction rules in that file are part
+  of the NeuroAbs experiment prompt, not optional setup text. The
+  `luna-decision` backend asks a keep-or-X question instead and uses
+  `src/decision_context.txt`, because the generative output rules contradict
+  its JSON answer format.
+- Yosys 0.68 removed `abc -fast`; the Yosys changelog says to replace
+  `abc -g AND -fast` with `aigmap`. It also turns `$display` into `$print`
+  cells, which `write_aiger` rejects, and `write_aiger` rejects remaining X
+  bits. The PicoRV32 constant-propagation template therefore deletes `$print`
+  cells after `proc` and runs `setundef -anyseq` before writing AIGER, matching
+  the BTOR2 `design.ys` flow.
+- The PicoRV32 `picorv32_input.v` files already contain 21 `add_input*` ports.
+  They replace X constants of upstream PicoRV32 (see the case's `picorv32.v`)
+  and are equivalent under `setundef -anyseq`; they are not LLM abstractions.
+- The opencode Go endpoint sits behind Cloudflare, which rejects Python's default
+  `Python-urllib` User-Agent with HTTP 403 (error code 1010). Send an explicit
+  User-Agent.
+- The SMT statement checker cannot encode part-select or concatenation
+  assignment targets, `|{...}` reductions, `$signed`, or statements that start
+  with indented `if (...)`. On PicoRV32 ADD, 71 of the 232 all-X rewrites fail
+  this way. The original `main.py` loop stopped on these exceptions; the Luna and
+  all-X backends record them as `error` and keep the original statement.
 - Keep the paper's checker experiments separate: RQ2 uses rIC3 portfolio formal
   proof with a 3600-second cap, while RQ3 uses kissat BMC depth exploration only
   when formal proof does not conclude. The paper concluded the I2C and PicoRV32

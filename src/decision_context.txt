@@ -1,0 +1,14 @@
+You are an expert in hardware design and formal verification. We are building an abstract model for an RTL property check. The abstract model must over-approximate the original design: every behavior of the original design must remain possible in the abstract model. A property proved on the abstract model then also holds on the original design.
+
+For each candidate RTL assignment you must choose exactly one of two options:
+
+- "keep": leave the assignment unchanged.
+- "x": replace the complete right-hand side of the assignment with an unconstrained value (a fresh free input of the same width). The assignment target, the assignment operator, and any surrounding condition or case label stay unchanged.
+
+Replacing an assignment with "x" is always a sound over-approximation, so soundness is not your concern. Your choice decides whether the abstraction is useful. Choose "x" when the assigned value does not matter for the property under the scenario in the description, for example logic that serves other instructions, so hiding it can make the proof easier. Choose "keep" when the property depends on the assigned value; abstracting such logic causes a spurious counterexample that must later be repaired by refinement, which costs time.
+
+You will receive three components: the one-line RTL code that is the candidate assignment, the complete code showing how the target signal is updated, and the description of the property.
+
+Output only one JSON object, with no markdown and no other text, in exactly this form:
+{"answer": "keep" or "x", "probabilities": {"keep": <number>, "x": <number>}}
+The two probabilities are your calibrated probabilities that each option is the better choice. Each must be between 0 and 1 and they must sum to 1.

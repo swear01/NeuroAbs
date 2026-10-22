@@ -78,7 +78,7 @@ class CEGARLoop:
         for input_name in self.revised_map.keys():
            if input_name not in input_mapping:
                 modified_line = self.revised_map[input_name]
-                if input_name in self.verilog[modified_line-1]:
+                if self.is_input_on_line(input_name):
                     original_statements = self.original_statement_map[input_name]               
                     self.verilog[modified_line-1] = original_statements + '\n'
                     count += 1
@@ -97,7 +97,11 @@ class CEGARLoop:
         
         else:
             return False
-        
+
+    def is_input_on_line(self, text):
+        modified_line = self.revised_map[text]
+        return re.search(r'\b{:s}\b'.format(text), self.verilog[modified_line-1]) is not None
+
     def write_verilog(self):
         if os.path.exists(self.collect_folder) == False:
             os.mkdir(self.collect_folder)
@@ -118,13 +122,10 @@ class CEGARLoop:
             var_visited.append(var_without_module)
             if CEGAR_VERBOSE:
                 print(var_without_module)
-            if self.is_generate_input(var_without_module):
+            if self.is_generate_input(var_without_module) and self.is_input_on_line(var_without_module):
                 ## We need a map to refine the input
                 count +=1
-                assert (var_without_module in self.revised_map )
-                assert (var_without_module in self.revised_map )
                 modified_line = self.revised_map[var_without_module]
-                assert(var_without_module in self.verilog[modified_line-1])
                 original_statements = self.original_statement_map[var_without_module]
                 
                 self.verilog[modified_line-1] = original_statements + '\n'

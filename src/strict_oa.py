@@ -32,20 +32,22 @@ def classify(parser, original, abstract, width_map):
     abstract_formula, _, abstract_unknowns, _ = build_smt_formula(
         abstract_ast, abstract_widths, False
     )
-    if original_unknowns:
-        raise RuntimeError("Original statement unexpectedly contains an X value")
-
+    original_relation = (
+        Exists(list(original_unknowns), original_formula)
+        if original_unknowns
+        else original_formula
+    )
     abstract_relation = (
         Exists(list(abstract_unknowns), abstract_formula)
         if abstract_unknowns
         else abstract_formula
     )
     forward_solver = Solver()
-    forward_solver.add(Not(Implies(original_formula, abstract_relation)))
+    forward_solver.add(Not(Implies(original_relation, abstract_relation)))
     forward = forward_solver.check()
 
     strict_solver = Solver()
-    strict_solver.add(abstract_formula, Not(original_formula))
+    strict_solver.add(abstract_formula, Not(original_relation))
     reverse_counterexample = strict_solver.check()
     if (forward != sat and forward != unsat) or (
         reverse_counterexample != sat and reverse_counterexample != unsat
@@ -75,6 +77,10 @@ def main():
         "sat",
     )
     assert classify(statement_parser, "q <= q;", "q <= q;", {"q": 1}) == (
+        "unsat",
+        "unsat",
+    )
+    assert classify(statement_parser, "q <= 'bx;", "q <= 'bx;", {"q": 1}) == (
         "unsat",
         "unsat",
     )

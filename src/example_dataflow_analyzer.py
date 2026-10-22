@@ -122,8 +122,9 @@ def property_coi_signals(filelist, topmodule):
                                        preprocess_define=None)
     analyzer.generate()
     binddict = {str(bk): bv for bk, bv in analyzer.getBinddict().items()}
-    worklist = [str(tk) for tk, tv in analyzer.getTerms().items()
-                if 'Output' in tv.termtype and str(tk).count('.') == 1]
+    terms = {str(tk): tv for tk, tv in analyzer.getTerms().items()}
+    worklist = [name for name, term in terms.items()
+                if 'Output' in term.termtype and name.count('.') == 1]
     visited = set(worklist)
     while worklist:
         signal = worklist.pop()
@@ -135,7 +136,10 @@ def property_coi_signals(filelist, topmodule):
                     if source not in visited:
                         visited.add(source)
                         worklist.append(source)
-    return sorted(visited & set(analyzer.line_map))
+    return sorted(
+        name for name in visited & set(analyzer.line_map)
+        if name in terms and not {'Parameter', 'Localparam'} & set(terms[name].termtype)
+    )
 
 def coi_analyze(abstract_vars, DCOI_vars, analyzer, topmodule, bound = 10):
     

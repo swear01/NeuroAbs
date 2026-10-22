@@ -15,6 +15,14 @@
 - The PicoRV32 `picorv32_input.v` files already contain 21 `add_input*` ports.
   They replace X constants of upstream PicoRV32 (see the case's `picorv32.v`)
   and are equivalent under `setundef -anyseq`; they are not LLM abstractions.
+- rIC3 1.5.2 (the latest crates.io release as of 2026-10-22) does not enforce
+  `--time-limit` in portfolio mode: a 3600-second run on PicoRV32 ADD was still
+  running after 69 minutes, and a 5-second limit was ignored. Enforce the cap
+  outside rIC3 and kill the whole process group, as
+  `src/run_decision_experiment.py` does; report such runs as `TIMEOUT`.
+- `src/run_checker.py` calls `sys.exit()` from its timer thread and only
+  terminates the direct child, so it neither stops the script nor reliably kills
+  rIC3 workers at its cap.
 - The opencode Go endpoint sits behind Cloudflare, which rejects Python's default
   `Python-urllib` User-Agent with HTTP 403 (error code 1010). Send an explicit
   User-Agent.

@@ -4,6 +4,7 @@ import json
 import os
 import re
 import shutil
+import signal
 import statistics
 import subprocess
 import sys
@@ -23,6 +24,7 @@ ARMS = {
 LUNA_INPUT_PRICE = 0.10
 LUNA_OUTPUT_PRICE = 0.50
 RIC3_VERDICTS = {20: 'UNSAT', 10: 'SAT', 30: 'UNKNOWN'}
+RIC3_KILL_GRACE = 60
 
 
 def sha256(path):
@@ -231,9 +233,18 @@ def run_ric3(ric3_bin, model, time_limit, log_path):
         env = dict(os.environ, RIC3_TMP_DIR=tmp)
         started = time.time()
         with open(log_path, 'w') as log:
-            process = subprocess.run([ric3_bin, '--engine', 'portfolio', '--time-limit', str(time_limit), model],
-                                     stdout=log, stderr=subprocess.STDOUT, env=env)
+            process = subprocess.Popen([ric3_bin, '--engine', 'portfolio', '--time-limit', str(time_limit), model],
+                                       stdout=log, stderr=subprocess.STDOUT, env=env, start_new_session=True)
+            try:
+                process.wait(timeout=time_limit + RIC3_KILL_GRACE)
+                timed_out = False
+            except subprocess.TimeoutExpired:
+                os.killpg(process.pid, signal.SIGKILL)
+                process.wait()
+                timed_out = True
         elapsed = time.time() - started
+    if timed_out:
+        return {'seconds': elapsed, 'exit_status': None, 'printed': None, 'verdict': 'TIMEOUT'}
     with open(log_path) as f:
         lines = [line.strip() for line in f if line.strip()]
     printed = next((line for line in reversed(lines) if line in ('UNSAT', 'SAT', 'UNKNOWN')), None)

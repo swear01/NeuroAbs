@@ -8,7 +8,6 @@ import signal
 import statistics
 import subprocess
 import sys
-import tempfile
 import time
 from concurrent.futures import ThreadPoolExecutor
 
@@ -23,7 +22,6 @@ ARMS = {
 }
 LUNA_INPUT_PRICE = 0.10
 LUNA_OUTPUT_PRICE = 0.50
-RIC3_VERDICTS = {20: 'UNSAT', 10: 'SAT', 30: 'UNKNOWN'}
 RIC3_KILL_GRACE = 60
 
 
@@ -229,28 +227,28 @@ def write_summary(arm_dir, summary):
 
 
 def run_ric3(ric3_bin, model, time_limit, log_path):
-    with tempfile.TemporaryDirectory(prefix='ric3-', dir=os.environ['RIC3_TMP_ROOT']) as tmp:
-        env = dict(os.environ, RIC3_TMP_DIR=tmp)
-        started = time.time()
-        with open(log_path, 'w') as log:
-            process = subprocess.Popen([ric3_bin, '--engine', 'portfolio', '--time-limit', str(time_limit), model],
-                                       stdout=log, stderr=subprocess.STDOUT, env=env, start_new_session=True)
-            try:
-                process.wait(timeout=time_limit + RIC3_KILL_GRACE)
-                timed_out = False
-            except subprocess.TimeoutExpired:
-                os.killpg(process.pid, signal.SIGKILL)
-                process.wait()
-                timed_out = True
-        elapsed = time.time() - started
+    started = time.time()
+    with open(log_path, 'w') as log:
+        process = subprocess.Popen([ric3_bin, 'check', '--ui', 'false', model, 'portfolio', '--time-limit', str(time_limit)],
+                                   stdout=log, stderr=subprocess.STDOUT, start_new_session=True)
+        try:
+            process.wait(timeout=time_limit + RIC3_KILL_GRACE)
+            timed_out = False
+        except subprocess.TimeoutExpired:
+            timed_out = True
+        try:
+            os.killpg(process.pid, signal.SIGKILL)
+        except ProcessLookupError:
+            pass
+        process.wait()
+    elapsed = time.time() - started
     if timed_out:
         return {'seconds': elapsed, 'exit_status': None, 'printed': None, 'verdict': 'TIMEOUT'}
     with open(log_path) as f:
         lines = [line.strip() for line in f if line.strip()]
-    printed = next((line for line in reversed(lines) if line in ('UNSAT', 'SAT', 'UNKNOWN')), None)
-    verdict = RIC3_VERDICTS.get(process.returncode)
-    return {'seconds': elapsed, 'exit_status': process.returncode, 'printed': printed,
-            'verdict': verdict if verdict == printed else 'ERROR'}
+    printed = lines[-1] if lines and lines[-1] in ('UNSAT', 'SAT', 'UNKNOWN') else None
+    verdict = printed if process.returncode == 0 and printed else 'ERROR'
+    return {'seconds': elapsed, 'exit_status': process.returncode, 'printed': printed, 'verdict': verdict}
 
 
 def time_models(models, ric3_bin, repeats, time_limit, parallel, output):

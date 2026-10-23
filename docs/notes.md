@@ -20,6 +20,16 @@
   running after 69 minutes, and a 5-second limit was ignored. Enforce the cap
   outside rIC3 and kill the whole process group, as
   `src/run_decision_experiment.py` does; report such runs as `TIMEOUT`.
+- Time with rIC3 master (`ric3 check --ui false model portfolio`), not 1.5.2:
+  for `.btor`/`.btor2` input the 1.5.2 portfolio uses `wl_default`, which has no
+  bit-level k-induction, and PicoRV32 B0 ADD and SLTI get no verdict within 30
+  minutes. Master uses `bl_default` for every input format. Its exit status is 0
+  for every verdict, so read `UNSAT`, `SAT` or `UNKNOWN` from the last output
+  line.
+- On the i9-14900K, an unpinned rIC3 portfolio spreads its workers over P- and
+  E-cores, heats the package to 100 °C and throttles; repeated runs of one model
+  differed by up to 1.95 times. Run one model at a time under
+  `taskset -c 16-31` (the 16 E-cores): the spread drops to at most 1.07 times.
 - `src/run_checker.py` calls `sys.exit()` from its timer thread and only
   terminates the direct child, so it neither stops the script nor reliably kills
   rIC3 workers at its cap.
@@ -36,8 +46,8 @@
   when formal proof does not conclude. The paper concluded the I2C and PicoRV32
   cases in RQ2 and therefore omitted them from RQ3.
 - Pono returning `unknown` after the CEGAR bound-25 query only means that query
-  found no usable counterexample; it is not a property proof. A modern rIC3
-  `UNSAT` result is the proof, and rIC3 reports that result with exit status 20.
+  found no usable counterexample; it is not a property proof. An rIC3
+  `UNSAT` result is the proof.
 - An `UNSAT` result for every forward statement implication proves sound OA only;
   it does not show that any rewrite is a useful abstraction. Apply the
   transition-aware strict-OA procedure in [`evaluation.md`](evaluation.md) and

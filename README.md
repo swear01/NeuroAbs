@@ -156,6 +156,38 @@ For Muse Spark 1.2 Contributor, export `META_API_KEY` and use
 `muse-spark-1.2-contributor`. Contributor prompts and completions may be used
 by Meta to improve its models, so use it only with public benchmark inputs.
 
+For GPT-6 Luna with low reasoning effort, use `--api-backend luna`. This
+backend calls the opencode Go Responses API
+(`https://opencode.ai/zen/go/v1/responses`) directly, reads the key from
+`~/.config/opencode_key`, and requires `LUNA_SESSION_ID`, which is sent as the
+`x-opencode-session` header. It appends every HTTP attempt to
+`luna_calls.jsonl` and every checked statement to `rewrite_records.jsonl` in
+the case directory. Neither file contains the key. On HTTP 429 the backend
+pauses for 600 seconds and retries the same request.
+
+Two backends turn rewriting into a choice between keeping a statement and
+replacing its complete right-hand side with X:
+
+- `--api-backend luna-decision` asks Luna for strict JSON,
+  `{"answer": "keep" | "x", "probabilities": {"keep": p, "x": q}}`, using
+  `src/decision_context.txt`. Any other output counts as an invalid decision
+  and leaves the statement unchanged. For `x`, NeuroAbs itself writes the
+  rewrite and runs the usual Z3 soundness check.
+- `--api-backend all-x` makes no LLM call and chooses X for every candidate.
+
+With these backends and `luna`, a statement that the SMT checker cannot parse
+or encode is recorded as `error` and left unchanged instead of stopping the run.
+
+`--candidate-scope coi` adds every assignment in the cone of influence of the
+top module's output ports to the constant-propagation candidates. `main.py`
+writes `candidate_signals_constant.txt`, `candidate_signals_coi.txt`, and
+`input_signal.json` so that rewrites outside the constant-propagation scope can
+be counted.
+
+`src/run_decision_experiment.py` runs these arms on a PicoRV32 case and times
+rIC3 on the resulting models; see
+[`results/decision_experiment/`](results/decision_experiment/README.md).
+
 Run a formal proof with the same 3600-second cap used in the paper's RQ2:
 
 ```bash

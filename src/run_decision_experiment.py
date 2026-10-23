@@ -276,7 +276,8 @@ def time_models(models, ric3_bin, repeats, time_limit, parallel, output):
             'seconds': [r['seconds'] for r in runs],
         }
     with open(output, 'w') as f:
-        json.dump({'ric3_bin': ric3_bin, 'time_limit': time_limit, 'parallel': parallel,
+        json.dump({'ric3_bin': ric3_bin, 'cpu_affinity': sorted(os.sched_getaffinity(0)),
+                   'time_limit': time_limit, 'parallel': parallel,
                    'repeats': repeats, 'runs': results, 'summary': summary}, f, indent=2)
     return summary
 

@@ -66,12 +66,16 @@ def call_luna(instructions, user_input, request_id):
         "Content-Type": "application/json",
         "User-Agent": LUNA_USER_AGENT,
     }
+    return post_json(LUNA_URL, headers, body, request_id, session, LUNA_CALL_LOG, "Luna")
+
+
+def post_json(url, headers, body, request_id, session, call_log, label):
     attempt = 0
     transient_retry_used = False
     while True:
         attempt += 1
         started = time.time()
-        request = urllib.request.Request(LUNA_URL, data=json.dumps(body).encode(), headers=headers)
+        request = urllib.request.Request(url, data=json.dumps(body).encode(), headers=headers)
         retry_after = None
         try:
             with urllib.request.urlopen(request, timeout=600) as handle:
@@ -88,11 +92,11 @@ def call_luna(instructions, user_input, request_id):
             status = None
             error_text = repr(e)
         elapsed = time.time() - started
-        append_jsonl(LUNA_CALL_LOG, {
+        append_jsonl(call_log, {
             "request_id": request_id,
             "attempt": attempt,
             "session": session,
-            "url": LUNA_URL,
+            "url": url,
             "request": body,
             "status": status,
             "error": error_text,
@@ -104,19 +108,19 @@ def call_luna(instructions, user_input, request_id):
             try:
                 return json.loads(raw), elapsed
             except json.JSONDecodeError as e:
-                raise RuntimeError("Luna request {:d} returned invalid JSON: {:s}".format(request_id, str(e)))
+                raise RuntimeError("{:s} request {:d} returned invalid JSON: {:s}".format(label, request_id, str(e)))
         if status == 429:
             pause = max(RATE_LIMIT_PAUSE, int(retry_after)) if retry_after and retry_after.isdigit() else RATE_LIMIT_PAUSE
             if pause > RATE_LIMIT_MAX_WAIT:
-                raise RuntimeError("Luna request {:d} rate limited for {:d} seconds: {}".format(request_id, pause, raw[:500]))
-            print("Luna rate limited; pausing {:d} seconds before retrying the same request.".format(pause))
+                raise RuntimeError("{:s} request {:d} rate limited for {:d} seconds: {}".format(label, request_id, pause, raw[:500]))
+            print(label + " rate limited; pausing {:d} seconds before retrying the same request.".format(pause))
             time.sleep(pause)
             continue
         if not transient_retry_used and (status is None or status >= 500):
             transient_retry_used = True
             time.sleep(30)
             continue
-        raise RuntimeError("Luna request {:d} failed with status {}: {}".format(request_id, status, raw[:500] or error_text))
+        raise RuntimeError("{:s} request {:d} failed with status {}: {}".format(label, request_id, status, raw[:500] or error_text))
 
 
 def checked_rewrite(original_statement, abstract_statement, width_map, replacer, replace_input_map):
@@ -127,9 +131,13 @@ def checked_rewrite(original_statement, abstract_statement, width_map, replacer,
 
 
 def run_api(bot_name, message, original_statement, width_map, replacer, replace_input_map):
+    return run_generate(call_luna, response_text, message, original_statement, width_map, replacer, replace_input_map)
+
+
+def run_generate(call, extract_text, message, original_statement, width_map, replacer, replace_input_map):
     request_id = next_request_id()
-    response, elapsed = call_luna(SYSTEM_PROMPT, initial_context + message, request_id)
-    content = response_text(response)
+    response, elapsed = call(SYSTEM_PROMPT, initial_context + message, request_id)
+    content = extract_text(response)
     checked, check_error = checked_rewrite(original_statement, content, width_map, replacer, replace_input_map)
     if checked is None:
         result, replaced_response, replace_input = "error", "", ""

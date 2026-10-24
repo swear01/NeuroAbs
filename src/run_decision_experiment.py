@@ -11,6 +11,8 @@ import sys
 import time
 from concurrent.futures import ThreadPoolExecutor
 
+from deepseek_prices import usage_cost
+
 SRC_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.dirname(SRC_DIR)
 
@@ -19,6 +21,9 @@ ARMS = {
     'A1': {'backend': 'luna', 'scope': 'constant'},
     'A2': {'backend': 'luna-decision', 'scope': 'constant'},
     'A3': {'backend': 'luna-decision', 'scope': 'coi'},
+    'D1': {'backend': 'deepseek-generate', 'scope': 'constant'},
+    'D2': {'backend': 'deepseek-decision', 'scope': 'constant'},
+    'D3': {'backend': 'deepseek-decision', 'scope': 'coi'},
 }
 LUNA_INPUT_PRICE = 0.10
 LUNA_OUTPUT_PRICE = 0.50
@@ -130,6 +135,25 @@ def usage_summary(records):
     }
 
 
+def deepseek_usage_summary(records):
+    calls = [r for r in records if r['status'] == 200]
+    usages = [json.loads(record['response_raw']).get('usage') or {} for record in calls]
+    return {
+        'successful_calls': len(calls),
+        'http_attempts': len(records),
+        'rate_limited_attempts': sum(r['status'] == 429 for r in records),
+        'failed_attempts': sum(r['status'] != 200 for r in records),
+        'models': sorted({json.loads(record['response_raw']).get('model') for record in calls} - {None}),
+        'prompt_tokens': sum(u.get('prompt_tokens', 0) for u in usages),
+        'cached_tokens': sum((u.get('prompt_tokens_details') or {}).get('cached_tokens', 0) or 0 for u in usages),
+        'completion_tokens': sum(u.get('completion_tokens', 0) for u in usages),
+        'reasoning_tokens': sum((u.get('completion_tokens_details') or {}).get('reasoning_tokens', 0) or 0
+                                for u in usages),
+        'call_seconds_median': statistics.median(r['elapsed_seconds'] for r in calls) if calls else None,
+        'estimated_peak_list_price_usd': sum(usage_cost(u) for u in usages),
+    }
+
+
 def unqualified(name):
     name = name.strip()
     if name.startswith('\\'):
@@ -137,11 +161,13 @@ def unqualified(name):
     return name.split('.')[-1]
 
 
-def construct_arm(case, run_root, arm, cegar_timeout, session_id):
+def construct_arm(case, run_root, arm, cegar_timeout, session_id, budget_usd):
     arm_dir = prepare_arm_dir(case, run_root, arm)
     _, rtl, top, yosys_script = case_layout(case)
     config = ARMS[arm]
     env = dict(os.environ, LUNA_SESSION_ID=session_id)
+    if budget_usd is not None:
+        env['LLM_BUDGET_USD'] = str(budget_usd)
     main_command = [
         sys.executable, '-u', os.path.join(SRC_DIR, 'main.py'),
         '-t', top, '--constant-template', 'picorv32', '--use_register', '-f', 'RTL',
@@ -162,6 +188,7 @@ def construct_arm(case, run_root, arm, cegar_timeout, session_id):
         result: sum(r['check'] == result for r in records) for result in ('unsat', 'sat', 'error', 'keep', 'invalid')
     }
     summary['luna'] = usage_summary(read_jsonl(os.path.join(arm_dir, 'luna_calls.jsonl')))
+    summary['deepseek'] = deepseek_usage_summary(read_jsonl(os.path.join(arm_dir, 'deepseek_calls.jsonl')))
     for name in ('time_constant_prop.txt', 'time_candidate_scope.txt', 'time.txt'):
         path = os.path.join(arm_dir, name)
         if os.path.exists(path):
@@ -291,6 +318,7 @@ def main():
     construct.add_argument('--arm', required=True, choices=['B0'] + sorted(ARMS))
     construct.add_argument('--cegar-timeout', type=int, required=True)
     construct.add_argument('--session-id', required=True)
+    construct.add_argument('--budget-usd', type=float, help='stop DeepSeek calls once this list price is spent')
     timing = sub.add_parser('time')
     timing.add_argument('--model', action='append', required=True, help='label=path')
     timing.add_argument('--ric3', required=True)
@@ -303,7 +331,8 @@ def main():
         if args.arm == 'B0':
             summary = build_concrete(args.case, os.path.abspath(args.run_root))
         else:
-            summary = construct_arm(args.case, os.path.abspath(args.run_root), args.arm, args.cegar_timeout, args.session_id)
+            summary = construct_arm(args.case, os.path.abspath(args.run_root), args.arm, args.cegar_timeout, args.session_id,
+                                    args.budget_usd)
         print(json.dumps(summary, indent=2))
     else:
         models = []

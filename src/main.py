@@ -86,6 +86,8 @@ API_BACKENDS = {
     'poe': 'poe_api',
     'luna': 'luna_api',
     'luna-decision': 'luna_decision_api',
+    'deepseek-generate': 'deepseek_generate_api',
+    'deepseek-decision': 'deepseek_decision_api',
     'all-x': 'all_x_api',
 }
 

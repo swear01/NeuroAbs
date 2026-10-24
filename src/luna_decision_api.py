@@ -76,9 +76,13 @@ def apply_decision(request_id, mode, decision, original_statement, width_map, re
 
 
 def run_api(bot_name, message, original_statement, width_map, replacer, replace_input_map):
+    return run_decision(call_luna, response_text, message, original_statement, width_map, replacer, replace_input_map)
+
+
+def run_decision(call, extract_text, message, original_statement, width_map, replacer, replace_input_map):
     request_id = next_request_id()
-    response, elapsed = call_luna(decision_context, message, request_id)
-    content = response_text(response)
+    response, elapsed = call(decision_context, message, request_id)
+    content = extract_text(response)
     decision, parse_error = parse_decision(content)
     return apply_decision(
         request_id,

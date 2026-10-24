@@ -18,6 +18,8 @@ LUNA_CALL_LOG = "luna_calls.jsonl"
 REWRITE_LOG = "rewrite_records.jsonl"
 RATE_LIMIT_PAUSE = 600
 RATE_LIMIT_MAX_WAIT = 6 * 3600
+TRANSIENT_RETRIES = 5
+TRANSIENT_PAUSE = 30
 SYSTEM_PROMPT = "Now you are an expert in the hardware design and formal verification, help me generate the abstraction for the given RTL statement"
 
 with open(os.path.join(SCRIPT_DIR, "initial_context.txt"), "r") as f:
@@ -71,7 +73,7 @@ def call_luna(instructions, user_input, request_id):
 
 def post_json(url, headers, body, request_id, session, call_log, label):
     attempt = 0
-    transient_retry_used = False
+    transient_retries = 0
     while True:
         attempt += 1
         started = time.time()
@@ -116,9 +118,9 @@ def post_json(url, headers, body, request_id, session, call_log, label):
             print(label + " rate limited; pausing {:d} seconds before retrying the same request.".format(pause))
             time.sleep(pause)
             continue
-        if not transient_retry_used and (status is None or status >= 500):
-            transient_retry_used = True
-            time.sleep(30)
+        if transient_retries < TRANSIENT_RETRIES and (status is None or status >= 500):
+            transient_retries += 1
+            time.sleep(TRANSIENT_PAUSE * transient_retries)
             continue
         raise RuntimeError("{:s} request {:d} failed with status {}: {}".format(label, request_id, status, raw[:500] or error_text))
 

@@ -30,9 +30,9 @@ def luna_response(text, reasoning_tokens=3):
     }
 
 
-def deepseek_response(text, prompt_tokens=100):
+def deepseek_response(text, prompt_tokens=100, model="deepseek/deepseek-v4-flash"):
     return {
-        "model": "deepseek/deepseek-v4-flash",
+        "model": model,
         "choices": [{"message": {"role": "assistant", "content": text}}],
         "usage": {"prompt_tokens": prompt_tokens, "completion_tokens": 10,
                   "completion_tokens_details": {"reasoning_tokens": 3}},
@@ -226,6 +226,18 @@ class LunaBackendTest(unittest.TestCase):
                 backend.run_api("bot", "message", "a <= b;", {}, None, {})
         self.assertEqual(len(self.requests), 1)
         self.assertEqual(self.records("rewrite_records.jsonl")[0]["mode"], "generate")
+
+    def test_deepseek_retries_fallback_model(self):
+        answer = json.dumps({"answer": "x", "probabilities": {"keep": 0.1, "x": 0.9}})
+        payloads = [deepseek_response(answer, model="deepseek/deepseek-v4-flash-0731"), deepseek_response(answer)]
+        backend = importlib.import_module("deepseek_decision_api")
+        with patch("urllib.request.urlopen", self.fake_urlopen(payloads)), patch("time.sleep") as sleep, \
+                patch.object(self.decision, "checked_rewrite", return_value=(("unsat", "a <= input1;", "input1", {}), None)):
+            result = backend.run_api("bot", "message", "a <= b;", {}, None, {})
+
+        self.assertEqual(result[1], "unsat")
+        self.assertEqual(len(self.requests), 2)
+        sleep.assert_called_once_with(self.luna.RATE_LIMIT_PAUSE)
 
     def test_all_x_backend_makes_no_api_call(self):
         backend = importlib.import_module("all_x_api")

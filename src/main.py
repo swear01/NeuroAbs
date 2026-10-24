@@ -685,9 +685,12 @@ def main(topmodule, verilog_file):
     if options.candidate_scope == 'coi':
         start_time = time.time()
         coi_signals = property_coi_signals(file_path_without_assert, topmodule)
+        if not coi_signals:
+            raise RuntimeError('The property COI of {:s} is empty.'.format(topmodule))
         constant_variables = {get_variable_from_statement(signal) for signal in extract_signals_constant}
         extract_signals_constant = list(extract_signals_constant) + [
-            signal.split('.', 1)[1] for signal in coi_signals if signal not in constant_variables
+            signal[len(topmodule) + 1:] for signal in coi_signals
+            if signal.startswith(topmodule + '.') and signal not in constant_variables
         ]
         end_time = time.time()
         with open('candidate_signals_coi.txt', 'w') as f:

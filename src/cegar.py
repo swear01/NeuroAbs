@@ -100,7 +100,7 @@ class CEGARLoop:
 
     def is_input_on_line(self, text):
         modified_line = self.revised_map[text]
-        return re.search(r'\b{:s}\b'.format(text), self.verilog[modified_line-1]) is not None
+        return re.search(r'\b{:s}\b'.format(re.escape(text)), self.verilog[modified_line-1]) is not None
 
     def write_verilog(self):
         if os.path.exists(self.collect_folder) == False:
@@ -419,7 +419,7 @@ class Strategy_word_level(CounterExampleStrategy):
         except subprocess.TimeoutExpired:
             if process.poll() is None:
                 process.kill()
-            print("Pono timed out after {:d} seconds; stopping CEGAR without a usable counterexample.".format(timeout))
+            print("Pono timed out after {:g} seconds; stopping CEGAR without a usable counterexample.".format(timeout))
             return None, None
 
 

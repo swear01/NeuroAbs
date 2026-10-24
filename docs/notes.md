@@ -35,7 +35,9 @@
   rIC3 workers at its cap.
 - The opencode Go endpoint sits behind Cloudflare, which rejects Python's default
   `Python-urllib` User-Agent with HTTP 403 (error code 1010). Send an explicit
-  User-Agent.
+  User-Agent. Its 429 responses carry `Retry-After`; the weekly Go limit asks
+  for days, so the Luna client stops when the wait exceeds six hours instead of
+  retrying.
 - The SMT statement checker cannot encode part-select or concatenation
   assignment targets, `|{...}` reductions, `$signed`, or statements that start
   with indented `if (...)`. On PicoRV32 ADD, 71 of the 232 all-X rewrites fail

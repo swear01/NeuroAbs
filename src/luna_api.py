@@ -1,3 +1,4 @@
+import http.client
 import json
 import os
 import time
@@ -16,6 +17,7 @@ LUNA_USER_AGENT = "neuroabs-experiment/1.0"
 LUNA_CALL_LOG = "luna_calls.jsonl"
 REWRITE_LOG = "rewrite_records.jsonl"
 RATE_LIMIT_PAUSE = 600
+RATE_LIMIT_MAX_WAIT = 6 * 3600
 SYSTEM_PROMPT = "Now you are an expert in the hardware design and formal verification, help me generate the abstraction for the given RTL statement"
 
 with open(os.path.join(SCRIPT_DIR, "initial_context.txt"), "r") as f:
@@ -70,6 +72,7 @@ def call_luna(instructions, user_input, request_id):
         attempt += 1
         started = time.time()
         request = urllib.request.Request(LUNA_URL, data=json.dumps(body).encode(), headers=headers)
+        retry_after = None
         try:
             with urllib.request.urlopen(request, timeout=600) as handle:
                 raw = handle.read().decode()
@@ -79,7 +82,8 @@ def call_luna(instructions, user_input, request_id):
             raw = e.read().decode(errors="replace")
             status = e.code
             error_text = str(e)
-        except (urllib.error.URLError, TimeoutError) as e:
+            retry_after = e.headers.get("Retry-After") if e.headers else None
+        except (http.client.HTTPException, OSError) as e:
             raw = ""
             status = None
             error_text = repr(e)
@@ -97,11 +101,16 @@ def call_luna(instructions, user_input, request_id):
             "timestamp": started,
         })
         if status == 200:
-            response = json.loads(raw)
-            return response, elapsed
+            try:
+                return json.loads(raw), elapsed
+            except json.JSONDecodeError as e:
+                raise RuntimeError("Luna request {:d} returned invalid JSON: {:s}".format(request_id, str(e)))
         if status == 429:
-            print("Luna rate limited; pausing {:d} seconds before retrying the same request.".format(RATE_LIMIT_PAUSE))
-            time.sleep(RATE_LIMIT_PAUSE)
+            pause = max(RATE_LIMIT_PAUSE, int(retry_after)) if retry_after and retry_after.isdigit() else RATE_LIMIT_PAUSE
+            if pause > RATE_LIMIT_MAX_WAIT:
+                raise RuntimeError("Luna request {:d} rate limited for {:d} seconds: {}".format(request_id, pause, raw[:500]))
+            print("Luna rate limited; pausing {:d} seconds before retrying the same request.".format(pause))
+            time.sleep(pause)
             continue
         if not transient_retry_used and (status is None or status >= 500):
             transient_retry_used = True

@@ -114,10 +114,10 @@ def usage_summary(records):
     calls = [r for r in records if r['status'] == 200]
     input_tokens = output_tokens = reasoning_tokens = 0
     for record in calls:
-        usage = json.loads(record['response_raw'])['usage']
-        input_tokens += usage['input_tokens']
-        output_tokens += usage['output_tokens']
-        reasoning_tokens += usage['output_tokens_details']['reasoning_tokens']
+        usage = json.loads(record['response_raw']).get('usage') or {}
+        input_tokens += usage.get('input_tokens', 0)
+        output_tokens += usage.get('output_tokens', 0)
+        reasoning_tokens += (usage.get('output_tokens_details') or {}).get('reasoning_tokens', 0)
     return {
         'successful_calls': len(calls),
         'http_attempts': len(records),
@@ -306,7 +306,12 @@ def main():
             summary = construct_arm(args.case, os.path.abspath(args.run_root), args.arm, args.cegar_timeout, args.session_id)
         print(json.dumps(summary, indent=2))
     else:
-        models = [tuple(item.split('=', 1)) for item in args.model]
+        models = []
+        for item in args.model:
+            label, separator, path = item.partition('=')
+            if not separator or not label or not path:
+                parser.error('--model expects label=path, got {!r}'.format(item))
+            models.append((label, path))
         print(json.dumps(time_models(models, args.ric3, args.repeats, args.time_limit, args.parallel,
                                      os.path.abspath(args.output)), indent=2))
 

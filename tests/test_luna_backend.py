@@ -1,3 +1,4 @@
+import http.client
 import importlib
 import io
 import json
@@ -123,6 +124,20 @@ class LunaBackendTest(unittest.TestCase):
         sleep.assert_called_once_with(self.luna.RATE_LIMIT_PAUSE)
         self.assertEqual([r["status"] for r in self.records("luna_calls.jsonl")], [429, 200])
         self.assertEqual(self.requests[0].data, self.requests[1].data)
+
+    def test_long_rate_limit_stops_instead_of_waiting(self):
+        limited = urllib.error.HTTPError("u", 429, "Too Many Requests", {"Retry-After": "321631"}, io.BytesIO(b"weekly"))
+        with patch("urllib.request.urlopen", self.fake_urlopen([limited])), patch("time.sleep") as sleep:
+            with self.assertRaises(RuntimeError):
+                self.luna.run_api("bot", "message", "a <= b;", {}, None, {})
+        sleep.assert_not_called()
+
+    def test_dropped_connection_is_retried_once(self):
+        dropped = http.client.RemoteDisconnected("closed")
+        with patch("urllib.request.urlopen", self.fake_urlopen([dropped, luna_response("a <= 'bx;")])), \
+                patch("time.sleep"):
+            self.luna.run_api("bot", "message", "a <= b;", {}, None, {})
+        self.assertEqual([r["status"] for r in self.records("luna_calls.jsonl")], [None, 200])
 
     def test_client_error_is_not_retried(self):
         denied = urllib.error.HTTPError("u", 400, "Bad Request", {}, io.BytesIO(b"bad"))

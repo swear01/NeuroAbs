@@ -22,15 +22,14 @@ def classify(parser, original, abstract, width_map):
     from z3 import Exists, Implies, Not, Solver, sat, unsat
     from z3_gen import build_smt_formula
 
-    original_widths = width_map.copy()
-    abstract_widths = width_map.copy()
-    original_ast = prime_lhs(parser.parse(preprocess_string(original)), original_widths)
-    abstract_ast = prime_lhs(parser.parse(preprocess_string(abstract)), abstract_widths)
+    widths = width_map.copy()
+    original_ast = prime_lhs(parser.parse(preprocess_string(original)), widths)
+    abstract_ast = prime_lhs(parser.parse(preprocess_string(abstract)), widths)
     original_formula, _, original_unknowns, _ = build_smt_formula(
-        original_ast, original_widths, True
+        original_ast, widths, True
     )
     abstract_formula, _, abstract_unknowns, _ = build_smt_formula(
-        abstract_ast, abstract_widths, False
+        abstract_ast, widths, False
     )
     original_relation = (
         Exists(list(original_unknowns), original_formula)
@@ -54,6 +53,24 @@ def classify(parser, original, abstract, width_map):
     ):
         raise RuntimeError("Z3 returned unknown")
     return str(forward), str(reverse_counterexample)
+
+
+def read_results(lines):
+    results = []
+    offset = 0
+    while offset < len(lines):
+        if offset + 3 > len(lines):
+            raise RuntimeError(f"Truncated result at line {offset + 1}")
+        original, abstract, logged_soundness = lines[offset : offset + 3]
+        offset += 3
+        if logged_soundness == "sat":
+            if offset >= len(lines) or not lines[offset].startswith("Solution:"):
+                raise RuntimeError(f"Missing solution line after line {offset}")
+            offset += 1
+        elif logged_soundness != "unsat":
+            raise RuntimeError(f"Unexpected check result at line {offset}: {logged_soundness}")
+        results.append((original, abstract, logged_soundness))
+    return results
 
 
 def main():
@@ -86,24 +103,27 @@ def main():
     )
 
     with open(args.results, encoding="utf-8") as source:
-        lines = source.read().splitlines()
-    if len(lines) % 3:
-        raise RuntimeError(f"Expected three lines per result, got {len(lines)}")
+        results = read_results(source.read().splitlines())
 
     records = []
-    for offset in range(0, len(lines), 3):
-        original, abstract, logged_soundness = lines[offset : offset + 3]
-        forward, reverse_counterexample = classify(
-            statement_parser, original, abstract, width_map
-        )
+    for request, (original, abstract, logged_soundness) in enumerate(results, 1):
+        try:
+            forward, reverse_counterexample = classify(
+                statement_parser, original, abstract, width_map
+            )
+            error = None
+        except Exception as e:
+            forward = reverse_counterexample = None
+            error = f"{type(e).__name__}: {e}"
         records.append(
             {
-                "request": offset // 3 + 1,
+                "request": request,
                 "original": original,
                 "abstract": abstract,
                 "logged_soundness": logged_soundness,
                 "forward_check": forward,
                 "reverse_counterexample": reverse_counterexample,
+                "error": error,
                 "sound": forward == "unsat",
                 "strict": forward == "unsat" and reverse_counterexample == "sat",
                 "equivalent": forward == "unsat"
@@ -118,6 +138,7 @@ def main():
         "strict": sum(row["strict"] for row in records),
         "equivalent": sum(row["equivalent"] for row in records),
         "invalid": sum(not row["sound"] for row in records),
+        "errors": sum(row["error"] is not None for row in records),
         "equivalent_requests": [
             row["request"] for row in records if row["equivalent"]
         ],

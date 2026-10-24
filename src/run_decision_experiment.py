@@ -133,9 +133,9 @@ def usage_summary(records):
     input_tokens = output_tokens = reasoning_tokens = 0
     for _, response in responses:
         usage = response.get('usage') or {}
-        input_tokens += usage.get('input_tokens', 0)
-        output_tokens += usage.get('output_tokens', 0)
-        reasoning_tokens += (usage.get('output_tokens_details') or {}).get('reasoning_tokens', 0)
+        input_tokens += usage.get('input_tokens') or 0
+        output_tokens += usage.get('output_tokens') or 0
+        reasoning_tokens += (usage.get('output_tokens_details') or {}).get('reasoning_tokens') or 0
     return {
         'successful_calls': len(calls),
         'http_attempts': len(records),
@@ -158,9 +158,9 @@ def deepseek_usage_summary(records):
         'rate_limited_attempts': sum(r['status'] == 429 for r in records),
         'failed_attempts': sum(r['status'] != 200 for r in records),
         'models': sorted({response.get('model') for _, response in responses} - {None}),
-        'prompt_tokens': sum(u.get('prompt_tokens', 0) for u in usages),
+        'prompt_tokens': sum(u.get('prompt_tokens') or 0 for u in usages),
         'cached_tokens': sum((u.get('prompt_tokens_details') or {}).get('cached_tokens', 0) or 0 for u in usages),
-        'completion_tokens': sum(u.get('completion_tokens', 0) for u in usages),
+        'completion_tokens': sum(u.get('completion_tokens') or 0 for u in usages),
         'reasoning_tokens': sum((u.get('completion_tokens_details') or {}).get('reasoning_tokens', 0) or 0
                                 for u in usages),
         'call_seconds_median': statistics.median(r['elapsed_seconds'] for r in calls) if calls else None,
@@ -352,11 +352,15 @@ def main():
                                     args.budget_usd)
         print(json.dumps(summary, indent=2))
     else:
+        if args.repeats < 1 or args.parallel < 1:
+            parser.error('--repeats and --parallel must be at least 1')
         models = []
         for item in args.model:
             label, separator, path = item.partition('=')
             if not separator or not label or not path:
                 parser.error('--model expects label=path, got {!r}'.format(item))
+            if not os.path.isfile(path):
+                parser.error('--model {:s}: no such file {!r}'.format(label, path))
             if label in dict(models):
                 parser.error('duplicate --model label {!r}'.format(label))
             models.append((label, path))

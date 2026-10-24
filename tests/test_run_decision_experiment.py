@@ -54,14 +54,27 @@ class RunRic3Test(unittest.TestCase):
         self.assertEqual("TIMEOUT", result["verdict"])
         self.assertLess(result["seconds"], 10)
 
-    def test_rejects_duplicate_model_labels(self):
-        argv = ["run_decision_experiment.py", "time", "--ric3", "ric3", "--repeats", "1", "--time-limit", "1",
-                "--parallel", "1", "--output", str(self.root / "t.json"), "--model", "a=x.btor2", "--model", "a=y.btor2"]
-        with patch.object(sys, "argv", argv), redirect_stderr(io.StringIO()), \
+    def timing_args_rejected(self, *extra):
+        for name in ("x.btor2", "y.btor2"):
+            (self.root / name).write_text("")
+        argv = ["run_decision_experiment.py", "time", "--ric3", "ric3", "--time-limit", "1",
+                "--output", str(self.root / "t.json"), *extra]
+        stderr = io.StringIO()
+        with patch.object(sys, "argv", argv), redirect_stderr(stderr), \
                 patch.object(self.experiment, "time_models") as time_models:
             with self.assertRaises(SystemExit):
                 self.experiment.main()
         time_models.assert_not_called()
+        return stderr.getvalue()
+
+    def test_rejects_bad_timing_arguments(self):
+        x, y = str(self.root / "x.btor2"), str(self.root / "y.btor2")
+        self.assertIn("duplicate", self.timing_args_rejected(
+            "--repeats", "1", "--parallel", "1", "--model", "a=" + x, "--model", "a=" + y))
+        self.assertIn("no such file", self.timing_args_rejected(
+            "--repeats", "1", "--parallel", "1", "--model", "a=" + str(self.root / "missing.btor2")))
+        self.assertIn("at least 1", self.timing_args_rejected(
+            "--repeats", "0", "--parallel", "1", "--model", "a=" + x))
 
     def test_usage_summary_skips_unparsable_responses(self):
         records = [{"status": 200, "response_raw": "", "elapsed_seconds": 1.0},

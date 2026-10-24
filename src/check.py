@@ -335,6 +335,7 @@ def preserve_assignment_context(original_statement, model_statement):
 
 
 def check_implies(predecessor, successor, width_map, replacer, replace_input_map):
+    successor = preserve_assignment_context(predecessor, successor)
     print("Presecessor: " + predecessor + '\n')
     print("Successor: " + successor + '\n')
 
@@ -359,10 +360,9 @@ def check_implies(predecessor, successor, width_map, replacer, replace_input_map
     
     if len(unknown_var_list) == 1:
         replaced_successor, replaced_input = replacer.replace(successor)
-        replaced_successor = preserve_assignment_context(predecessor, replaced_successor)
         replace_input_map[replaced_input] = unknown_var_list[0].size()
     else:
-        replaced_successor = preserve_assignment_context(predecessor, successor)
+        replaced_successor = successor
         replaced_input = ''
     if len(unknown_var_list) != 0:
         successor_formula = Exists(unknown_var_list, successor_formula)

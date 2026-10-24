@@ -9,6 +9,10 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   unit:
     runs-on: ubuntu-latest
@@ -18,5 +22,7 @@ jobs:
       - uses: actions/setup-python@v7.0.0
         with:
           python-version: "3.11"
-      - run: pip install z3-solver==5.1.0.0
-      - run: python -m unittest tests/test_cegar.py tests/test_check.py tests/test_deepseek_backend.py tests/test_meta_backend.py tests/test_extract_signal.py tests/test_luna_backend.py tests/test_run_decision_experiment.py tests/test_strict_oa.py
+          cache: pip
+          cache-dependency-path: requirements-reproduce.txt
+      - run: python -m pip install "$(grep '^z3-solver==' requirements-reproduce.txt)"
+      - run: python -m unittest tests/test_cegar.py tests/test_check.py tests/test_deepseek_backend.py tests/test_meta_backend.py tests/test_extract_signal.py tests/test_luna_backend.py tests/test_run_decision_experiment.py tests/test_strict_oa.py tests/test_z3_gen.py

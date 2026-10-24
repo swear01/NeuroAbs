@@ -89,18 +89,13 @@ def main():
 
     statement_parser = VerilogAssignParser(debug=False)
     _, width_map, _, _ = lineno_extractor(args.rtl, args.top)
-    assert classify(statement_parser, "q <= q;", "q <= 'bx;", {"q": 1}) == (
-        "unsat",
-        "sat",
-    )
-    assert classify(statement_parser, "q <= q;", "q <= q;", {"q": 1}) == (
-        "unsat",
-        "unsat",
-    )
-    assert classify(statement_parser, "q <= 'bx;", "q <= 'bx;", {"q": 1}) == (
-        "unsat",
-        "unsat",
-    )
+    for original, abstract, expected in [
+        ("q <= q;", "q <= 'bx;", ("unsat", "sat")),
+        ("q <= q;", "q <= q;", ("unsat", "unsat")),
+        ("q <= 'bx;", "q <= 'bx;", ("unsat", "unsat")),
+    ]:
+        if classify(statement_parser, original, abstract, {"q": 1}) != expected:
+            raise RuntimeError("strict OA self-check failed for {:s} -> {:s}".format(original, abstract))
 
     with open(args.results, encoding="utf-8") as source:
         results = read_results(source.read().splitlines())

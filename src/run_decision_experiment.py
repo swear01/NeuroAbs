@@ -331,8 +331,8 @@ def main():
     construct.add_argument('--case', required=True)
     construct.add_argument('--run-root', required=True)
     construct.add_argument('--arm', required=True, choices=['B0'] + sorted(ARMS))
-    construct.add_argument('--cegar-timeout', type=int, required=True)
-    construct.add_argument('--session-id', required=True)
+    construct.add_argument('--cegar-timeout', type=int, help='required for every arm except B0')
+    construct.add_argument('--session-id', help='required for every arm except B0')
     construct.add_argument('--budget-usd', type=float, help='stop DeepSeek calls once this list price is spent')
     timing = sub.add_parser('time')
     timing.add_argument('--model', action='append', required=True, help='label=path')
@@ -346,6 +346,8 @@ def main():
         if args.arm == 'B0':
             summary = build_concrete(args.case, os.path.abspath(args.run_root))
         else:
+            if args.cegar_timeout is None or args.session_id is None:
+                parser.error('--cegar-timeout and --session-id are required for arm {:s}'.format(args.arm))
             summary = construct_arm(args.case, os.path.abspath(args.run_root), args.arm, args.cegar_timeout, args.session_id,
                                     args.budget_usd)
         print(json.dumps(summary, indent=2))

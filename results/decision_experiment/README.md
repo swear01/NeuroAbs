@@ -1,10 +1,13 @@
 # Keep-or-X decision experiment on PicoRV32 (rIC3)
 
-Status on 2026-10-24: infrastructure complete; baselines B0 and B1 constructed
-and timed with rIC3 for all nine PicoRV32 riscv-formal cases, all `UNSAT`; the
-Luna arms A1–A3 have not run because the opencode Go weekly usage limit was
-exhausted. B1 is not a Luna arm, so this record contains no claim that a
-decision model speeds up proofs.
+Status on 2026-10-25: baselines B0 and B1 and the DeepSeek arms D1–D3 are
+constructed and timed with rIC3 for all nine PicoRV32 riscv-formal cases; every
+run is `UNSAT`. No decision arm is faster than all-X B1 overall: geometric-mean
+rIC3 time relative to B0 is 0.95 for B1, 0.98 for D1, 1.05 for D2 and 0.97 for
+D3. D2 used only DeepSeek V4 Flash 1017; part of D1 and D3 was served by an
+older fallback model (see [DeepSeek model mix](#deepseek-model-mix)). The Luna
+arms A1–A3 have not run because the opencode Go weekly usage limit was
+exhausted.
 
 ## Design
 
@@ -20,9 +23,14 @@ running).
 | A1 | constant-propagation differences | GPT-6 Luna low writes the rewrite with the original prompt | `luna` |
 | A2 | constant-propagation differences | Luna low answers keep or X with probabilities | `luna-decision` |
 | A3 | constant-propagation differences plus every assignment in the output COI | as A2 | `luna-decision`, `--candidate-scope coi` |
+| D1 | as A1 | DeepSeek V4 Flash, reasoning effort low, as A1 | `deepseek-generate` |
+| D2 | as A2 | DeepSeek V4 Flash, as A2 | `deepseek-decision` |
+| D3 | as A3 | DeepSeek V4 Flash, as A3 | `deepseek-decision`, `--candidate-scope coi` |
 
 For X, NeuroAbs replaces the complete right-hand side with a fresh input and
-runs the Z3 soundness check; the model never writes RTL in A2 or A3.
+runs the Z3 soundness check; the model never writes RTL in A2, A3, D2 or D3.
+DeepSeek is called through the local gateway at `127.0.0.1:35001` as
+`deepseek-v4-flash`, which Command Code serves as V4 Flash 1017.
 
 ## Environment
 
@@ -109,6 +117,122 @@ The riscv-formal checker fires once, at cycle 20, and its cycle counter
 saturates at 255. kissat BMC to depth 25 finds no counterexample for ADD B0 or
 B1 in about 9 seconds, so BMC depth cannot separate the arms on these cases.
 
+## DeepSeek arms (D1–D3)
+
+### Construction
+
+Columns as for B1, plus the X/keep answers and the list price. Sat means the
+checker rejected the rewrite as unsound. Times are construction seconds,
+including the API calls; all 27 runs ran concurrently on the E-cores. The ADD
+D2 pilot ran at commit `e409e8e`, the other runs at `ab5f92b`, which only adds
+bounded retries of gateway 5xx responses.
+
+| Arm | Case | Req. | X/keep | Sound | Sat | Error | Strict | No-op | Locations | Ref. | Final loc. | Seconds | Price |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| D1 | ADD | 232 | — | 144 | 17 | 71 | 121 | 23 | 105 | 2 | 13 | 7586 | $1.45 |
+| D1 | ADDI | 238 | — | 148 | 14 | 76 | 127 | 21 | 112 | 2 | 12 | 7688 | $1.22 |
+| D1 | AND | 232 | — | 148 | 12 | 72 | 126 | 22 | 112 | 1 | 14 | 7943 | $1.25 |
+| D1 | BGE | 200 | — | 125 | 8 | 67 | 115 | 10 | 98 | 2 | 14 | 5923 | $0.90 |
+| D1 | ORI | 238 | — | 143 | 20 | 75 | 127 | 16 | 111 | 2 | 13 | 7417 | $1.17 |
+| D1 | SH | 269 | — | 172 | 7 | 90 | 151 | 21 | 131 | 1 | 15 | 8168 | $1.58 |
+| D1 | SLTI | 238 | — | 150 | 12 | 76 | 131 | 19 | 115 | 2 | 13 | 7599 | $1.46 |
+| D1 | SUB | 232 | — | 153 | 8 | 71 | 130 | 23 | 114 | 1 | 13 | 7193 | $1.37 |
+| D1 | XOR | 232 | — | 149 | 12 | 71 | 134 | 15 | 117 | 2 | 13 | 7669 | $1.45 |
+| D2 | ADD | 232 | 152/80 | 120 | 0 | 32 | 118 | 2 | 104 | 2 | 13 | 3323 | $0.55 |
+| D2 | ADDI | 238 | 155/83 | 121 | 0 | 34 | 119 | 2 | 107 | 1 | 12 | 2808 | $0.39 |
+| D2 | AND | 232 | 144/88 | 115 | 0 | 29 | 113 | 2 | 100 | 2 | 12 | 3167 | $0.44 |
+| D2 | BGE | 200 | 145/55 | 114 | 0 | 31 | 112 | 2 | 97 | 1 | 13 | 2698 | $0.38 |
+| D2 | ORI | 238 | 165/73 | 126 | 0 | 39 | 124 | 2 | 111 | 2 | 13 | 3407 | $0.48 |
+| D2 | SH | 269 | 201/68 | 149 | 0 | 52 | 147 | 2 | 131 | 2 | 15 | 3134 | $0.44 |
+| D2 | SLTI | 238 | 158/80 | 121 | 0 | 37 | 119 | 2 | 106 | 2 | 13 | 3108 | $0.44 |
+| D2 | SUB | 232 | 145/87 | 117 | 0 | 28 | 115 | 2 | 103 | 2 | 12 | 3020 | $0.43 |
+| D2 | XOR | 232 | 151/81 | 121 | 0 | 30 | 119 | 2 | 105 | 2 | 13 | 3261 | $0.49 |
+| D3 | ADD | 597 | 393/204 | 286 | 0 | 107 | 284 | 2 | 250 | 4 | 2 | 8696 | $1.35 |
+| D3 | ADDI | 597 | 402/195 | 300 | 0 | 102 | 298 | 2 | 268 | 3 | 6 | 7638 | $1.20 |
+| D3 | AND | 597 | 401/196 | 292 | 0 | 109 | 290 | 2 | 255 | 3 | 7 | 8923 | $1.37 |
+| D3 | BGE | 597 | 414/183 | 311 | 0 | 103 | 309 | 2 | 267 | 3 | 9 | 7839 | $1.30 |
+| D3 | ORI | 597 | 407/190 | 300 | 0 | 107 | 298 | 2 | 266 | 3 | 7 | 8373 | $1.31 |
+| D3 | SH | 598 | 411/187 | 302 | 0 | 109 | 300 | 2 | 257 | 3 | 10 | 9729 | $1.63 |
+| D3 | SLTI | 597 | 405/192 | 300 | 0 | 105 | 298 | 2 | 265 | 3 | 6 | 8088 | $1.23 |
+| D3 | SUB | 597 | 387/210 | 286 | 0 | 101 | 284 | 2 | 254 | 3 | 7 | 9359 | $1.52 |
+| D3 | XOR | 597 | 405/192 | 295 | 0 | 110 | 293 | 2 | 259 | 3 | 5 | 8382 | $1.27 |
+
+- Every answer of D2 and D3 parsed; X answers that the checker cannot encode
+  keep the original statement, as in B1.
+- D1 wrote 7–20 unsound rewrites per case, which the checker rejected, and
+  10–23 rewrites equivalent to the original. Keep-or-X cannot produce either.
+- The final X inputs equal the final locations in every run, and every CEGAR
+  run ended with Pono `unknown` at bound 25 without a Pono timeout. CEGAR keeps
+  12–15 locations for D1 and D2 against 14–17 for B1 (0 for SH), and 2–10 for
+  D3, whose X answers outside the constant scope mostly fail CEGAR.
+
+### rIC3 timing
+
+Medians of three `UNSAT` runs in seconds, timed as in the B0/B1 section; the
+B0 and B1 columns repeat that section.
+
+| Case | B0 | B1 | D1 | D2 | D3 | B1/B0 | D1/B0 | D2/B0 | D3/B0 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| ADD | 122.3 | 127.5 | 134.2 | 124.8 | 147.8 | 1.04 | 1.10 | 1.02 | 1.21 |
+| ADDI | 137.7 | 146.8 | 140.1 | 145.3 | 126.0 | 1.07 | 1.02 | 1.06 | 0.92 |
+| AND | 121.4 | 99.1 | 109.1 | 109.1 | 110.3 | 0.82 | 0.90 | 0.90 | 0.91 |
+| BGE | 202.0 | 187.8 | 172.4 | 207.4 | 167.2 | 0.93 | 0.85 | 1.03 | 0.83 |
+| ORI | 103.1 | 105.2 | 113.3 | 113.6 | 102.5 | 1.02 | 1.10 | 1.10 | 0.99 |
+| SH | 178.6 | 180.6 | 174.7 | 260.1 | 204.6 | 1.01 | 0.98 | 1.46 | 1.15 |
+| SLTI | 156.7 | 100.2 | 143.9 | 145.7 | 110.9 | 0.64 | 0.92 | 0.93 | 0.71 |
+| SUB | 142.2 | 151.4 | 132.7 | 149.2 | 148.9 | 1.06 | 0.93 | 1.05 | 1.05 |
+| XOR | 106.0 | 112.7 | 115.1 | 109.7 | 117.7 | 1.06 | 1.09 | 1.04 | 1.11 |
+
+- Geometric mean relative to B0: B1 0.95, D1 0.98, D2 1.05, D3 0.97. Summed
+  medians: B0 1270 s, B1 1211 s, D1 1236 s, D2 1365 s, D3 1236 s.
+- Each decision arm beats B1 on four cases and loses on five. D2, the only arm
+  served entirely by the 1017 model, is the slowest arm and loses SH by 1.44
+  times against B1.
+- The slowest DeepSeek-model run is at most 1.11 times its fastest (median
+  1.03). The largest spread, ADDI D2 (157.1 against 141.1 s), is a first repeat
+  timed while the last seven constructions still ran on the P-cores from 02:53
+  to 03:11; the other DeepSeek repeats ran with the machine otherwise idle.
+- Abstraction effect is small at this scale: most per-case ratios are within
+  the 1.07 run-to-run spread, and only SLTI and AND improve by more than 10% in
+  any arm, B1 included.
+
+### DeepSeek model mix
+
+From 02:14 on 2026-10-25, Command Code returned 429 and the gateway fell back to
+OpenRouter, which serves `deepseek-v4-flash` as `deepseek-v4-flash-0731`
+(providers Cohere, DigitalOcean and Parasail). The 0731 answers carry a
+median 2527 completion tokens against 310 for 1017.
+
+| Arm | Cases with 0731 answers | 0731 share |
+| --- | --- | ---: |
+| D1 | ADD 91, ADDI 14, AND 11, ORI 4, SH 119, SLTI 88, SUB 92, XOR 69; BGE none | 488 of 2111 |
+| D2 | none | 0 of 2111 |
+| D3 | ADD 78, ADDI 23, AND 87, BGE 30, ORI 62, SH 113, SLTI 52, SUB 96, XOR 73 | 614 of 5374 |
+
+`src/deepseek_chat.py` now accepts only answers served as
+`deepseek/deepseek-v4-flash` and pauses 600 seconds otherwise. A rerun of the
+mixed runs was stopped after 15 calls because the gateway still served 0731
+four hours later; those calls are kept as `D1.stopped-fallback-20261025` and
+`D3.stopped-fallback-20261025`.
+
+### DeepSeek usage
+
+| Use | Successful calls | HTTP attempts | Input tokens | Cached input | Output tokens | Reasoning tokens | List price |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| D1 | 2111 | 2116 | 14,908,449 | 11,959,936 | 9,075,912 | 9,041,143 | $11.85 |
+| D2 | 2111 | 2112 | 7,532,162 | 6,190,080 | 2,996,098 | 2,939,841 | $4.04 |
+| D3 | 5374 | 5375 | 20,505,249 | 15,829,120 | 8,902,135 | 8,757,773 | $12.18 |
+| D1 stopped at the cost cap | 312 | — | — | — | — | — | $1.78 |
+
+List price uses DeepSeek's peak rates for V4 Flash: $0.30 per million uncached
+input tokens, $0.006 per million cached, $1.20 per million output tokens. It
+also prices the 0731 answers, for which OpenRouter billed $2.04 in total, and
+the 15 calls of the stopped rerun ($0.03). The failed attempts are gateway 503
+responses, all retried. Median call time was 8 s for D2 and D3 and 25 s for D1.
+Five D1 runs (ADD, SH, SLTI, SUB, XOR) were first started with a $1.50 cap,
+stopped when they were projected to exceed it, and restarted from scratch with
+a $3 cap; the stopped runs are kept as `D1.aborted-cap-20261025`.
+
 ## Luna usage
 
 | Use | Successful calls | HTTP attempts | Input tokens | Output tokens | Reasoning tokens | List price |
@@ -133,9 +257,12 @@ the generated wrapper passes Yosys.
 
 Run directories, logs, summaries and timing JSON are retained at
 `/home/swear01/research-archives/neuroabs-decision-20261022/runs/`; the pinned
-timing is `timing-ric3-8c6df1b-ecores/timing.json` (commit `09ab318`). The tool
-environment scripts are beside them. B1 is timed with each case's
-`final_model` from `B1/arm_summary.json`. Final B1 model SHA-256 prefixes: ADD
+timing is `timing-ric3-8c6df1b-ecores/timing.json` (commit `09ab318`), and
+the DeepSeek timing is `timing-ric3-8c6df1b-ecores-deepseek-a/timing.json` and
+`timing-ric3-8c6df1b-ecores-deepseek-b/timing.json` (commit `ab5f92b`); the
+DeepSeek construction scripts and logs are in `deepseek-20261024/`. The tool
+environment scripts are beside them. B1 and D1–D3 are timed with each case's `final_model` from the arm's
+`arm_summary.json`. Final B1 model SHA-256 prefixes: ADD
 `a4c3d5326a30`, ADDI `a01a2c62381f`, AND `1043f18fed01`, BGE `9f2db8ee1aaf`,
 ORI `34a8cad27ac0`, SH `c91adb94a5ba`, SLTI `d93e7fbf1762`, SUB `bbfd3b5864cd`,
 XOR `aab1ad481bb7`. Full hashes are in each `arm_summary.json`.

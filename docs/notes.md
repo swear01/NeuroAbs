@@ -30,6 +30,13 @@
   E-cores, heats the package to 100 °C and throttles; repeated runs of one model
   differed by up to 1.95 times. Run one model at a time under
   `taskset -c 16-31` (the 16 E-cores): the spread drops to at most 1.07 times.
+- The local DeepSeek gateway (`127.0.0.1:35001`) routes `deepseek-v4-flash` to
+  Command Code (V4 Flash 1017) and, after a Command Code 429, falls back to
+  OpenRouter `deepseek-v4-flash-0731` and stays there for hours, billed to the
+  OpenRouter account. The response `model` field shows which one answered, so
+  the DeepSeek client rejects anything other than `deepseek/deepseek-v4-flash`.
+  `reasoning_effort` accepts `off` to `max`; with `off` the model ignores the
+  answer-format instruction, and `thinking: disabled` is ignored.
 - `src/run_checker.py` calls `sys.exit()` from its timer thread and only
   terminates the direct child, so it neither stops the script nor reliably kills
   rIC3 workers at its cap.

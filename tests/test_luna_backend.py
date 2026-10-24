@@ -143,6 +143,14 @@ class LunaBackendTest(unittest.TestCase):
                 self.luna.run_api("bot", "message", "a <= b;", {}, None, {})
         sleep.assert_not_called()
 
+    def test_repeated_rate_limits_stop_after_the_wait_budget(self):
+        count = self.luna.RATE_LIMIT_MAX_WAIT // self.luna.RATE_LIMIT_PAUSE + 1
+        limited = [urllib.error.HTTPError("u", 429, "Too Many Requests", {}, io.BytesIO(b"limit")) for _ in range(count)]
+        with patch("urllib.request.urlopen", self.fake_urlopen(limited)), patch("time.sleep") as sleep:
+            with self.assertRaises(RuntimeError):
+                self.luna.run_api("bot", "message", "a <= b;", {}, None, {})
+        self.assertEqual(sleep.call_count, count - 1)
+
     def test_server_errors_are_retried_a_bounded_number_of_times(self):
         failures = [urllib.error.HTTPError("u", 503, "Unavailable", {}, io.BytesIO(b"busy"))
                     for _ in range(self.luna.TRANSIENT_RETRIES + 1)]

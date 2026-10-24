@@ -1,3 +1,4 @@
+import json
 import os
 import time
 
@@ -33,6 +34,8 @@ def call_deepseek(instructions, user_input, request_id):
         served = response.get("model")
         if served == DEEPSEEK_SERVED_MODEL:
             return response, elapsed
+        if budget is not None and spent_usd >= float(budget):
+            raise RuntimeError("DeepSeek budget of {:s} USD reached after ${:.4f}".format(budget, spent_usd))
         # The gateway falls back to another upstream model when Command Code is rate limited.
         if waited >= RATE_LIMIT_MAX_WAIT:
             raise RuntimeError("DeepSeek request {:d} served by {} for {:d} seconds".format(request_id, served, waited))
@@ -42,4 +45,7 @@ def call_deepseek(instructions, user_input, request_id):
 
 
 def chat_text(response):
-    return response["choices"][0]["message"].get("content") or ""
+    choices = response.get("choices") or []
+    if not choices:
+        raise RuntimeError("DeepSeek response has no choices: {:s}".format(json.dumps(response)[:500]))
+    return (choices[0].get("message") or {}).get("content") or ""

@@ -290,7 +290,7 @@ def split_assignment_context(statement):
         elif depth == 0 and char == "=":
             previous = compact[index - 1] if index > 0 else ""
             following = compact[index + 1] if index + 1 < len(compact) else ""
-            if following == "=" or previous in "=!>":
+            if following == "=" or (previous and previous in "=!>"):
                 continue
             if previous == "<":
                 op = "<="

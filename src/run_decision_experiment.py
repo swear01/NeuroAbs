@@ -115,11 +115,24 @@ def remaining_inputs(verilog_path):
     return names
 
 
+def successful_responses(records):
+    responses = []
+    for record in records:
+        if record['status'] != 200:
+            continue
+        try:
+            responses.append((record, json.loads(record['response_raw'])))
+        except json.JSONDecodeError:
+            continue
+    return responses
+
+
 def usage_summary(records):
-    calls = [r for r in records if r['status'] == 200]
+    responses = successful_responses(records)
+    calls = [record for record, _ in responses]
     input_tokens = output_tokens = reasoning_tokens = 0
-    for record in calls:
-        usage = json.loads(record['response_raw']).get('usage') or {}
+    for _, response in responses:
+        usage = response.get('usage') or {}
         input_tokens += usage.get('input_tokens', 0)
         output_tokens += usage.get('output_tokens', 0)
         reasoning_tokens += (usage.get('output_tokens_details') or {}).get('reasoning_tokens', 0)
@@ -136,14 +149,15 @@ def usage_summary(records):
 
 
 def deepseek_usage_summary(records):
-    calls = [r for r in records if r['status'] == 200]
-    usages = [json.loads(record['response_raw']).get('usage') or {} for record in calls]
+    responses = successful_responses(records)
+    calls = [record for record, _ in responses]
+    usages = [response.get('usage') or {} for _, response in responses]
     return {
         'successful_calls': len(calls),
         'http_attempts': len(records),
         'rate_limited_attempts': sum(r['status'] == 429 for r in records),
         'failed_attempts': sum(r['status'] != 200 for r in records),
-        'models': sorted({json.loads(record['response_raw']).get('model') for record in calls} - {None}),
+        'models': sorted({response.get('model') for _, response in responses} - {None}),
         'prompt_tokens': sum(u.get('prompt_tokens', 0) for u in usages),
         'cached_tokens': sum((u.get('prompt_tokens_details') or {}).get('cached_tokens', 0) or 0 for u in usages),
         'completion_tokens': sum(u.get('completion_tokens', 0) for u in usages),
@@ -211,7 +225,8 @@ def construct_arm(case, run_root, arm, cegar_timeout, session_id, budget_usd):
                 summary['strict_oa'] = json.load(f)['summary']
 
     wrapper = os.path.join(arm_dir, 'wrapper_abstract_llm_new.v')
-    summary['generated_inputs'] = len(json.load(open(os.path.join(arm_dir, 'input_line.json'))))
+    with open(os.path.join(arm_dir, 'input_line.json')) as f:
+        summary['generated_inputs'] = len(json.load(f))
     summary['initial_effective_locations'] = len(effective_locations(wrapper))
     cegar_command = [
         sys.executable, os.path.join(SRC_DIR, 'cegar.py'), '--timeout', str(cegar_timeout),
@@ -340,6 +355,8 @@ def main():
             label, separator, path = item.partition('=')
             if not separator or not label or not path:
                 parser.error('--model expects label=path, got {!r}'.format(item))
+            if label in dict(models):
+                parser.error('duplicate --model label {!r}'.format(label))
             models.append((label, path))
         print(json.dumps(time_models(models, args.ric3, args.repeats, args.time_limit, args.parallel,
                                      os.path.abspath(args.output)), indent=2))

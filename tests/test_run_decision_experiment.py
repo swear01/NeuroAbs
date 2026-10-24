@@ -1,9 +1,12 @@
 import importlib
+import io
 import os
 import sys
 import tempfile
 import unittest
+from contextlib import redirect_stderr
 from pathlib import Path
+from unittest.mock import patch
 
 
 SRC = Path(__file__).resolve().parents[1] / "src"
@@ -50,6 +53,21 @@ class RunRic3Test(unittest.TestCase):
         result = self.run_ric3("sleep 30 &\nsleep 30\n", time_limit=1)
         self.assertEqual("TIMEOUT", result["verdict"])
         self.assertLess(result["seconds"], 10)
+
+    def test_rejects_duplicate_model_labels(self):
+        argv = ["run_decision_experiment.py", "time", "--ric3", "ric3", "--repeats", "1", "--time-limit", "1",
+                "--parallel", "1", "--output", str(self.root / "t.json"), "--model", "a=x.btor2", "--model", "a=y.btor2"]
+        with patch.object(sys, "argv", argv), redirect_stderr(io.StringIO()), \
+                patch.object(self.experiment, "time_models") as time_models:
+            with self.assertRaises(SystemExit):
+                self.experiment.main()
+        time_models.assert_not_called()
+
+    def test_usage_summary_skips_unparsable_responses(self):
+        records = [{"status": 200, "response_raw": "", "elapsed_seconds": 1.0},
+                   {"status": 200, "response_raw": '{"usage": {"prompt_tokens": 10}}', "elapsed_seconds": 2.0}]
+        self.assertEqual(self.experiment.deepseek_usage_summary(records)["prompt_tokens"], 10)
+        self.assertEqual(self.experiment.usage_summary(records)["successful_calls"], 1)
 
 
 if __name__ == "__main__":

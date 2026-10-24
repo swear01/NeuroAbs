@@ -137,7 +137,7 @@ def main():
         "sound": sum(row["sound"] for row in records),
         "strict": sum(row["strict"] for row in records),
         "equivalent": sum(row["equivalent"] for row in records),
-        "invalid": sum(not row["sound"] for row in records),
+        "invalid": sum(row["error"] is None and not row["sound"] for row in records),
         "errors": sum(row["error"] is not None for row in records),
         "equivalent_requests": [
             row["request"] for row in records if row["equivalent"]

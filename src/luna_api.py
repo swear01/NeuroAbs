@@ -74,6 +74,7 @@ def call_luna(instructions, user_input, request_id):
 def post_json(url, headers, body, request_id, session, call_log, label):
     attempt = 0
     transient_retries = 0
+    rate_limit_wait = 0
     while True:
         attempt += 1
         started = time.time()
@@ -113,8 +114,10 @@ def post_json(url, headers, body, request_id, session, call_log, label):
                 raise RuntimeError("{:s} request {:d} returned invalid JSON: {:s}".format(label, request_id, str(e)))
         if status == 429:
             pause = max(RATE_LIMIT_PAUSE, int(retry_after)) if retry_after and retry_after.isdigit() else RATE_LIMIT_PAUSE
-            if pause > RATE_LIMIT_MAX_WAIT:
-                raise RuntimeError("{:s} request {:d} rate limited for {:d} seconds: {}".format(label, request_id, pause, raw[:500]))
+            if rate_limit_wait + pause > RATE_LIMIT_MAX_WAIT:
+                raise RuntimeError("{:s} request {:d} rate limited for {:d} seconds: {}".format(
+                    label, request_id, rate_limit_wait + pause, raw[:500]))
+            rate_limit_wait += pause
             print(label + " rate limited; pausing {:d} seconds before retrying the same request.".format(pause))
             time.sleep(pause)
             continue

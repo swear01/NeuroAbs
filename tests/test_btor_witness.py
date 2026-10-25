@@ -65,6 +65,11 @@ class BtorWitnessTest(unittest.TestCase):
         names = self.witness.free_names(str(self.root / "m.btor2"), str(self.root / "w.txt"))
         self.assertEqual(names, {"a", "free_s"})
 
+    def test_free_values_carry_their_frame(self):
+        (self.root / "w.txt").write_text(WITNESS)
+        values = self.witness.free_values(str(self.root / "m.btor2"), str(self.root / "w.txt"))
+        self.assertEqual(values, [("a", 2), ("free_s", 2)])
+
     def test_a_witness_that_does_not_violate_is_rejected(self):
         (self.root / "w.txt").write_text(WITNESS.replace("#2\n0 1\n", "#2\n0 0\n"))
         with self.assertRaises(ValueError):

@@ -268,7 +268,12 @@ def value_of(frame, a):
     return frame[a] if a > 0 else 1 - frame[-a] if frame[-a] in (0, 1) else None
 
 
-def free_names(model_path, witness_path):
+def free_values(model_path, witness_path):
+    """Return sorted (name, frame) pairs of the free values that the violation depends on."""
     model = Model(model_path)
     values = simulate(model, parse_witness(witness_path))
-    return {model.names.get(n, "") for n, _ in dynamic_coi(model, values)}
+    return sorted((model.names.get(n, ""), k) for n, k in dynamic_coi(model, values))
+
+
+def free_names(model_path, witness_path):
+    return {name for name, _ in free_values(model_path, witness_path)}

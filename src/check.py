@@ -280,15 +280,26 @@ def split_assignment_context(statement):
     if not compact:
         return "", "", "=", ""
 
-    le_pos = compact.find("<=")
-    eq_pos = compact.find("=")
-    if le_pos != -1 and (eq_pos == -1 or le_pos <= eq_pos):
-        op = "<="
-        op_pos = le_pos
-    elif eq_pos != -1:
-        op = "="
-        op_pos = eq_pos
-    else:
+    op = None
+    depth = 0
+    for index, char in enumerate(compact):
+        if char in "([{":
+            depth += 1
+        elif char in ")]}":
+            depth -= 1
+        elif depth == 0 and char == "=":
+            previous = compact[index - 1] if index > 0 else ""
+            following = compact[index + 1] if index + 1 < len(compact) else ""
+            if following == "=" or (previous and previous in "=!>"):
+                continue
+            if previous == "<":
+                op = "<="
+                op_pos = index - 1
+            else:
+                op = "="
+                op_pos = index
+            break
+    if op is None:
         return "", "", "=", compact
 
     lhs_part = compact[:op_pos]
@@ -324,6 +335,7 @@ def preserve_assignment_context(original_statement, model_statement):
 
 
 def check_implies(predecessor, successor, width_map, replacer, replace_input_map):
+    successor = preserve_assignment_context(predecessor, successor)
     print("Presecessor: " + predecessor + '\n')
     print("Successor: " + successor + '\n')
 
@@ -348,10 +360,9 @@ def check_implies(predecessor, successor, width_map, replacer, replace_input_map
     
     if len(unknown_var_list) == 1:
         replaced_successor, replaced_input = replacer.replace(successor)
-        replaced_successor = preserve_assignment_context(predecessor, replaced_successor)
         replace_input_map[replaced_input] = unknown_var_list[0].size()
     else:
-        replaced_successor = preserve_assignment_context(predecessor, successor)
+        replaced_successor = successor
         replaced_input = ''
     if len(unknown_var_list) != 0:
         successor_formula = Exists(unknown_var_list, successor_formula)

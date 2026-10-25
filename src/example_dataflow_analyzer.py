@@ -114,7 +114,34 @@ def get_signals(assignment_trees):
                     signal_lists.append(signal)
     return signal_lists
 
-def coi_analyze(abstract_vars, DCOI_vars, analyzer, topmodule, bound = 10):   
+def property_coi_signals(filelist, topmodule):
+    analyzer = VerilogDataflowAnalyzer([filelist], topmodule,
+                                       noreorder=None,
+                                       nobind=None,
+                                       preprocess_include=None,
+                                       preprocess_define=None)
+    analyzer.generate()
+    binddict = {str(bk): bv for bk, bv in analyzer.getBinddict().items()}
+    terms = {str(tk): tv for tk, tv in analyzer.getTerms().items()}
+    worklist = [name for name, term in terms.items()
+                if 'Output' in term.termtype and name.count('.') == 1]
+    visited = set(worklist)
+    while worklist:
+        signal = worklist.pop()
+        for bind in binddict.get(signal, []):
+            for node in (bind.tree, bind.ptr, bind.msb, bind.lsb):
+                if node is None:
+                    continue
+                for source in get_signals(node):
+                    if source not in visited:
+                        visited.add(source)
+                        worklist.append(source)
+    return sorted(
+        name for name in visited & set(analyzer.line_map)
+        if name in terms and not {'Parameter', 'Localparam'} & set(terms[name].termtype)
+    )
+
+def coi_analyze(abstract_vars, DCOI_vars, analyzer, topmodule, bound = 10):
     
     terms = analyzer.getTerms()
     print('Term:')

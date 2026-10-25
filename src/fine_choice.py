@@ -244,6 +244,18 @@ def coarsest(sub, units, ufs):
             "uf": [{"ila": uf["ila"], "rtl": uf["rtl"]} for uf in ufs]}
 
 
+def structural(sub, units, ufs):
+    """Keep the GPRs that the sub-property compares or that its case names as rs1 or rs2, with the compared rd at
+    word level; cut every unit and abstract every operator pair."""
+    named = {int(s[1:]) for s in sub["states"] if re.fullmatch(r"x\d+", s)}
+    sources = {int(v) for f, op, v in CASE_TERM.findall(sub.get("case") or "") if f in ("rs1", "rs2") and op == "=="}
+    rd = {int(v) for f, op, v in CASE_TERM.findall(sub.get("case") or "") if f == "rd" and op == "=="}
+    spec = coarsest(sub, units, ufs)
+    spec["keep_gprs"] = sorted((named - rd) | sources)
+    spec["word_gprs"] = sorted((named & rd) - sources)
+    return spec
+
+
 def removed_gprs(spec):
     keep = set(range(NUM_GPRS)) if spec.get("keep_gprs", "all") == "all" else set(spec["keep_gprs"])
     return sorted(set(range(NUM_GPRS)) - keep - set(spec.get("word_gprs", [])))

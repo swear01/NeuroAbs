@@ -102,6 +102,18 @@ class FineChoiceTest(unittest.TestCase):
         self.assertEqual([s["case"] for s in subs[2:34]], ["rd==1&&rs1=={:d}".format(r) for r in range(32)])
         self.assertEqual(subs[2]["name"], "x1.rs1=0")
 
+    def test_structural_keeps_the_registers_named_by_the_sub_property(self):
+        ufs = [{"ila": "n110", "rtl": "r"}]
+        spec = self.fine.structural({"states": ["x5"], "case": "rd==5&&rs1==6"}, UNITS, ufs)
+        self.assertEqual((spec["keep_gprs"], spec["word_gprs"], spec["units"], spec["uf"]),
+                         ([6], [5], {"csr_regfile": "cut"}, ufs))
+        spec = self.fine.structural({"states": ["x5"], "case": "rd==5&&rs1==5"}, UNITS, ufs)
+        self.assertEqual((spec["keep_gprs"], spec["word_gprs"]), ([5], []))
+        spec = self.fine.structural({"states": ["x5"], "case": "rd!=5"}, UNITS, ufs)
+        self.assertEqual((spec["keep_gprs"], spec["word_gprs"]), ([5], []))
+        spec = self.fine.structural({"states": ["pc", "x0"]}, UNITS, ufs)
+        self.assertEqual((spec["keep_gprs"], spec["word_gprs"]), ([0], []))
+
     def test_operand_fields_are_read_from_the_ila(self):
         design = UF_DESIGN.replace("assign n110 =", "assign n15 = inst[19:15] ;\nassign n110 =")
         self.assertEqual(self.fine.operand_fields(design), ["rs1"])

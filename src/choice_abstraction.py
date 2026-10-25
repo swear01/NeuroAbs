@@ -297,8 +297,12 @@ def ric3_check(model, time_limit, log_path):
     return "UNKNOWN", None, elapsed
 
 
-def cegar(wrapper, prop, units, assignment, workdir, time_limit, max_iterations):
-    """rIC3 decides each abstract model; its counterexample is replayed to find the units it depends on."""
+def cegar(wrapper, prop, units, assignment, workdir, time_limit, max_iterations, refine="all"):
+    """rIC3 decides each abstract model; its counterexample is replayed to find the units it depends on.
+
+    refine "all" moves every unit in the counterexample one level towards keep; "one" moves only the unit
+    with the most free values in the counterexample.
+    """
     assignment = dict(assignment)
     history = []
     status = None
@@ -327,10 +331,16 @@ def cegar(wrapper, prop, units, assignment, workdir, time_limit, max_iterations)
             break
         replay_started = time.time()
         free = btor_witness.free_names(model, model + ".ric3.log")
-        cex_choices = sorted({m.group(1) for name in free for m in [CHOICE_NAME.search(name)] if m})
-        refined = sorted({by_choice[c] for c in cex_choices if c in by_choice})
+        counts = {}
+        for name in free:
+            m = CHOICE_NAME.search(name)
+            if m and m.group(1) in by_choice:
+                counts[by_choice[m.group(1)]] = counts.get(by_choice[m.group(1)], 0) + 1
+        refined = sorted(counts)
+        if refine == "one" and refined:
+            refined = [min(refined, key=lambda unit_id: (-counts[unit_id], unit_id))]
         record.update({"replay_seconds": time.time() - replay_started,
-                       "counterexample_choices": cex_choices, "refined_units": refined})
+                       "counterexample_units": counts, "refined_units": refined})
         if not refined:
             status = "real"
             break
@@ -359,6 +369,7 @@ def main(argv=None):
     r.add_argument("--assignment", required=True, help="JSON object unit id -> level, or 'coarsest'")
     r.add_argument("--time-limit", type=int, default=3600, help="rIC3 portfolio time limit per model")
     r.add_argument("--max-iterations", type=int, default=20)
+    r.add_argument("--refine", choices=["all", "one"], default="all")
     args = parser.parse_args(argv)
     workdir = os.path.abspath(args.workdir)
     wrapper = os.path.abspath(args.wrapper)
@@ -373,7 +384,8 @@ def main(argv=None):
         with open(args.assignment) as f:
             assignment = json.load(f)
     os.makedirs(workdir, exist_ok=True)
-    result = cegar(wrapper, args.prop, units, assignment, workdir, args.time_limit, args.max_iterations)
+    result = cegar(wrapper, args.prop, units, assignment, workdir, args.time_limit, args.max_iterations,
+                   args.refine)
     with open(os.path.join(workdir, "cegar.json"), "w") as f:
         json.dump(result, f, indent=2)
     print(json.dumps({k: result[k] for k in ("status", "refinements", "total_seconds", "final_assignment")}))

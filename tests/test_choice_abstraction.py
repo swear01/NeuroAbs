@@ -96,6 +96,30 @@ class Ric3CheckTest(ChoiceModuleTest):
         self.assertEqual(self.abstraction.ric3_check("m.btor2", 10, str(self.root / "log"))[0], "ERROR")
 
 
+class CegarTest(ChoiceModuleTest):
+    def run_cegar(self, refine):
+        from unittest.mock import patch
+        verdicts = iter([("SAT", 3, 1.0), ("SAT", 3, 1.0), ("UNSAT", None, 1.0)])
+        free = {"RTL.choice__csr__0", "RTL.near_mem.choice__icache__0", "RTL.near_mem.choice__icache__1"}
+        a = self.abstraction
+        with patch.object(a, "build", return_value=[]), \
+                patch.object(a, "ric3_check", side_effect=lambda *args: next(verdicts)), \
+                patch.object(a, "coi_state_bits", return_value={}), \
+                patch.object(a.btor_witness, "free_names", return_value=free):
+            return a.cegar("w.v", "ila", UNITS, {"csr": "cut", "icache": "cut"}, str(self.root), 10, 5, refine)
+
+    def test_refine_all_moves_every_unit_in_the_counterexample(self):
+        result = self.run_cegar("all")
+        self.assertEqual(result["history"][0]["refined_units"], ["csr", "icache"])
+        self.assertEqual(result["history"][1]["assignment"], {"csr": "keep", "icache": "havoc"})
+
+    def test_refine_one_moves_the_unit_with_most_free_values(self):
+        result = self.run_cegar("one")
+        self.assertEqual(result["history"][0]["counterexample_units"], {"csr": 1, "icache": 2})
+        self.assertEqual(result["history"][1]["assignment"], {"csr": "cut", "icache": "havoc"})
+        self.assertEqual(result["status"], "UNSAT")
+
+
 class ParseChoicesTest(ChoiceModuleTest):
     def answer(self, choices):
         return json.dumps({"choices": choices})

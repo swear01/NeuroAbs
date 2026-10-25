@@ -16,7 +16,10 @@ spent_usd = 0.0
 def call_deepseek(instructions, user_input, request_id):
     global spent_usd
     budget = os.environ.get("LLM_BUDGET_USD")
-    budget_usd = float(budget) if budget is not None else None
+    try:
+        budget_usd = float(budget) if budget is not None else None
+    except ValueError:
+        raise RuntimeError("LLM_BUDGET_USD must be a number, got {!r}".format(budget)) from None
     if budget_usd is not None and spent_usd >= budget_usd:
         raise RuntimeError("DeepSeek budget of {:s} USD reached after ${:.4f}".format(budget, spent_usd))
     body = {
@@ -29,8 +32,10 @@ def call_deepseek(instructions, user_input, request_id):
     }
     headers = {"Content-Type": "application/json", "User-Agent": LUNA_USER_AGENT}
     deadline = time.time() + RATE_LIMIT_MAX_WAIT
+    elapsed = 0.0
     while True:
-        response, elapsed = post_json(DEEPSEEK_URL, headers, body, request_id, None, DEEPSEEK_CALL_LOG, "DeepSeek")
+        response, attempt_seconds = post_json(DEEPSEEK_URL, headers, body, request_id, None, DEEPSEEK_CALL_LOG, "DeepSeek")
+        elapsed += attempt_seconds
         spent_usd += usage_cost(response.get("usage"))
         served = response.get("model")
         if not isinstance(served, str) or not served:

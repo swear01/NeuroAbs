@@ -50,7 +50,13 @@ def read_jsonl(path):
 
 
 def case_layout(case):
-    return os.path.join(PROJECT_ROOT, case), 'picorv32_input.v', 'picorv32', 'design.ys'
+    case_dir = os.path.join(PROJECT_ROOT, case)
+    rtl, top, yosys_script = 'picorv32_input.v', 'picorv32', 'design.ys'
+    for name in (rtl, yosys_script):
+        if not os.path.exists(os.path.join(case_dir, name)):
+            raise FileNotFoundError('{:s}: this runner supports PicoRV32 riscv-formal cases only'.format(
+                os.path.join(case_dir, name)))
+    return case_dir, rtl, top, yosys_script
 
 
 def prepare_arm_dir(case, run_root, arm):
@@ -361,6 +367,8 @@ def main():
             label, separator, path = item.partition('=')
             if not separator or not label or not path:
                 parser.error('--model expects label=path, got {!r}'.format(item))
+            if os.sep in label or label in ('.', '..'):
+                parser.error('--model label {!r} must not be a path'.format(label))
             if not os.path.isfile(path):
                 parser.error('--model {:s}: no such file {!r}'.format(label, path))
             if label in dict(models):

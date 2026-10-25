@@ -41,12 +41,12 @@ def next_request_id():
 
 def response_text(response):
     texts = []
-    for item in response.get("output", []):
+    for item in response.get("output") or []:
         if item.get("type") != "message":
             continue
-        for part in item.get("content", []):
+        for part in item.get("content") or []:
             if part.get("type") == "output_text":
-                texts.append(part["text"])
+                texts.append(part.get("text") or "")
     return "".join(texts)
 
 

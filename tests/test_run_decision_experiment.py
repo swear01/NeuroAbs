@@ -73,6 +73,8 @@ class RunRic3Test(unittest.TestCase):
             "--repeats", "1", "--parallel", "1", "--model", "a=" + x, "--model", "a=" + y))
         self.assertIn("no such file", self.timing_args_rejected(
             "--repeats", "1", "--parallel", "1", "--model", "a=" + str(self.root / "missing.btor2")))
+        self.assertIn("must not be a path", self.timing_args_rejected(
+            "--repeats", "1", "--parallel", "1", "--model", "add/B0=" + x))
         self.assertIn("at least 1", self.timing_args_rejected(
             "--repeats", "0", "--parallel", "1", "--model", "a=" + x))
 

@@ -97,7 +97,7 @@ class DeepSeekBackendTest(unittest.TestCase):
             ],
         )
         request = FakeOpenAI.completions.requests[0]
-        self.assertEqual(request["model"], "deepseek-v4.1-flash-1017")
+        self.assertEqual(request["model"], "deepseek-flash")
         self.assertEqual(request["extra_body"], {"thinking": {"type": "disabled"}})
 
     def test_deepseek_sources_do_not_bypass_gateway(self):

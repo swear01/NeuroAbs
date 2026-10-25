@@ -30,13 +30,16 @@
   E-cores, heats the package to 100 °C and throttles; repeated runs of one model
   differed by up to 1.95 times. Run one model at a time under
   `taskset -c 16-31` (the 16 E-cores): the spread drops to at most 1.07 times.
-- The local DeepSeek gateway (`127.0.0.1:35001`) serves DeepSeek V4.1 Flash 1017
-  only under `deepseek-v4.1-flash-1017`, routed solely to OpenRouter
-  `deepseek/deepseek-v4.1-flash-1017` and billed to the OpenRouter account.
-  Command Code cannot pin a snapshot (its `deepseek/deepseek-v4.1-flash` is
-  undated), and the old `deepseek-v4-flash` alias, which fell back to
-  `deepseek-v4-flash-0731`, is no longer allowed. The client still rejects any
-  response whose `model` is not `deepseek/deepseek-v4.1-flash-1017`.
+- The local DeepSeek gateway (`127.0.0.1:35001`) serves only `deepseek-flash`
+  and `deepseek-pro`, each routed to the newest DeepSeek model of every
+  provider (OpenCode Go, then Command Code, then OpenRouter
+  `~deepseek/deepseek-flash-latest`). The snapshot therefore depends on which
+  provider answered: Command Code's undated `deepseek/deepseek-v4.1-flash` cannot
+  be pinned, while OpenRouter served `deepseek/deepseek-v4.1-flash-1017` on
+  2026-10-25. The client accepts the served model and `deepseek_calls.jsonl`
+  records it in `response_raw`; group results by that field when the snapshot
+  matters. Pinned ids such as `deepseek-v4.1-flash-1017` and `deepseek-v4-flash`
+  are rejected with 400 `model_not_allowed`.
   `reasoning_effort` accepts `off` to `max`; with `off` the model ignores the
   answer-format instruction, and `thinking: disabled` is ignored.
 - `src/run_checker.py` calls `sys.exit()` from its timer thread and only

@@ -13,7 +13,7 @@ def run_api(bot_name, message, original_statement, width_map, replacer, replace_
         base_url="http://127.0.0.1:35001/v1",
     )
     response = client.chat.completions.create(
-        model="deepseek-v4.1-flash-1017",
+        model="deepseek-flash",
         messages=[
             {"role": "system", "content": "Now you are an expert in the hardware design and formal verification, help me generate the abstraction for the given RTL statement"}, 
             {"role": "user", "content": initial_context + message}

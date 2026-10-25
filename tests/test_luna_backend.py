@@ -220,7 +220,7 @@ class LunaBackendTest(unittest.TestCase):
         self.assertEqual(request.full_url, "http://127.0.0.1:35001/v1/chat/completions")
         self.assertNotIn("Authorization", request.headers)
         body = json.loads(request.data)
-        self.assertEqual((body["model"], body["reasoning_effort"]), ("deepseek-v4.1-flash-1017", "low"))
+        self.assertEqual((body["model"], body["reasoning_effort"]), ("deepseek-flash", "low"))
         self.assertEqual(body["messages"], [{"role": "system", "content": self.decision.decision_context},
                                             {"role": "user", "content": "message"}])
         self.assertEqual(len(self.records("deepseek_calls.jsonl")), 1)
@@ -235,17 +235,18 @@ class LunaBackendTest(unittest.TestCase):
         self.assertEqual(len(self.requests), 1)
         self.assertEqual(self.records("rewrite_records.jsonl")[0]["mode"], "generate")
 
-    def test_deepseek_retries_fallback_model(self):
+    def test_deepseek_accepts_whichever_model_the_gateway_serves(self):
         answer = json.dumps({"answer": "x", "probabilities": {"keep": 0.1, "x": 0.9}})
-        payloads = [deepseek_response(answer, model="deepseek/deepseek-v4-flash-0731"), deepseek_response(answer)]
         backend = importlib.import_module("deepseek_decision_api")
-        with patch("urllib.request.urlopen", self.fake_urlopen(payloads)), patch("time.sleep") as sleep, \
+        with patch("urllib.request.urlopen", self.fake_urlopen([deepseek_response(answer, model="deepseek/deepseek-v4.1-flash")])), \
+                patch("time.sleep") as sleep, \
                 patch.object(self.decision, "checked_rewrite", return_value=(("unsat", "a <= input1;", "input1", {}), None)):
             result = backend.run_api("bot", "message", "a <= b;", {}, None, {})
 
         self.assertEqual(result[1], "unsat")
-        self.assertEqual(len(self.requests), 2)
-        sleep.assert_called_once_with(self.luna.RATE_LIMIT_PAUSE)
+        self.assertEqual(len(self.requests), 1)
+        sleep.assert_not_called()
+        self.assertIn("deepseek/deepseek-v4.1-flash", self.records("deepseek_calls.jsonl")[0]["response_raw"])
 
     def test_deepseek_response_without_model_fails_fast(self):
         answer = json.dumps({"answer": "x", "probabilities": {"keep": 0.1, "x": 0.9}})

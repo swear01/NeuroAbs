@@ -6,8 +6,8 @@ and cut (every output of the instance becomes a free value).  Both cuts are
 Yosys cutpoints, so every assignment of levels is a sound over-approximation.
 The free values are renamed to choice__<id>__<n> so that a counterexample can
 be traced back to the units that caused it.  CEGAR asks rIC3 for a verdict on
-each abstract model; for a counterexample, Pono's dynamic cone of influence at
-the same depth names the units involved, and each moves one level towards keep.
+each abstract model; a counterexample is replayed, its dynamic cone of
+influence names the units involved, and each moves one level towards keep.
 """
 import argparse
 import json
@@ -19,6 +19,8 @@ import sys
 import tempfile
 import time
 
+import btor_witness
+
 PROPERTY_REMOVE = {"ila": "sanitycheck", "sanity": "normalassert"}
 CHOICE_NAME = re.compile(r"choice__(\w+?)__\d+")
 RIC3_KILL_GRACE = 60
@@ -28,10 +30,6 @@ SPLIT_OWN_FRACTION = 0.1
 
 def yosys_bin():
     return os.environ.get("YOSYS_BIN", "yosys")
-
-
-def pono_bin():
-    return os.environ.get("PONO_BIN", "pono")
 
 
 def run_yosys(lines, log_path):
@@ -286,6 +284,9 @@ def ric3_check(model, time_limit, log_path):
         return "TIMEOUT", None, elapsed
     with open(log_path) as f:
         lines = [line.strip() for line in f]
+    if "UNSAT" not in lines and "SAT" not in lines and elapsed >= time_limit:
+        # With --cex, rIC3 panics instead of printing UNKNOWN when the time limit is reached.
+        return "TIMEOUT", None, elapsed
     if process.returncode != 0:
         return "ERROR", None, elapsed
     if "UNSAT" in lines:
@@ -296,36 +297,8 @@ def ric3_check(model, time_limit, log_path):
     return "UNKNOWN", None, elapsed
 
 
-def pono_counterexample(model, workdir, bound, timeout):
-    """Run Pono BMC up to bound; return (status, node ids in the counterexample's dynamic COI)."""
-    os.makedirs(workdir, exist_ok=True)
-    rev = os.path.join(workdir, "coi-check-rev.txt")
-    if os.path.exists(rev):
-        os.unlink(rev)
-    cmd = [pono_bin(), "--bound", str(bound), "--promote-inputvars",
-           os.environ.get("PONO_DYNAMIC_COI_FLAG", "--dynamic_coi_up_cex"), model]
-    try:
-        result = subprocess.run(cmd, cwd=workdir, capture_output=True, text=True, timeout=timeout)
-    except subprocess.TimeoutExpired:
-        return "timeout", set()
-    with open(os.path.join(workdir, "pono.out"), "w") as f:
-        f.write(result.stdout + result.stderr)
-    status = next((s for s in ("sat", "unsat", "unknown") if re.search(r"(?m)^" + s + "$", result.stdout)), None)
-    if status is None:
-        raise RuntimeError("Pono failed with exit code {:d}; see {:s}".format(result.returncode, workdir))
-    ids = set()
-    if status == "sat":
-        with open(rev) as f:
-            for line in f:
-                parts = line.split()
-                m = re.match(r"(?:state|input)(\d+)@", parts[1]) if len(parts) > 1 else None
-                if m:
-                    ids.add(int(m.group(1)))
-    return status, ids
-
-
 def cegar(wrapper, prop, units, assignment, workdir, time_limit, max_iterations):
-    """rIC3 decides each abstract model; a counterexample is traced to its units with Pono's dynamic COI."""
+    """rIC3 decides each abstract model; its counterexample is replayed to find the units it depends on."""
     assignment = dict(assignment)
     history = []
     status = None
@@ -352,16 +325,12 @@ def cegar(wrapper, prop, units, assignment, workdir, time_limit, max_iterations)
         status = verdict
         if verdict != "SAT":
             break
-        pono_started = time.time()
-        pono, ids = pono_counterexample(model, model + ".pono", depth, time_limit)
-        names = read_btor(model)[0]
-        cex_choices = sorted({m.group(1) for i in ids for m in [CHOICE_NAME.search(names.get(i, ""))] if m})
+        replay_started = time.time()
+        free = btor_witness.free_names(model, model + ".ric3.log")
+        cex_choices = sorted({m.group(1) for name in free for m in [CHOICE_NAME.search(name)] if m})
         refined = sorted({by_choice[c] for c in cex_choices if c in by_choice})
-        record.update({"pono": pono, "pono_seconds": time.time() - pono_started,
+        record.update({"replay_seconds": time.time() - replay_started,
                        "counterexample_choices": cex_choices, "refined_units": refined})
-        if pono != "sat":
-            status = "pono_" + pono
-            break
         if not refined:
             status = "real"
             break
@@ -371,7 +340,7 @@ def cegar(wrapper, prop, units, assignment, workdir, time_limit, max_iterations)
         for unit_id in refined:
             levels = next(u["levels"] for u in units if u["id"] == unit_id)
             assignment[unit_id] = levels[levels.index(assignment[unit_id]) - 1]
-    total = sum(r["build_seconds"] + r["ric3_seconds"] + r.get("pono_seconds", 0) for r in history)
+    total = sum(r["build_seconds"] + r["ric3_seconds"] + r.get("replay_seconds", 0) for r in history)
     return {"status": status, "final_model": history[-1]["model"], "final_assignment": history[-1]["assignment"],
             "refinements": len(history) - 1, "total_seconds": total, "history": history}
 

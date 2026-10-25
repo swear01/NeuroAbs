@@ -87,6 +87,10 @@ class Ric3CheckTest(ChoiceModuleTest):
         verdict, depth, _ = self.abstraction.ric3_check("m.btor2", 10, str(self.root / "log"))
         self.assertEqual((verdict, depth), ("SAT", 2))
 
+    def test_panic_at_the_time_limit_is_a_timeout(self):
+        self.fake_ric3("sleep 2\necho panicked\nexit 101\n")
+        self.assertEqual(self.abstraction.ric3_check("m.btor2", 1, str(self.root / "log"))[0], "TIMEOUT")
+
     def test_failure_is_an_error(self):
         self.fake_ric3("echo UNSAT\nexit 3\n")
         self.assertEqual(self.abstraction.ric3_check("m.btor2", 10, str(self.root / "log"))[0], "ERROR")

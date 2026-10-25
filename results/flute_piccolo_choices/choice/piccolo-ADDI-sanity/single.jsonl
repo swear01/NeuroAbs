@@ -1,0 +1,5 @@
+{"unit": "csr_regfile", "level": "cut", "verdict": "UNSAT", "depth": null, "seconds": 15.1, "coi_state_bits": 5667}
+{"unit": "gpr_regfile_regfile", "level": "havoc", "verdict": "UNSAT", "depth": null, "seconds": 28.9, "coi_state_bits": 5232}
+{"unit": "gpr_regfile_regfile", "level": "cut", "verdict": "UNSAT", "depth": null, "seconds": 17.2, "coi_state_bits": 5232}
+{"unit": "near_mem_dcache", "level": "cut", "verdict": "UNSAT", "depth": null, "seconds": 23.7, "coi_state_bits": 5846}
+{"unit": "near_mem_icache", "level": "cut", "verdict": "UNSAT", "depth": null, "seconds": 18.6, "coi_state_bits": 5814}

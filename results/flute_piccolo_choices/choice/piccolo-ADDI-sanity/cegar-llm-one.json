@@ -1,0 +1,34 @@
+{
+  "status": "UNSAT",
+  "final_model": "/var/tmp/neuroabs-runtime/runs/flute-piccolo-20261025/choice/piccolo-ADDI-sanity/llm-one/iter0.btor2",
+  "final_assignment": {
+    "csr_regfile": "cut",
+    "gpr_regfile_regfile": "keep",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+  },
+  "refinements": 0,
+  "total_seconds": 5.295852899551392,
+  "history": [
+    {
+      "iteration": 0,
+      "assignment": {
+        "csr_regfile": "cut",
+        "gpr_regfile_regfile": "keep",
+        "near_mem_dcache": "cut",
+        "near_mem_icache": "cut"
+      },
+      "model": "/var/tmp/neuroabs-runtime/runs/flute-piccolo-20261025/choice/piccolo-ADDI-sanity/llm-one/iter0.btor2",
+      "choices_with_free_values": [
+        "csr_regfile",
+        "near_mem_dcache",
+        "near_mem_icache"
+      ],
+      "coi_state_bits": 4855,
+      "ric3": "UNSAT",
+      "ric3_seconds": 3.3302085399627686,
+      "cex_depth": null,
+      "build_seconds": 1.965644359588623
+    }
+  ]
+}

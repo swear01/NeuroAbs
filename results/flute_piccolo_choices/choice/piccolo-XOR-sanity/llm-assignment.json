@@ -1,0 +1,6 @@
+{
+  "csr_regfile": "cut",
+  "gpr_regfile_regfile": "keep",
+  "near_mem_dcache": "cut",
+  "near_mem_icache": "cut"
+}

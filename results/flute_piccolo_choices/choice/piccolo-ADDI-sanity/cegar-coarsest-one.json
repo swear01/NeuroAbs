@@ -1,0 +1,35 @@
+{
+  "status": "UNSAT",
+  "final_model": "/var/tmp/neuroabs-runtime/runs/flute-piccolo-20261025/choice/piccolo-ADDI-sanity/coarsest-one/iter0.btor2",
+  "final_assignment": {
+    "csr_regfile": "cut",
+    "gpr_regfile_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+  },
+  "refinements": 0,
+  "total_seconds": 4.5513880252838135,
+  "history": [
+    {
+      "iteration": 0,
+      "assignment": {
+        "csr_regfile": "cut",
+        "gpr_regfile_regfile": "cut",
+        "near_mem_dcache": "cut",
+        "near_mem_icache": "cut"
+      },
+      "model": "/var/tmp/neuroabs-runtime/runs/flute-piccolo-20261025/choice/piccolo-ADDI-sanity/coarsest-one/iter0.btor2",
+      "choices_with_free_values": [
+        "csr_regfile",
+        "gpr_regfile_regfile",
+        "near_mem_dcache",
+        "near_mem_icache"
+      ],
+      "coi_state_bits": 3831,
+      "ric3": "UNSAT",
+      "ric3_seconds": 2.427429437637329,
+      "cex_depth": null,
+      "build_seconds": 2.1239585876464844
+    }
+  ]
+}

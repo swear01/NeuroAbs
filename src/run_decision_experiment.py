@@ -72,6 +72,8 @@ def build_concrete(case, run_root):
     ).format(src=SRC_DIR, cwd=arm_dir, ys=os.path.join(arm_dir, yosys_script), rtl=os.path.join(arm_dir, rtl))
     returncode, elapsed = run_logged([sys.executable, '-c', code], arm_dir, os.path.join(arm_dir, 'concrete_yosys.log'))
     model = os.path.join(arm_dir, rtl.replace('.v', '.btor2'))
+    if returncode == 0 and not os.path.exists(model):
+        raise RuntimeError('Yosys did not write {:s}; B0 expects a BTOR2 design.ys'.format(model))
     summary = {
         'arm': 'B0',
         'case': case,

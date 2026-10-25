@@ -247,6 +247,15 @@ class LunaBackendTest(unittest.TestCase):
         self.assertEqual(len(self.requests), 2)
         sleep.assert_called_once_with(self.luna.RATE_LIMIT_PAUSE)
 
+    def test_deepseek_response_without_model_fails_fast(self):
+        answer = json.dumps({"answer": "x", "probabilities": {"keep": 0.1, "x": 0.9}})
+        backend = importlib.import_module("deepseek_decision_api")
+        with patch("urllib.request.urlopen", self.fake_urlopen([deepseek_response(answer, model=None)])), \
+                patch("time.sleep") as sleep:
+            with self.assertRaises(RuntimeError):
+                backend.run_api("bot", "message", "a <= b;", {}, None, {})
+        sleep.assert_not_called()
+
     def test_all_x_backend_makes_no_api_call(self):
         backend = importlib.import_module("all_x_api")
         with patch("urllib.request.urlopen") as urlopen, \

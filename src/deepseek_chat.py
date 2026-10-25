@@ -16,7 +16,8 @@ spent_usd = 0.0
 def call_deepseek(instructions, user_input, request_id):
     global spent_usd
     budget = os.environ.get("LLM_BUDGET_USD")
-    if budget is not None and spent_usd >= float(budget):
+    budget_usd = float(budget) if budget is not None else None
+    if budget_usd is not None and spent_usd >= budget_usd:
         raise RuntimeError("DeepSeek budget of {:s} USD reached after ${:.4f}".format(budget, spent_usd))
     body = {
         "model": DEEPSEEK_MODEL,
@@ -27,21 +28,23 @@ def call_deepseek(instructions, user_input, request_id):
         ],
     }
     headers = {"Content-Type": "application/json", "User-Agent": LUNA_USER_AGENT}
-    waited = 0
+    deadline = time.time() + RATE_LIMIT_MAX_WAIT
     while True:
         response, elapsed = post_json(DEEPSEEK_URL, headers, body, request_id, None, DEEPSEEK_CALL_LOG, "DeepSeek")
         spent_usd += usage_cost(response.get("usage"))
         served = response.get("model")
+        if not isinstance(served, str) or not served:
+            raise RuntimeError("DeepSeek response has no model field: {:s}".format(json.dumps(response)[:500]))
         if served == DEEPSEEK_SERVED_MODEL:
             return response, elapsed
-        if budget is not None and spent_usd >= float(budget):
+        if budget_usd is not None and spent_usd >= budget_usd:
             raise RuntimeError("DeepSeek budget of {:s} USD reached after ${:.4f}".format(budget, spent_usd))
         # The gateway falls back to another upstream model when Command Code is rate limited.
-        if waited >= RATE_LIMIT_MAX_WAIT:
-            raise RuntimeError("DeepSeek request {:d} served by {} for {:d} seconds".format(request_id, served, waited))
+        if time.time() + RATE_LIMIT_PAUSE > deadline:
+            raise RuntimeError("DeepSeek request {:d} still served by {} after {:d} seconds".format(
+                request_id, served, RATE_LIMIT_MAX_WAIT))
         print("DeepSeek served {}; pausing {:d} seconds before retrying the same request.".format(served, RATE_LIMIT_PAUSE))
         time.sleep(RATE_LIMIT_PAUSE)
-        waited += RATE_LIMIT_PAUSE
 
 
 def chat_text(response):

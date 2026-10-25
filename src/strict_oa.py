@@ -143,6 +143,8 @@ def main():
         destination.write(encoded)
     summary["report_sha256"] = hashlib.sha256(encoded).hexdigest()
     print(json.dumps(summary, indent=2))
+    if summary["total"] and summary["errors"] == summary["total"]:
+        sys.exit("strict OA could not classify any record")
 
 
 if __name__ == "__main__":

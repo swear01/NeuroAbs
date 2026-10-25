@@ -5,7 +5,7 @@ import time
 import urllib.error
 import urllib.request
 
-from check import *
+from check import check_implies
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -111,7 +111,7 @@ def post_json(url, headers, body, request_id, session, call_log, label):
             try:
                 return json.loads(raw), elapsed
             except json.JSONDecodeError as e:
-                raise RuntimeError("{:s} request {:d} returned invalid JSON: {:s}".format(label, request_id, str(e)))
+                raise RuntimeError("{:s} request {:d} returned invalid JSON: {:s}".format(label, request_id, str(e))) from e
         if status == 429:
             pause = max(RATE_LIMIT_PAUSE, int(retry_after)) if retry_after and retry_after.isdigit() else RATE_LIMIT_PAUSE
             if rate_limit_wait + pause > RATE_LIMIT_MAX_WAIT:

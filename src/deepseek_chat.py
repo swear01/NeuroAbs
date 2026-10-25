@@ -6,8 +6,8 @@ from deepseek_prices import usage_cost
 from luna_api import LUNA_USER_AGENT, RATE_LIMIT_MAX_WAIT, RATE_LIMIT_PAUSE, post_json
 
 DEEPSEEK_URL = "http://127.0.0.1:35001/v1/chat/completions"
-DEEPSEEK_MODEL = "deepseek-v4-flash"
-DEEPSEEK_SERVED_MODEL = "deepseek/deepseek-v4-flash"
+DEEPSEEK_MODEL = "deepseek-v4.1-flash-1017"
+DEEPSEEK_SERVED_MODEL = "deepseek/deepseek-v4.1-flash-1017"
 DEEPSEEK_EFFORT = "low"
 DEEPSEEK_CALL_LOG = "deepseek_calls.jsonl"
 spent_usd = 0.0
@@ -44,7 +44,7 @@ def call_deepseek(instructions, user_input, request_id):
             return response, elapsed
         if budget_usd is not None and spent_usd >= budget_usd:
             raise RuntimeError("DeepSeek budget of {:s} USD reached after ${:.4f}".format(budget, spent_usd))
-        # The gateway falls back to another upstream model when Command Code is rate limited.
+        # Never accept an answer from a model other than the pinned 1017 snapshot.
         if time.time() + RATE_LIMIT_PAUSE > deadline:
             raise RuntimeError("DeepSeek request {:d} still served by {} after {:d} seconds".format(
                 request_id, served, RATE_LIMIT_MAX_WAIT))

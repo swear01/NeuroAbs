@@ -30,7 +30,7 @@ def luna_response(text, reasoning_tokens=3):
     }
 
 
-def deepseek_response(text, prompt_tokens=100, model="deepseek/deepseek-v4-flash"):
+def deepseek_response(text, prompt_tokens=100, model="deepseek/deepseek-v4.1-flash-1017"):
     return {
         "model": model,
         "choices": [{"message": {"role": "assistant", "content": text}}],
@@ -220,7 +220,7 @@ class LunaBackendTest(unittest.TestCase):
         self.assertEqual(request.full_url, "http://127.0.0.1:35001/v1/chat/completions")
         self.assertNotIn("Authorization", request.headers)
         body = json.loads(request.data)
-        self.assertEqual((body["model"], body["reasoning_effort"]), ("deepseek-v4-flash", "low"))
+        self.assertEqual((body["model"], body["reasoning_effort"]), ("deepseek-v4.1-flash-1017", "low"))
         self.assertEqual(body["messages"], [{"role": "system", "content": self.decision.decision_context},
                                             {"role": "user", "content": "message"}])
         self.assertEqual(len(self.records("deepseek_calls.jsonl")), 1)

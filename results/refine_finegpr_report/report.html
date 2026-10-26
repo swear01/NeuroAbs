@@ -24,17 +24,17 @@ nav li {line-height:1.4}
 .small {font-size:.88rem;color:#4a5a6e}
 </style>
 <header><div><h1>NeuroAbs：LLM 選 refinement 單元，以及更細的抽象選單</h1>
-<div>2026-10-26 · Piccolo ILA property · rIC3 only · DeepSeek V4 Flash · PR <a style="color:#a8d0ff" href="https://github.com/swear01/NeuroAbs/pull/15">#15</a>（A）、<a style="color:#a8d0ff" href="https://github.com/swear01/NeuroAbs/pull/16">#16</a>（B），兩者都未 merge</div></div></header>
+<div>2026-10-26 · Piccolo ILA property · rIC3 only · DeepSeek V4 Flash · PR <a style="color:#a8d0ff" href="https://github.com/swear01/NeuroAbs/pull/15">#15</a>（A）、<a style="color:#a8d0ff" href="https://github.com/swear01/NeuroAbs/pull/16">#16</a>（B）、<a style="color:#a8d0ff" href="https://github.com/swear01/NeuroAbs/pull/18">#18</a>（只拆 baseline）</div></div></header>
 <main>
 
-<p class="notice"><b>一句話：</b>更細的選單（拆 property、GPR 逐個選、加法器換成 UF）讓 Piccolo ADDI、LUI、AUIPC、JAL 的 ILA property 第一次被 rIC3 證出來，B0 在 30–60 分鐘內都沒有結論。但證得出來靠的是選單設計：LLM 選得比自動 CEGAR 好很多，卻沒有比一條十行左右的結構規則好。A 實驗裡，LLM 每次 refinement 都退到需要的單元，但最終模型仍沒有結論。</p>
+<p class="notice"><b>一句話：</b>拆 property 之後再做 RTL abstraction（GPR 逐個選、單元 cut、加法器換成 UF），Piccolo ADDI、LUI、AUIPC、JAL 的 ILA property 第一次被 rIC3 證出來，B0 在 30–60 分鐘內都沒有結論。拆 property 算前處理，baseline 也一樣先拆；跟「只拆」比，abstraction 讓 ADDI 的寫入類從 1/32 變成 32/32，其他地方快約 6 倍。LLM 選 abstraction 比自動 CEGAR 好很多，卻沒有比一條十行左右的結構規則好。A 實驗裡，LLM 每次 refinement 都退到需要的單元，但最終模型仍沒有結論。</p>
 
 <nav><b>目錄</b><ol>
 <li><a href="#bg">背景：property、抽象單元、CEGAR</a></li>
 <li><a href="#a">實驗 A：反例出現後該退哪個單元</a>
  <ol><li><a href="#a-gt">標準答案怎麼來的，「每一步都選對」的精確意思</a></li><li><a href="#a-cex">「深度 11 的反例」是什麼</a></li><li><a href="#a-res">結果</a></li></ol></li>
 <li><a href="#b">實驗 B：更細的選單</a>
- <ol><li><a href="#b-opt">三種新選項</a></li><li><a href="#b-count">1024 怎麼算</a></li><li><a href="#b-blow">會不會 state 爆炸</a></li><li><a href="#b-screen">為什麼三種都需要</a></li><li><a href="#b-arms">誰來選：auto、LLM、結構規則</a></li><li><a href="#b-full">完整證明</a></li></ol></li>
+ <ol><li><a href="#b-opt">三種新選項</a></li><li><a href="#b-count">1024 怎麼算</a></li><li><a href="#b-blow">會不會 state 爆炸</a></li><li><a href="#b-screen">為什麼三種都需要</a></li><li><a href="#b-arms">誰來選：auto、LLM、結構規則</a></li><li><a href="#b-full">完整證明</a></li><li><a href="#b-base">拆 property 是前處理：跟「只拆」比</a></li></ol></li>
 <li><a href="#concl">結論、限制、下一步</a></li>
 <li><a href="#repro">花費與重現</a></li>
 </ol></nav>
@@ -262,11 +262,37 @@ nav li {line-height:1.4}
 <p class="ok">1,024 個子 property 全部 UNSAT，所以 Piccolo ADDI 的 ILA property 成立。除了 sample 中的 <code>mem</code> 需要 1 次 refinement（把 I-cache 退回），其他都用結構規則一次就證出來。</p>
 <p class="small">sanity check：把 UF 模型的 assertion 取反去檢查，在深度 11 是 SAT。這表示 UF 的 assumption 沒有把所有 trace 都排除掉（模型不是 vacuous）。</p>
 
+<h3 id="b-base">3.7 拆 property 是前處理：跟「只拆」比（PR #18）</h3>
+<p class="q"><b>問：拆 property 本身就讓問題變小了，怎麼知道 abstraction 有貢獻？</b><br>答：把拆 property 當成前處理，baseline 也一樣先拆。「只拆」就是同一個子 property（同樣的 conjunct 和 case），但不做任何 abstraction：單元、GPR 全部保留，沒有 UF。用同一個 <code>fine_batch.py</code>、同一組 CPU、同樣 300 s，跟 S、DeepSeek、auto 逐條配對比較。</p>
+<table><tr><th>題目</th><th>只拆：UNSAT</th><th>S：UNSAT</th><th>只拆／S 總時間</th><th>兩邊都證出的條數</th><th>S 加速（中位數）</th><th>DeepSeek 加速</th><th>auto 加速</th></tr>
+<tr><td>ADDI sample</td><td class="n">19/64</td><td class="n">64/64</td><td class="n">18,221 / 2,627 s</td><td class="n">19</td><td class="n">7.7×</td><td class="n">6.8×</td><td class="n">1.0×</td></tr>
+<tr><td>LUI</td><td class="n">61/63</td><td class="n">63/63</td><td class="n">8,345 / 934 s</td><td class="n">61</td><td class="n">7.7×</td><td class="n">4.5×</td><td class="n">0.8×（7 個）</td></tr>
+<tr><td>AUIPC</td><td class="n">63/63</td><td class="n">63/63</td><td class="n">6,609 / 1,204 s</td><td class="n">63</td><td class="n">5.1×</td><td class="n">3.4×</td><td class="n">0.6×（7 個）</td></tr>
+<tr><td>JAL</td><td class="n">53/63</td><td class="n">63/63</td><td class="n">11,869 / 1,608 s</td><td class="n">53</td><td class="n">6.8×</td><td class="n">6.1×</td><td class="n">1.0×（7 個）</td></tr></table>
+<p class="small">加速 = 只拆時間 ÷ 該方式時間，只算兩邊都 UNSAT 的子 property，含 Yosys build。只拆的 COI 是 5,163 bits，S 和 DeepSeek 是 788–1,012，auto 是 2,189–2,382（它把單元退回來了）。</p>
+<p><b>ADDI 寫入類：abstraction 讓本來證不出來的變得證得出來</b></p>
+<table><tr><th>方式</th><th>UNSAT / 32</th><th>總時間</th><th>COI bits</th><th>TIMEOUT 時的 BMC 深度 / IC3 frame</th></tr>
+<tr><td>只拆，300 s</td><td class="n">1（<code>rs1 = 0</code>）</td><td class="n">9,877 s</td><td class="n">5,163</td><td>20–30 / 10</td></tr>
+<tr><td>只拆，1800 s（抽 4 條）</td><td class="n">0 / 4</td><td class="n">每條約 1,813 s</td><td class="n">5,163</td><td>130 / 10</td></tr>
+<tr><td>S 拿掉 UF</td><td class="n">1（<code>rs1 = 0</code>）</td><td class="n">9,568 s</td><td class="n">788–884</td><td>81–130 / 7</td></tr>
+<tr><td>S</td><td class="n"><b>32</b></td><td class="n"><b>1,727 s</b></td><td class="n">981–1,077</td><td>—</td></tr></table>
+<p><b>重複計時</b>（<code>docs/evaluation.md</code> 要求）：LUI 和 JAL 各 7 個子 property（mem、x1／x5／x17 的 frame 和寫入），只拆和 S 交替各跑 3 輪，同一組 CPU。</p>
+<table><tr><th>題目</th><th>只拆每輪總時間</th><th>S 每輪總時間</th><th>每個子 property 加速（中位數，範圍）</th></tr>
+<tr><td>LUI</td><td class="n">770、774、784 s</td><td class="n">108、109、108 s</td><td class="n">6.0×（3.6–15.5×）</td></tr>
+<tr><td>JAL</td><td class="n">1,148、1,143、1,136 s</td><td class="n">185、187、186 s</td><td class="n">6.2×（2.8–12.8×；只拆的 <code>x1.frame</code> 三輪都 TIMEOUT）</td></tr></table>
+<ul>
+<li><b>ADDI 寫入類需要 abstraction：</b>只拆 300 s 只證出 <code>rs1 = 0</code> 那條（加法器加的是常數 0），放到 1800 s 也一條都沒有；S 32 條全證出。拿掉 UF 後，模型雖然只剩不到 900 bits，仍只證出 <code>rs1 = 0</code>：GPR／單元 cut 和 UF 必須一起用。</li>
+<li><b>其他地方是加速：</b>LUI、AUIPC、JAL 的寫入類，只拆也全部證得出來；abstraction 快約 5–8 倍，重複 3 輪結果幾乎一樣（每輪總時間差不到 2%）。</li>
+<li><b>frame 類只拆的 TIMEOUT 不算「需要 abstraction」：</b>只拆證出的 frame 要 101–308 s，貼著 300 s 上限；ADDI、JAL 在 E-core 上掉了 14、10 條，LUI、AUIPC 在 P-core 上幾乎都證出。沒有對 frame 類跑更長的時限。</li>
+<li><b>auto 沒有比只拆快：</b>它把單元一個個退回來，最後的模型接近沒抽象；LLM 和 S 都快很多。</li>
+</ul>
+
 <h2 id="concl">4. 結論、限制、下一步</h2>
 <ol>
-<li><b>選單的設計是證得出來的關鍵。</b>拆 property、GPR 逐個選、UF，三者一起用，才讓 ADDI、LUI、AUIPC、JAL 證得出來，缺一個都不行。</li>
-<li><b>兩個決策點交給 LLM，都比現在的自動作法好。</b>A：每一步都退到需要的單元，只有它停在 4,136 bits。B：60/64 對 34/64，時間只要 auto 的 1/6。</li>
-<li><b>但都贏不過、或只是追平簡單的規則。</b>這兩組題目的答案都寫在 property 的文字裡：A 的 assertion 點名了 GPR 和 imem，B 的子 property 名字點名了要保留的暫存器。所以目前不能說「LLM 讓驗證變快」，只能說「LLM 比 auto CEGAR 好」。</li>
+<li><b>拆 property 是前處理，不是我們的貢獻；baseline 也一樣先拆。</b>拆完之後再做 RTL abstraction（GPR 逐個選、單元 cut、UF），ADDI、LUI、AUIPC、JAL 才全部證得出來。</li>
+<li><b>我們的貢獻是 RTL abstraction，跟「只拆」比：</b>ADDI 寫入類從 1/32（1800 s 也是 0/4）變成 32/32，且 UF 不可少；其他兩邊都證得出來的地方，S 快約 5–8 倍，重複 3 輪是 6.0× 和 6.2×。</li>
+<li><b>兩個決策點交給 LLM，都比現在的自動作法好。</b>A：每一步都退到需要的單元，只有它停在 4,136 bits。B：60/64 對 34/64，時間只要 auto 的 1/6；比只拆快 3.4–6.8 倍，auto 則跟只拆差不多（0.6–1.0×）。</li>
+<li><b>但都贏不過、或只是追平簡單的規則。</b>這兩組題目的答案都寫在 property 的文字裡：A 的 assertion 點名了 GPR 和 imem，B 的子 property 名字點名了要保留的暫存器。所以目前能說「LLM 選的 abstraction 比只拆和 auto CEGAR 快」，不能說「LLM 比簡單規則好」。</li>
 </ol>
 <p><b>限制</b></p>
 <ul>
@@ -274,6 +300,7 @@ nav li {line-height:1.4}
 <li>A 的標準答案只做到 BMC 深度 20，有兩題只到 18。A 的最終模型都沒有結論。</li>
 <li>B 的時間混用了 P-core 和 E-core，機器上同時還有另一個 session，只有同一組內的時間可以互相比較。</li>
 <li>B 沒做的：Flute、ANDI 和 SLTI 的完整證明（SLTI 沒有可以配對的運算子）、R-type（約 3.2 萬個子 property）。</li>
+<li>只拆 baseline 只跑了 ADDI 的 64 個 sample，不是全部 1,024 個；重複計時只做了 LUI、JAL 各 7 個；只拆是在 S 那批之後約半天才跑，機器負載不同（交替跑的重複計時給出相同的加速）。</li>
 <li>B 的 refinement 有一個限制：只要還有單元在反例裡有任意值，它就不會把 word 的 GPR 退回 keep。DeepSeek 的 2 個失敗就是卡在這裡。</li>
 </ul>
 <p><b>下一步建議</b>：找「需要保留的東西沒有寫在 property 文字裡」的題目，LLM 的判斷才有機會勝過規則。例如 Flute 的 R-type、需要 branch predictor 或 bypass 的 property，或其他 SoC。R-type 也需要比 rs1 × rs2 更省的拆法。</p>
@@ -283,6 +310,7 @@ nav li {line-height:1.4}
 <li><b>DeepSeek</b>（README 記錄）：A 115 次呼叫 $0.25；B 的 4 組 LLM arm 共 $1.74（$0.47 + $0.35 + $0.43 + $0.49）。這次約 $2.0，比我上一則訊息說的「約 $2.5」少，以 README 為準。累計約 $32–33，在批准的 $60 以內。API key 只放在 gateway。</li>
 <li><b>A</b>：<a href="https://github.com/swear01/NeuroAbs/pull/15">PR #15</a>（branch <code>feat/llm-refinement</code>）的 <code>results/llm_refinement/</code>，各 run 的紀錄和表格數字都在裡面。run dir <code>/var/tmp/neuroabs-runtime/runs/llm-refine-20261026</code>（mazu，不保證保留）。76 個 test 通過。</li>
 <li><b>B</b>：<a href="https://github.com/swear01/NeuroAbs/pull/16">PR #16</a>（branch <code>feat/fine-gpr-choices</code>）的 <code>results/fine_gpr_choices/</code>，各子 property 的紀錄在 <code>piccolo/&lt;case&gt;/</code>。run dir <code>/var/tmp/neuroabs-runtime/runs/fine-gpr-20261026</code>（mazu，不保證保留）。78 個 test 通過。</li>
+<li><b>只拆 baseline</b>：<a href="https://github.com/swear01/NeuroAbs/pull/18">PR #18</a> 的 <code>results/split_baseline/</code>，表格由 <code>scripts/compare.py</code>、<code>scripts/repeats.py</code> 算出。run dir <code>/var/tmp/neuroabs-runtime/runs/split-baseline-20261026</code>（mazu，不保證保留）。只用 rIC3，沒有 LLM 花費。</li>
 <li>環境：Mazu（i9-14900K），Yosys 0.68+120，rIC3 master <code>8c6df1b</code>，default portfolio。</li>
 </ul>
 </main></html>

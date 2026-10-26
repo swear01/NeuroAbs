@@ -36,6 +36,14 @@ class ChoiceModuleTest(unittest.TestCase):
         sys.path.remove(str(SRC))
 
 
+class CoiTest(ChoiceModuleTest):
+    def test_justice_terms_follow_the_count(self):
+        model = self.root / "m.btor2"
+        model.write_text("1 sort bitvec 1\n2 sort bitvec 4\n3 state 1 j\n4 state 2 b\n5 state 2 c\n"
+                         "6 next 1 3 3\n7 next 2 4 4\n8 next 2 5 5\n9 justice 1 3\n10 redor 1 4\n11 bad 10\n")
+        self.assertEqual(self.abstraction.coi_state_bits(str(model)), {"j": 1, "b": 4})
+
+
 class AssignmentTest(ChoiceModuleTest):
     def test_levels_become_cutpoints(self):
         choices = self.abstraction.assignment_choices(UNITS, {"csr": "cut", "icache": "havoc"})

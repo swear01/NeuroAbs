@@ -70,6 +70,12 @@ class BtorWitnessTest(unittest.TestCase):
         values = self.witness.free_values(str(self.root / "m.btor2"), str(self.root / "w.txt"))
         self.assertEqual(values, [("a", 2), ("free_s", 2)])
 
+    def test_an_uninitialized_state_is_free_in_frame_0(self):
+        (self.root / "u.btor2").write_text("1 sort bitvec 1\n2 state 1 u\n3 next 1 2 2\n4 bad 2\n")
+        (self.root / "w.txt").write_text("sat\nb0\n#0\n0 1 u\n@0\n.\n")
+        names = self.witness.free_names(str(self.root / "u.btor2"), str(self.root / "w.txt"))
+        self.assertEqual(names, {"u"})
+
     def test_a_witness_that_does_not_violate_is_rejected(self):
         (self.root / "w.txt").write_text(WITNESS.replace("#2\n0 1\n", "#2\n0 0\n"))
         with self.assertRaises(ValueError):

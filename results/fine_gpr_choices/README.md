@@ -3,9 +3,11 @@
 Status: the Piccolo ADDI, LUI, AUIPC and JAL ILA properties are proved with
 rIC3 after splitting each into sub-properties and choosing per sub-property
 among unit cut, GPR keep/word/havoc and an Ackermann UF on the adder. B0 and
-the coarse menu of PR #14 time out on all of them. DeepSeek on the fine menu
-is much faster than all-cut CEGAR, but a simple structural rule (no LLM) is
-as good or better everywhere.
+the coarse menu of PR #14 time out on all of them. The split is preprocessing;
+[`split_baseline`](../split_baseline/README.md) measures the abstraction
+against the same sub-properties on the unabstracted model. DeepSeek on the
+fine menu is much faster than all-cut CEGAR, but a simple structural rule (no
+LLM) is as good or better everywhere.
 
 ## Why the coarse menu is not enough
 
@@ -298,14 +300,17 @@ proofs were not run.
 
 ## Conclusions
 
-1. **The finer options make the Piccolo ILA properties provable.** With the
-   property split, GPR keep/word/havoc and the UF on the adder, ADDI is
-   proved (1,024 / 1,024 sub-properties, 11.0 CPU-pair hours), and LUI,
-   AUIPC and JAL are proved (63 / 63 each, 15–27 min of two-CPU runs). B0
-   and the coarse menu of PR #14 have no verdict in 30–60 min. Each option
-   is needed for ADDI: without the split even the UF times out (Q, 1806 s);
-   without the UF the write cases time out (B, F); without the rs1 split the
-   write cases time out (I, N, N2).
+1. **The split and the finer options together make the Piccolo ILA
+   properties provable.** With the property split, GPR keep/word/havoc and
+   the UF on the adder, ADDI is proved (1,024 / 1,024 sub-properties, 11.0
+   CPU-pair hours), and LUI, AUIPC and JAL are proved (63 / 63 each, 15–27
+   min of two-CPU runs). B0 and the coarse menu of PR #14 have no verdict in
+   30–60 min. Each part is needed for ADDI: without the split even the UF
+   times out (Q, 1806 s); without the UF the write cases time out (B, F);
+   without the rs1 split the write cases time out (I, N, N2). The split
+   alone is not enough for ADDI but is for LUI, AUIPC and JAL, where the
+   abstraction is a 5–8 times speed-up
+   ([`split_baseline`](../split_baseline/README.md)).
 2. **On the fine menu, DeepSeek beats the automatic strategy, but not the
    structural rule.** On the ADDI sample, auto proves 34 / 64 (it refines
    the UF away, and the adder model times out); DeepSeek 60 / 64 with 1
@@ -315,16 +320,15 @@ proofs were not run.
    most DeepSeek answers (55 / 64, 57, 52, 56 / 63), proves everything, and
    is faster in every case (ADDI sample 2,627 vs 3,805 s). DeepSeek's
    deviations either do not matter or fail (4 ADDI write cases with the
-   adder kept, 2 frame cases with the compared GPR at word level). The
-   speed-up comes from the menu and the split, which make the right choice
-   obvious from the sub-property text; the claim "the LLM makes verification
-   faster" is supported against auto CEGAR, not against a simple structural
-   heuristic.
+   adder kept, 2 frame cases with the compared GPR at word level). The split
+   and the menu make the right choice obvious from the sub-property text; the
+   claim "the LLM makes verification faster" is supported against auto CEGAR
+   and against the split alone, not against a simple structural heuristic.
 
 ## Not done and risks
 
 - Flute was not tried. R-type cases (ADD, SUB, ...) would need rs1 × rs2
-  splits (32,768 sub-properties per instruction) or a different abstraction.
+  splits (1 + 31 + 31 × 32 × 32 = 31,776 sub-properties per instruction) or a different abstraction.
 - ANDI and SLTI full proofs were not run; SLTI has no UF pair, so its write
   cases are untested beyond the screen design.
 - Times mix P- and E-core two-CPU runs and share the machine with another

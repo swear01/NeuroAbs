@@ -1,0 +1,4 @@
+{"name": "x12.rs1=1", "spec": {"states": ["x12"], "case": "rd==12&&rs1==1", "rd_guard": false}}
+{"name": "x19.rs1=2", "spec": {"states": ["x19"], "case": "rd==19&&rs1==2", "rd_guard": false}}
+{"name": "x26.rs1=3", "spec": {"states": ["x26"], "case": "rd==26&&rs1==3", "rd_guard": false}}
+{"name": "x2.rs1=4", "spec": {"states": ["x2"], "case": "rd==2&&rs1==4", "rd_guard": false}}

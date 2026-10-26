@@ -3,5 +3,8 @@
 set -euo pipefail
 S=$(cd "$(dirname "$0")" && pwd)
 RUN=/var/tmp/neuroabs-runtime/runs/split-baseline-20261026
-while [ ! -e $RUN/piccolo-JAL/arm-split.done ]; do [ -e $RUN/piccolo-JAL/arm-split.failed ] && exit 1; sleep 60; done
+while [ ! -e $RUN/piccolo-JAL/arm-split.done ]; do
+  ls $RUN/piccolo-*/arm-*.failed > /dev/null 2>&1 && { echo "an arm failed; not starting split-long" >&2; exit 1; }
+  sleep 60
+done
 $S/arm.sh ADDI split-long $RUN/piccolo-ADDI/specs-split-long.jsonl 28-29/30-31 1800 0

@@ -8,4 +8,4 @@ RUN=/var/tmp/neuroabs-runtime/runs/split-baseline-20261026
 $S/arm.sh JAL split $RUN/piccolo-JAL/specs-split.jsonl 28-29/30-31 300 0 & j=$!
 ($S/arm.sh LUI split $RUN/piccolo-LUI/specs-split.jsonl 12-13/14-15 300 0
  $S/arm.sh AUIPC split $RUN/piccolo-AUIPC/specs-split.jsonl 12-13/14-15 300 0) & l=$!
-wait $a; wait $j; wait $l
+rc=0; wait $a || rc=1; wait $j || rc=1; wait $l || rc=1; exit $rc

@@ -1,0 +1,285 @@
+{
+  "status": "TIMEOUT",
+  "final_model": "/var/tmp/neuroabs-runtime/runs/llm-refine-20261026/piccolo/BEQ/models/csr_regfile=cut+gpr_regfile_regfile=keep+near_mem_dcache=keep+near_mem_icache=keep/model.btor2",
+  "final_assignment": {
+    "csr_regfile": "cut",
+    "gpr_regfile_regfile": "keep",
+    "near_mem_dcache": "keep",
+    "near_mem_icache": "keep"
+  },
+  "refinements": 4,
+  "total_seconds": 457.8055102825165,
+  "history": [
+    {
+      "iteration": 0,
+      "assignment": {
+        "csr_regfile": "cut",
+        "gpr_regfile_regfile": "cut",
+        "near_mem_dcache": "cut",
+        "near_mem_icache": "cut"
+      },
+      "model": "/var/tmp/neuroabs-runtime/runs/llm-refine-20261026/piccolo/BEQ/models/csr_regfile=cut+gpr_regfile_regfile=cut+near_mem_dcache=cut+near_mem_icache=cut/model.btor2",
+      "choices_with_free_values": [
+        "csr_regfile",
+        "gpr_regfile_regfile",
+        "near_mem_dcache",
+        "near_mem_icache"
+      ],
+      "coi_state_bits": 2706,
+      "ric3": "SAT",
+      "ric3_seconds": 7.071628570556641,
+      "cex_depth": 8,
+      "build_seconds": 4.430221319198608,
+      "reused": true,
+      "replay_seconds": 0.06484246253967285,
+      "counterexample_units": {
+        "csr_regfile": 12,
+        "gpr_regfile_regfile": 3,
+        "near_mem_dcache": 5,
+        "near_mem_icache": 13
+      },
+      "refined_units": [
+        "near_mem_dcache"
+      ],
+      "selection_seconds": 19.810049533843994,
+      "selection": {
+        "bound": 8,
+        "candidates": [
+          {
+            "unit": "csr_regfile",
+            "level": "keep",
+            "coi_state_bits": 3255,
+            "bmc": "SAT",
+            "cex_depth": 8,
+            "build_seconds": 3.819520950317383,
+            "bmc_seconds": 3.122553825378418
+          },
+          {
+            "unit": "gpr_regfile_regfile",
+            "level": "havoc",
+            "coi_state_bits": 2706,
+            "bmc": "SAT",
+            "cex_depth": 8,
+            "build_seconds": 3.913513422012329,
+            "bmc_seconds": 1.569042682647705
+          },
+          {
+            "unit": "near_mem_dcache",
+            "level": "keep",
+            "coi_state_bits": 3112,
+            "bmc": "NONE",
+            "cex_depth": null,
+            "build_seconds": 4.038076162338257,
+            "bmc_seconds": 1.568894624710083
+          },
+          {
+            "unit": "near_mem_icache",
+            "level": "keep",
+            "coi_state_bits": 3112,
+            "bmc": "NONE",
+            "cex_depth": null,
+            "build_seconds": 4.147498607635498,
+            "bmc_seconds": 1.6690254211425781
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 1,
+      "assignment": {
+        "csr_regfile": "cut",
+        "gpr_regfile_regfile": "cut",
+        "near_mem_dcache": "keep",
+        "near_mem_icache": "cut"
+      },
+      "model": "/var/tmp/neuroabs-runtime/runs/llm-refine-20261026/piccolo/BEQ/models/csr_regfile=cut+gpr_regfile_regfile=cut+near_mem_dcache=keep+near_mem_icache=cut/model.btor2",
+      "choices_with_free_values": [
+        "csr_regfile",
+        "gpr_regfile_regfile",
+        "near_mem_icache"
+      ],
+      "coi_state_bits": 3112,
+      "ric3": "SAT",
+      "ric3_seconds": 17.575028657913208,
+      "cex_depth": 11,
+      "build_seconds": 4.038076162338257,
+      "reused": false,
+      "replay_seconds": 0.16212892532348633,
+      "counterexample_units": {
+        "csr_regfile": 6,
+        "gpr_regfile_regfile": 2,
+        "near_mem_icache": 10
+      },
+      "refined_units": [
+        "gpr_regfile_regfile"
+      ],
+      "selection_seconds": 17.038561582565308,
+      "selection": {
+        "bound": 11,
+        "candidates": [
+          {
+            "unit": "csr_regfile",
+            "level": "keep",
+            "coi_state_bits": 3665,
+            "bmc": "SAT",
+            "cex_depth": 11,
+            "build_seconds": 3.626067876815796,
+            "bmc_seconds": 4.627093315124512
+          },
+          {
+            "unit": "gpr_regfile_regfile",
+            "level": "havoc",
+            "coi_state_bits": 3112,
+            "bmc": "SAT",
+            "cex_depth": 11,
+            "build_seconds": 3.531458616256714,
+            "bmc_seconds": 2.320836305618286
+          },
+          {
+            "unit": "near_mem_icache",
+            "level": "keep",
+            "coi_state_bits": 3518,
+            "bmc": "SAT",
+            "cex_depth": 11,
+            "build_seconds": 3.5918161869049072,
+            "bmc_seconds": 2.8727478981018066
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 2,
+      "assignment": {
+        "csr_regfile": "cut",
+        "gpr_regfile_regfile": "havoc",
+        "near_mem_dcache": "keep",
+        "near_mem_icache": "cut"
+      },
+      "model": "/var/tmp/neuroabs-runtime/runs/llm-refine-20261026/piccolo/BEQ/models/csr_regfile=cut+gpr_regfile_regfile=havoc+near_mem_dcache=keep+near_mem_icache=cut/model.btor2",
+      "choices_with_free_values": [
+        "csr_regfile",
+        "gpr_regfile_regfile_m0",
+        "near_mem_icache"
+      ],
+      "coi_state_bits": 3112,
+      "ric3": "SAT",
+      "ric3_seconds": 16.275840520858765,
+      "cex_depth": 11,
+      "build_seconds": 3.531458616256714,
+      "reused": false,
+      "replay_seconds": 0.1581592559814453,
+      "counterexample_units": {
+        "csr_regfile": 16,
+        "near_mem_icache": 10,
+        "gpr_regfile_regfile": 2
+      },
+      "refined_units": [
+        "near_mem_icache"
+      ],
+      "selection_seconds": 17.190435647964478,
+      "selection": {
+        "bound": 11,
+        "candidates": [
+          {
+            "unit": "csr_regfile",
+            "level": "keep",
+            "coi_state_bits": 3665,
+            "bmc": "SAT",
+            "cex_depth": 11,
+            "build_seconds": 3.3209190368652344,
+            "bmc_seconds": 4.47676682472229
+          },
+          {
+            "unit": "gpr_regfile_regfile",
+            "level": "keep",
+            "coi_state_bits": 4136,
+            "bmc": "SAT",
+            "cex_depth": 11,
+            "build_seconds": 3.647444009780884,
+            "bmc_seconds": 3.2744526863098145
+          },
+          {
+            "unit": "near_mem_icache",
+            "level": "keep",
+            "coi_state_bits": 3518,
+            "bmc": "SAT",
+            "cex_depth": 11,
+            "build_seconds": 3.433215618133545,
+            "bmc_seconds": 2.470853090286255
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 3,
+      "assignment": {
+        "csr_regfile": "cut",
+        "gpr_regfile_regfile": "havoc",
+        "near_mem_dcache": "keep",
+        "near_mem_icache": "keep"
+      },
+      "model": "/var/tmp/neuroabs-runtime/runs/llm-refine-20261026/piccolo/BEQ/models/csr_regfile=cut+gpr_regfile_regfile=havoc+near_mem_dcache=keep+near_mem_icache=keep/model.btor2",
+      "choices_with_free_values": [
+        "csr_regfile",
+        "gpr_regfile_regfile_m0"
+      ],
+      "coi_state_bits": 3518,
+      "ric3": "SAT",
+      "ric3_seconds": 19.19978404045105,
+      "cex_depth": 11,
+      "build_seconds": 3.433215618133545,
+      "reused": false,
+      "replay_seconds": 0.23749184608459473,
+      "counterexample_units": {
+        "csr_regfile": 14,
+        "gpr_regfile_regfile": 2
+      },
+      "refined_units": [
+        "gpr_regfile_regfile"
+      ],
+      "selection_seconds": 20.505181074142456,
+      "selection": {
+        "bound": 11,
+        "candidates": [
+          {
+            "unit": "csr_regfile",
+            "level": "keep",
+            "coi_state_bits": 4107,
+            "bmc": "SAT",
+            "cex_depth": 11,
+            "build_seconds": 2.8261232376098633,
+            "bmc_seconds": 5.028738975524902
+          },
+          {
+            "unit": "gpr_regfile_regfile",
+            "level": "keep",
+            "coi_state_bits": 4542,
+            "bmc": "NONE",
+            "cex_depth": null,
+            "build_seconds": 3.1650760173797607,
+            "bmc_seconds": 12.65031886100769
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 4,
+      "assignment": {
+        "csr_regfile": "cut",
+        "gpr_regfile_regfile": "keep",
+        "near_mem_dcache": "keep",
+        "near_mem_icache": "keep"
+      },
+      "model": "/var/tmp/neuroabs-runtime/runs/llm-refine-20261026/piccolo/BEQ/models/csr_regfile=cut+gpr_regfile_regfile=keep+near_mem_dcache=keep+near_mem_icache=keep/model.btor2",
+      "choices_with_free_values": [
+        "csr_regfile"
+      ],
+      "coi_state_bits": 4542,
+      "ric3": "TIMEOUT",
+      "ric3_seconds": 303.9183304309845,
+      "cex_depth": null,
+      "build_seconds": 3.1650760173797607,
+      "reused": false
+    }
+  ]
+}

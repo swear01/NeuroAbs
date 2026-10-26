@@ -1,0 +1,241 @@
+{
+  "status": "TIMEOUT",
+  "final_model": "/var/tmp/neuroabs-runtime/runs/llm-refine-20261026/piccolo/SUB/models/csr_regfile=cut+gpr_regfile_regfile=keep+near_mem_dcache=cut+near_mem_icache=keep/model.btor2",
+  "final_assignment": {
+    "csr_regfile": "cut",
+    "gpr_regfile_regfile": "keep",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "keep"
+  },
+  "refinements": 3,
+  "total_seconds": 520.6134684085846,
+  "history": [
+    {
+      "iteration": 0,
+      "assignment": {
+        "csr_regfile": "cut",
+        "gpr_regfile_regfile": "cut",
+        "near_mem_dcache": "cut",
+        "near_mem_icache": "cut"
+      },
+      "model": "/var/tmp/neuroabs-runtime/runs/llm-refine-20261026/piccolo/SUB/models/csr_regfile=cut+gpr_regfile_regfile=cut+near_mem_dcache=cut+near_mem_icache=cut/model.btor2",
+      "choices_with_free_values": [
+        "csr_regfile",
+        "gpr_regfile_regfile",
+        "near_mem_dcache",
+        "near_mem_icache"
+      ],
+      "coi_state_bits": 2706,
+      "ric3": "SAT",
+      "ric3_seconds": 10.944941520690918,
+      "cex_depth": 8,
+      "build_seconds": 6.059410333633423,
+      "reused": true,
+      "replay_seconds": 0.0762627124786377,
+      "counterexample_units": {
+        "csr_regfile": 14,
+        "gpr_regfile_regfile": 3,
+        "near_mem_dcache": 7,
+        "near_mem_icache": 12
+      },
+      "refined_units": [
+        "gpr_regfile_regfile"
+      ],
+      "selection_seconds": 111.71605825424194,
+      "selection": {
+        "llm_seconds": 104.77833795547485,
+        "signal_seconds": 6.93772029876709,
+        "probabilities": {
+          "gpr_regfile_regfile": 0.5,
+          "near_mem_icache": 0.25,
+          "csr_regfile": 0.2,
+          "near_mem_dcache": 0.05
+        },
+        "reason": "The SUB instruction's operands and result depend directly on the GPR register file, and its unconstrained D_OUT_1/D_OUT_3 values in cycles 5-6 are the most plausible cause of the register-equality assertions failing.",
+        "usage": {
+          "prompt_tokens": 4496,
+          "completion_tokens": 14670,
+          "total_tokens": 19166,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 0,
+            "cache_write_tokens": 0,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "text_tokens": 0,
+            "image_tokens": 0,
+            "video_tokens": 0
+          },
+          "completion_tokens_details": {
+            "audio_tokens": 0,
+            "reasoning_tokens": 14550,
+            "accepted_prediction_tokens": 0,
+            "rejected_prediction_tokens": 0,
+            "text_tokens": 0,
+            "image_tokens": 0,
+            "video_tokens": 0
+          }
+        },
+        "cost_usd": 0.0189528,
+        "served_model": "deepseek/deepseek-v4.1-flash"
+      }
+    },
+    {
+      "iteration": 1,
+      "assignment": {
+        "csr_regfile": "cut",
+        "gpr_regfile_regfile": "havoc",
+        "near_mem_dcache": "cut",
+        "near_mem_icache": "cut"
+      },
+      "model": "/var/tmp/neuroabs-runtime/runs/llm-refine-20261026/piccolo/SUB/models/csr_regfile=cut+gpr_regfile_regfile=havoc+near_mem_dcache=cut+near_mem_icache=cut/model.btor2",
+      "choices_with_free_values": [
+        "csr_regfile",
+        "gpr_regfile_regfile_m0",
+        "near_mem_dcache",
+        "near_mem_icache"
+      ],
+      "coi_state_bits": 2706,
+      "ric3": "SAT",
+      "ric3_seconds": 6.6640074253082275,
+      "cex_depth": 8,
+      "build_seconds": 5.944465637207031,
+      "reused": false,
+      "replay_seconds": 0.06911087036132812,
+      "counterexample_units": {
+        "csr_regfile": 11,
+        "near_mem_dcache": 3,
+        "near_mem_icache": 11,
+        "gpr_regfile_regfile": 2
+      },
+      "refined_units": [
+        "gpr_regfile_regfile"
+      ],
+      "selection_seconds": 30.470524311065674,
+      "selection": {
+        "llm_seconds": 25.254888772964478,
+        "signal_seconds": 5.215635538101196,
+        "probabilities": {
+          "gpr_regfile_regfile": 0.62,
+          "near_mem_icache": 0.23,
+          "csr_regfile": 0.11,
+          "near_mem_dcache": 0.04
+        },
+        "reason": "The SUB result and x-register assertions depend directly on GPR read/write behavior, and the two unconstrained D_OUT_1 values in cycles 5-6 can corrupt the execute-stage operands, making the GPR refinement the most likely fix.",
+        "usage": {
+          "prompt_tokens": 4460,
+          "completion_tokens": 2979,
+          "total_tokens": 7439,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 2048,
+            "cache_write_tokens": 0,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "text_tokens": 0,
+            "image_tokens": 0,
+            "video_tokens": 0
+          },
+          "completion_tokens_details": {
+            "audio_tokens": 0,
+            "reasoning_tokens": 2856,
+            "accepted_prediction_tokens": 0,
+            "rejected_prediction_tokens": 0,
+            "text_tokens": 0,
+            "image_tokens": 0,
+            "video_tokens": 0
+          }
+        },
+        "cost_usd": 0.004310688,
+        "served_model": "deepseek/deepseek-v4.1-flash"
+      }
+    },
+    {
+      "iteration": 2,
+      "assignment": {
+        "csr_regfile": "cut",
+        "gpr_regfile_regfile": "keep",
+        "near_mem_dcache": "cut",
+        "near_mem_icache": "cut"
+      },
+      "model": "/var/tmp/neuroabs-runtime/runs/llm-refine-20261026/piccolo/SUB/models/csr_regfile=cut+gpr_regfile_regfile=keep+near_mem_dcache=cut+near_mem_icache=cut/model.btor2",
+      "choices_with_free_values": [
+        "csr_regfile",
+        "near_mem_dcache",
+        "near_mem_icache"
+      ],
+      "coi_state_bits": 3730,
+      "ric3": "SAT",
+      "ric3_seconds": 21.22422504425049,
+      "cex_depth": 8,
+      "build_seconds": 5.246633291244507,
+      "reused": false,
+      "replay_seconds": 0.13826656341552734,
+      "counterexample_units": {
+        "csr_regfile": 10,
+        "near_mem_dcache": 4,
+        "near_mem_icache": 10
+      },
+      "refined_units": [
+        "near_mem_icache"
+      ],
+      "selection_seconds": 13.136647939682007,
+      "selection": {
+        "llm_seconds": 8.365586042404175,
+        "signal_seconds": 4.771061897277832,
+        "probabilities": {
+          "near_mem_icache": 0.8,
+          "csr_regfile": 0.15,
+          "near_mem_dcache": 0.05
+        },
+        "reason": "The icache's unconstrained imem_valid, imem_exc, word64, and imem_pc values directly corrupt instruction fetch/decode and PC tracking needed to verify SUB execution, while dcache activity is irrelevant to SUB and CSR interrupts are less directly implicated.",
+        "usage": {
+          "prompt_tokens": 4474,
+          "completion_tokens": 892,
+          "total_tokens": 5366,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 2048,
+            "cache_write_tokens": 0,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "text_tokens": 0,
+            "image_tokens": 0,
+            "video_tokens": 0
+          },
+          "completion_tokens_details": {
+            "audio_tokens": 0,
+            "reasoning_tokens": 779,
+            "accepted_prediction_tokens": 0,
+            "rejected_prediction_tokens": 0,
+            "text_tokens": 0,
+            "image_tokens": 0,
+            "video_tokens": 0
+          }
+        },
+        "cost_usd": 0.0018104879999999999,
+        "served_model": "deepseek/deepseek-v4.1-flash"
+      }
+    },
+    {
+      "iteration": 3,
+      "assignment": {
+        "csr_regfile": "cut",
+        "gpr_regfile_regfile": "keep",
+        "near_mem_dcache": "cut",
+        "near_mem_icache": "keep"
+      },
+      "model": "/var/tmp/neuroabs-runtime/runs/llm-refine-20261026/piccolo/SUB/models/csr_regfile=cut+gpr_regfile_regfile=keep+near_mem_dcache=cut+near_mem_icache=keep/model.btor2",
+      "choices_with_free_values": [
+        "csr_regfile",
+        "near_mem_dcache"
+      ],
+      "coi_state_bits": 4136,
+      "ric3": "TIMEOUT",
+      "ric3_seconds": 304.07229804992676,
+      "cex_depth": null,
+      "build_seconds": 4.850616455078125,
+      "reused": false
+    }
+  ]
+}

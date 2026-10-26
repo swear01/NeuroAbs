@@ -1,0 +1,388 @@
+[
+  {
+    "case": "SUB",
+    "arm": "one",
+    "status": "TIMEOUT",
+    "refinements": 5,
+    "steps": [
+      {
+        "iteration": 0,
+        "unit": "csr_regfile",
+        "from": "cut",
+        "needed": false,
+        "removing": "SAT",
+        "cex_depth": 8,
+        "probabilities": null
+      },
+      {
+        "iteration": 1,
+        "unit": "near_mem_icache",
+        "from": "cut",
+        "needed": true,
+        "removing": "NONE",
+        "cex_depth": 8,
+        "probabilities": null
+      },
+      {
+        "iteration": 2,
+        "unit": "near_mem_dcache",
+        "from": "cut",
+        "needed": false,
+        "removing": "SAT",
+        "cex_depth": 14,
+        "probabilities": null
+      },
+      {
+        "iteration": 3,
+        "unit": "gpr_regfile_regfile",
+        "from": "cut",
+        "needed": true,
+        "removing": "SAT",
+        "cex_depth": 13,
+        "probabilities": null
+      },
+      {
+        "iteration": 4,
+        "unit": "gpr_regfile_regfile",
+        "from": "havoc",
+        "needed": true,
+        "removing": "NONE",
+        "cex_depth": 11,
+        "probabilities": null
+      }
+    ],
+    "final_assignment": {
+      "csr_regfile": "keep",
+      "gpr_regfile_regfile": "keep",
+      "near_mem_dcache": "keep",
+      "near_mem_icache": "keep"
+    },
+    "final_coi_state_bits": 5131,
+    "final_deepest_bmc": 11,
+    "optimal": false,
+    "total_seconds": 551.9806380271912,
+    "refinement_seconds": 240.57821941375732,
+    "ric3_build_seconds": 550.9056234359741,
+    "selection_seconds": 0.0,
+    "llm_seconds": 0,
+    "llm_cost_usd": 0
+  },
+  {
+    "case": "SUB",
+    "arm": "all",
+    "status": "TIMEOUT",
+    "refinements": 2,
+    "steps": [
+      {
+        "iteration": 0,
+        "unit": "csr_regfile",
+        "from": "cut",
+        "needed": false,
+        "removing": "SAT",
+        "cex_depth": 8,
+        "probabilities": null
+      },
+      {
+        "iteration": 0,
+        "unit": "gpr_regfile_regfile",
+        "from": "cut",
+        "needed": true,
+        "removing": "SAT",
+        "cex_depth": 8,
+        "probabilities": null
+      },
+      {
+        "iteration": 0,
+        "unit": "near_mem_dcache",
+        "from": "cut",
+        "needed": false,
+        "removing": "NONE",
+        "cex_depth": 8,
+        "probabilities": null
+      },
+      {
+        "iteration": 0,
+        "unit": "near_mem_icache",
+        "from": "cut",
+        "needed": true,
+        "removing": "NONE",
+        "cex_depth": 8,
+        "probabilities": null
+      },
+      {
+        "iteration": 1,
+        "unit": "gpr_regfile_regfile",
+        "from": "havoc",
+        "needed": true,
+        "removing": "NONE",
+        "cex_depth": 11,
+        "probabilities": null
+      }
+    ],
+    "final_assignment": {
+      "csr_regfile": "keep",
+      "gpr_regfile_regfile": "keep",
+      "near_mem_dcache": "keep",
+      "near_mem_icache": "keep"
+    },
+    "final_coi_state_bits": 5131,
+    "final_deepest_bmc": 11,
+    "optimal": false,
+    "total_seconds": 403.3536903858185,
+    "refinement_seconds": 91.95127177238464,
+    "ric3_build_seconds": 402.99656677246094,
+    "selection_seconds": 0.0,
+    "llm_seconds": 0,
+    "llm_cost_usd": 0
+  },
+  {
+    "case": "SUB",
+    "arm": "bmc",
+    "status": "TIMEOUT",
+    "refinements": 4,
+    "steps": [
+      {
+        "iteration": 0,
+        "unit": "near_mem_dcache",
+        "from": "cut",
+        "needed": false,
+        "removing": "NONE",
+        "cex_depth": 8,
+        "probabilities": null
+      },
+      {
+        "iteration": 1,
+        "unit": "gpr_regfile_regfile",
+        "from": "cut",
+        "needed": true,
+        "removing": "SAT",
+        "cex_depth": 11,
+        "probabilities": null
+      },
+      {
+        "iteration": 2,
+        "unit": "near_mem_icache",
+        "from": "cut",
+        "needed": true,
+        "removing": "SAT",
+        "cex_depth": 11,
+        "probabilities": null
+      },
+      {
+        "iteration": 3,
+        "unit": "gpr_regfile_regfile",
+        "from": "havoc",
+        "needed": true,
+        "removing": "NONE",
+        "cex_depth": 11,
+        "probabilities": null
+      }
+    ],
+    "final_assignment": {
+      "csr_regfile": "cut",
+      "gpr_regfile_regfile": "keep",
+      "near_mem_dcache": "keep",
+      "near_mem_icache": "keep"
+    },
+    "final_coi_state_bits": 4542,
+    "final_deepest_bmc": 20,
+    "optimal": false,
+    "total_seconds": 539.1993265151978,
+    "refinement_seconds": 229.56762313842773,
+    "ric3_build_seconds": 434.85701060295105,
+    "selection_seconds": 103.6044135093689,
+    "llm_seconds": 0,
+    "llm_cost_usd": 0
+  },
+  {
+    "case": "SUB",
+    "arm": "llm-1",
+    "status": "TIMEOUT",
+    "refinements": 3,
+    "steps": [
+      {
+        "iteration": 0,
+        "unit": "gpr_regfile_regfile",
+        "from": "cut",
+        "needed": true,
+        "removing": "SAT",
+        "cex_depth": 8,
+        "probabilities": {
+          "gpr_regfile_regfile": 0.5,
+          "near_mem_icache": 0.25,
+          "csr_regfile": 0.2,
+          "near_mem_dcache": 0.05
+        }
+      },
+      {
+        "iteration": 1,
+        "unit": "gpr_regfile_regfile",
+        "from": "havoc",
+        "needed": true,
+        "removing": "SAT",
+        "cex_depth": 8,
+        "probabilities": {
+          "gpr_regfile_regfile": 0.62,
+          "near_mem_icache": 0.23,
+          "csr_regfile": 0.11,
+          "near_mem_dcache": 0.04
+        }
+      },
+      {
+        "iteration": 2,
+        "unit": "near_mem_icache",
+        "from": "cut",
+        "needed": true,
+        "removing": "NONE",
+        "cex_depth": 8,
+        "probabilities": {
+          "near_mem_icache": 0.8,
+          "csr_regfile": 0.15,
+          "near_mem_dcache": 0.05
+        }
+      }
+    ],
+    "final_assignment": {
+      "csr_regfile": "cut",
+      "gpr_regfile_regfile": "keep",
+      "near_mem_dcache": "cut",
+      "near_mem_icache": "keep"
+    },
+    "final_coi_state_bits": 4136,
+    "final_deepest_bmc": 20,
+    "optimal": true,
+    "total_seconds": 520.6134684085846,
+    "refinement_seconds": 211.6905539035797,
+    "ric3_build_seconds": 365.0065977573395,
+    "selection_seconds": 155.32323050498962,
+    "llm_seconds": 138.3988127708435,
+    "llm_cost_usd": 0.025073975999999998
+  },
+  {
+    "case": "SUB",
+    "arm": "llm-2",
+    "status": "TIMEOUT",
+    "refinements": 3,
+    "steps": [
+      {
+        "iteration": 0,
+        "unit": "near_mem_icache",
+        "from": "cut",
+        "needed": true,
+        "removing": "NONE",
+        "cex_depth": 8,
+        "probabilities": {
+          "near_mem_icache": 0.7,
+          "gpr_regfile_regfile": 0.2,
+          "csr_regfile": 0.05,
+          "near_mem_dcache": 0.05
+        }
+      },
+      {
+        "iteration": 1,
+        "unit": "gpr_regfile_regfile",
+        "from": "cut",
+        "needed": true,
+        "removing": "SAT",
+        "cex_depth": 11,
+        "probabilities": {
+          "gpr_regfile_regfile": 0.82,
+          "csr_regfile": 0.13,
+          "near_mem_dcache": 0.05
+        }
+      },
+      {
+        "iteration": 2,
+        "unit": "gpr_regfile_regfile",
+        "from": "havoc",
+        "needed": true,
+        "removing": "NONE",
+        "cex_depth": 11,
+        "probabilities": {
+          "gpr_regfile_regfile": 0.82,
+          "csr_regfile": 0.12,
+          "near_mem_dcache": 0.06
+        }
+      }
+    ],
+    "final_assignment": {
+      "csr_regfile": "cut",
+      "gpr_regfile_regfile": "keep",
+      "near_mem_dcache": "cut",
+      "near_mem_icache": "keep"
+    },
+    "final_coi_state_bits": 4136,
+    "final_deepest_bmc": 20,
+    "optimal": true,
+    "total_seconds": 424.61439418792725,
+    "refinement_seconds": 115.69147968292236,
+    "ric3_build_seconds": 379.2482228279114,
+    "selection_seconds": 44.93694019317627,
+    "llm_seconds": 29.061562299728394,
+    "llm_cost_usd": 0.004998539999999999
+  },
+  {
+    "case": "SUB",
+    "arm": "llm-3",
+    "status": "TIMEOUT",
+    "refinements": 3,
+    "steps": [
+      {
+        "iteration": 0,
+        "unit": "gpr_regfile_regfile",
+        "from": "cut",
+        "needed": true,
+        "removing": "SAT",
+        "cex_depth": 8,
+        "probabilities": {
+          "gpr_regfile_regfile": 0.68,
+          "near_mem_icache": 0.17,
+          "near_mem_dcache": 0.1,
+          "csr_regfile": 0.05
+        }
+      },
+      {
+        "iteration": 1,
+        "unit": "gpr_regfile_regfile",
+        "from": "havoc",
+        "needed": true,
+        "removing": "SAT",
+        "cex_depth": 8,
+        "probabilities": {
+          "gpr_regfile_regfile": 0.82,
+          "near_mem_icache": 0.12,
+          "csr_regfile": 0.03,
+          "near_mem_dcache": 0.03
+        }
+      },
+      {
+        "iteration": 2,
+        "unit": "near_mem_icache",
+        "from": "cut",
+        "needed": true,
+        "removing": "NONE",
+        "cex_depth": 8,
+        "probabilities": {
+          "csr_regfile": 0.08,
+          "near_mem_dcache": 0.12,
+          "near_mem_icache": 0.8
+        }
+      }
+    ],
+    "final_assignment": {
+      "csr_regfile": "cut",
+      "gpr_regfile_regfile": "keep",
+      "near_mem_dcache": "cut",
+      "near_mem_icache": "keep"
+    },
+    "final_coi_state_bits": 4136,
+    "final_deepest_bmc": 20,
+    "optimal": true,
+    "total_seconds": 421.60872077941895,
+    "refinement_seconds": 112.68580627441406,
+    "ric3_build_seconds": 365.0065977573395,
+    "selection_seconds": 56.327712059020996,
+    "llm_seconds": 39.40329432487488,
+    "llm_cost_usd": 0.005762903999999999
+  }
+]

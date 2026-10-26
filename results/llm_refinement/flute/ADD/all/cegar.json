@@ -1,0 +1,81 @@
+{
+  "status": "TIMEOUT",
+  "final_model": "/var/tmp/neuroabs-runtime/runs/llm-refine-20261026/flute/ADD/models/csr_regfile=keep+gpr_regfile_regfile=havoc+near_mem_dcache=havoc+near_mem_icache=havoc+stageF_branch_predictor=havoc/model.btor2",
+  "final_assignment": {
+    "csr_regfile": "keep",
+    "gpr_regfile_regfile": "havoc",
+    "near_mem_dcache": "havoc",
+    "near_mem_icache": "havoc",
+    "stageF_branch_predictor": "havoc"
+  },
+  "refinements": 1,
+  "total_seconds": 327.393550157547,
+  "history": [
+    {
+      "iteration": 0,
+      "assignment": {
+        "csr_regfile": "cut",
+        "gpr_regfile_regfile": "cut",
+        "near_mem_dcache": "cut",
+        "near_mem_icache": "cut",
+        "stageF_branch_predictor": "cut"
+      },
+      "model": "/var/tmp/neuroabs-runtime/runs/llm-refine-20261026/flute/ADD/models/csr_regfile=cut+gpr_regfile_regfile=cut+near_mem_dcache=cut+near_mem_icache=cut+stageF_branch_predictor=cut/model.btor2",
+      "choices_with_free_values": [
+        "csr_regfile",
+        "gpr_regfile_regfile",
+        "near_mem_dcache",
+        "near_mem_icache",
+        "stageF_branch_predictor"
+      ],
+      "coi_state_bits": 3136,
+      "ric3": "SAT",
+      "ric3_seconds": 11.908472776412964,
+      "cex_depth": 11,
+      "build_seconds": 4.055961847305298,
+      "reused": true,
+      "replay_seconds": 0.06555676460266113,
+      "counterexample_units": {
+        "csr_regfile": 10,
+        "stageF_branch_predictor": 7,
+        "gpr_regfile_regfile": 3,
+        "near_mem_dcache": 2,
+        "near_mem_icache": 9
+      },
+      "refined_units": [
+        "csr_regfile",
+        "gpr_regfile_regfile",
+        "near_mem_dcache",
+        "near_mem_icache",
+        "stageF_branch_predictor"
+      ],
+      "selection_seconds": 0.0,
+      "selection": {}
+    },
+    {
+      "iteration": 1,
+      "assignment": {
+        "csr_regfile": "keep",
+        "gpr_regfile_regfile": "havoc",
+        "near_mem_dcache": "havoc",
+        "near_mem_icache": "havoc",
+        "stageF_branch_predictor": "havoc"
+      },
+      "model": "/var/tmp/neuroabs-runtime/runs/llm-refine-20261026/flute/ADD/models/csr_regfile=keep+gpr_regfile_regfile=havoc+near_mem_dcache=havoc+near_mem_icache=havoc+stageF_branch_predictor=havoc/model.btor2",
+      "choices_with_free_values": [
+        "gpr_regfile_regfile_m0",
+        "near_mem_dcache_m0",
+        "near_mem_dcache_m1",
+        "near_mem_icache_m0",
+        "near_mem_icache_m1",
+        "stageF_branch_predictor_m1"
+      ],
+      "coi_state_bits": 5311,
+      "ric3": "TIMEOUT",
+      "ric3_seconds": 307.21425008773804,
+      "cex_depth": null,
+      "build_seconds": 4.149308681488037,
+      "reused": false
+    }
+  ]
+}

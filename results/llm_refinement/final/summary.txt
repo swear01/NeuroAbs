@@ -1,0 +1,6 @@
+ADDI csr_regfile=cut+gpr_regfile_regfile=keep+near_mem_dcache=cut+near_mem_icache=keep 4136 UNKNOWN bmc_kissat_dyn=0 bmc_kissat_65=65 bmc_kissat_10=50 bmc=13 ic3=7 kind=11
+ADDI csr_regfile=cut+gpr_regfile_regfile=keep+near_mem_dcache=keep+near_mem_icache=keep 4542 UNKNOWN bmc_kissat_dyn=0 bmc_kissat_65=65 bmc_kissat_10=40 bmc=14 ic3=10 kind=10
+ADDI csr_regfile=keep+gpr_regfile_regfile=keep+near_mem_dcache=keep+near_mem_icache=keep 5131 UNKNOWN bmc_kissat_dyn=0 bmc_kissat_65=65 bmc_kissat_10=40 bmc=13 ic3=10 kind=11
+BEQ csr_regfile=cut+gpr_regfile_regfile=keep+near_mem_dcache=cut+near_mem_icache=keep 4136 UNKNOWN bmc_kissat_dyn=0 bmc_kissat_65=65 bmc_kissat_10=40 bmc=17 ic3=7 kind=11
+BEQ csr_regfile=cut+gpr_regfile_regfile=keep+near_mem_dcache=keep+near_mem_icache=keep 4542 UNKNOWN bmc_kissat_dyn=0 bmc_kissat_65=0 bmc_kissat_10=30 bmc=17 ic3=10 kind=11
+BEQ csr_regfile=keep+gpr_regfile_regfile=keep+near_mem_dcache=keep+near_mem_icache=keep 5131 UNKNOWN bmc_kissat_dyn=0 bmc_kissat_65=0 bmc_kissat_10=30 bmc=15 ic3=10 kind=11

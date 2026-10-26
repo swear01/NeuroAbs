@@ -1,0 +1,12 @@
+ADD_Flatten
+ADDI
+ANDI
+AUIPC
+BEQ
+BNE_new
+JAL
+LUI
+OR
+SLTI
+SUB
+XOR

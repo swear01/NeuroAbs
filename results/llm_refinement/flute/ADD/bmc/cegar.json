@@ -1,0 +1,279 @@
+{
+  "status": "TIMEOUT",
+  "final_model": "/var/tmp/neuroabs-runtime/runs/llm-refine-20261026/flute/ADD/models/csr_regfile=cut+gpr_regfile_regfile=cut+near_mem_dcache=havoc+near_mem_icache=cut+stageF_branch_predictor=keep/model.btor2",
+  "final_assignment": {
+    "csr_regfile": "cut",
+    "gpr_regfile_regfile": "cut",
+    "near_mem_dcache": "havoc",
+    "near_mem_icache": "cut",
+    "stageF_branch_predictor": "keep"
+  },
+  "refinements": 3,
+  "total_seconds": 1230.5619611740112,
+  "history": [
+    {
+      "iteration": 0,
+      "assignment": {
+        "csr_regfile": "cut",
+        "gpr_regfile_regfile": "cut",
+        "near_mem_dcache": "cut",
+        "near_mem_icache": "cut",
+        "stageF_branch_predictor": "cut"
+      },
+      "model": "/var/tmp/neuroabs-runtime/runs/llm-refine-20261026/flute/ADD/models/csr_regfile=cut+gpr_regfile_regfile=cut+near_mem_dcache=cut+near_mem_icache=cut+stageF_branch_predictor=cut/model.btor2",
+      "choices_with_free_values": [
+        "csr_regfile",
+        "gpr_regfile_regfile",
+        "near_mem_dcache",
+        "near_mem_icache",
+        "stageF_branch_predictor"
+      ],
+      "coi_state_bits": 3136,
+      "ric3": "SAT",
+      "ric3_seconds": 11.908472776412964,
+      "cex_depth": 11,
+      "build_seconds": 4.055961847305298,
+      "reused": true,
+      "replay_seconds": 0.05931544303894043,
+      "counterexample_units": {
+        "csr_regfile": 10,
+        "stageF_branch_predictor": 7,
+        "gpr_regfile_regfile": 3,
+        "near_mem_dcache": 2,
+        "near_mem_icache": 9
+      },
+      "refined_units": [
+        "near_mem_dcache"
+      ],
+      "selection_seconds": 25.5826997756958,
+      "selection": {
+        "bound": 11,
+        "candidates": [
+          {
+            "unit": "csr_regfile",
+            "level": "keep",
+            "coi_state_bits": 3717,
+            "bmc": "SAT",
+            "cex_depth": 10,
+            "build_seconds": 4.188064336776733,
+            "bmc_seconds": 2.569195032119751
+          },
+          {
+            "unit": "gpr_regfile_regfile",
+            "level": "havoc",
+            "coi_state_bits": 3136,
+            "bmc": "SAT",
+            "cex_depth": 10,
+            "build_seconds": 3.559980630874634,
+            "bmc_seconds": 1.266732931137085
+          },
+          {
+            "unit": "near_mem_dcache",
+            "level": "havoc",
+            "coi_state_bits": 3593,
+            "bmc": "NONE",
+            "cex_depth": null,
+            "build_seconds": 3.9708023071289062,
+            "bmc_seconds": 1.2165064811706543
+          },
+          {
+            "unit": "near_mem_icache",
+            "level": "havoc",
+            "coi_state_bits": 3629,
+            "bmc": "NONE",
+            "cex_depth": null,
+            "build_seconds": 4.109456777572632,
+            "bmc_seconds": 1.5674567222595215
+          },
+          {
+            "unit": "stageF_branch_predictor",
+            "level": "havoc",
+            "coi_state_bits": 3776,
+            "bmc": "NONE",
+            "cex_depth": null,
+            "build_seconds": 4.385289669036865,
+            "bmc_seconds": 2.720017194747925
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 1,
+      "assignment": {
+        "csr_regfile": "cut",
+        "gpr_regfile_regfile": "cut",
+        "near_mem_dcache": "havoc",
+        "near_mem_icache": "cut",
+        "stageF_branch_predictor": "cut"
+      },
+      "model": "/var/tmp/neuroabs-runtime/runs/llm-refine-20261026/flute/ADD/models/csr_regfile=cut+gpr_regfile_regfile=cut+near_mem_dcache=havoc+near_mem_icache=cut+stageF_branch_predictor=cut/model.btor2",
+      "choices_with_free_values": [
+        "csr_regfile",
+        "gpr_regfile_regfile",
+        "near_mem_dcache_m0",
+        "near_mem_dcache_m1",
+        "near_mem_icache",
+        "stageF_branch_predictor"
+      ],
+      "coi_state_bits": 3593,
+      "ric3": "SAT",
+      "ric3_seconds": 26.766063928604126,
+      "cex_depth": 13,
+      "build_seconds": 3.9708023071289062,
+      "reused": false,
+      "replay_seconds": 0.13303112983703613,
+      "counterexample_units": {
+        "csr_regfile": 18,
+        "stageF_branch_predictor": 9,
+        "gpr_regfile_regfile": 2,
+        "near_mem_icache": 8
+      },
+      "refined_units": [
+        "stageF_branch_predictor"
+      ],
+      "selection_seconds": 24.482027292251587,
+      "selection": {
+        "bound": 13,
+        "candidates": [
+          {
+            "unit": "csr_regfile",
+            "level": "keep",
+            "coi_state_bits": 4178,
+            "bmc": "SAT",
+            "cex_depth": 13,
+            "build_seconds": 4.422604322433472,
+            "bmc_seconds": 3.8740479946136475
+          },
+          {
+            "unit": "gpr_regfile_regfile",
+            "level": "havoc",
+            "coi_state_bits": 3593,
+            "bmc": "SAT",
+            "cex_depth": 13,
+            "build_seconds": 4.256562232971191,
+            "bmc_seconds": 1.77193284034729
+          },
+          {
+            "unit": "near_mem_icache",
+            "level": "havoc",
+            "coi_state_bits": 4086,
+            "bmc": "SAT",
+            "cex_depth": 13,
+            "build_seconds": 4.454744338989258,
+            "bmc_seconds": 2.2243943214416504
+          },
+          {
+            "unit": "stageF_branch_predictor",
+            "level": "havoc",
+            "coi_state_bits": 4233,
+            "bmc": "NONE",
+            "cex_depth": null,
+            "build_seconds": 4.643884658813477,
+            "bmc_seconds": 3.477741241455078
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 2,
+      "assignment": {
+        "csr_regfile": "cut",
+        "gpr_regfile_regfile": "cut",
+        "near_mem_dcache": "havoc",
+        "near_mem_icache": "cut",
+        "stageF_branch_predictor": "havoc"
+      },
+      "model": "/var/tmp/neuroabs-runtime/runs/llm-refine-20261026/flute/ADD/models/csr_regfile=cut+gpr_regfile_regfile=cut+near_mem_dcache=havoc+near_mem_icache=cut+stageF_branch_predictor=havoc/model.btor2",
+      "choices_with_free_values": [
+        "csr_regfile",
+        "gpr_regfile_regfile",
+        "near_mem_dcache_m0",
+        "near_mem_dcache_m1",
+        "near_mem_icache",
+        "stageF_branch_predictor_m1"
+      ],
+      "coi_state_bits": 4233,
+      "ric3": "SAT",
+      "ric3_seconds": 186.4018998146057,
+      "cex_depth": 524,
+      "build_seconds": 4.643884658813477,
+      "reused": false,
+      "replay_seconds": 4.752510070800781,
+      "counterexample_units": {
+        "csr_regfile": 914,
+        "gpr_regfile_regfile": 3,
+        "near_mem_icache": 295,
+        "stageF_branch_predictor": 3
+      },
+      "refined_units": [
+        "stageF_branch_predictor"
+      ],
+      "selection_seconds": 613.6432025432587,
+      "selection": {
+        "bound": 524,
+        "candidates": [
+          {
+            "unit": "csr_regfile",
+            "level": "keep",
+            "coi_state_bits": 4850,
+            "bmc": "SAT",
+            "cex_depth": 518,
+            "build_seconds": 4.392710208892822,
+            "bmc_seconds": 49.738972902297974
+          },
+          {
+            "unit": "gpr_regfile_regfile",
+            "level": "havoc",
+            "coi_state_bits": 4233,
+            "bmc": "SAT",
+            "cex_depth": 518,
+            "build_seconds": 3.5876169204711914,
+            "bmc_seconds": 132.01089310646057
+          },
+          {
+            "unit": "near_mem_icache",
+            "level": "havoc",
+            "coi_state_bits": 4694,
+            "bmc": "SAT",
+            "cex_depth": 518,
+            "build_seconds": 4.874913692474365,
+            "bmc_seconds": 103.07939457893372
+          },
+          {
+            "unit": "stageF_branch_predictor",
+            "level": "keep",
+            "coi_state_bits": 32905,
+            "bmc": "TIMEOUT",
+            "cex_depth": null,
+            "build_seconds": 6.230244398117065,
+            "bmc_seconds": 315.958701133728
+          }
+        ]
+      }
+    },
+    {
+      "iteration": 3,
+      "assignment": {
+        "csr_regfile": "cut",
+        "gpr_regfile_regfile": "cut",
+        "near_mem_dcache": "havoc",
+        "near_mem_icache": "cut",
+        "stageF_branch_predictor": "keep"
+      },
+      "model": "/var/tmp/neuroabs-runtime/runs/llm-refine-20261026/flute/ADD/models/csr_regfile=cut+gpr_regfile_regfile=cut+near_mem_dcache=havoc+near_mem_icache=cut+stageF_branch_predictor=keep/model.btor2",
+      "choices_with_free_values": [
+        "csr_regfile",
+        "gpr_regfile_regfile",
+        "near_mem_dcache_m0",
+        "near_mem_dcache_m1",
+        "near_mem_icache"
+      ],
+      "coi_state_bits": 32905,
+      "ric3": "TIMEOUT",
+      "ric3_seconds": 317.93184518814087,
+      "cex_depth": null,
+      "build_seconds": 6.230244398117065,
+      "reused": false
+    }
+  ]
+}

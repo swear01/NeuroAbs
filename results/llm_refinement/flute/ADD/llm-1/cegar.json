@@ -1,0 +1,328 @@
+{
+  "status": "TIMEOUT",
+  "final_model": "/var/tmp/neuroabs-runtime/runs/llm-refine-20261026/flute/ADD/models/csr_regfile=cut+gpr_regfile_regfile=keep+near_mem_dcache=cut+near_mem_icache=keep+stageF_branch_predictor=cut/model.btor2",
+  "final_assignment": {
+    "csr_regfile": "cut",
+    "gpr_regfile_regfile": "keep",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "keep",
+    "stageF_branch_predictor": "cut"
+  },
+  "refinements": 4,
+  "total_seconds": 598.1161694526672,
+  "history": [
+    {
+      "iteration": 0,
+      "assignment": {
+        "csr_regfile": "cut",
+        "gpr_regfile_regfile": "cut",
+        "near_mem_dcache": "cut",
+        "near_mem_icache": "cut",
+        "stageF_branch_predictor": "cut"
+      },
+      "model": "/var/tmp/neuroabs-runtime/runs/llm-refine-20261026/flute/ADD/models/csr_regfile=cut+gpr_regfile_regfile=cut+near_mem_dcache=cut+near_mem_icache=cut+stageF_branch_predictor=cut/model.btor2",
+      "choices_with_free_values": [
+        "csr_regfile",
+        "gpr_regfile_regfile",
+        "near_mem_dcache",
+        "near_mem_icache",
+        "stageF_branch_predictor"
+      ],
+      "coi_state_bits": 3136,
+      "ric3": "SAT",
+      "ric3_seconds": 11.908472776412964,
+      "cex_depth": 11,
+      "build_seconds": 4.055961847305298,
+      "reused": false,
+      "replay_seconds": 0.060257911682128906,
+      "counterexample_units": {
+        "csr_regfile": 10,
+        "stageF_branch_predictor": 7,
+        "gpr_regfile_regfile": 3,
+        "near_mem_dcache": 2,
+        "near_mem_icache": 9
+      },
+      "refined_units": [
+        "gpr_regfile_regfile"
+      ],
+      "selection_seconds": 68.88540935516357,
+      "selection": {
+        "llm_seconds": 64.9425618648529,
+        "signal_seconds": 3.942847490310669,
+        "probabilities": {
+          "gpr_regfile_regfile": 0.66,
+          "near_mem_icache": 0.16,
+          "csr_regfile": 0.1,
+          "stageF_branch_predictor": 0.05,
+          "near_mem_dcache": 0.03
+        },
+        "reason": "The failing cycle directly involves the GPR array value arr_16, and the property compares every architectural register against the RTL GPR file, so cutting this regfile most plausibly enables the register-consistency counterexample.",
+        "usage": {
+          "prompt_tokens": 4588,
+          "completion_tokens": 8282,
+          "total_tokens": 12870,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 0,
+            "cache_write_tokens": 0,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "text_tokens": 0,
+            "image_tokens": 0,
+            "video_tokens": 0
+          },
+          "completion_tokens_details": {
+            "audio_tokens": 0,
+            "reasoning_tokens": 8164,
+            "accepted_prediction_tokens": 0,
+            "rejected_prediction_tokens": 0,
+            "text_tokens": 0,
+            "image_tokens": 0,
+            "video_tokens": 0
+          }
+        },
+        "cost_usd": 0.0113148,
+        "served_model": "deepseek/deepseek-v4.1-flash"
+      }
+    },
+    {
+      "iteration": 1,
+      "assignment": {
+        "csr_regfile": "cut",
+        "gpr_regfile_regfile": "havoc",
+        "near_mem_dcache": "cut",
+        "near_mem_icache": "cut",
+        "stageF_branch_predictor": "cut"
+      },
+      "model": "/var/tmp/neuroabs-runtime/runs/llm-refine-20261026/flute/ADD/models/csr_regfile=cut+gpr_regfile_regfile=havoc+near_mem_dcache=cut+near_mem_icache=cut+stageF_branch_predictor=cut/model.btor2",
+      "choices_with_free_values": [
+        "csr_regfile",
+        "gpr_regfile_regfile_m0",
+        "near_mem_dcache",
+        "near_mem_icache",
+        "stageF_branch_predictor"
+      ],
+      "coi_state_bits": 3136,
+      "ric3": "SAT",
+      "ric3_seconds": 8.28347373008728,
+      "cex_depth": 12,
+      "build_seconds": 3.559980630874634,
+      "reused": false,
+      "replay_seconds": 0.12472343444824219,
+      "counterexample_units": {
+        "csr_regfile": 17,
+        "stageF_branch_predictor": 8,
+        "near_mem_dcache": 8,
+        "near_mem_icache": 15,
+        "gpr_regfile_regfile": 2
+      },
+      "refined_units": [
+        "gpr_regfile_regfile"
+      ],
+      "selection_seconds": 19.908486366271973,
+      "selection": {
+        "llm_seconds": 16.854111671447754,
+        "signal_seconds": 3.0543746948242188,
+        "probabilities": {
+          "gpr_regfile_regfile": 0.72,
+          "near_mem_icache": 0.11,
+          "csr_regfile": 0.07,
+          "stageF_branch_predictor": 0.06,
+          "near_mem_dcache": 0.04
+        },
+        "reason": "The final assertions compare every ILA x-register against the RTL GPR regfile, and the still-havoced GPR regfile leaves D_OUT_1 reads unconstrained in cycles 7 and 12, directly allowing a spurious writeback/mismatch on the ADD result.",
+        "usage": {
+          "prompt_tokens": 4727,
+          "completion_tokens": 1639,
+          "total_tokens": 6366,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 2048,
+            "cache_write_tokens": 0,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "text_tokens": 0,
+            "image_tokens": 0,
+            "video_tokens": 0
+          },
+          "completion_tokens_details": {
+            "audio_tokens": 0,
+            "reasoning_tokens": 1493,
+            "accepted_prediction_tokens": 0,
+            "rejected_prediction_tokens": 0,
+            "text_tokens": 0,
+            "image_tokens": 0,
+            "video_tokens": 0
+          }
+        },
+        "cost_usd": 0.002782788,
+        "served_model": "deepseek/deepseek-v4.1-flash"
+      }
+    },
+    {
+      "iteration": 2,
+      "assignment": {
+        "csr_regfile": "cut",
+        "gpr_regfile_regfile": "keep",
+        "near_mem_dcache": "cut",
+        "near_mem_icache": "cut",
+        "stageF_branch_predictor": "cut"
+      },
+      "model": "/var/tmp/neuroabs-runtime/runs/llm-refine-20261026/flute/ADD/models/csr_regfile=cut+gpr_regfile_regfile=keep+near_mem_dcache=cut+near_mem_icache=cut+stageF_branch_predictor=cut/model.btor2",
+      "choices_with_free_values": [
+        "csr_regfile",
+        "near_mem_dcache",
+        "near_mem_icache",
+        "stageF_branch_predictor"
+      ],
+      "coi_state_bits": 4202,
+      "ric3": "SAT",
+      "ric3_seconds": 31.189464569091797,
+      "cex_depth": 11,
+      "build_seconds": 4.064138174057007,
+      "reused": false,
+      "replay_seconds": 0.14156508445739746,
+      "counterexample_units": {
+        "csr_regfile": 11,
+        "stageF_branch_predictor": 10,
+        "near_mem_dcache": 4,
+        "near_mem_icache": 23
+      },
+      "refined_units": [
+        "near_mem_icache"
+      ],
+      "selection_seconds": 10.128863096237183,
+      "selection": {
+        "llm_seconds": 6.425636529922485,
+        "signal_seconds": 3.7032265663146973,
+        "probabilities": {
+          "csr_regfile": 0.12,
+          "near_mem_dcache": 0.06,
+          "near_mem_icache": 0.72,
+          "stageF_branch_predictor": 0.1
+        },
+        "reason": "The ADD property depends directly on the fetched instruction and PC, and the counterexample relies heavily on unconstrained icache outputs (imem_instr/cword, imem_valid, imem_pc, imem_exc) during the fetch cycles.",
+        "usage": {
+          "prompt_tokens": 4711,
+          "completion_tokens": 656,
+          "total_tokens": 5367,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 2048,
+            "cache_write_tokens": 0,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "text_tokens": 0,
+            "image_tokens": 0,
+            "video_tokens": 0
+          },
+          "completion_tokens_details": {
+            "audio_tokens": 0,
+            "reasoning_tokens": 533,
+            "accepted_prediction_tokens": 0,
+            "rejected_prediction_tokens": 0,
+            "text_tokens": 0,
+            "image_tokens": 0,
+            "video_tokens": 0
+          }
+        },
+        "cost_usd": 0.0015983879999999998,
+        "served_model": "deepseek/deepseek-v4.1-flash"
+      }
+    },
+    {
+      "iteration": 3,
+      "assignment": {
+        "csr_regfile": "cut",
+        "gpr_regfile_regfile": "keep",
+        "near_mem_dcache": "cut",
+        "near_mem_icache": "havoc",
+        "stageF_branch_predictor": "cut"
+      },
+      "model": "/var/tmp/neuroabs-runtime/runs/llm-refine-20261026/flute/ADD/models/csr_regfile=cut+gpr_regfile_regfile=keep+near_mem_dcache=cut+near_mem_icache=havoc+stageF_branch_predictor=cut/model.btor2",
+      "choices_with_free_values": [
+        "csr_regfile",
+        "near_mem_dcache",
+        "near_mem_icache_m0",
+        "near_mem_icache_m1",
+        "stageF_branch_predictor"
+      ],
+      "coi_state_bits": 4695,
+      "ric3": "SAT",
+      "ric3_seconds": 62.81760883331299,
+      "cex_depth": 13,
+      "build_seconds": 3.9919469356536865,
+      "reused": false,
+      "replay_seconds": 0.18035292625427246,
+      "counterexample_units": {
+        "csr_regfile": 8,
+        "stageF_branch_predictor": 6,
+        "near_mem_dcache": 2,
+        "near_mem_icache": 5
+      },
+      "refined_units": [
+        "near_mem_icache"
+      ],
+      "selection_seconds": 25.064812183380127,
+      "selection": {
+        "llm_seconds": 22.16193914413452,
+        "signal_seconds": 2.9028730392456055,
+        "probabilities": {
+          "near_mem_icache": 0.46,
+          "csr_regfile": 0.28,
+          "stageF_branch_predictor": 0.21,
+          "near_mem_dcache": 0.05
+        },
+        "reason": "The icache is on the instruction-fetch path and its unconstrained Anyseq memory-read values in cycles 7-9 can directly substitute a non-ADD instruction word, making the ADD consistency assertions fail.",
+        "usage": {
+          "prompt_tokens": 4588,
+          "completion_tokens": 2717,
+          "total_tokens": 7305,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 2048,
+            "cache_write_tokens": 0,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "text_tokens": 0,
+            "image_tokens": 0,
+            "video_tokens": 0
+          },
+          "completion_tokens_details": {
+            "audio_tokens": 0,
+            "reasoning_tokens": 2603,
+            "accepted_prediction_tokens": 0,
+            "rejected_prediction_tokens": 0,
+            "text_tokens": 0,
+            "image_tokens": 0,
+            "video_tokens": 0
+          }
+        },
+        "cost_usd": 0.004034688,
+        "served_model": "deepseek/deepseek-v4.1-flash"
+      }
+    },
+    {
+      "iteration": 4,
+      "assignment": {
+        "csr_regfile": "cut",
+        "gpr_regfile_regfile": "keep",
+        "near_mem_dcache": "cut",
+        "near_mem_icache": "keep",
+        "stageF_branch_predictor": "cut"
+      },
+      "model": "/var/tmp/neuroabs-runtime/runs/llm-refine-20261026/flute/ADD/models/csr_regfile=cut+gpr_regfile_regfile=keep+near_mem_dcache=cut+near_mem_icache=keep+stageF_branch_predictor=cut/model.btor2",
+      "choices_with_free_values": [
+        "csr_regfile",
+        "near_mem_dcache",
+        "stageF_branch_predictor"
+      ],
+      "coi_state_bits": 73016,
+      "ric3": "TIMEOUT",
+      "ric3_seconds": 335.4081799983978,
+      "cex_depth": null,
+      "build_seconds": 8.342471599578857,
+      "reused": false
+    }
+  ]
+}

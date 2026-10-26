@@ -1,0 +1,184 @@
+{
+  "status": "TIMEOUT",
+  "final_model": "/var/tmp/neuroabs-runtime/runs/llm-refine-20261026/flute/ADD/models/csr_regfile=keep+gpr_regfile_regfile=cut+near_mem_dcache=havoc+near_mem_icache=havoc+stageF_branch_predictor=havoc/model.btor2",
+  "final_assignment": {
+    "csr_regfile": "keep",
+    "gpr_regfile_regfile": "cut",
+    "near_mem_dcache": "havoc",
+    "near_mem_icache": "havoc",
+    "stageF_branch_predictor": "havoc"
+  },
+  "refinements": 4,
+  "total_seconds": 738.5221157073975,
+  "history": [
+    {
+      "iteration": 0,
+      "assignment": {
+        "csr_regfile": "cut",
+        "gpr_regfile_regfile": "cut",
+        "near_mem_dcache": "cut",
+        "near_mem_icache": "cut",
+        "stageF_branch_predictor": "cut"
+      },
+      "model": "/var/tmp/neuroabs-runtime/runs/llm-refine-20261026/flute/ADD/models/csr_regfile=cut+gpr_regfile_regfile=cut+near_mem_dcache=cut+near_mem_icache=cut+stageF_branch_predictor=cut/model.btor2",
+      "choices_with_free_values": [
+        "csr_regfile",
+        "gpr_regfile_regfile",
+        "near_mem_dcache",
+        "near_mem_icache",
+        "stageF_branch_predictor"
+      ],
+      "coi_state_bits": 3136,
+      "ric3": "SAT",
+      "ric3_seconds": 11.908472776412964,
+      "cex_depth": 11,
+      "build_seconds": 4.055961847305298,
+      "reused": true,
+      "replay_seconds": 0.0635690689086914,
+      "counterexample_units": {
+        "csr_regfile": 10,
+        "stageF_branch_predictor": 7,
+        "gpr_regfile_regfile": 3,
+        "near_mem_dcache": 2,
+        "near_mem_icache": 9
+      },
+      "refined_units": [
+        "csr_regfile"
+      ],
+      "selection_seconds": 0.0,
+      "selection": {}
+    },
+    {
+      "iteration": 1,
+      "assignment": {
+        "csr_regfile": "keep",
+        "gpr_regfile_regfile": "cut",
+        "near_mem_dcache": "cut",
+        "near_mem_icache": "cut",
+        "stageF_branch_predictor": "cut"
+      },
+      "model": "/var/tmp/neuroabs-runtime/runs/llm-refine-20261026/flute/ADD/models/csr_regfile=keep+gpr_regfile_regfile=cut+near_mem_dcache=cut+near_mem_icache=cut+stageF_branch_predictor=cut/model.btor2",
+      "choices_with_free_values": [
+        "gpr_regfile_regfile",
+        "near_mem_dcache",
+        "near_mem_icache",
+        "stageF_branch_predictor"
+      ],
+      "coi_state_bits": 3717,
+      "ric3": "SAT",
+      "ric3_seconds": 29.035234928131104,
+      "cex_depth": 12,
+      "build_seconds": 4.188064336776733,
+      "reused": false,
+      "replay_seconds": 0.07992053031921387,
+      "counterexample_units": {
+        "stageF_branch_predictor": 8,
+        "gpr_regfile_regfile": 3,
+        "near_mem_dcache": 4,
+        "near_mem_icache": 14
+      },
+      "refined_units": [
+        "near_mem_icache"
+      ],
+      "selection_seconds": 0.0,
+      "selection": {}
+    },
+    {
+      "iteration": 2,
+      "assignment": {
+        "csr_regfile": "keep",
+        "gpr_regfile_regfile": "cut",
+        "near_mem_dcache": "cut",
+        "near_mem_icache": "havoc",
+        "stageF_branch_predictor": "cut"
+      },
+      "model": "/var/tmp/neuroabs-runtime/runs/llm-refine-20261026/flute/ADD/models/csr_regfile=keep+gpr_regfile_regfile=cut+near_mem_dcache=cut+near_mem_icache=havoc+stageF_branch_predictor=cut/model.btor2",
+      "choices_with_free_values": [
+        "gpr_regfile_regfile",
+        "near_mem_dcache",
+        "near_mem_icache_m0",
+        "near_mem_icache_m1",
+        "stageF_branch_predictor"
+      ],
+      "coi_state_bits": 4242,
+      "ric3": "SAT",
+      "ric3_seconds": 47.781516313552856,
+      "cex_depth": 13,
+      "build_seconds": 4.520923376083374,
+      "reused": false,
+      "replay_seconds": 0.14936089515686035,
+      "counterexample_units": {
+        "stageF_branch_predictor": 5,
+        "gpr_regfile_regfile": 3,
+        "near_mem_dcache": 3,
+        "near_mem_icache": 4
+      },
+      "refined_units": [
+        "stageF_branch_predictor"
+      ],
+      "selection_seconds": 0.0,
+      "selection": {}
+    },
+    {
+      "iteration": 3,
+      "assignment": {
+        "csr_regfile": "keep",
+        "gpr_regfile_regfile": "cut",
+        "near_mem_dcache": "cut",
+        "near_mem_icache": "havoc",
+        "stageF_branch_predictor": "havoc"
+      },
+      "model": "/var/tmp/neuroabs-runtime/runs/llm-refine-20261026/flute/ADD/models/csr_regfile=keep+gpr_regfile_regfile=cut+near_mem_dcache=cut+near_mem_icache=havoc+stageF_branch_predictor=havoc/model.btor2",
+      "choices_with_free_values": [
+        "gpr_regfile_regfile",
+        "near_mem_dcache",
+        "near_mem_icache_m0",
+        "near_mem_icache_m1",
+        "stageF_branch_predictor_m1"
+      ],
+      "coi_state_bits": 4850,
+      "ric3": "SAT",
+      "ric3_seconds": 315.3965194225311,
+      "cex_depth": 523,
+      "build_seconds": 4.825247764587402,
+      "reused": false,
+      "replay_seconds": 5.473668336868286,
+      "counterexample_units": {
+        "gpr_regfile_regfile": 5,
+        "near_mem_dcache": 67,
+        "near_mem_icache": 10,
+        "stageF_branch_predictor": 5
+      },
+      "refined_units": [
+        "near_mem_dcache"
+      ],
+      "selection_seconds": 0.0,
+      "selection": {}
+    },
+    {
+      "iteration": 4,
+      "assignment": {
+        "csr_regfile": "keep",
+        "gpr_regfile_regfile": "cut",
+        "near_mem_dcache": "havoc",
+        "near_mem_icache": "havoc",
+        "stageF_branch_predictor": "havoc"
+      },
+      "model": "/var/tmp/neuroabs-runtime/runs/llm-refine-20261026/flute/ADD/models/csr_regfile=keep+gpr_regfile_regfile=cut+near_mem_dcache=havoc+near_mem_icache=havoc+stageF_branch_predictor=havoc/model.btor2",
+      "choices_with_free_values": [
+        "gpr_regfile_regfile",
+        "near_mem_dcache_m0",
+        "near_mem_dcache_m1",
+        "near_mem_icache_m0",
+        "near_mem_icache_m1",
+        "stageF_branch_predictor_m1"
+      ],
+      "coi_state_bits": 5311,
+      "ric3": "TIMEOUT",
+      "ric3_seconds": 306.0250961780548,
+      "cex_depth": null,
+      "build_seconds": 5.01855993270874,
+      "reused": false
+    }
+  ]
+}

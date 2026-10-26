@@ -46,7 +46,7 @@ def havoc(text, k):
             text = text.replace(anchor, anchor + extra)
     # Any remaining cpuregs read must be inactive (DEBUGREGS / BLACKBOX branches) or a write/init.
     active = [m for m in re.finditer(r'cpuregs\[[^\]]+\]', text)
-              if not re.match(r'\s*(<=|=)', text[m.end():]) and 'dbg_reg_x' not in text[text.rfind('\n', 0, m.start()) + 1:m.start()]]
+              if not re.match(r'\s*(<=|=(?!=))', text[m.end():]) and 'dbg_reg_x' not in text[text.rfind('\n', 0, m.start()) + 1:m.start()]]
     if active:
         raise ValueError('unhandled cpuregs reads: {}'.format([m.group(0) for m in active]))
     if re.search(r'^\s*`define\s+(DEBUGREGS|PICORV32_REGS|RISCV_FORMAL_BLACKBOX_REGS)\b', text, re.M):

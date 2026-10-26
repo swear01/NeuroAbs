@@ -2,6 +2,7 @@
 # Build H0 (B0 RTL + k=0 havoc) and H1 (B1 final-model RTL + k=0 havoc) for the nine cases.
 R=/var/tmp/neuroabs-runtime/runs/decision-20261022
 O=/var/tmp/neuroabs-runtime/runs/regfile-havoc-20261025
+mkdir -p "$O"
 . /var/tmp/neuroabs-runtime/env-20261024.sh
 cd "$(dirname "$0")/../.."
 for c in add addi and bge ori sh slti sub xor; do

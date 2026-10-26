@@ -1,6 +1,7 @@
 #!/bin/bash
 # After full-e1 on E-cores 28-31: LLM arms for LUI, AUIPC and JAL.
 RUN=/var/tmp/neuroabs-runtime/runs/fine-gpr-20261026
+trap 'for c in LUI AUIPC JAL; do [ -e $RUN/piccolo-$c/arm-llm.done ] || touch $RUN/piccolo-$c/arm-llm.failed; done' EXIT
 until [ -e $RUN/piccolo-ADDI/arm-full-e1.done ]; do [ -e $RUN/piccolo-ADDI/arm-full-e1.failed ] && exit 1; sleep 30; done
 for c in LUI AUIPC JAL; do
   until [ -s $RUN/piccolo-$c/llm/decisions.jsonl ] && [ $(wc -l < $RUN/piccolo-$c/llm/decisions.jsonl) -ge 63 ]; do sleep 30; done

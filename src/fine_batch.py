@@ -32,6 +32,14 @@ def summary(name, workdir):
     }
 
 
+def finished(results):
+    """Names with a result other than ERROR; an ERROR is run again on resume."""
+    if not os.path.exists(results):
+        return set()
+    with open(results) as f:
+        return {r["name"] for r in map(json.loads, filter(str.strip, f)) if r["status"] != "ERROR"}
+
+
 def run(job, cpus, args, lock):
     name, spec = job["name"], job["spec"]
     workdir = os.path.join(args.workdir, name)
@@ -67,16 +75,14 @@ def main(argv=None):
     args.wrapper = os.path.abspath(args.wrapper)
     args.units = os.path.abspath(args.units)
     os.makedirs(args.workdir, exist_ok=True)
-    done = set()
     results = os.path.join(args.workdir, "results.jsonl")
-    if os.path.exists(results):
-        with open(results) as f:
-            done = {json.loads(line)["name"] for line in f if line.strip()}
+    done = finished(results)
     jobs = queue.Queue()
     with open(args.specs) as f:
-        for line in f:
-            if line.strip() and json.loads(line)["name"] not in done:
-                jobs.put(json.loads(line))
+        specs = [json.loads(line) for line in f if line.strip()]
+    for job in specs:
+        if job["name"] not in done:
+            jobs.put(job)
     lock = threading.Lock()
 
     def worker(cpus):
@@ -92,6 +98,10 @@ def main(argv=None):
         t.start()
     for t in threads:
         t.join()
+    missing = [job["name"] for job in specs if job["name"] not in finished(results)]
+    if missing:
+        print("no result for: " + ", ".join(missing), file=sys.stderr)
+        return 1
     return 0
 
 

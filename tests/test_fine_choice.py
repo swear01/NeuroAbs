@@ -163,6 +163,27 @@ class FineChoiceTest(unittest.TestCase):
         self.assertEqual((refined["keep_gprs"], refined["word_gprs"]), ([1, 2], [3]))
         refined = self.fine.refine(spec, UNITS, {})
         self.assertEqual((refined["keep_gprs"], "word_gprs" in refined), ([1, 2, 3], False))
+        refined = self.fine.refine({"states": ["x1"], "word_gprs": [2]}, UNITS, {})
+        self.assertEqual((refined["keep_gprs"], "word_gprs" in refined), ("all", False))
+
+    def test_empty_conjunctions_are_true(self):
+        assigns = self.fine.read_assigns(self.fine.split_wrapper(WRAPPER.replace(
+            "(post_value_holder__p1__)&& (post_value_holder__p2__)&& (variable_map_assume___p3__)&& "
+            "(variable_map_assume___p4__)&& (noreset__p5__)", "(variable_map_assume___p4__)"),
+            {"states": [], "keep_gprs": []}))
+        self.assertEqual((assigns["__all_assert_wire__"], assigns["__all_assume_wire__"]), ("1'b1", "1'b1"))
+
+    def test_batch_runs_errors_again(self):
+        import json
+        import tempfile
+        import fine_batch
+        with tempfile.TemporaryDirectory() as d:
+            path = Path(d) / "results.jsonl"
+            self.assertEqual(fine_batch.finished(str(path)), set())
+            path.write_text("".join(json.dumps(r) + "\n" for r in [
+                {"name": "a", "status": "UNSAT"}, {"name": "b", "status": "ERROR", "exit": 1},
+                {"name": "c", "status": "TIMEOUT"}]))
+            self.assertEqual(fine_batch.finished(str(path)), {"a", "c"})
 
 
     def test_operator_args(self):

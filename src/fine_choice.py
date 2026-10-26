@@ -106,7 +106,7 @@ def split_wrapper(text, spec):
     keep = set(range(NUM_GPRS)) if spec.get("keep_gprs", "all") == "all" else set(spec["keep_gprs"])
     assumes = [c for c in conjunct_names(assigns, "assume")
                if not gpr_refs(assigns[c], recorders) or gpr_refs(assigns[c], recorders) & keep]
-    prop = " && ".join("(" + c + ")" for c in asserts)
+    prop = " && ".join("(" + c + ")" for c in asserts) or "1'b1"
     if spec.get("case"):
         prop = "(!({:s})) || ({:s})".format(case_expr(spec["case"]), prop)
     out = []
@@ -119,7 +119,7 @@ def split_wrapper(text, spec):
         if m and m.group(1) == WIRE_ALL["assert"]:
             line = "assign {:s} = {:s} ;".format(WIRE_ALL["assert"], prop)
         elif m and m.group(1) == WIRE_ALL["assume"]:
-            line = "assign {:s} = {:s} ;".format(WIRE_ALL["assume"], " && ".join("(" + c + ")" for c in assumes))
+            line = "assign {:s} = {:s} ;".format(WIRE_ALL["assume"], " && ".join("(" + c + ")" for c in assumes) or "1'b1")
         elif in_wrapper and stripped == "endmodule":
             out.extend(["reg [31:0] {:s};".format(INST_LATCH),
                         "always @(posedge clk) if (__START__) {:s} <= __ILA_I_inst;".format(INST_LATCH)])
@@ -344,6 +344,11 @@ def check(wrapper, spec, units, workdir, time_limit):
     return record
 
 
+def kept_with(spec, gprs):
+    keep = spec.get("keep_gprs", "all")
+    return "all" if keep == "all" else sorted(set(keep) | set(gprs))
+
+
 def refine(spec, units, counts):
     """Move the unit or GPR with the most free values in the counterexample one level towards keep.
 
@@ -354,12 +359,12 @@ def refine(spec, units, counts):
     if not counts:
         if not spec.get("word_gprs"):
             return None
-        spec["keep_gprs"] = sorted(set(spec["keep_gprs"]) | set(spec.pop("word_gprs")))
+        spec["keep_gprs"] = kept_with(spec, spec.pop("word_gprs"))
         return spec
     target = min(counts, key=lambda k: (-counts[k], k))
     if target.startswith("gpr"):
         j = int(target[3:])
-        spec["keep_gprs"] = sorted(set(spec["keep_gprs"]) | {j})
+        spec["keep_gprs"] = kept_with(spec, [j])
         spec["word_gprs"] = [w for w in spec.get("word_gprs", []) if w != j]
     elif re.fullmatch(r"uf\d+", target):
         del spec["uf"][int(target[2:])]

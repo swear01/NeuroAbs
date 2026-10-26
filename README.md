@@ -187,6 +187,9 @@ be counted.
 `src/run_decision_experiment.py` runs these arms on a PicoRV32 case and times
 rIC3 on the resulting models; see
 [`results/decision_experiment/`](results/decision_experiment/README.md).
+[`results/regfile_havoc/`](results/regfile_havoc/README.md) replaces every
+PicoRV32 register-file read with a fresh input (`src/regfile_havoc.py`); all
+nine checks stay UNSAT and rIC3 takes 0.38–0.69 of the B0 time.
 
 Run a formal proof with the same 3600-second cap used in the paper's RQ2:
 

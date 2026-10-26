@@ -39,6 +39,8 @@ for u in units:
 combined = check(safe, "combined")
 if combined == "TIMEOUT":
     inconclusive.append("combined")
+elif combined == "ERROR":
+    raise RuntimeError("rIC3 BMC failed on the combined coarsening")
 elif combined != "NONE":
     raise RuntimeError("the combined coarsening is {:s}; the screened levels are not safe".format(combined))
 json.dump({"needed": sorted(k for k, v in safe.items() if v == "keep"), "safe_levels": safe,

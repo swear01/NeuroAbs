@@ -137,7 +137,7 @@ def coi_state_bits(path):
             continue
         if t[1] in ("slice", "sext", "uext"):
             args = t[3:4]
-        elif t[1] in ("bad", "constraint", "fair", "justice"):
+        elif t[1] in ("bad", "constraint", "fair"):
             args = t[2:3]
         else:
             args = t[3:]

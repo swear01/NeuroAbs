@@ -124,12 +124,12 @@ nav li {line-height:1.4}
 <tr><td colspan="4" class="small">其他 8 題（ADD_Flatten、ANDI、AUIPC、BNE_new、LUI、OR、SLTI、XOR）的 <code>llm</code> 都是 icache* → gpr → gpr*。完整表格在 <code>results/llm_refinement/README.md</code>。</td></tr></table>
 
 <p><b>最終模型跑久一點：</b>每個最終模型用 4 核跑 1800 s，各一次。結果全部 UNKNOWN。</p>
-<table><tr><th>題目</th><th>模型（來自哪個策略）</th><th>COI bits</th><th>kissat BMC 到 bound 40 花了多久</th><th>IC3 frame</th></tr>
+<table><tr><th>題目</th><th>模型（來自哪個策略）</th><th>COI bits</th><th>kissat BMC：到 bound 40 的時間（最終 bound）</th><th>IC3 frame</th></tr>
 <tr><td>ADDI</td><td>csr cut + dcache cut（llm）</td><td class="n">4,136</td><td class="n">14.0 min（最後到 50）</td><td class="n">7</td></tr>
 <tr><td>ADDI</td><td>csr cut（bmc）</td><td class="n">4,542</td><td class="n">17.8 min</td><td class="n">10</td></tr>
 <tr><td>ADDI</td><td>B0</td><td class="n">5,131</td><td class="n">26.5 min</td><td class="n">10</td></tr>
-<tr><td>BEQ</td><td>llm</td><td class="n">4,136</td><td class="n">20.2 min；只有它到 bound 65</td><td class="n">7</td></tr>
-<tr><td>BEQ</td><td>bmc / B0</td><td class="n">4,542 / 5,131</td><td class="n">只到 30</td><td class="n">10</td></tr></table>
+<tr><td>BEQ</td><td>llm</td><td class="n">4,136</td><td class="n">20.2 min（最終 65，只有它到 65）</td><td class="n">7</td></tr>
+<tr><td>BEQ</td><td>bmc / B0</td><td class="n">4,542 / 5,131</td><td class="n">沒到 40（最終 30）</td><td class="n">10</td></tr></table>
 <p>LLM 的模型讓 BMC 走得比較快，但 IC3 沒有比較深，所以也沒有證出來。</p>
 <p><b>Flute ADD（只做篩選）：</b>4 種策略的最終模型都在 300 s 內 TIMEOUT，分不出好壞。LLM 跟在 Piccolo 上一樣，保留了 GPR 和 I-cache。</p>
 
@@ -204,7 +204,7 @@ nav li {line-height:1.4}
 <table><tr><th>方式</th><th>怎麼決定</th><th>之後</th></tr>
 <tr><td>auto</td><td>從最粗開始：單元全部 cut、GPR 全部 havoc、UF 開啟</td><td>CEGAR，每次退反例裡任意值最多的那個選項</td></tr>
 <tr><td>DeepSeek</td><td>每個子 property 呼叫一次。輸入 case 說明、36 個選項與等級、assertion 和 case；輸出 JSON</td><td>同 auto</td></tr>
-<tr><td>結構規則 S</td><td><code>src/fine_choice.py:247</code> 的 <code>structural()</code>，不用 LLM</td><td>同 auto</td></tr></table>
+<tr><td>結構規則 S</td><td><code>src/fine_choice.py:247</code> 的 <code>structural()</code>，不用 LLM（下面是它的虛擬碼）</td><td>同 auto</td></tr></table>
 <pre>def structural(sub, units, ufs):
     named   = 這個子 property 比對到的 GPR       # 例如 x5
     sources = case 裡寫的 rs1 / rs2 == r        # 例如 x6
@@ -216,7 +216,7 @@ nav li {line-height:1.4}
 <p>例如 <code>x5.rs1=6</code>：保留 x6，x5 設成 word，其他 30 個 GPR 移除，csr、dcache、icache 全部 cut，加法器換成 UF。</p>
 
 <p><b>ADDI sample（64 個子 property：mem、31 個 frame、32 個寫入；300 s，最多 refine 10 次）</b></p>
-<table><tr><th>方式</th><th>UNSAT</th><th>TIMEOUT</th><th>refine 次數</th><th>總時間</th><th>中位數</th><th>LLM</th></tr>
+<table><tr><th>方式</th><th>UNSAT</th><th>TIMEOUT</th><th>refine 次數（64 個合計）</th><th>總時間</th><th>中位數</th><th>LLM</th></tr>
 <tr><td>auto</td><td class="n">34</td><td class="n">30</td><td class="n">315</td><td class="n">23,893 s</td><td class="n">316 s</td><td>—</td></tr>
 <tr><td>DeepSeek</td><td class="n">60</td><td class="n">4</td><td class="n">1</td><td class="n">3,805 s</td><td class="n">39 s</td><td>64 次呼叫、$0.47</td></tr>
 <tr><td>結構規則 S</td><td class="n"><b>64</b></td><td class="n">0</td><td class="n">1</td><td class="n"><b>2,627 s</b></td><td class="n">40 s</td><td>—</td></tr></table>
@@ -280,8 +280,8 @@ nav li {line-height:1.4}
 <h2 id="repro">5. 花費與重現</h2>
 <ul>
 <li><b>DeepSeek</b>（README 記錄）：A 115 次呼叫 $0.25；B 的 4 組 LLM arm 共 $1.74（$0.47 + $0.35 + $0.43 + $0.49）。這次約 $2.0，比我上一則訊息說的「約 $2.5」少，以 README 為準。累計約 $32–33，在批准的 $60 以內。API key 只放在 gateway。</li>
-<li><b>A</b>：worktree <code>~/.agent-worktrees/NeuroAbs-llm-refine</code>，<code>results/llm_refinement/README.md</code>，run dir <code>/var/tmp/neuroabs-runtime/runs/llm-refine-20261026</code>。76 個 test 通過。PR #15 還沒跑 bot review。</li>
-<li><b>B</b>：worktree <code>~/.agent-worktrees/NeuroAbs-fine-gpr</code>，<code>results/fine_gpr_choices/README.md</code>，run dir <code>/var/tmp/neuroabs-runtime/runs/fine-gpr-20261026</code>。78 個 test 通過。PR #16 在 <code>ae802b4</code> 上 CI 和 Swear Review 都通過。</li>
+<li><b>A</b>：<a href="https://github.com/swear01/NeuroAbs/pull/15">PR #15</a>（branch <code>feat/llm-refinement</code>）的 <code>results/llm_refinement/</code>，各 run 的紀錄和表格數字都在裡面。run dir <code>/var/tmp/neuroabs-runtime/runs/llm-refine-20261026</code>（mazu，不保證保留）。76 個 test 通過。</li>
+<li><b>B</b>：<a href="https://github.com/swear01/NeuroAbs/pull/16">PR #16</a>（branch <code>feat/fine-gpr-choices</code>）的 <code>results/fine_gpr_choices/</code>，各子 property 的紀錄在 <code>piccolo/&lt;case&gt;/</code>。run dir <code>/var/tmp/neuroabs-runtime/runs/fine-gpr-20261026</code>（mazu，不保證保留）。78 個 test 通過。</li>
 <li>環境：Mazu（i9-14900K），Yosys 0.68+120，rIC3 master <code>8c6df1b</code>，default portfolio。</li>
 </ul>
 </main></html>

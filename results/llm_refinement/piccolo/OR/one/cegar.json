@@ -1,0 +1,183 @@
+{
+  "status": "TIMEOUT",
+  "final_model": "/var/tmp/neuroabs-runtime/runs/llm-refine-20261026/piccolo/OR/models/csr_regfile=keep+gpr_regfile_regfile=keep+near_mem_dcache=keep+near_mem_icache=keep/model.btor2",
+  "final_assignment": {
+    "csr_regfile": "keep",
+    "gpr_regfile_regfile": "keep",
+    "near_mem_dcache": "keep",
+    "near_mem_icache": "keep"
+  },
+  "refinements": 5,
+  "total_seconds": 576.0161728858948,
+  "history": [
+    {
+      "iteration": 0,
+      "assignment": {
+        "csr_regfile": "cut",
+        "gpr_regfile_regfile": "cut",
+        "near_mem_dcache": "cut",
+        "near_mem_icache": "cut"
+      },
+      "model": "/var/tmp/neuroabs-runtime/runs/llm-refine-20261026/piccolo/OR/models/csr_regfile=cut+gpr_regfile_regfile=cut+near_mem_dcache=cut+near_mem_icache=cut/model.btor2",
+      "choices_with_free_values": [
+        "csr_regfile",
+        "gpr_regfile_regfile",
+        "near_mem_dcache",
+        "near_mem_icache"
+      ],
+      "coi_state_bits": 2706,
+      "ric3": "SAT",
+      "ric3_seconds": 8.836928367614746,
+      "cex_depth": 8,
+      "build_seconds": 6.979146957397461,
+      "reused": false,
+      "replay_seconds": 0.07704520225524902,
+      "counterexample_units": {
+        "csr_regfile": 10,
+        "gpr_regfile_regfile": 2,
+        "near_mem_dcache": 5,
+        "near_mem_icache": 11
+      },
+      "refined_units": [
+        "near_mem_icache"
+      ],
+      "selection_seconds": 0.0,
+      "selection": {}
+    },
+    {
+      "iteration": 1,
+      "assignment": {
+        "csr_regfile": "cut",
+        "gpr_regfile_regfile": "cut",
+        "near_mem_dcache": "cut",
+        "near_mem_icache": "keep"
+      },
+      "model": "/var/tmp/neuroabs-runtime/runs/llm-refine-20261026/piccolo/OR/models/csr_regfile=cut+gpr_regfile_regfile=cut+near_mem_dcache=cut+near_mem_icache=keep/model.btor2",
+      "choices_with_free_values": [
+        "csr_regfile",
+        "gpr_regfile_regfile",
+        "near_mem_dcache"
+      ],
+      "coi_state_bits": 3112,
+      "ric3": "SAT",
+      "ric3_seconds": 27.378822088241577,
+      "cex_depth": 11,
+      "build_seconds": 6.359722137451172,
+      "reused": false,
+      "replay_seconds": 0.19155383110046387,
+      "counterexample_units": {
+        "csr_regfile": 14,
+        "gpr_regfile_regfile": 5,
+        "near_mem_dcache": 7
+      },
+      "refined_units": [
+        "csr_regfile"
+      ],
+      "selection_seconds": 0.0,
+      "selection": {}
+    },
+    {
+      "iteration": 2,
+      "assignment": {
+        "csr_regfile": "keep",
+        "gpr_regfile_regfile": "cut",
+        "near_mem_dcache": "cut",
+        "near_mem_icache": "keep"
+      },
+      "model": "/var/tmp/neuroabs-runtime/runs/llm-refine-20261026/piccolo/OR/models/csr_regfile=keep+gpr_regfile_regfile=cut+near_mem_dcache=cut+near_mem_icache=keep/model.btor2",
+      "choices_with_free_values": [
+        "gpr_regfile_regfile",
+        "near_mem_dcache"
+      ],
+      "coi_state_bits": 3697,
+      "ric3": "SAT",
+      "ric3_seconds": 55.64423155784607,
+      "cex_depth": 13,
+      "build_seconds": 5.049669981002808,
+      "reused": false,
+      "replay_seconds": 0.23276305198669434,
+      "counterexample_units": {
+        "gpr_regfile_regfile": 5,
+        "near_mem_dcache": 8
+      },
+      "refined_units": [
+        "near_mem_dcache"
+      ],
+      "selection_seconds": 0.0,
+      "selection": {}
+    },
+    {
+      "iteration": 3,
+      "assignment": {
+        "csr_regfile": "keep",
+        "gpr_regfile_regfile": "cut",
+        "near_mem_dcache": "keep",
+        "near_mem_icache": "keep"
+      },
+      "model": "/var/tmp/neuroabs-runtime/runs/llm-refine-20261026/piccolo/OR/models/csr_regfile=keep+gpr_regfile_regfile=cut+near_mem_dcache=keep+near_mem_icache=keep/model.btor2",
+      "choices_with_free_values": [
+        "gpr_regfile_regfile"
+      ],
+      "coi_state_bits": 4107,
+      "ric3": "SAT",
+      "ric3_seconds": 76.55699443817139,
+      "cex_depth": 16,
+      "build_seconds": 4.525270462036133,
+      "reused": false,
+      "replay_seconds": 0.40805983543395996,
+      "counterexample_units": {
+        "gpr_regfile_regfile": 5
+      },
+      "refined_units": [
+        "gpr_regfile_regfile"
+      ],
+      "selection_seconds": 0.0,
+      "selection": {}
+    },
+    {
+      "iteration": 4,
+      "assignment": {
+        "csr_regfile": "keep",
+        "gpr_regfile_regfile": "havoc",
+        "near_mem_dcache": "keep",
+        "near_mem_icache": "keep"
+      },
+      "model": "/var/tmp/neuroabs-runtime/runs/llm-refine-20261026/piccolo/OR/models/csr_regfile=keep+gpr_regfile_regfile=havoc+near_mem_dcache=keep+near_mem_icache=keep/model.btor2",
+      "choices_with_free_values": [
+        "gpr_regfile_regfile_m0"
+      ],
+      "coi_state_bits": 4107,
+      "ric3": "SAT",
+      "ric3_seconds": 69.14917349815369,
+      "cex_depth": 15,
+      "build_seconds": 3.996866226196289,
+      "reused": false,
+      "replay_seconds": 0.4097452163696289,
+      "counterexample_units": {
+        "gpr_regfile_regfile": 3
+      },
+      "refined_units": [
+        "gpr_regfile_regfile"
+      ],
+      "selection_seconds": 0.0,
+      "selection": {}
+    },
+    {
+      "iteration": 5,
+      "assignment": {
+        "csr_regfile": "keep",
+        "gpr_regfile_regfile": "keep",
+        "near_mem_dcache": "keep",
+        "near_mem_icache": "keep"
+      },
+      "model": "/var/tmp/neuroabs-runtime/runs/llm-refine-20261026/piccolo/OR/models/csr_regfile=keep+gpr_regfile_regfile=keep+near_mem_dcache=keep+near_mem_icache=keep/model.btor2",
+      "choices_with_free_values": [],
+      "coi_state_bits": 5131,
+      "ric3": "TIMEOUT",
+      "ric3_seconds": 306.8613910675049,
+      "cex_depth": null,
+      "build_seconds": 3.3587889671325684,
+      "reused": false
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+Presecessor: cpuregs_rs1 = decoded_rs1 ? cpuregs_read_rs1 : 32'h0;
+
+Successor: cpuregs_rs1 = decoded_rs1 ? 'bx : 32'h0;
+
+Presecessor: cpuregs_rs1 = decoded_rs1 ? cpuregs_read_rs1 : 32'h0;
+
+Successor: cpuregs_rs1 = decoded_rs1 ? 'bx : 32'h0;
+
+cpuregs_rs1 == If(decoded_rs1 == 1, cpuregs_read_rs1, 0)
+cpuregs_rs1 == If(decoded_rs1 == 1, unknown_2, 0)
+RESULT decoded_rs1 unsat cpuregs_rs1 = decoded_rs1 ? input1 : 32'h0;
+Presecessor: cpuregs_rs1 = decoded_rs1 ? cpuregs_read_rs1 : 32'h0;
+
+Successor: cpuregs_rs1 = decoded_rs1 ? 'bx : 32'h1;
+
+Presecessor: cpuregs_rs1 = decoded_rs1 ? cpuregs_read_rs1 : 32'h0;
+
+Successor: cpuregs_rs1 = decoded_rs1 ? 'bx : 32'h1;
+
+cpuregs_rs1 == If(decoded_rs1 == 1, cpuregs_read_rs1, 0)
+cpuregs_rs1 == If(decoded_rs1 == 1, unknown_2, 1)
+NEGCTRL decoded_rs1 sat
+Presecessor: cpuregs_rs2 = decoded_rs2 ? cpuregs_read_rs2 : 32'h0;
+
+Successor: cpuregs_rs2 = decoded_rs2 ? 'bx : 32'h0;
+
+Presecessor: cpuregs_rs2 = decoded_rs2 ? cpuregs_read_rs2 : 32'h0;
+
+Successor: cpuregs_rs2 = decoded_rs2 ? 'bx : 32'h0;
+
+cpuregs_rs2 == If(decoded_rs2 == 1, cpuregs_read_rs2, 0)
+cpuregs_rs2 == If(decoded_rs2 == 1, unknown_2, 0)
+RESULT decoded_rs2 unsat cpuregs_rs2 = decoded_rs2 ? input1 : 32'h0;
+Presecessor: cpuregs_rs2 = decoded_rs2 ? cpuregs_read_rs2 : 32'h0;
+
+Successor: cpuregs_rs2 = decoded_rs2 ? 'bx : 32'h1;
+
+Presecessor: cpuregs_rs2 = decoded_rs2 ? cpuregs_read_rs2 : 32'h0;
+
+Successor: cpuregs_rs2 = decoded_rs2 ? 'bx : 32'h1;
+
+cpuregs_rs2 == If(decoded_rs2 == 1, cpuregs_read_rs2, 0)
+cpuregs_rs2 == If(decoded_rs2 == 1, unknown_2, 1)
+NEGCTRL decoded_rs2 sat
+Presecessor: cpuregs_rs1 = decoded_rs ? cpuregs_read_rs : 32'h0;
+
+Successor: cpuregs_rs1 = decoded_rs ? 'bx : 32'h0;
+
+Presecessor: cpuregs_rs1 = decoded_rs ? cpuregs_read_rs : 32'h0;
+
+Successor: cpuregs_rs1 = decoded_rs ? 'bx : 32'h0;
+
+cpuregs_rs1 == If(decoded_rs == 1, cpuregs_read_rs, 0)
+cpuregs_rs1 == If(decoded_rs == 1, unknown_2, 0)
+RESULT decoded_rs unsat cpuregs_rs1 = decoded_rs ? input1 : 32'h0;
+Presecessor: cpuregs_rs1 = decoded_rs ? cpuregs_read_rs : 32'h0;
+
+Successor: cpuregs_rs1 = decoded_rs ? 'bx : 32'h1;
+
+Presecessor: cpuregs_rs1 = decoded_rs ? cpuregs_read_rs : 32'h0;
+
+Successor: cpuregs_rs1 = decoded_rs ? 'bx : 32'h1;
+
+cpuregs_rs1 == If(decoded_rs == 1, cpuregs_read_rs, 0)
+cpuregs_rs1 == If(decoded_rs == 1, unknown_2, 1)
+NEGCTRL decoded_rs sat

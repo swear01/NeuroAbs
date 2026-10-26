@@ -1,0 +1,16 @@
+{
+  "needed": [
+    "gpr_regfile_regfile",
+    "near_mem_icache"
+  ],
+  "safe_levels": {
+    "csr_regfile": "cut",
+    "gpr_regfile_regfile": "keep",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "keep"
+  },
+  "inconclusive": [
+    "near_mem_dcache=cut",
+    "combined"
+  ]
+}

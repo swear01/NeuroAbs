@@ -1,0 +1,5 @@
+{"label": "single", "assignment": {"csr_regfile": "cut"}, "bmc": "NONE", "cex_depth": null, "bmc_seconds": 783.4, "coi_state_bits": 4542, "bound": 20}
+{"label": "single", "assignment": {"gpr_regfile_regfile": "havoc"}, "bmc": "SAT", "cex_depth": 11, "bmc_seconds": 6.4, "coi_state_bits": 4107, "bound": 20}
+{"label": "single", "assignment": {"near_mem_dcache": "cut"}, "bmc": "NONE", "cex_depth": null, "bmc_seconds": 677.3, "coi_state_bits": 4721, "bound": 20}
+{"label": "single", "assignment": {"near_mem_icache": "cut"}, "bmc": "SAT", "cex_depth": 11, "bmc_seconds": 5.7, "coi_state_bits": 4689, "bound": 20}
+{"label": "combined", "assignment": {"csr_regfile": "cut", "gpr_regfile_regfile": "keep", "near_mem_dcache": "cut", "near_mem_icache": "keep"}, "bmc": "NONE", "cex_depth": null, "bmc_seconds": 669.6, "coi_state_bits": 4136, "bound": 20}

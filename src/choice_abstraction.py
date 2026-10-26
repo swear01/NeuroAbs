@@ -137,7 +137,7 @@ def coi_state_bits(path):
             continue
         if t[1] in ("slice", "sext", "uext"):
             args = t[3:4]
-        elif t[1] in ("bad", "constraint", "fair", "justice"):
+        elif t[1] in ("bad", "constraint", "fair"):
             args = t[2:3]
         else:
             args = t[3:]
@@ -244,6 +244,13 @@ def build(wrapper, prop, choices, out, workdir):
     for name in os.listdir(select_dir):
         os.unlink(os.path.join(select_dir, name))
     run_yosys(header(wrapper, prop) + cut_lines(choices, table, select_dir, {}) + footer(out), out + ".pass1.log")
+    renames = cut_renames(choices, select_dir)
+    run_yosys(header(wrapper, prop) + cut_lines(choices, table, select_dir, renames) + footer(out), out + ".yosys.log")
+    names = read_btor(out)[0]
+    return sorted({m.group(1) for name in names.values() for m in [CHOICE_NAME.search(name)] if m})
+
+
+def cut_renames(choices, select_dir):
     renames = {}
     for c in choices:
         listing = os.path.join(select_dir, c["id"] + ".txt")
@@ -253,21 +260,41 @@ def build(wrapper, prop, choices, out, workdir):
             cells = [line.strip() for line in f if line.strip()]
         renames[listing] = [(cell.split("/", 1)[0], cell.split("/", 1)[1], "choice__{:s}__{:d}".format(c["id"], i))
                             for i, cell in enumerate(cells)]
-    run_yosys(header(wrapper, prop) + cut_lines(choices, table, select_dir, renames) + footer(out), out + ".yosys.log")
-    names = read_btor(out)[0]
-    return sorted({m.group(1) for name in names.values() for m in [CHOICE_NAME.search(name)] if m})
+    return renames
+
+
+def free_value_signals(wrapper, prop, choices, workdir):
+    """Map each choice__<id>__<n> of a model built by build() in workdir to the net it drives."""
+    table = instance_table(hierarchy_json(wrapper, workdir)) if any(c["kind"] == "module" for c in choices) else {}
+    select_dir = os.path.join(workdir, "cut_cells")
+    signal_dir = os.path.join(workdir, "signals")
+    os.makedirs(signal_dir, exist_ok=True)
+    for name in os.listdir(signal_dir):
+        os.unlink(os.path.join(signal_dir, name))
+    renames = cut_renames(choices, select_dir)
+    names = [new for cells in renames.values() for _, _, new in cells]
+    lines = header(wrapper, prop) + cut_lines(choices, table, select_dir, renames) + ["opt_clean"]
+    lines.extend("select -write {:s} wrapper/*{:s} %co:+[Y] w:* %i".format(os.path.join(signal_dir, n + ".txt"), n)
+                 for n in names)
+    run_yosys(lines, os.path.join(workdir, "signals.yosys.log"))
+    signals = {}
+    for n in names:
+        with open(os.path.join(signal_dir, n + ".txt")) as f:
+            wires = sorted(line.strip().split("/", 1)[1] for line in f if line.strip())
+        public = [w for w in wires if not w.startswith("$")]
+        signals[n] = (public or wires or [n])[0]
+    return signals
 
 
 def ric3_bin():
     return os.environ.get("RIC3_BIN", "rIC3")
 
 
-def ric3_check(model, time_limit, log_path):
-    """Run the rIC3 portfolio and return (verdict, counterexample depth, seconds)."""
+def run_ric3(args, time_limit, log_path):
+    """Run rIC3 and return (output lines, return code, timed out, seconds)."""
     started = time.time()
     with open(log_path, "w") as log:
-        process = subprocess.Popen([ric3_bin(), "check", "--ui", "false", "--cex", model, "portfolio",
-                                    "--time-limit", str(time_limit)],
+        process = subprocess.Popen([ric3_bin(), "check", "--ui", "false"] + args,
                                    stdout=log, stderr=subprocess.STDOUT, start_new_session=True)
         try:
             process.wait(timeout=time_limit + RIC3_KILL_GRACE)
@@ -279,15 +306,21 @@ def ric3_check(model, time_limit, log_path):
         except ProcessLookupError:
             pass
         process.wait()
-    elapsed = time.time() - started
-    if timed_out:
-        return "TIMEOUT", None, elapsed
     with open(log_path) as f:
         lines = [line.strip() for line in f]
+    return lines, process.returncode, timed_out, time.time() - started
+
+
+def ric3_check(model, time_limit, log_path):
+    """Run the rIC3 portfolio and return (verdict, counterexample depth, seconds)."""
+    lines, returncode, timed_out, elapsed = run_ric3(["--cex", model, "portfolio", "--time-limit", str(time_limit)],
+                                                     time_limit, log_path)
+    if timed_out:
+        return "TIMEOUT", None, elapsed
     if "UNSAT" not in lines and "SAT" not in lines and elapsed >= time_limit:
         # With --cex, rIC3 panics instead of printing UNKNOWN when the time limit is reached.
         return "TIMEOUT", None, elapsed
-    if process.returncode != 0:
+    if returncode != 0:
         return "ERROR", None, elapsed
     if "UNSAT" in lines:
         return "UNSAT", None, elapsed
@@ -297,60 +330,153 @@ def ric3_check(model, time_limit, log_path):
     return "UNKNOWN", None, elapsed
 
 
-def cegar(wrapper, prop, units, assignment, workdir, time_limit, max_iterations, refine="all"):
+def ric3_bmc(model, bound, time_limit, log_path):
+    """Run rIC3 BMC up to bound and return (verdict, counterexample depth, seconds).
+
+    The verdict is SAT, NONE (no counterexample up to the bound), TIMEOUT or ERROR.
+    """
+    lines, returncode, timed_out, elapsed = run_ric3([model, "bmc", "--end", str(bound), "--time-limit",
+                                                      str(time_limit)], time_limit, log_path)
+    if timed_out:
+        return "TIMEOUT", None, elapsed
+    if returncode != 0:
+        return "ERROR", None, elapsed
+    if "SAT" in lines:
+        depths = [int(m.group(1)) for line in lines for m in [re.search(r"counterexample at depth (\d+)", line)] if m]
+        return "SAT", depths[0] if depths else None, elapsed
+    if any("reached bound {:d}".format(bound) in line for line in lines):
+        return "NONE", None, elapsed
+    return "TIMEOUT", None, elapsed
+
+
+def assignment_key(units, assignment):
+    return "+".join("{:s}={:s}".format(u["id"], assignment.get(u["id"], "keep")) for u in units)
+
+
+def stored(path, compute):
+    """Return the JSON stored at path, or compute, store and return it; cached is set on reuse."""
+    if os.path.exists(path):
+        with open(path) as f:
+            return dict(json.load(f), cached=True)
+    result = compute()
+    with open(path, "w") as f:
+        json.dump(result, f, indent=2)
+    return dict(result, cached=False)
+
+
+def abstract_model(wrapper, prop, units, assignment, models_dir):
+    """Build the model of an assignment once per models_dir; its measured build time is kept with it."""
+    directory = os.path.join(models_dir, assignment_key(units, assignment))
+    os.makedirs(directory, exist_ok=True)
+    model = os.path.join(directory, "model.btor2")
+
+    def compute():
+        started = time.time()
+        present = build(wrapper, prop, assignment_choices(units, assignment), model, model + ".work")
+        return {"model": model, "choices_with_free_values": present, "build_seconds": time.time() - started,
+                "coi_state_bits": sum(coi_state_bits(model).values())}
+
+    return stored(os.path.join(directory, "build.json"), compute)
+
+
+def portfolio_verdict(info, time_limit):
+    log = "{:s}.ric3-{:d}.log".format(info["model"], time_limit)
+
+    def compute():
+        verdict, depth, seconds = ric3_check(info["model"], time_limit, log)
+        return {"ric3": verdict, "cex_depth": depth, "ric3_seconds": seconds, "log": log}
+
+    return stored("{:s}.ric3-{:d}.json".format(info["model"], time_limit), compute)
+
+
+def bmc_verdict(info, bound, time_limit):
+    log = "{:s}.bmc{:d}-{:d}.log".format(info["model"], bound, time_limit)
+
+    def compute():
+        verdict, depth, seconds = ric3_bmc(info["model"], bound, time_limit, log)
+        return {"bmc": verdict, "cex_depth": depth, "bmc_seconds": seconds, "log": log}
+
+    return stored("{:s}.bmc{:d}-{:d}.json".format(info["model"], bound, time_limit), compute)
+
+
+def refine_all(context):
+    return {"refined": sorted(context["counts"]), "seconds": 0.0}
+
+
+def refine_one(context):
+    counts = context["counts"]
+    return {"refined": [min(counts, key=lambda unit_id: (-counts[unit_id], unit_id))], "seconds": 0.0}
+
+
+REFINERS = {"all": refine_all, "one": refine_one}
+
+
+def finer(units, assignment, unit_id):
+    levels = next(u["levels"] for u in units if u["id"] == unit_id)
+    return dict(assignment, **{unit_id: levels[levels.index(assignment[unit_id]) - 1]})
+
+
+def cegar(wrapper, prop, units, assignment, workdir, time_limit, max_iterations, refine=refine_all, models_dir=None):
     """rIC3 decides each abstract model; its counterexample is replayed to find the units it depends on.
 
-    refine "all" moves every unit in the counterexample one level towards keep; "one" moves only the unit
-    with the most free values in the counterexample.
+    refine(context) picks the units of the counterexample that move one level towards keep; it returns
+    {"refined": [unit ids], "seconds": selection cost, ...}.  Models and rIC3 verdicts are stored per
+    assignment in models_dir and reused with their measured times.
     """
-    assignment = dict(assignment)
+    models_dir = models_dir or os.path.join(workdir, "models")
+    assignment = {u["id"]: assignment.get(u["id"], "keep") for u in units}
     history = []
     status = None
     for iteration in range(max_iterations + 1):
-        started = time.time()
         choices = assignment_choices(units, assignment)
         by_choice = {c["id"]: c["unit"] for c in choices}
-        model = os.path.join(workdir, "iter{:d}.btor2".format(iteration))
-        present = build(wrapper, prop, choices, model, model + ".work")
-        build_seconds = time.time() - started
-        verdict, depth, ric3_seconds = ric3_check(model, time_limit, model + ".ric3.log")
+        info = abstract_model(wrapper, prop, units, assignment, models_dir)
+        check = portfolio_verdict(info, time_limit)
         record = {
             "iteration": iteration,
-            "assignment": {u["id"]: assignment.get(u["id"], "keep") for u in units},
-            "model": model,
-            "choices_with_free_values": present,
-            "coi_state_bits": sum(coi_state_bits(model).values()),
-            "ric3": verdict,
-            "ric3_seconds": ric3_seconds,
-            "cex_depth": depth,
-            "build_seconds": build_seconds,
+            "assignment": dict(assignment),
+            "model": info["model"],
+            "choices_with_free_values": info["choices_with_free_values"],
+            "coi_state_bits": info["coi_state_bits"],
+            "ric3": check["ric3"],
+            "ric3_seconds": check["ric3_seconds"],
+            "cex_depth": check["cex_depth"],
+            "build_seconds": info["build_seconds"],
+            "reused": check["cached"],
         }
         history.append(record)
-        status = verdict
-        if verdict != "SAT":
+        status = check["ric3"]
+        if status != "SAT":
             break
         replay_started = time.time()
-        free = btor_witness.free_names(model, model + ".ric3.log")
-        counts = {}
-        for name in free:
+        counterexample = []
+        for name, frame in btor_witness.free_values(info["model"], check["log"]):
             m = CHOICE_NAME.search(name)
             if m and m.group(1) in by_choice:
-                counts[by_choice[m.group(1)]] = counts.get(by_choice[m.group(1)], 0) + 1
-        refined = sorted(counts)
-        if refine == "one" and refined:
-            refined = [min(refined, key=lambda unit_id: (-counts[unit_id], unit_id))]
-        record.update({"replay_seconds": time.time() - replay_started,
-                       "counterexample_units": counts, "refined_units": refined})
-        if not refined:
+                counterexample.append({"unit": by_choice[m.group(1)], "name": m.group(0), "frame": frame})
+        counts = {}
+        for value in counterexample:
+            counts[value["unit"]] = counts.get(value["unit"], 0) + 1
+        record.update({"replay_seconds": time.time() - replay_started, "counterexample_units": counts})
+        if not counts:
             status = "real"
             break
         if iteration == max_iterations:
             status = "max_iterations"
             break
-        for unit_id in refined:
-            levels = next(u["levels"] for u in units if u["id"] == unit_id)
-            assignment[unit_id] = levels[levels.index(assignment[unit_id]) - 1]
-    total = sum(r["build_seconds"] + r["ric3_seconds"] + r.get("replay_seconds", 0) for r in history)
+        selection = refine({"wrapper": wrapper, "prop": prop, "units": units, "assignment": dict(assignment),
+                            "model": info["model"], "coi_state_bits": info["coi_state_bits"],
+                            "cex_depth": check["cex_depth"], "counterexample": counterexample, "counts": counts,
+                            "history": history, "models_dir": models_dir, "time_limit": time_limit,
+                            "workdir": workdir})
+        record.update({"refined_units": selection["refined"], "selection_seconds": selection["seconds"],
+                       "selection": {k: v for k, v in selection.items() if k not in ("refined", "seconds")}})
+        if not selection["refined"] or not set(selection["refined"]) <= set(counts):
+            raise ValueError("refined units {} are not in the counterexample".format(selection["refined"]))
+        for unit_id in selection["refined"]:
+            assignment = finer(units, assignment, unit_id)
+    total = sum(r["build_seconds"] + r["ric3_seconds"] + r.get("replay_seconds", 0) + r.get("selection_seconds", 0)
+                for r in history)
     return {"status": status, "final_model": history[-1]["model"], "final_assignment": history[-1]["assignment"],
             "refinements": len(history) - 1, "total_seconds": total, "history": history}
 
@@ -369,7 +495,9 @@ def main(argv=None):
     r.add_argument("--assignment", required=True, help="JSON object unit id -> level, or 'coarsest'")
     r.add_argument("--time-limit", type=int, default=3600, help="rIC3 portfolio time limit per model")
     r.add_argument("--max-iterations", type=int, default=20)
-    r.add_argument("--refine", choices=["all", "one"], default="all")
+    r.add_argument("--refine", choices=["all", "one", "bmc", "llm"], default="all")
+    r.add_argument("--models", help="directory of models and verdicts reused across runs (default: workdir/models)")
+    r.add_argument("--description", help="property description for --refine llm")
     args = parser.parse_args(argv)
     workdir = os.path.abspath(args.workdir)
     wrapper = os.path.abspath(args.wrapper)
@@ -384,8 +512,15 @@ def main(argv=None):
         with open(args.assignment) as f:
             assignment = json.load(f)
     os.makedirs(workdir, exist_ok=True)
-    result = cegar(wrapper, args.prop, units, assignment, workdir, args.time_limit, args.max_iterations,
-                   args.refine)
+    if args.refine in REFINERS:
+        refine = REFINERS[args.refine]
+    else:
+        import choice_refine
+        refine = choice_refine.strategy(args.refine, args.description)
+    models_dir = os.path.abspath(args.models) if args.models else None
+    os.chdir(workdir)
+    result = cegar(wrapper, args.prop, units, assignment, workdir, args.time_limit, args.max_iterations, refine,
+                   models_dir)
     with open(os.path.join(workdir, "cegar.json"), "w") as f:
         json.dump(result, f, indent=2)
     print(json.dumps({k: result[k] for k in ("status", "refinements", "total_seconds", "final_assignment")}))

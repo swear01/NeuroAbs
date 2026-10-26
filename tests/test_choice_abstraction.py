@@ -36,6 +36,14 @@ class ChoiceModuleTest(unittest.TestCase):
         sys.path.remove(str(SRC))
 
 
+class CoiTest(ChoiceModuleTest):
+    def test_justice_terms_follow_the_count(self):
+        model = self.root / "m.btor2"
+        model.write_text("1 sort bitvec 1\n2 sort bitvec 4\n3 state 1 j\n4 state 2 b\n5 state 2 c\n"
+                         "6 next 1 3 3\n7 next 2 4 4\n8 next 2 5 5\n9 justice 1 3\n10 redor 1 4\n11 bad 10\n")
+        self.assertEqual(self.abstraction.coi_state_bits(str(model)), {"j": 1, "b": 4})
+
+
 class AssignmentTest(ChoiceModuleTest):
     def test_levels_become_cutpoints(self):
         choices = self.abstraction.assignment_choices(UNITS, {"csr": "cut", "icache": "havoc"})
@@ -97,27 +105,72 @@ class Ric3CheckTest(ChoiceModuleTest):
 
 
 class CegarTest(ChoiceModuleTest):
-    def run_cegar(self, refine):
+    FREE = [("RTL.choice__csr__0", 1), ("RTL.near_mem.choice__icache__0", 2),
+            ("RTL.near_mem.choice__icache__1", 2), ("other", 0)]
+
+    def run_cegar(self, refine, verdicts=None):
         from unittest.mock import patch
-        verdicts = iter([("SAT", 3, 1.0), ("SAT", 3, 1.0), ("UNSAT", None, 1.0)])
-        free = {"RTL.choice__csr__0", "RTL.near_mem.choice__icache__0", "RTL.near_mem.choice__icache__1"}
+        verdicts = iter(verdicts or [("SAT", 3, 1.0), ("SAT", 3, 1.0), ("UNSAT", None, 1.0)])
         a = self.abstraction
         with patch.object(a, "build", return_value=[]), \
                 patch.object(a, "ric3_check", side_effect=lambda *args: next(verdicts)), \
                 patch.object(a, "coi_state_bits", return_value={}), \
-                patch.object(a.btor_witness, "free_names", return_value=free):
+                patch.object(a.btor_witness, "free_values", return_value=self.FREE):
             return a.cegar("w.v", "ila", UNITS, {"csr": "cut", "icache": "cut"}, str(self.root), 10, 5, refine)
 
     def test_refine_all_moves_every_unit_in_the_counterexample(self):
-        result = self.run_cegar("all")
+        result = self.run_cegar(self.abstraction.refine_all)
         self.assertEqual(result["history"][0]["refined_units"], ["csr", "icache"])
         self.assertEqual(result["history"][1]["assignment"], {"csr": "keep", "icache": "havoc"})
 
     def test_refine_one_moves_the_unit_with_most_free_values(self):
-        result = self.run_cegar("one")
+        result = self.run_cegar(self.abstraction.refine_one)
         self.assertEqual(result["history"][0]["counterexample_units"], {"csr": 1, "icache": 2})
         self.assertEqual(result["history"][1]["assignment"], {"csr": "cut", "icache": "havoc"})
         self.assertEqual(result["status"], "UNSAT")
+
+    def test_strategy_sees_the_counterexample_with_frames(self):
+        seen = []
+
+        def refine(context):
+            seen.append(context)
+            return {"refined": ["icache"], "seconds": 2.5, "note": "x"}
+
+        result = self.run_cegar(refine, [("SAT", 3, 1.0), ("UNSAT", None, 1.0)])
+        self.assertIn({"unit": "icache", "name": "choice__icache__1", "frame": 2}, seen[0]["counterexample"])
+        self.assertEqual(seen[0]["cex_depth"], 3)
+        self.assertEqual(result["history"][0]["selection"], {"note": "x"})
+        self.assertEqual(result["history"][0]["selection_seconds"], 2.5)
+        self.assertEqual(result["history"][1]["assignment"], {"csr": "cut", "icache": "havoc"})
+        self.assertAlmostEqual(result["total_seconds"], 2.5 + 2 + sum(r["build_seconds"] for r in result["history"])
+                         + sum(r.get("replay_seconds", 0) for r in result["history"]))
+
+    def test_a_unit_outside_the_counterexample_is_rejected(self):
+        with self.assertRaises(ValueError):
+            self.run_cegar(lambda context: {"refined": ["bpred"], "seconds": 0.0})
+
+    def test_models_and_verdicts_are_reused(self):
+        first = self.run_cegar(self.abstraction.refine_one)
+        second = self.run_cegar(self.abstraction.refine_one, [("ERROR", None, 0.0)])
+        self.assertEqual([r["ric3"] for r in second["history"]], [r["ric3"] for r in first["history"]])
+        self.assertTrue(all(r["reused"] for r in second["history"]))
+        self.assertFalse(first["history"][0]["reused"])
+
+
+class Ric3BmcTest(ChoiceModuleTest):
+    fake_ric3 = Ric3CheckTest.fake_ric3
+
+    def test_no_counterexample_up_to_the_bound(self):
+        self.fake_ric3("echo '[INFO] bmc reached bound 7, stopping search'\necho UNKNOWN\n")
+        self.assertEqual(self.abstraction.ric3_bmc("m.btor2", 7, 10, str(self.root / "log"))[:2], ("NONE", None))
+
+    def test_counterexample_depth(self):
+        self.fake_ric3("echo '[INFO] BMC found a counterexample at depth 5'\necho SAT\n")
+        self.assertEqual(self.abstraction.ric3_bmc("m.btor2", 7, 10, str(self.root / "log"))[:2], ("SAT", 5))
+
+    def test_unknown_before_the_bound_is_a_timeout(self):
+        self.fake_ric3("echo '[INFO] bmc reached bound 3'\necho UNKNOWN\n")
+        self.assertEqual(self.abstraction.ric3_bmc("m.btor2", 7, 1, str(self.root / "log"))[0], "TIMEOUT")
 
 
 class ParseChoicesTest(ChoiceModuleTest):

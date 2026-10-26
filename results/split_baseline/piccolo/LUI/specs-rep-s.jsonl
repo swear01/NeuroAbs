@@ -1,0 +1,7 @@
+{"name": "mem", "spec": {"states": ["load_en", "pc", "store_en", "x0"], "case": null, "rd_guard": false, "keep_gprs": [0], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": [], "word_gprs": []}}
+{"name": "x1.frame", "spec": {"states": ["x1"], "case": "rd!=1", "rd_guard": false, "keep_gprs": [1], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": [], "word_gprs": []}}
+{"name": "x1.write", "spec": {"states": ["x1"], "case": "rd==1", "rd_guard": false, "keep_gprs": [], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": [], "word_gprs": [1]}}
+{"name": "x5.frame", "spec": {"states": ["x5"], "case": "rd!=5", "rd_guard": false, "keep_gprs": [5], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": [], "word_gprs": []}}
+{"name": "x5.write", "spec": {"states": ["x5"], "case": "rd==5", "rd_guard": false, "keep_gprs": [], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": [], "word_gprs": [5]}}
+{"name": "x17.frame", "spec": {"states": ["x17"], "case": "rd!=17", "rd_guard": false, "keep_gprs": [17], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": [], "word_gprs": []}}
+{"name": "x17.write", "spec": {"states": ["x17"], "case": "rd==17", "rd_guard": false, "keep_gprs": [], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": [], "word_gprs": [17]}}

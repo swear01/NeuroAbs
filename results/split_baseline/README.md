@@ -152,7 +152,7 @@ split and no-uf specs from `fine_gpr_choices/piccolo/<case>/specs-structural*.js
 lines of the split and S specs. `arm.sh` runs one arm with `src/fine_batch.py`,
 `queue.sh`, `long.sh` and `repeat.sh` are the order of the runs. After the
 runs, `arm.sh` was changed to write `.failed` on failure and copy
-`results.jsonl` to `arm-<arm>.jsonl`, the waits to stop once any arm has failed, and
+`results.jsonl` to `arm-<arm>.jsonl`, the waits to stop when an arm they depend on has failed, and
 the analysis scripts to reject `ERROR` records; no arm failed and no record is
 `ERROR`, so the results are unaffected. `compare.py
 <split> <arm>...` gives the paired tables and `repeats.py piccolo/<case>` the

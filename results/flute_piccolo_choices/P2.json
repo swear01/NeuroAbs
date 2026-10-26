@@ -1,0 +1,3 @@
+[{"id":"icache","kind":"module","target":"RTL.near_mem.icache"},
+ {"id":"dcache","kind":"module","target":"RTL.near_mem.dcache"},
+ {"id":"bpred","kind":"module","target":"RTL.stageF_branch_predictor"}]

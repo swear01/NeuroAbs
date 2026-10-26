@@ -1,0 +1,9 @@
+{"unit": "csr_regfile", "level": "cut", "verdict": "TIMEOUT", "depth": null, "seconds": 661.1, "coi_state_bits": 171074}
+{"unit": "gpr_regfile_regfile", "level": "havoc", "verdict": "TIMEOUT", "depth": null, "seconds": 661.1, "coi_state_bits": 170625}
+{"unit": "gpr_regfile_regfile", "level": "cut", "verdict": "TIMEOUT", "depth": null, "seconds": 660.9, "coi_state_bits": 170625}
+{"unit": "near_mem_dcache", "level": "havoc", "verdict": "TIMEOUT", "depth": null, "seconds": 640.7, "coi_state_bits": 103338}
+{"unit": "near_mem_dcache", "level": "cut", "verdict": "TIMEOUT", "depth": null, "seconds": 637.5, "coi_state_bits": 102877}
+{"unit": "near_mem_icache", "level": "havoc", "verdict": "TIMEOUT", "depth": null, "seconds": 646.6, "coi_state_bits": 103338}
+{"unit": "near_mem_icache", "level": "cut", "verdict": "TIMEOUT", "depth": null, "seconds": 645.8, "coi_state_bits": 102877}
+{"unit": "stageF_branch_predictor", "level": "havoc", "verdict": "TIMEOUT", "depth": null, "seconds": 660.7, "coi_state_bits": 142987}
+{"unit": "stageF_branch_predictor", "level": "cut", "verdict": "TIMEOUT", "depth": null, "seconds": 660.8, "coi_state_bits": 142379}

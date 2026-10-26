@@ -1,0 +1,168 @@
+{
+  "ric3_bin": "/var/tmp/neuroabs-tools/ric3-master-8c6df1b/ric3",
+  "cpu_affinity": [
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31
+  ],
+  "time_limit": 3600,
+  "parallel": 1,
+  "repeats": 1,
+  "runs": [
+    {
+      "seconds": 11.75403642654419,
+      "exit_status": 0,
+      "printed": "SAT",
+      "verdict": "SAT",
+      "label": "flute-ADD-sanity-P2",
+      "model": "/var/tmp/neuroabs-runtime/runs/flute-piccolo-20261025/pilot/flute-ADD-sanity-P2.btor2",
+      "repeat": 1
+    },
+    {
+      "seconds": 62.76792526245117,
+      "exit_status": 0,
+      "printed": "SAT",
+      "verdict": "SAT",
+      "label": "flute-ADD-sanity-P1",
+      "model": "/var/tmp/neuroabs-runtime/runs/flute-piccolo-20261025/pilot/flute-ADD-sanity-P1.btor2",
+      "repeat": 1
+    },
+    {
+      "seconds": 9.746318101882935,
+      "exit_status": 0,
+      "printed": "SAT",
+      "verdict": "SAT",
+      "label": "flute-ADD-ila-P2",
+      "model": "/var/tmp/neuroabs-runtime/runs/flute-piccolo-20261025/pilot/flute-ADD-ila-P2.btor2",
+      "repeat": 1
+    },
+    {
+      "seconds": 1310.32004570961,
+      "exit_status": 0,
+      "printed": "SAT",
+      "verdict": "SAT",
+      "label": "flute-ADD-ila-P1",
+      "model": "/var/tmp/neuroabs-runtime/runs/flute-piccolo-20261025/pilot/flute-ADD-ila-P1.btor2",
+      "repeat": 1
+    },
+    {
+      "seconds": 3605.9731764793396,
+      "exit_status": 0,
+      "printed": "UNKNOWN",
+      "verdict": "UNKNOWN",
+      "label": "piccolo-ADDI-ila-B0",
+      "model": "/var/tmp/neuroabs-runtime/runs/flute-piccolo-20261025/piccolo/ADDI/b0_ila.btor2",
+      "repeat": 1
+    },
+    {
+      "seconds": 3660.662206888199,
+      "exit_status": null,
+      "printed": null,
+      "verdict": "TIMEOUT",
+      "label": "flute-ADD-sanity-B0",
+      "model": "/var/tmp/neuroabs-runtime/runs/flute-piccolo-20261025/flute/ADD/b0_sanity.btor2",
+      "repeat": 1
+    },
+    {
+      "seconds": 3660.521915912628,
+      "exit_status": null,
+      "printed": null,
+      "verdict": "TIMEOUT",
+      "label": "flute-ADD-ila-B0",
+      "model": "/var/tmp/neuroabs-runtime/runs/flute-piccolo-20261025/flute/ADD/b0_ila.btor2",
+      "repeat": 1
+    }
+  ],
+  "summary": {
+    "flute-ADD-sanity-P2": {
+      "model": "/var/tmp/neuroabs-runtime/runs/flute-piccolo-20261025/pilot/flute-ADD-sanity-P2.btor2",
+      "model_sha256": "966e3cdfc66b27d10e20ae535a43f6a3bb8cb54fa2beeb0a32e030c3a2ea4837",
+      "verdicts": [
+        "SAT"
+      ],
+      "median_seconds": 11.75403642654419,
+      "seconds": [
+        11.75403642654419
+      ]
+    },
+    "flute-ADD-sanity-P1": {
+      "model": "/var/tmp/neuroabs-runtime/runs/flute-piccolo-20261025/pilot/flute-ADD-sanity-P1.btor2",
+      "model_sha256": "dc134be6676131c5f42dfbd2e098db5efb77f7177eb58f8adcb9504a12d8a931",
+      "verdicts": [
+        "SAT"
+      ],
+      "median_seconds": 62.76792526245117,
+      "seconds": [
+        62.76792526245117
+      ]
+    },
+    "flute-ADD-ila-P2": {
+      "model": "/var/tmp/neuroabs-runtime/runs/flute-piccolo-20261025/pilot/flute-ADD-ila-P2.btor2",
+      "model_sha256": "7d30324e29e780153ac4f9353e0e693295272ae427e2de091285811f589ba05a",
+      "verdicts": [
+        "SAT"
+      ],
+      "median_seconds": 9.746318101882935,
+      "seconds": [
+        9.746318101882935
+      ]
+    },
+    "flute-ADD-ila-P1": {
+      "model": "/var/tmp/neuroabs-runtime/runs/flute-piccolo-20261025/pilot/flute-ADD-ila-P1.btor2",
+      "model_sha256": "2690caba3b1bcdd8a1f5b8ea71cd6da3e18e07a73b7b2d93143dd2be28968e57",
+      "verdicts": [
+        "SAT"
+      ],
+      "median_seconds": 1310.32004570961,
+      "seconds": [
+        1310.32004570961
+      ]
+    },
+    "piccolo-ADDI-ila-B0": {
+      "model": "/var/tmp/neuroabs-runtime/runs/flute-piccolo-20261025/piccolo/ADDI/b0_ila.btor2",
+      "model_sha256": "f076ae58d9f9647b1b9fb9fc6e4889b752d5ec2fa1e4a11fa99d49f4b95230ff",
+      "verdicts": [
+        "UNKNOWN"
+      ],
+      "median_seconds": 3605.9731764793396,
+      "seconds": [
+        3605.9731764793396
+      ]
+    },
+    "flute-ADD-sanity-B0": {
+      "model": "/var/tmp/neuroabs-runtime/runs/flute-piccolo-20261025/flute/ADD/b0_sanity.btor2",
+      "model_sha256": "200d1428f829db98ab3254debf8d5ad110ccefb326be0fcfb145899286bda3d0",
+      "verdicts": [
+        "TIMEOUT"
+      ],
+      "median_seconds": 3660.662206888199,
+      "seconds": [
+        3660.662206888199
+      ]
+    },
+    "flute-ADD-ila-B0": {
+      "model": "/var/tmp/neuroabs-runtime/runs/flute-piccolo-20261025/flute/ADD/b0_ila.btor2",
+      "model_sha256": "8e5e33b6cf2498e93b11c76882c9fd4e1256a90cdc07ecf6166e4e75e7ca02c9",
+      "verdicts": [
+        "TIMEOUT"
+      ],
+      "median_seconds": 3660.521915912628,
+      "seconds": [
+        3660.521915912628
+      ]
+    }
+  }
+}

@@ -1,0 +1,5 @@
+{"unit": "csr_regfile", "level": "cut", "verdict": "TIMEOUT", "depth": null, "seconds": 603.2, "coi_state_bits": 4542}
+{"unit": "gpr_regfile_regfile", "level": "havoc", "verdict": "SAT", "depth": 11, "seconds": 42.7, "coi_state_bits": 4107}
+{"unit": "gpr_regfile_regfile", "level": "cut", "verdict": "SAT", "depth": 12, "seconds": 34.2, "coi_state_bits": 4107}
+{"unit": "near_mem_dcache", "level": "cut", "verdict": "TIMEOUT", "depth": null, "seconds": 604.8, "coi_state_bits": 4721}
+{"unit": "near_mem_icache", "level": "cut", "verdict": "SAT", "depth": 11, "seconds": 17.1, "coi_state_bits": 4689}

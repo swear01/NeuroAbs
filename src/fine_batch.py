@@ -98,7 +98,8 @@ def main(argv=None):
         t.start()
     for t in threads:
         t.join()
-    missing = [job["name"] for job in specs if job["name"] not in finished(results)]
+    done = finished(results)
+    missing = [job["name"] for job in specs if job["name"] not in done]
     if missing:
         print("no result for: " + ", ".join(missing), file=sys.stderr)
         return 1

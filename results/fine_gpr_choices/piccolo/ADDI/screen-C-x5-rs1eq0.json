@@ -1,0 +1,107 @@
+{
+ "status": "UNSAT",
+ "final_spec": {
+  "states": [
+   "x5"
+  ],
+  "case": "rd==5&&rs1==0",
+  "keep_gprs": [
+   5
+  ],
+  "units": {
+   "csr_regfile": "cut",
+   "near_mem_dcache": "cut"
+  }
+ },
+ "refinements": 0,
+ "total_seconds": 16.953389644622803,
+ "history": [
+  {
+   "spec": {
+    "states": [
+     "x5"
+    ],
+    "case": "rd==5&&rs1==0",
+    "keep_gprs": [
+     5
+    ],
+    "units": {
+     "csr_regfile": "cut",
+     "near_mem_dcache": "cut"
+    }
+   },
+   "choices_with_free_values": [
+    "csr_regfile",
+    "gpr_w0",
+    "gpr_w1",
+    "gpr_w10",
+    "gpr_w11",
+    "gpr_w12",
+    "gpr_w13",
+    "gpr_w14",
+    "gpr_w15",
+    "gpr_w16",
+    "gpr_w17",
+    "gpr_w18",
+    "gpr_w19",
+    "gpr_w2",
+    "gpr_w20",
+    "gpr_w21",
+    "gpr_w22",
+    "gpr_w23",
+    "gpr_w24",
+    "gpr_w25",
+    "gpr_w26",
+    "gpr_w27",
+    "gpr_w28",
+    "gpr_w29",
+    "gpr_w3",
+    "gpr_w30",
+    "gpr_w31",
+    "gpr_w4",
+    "gpr_w6",
+    "gpr_w7",
+    "gpr_w8",
+    "gpr_w9",
+    "ila_x0",
+    "ila_x1",
+    "ila_x10",
+    "ila_x11",
+    "ila_x12",
+    "ila_x13",
+    "ila_x14",
+    "ila_x15",
+    "ila_x16",
+    "ila_x17",
+    "ila_x18",
+    "ila_x19",
+    "ila_x2",
+    "ila_x20",
+    "ila_x21",
+    "ila_x22",
+    "ila_x23",
+    "ila_x24",
+    "ila_x25",
+    "ila_x26",
+    "ila_x27",
+    "ila_x28",
+    "ila_x29",
+    "ila_x3",
+    "ila_x30",
+    "ila_x31",
+    "ila_x4",
+    "ila_x6",
+    "ila_x7",
+    "ila_x8",
+    "ila_x9",
+    "near_mem_dcache"
+   ],
+   "coi_state_bits": 1194,
+   "ric3": "UNSAT",
+   "ric3_seconds": 12.709853887557983,
+   "cex_depth": null,
+   "build_seconds": 4.243535757064819,
+   "iteration": 0
+  }
+ ]
+}

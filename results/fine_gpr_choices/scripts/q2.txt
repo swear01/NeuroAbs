@@ -1,0 +1,3 @@
+AUIPC x5.write-uf 300 0 {"states":["x5"],"case":"rd==5","keep_gprs":[5],"uf":[{"ila":"n14","rtl":"rd_val__h5537"}]}
+ANDI x5.rs1=6 300 0 {"states":["x5"],"case":"rd==5&&rs1==6","keep_gprs":[5,6]}
+ANDI x5.rs1=6-uf 300 0 {"states":["x5"],"case":"rd==5&&rs1==6","keep_gprs":[5,6],"uf":[{"ila":"n110","rtl":"_theResult_____1_fst__h6597"}]}

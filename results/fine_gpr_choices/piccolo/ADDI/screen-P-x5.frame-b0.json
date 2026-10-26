@@ -1,0 +1,28 @@
+{
+ "status": "UNSAT",
+ "final_spec": {
+  "states": [
+   "x5"
+  ],
+  "case": "rd!=5"
+ },
+ "refinements": 0,
+ "total_seconds": 145.4992847442627,
+ "history": [
+  {
+   "spec": {
+    "states": [
+     "x5"
+    ],
+    "case": "rd!=5"
+   },
+   "choices_with_free_values": [],
+   "coi_state_bits": 5163,
+   "ric3": "UNSAT",
+   "ric3_seconds": 142.9332242012024,
+   "cex_depth": null,
+   "build_seconds": 2.5660605430603027,
+   "iteration": 0
+  }
+ ]
+}

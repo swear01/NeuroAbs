@@ -1,0 +1,28 @@
+{
+ "status": "TIMEOUT",
+ "final_spec": {
+  "states": [
+   "x5"
+  ],
+  "case": "rd==5&&rs1==6"
+ },
+ "refinements": 0,
+ "total_seconds": 307.9344367980957,
+ "history": [
+  {
+   "spec": {
+    "states": [
+     "x5"
+    ],
+    "case": "rd==5&&rs1==6"
+   },
+   "choices_with_free_values": [],
+   "coi_state_bits": 5163,
+   "ric3": "TIMEOUT",
+   "ric3_seconds": 305.5435531139374,
+   "cex_depth": null,
+   "build_seconds": 2.390883684158325,
+   "iteration": 0
+  }
+ ]
+}

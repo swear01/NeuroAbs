@@ -1,0 +1,54 @@
+{
+ "status": "TIMEOUT",
+ "final_spec": {
+  "states": [
+   "x5"
+  ],
+  "case": "rd==5",
+  "keep_gprs": "all",
+  "units": {
+   "csr_regfile": "cut",
+   "near_mem_dcache": "cut"
+  },
+  "uf": [
+   {
+    "ila": "n110",
+    "rtl": "rd_val___1__h6550"
+   }
+  ]
+ },
+ "refinements": 0,
+ "total_seconds": 306.8854992389679,
+ "history": [
+  {
+   "spec": {
+    "states": [
+     "x5"
+    ],
+    "case": "rd==5",
+    "keep_gprs": "all",
+    "units": {
+     "csr_regfile": "cut",
+     "near_mem_dcache": "cut"
+    },
+    "uf": [
+     {
+      "ila": "n110",
+      "rtl": "rd_val___1__h6550"
+     }
+    ]
+   },
+   "choices_with_free_values": [
+    "csr_regfile",
+    "near_mem_dcache",
+    "uf0"
+   ],
+   "coi_state_bits": 4361,
+   "ric3": "TIMEOUT",
+   "ric3_seconds": 303.33030796051025,
+   "cex_depth": null,
+   "build_seconds": 3.5551912784576416,
+   "iteration": 0
+  }
+ ]
+}

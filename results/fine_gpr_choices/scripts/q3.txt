@@ -1,0 +1,4 @@
+ADDI P-x5.frame-b0 300 0 {"states":["x5"],"case":"rd!=5"}
+ADDI P-mem-b0 300 0 {"states":["load_en","pc","store_en","x0"]}
+ADDI P-x5.rs1=6-b0 300 0 {"states":["x5"],"case":"rd==5&&rs1==6"}
+ADDI P-x5.rs1=6-b0uf 300 0 {"states":["x5"],"case":"rd==5&&rs1==6","uf":[{"ila":"n110","rtl":"rd_val___1__h6550"}]}

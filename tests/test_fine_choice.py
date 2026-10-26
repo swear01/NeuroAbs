@@ -176,6 +176,7 @@ class FineChoiceTest(unittest.TestCase):
     def test_batch_runs_errors_again(self):
         import json
         import tempfile
+        from unittest import mock
         import fine_batch
         with tempfile.TemporaryDirectory() as d:
             path = Path(d) / "results.jsonl"
@@ -187,6 +188,12 @@ class FineChoiceTest(unittest.TestCase):
             with open(path, "a") as f:
                 f.write('{"name": "d", "status": "UN')
             self.assertEqual(fine_batch.finished(str(path)), {"a", "c"})
+            specs = Path(d) / "specs.jsonl"
+            specs.write_text(json.dumps({"name": "d", "spec": {}}) + "\n")
+            with mock.patch.object(fine_batch, "check", return_value={"name": "d", "status": "UNSAT"}):
+                code = fine_batch.main(["--wrapper", "w.v", "--units", "u.json", "--specs", str(specs),
+                                        "--workdir", d, "--cpus", "0", "--time-limit", "1", "--max-iterations", "0"])
+            self.assertEqual((code, fine_batch.finished(str(path))), (0, {"a", "c", "d"}))
 
     def test_batch_records_a_job_that_fails_to_run_and_goes_on(self):
         import json

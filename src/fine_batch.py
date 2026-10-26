@@ -49,6 +49,15 @@ def finished(results):
     return names
 
 
+def end_last_line(results):
+    """Terminate an incomplete last line, so that new records start on a line of their own."""
+    if os.path.exists(results) and os.path.getsize(results):
+        with open(results, "rb+") as f:
+            f.seek(-1, os.SEEK_END)
+            if f.read(1) != b"\n":
+                f.write(b"\n")
+
+
 def check(name, spec, cpus, args):
     workdir = os.path.join(args.workdir, name)
     os.makedirs(workdir, exist_ok=True)
@@ -93,6 +102,7 @@ def main(argv=None):
     os.makedirs(args.workdir, exist_ok=True)
     results = os.path.join(args.workdir, "results.jsonl")
     done = finished(results)
+    end_last_line(results)
     jobs = queue.Queue()
     with open(args.specs) as f:
         specs = [json.loads(line) for line in f if line.strip()]

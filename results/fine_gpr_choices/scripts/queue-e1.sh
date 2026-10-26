@@ -8,6 +8,6 @@ for c in LUI AUIPC JAL; do
 import json
 with open('$RUN/piccolo-$c/specs-llm.jsonl','w') as o:
   for l in open('$RUN/piccolo-$c/llm/decisions.jsonl'):
-    d=json.loads(l); o.write(json.dumps({'name':d['name'],'spec':d['spec']})+'\n')"
+    d=json.loads(l); o.write(json.dumps({'name':d['name'],'spec':d['spec']})+'\n')" || exit 1
   $RUN/scripts/arm.sh $c llm $RUN/piccolo-$c/specs-llm.jsonl 28-29/30-31 300 10 || exit 1
 done

@@ -28,14 +28,19 @@ for u in units:
     safe[u["id"]] = "keep"
     for level in u["levels"][1:]:
         verdict = check({u["id"]: level}, "single")
+        if verdict == "ERROR":
+            raise RuntimeError("rIC3 BMC failed on {:s}={:s}".format(u["id"], level))
         if verdict in ("NONE", "TIMEOUT"):
             safe[u["id"]] = level
             if verdict == "TIMEOUT":
                 inconclusive.append(u["id"] + "=" + level)
         else:
             break
-if check(safe, "combined") == "TIMEOUT":
+combined = check(safe, "combined")
+if combined == "TIMEOUT":
     inconclusive.append("combined")
+elif combined != "NONE":
+    raise RuntimeError("the combined coarsening is {:s}; the screened levels are not safe".format(combined))
 json.dump({"needed": sorted(k for k, v in safe.items() if v == "keep"), "safe_levels": safe,
            "inconclusive": inconclusive},
           open(os.path.join(d, "ground_truth.json"), "w"), indent=2)

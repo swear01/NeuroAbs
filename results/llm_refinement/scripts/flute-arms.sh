@@ -8,6 +8,7 @@ export RIC3_TMP_DIR=$RUN/.ric3tmp-flute; mkdir -p $RIC3_TMP_DIR
 d=$RUN/flute/ADD
 for arm in "$@"; do
   [ -s $d/arms/$arm/cegar.json ] && continue
+  mkdir -p $d/arms
   LLM_BUDGET_USD=1 taskset -c $cpus python3 $R/src/choice_abstraction.py cegar --wrapper $R/Flute_verification_done/ADD/wrapper.v \
     --prop ila --workdir $d/arms/$arm --models $d/models --units $d/units.json --assignment coarsest \
     --time-limit 300 --max-iterations 10 --refine ${arm%-*} --description $R/Flute_verification_done/ADD/description.txt \

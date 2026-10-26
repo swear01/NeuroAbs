@@ -121,7 +121,8 @@ class ParseTest(ChoiceRefineTest):
                        json.dumps({"refine": "icache", "probabilities": {"gpr": 0.5, "csr": 0.5}, "reason": ""}),
                        json.dumps({"refine": "gpr", "probabilities": {"gpr": 0.5}, "reason": ""}),
                        json.dumps({"refine": "gpr", "probabilities": {"gpr": 0.5, "csr": 0.1}, "reason": ""}),
-                       json.dumps({"refine": "gpr", "probabilities": {"gpr": 0.5, "csr": 0.5}})]:
+                       json.dumps({"refine": "gpr", "probabilities": {"gpr": 0.5, "csr": 0.5}}),
+                       json.dumps({"refine": ["gpr"], "probabilities": {"gpr": 0.5, "csr": 0.5}, "reason": ""})]:
             with self.assertRaises(ValueError):
                 self.refine.parse_refinement(answer, {"csr", "gpr"})
 

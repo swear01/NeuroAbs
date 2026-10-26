@@ -10,6 +10,7 @@ for c in "$@"; do
   d=$RUN/piccolo/$c
   for arm in one all bmc llm-1 llm-2 llm-3; do
     [ -s $d/arms/$arm/cegar.json ] && continue
+    mkdir -p $d/arms
     LLM_BUDGET_USD=1 taskset -c $cpus python3 $R/src/choice_abstraction.py cegar --wrapper $R/Piccolo_verification_done/$c/wrapper.v \
       --prop ila --workdir $d/arms/$arm --models $d/models --units $d/units.json --assignment coarsest \
       --time-limit 300 --max-iterations 8 --refine ${arm%-*} --description $R/Piccolo_verification_done/$c/description.txt \

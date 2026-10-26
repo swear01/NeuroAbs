@@ -119,7 +119,7 @@ def parse_refinement(text, candidates):
     if not isinstance(data, dict) or set(data) != {"refine", "probabilities", "reason"}:
         raise ValueError("expected exactly the keys refine, probabilities and reason")
     unit, probs, reason = data["refine"], data["probabilities"], data["reason"]
-    if unit not in candidates:
+    if not isinstance(unit, str) or unit not in candidates:
         raise ValueError("refine is not one of {}".format(sorted(candidates)))
     if not isinstance(probs, dict) or set(probs) != set(candidates) or any(
             isinstance(v, bool) or not isinstance(v, (int, float)) or not 0 <= v <= 1 for v in probs.values()):

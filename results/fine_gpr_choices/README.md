@@ -344,7 +344,11 @@ directory `/var/tmp/neuroabs-runtime/runs/fine-gpr-20261026`; each sources
 screen, `arm.sh <case> <arm> <specs> <cpus> <limit> <iterations>` one arm
 with `src/fine_batch.py`, `llm.sh` the DeepSeek choices with
 `src/fine_choice_llm.py`, `b0.sh` the B0 run; the `queue-*.sh` files are
-the order of the runs; `summarize.py` and `depths.py` give the table numbers
+the order of the runs. After the runs, the scripts were changed to write the
+`.done` markers only on success (a failure writes `.failed`, which stops the
+queues waiting on it) and `after.sh` to ignore its own and its ancestors'
+command lines; the recorded results have no duplicate or `ERROR` record, so
+these changes do not affect them; `summarize.py` and `depths.py` give the table numbers
 and the deepest BMC bound / IC3 frame of a log. Per-case records are in `piccolo/<case>/`:
 `arm-*.jsonl` (one line per sub-property: verdict, refinements, times, final
 COI bits, final spec), `llm-decisions.jsonl` (answers, probabilities, usage,

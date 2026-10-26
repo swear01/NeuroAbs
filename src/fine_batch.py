@@ -33,15 +33,23 @@ def summary(name, workdir):
 
 
 def finished(results):
-    """Names with a result other than ERROR; an ERROR is run again on resume."""
+    """Names with a result other than ERROR; an ERROR or an incomplete line is run again on resume."""
+    names = set()
     if not os.path.exists(results):
-        return set()
+        return names
     with open(results) as f:
-        return {r["name"] for r in map(json.loads, filter(str.strip, f)) if r["status"] != "ERROR"}
+        for line in filter(str.strip, f):
+            try:
+                record = json.loads(line)
+            except ValueError:
+                print("ignoring incomplete result line: " + line[:80], file=sys.stderr)
+                continue
+            if record["status"] != "ERROR":
+                names.add(record["name"])
+    return names
 
 
-def run(job, cpus, args, lock):
-    name, spec = job["name"], job["spec"]
+def check(name, spec, cpus, args):
     workdir = os.path.join(args.workdir, name)
     os.makedirs(workdir, exist_ok=True)
     with open(os.path.join(workdir, "spec.json"), "w") as f:
@@ -54,7 +62,15 @@ def run(job, cpus, args, lock):
                                 "--spec", os.path.join(workdir, "spec.json"), "--workdir", workdir,
                                 "--time-limit", str(args.time_limit), "--max-iterations", str(args.max_iterations)],
                                stdout=log, stderr=subprocess.STDOUT, env=env)
-    record = summary(name, workdir) if code == 0 else {"name": name, "status": "ERROR", "exit": code}
+    return summary(name, workdir) if code == 0 else {"name": name, "status": "ERROR", "exit": code}
+
+
+def run(job, cpus, args, lock):
+    """Check one spec and append its record; a job that fails to run is recorded as ERROR, so the worker goes on."""
+    try:
+        record = check(job["name"], job["spec"], cpus, args)
+    except (OSError, ValueError, KeyError, TypeError) as e:
+        record = {"name": job["name"], "status": "ERROR", "error": repr(e)}
     with lock:
         with open(os.path.join(args.workdir, "results.jsonl"), "a") as f:
             f.write(json.dumps(record) + "\n")

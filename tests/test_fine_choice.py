@@ -184,7 +184,31 @@ class FineChoiceTest(unittest.TestCase):
                 {"name": "a", "status": "UNSAT"}, {"name": "b", "status": "ERROR", "exit": 1},
                 {"name": "c", "status": "TIMEOUT"}]))
             self.assertEqual(fine_batch.finished(str(path)), {"a", "c"})
+            with open(path, "a") as f:
+                f.write('{"name": "d", "status": "UN')
+            self.assertEqual(fine_batch.finished(str(path)), {"a", "c"})
 
+    def test_batch_records_a_job_that_fails_to_run_and_goes_on(self):
+        import json
+        import tempfile
+        from unittest import mock
+        import fine_batch
+
+        def check(name, spec, cpus, args):
+            if name == "a":
+                raise OSError("taskset not found")
+            return {"name": name, "status": "UNSAT"}
+
+        with tempfile.TemporaryDirectory() as d:
+            specs = Path(d) / "specs.jsonl"
+            specs.write_text("".join(json.dumps({"name": n, "spec": {}}) + "\n" for n in ("a", "b", "c")))
+            with mock.patch.object(fine_batch, "check", side_effect=check):
+                code = fine_batch.main(["--wrapper", "w.v", "--units", "u.json", "--specs", str(specs),
+                                        "--workdir", d, "--cpus", "0", "--time-limit", "1", "--max-iterations", "0"])
+            records = [json.loads(line) for line in (Path(d) / "results.jsonl").read_text().splitlines()]
+        self.assertEqual(code, 1)
+        self.assertEqual([(r["name"], r["status"]) for r in records], [("a", "ERROR"), ("b", "UNSAT"), ("c", "UNSAT")])
+        self.assertIn("taskset not found", records[0]["error"])
 
     def test_operator_args(self):
         self.assertEqual(self.fine.operator_args(UF_DESIGN, "riscv__DOT__ADDI", "n110"), ("n107", "+", "n109"))
@@ -209,6 +233,11 @@ class FineChoiceTest(unittest.TestCase):
                       "(__uf0_lw == __uf0_lr);", wrapper)
         self.assertIn("assign __all_assume_wire__ = (noreset__p5__) && (__uf0_assume) ;", wrapper)
         self.assertIn("assign n111 =  ( n107 ) ^ ( n109 )  ;", text)
+
+    def test_uf_rejects_a_parameterized_instance(self):
+        design = UF_DESIGN.replace("riscv__DOT__ADDI ILA (", "riscv__DOT__ADDI #(.W(32)) ILA (")
+        with self.assertRaises(ValueError):
+            self.fine.add_ports(design, "riscv__DOT__ADDI", "ILA", [("input", 32, "p", "p")], [], ("n110", "p"))
 
     def test_uf_rejects_different_operators(self):
         with self.assertRaises(ValueError):

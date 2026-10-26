@@ -165,8 +165,11 @@ def add_ports(text, module, instance, ports, assigns, replace):
                   + decls + body[header_end:], count=1, flags=re.S) + tail
     text = text[:start] + body + text[end:]
     connect = ", ".join(".{:s}({:s})".format(n, net) for _, _, n, net in ports)
-    return re.sub(r"(^\s*" + re.escape(module) + r"\s+" + re.escape(instance) + r"\s*\()",
-                  lambda m: m.group(1) + connect + ", ", text, count=1, flags=re.M)
+    text, count = re.subn(r"(^\s*" + re.escape(module) + r"\s+" + re.escape(instance) + r"\s*\()",
+                          lambda m: m.group(1) + connect + ", ", text, count=1, flags=re.M)
+    if not count:
+        raise ValueError("no instance {:s} of {:s} without parameters".format(instance, module))
+    return text
 
 
 def uf_rewrite(text, index, uf):

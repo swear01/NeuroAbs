@@ -35,6 +35,10 @@ class HavocTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             havoc(RTL + "\tassign x = cpuregs[5];\n", 0)
 
+    def test_debug_read_on_the_first_line_is_allowed(self):
+        out = havoc("wire [31:0] dbg_reg_x1  = cpuregs[1];\n" + RTL, 0)
+        self.assertIn("dbg_reg_x1  = cpuregs[1];", out)
+
 
 if __name__ == "__main__":
     unittest.main()

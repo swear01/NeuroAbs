@@ -1,0 +1,238 @@
+{
+  "status": "TIMEOUT",
+  "final_model": "/var/tmp/neuroabs-runtime/runs/llm-refine-20261026/piccolo/LUI/models/csr_regfile=cut+gpr_regfile_regfile=keep+near_mem_dcache=cut+near_mem_icache=keep/model.btor2",
+  "final_assignment": {
+    "csr_regfile": "cut",
+    "gpr_regfile_regfile": "keep",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "keep"
+  },
+  "refinements": 3,
+  "total_seconds": 419.99795389175415,
+  "history": [
+    {
+      "iteration": 0,
+      "assignment": {
+        "csr_regfile": "cut",
+        "gpr_regfile_regfile": "cut",
+        "near_mem_dcache": "cut",
+        "near_mem_icache": "cut"
+      },
+      "model": "/var/tmp/neuroabs-runtime/runs/llm-refine-20261026/piccolo/LUI/models/csr_regfile=cut+gpr_regfile_regfile=cut+near_mem_dcache=cut+near_mem_icache=cut/model.btor2",
+      "choices_with_free_values": [
+        "csr_regfile",
+        "gpr_regfile_regfile",
+        "near_mem_dcache",
+        "near_mem_icache"
+      ],
+      "coi_state_bits": 2706,
+      "ric3": "SAT",
+      "ric3_seconds": 6.2636284828186035,
+      "cex_depth": 9,
+      "build_seconds": 4.909232139587402,
+      "reused": true,
+      "replay_seconds": 0.07777070999145508,
+      "counterexample_units": {
+        "csr_regfile": 14,
+        "gpr_regfile_regfile": 2,
+        "near_mem_dcache": 9,
+        "near_mem_icache": 12
+      },
+      "refined_units": [
+        "near_mem_icache"
+      ],
+      "selection_seconds": 38.63356041908264,
+      "selection": {
+        "llm_seconds": 32.55495762825012,
+        "signal_seconds": 6.0786027908325195,
+        "probabilities": {
+          "near_mem_icache": 0.78,
+          "gpr_regfile_regfile": 0.14,
+          "near_mem_dcache": 0.05,
+          "csr_regfile": 0.03
+        },
+        "reason": "The LUI instruction fetch depends on the icache outputs, and unconstrained imem_valid/imem_exc/word64/imem_pc in the fetch cycles can let the counterexample treat the instruction as invalid or exceptional and thus fail the decode/execution and PC assertions.",
+        "usage": {
+          "prompt_tokens": 4487,
+          "completion_tokens": 4602,
+          "total_tokens": 9089,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 0,
+            "cache_write_tokens": 0,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "text_tokens": 0,
+            "image_tokens": 0,
+            "video_tokens": 0
+          },
+          "completion_tokens_details": {
+            "audio_tokens": 0,
+            "reasoning_tokens": 4485,
+            "accepted_prediction_tokens": 0,
+            "rejected_prediction_tokens": 0,
+            "text_tokens": 0,
+            "image_tokens": 0,
+            "video_tokens": 0
+          }
+        },
+        "cost_usd": 0.0068685,
+        "served_model": "deepseek/deepseek-v4.1-flash"
+      }
+    },
+    {
+      "iteration": 1,
+      "assignment": {
+        "csr_regfile": "cut",
+        "gpr_regfile_regfile": "cut",
+        "near_mem_dcache": "cut",
+        "near_mem_icache": "keep"
+      },
+      "model": "/var/tmp/neuroabs-runtime/runs/llm-refine-20261026/piccolo/LUI/models/csr_regfile=cut+gpr_regfile_regfile=cut+near_mem_dcache=cut+near_mem_icache=keep/model.btor2",
+      "choices_with_free_values": [
+        "csr_regfile",
+        "gpr_regfile_regfile",
+        "near_mem_dcache"
+      ],
+      "coi_state_bits": 3112,
+      "ric3": "SAT",
+      "ric3_seconds": 18.942655563354492,
+      "cex_depth": 11,
+      "build_seconds": 4.805614471435547,
+      "reused": false,
+      "replay_seconds": 0.21818852424621582,
+      "counterexample_units": {
+        "csr_regfile": 16,
+        "gpr_regfile_regfile": 5,
+        "near_mem_dcache": 7
+      },
+      "refined_units": [
+        "gpr_regfile_regfile"
+      ],
+      "selection_seconds": 7.5234010219573975,
+      "selection": {
+        "llm_seconds": 2.9865520000457764,
+        "signal_seconds": 4.536849021911621,
+        "probabilities": {
+          "gpr_regfile_regfile": 0.82,
+          "csr_regfile": 0.1,
+          "near_mem_dcache": 0.08
+        },
+        "reason": "The failing assertions compare architectural register values to the GPR array, and the counterexample directly depends on an unconstrained gpr_regfile regfile array value at cycle 11, so refining it is most likely to eliminate the spurious LUI counterexample.",
+        "usage": {
+          "prompt_tokens": 4381,
+          "completion_tokens": 279,
+          "total_tokens": 4660,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 2048,
+            "cache_write_tokens": 0,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "text_tokens": 0,
+            "image_tokens": 0,
+            "video_tokens": 0
+          },
+          "completion_tokens_details": {
+            "audio_tokens": 0,
+            "reasoning_tokens": 169,
+            "accepted_prediction_tokens": 0,
+            "rejected_prediction_tokens": 0,
+            "text_tokens": 0,
+            "image_tokens": 0,
+            "video_tokens": 0
+          }
+        },
+        "cost_usd": 0.001046988,
+        "served_model": "deepseek/deepseek-v4.1-flash"
+      }
+    },
+    {
+      "iteration": 2,
+      "assignment": {
+        "csr_regfile": "cut",
+        "gpr_regfile_regfile": "havoc",
+        "near_mem_dcache": "cut",
+        "near_mem_icache": "keep"
+      },
+      "model": "/var/tmp/neuroabs-runtime/runs/llm-refine-20261026/piccolo/LUI/models/csr_regfile=cut+gpr_regfile_regfile=havoc+near_mem_dcache=cut+near_mem_icache=keep/model.btor2",
+      "choices_with_free_values": [
+        "csr_regfile",
+        "gpr_regfile_regfile_m0",
+        "near_mem_dcache"
+      ],
+      "coi_state_bits": 3112,
+      "ric3": "SAT",
+      "ric3_seconds": 16.29321551322937,
+      "cex_depth": 11,
+      "build_seconds": 4.543028354644775,
+      "reused": false,
+      "replay_seconds": 0.1757829189300537,
+      "counterexample_units": {
+        "csr_regfile": 16,
+        "near_mem_dcache": 7,
+        "gpr_regfile_regfile": 3
+      },
+      "refined_units": [
+        "gpr_regfile_regfile"
+      ],
+      "selection_seconds": 9.40382170677185,
+      "selection": {
+        "llm_seconds": 5.469168186187744,
+        "signal_seconds": 3.9346535205841064,
+        "probabilities": {
+          "gpr_regfile_regfile": 0.85,
+          "csr_regfile": 0.1,
+          "near_mem_dcache": 0.05
+        },
+        "reason": "The LUI property primarily checks that the architectural register values match the GPR regfile contents, and the counterexample's failing register comparisons depend directly on unconstrained GPR read data.",
+        "usage": {
+          "prompt_tokens": 4381,
+          "completion_tokens": 645,
+          "total_tokens": 5026,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 2048,
+            "cache_write_tokens": 0,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "text_tokens": 0,
+            "image_tokens": 0,
+            "video_tokens": 0
+          },
+          "completion_tokens_details": {
+            "audio_tokens": 0,
+            "reasoning_tokens": 550,
+            "accepted_prediction_tokens": 0,
+            "rejected_prediction_tokens": 0,
+            "text_tokens": 0,
+            "image_tokens": 0,
+            "video_tokens": 0
+          }
+        },
+        "cost_usd": 0.001486188,
+        "served_model": "deepseek/deepseek-v4.1-flash"
+      }
+    },
+    {
+      "iteration": 3,
+      "assignment": {
+        "csr_regfile": "cut",
+        "gpr_regfile_regfile": "keep",
+        "near_mem_dcache": "cut",
+        "near_mem_icache": "keep"
+      },
+      "model": "/var/tmp/neuroabs-runtime/runs/llm-refine-20261026/piccolo/LUI/models/csr_regfile=cut+gpr_regfile_regfile=keep+near_mem_dcache=cut+near_mem_icache=keep/model.btor2",
+      "choices_with_free_values": [
+        "csr_regfile",
+        "near_mem_dcache"
+      ],
+      "coi_state_bits": 4136,
+      "ric3": "TIMEOUT",
+      "ric3_seconds": 303.6619338989258,
+      "cex_depth": null,
+      "build_seconds": 4.5461201667785645,
+      "reused": false
+    }
+  ]
+}

@@ -1,0 +1,238 @@
+{
+  "status": "TIMEOUT",
+  "final_model": "/var/tmp/neuroabs-runtime/runs/llm-refine-20261026/piccolo/JAL/models/csr_regfile=cut+gpr_regfile_regfile=keep+near_mem_dcache=cut+near_mem_icache=keep/model.btor2",
+  "final_assignment": {
+    "csr_regfile": "cut",
+    "gpr_regfile_regfile": "keep",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "keep"
+  },
+  "refinements": 3,
+  "total_seconds": 422.8559913635254,
+  "history": [
+    {
+      "iteration": 0,
+      "assignment": {
+        "csr_regfile": "cut",
+        "gpr_regfile_regfile": "cut",
+        "near_mem_dcache": "cut",
+        "near_mem_icache": "cut"
+      },
+      "model": "/var/tmp/neuroabs-runtime/runs/llm-refine-20261026/piccolo/JAL/models/csr_regfile=cut+gpr_regfile_regfile=cut+near_mem_dcache=cut+near_mem_icache=cut/model.btor2",
+      "choices_with_free_values": [
+        "csr_regfile",
+        "gpr_regfile_regfile",
+        "near_mem_dcache",
+        "near_mem_icache"
+      ],
+      "coi_state_bits": 2706,
+      "ric3": "SAT",
+      "ric3_seconds": 7.517277240753174,
+      "cex_depth": 8,
+      "build_seconds": 4.5574164390563965,
+      "reused": true,
+      "replay_seconds": 0.12038445472717285,
+      "counterexample_units": {
+        "csr_regfile": 12,
+        "gpr_regfile_regfile": 2,
+        "near_mem_dcache": 7,
+        "near_mem_icache": 11
+      },
+      "refined_units": [
+        "near_mem_icache"
+      ],
+      "selection_seconds": 24.276121616363525,
+      "selection": {
+        "llm_seconds": 19.446805000305176,
+        "signal_seconds": 4.82931661605835,
+        "probabilities": {
+          "csr_regfile": 0.06,
+          "gpr_regfile_regfile": 0.12,
+          "near_mem_dcache": 0.04,
+          "near_mem_icache": 0.78
+        },
+        "reason": "The JAL property depends on instruction fetch and PC behavior, and the cut icache directly supplies unconstrained imem_pc/imem_valid/word64 values at the cycles where the PC and instruction are checked.",
+        "usage": {
+          "prompt_tokens": 4444,
+          "completion_tokens": 2781,
+          "total_tokens": 7225,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 4352,
+            "cache_write_tokens": 0,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "text_tokens": 0,
+            "image_tokens": 0,
+            "video_tokens": 0
+          },
+          "completion_tokens_details": {
+            "audio_tokens": 0,
+            "reasoning_tokens": 2667,
+            "accepted_prediction_tokens": 0,
+            "rejected_prediction_tokens": 0,
+            "text_tokens": 0,
+            "image_tokens": 0,
+            "video_tokens": 0
+          }
+        },
+        "cost_usd": 0.003390912,
+        "served_model": "deepseek/deepseek-v4.1-flash"
+      }
+    },
+    {
+      "iteration": 1,
+      "assignment": {
+        "csr_regfile": "cut",
+        "gpr_regfile_regfile": "cut",
+        "near_mem_dcache": "cut",
+        "near_mem_icache": "keep"
+      },
+      "model": "/var/tmp/neuroabs-runtime/runs/llm-refine-20261026/piccolo/JAL/models/csr_regfile=cut+gpr_regfile_regfile=cut+near_mem_dcache=cut+near_mem_icache=keep/model.btor2",
+      "choices_with_free_values": [
+        "csr_regfile",
+        "gpr_regfile_regfile",
+        "near_mem_dcache"
+      ],
+      "coi_state_bits": 3112,
+      "ric3": "SAT",
+      "ric3_seconds": 16.736807823181152,
+      "cex_depth": 11,
+      "build_seconds": 4.906524896621704,
+      "reused": true,
+      "replay_seconds": 0.19586515426635742,
+      "counterexample_units": {
+        "csr_regfile": 14,
+        "gpr_regfile_regfile": 4,
+        "near_mem_dcache": 9
+      },
+      "refined_units": [
+        "gpr_regfile_regfile"
+      ],
+      "selection_seconds": 14.50763201713562,
+      "selection": {
+        "llm_seconds": 10.109276056289673,
+        "signal_seconds": 4.398355960845947,
+        "probabilities": {
+          "csr_regfile": 0.08,
+          "gpr_regfile_regfile": 0.78,
+          "near_mem_dcache": 0.14
+        },
+        "reason": "The failing JAL properties compare architectural registers against the GPR regfile, and gpr_regfile_regfile is cut and contributes unconstrained register-array values in the final cycle.",
+        "usage": {
+          "prompt_tokens": 4394,
+          "completion_tokens": 1300,
+          "total_tokens": 5694,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 4352,
+            "cache_write_tokens": 0,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "text_tokens": 0,
+            "image_tokens": 0,
+            "video_tokens": 0
+          },
+          "completion_tokens_details": {
+            "audio_tokens": 0,
+            "reasoning_tokens": 1205,
+            "accepted_prediction_tokens": 0,
+            "rejected_prediction_tokens": 0,
+            "text_tokens": 0,
+            "image_tokens": 0,
+            "video_tokens": 0
+          }
+        },
+        "cost_usd": 0.001598712,
+        "served_model": "deepseek/deepseek-v4.1-flash"
+      }
+    },
+    {
+      "iteration": 2,
+      "assignment": {
+        "csr_regfile": "cut",
+        "gpr_regfile_regfile": "havoc",
+        "near_mem_dcache": "cut",
+        "near_mem_icache": "keep"
+      },
+      "model": "/var/tmp/neuroabs-runtime/runs/llm-refine-20261026/piccolo/JAL/models/csr_regfile=cut+gpr_regfile_regfile=havoc+near_mem_dcache=cut+near_mem_icache=keep/model.btor2",
+      "choices_with_free_values": [
+        "csr_regfile",
+        "gpr_regfile_regfile_m0",
+        "near_mem_dcache"
+      ],
+      "coi_state_bits": 3112,
+      "ric3": "SAT",
+      "ric3_seconds": 18.24578285217285,
+      "cex_depth": 11,
+      "build_seconds": 4.521422624588013,
+      "reused": true,
+      "replay_seconds": 0.2471904754638672,
+      "counterexample_units": {
+        "csr_regfile": 14,
+        "near_mem_dcache": 5,
+        "gpr_regfile_regfile": 3
+      },
+      "refined_units": [
+        "gpr_regfile_regfile"
+      ],
+      "selection_seconds": 18.072012662887573,
+      "selection": {
+        "llm_seconds": 14.50206995010376,
+        "signal_seconds": 3.5699427127838135,
+        "probabilities": {
+          "gpr_regfile_regfile": 0.82,
+          "csr_regfile": 0.15,
+          "near_mem_dcache": 0.03
+        },
+        "reason": "The JAL property directly checks the link register and register-file values, so the still-havoced GPR file can make the x1/regfile comparison fail by discarding the JAL write.",
+        "usage": {
+          "prompt_tokens": 4341,
+          "completion_tokens": 2034,
+          "total_tokens": 6375,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 4224,
+            "cache_write_tokens": 0,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "text_tokens": 0,
+            "image_tokens": 0,
+            "video_tokens": 0
+          },
+          "completion_tokens_details": {
+            "audio_tokens": 0,
+            "reasoning_tokens": 1934,
+            "accepted_prediction_tokens": 0,
+            "rejected_prediction_tokens": 0,
+            "text_tokens": 0,
+            "image_tokens": 0,
+            "video_tokens": 0
+          }
+        },
+        "cost_usd": 0.0025012439999999997,
+        "served_model": "deepseek/deepseek-v4.1-flash"
+      }
+    },
+    {
+      "iteration": 3,
+      "assignment": {
+        "csr_regfile": "cut",
+        "gpr_regfile_regfile": "keep",
+        "near_mem_dcache": "cut",
+        "near_mem_icache": "keep"
+      },
+      "model": "/var/tmp/neuroabs-runtime/runs/llm-refine-20261026/piccolo/JAL/models/csr_regfile=cut+gpr_regfile_regfile=keep+near_mem_dcache=cut+near_mem_icache=keep/model.btor2",
+      "choices_with_free_values": [
+        "csr_regfile",
+        "near_mem_dcache"
+      ],
+      "coi_state_bits": 4136,
+      "ric3": "TIMEOUT",
+      "ric3_seconds": 304.51162004470825,
+      "cex_depth": null,
+      "build_seconds": 4.4399330615997314,
+      "reused": true
+    }
+  ]
+}

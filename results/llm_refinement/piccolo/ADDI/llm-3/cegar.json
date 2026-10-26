@@ -1,0 +1,238 @@
+{
+  "status": "TIMEOUT",
+  "final_model": "/var/tmp/neuroabs-runtime/runs/llm-refine-20261026/piccolo/ADDI/models/csr_regfile=cut+gpr_regfile_regfile=keep+near_mem_dcache=cut+near_mem_icache=keep/model.btor2",
+  "final_assignment": {
+    "csr_regfile": "cut",
+    "gpr_regfile_regfile": "keep",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "keep"
+  },
+  "refinements": 3,
+  "total_seconds": 414.62599635124207,
+  "history": [
+    {
+      "iteration": 0,
+      "assignment": {
+        "csr_regfile": "cut",
+        "gpr_regfile_regfile": "cut",
+        "near_mem_dcache": "cut",
+        "near_mem_icache": "cut"
+      },
+      "model": "/var/tmp/neuroabs-runtime/runs/llm-refine-20261026/piccolo/ADDI/models/csr_regfile=cut+gpr_regfile_regfile=cut+near_mem_dcache=cut+near_mem_icache=cut/model.btor2",
+      "choices_with_free_values": [
+        "csr_regfile",
+        "gpr_regfile_regfile",
+        "near_mem_dcache",
+        "near_mem_icache"
+      ],
+      "coi_state_bits": 2706,
+      "ric3": "SAT",
+      "ric3_seconds": 5.809954643249512,
+      "cex_depth": 8,
+      "build_seconds": 4.77794337272644,
+      "reused": true,
+      "replay_seconds": 0.06903243064880371,
+      "counterexample_units": {
+        "csr_regfile": 10,
+        "gpr_regfile_regfile": 4,
+        "near_mem_dcache": 12,
+        "near_mem_icache": 11
+      },
+      "refined_units": [
+        "near_mem_icache"
+      ],
+      "selection_seconds": 34.72823190689087,
+      "selection": {
+        "llm_seconds": 29.51337456703186,
+        "signal_seconds": 5.214857339859009,
+        "probabilities": {
+          "near_mem_icache": 0.72,
+          "gpr_regfile_regfile": 0.16,
+          "csr_regfile": 0.08,
+          "near_mem_dcache": 0.04
+        },
+        "reason": "The ADDI fetch/decode path and assertion p119 directly depend on near_mem$imem_pc/imem_valid/word64, so the unconstrained icache outputs at cycles 5-6 are most likely the spurious source.",
+        "usage": {
+          "prompt_tokens": 4513,
+          "completion_tokens": 3996,
+          "total_tokens": 8509,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 4480,
+            "cache_write_tokens": 0,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "text_tokens": 0,
+            "image_tokens": 0,
+            "video_tokens": 0
+          },
+          "completion_tokens_details": {
+            "audio_tokens": 0,
+            "reasoning_tokens": 3875,
+            "accepted_prediction_tokens": 0,
+            "rejected_prediction_tokens": 0,
+            "text_tokens": 0,
+            "image_tokens": 0,
+            "video_tokens": 0
+          }
+        },
+        "cost_usd": 0.00483198,
+        "served_model": "deepseek/deepseek-v4.1-flash"
+      }
+    },
+    {
+      "iteration": 1,
+      "assignment": {
+        "csr_regfile": "cut",
+        "gpr_regfile_regfile": "cut",
+        "near_mem_dcache": "cut",
+        "near_mem_icache": "keep"
+      },
+      "model": "/var/tmp/neuroabs-runtime/runs/llm-refine-20261026/piccolo/ADDI/models/csr_regfile=cut+gpr_regfile_regfile=cut+near_mem_dcache=cut+near_mem_icache=keep/model.btor2",
+      "choices_with_free_values": [
+        "csr_regfile",
+        "gpr_regfile_regfile",
+        "near_mem_dcache"
+      ],
+      "coi_state_bits": 3112,
+      "ric3": "SAT",
+      "ric3_seconds": 16.592332363128662,
+      "cex_depth": 11,
+      "build_seconds": 4.762340784072876,
+      "reused": true,
+      "replay_seconds": 0.170029878616333,
+      "counterexample_units": {
+        "csr_regfile": 14,
+        "gpr_regfile_regfile": 5,
+        "near_mem_dcache": 5
+      },
+      "refined_units": [
+        "gpr_regfile_regfile"
+      ],
+      "selection_seconds": 8.51079773902893,
+      "selection": {
+        "llm_seconds": 4.676381587982178,
+        "signal_seconds": 3.834416151046753,
+        "probabilities": {
+          "gpr_regfile_regfile": 0.86,
+          "csr_regfile": 0.1,
+          "near_mem_dcache": 0.04
+        },
+        "reason": "The failing assertions directly compare architectural register values to the GPR regfile arrays, and the counterexample's unconstrained arr_16 value at cycle 11 can directly explain the ADDI register-value mismatch.",
+        "usage": {
+          "prompt_tokens": 4350,
+          "completion_tokens": 413,
+          "total_tokens": 4763,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 4224,
+            "cache_write_tokens": 0,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "text_tokens": 0,
+            "image_tokens": 0,
+            "video_tokens": 0
+          },
+          "completion_tokens_details": {
+            "audio_tokens": 0,
+            "reasoning_tokens": 314,
+            "accepted_prediction_tokens": 0,
+            "rejected_prediction_tokens": 0,
+            "text_tokens": 0,
+            "image_tokens": 0,
+            "video_tokens": 0
+          }
+        },
+        "cost_usd": 0.0005587439999999999,
+        "served_model": "deepseek/deepseek-v4.1-flash"
+      }
+    },
+    {
+      "iteration": 2,
+      "assignment": {
+        "csr_regfile": "cut",
+        "gpr_regfile_regfile": "havoc",
+        "near_mem_dcache": "cut",
+        "near_mem_icache": "keep"
+      },
+      "model": "/var/tmp/neuroabs-runtime/runs/llm-refine-20261026/piccolo/ADDI/models/csr_regfile=cut+gpr_regfile_regfile=havoc+near_mem_dcache=cut+near_mem_icache=keep/model.btor2",
+      "choices_with_free_values": [
+        "csr_regfile",
+        "gpr_regfile_regfile_m0",
+        "near_mem_dcache"
+      ],
+      "coi_state_bits": 3112,
+      "ric3": "SAT",
+      "ric3_seconds": 18.193939685821533,
+      "cex_depth": 11,
+      "build_seconds": 4.29697585105896,
+      "reused": true,
+      "replay_seconds": 0.17662835121154785,
+      "counterexample_units": {
+        "csr_regfile": 14,
+        "near_mem_dcache": 4,
+        "gpr_regfile_regfile": 3
+      },
+      "refined_units": [
+        "gpr_regfile_regfile"
+      ],
+      "selection_seconds": 8.9388427734375,
+      "selection": {
+        "llm_seconds": 5.736248970031738,
+        "signal_seconds": 3.2025938034057617,
+        "probabilities": {
+          "gpr_regfile_regfile": 0.78,
+          "csr_regfile": 0.12,
+          "near_mem_dcache": 0.1
+        },
+        "reason": "The ADDI property checks register values directly, and havoc on the register file leaves D_OUT_1 unconstrained at cycles 8, 9, and 11, making the checked register mismatch most likely spurious.",
+        "usage": {
+          "prompt_tokens": 4347,
+          "completion_tokens": 593,
+          "total_tokens": 4940,
+          "prompt_tokens_details": {
+            "audio_tokens": 0,
+            "cached_tokens": 4224,
+            "cache_write_tokens": 0,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 0,
+            "text_tokens": 0,
+            "image_tokens": 0,
+            "video_tokens": 0
+          },
+          "completion_tokens_details": {
+            "audio_tokens": 0,
+            "reasoning_tokens": 491,
+            "accepted_prediction_tokens": 0,
+            "rejected_prediction_tokens": 0,
+            "text_tokens": 0,
+            "image_tokens": 0,
+            "video_tokens": 0
+          }
+        },
+        "cost_usd": 0.0007738440000000001,
+        "served_model": "deepseek/deepseek-v4.1-flash"
+      }
+    },
+    {
+      "iteration": 3,
+      "assignment": {
+        "csr_regfile": "cut",
+        "gpr_regfile_regfile": "keep",
+        "near_mem_dcache": "cut",
+        "near_mem_icache": "keep"
+      },
+      "model": "/var/tmp/neuroabs-runtime/runs/llm-refine-20261026/piccolo/ADDI/models/csr_regfile=cut+gpr_regfile_regfile=keep+near_mem_dcache=cut+near_mem_icache=keep/model.btor2",
+      "choices_with_free_values": [
+        "csr_regfile",
+        "near_mem_dcache"
+      ],
+      "coi_state_bits": 4136,
+      "ric3": "TIMEOUT",
+      "ric3_seconds": 303.34565353393555,
+      "cex_depth": null,
+      "build_seconds": 4.253293037414551,
+      "reused": true
+    }
+  ]
+}

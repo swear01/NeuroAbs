@@ -10,7 +10,11 @@ import sys
 
 def load(path):
     with open(path) as f:
-        return {r["name"]: r for r in map(json.loads, f)}
+        rows = {r["name"]: r for r in map(json.loads, f)}
+    failed = sorted(n for n, r in rows.items() if r["status"] == "ERROR")
+    if failed:
+        raise ValueError(f"{path}: ERROR records {failed}")
+    return rows
 
 
 def kind(name):
@@ -39,6 +43,8 @@ for path in sys.argv[2:]:
                      f" geomean x{math.exp(statistics.mean(map(math.log, ratios))):5.1f}"
                      f" min x{min(ratios):4.1f}")
         print(line)
+    if not names:
+        continue
     split_bits = statistics.median(base[n]["final_coi_state_bits"] for n in names)
     arm_bits = statistics.median(arm[n]["final_coi_state_bits"] for n in names)
     print(f"median COI state bits: split {split_bits:.0f}, arm {arm_bits:.0f}")

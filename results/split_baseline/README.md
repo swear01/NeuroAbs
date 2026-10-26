@@ -47,7 +47,7 @@ shared the machine.
 
 ### Split-only
 
-| Case | `UNSAT` | frame | `mem` | write | Time s | rIC3 s | Median s | COI bits |
+| Case | `UNSAT` | frame | `mem` | write | Time s | rIC3 s | Median s | Median COI bits |
 | --- | ---: | --- | --- | --- | ---: | ---: | ---: | ---: |
 | ADDI (sample) | 19 / 64 | 17 / 31 | 1 / 1 | 1 / 32 | 18,221 | 17,851 | 314 | 5,163 |
 | LUI | 61 / 63 | 29 / 31 | 1 / 1 | 31 / 31 | 8,345 | 8,042 | 108 | 5,163 |
@@ -56,7 +56,7 @@ shared the machine.
 
 Every result that is not `UNSAT` is `TIMEOUT` without a counterexample (deepest
 BMC bound 20–65, IC3 frame 10–18). The proved split-only frame cases take
-101–308 s, so the frame `TIMEOUT`s are at the edge of the limit: with 300 s on
+101–308 s (build included; rIC3 under 300 s), so the frame `TIMEOUT`s are at the edge of the limit: with 300 s on
 E-cores under load, ADDI and JAL lose 14 and 10 frame cases that LUI and AUIPC
 (P-cores) mostly prove. They are not counted as cases that need the
 abstraction.
@@ -81,7 +81,7 @@ Yosys build.
 
 auto on the seven sampled LUI, AUIPC and JAL sub-properties: 7 / 7 `UNSAT` like
 split-only, median speed-up 0.8, 0.6 and 1.0. Median final COI: split 5,163
-bits, S and DeepSeek 788–1,012, auto 2,189–2,382 (it restores the units).
+bits (`mem` 5,131), S and DeepSeek 788–1,012, auto 2,189–2,382 (it restores the units).
 
 ADDI by kind (S / split-only): frame 31 / 17, `mem` 1 / 1, write 32 / 1. The
 one split-only write proof is `x5.rs1=0` (154 s; S 13 s), where the adder adds
@@ -150,7 +150,11 @@ of `/var/tmp/neuroabs-runtime/runs/fine-gpr-20261026`; each sources
 split and no-uf specs from `fine_gpr_choices/piccolo/<case>/specs-structural*.jsonl`
 (for no-uf with name part `rs1=`); the split-long and rep specs are the named
 lines of the split and S specs. `arm.sh` runs one arm with `src/fine_batch.py`,
-`queue.sh`, `long.sh` and `repeat.sh` are the order of the runs, `compare.py
+`queue.sh`, `long.sh` and `repeat.sh` are the order of the runs. After the
+runs, `arm.sh` was changed to write `.failed` on failure and copy
+`results.jsonl` to `arm-<arm>.jsonl`, the waits to stop on `.failed`, and
+the analysis scripts to reject `ERROR` records; no arm failed and no record is
+`ERROR`, so the results are unaffected. `compare.py
 <split> <arm>...` gives the paired tables and `repeats.py piccolo/<case>` the
 repeat table. Records (one line per sub-property) are in
 `piccolo/<case>/arm-*.jsonl`, specs in `piccolo/<case>/specs-*.jsonl`.

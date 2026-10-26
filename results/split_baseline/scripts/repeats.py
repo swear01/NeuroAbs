@@ -6,7 +6,11 @@ import sys
 
 def load(path):
     with open(path) as f:
-        return {r["name"]: r for r in map(json.loads, f)}
+        rows = {r["name"]: r for r in map(json.loads, f)}
+    failed = sorted(n for n, r in rows.items() if r["status"] == "ERROR")
+    if failed:
+        raise ValueError(f"{path}: ERROR records {failed}")
+    return rows
 
 
 d = sys.argv[1]
@@ -17,6 +21,9 @@ for i in range(3):
           f"{sum(r['total_seconds'] for r in split[i].values()):.0f} s, "
           f"S {sum(r['status'] == 'UNSAT' for r in s[i].values())} UNSAT "
           f"{sum(r['total_seconds'] for r in s[i].values()):.0f} s")
+for r in split[1:] + s:
+    if r.keys() != split[0].keys():
+        raise ValueError(f"{d}: rounds cover different sub-properties")
 ratios = []
 for n in sorted(split[0]):
     a = [r[n]["total_seconds"] for r in split]

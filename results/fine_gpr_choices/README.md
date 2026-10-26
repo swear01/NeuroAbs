@@ -328,7 +328,7 @@ proofs were not run.
 ## Not done and risks
 
 - Flute was not tried. R-type cases (ADD, SUB, ...) would need rs1 × rs2
-  splits (32,768 sub-properties per instruction) or a different abstraction.
+  splits (1 + 31 + 31 × 32 × 32 = 31,776 sub-properties per instruction) or a different abstraction.
 - ANDI and SLTI full proofs were not run; SLTI has no UF pair, so its write
   cases are untested beyond the screen design.
 - Times mix P- and E-core two-CPU runs and share the machine with another

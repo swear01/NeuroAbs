@@ -1,0 +1,2 @@
+x5.rs1=6 {"status": "UNSAT", "refinements": 0, "total_seconds": 209.26957273483276, "final_spec": {"states": ["x5"], "case": "rd==5&&rs1==6", "keep_gprs": [5, 6]}}
+x5.rs1=6-uf {"status": "UNSAT", "refinements": 0, "total_seconds": 128.2007954120636, "final_spec": {"states": ["x5"], "case": "rd==5&&rs1==6", "keep_gprs": [5, 6], "uf": [{"ila": "n110", "rtl": "_theResult_____1_fst__h6597"}]}}

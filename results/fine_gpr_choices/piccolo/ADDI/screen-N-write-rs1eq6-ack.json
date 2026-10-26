@@ -1,0 +1,116 @@
+{
+ "status": "TIMEOUT",
+ "final_spec": {
+  "states": [
+   "x1",
+   "x2",
+   "x3",
+   "x4",
+   "x5",
+   "x6",
+   "x7",
+   "x8",
+   "x9",
+   "x10",
+   "x11",
+   "x12",
+   "x13",
+   "x14",
+   "x15",
+   "x16",
+   "x17",
+   "x18",
+   "x19",
+   "x20",
+   "x21",
+   "x22",
+   "x23",
+   "x24",
+   "x25",
+   "x26",
+   "x27",
+   "x28",
+   "x29",
+   "x30",
+   "x31"
+  ],
+  "case": "rs1==6",
+  "rd_guard": true,
+  "keep_gprs": "all",
+  "units": {
+   "csr_regfile": "cut",
+   "near_mem_dcache": "cut"
+  },
+  "uf": [
+   {
+    "ila": "n110",
+    "rtl": "rd_val___1__h6550"
+   }
+  ]
+ },
+ "refinements": 0,
+ "total_seconds": 306.73563838005066,
+ "history": [
+  {
+   "spec": {
+    "states": [
+     "x1",
+     "x2",
+     "x3",
+     "x4",
+     "x5",
+     "x6",
+     "x7",
+     "x8",
+     "x9",
+     "x10",
+     "x11",
+     "x12",
+     "x13",
+     "x14",
+     "x15",
+     "x16",
+     "x17",
+     "x18",
+     "x19",
+     "x20",
+     "x21",
+     "x22",
+     "x23",
+     "x24",
+     "x25",
+     "x26",
+     "x27",
+     "x28",
+     "x29",
+     "x30",
+     "x31"
+    ],
+    "case": "rs1==6",
+    "rd_guard": true,
+    "keep_gprs": "all",
+    "units": {
+     "csr_regfile": "cut",
+     "near_mem_dcache": "cut"
+    },
+    "uf": [
+     {
+      "ila": "n110",
+      "rtl": "rd_val___1__h6550"
+     }
+    ]
+   },
+   "choices_with_free_values": [
+    "csr_regfile",
+    "near_mem_dcache",
+    "uf0"
+   ],
+   "coi_state_bits": 4361,
+   "ric3": "TIMEOUT",
+   "ric3_seconds": 303.22738552093506,
+   "cex_depth": null,
+   "build_seconds": 3.5082528591156006,
+   "iteration": 0
+  }
+ ]
+}

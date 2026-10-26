@@ -1,0 +1,3 @@
+LUI x5.write 300 0 {"states":["x5"],"case":"rd==5","keep_gprs":[5]}
+JAL x5.write 300 0 {"states":["x5"],"case":"rd==5","keep_gprs":[5]}
+JAL x5.write-uf 300 0 {"states":["x5"],"case":"rd==5","keep_gprs":[5],"uf":[{"ila":"n20","rtl":"alu_outputs___1_val1__h5386"}]}

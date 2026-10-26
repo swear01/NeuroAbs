@@ -1,0 +1,2 @@
+x5.write {"status": "UNSAT", "refinements": 0, "total_seconds": 42.2654287815094, "final_spec": {"states": ["x5"], "case": "rd==5", "keep_gprs": [5]}}
+x5.write-uf {"status": "UNSAT", "refinements": 0, "total_seconds": 58.49242687225342, "final_spec": {"states": ["x5"], "case": "rd==5", "keep_gprs": [5], "uf": [{"ila": "n20", "rtl": "alu_outputs___1_val1__h5386"}]}}

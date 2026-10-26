@@ -1,0 +1,452 @@
+[
+ {
+  "name": "mem",
+  "states": [
+   "load_en",
+   "pc",
+   "store_en",
+   "x0"
+  ]
+ },
+ {
+  "name": "x1.frame",
+  "states": [
+   "x1"
+  ],
+  "case": "rd!=1"
+ },
+ {
+  "name": "x2.frame",
+  "states": [
+   "x2"
+  ],
+  "case": "rd!=2"
+ },
+ {
+  "name": "x3.frame",
+  "states": [
+   "x3"
+  ],
+  "case": "rd!=3"
+ },
+ {
+  "name": "x4.frame",
+  "states": [
+   "x4"
+  ],
+  "case": "rd!=4"
+ },
+ {
+  "name": "x5.frame",
+  "states": [
+   "x5"
+  ],
+  "case": "rd!=5"
+ },
+ {
+  "name": "x6.frame",
+  "states": [
+   "x6"
+  ],
+  "case": "rd!=6"
+ },
+ {
+  "name": "x7.frame",
+  "states": [
+   "x7"
+  ],
+  "case": "rd!=7"
+ },
+ {
+  "name": "x8.frame",
+  "states": [
+   "x8"
+  ],
+  "case": "rd!=8"
+ },
+ {
+  "name": "x9.frame",
+  "states": [
+   "x9"
+  ],
+  "case": "rd!=9"
+ },
+ {
+  "name": "x10.frame",
+  "states": [
+   "x10"
+  ],
+  "case": "rd!=10"
+ },
+ {
+  "name": "x11.frame",
+  "states": [
+   "x11"
+  ],
+  "case": "rd!=11"
+ },
+ {
+  "name": "x12.frame",
+  "states": [
+   "x12"
+  ],
+  "case": "rd!=12"
+ },
+ {
+  "name": "x13.frame",
+  "states": [
+   "x13"
+  ],
+  "case": "rd!=13"
+ },
+ {
+  "name": "x14.frame",
+  "states": [
+   "x14"
+  ],
+  "case": "rd!=14"
+ },
+ {
+  "name": "x15.frame",
+  "states": [
+   "x15"
+  ],
+  "case": "rd!=15"
+ },
+ {
+  "name": "x16.frame",
+  "states": [
+   "x16"
+  ],
+  "case": "rd!=16"
+ },
+ {
+  "name": "x17.frame",
+  "states": [
+   "x17"
+  ],
+  "case": "rd!=17"
+ },
+ {
+  "name": "x18.frame",
+  "states": [
+   "x18"
+  ],
+  "case": "rd!=18"
+ },
+ {
+  "name": "x19.frame",
+  "states": [
+   "x19"
+  ],
+  "case": "rd!=19"
+ },
+ {
+  "name": "x20.frame",
+  "states": [
+   "x20"
+  ],
+  "case": "rd!=20"
+ },
+ {
+  "name": "x21.frame",
+  "states": [
+   "x21"
+  ],
+  "case": "rd!=21"
+ },
+ {
+  "name": "x22.frame",
+  "states": [
+   "x22"
+  ],
+  "case": "rd!=22"
+ },
+ {
+  "name": "x23.frame",
+  "states": [
+   "x23"
+  ],
+  "case": "rd!=23"
+ },
+ {
+  "name": "x24.frame",
+  "states": [
+   "x24"
+  ],
+  "case": "rd!=24"
+ },
+ {
+  "name": "x25.frame",
+  "states": [
+   "x25"
+  ],
+  "case": "rd!=25"
+ },
+ {
+  "name": "x26.frame",
+  "states": [
+   "x26"
+  ],
+  "case": "rd!=26"
+ },
+ {
+  "name": "x27.frame",
+  "states": [
+   "x27"
+  ],
+  "case": "rd!=27"
+ },
+ {
+  "name": "x28.frame",
+  "states": [
+   "x28"
+  ],
+  "case": "rd!=28"
+ },
+ {
+  "name": "x29.frame",
+  "states": [
+   "x29"
+  ],
+  "case": "rd!=29"
+ },
+ {
+  "name": "x30.frame",
+  "states": [
+   "x30"
+  ],
+  "case": "rd!=30"
+ },
+ {
+  "name": "x31.frame",
+  "states": [
+   "x31"
+  ],
+  "case": "rd!=31"
+ },
+ {
+  "name": "x5.rs1=0",
+  "states": [
+   "x5"
+  ],
+  "case": "rd==5&&rs1==0"
+ },
+ {
+  "name": "x12.rs1=1",
+  "states": [
+   "x12"
+  ],
+  "case": "rd==12&&rs1==1"
+ },
+ {
+  "name": "x19.rs1=2",
+  "states": [
+   "x19"
+  ],
+  "case": "rd==19&&rs1==2"
+ },
+ {
+  "name": "x26.rs1=3",
+  "states": [
+   "x26"
+  ],
+  "case": "rd==26&&rs1==3"
+ },
+ {
+  "name": "x2.rs1=4",
+  "states": [
+   "x2"
+  ],
+  "case": "rd==2&&rs1==4"
+ },
+ {
+  "name": "x9.rs1=5",
+  "states": [
+   "x9"
+  ],
+  "case": "rd==9&&rs1==5"
+ },
+ {
+  "name": "x16.rs1=6",
+  "states": [
+   "x16"
+  ],
+  "case": "rd==16&&rs1==6"
+ },
+ {
+  "name": "x23.rs1=7",
+  "states": [
+   "x23"
+  ],
+  "case": "rd==23&&rs1==7"
+ },
+ {
+  "name": "x30.rs1=8",
+  "states": [
+   "x30"
+  ],
+  "case": "rd==30&&rs1==8"
+ },
+ {
+  "name": "x6.rs1=9",
+  "states": [
+   "x6"
+  ],
+  "case": "rd==6&&rs1==9"
+ },
+ {
+  "name": "x13.rs1=10",
+  "states": [
+   "x13"
+  ],
+  "case": "rd==13&&rs1==10"
+ },
+ {
+  "name": "x20.rs1=11",
+  "states": [
+   "x20"
+  ],
+  "case": "rd==20&&rs1==11"
+ },
+ {
+  "name": "x27.rs1=12",
+  "states": [
+   "x27"
+  ],
+  "case": "rd==27&&rs1==12"
+ },
+ {
+  "name": "x3.rs1=13",
+  "states": [
+   "x3"
+  ],
+  "case": "rd==3&&rs1==13"
+ },
+ {
+  "name": "x10.rs1=14",
+  "states": [
+   "x10"
+  ],
+  "case": "rd==10&&rs1==14"
+ },
+ {
+  "name": "x17.rs1=15",
+  "states": [
+   "x17"
+  ],
+  "case": "rd==17&&rs1==15"
+ },
+ {
+  "name": "x24.rs1=16",
+  "states": [
+   "x24"
+  ],
+  "case": "rd==24&&rs1==16"
+ },
+ {
+  "name": "x31.rs1=17",
+  "states": [
+   "x31"
+  ],
+  "case": "rd==31&&rs1==17"
+ },
+ {
+  "name": "x7.rs1=18",
+  "states": [
+   "x7"
+  ],
+  "case": "rd==7&&rs1==18"
+ },
+ {
+  "name": "x14.rs1=19",
+  "states": [
+   "x14"
+  ],
+  "case": "rd==14&&rs1==19"
+ },
+ {
+  "name": "x21.rs1=20",
+  "states": [
+   "x21"
+  ],
+  "case": "rd==21&&rs1==20"
+ },
+ {
+  "name": "x28.rs1=21",
+  "states": [
+   "x28"
+  ],
+  "case": "rd==28&&rs1==21"
+ },
+ {
+  "name": "x4.rs1=22",
+  "states": [
+   "x4"
+  ],
+  "case": "rd==4&&rs1==22"
+ },
+ {
+  "name": "x11.rs1=23",
+  "states": [
+   "x11"
+  ],
+  "case": "rd==11&&rs1==23"
+ },
+ {
+  "name": "x18.rs1=24",
+  "states": [
+   "x18"
+  ],
+  "case": "rd==18&&rs1==24"
+ },
+ {
+  "name": "x25.rs1=25",
+  "states": [
+   "x25"
+  ],
+  "case": "rd==25&&rs1==25"
+ },
+ {
+  "name": "x1.rs1=26",
+  "states": [
+   "x1"
+  ],
+  "case": "rd==1&&rs1==26"
+ },
+ {
+  "name": "x8.rs1=27",
+  "states": [
+   "x8"
+  ],
+  "case": "rd==8&&rs1==27"
+ },
+ {
+  "name": "x15.rs1=28",
+  "states": [
+   "x15"
+  ],
+  "case": "rd==15&&rs1==28"
+ },
+ {
+  "name": "x22.rs1=29",
+  "states": [
+   "x22"
+  ],
+  "case": "rd==22&&rs1==29"
+ },
+ {
+  "name": "x29.rs1=30",
+  "states": [
+   "x29"
+  ],
+  "case": "rd==29&&rs1==30"
+ },
+ {
+  "name": "x5.rs1=31",
+  "states": [
+   "x5"
+  ],
+  "case": "rd==5&&rs1==31"
+ }
+]

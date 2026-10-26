@@ -1,0 +1,316 @@
+<!doctype html><html lang="zh-Hant"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NeuroAbs：LLM 選 refinement 單元與細粒度抽象選單（2026-10-26）</title>
+<style>
+:root {font-family:system-ui,"Noto Sans TC",sans-serif;color:#182334;background:#f5f7fa}
+body {margin:0} header,main {padding:1rem 1.6rem;max-width:1100px;margin:auto} header {background:#14283e;color:white;max-width:none}
+header div {max-width:1100px;margin:auto}
+h1 {margin:.2rem 0;font-size:1.55rem} h2 {margin:2rem 0 .6rem;padding-top:.6rem;border-top:2px solid #cad3db} h3 {margin:1.2rem 0 .4rem}
+p,li {line-height:1.55} .notice {background:#fff4d4;padding:.7rem 1rem;border-left:4px solid #b77b00}
+.ok {background:#e5f4ea;padding:.7rem 1rem;border-left:4px solid #2e8a4f}
+.q {background:#e8f0fa;padding:.7rem 1rem;border-left:4px solid #2367a2}
+table {border-collapse:collapse;margin:.5rem 0;background:white;font-size:.92rem}
+th,td {border:1px solid #cad3db;padding:.3rem .55rem;text-align:left;vertical-align:top} th {background:#e9eef3}
+td.n {text-align:right;font-variant-numeric:tabular-nums}
+code,pre {font:13px/1.45 ui-monospace,monospace} code {background:#eef2f5;padding:0 .2rem}
+pre {white-space:pre-wrap;overflow:auto;background:#eef2f5;padding:.8rem}
+nav {background:white;border:1px solid #cad3db;border-radius:6px;padding:.4rem 1rem}
+nav li {line-height:1.4}
+.bar {display:flex;align-items:center;gap:.5rem;margin:.2rem 0} .bar .lab {width:9.5rem;flex:none}
+.bar .fill {height:1.1rem;background:#2367a2;border-radius:3px} .bar .fill.alt {background:#b77b00} .bar .fill.good {background:#2e8a4f}
+.bar .val {font-variant-numeric:tabular-nums;white-space:nowrap}
+.grid2 {display:grid;grid-template-columns:1fr 1fr;gap:1rem} @media(max-width:900px){.grid2{display:block}}
+.box {background:white;border:1px solid #cad3db;border-radius:6px;padding:.7rem 1rem}
+.small {font-size:.88rem;color:#4a5a6e}
+</style>
+<header><div><h1>NeuroAbs：LLM 選 refinement 單元，以及更細的抽象選單</h1>
+<div>2026-10-26 · Piccolo ILA property · rIC3 only · DeepSeek V4 Flash · PR <a style="color:#a8d0ff" href="https://github.com/swear01/NeuroAbs/pull/15">#15</a>（A）、<a style="color:#a8d0ff" href="https://github.com/swear01/NeuroAbs/pull/16">#16</a>（B）、<a style="color:#a8d0ff" href="https://github.com/swear01/NeuroAbs/pull/18">#18</a>（只拆 baseline）</div></div></header>
+<main>
+
+<p class="notice"><b>一句話：</b>拆 property 之後再做 RTL abstraction（GPR 逐個選、單元 cut、加法器換成 UF），Piccolo ADDI、LUI、AUIPC、JAL 的 ILA property 第一次被 rIC3 證出來，B0 在 30–60 分鐘內都沒有結論。拆 property 算前處理，baseline 也一樣先拆；跟「只拆」比，abstraction 讓 ADDI 的寫入類從 1/32 變成 32/32，其他地方快約 6 倍。LLM 選 abstraction 比自動 CEGAR 好很多，卻沒有比一條十行左右的結構規則好。A 實驗裡，LLM 每次 refinement 都退到需要的單元，但最終模型仍沒有結論。</p>
+
+<nav><b>目錄</b><ol>
+<li><a href="#bg">背景：property、抽象單元、CEGAR</a></li>
+<li><a href="#a">實驗 A：反例出現後該退哪個單元</a>
+ <ol><li><a href="#a-gt">標準答案怎麼來的，「每一步都選對」的精確意思</a></li><li><a href="#a-cex">「深度 11 的反例」是什麼</a></li><li><a href="#a-res">結果</a></li></ol></li>
+<li><a href="#b">實驗 B：更細的選單</a>
+ <ol><li><a href="#b-opt">三種新選項</a></li><li><a href="#b-count">1024 怎麼算</a></li><li><a href="#b-blow">會不會 state 爆炸</a></li><li><a href="#b-screen">為什麼三種都需要</a></li><li><a href="#b-arms">誰來選：auto、LLM、結構規則</a></li><li><a href="#b-full">完整證明</a></li><li><a href="#b-base">拆 property 是前處理：跟「只拆」比</a></li></ol></li>
+<li><a href="#concl">結論、限制、下一步</a></li>
+<li><a href="#repro">花費與重現</a></li>
+</ol></nav>
+
+<h2 id="bg">1. 背景</h2>
+<h3>ILA property</h3>
+<p>每個題目（ADDI、LUI…）都在比較同一條指令的兩個模型：ILA 規格模型和 Piccolo RTL。wrapper 用兩個時間點把它們綁在一起：</p>
+<ul>
+<li><code>__START__</code>：ILA 在這一拍執行這條指令。ILA 的暫存器 <code>xj</code> 被 assumption 設成 recorder <code>__auxvarN__recorder</code>。recorder 是一個自由常數，另一條 assumption 要求它等於指令走到 stage 3 時 RTL 的 <code>arr_j</code>。</li>
+<li><code>__IEND__</code>：指令在 RTL 裡完成。assertion 要求 ILA 的 pc、load_en、store_en、x0..x31 都等於 RTL 對應的值。</li>
+</ul>
+<p>所以原 property 是 35 個 conjunct 的 AND，其中 31 個是在比對 GPR。</p>
+
+<h3>抽象單元與等級</h3>
+<table><tr><th>等級</th><th>意思</th></tr>
+<tr><td>keep</td><td>原樣保留</td></tr>
+<tr><td>havoc</td><td>單元裡的記憶體每次被讀，都回傳任意值（每拍各自獨立）；控制邏輯保留</td></tr>
+<tr><td>cut</td><td>整個 instance 的所有輸出，每拍都是任意值</td></tr></table>
+<p>Piccolo 有 4 個單元：<code>csr_regfile</code>（keep/cut）、<code>gpr_regfile_regfile</code>（keep/havoc/cut）、<code>near_mem_dcache</code>、<code>near_mem_icache</code>（keep/cut）。它們都是 over-approximation：抽象模型保留原設計所有的行為，所以在抽象模型上證明成立，原設計也成立。</p>
+
+<h3>CEGAR 與名詞</h3>
+<ul>
+<li><b>反例（counterexample）</b>：從初始狀態出發、讓 assertion 失敗的一條具體 trace。<b>深度 k</b> = trace 有 k+1 拍（cycle 0..k），assertion 在第 k 拍失敗。</li>
+<li><b>假反例（spurious）</b>：只在抽象模型裡存在、原設計做不到的反例。原因是某個任意值取到了原設計不可能出現的值。</li>
+<li><b>CEGAR</b>：從很粗的抽象開始跑 rIC3。拿到反例就把它在抽象模型上重放，看 assertion 失敗那一拍的 cone 裡用到了哪些單元的任意值（<code>choice__&lt;unit&gt;__n</code>），這些單元就是<b>候選</b>。挑一個（或多個）候選往 keep 退一級，再跑一次。</li>
+<li><b>COI bits</b>：property 的 cone of influence 裡有多少個 state bit，用來量模型大小。B0（不抽象）= 5,131。</li>
+<li><b>B0</b>：完全不抽象、整條 property 直接交給 rIC3。</li>
+</ul>
+
+<h2 id="a">2. 實驗 A：反例出現後該退哪個單元（PR #15）</h2>
+<p>從四個單元全部最粗開始跑 CEGAR，只換「退哪個候選」這一步的策略：</p>
+<table><tr><th>策略</th><th>怎麼選</th></tr>
+<tr><td><code>one</code></td><td>反例 cone 裡任意值最多的候選（PR #14 的作法）</td></tr>
+<tr><td><code>all</code></td><td>所有候選一起退</td></tr>
+<tr><td><code>bmc</code></td><td>每個候選單獨退一級，各跑 BMC 到反例深度。選反例會消失的模型中最小的；都不會消失，就選第一個反例最深的</td></tr>
+<tr><td><code>llm</code></td><td>DeepSeek 讀 property、各單元的資訊、反例裡的任意值與被它們驅動的訊號（含拍數）、先前的 refinement 歷史，說出一個候選</td></tr></table>
+<p>12 題 Piccolo ILA。每個模型用 rIC3 portfolio 跑 300 s，最多 refine 8 次。LLM 每題跑 3 次。</p>
+
+<h3 id="a-gt">2.1 標準答案怎麼來的，「每一步都選對」的精確意思</h3>
+<p class="q"><b>問：你怎麼知道它每一步都對？</b><br>答：我們事先另外算了一份標準答案，再拿每一步去對照。這份標準答案是用有界 BMC 做的，不是完整證明。所以「對」的意思比較窄，細節如下。</p>
+<p><b>第一步：每個單元單獨變粗。</b>其他三個單元保持 keep，跑 <code>ric3 … bmc --end 20</code>，限時 900 s（<code>scripts/screen.py</code>）。ADDI 的原始紀錄（<code>piccolo/ADDI/screen.jsonl</code>）：</p>
+<table><tr><th>只改這個單元</th><th>BMC 到深度 20</th><th>耗時</th><th>判斷</th></tr>
+<tr><td>gpr havoc</td><td><b>SAT，深度 11</b></td><td class="n">5.9 s</td><td>GPR 必須 keep</td></tr>
+<tr><td>icache cut</td><td><b>SAT，深度 11</b></td><td class="n">5.2 s</td><td>I-cache 必須 keep</td></tr>
+<tr><td>csr cut</td><td>到 20 都沒有反例</td><td class="n">746 s</td><td>可以 cut</td></tr>
+<tr><td>dcache cut</td><td>TIMEOUT（ADDI 這題沒跑到 20）</td><td class="n">905 s</td><td>沒有結論，暫定可以 cut</td></tr>
+<tr><td>csr cut + dcache cut 一起</td><td>TIMEOUT（ADDI 到深度 18 還沒有反例）</td><td class="n">902 s</td><td>沒有結論</td></tr></table>
+<ul>
+<li><b>「需要」這一邊是可靠的。</b>只把 u 變粗就出現反例，代表 u 這麼粗不夠。其他單元再變粗只會多出行為，這個反例仍然存在。所以任何安全的模型都必須讓 u 比這個等級更細。</li>
+<li><b>「可以 cut」這一邊只是有界的。</b>到深度 20 內沒有反例，不代表沒有更深的反例。12 題中有 10 題「csr cut + dcache cut」到深度 20 都沒有反例；ADDI 和 ADD_Flatten 只跑到 18。PR #14 也用 portfolio 跑過這個模型 3600 s，沒有找到反例，但也沒有證出來。</li>
+<li>所以「最小安全模型 4,136 bits」的精確意思是：在這個 4 單元選單裡，深度 20 內沒有已知反例的最粗組合。</li>
+</ul>
+<p><b>第二步：判斷每一步。</b>（<code>scripts/evaluate.py</code>）</p>
+<ul>
+<li><b>需要的一步</b>：退的單元 u 當時比標準答案還粗。LLM <b>108/108</b>；<code>one</code> 36/59，<code>all</code> 36/60，<code>bmc</code> 36/48。</li>
+<li><b>單獨就能消掉反例的一步</b>：只退 u 的模型，在反例深度內沒有反例。LLM 只有 <b>70/108</b>。原因是 GPR 和 I-cache 兩個都需要，有些反例必須兩個都退才會消失。</li>
+</ul>
+<p class="notice">所以「每一步都對」的精確說法是：<b>LLM 沒有任何一步浪費在不需要的單元上</b>，而且 36 次都停在上面那個 4,136-bit 的組合。這不代表每一步都是最好的一步。還有一點：12 題需要保留的單元完全一樣，assertion 也直接點名了 GPR（<code>…regfile…arr_j</code>）和指令記憶體（<code>imem_pc</code>），這題對 LLM 很容易。</p>
+
+<h3 id="a-cex">2.2 「GPR havoc 和 I-cache cut 在深度 11 出現反例」是什麼</h3>
+<p>這是指：在「只有 GPR 是 havoc、其他保留」的模型上，BMC 找到一條 12 拍（cycle 0–11）的 trace，第 11 拍 <code>__IEND__</code> 時 assertion 不成立。這條 trace 在真實 Piccolo 上做不到，是假反例。</p>
+<p>screen 只記錄了 SAT 和深度，沒有存 witness。不過 CEGAR 跑的時候，在相近的模型上重放過 witness，從那裡可以看出是哪些任意值造成的。以 ADDI LLM 第 1 次 run 的紀錄為例（<code>arms/llm-1/refine-iter*.json</code>）：</p>
+<table><tr><th>模型</th><th>反例</th><th>cone 裡的任意值（被驅動的訊號與拍數）</th><th>怎麼讀</th></tr>
+<tr><td>全部 cut（iter 0）</td><td>9 拍，第 8 拍失敗</td><td>icache 11 個：<code>near_mem$imem_pc</code>、<code>imem_valid</code>、<code>icache$word64</code>（cycle 5, 6）；csr 10、dcache 12、gpr 4</td><td>I-cache 被 cut，取到的指令和 PC 可以是任意值，所以 <code>__ILA_SO_pc == imem_pc</code> 那條會失敗。LLM 選 icache（p=0.6）</td></tr>
+<tr><td>icache keep，gpr cut（iter 1）</td><td>12 拍，第 11 拍失敗</td><td>gpr 5 個：<code>regfile$D_OUT_1</code>、<code>D_OUT_3</code>（cycle 8, 9），<code>arr_16</code>（cycle 11）；csr 14、dcache 5</td><td>暫存器檔案讀出的值和 <code>arr_16</code> 本身都是任意值，第 11 拍比對 x16 時，RTL 的值和 ILA 的值不同。LLM 選 gpr（p=0.81），退到 havoc</td></tr>
+<tr><td>icache keep，gpr havoc（iter 2）</td><td>12 拍，第 11 拍失敗</td><td>gpr 3 個：<code>regfile$D_OUT_1</code>（cycle 8, 9, 11）；csr、dcache 的 reset 握手訊號</td><td>havoc 下每次讀 GPR 都拿到任意值。RTL 讀到的 rs1 不是 ILA recorder 記下的那個值，寫回的 rd 就跟 ILA 算的不同。LLM 再選 gpr，退到 keep</td></tr></table>
+<p>所以「GPR havoc 有深度 11 的反例」的意思就是第三列這種情況：只要暫存器讀出來的值是任意的，RTL 和 ILA 執行同一條 ADDI 就可能得到不同結果，而且最短 12 拍就能走到 <code>__IEND__</code> 比對。I-cache cut 的反例則是指令和 PC 可以亂給。反例裡 csr、dcache 的任意值都只驅動 reset 握手（<code>RDY_server_reset_*</code>）和 <code>interrupt_pending</code>、<code>nmi_pending</code>，跟比對的值沒有關係。這正是 LLM 能判斷它們不需要的線索。</p>
+<p><code>bmc</code> 策略錯在第一步：全部 cut 時那條深度 8 的反例，退 icache 或退 dcache 都會讓它消失，而 dcache 的模型比較小，所以它選了 dcache。但 dcache 其實不需要。</p>
+
+<h3 id="a-res">2.3 結果</h3>
+<table><tr><th>策略</th><th>runs</th><th>最後停在 4,136 bits</th><th>refine 次數</th><th>需要的步數</th><th>最終 COI bits</th><th>到最終模型的時間（中位數）</th></tr>
+<tr><td><code>llm</code></td><td class="n">36</td><td class="n"><b>36</b></td><td class="n">3</td><td class="n">108/108</td><td class="n">4,136</td><td class="n">111 s（其中 LLM 31 s）</td></tr>
+<tr><td><code>bmc</code></td><td class="n">12</td><td class="n">0</td><td class="n">4</td><td class="n">36/48</td><td class="n">4,542</td><td class="n">175 s</td></tr>
+<tr><td><code>one</code></td><td class="n">12</td><td class="n">0</td><td class="n">4–5</td><td class="n">36/59</td><td class="n">5,131（= B0）</td><td class="n">181 s</td></tr>
+<tr><td><code>all</code></td><td class="n">12</td><td class="n">0</td><td class="n">2</td><td class="n">36/60</td><td class="n">5,131（= B0）</td><td class="n">66 s</td></tr></table>
+<div class="box"><b>到最終模型的時間（中位數，秒）</b>
+<div class="bar"><span class="lab">all</span><span class="fill alt" style="width:calc(66px*2)"></span><span class="val">66（但最後回到 B0）</span></div>
+<div class="bar"><span class="lab">llm</span><span class="fill good" style="width:calc(111px*2)"></span><span class="val">111</span></div>
+<div class="bar"><span class="lab">bmc</span><span class="fill" style="width:calc(175px*2)"></span><span class="val">175</span></div>
+<div class="bar"><span class="lab">one</span><span class="fill" style="width:calc(181px*2)"></span><span class="val">181</span></div></div>
+<p>各題的 refinement 順序（✗ = 不需要的單元，* = 單獨退它就能消掉反例）：</p>
+<table><tr><th>題目</th><th><code>one</code></th><th><code>bmc</code></th><th><code>llm</code>（3 次）</th></tr>
+<tr><td>ADDI</td><td>dcache✗* → csr✗ → icache → gpr → gpr*</td><td>dcache✗* → gpr → icache → gpr*</td><td>icache* → gpr → gpr*</td></tr>
+<tr><td>BEQ</td><td>icache* → csr✗ → dcache✗ → gpr → gpr*</td><td>dcache✗* → gpr → icache → gpr*</td><td>icache* → gpr → gpr*</td></tr>
+<tr><td>JAL</td><td>csr✗ → icache* → dcache✗ → gpr → gpr*</td><td>dcache✗* → gpr → icache → gpr*</td><td>icache* → gpr → gpr*</td></tr>
+<tr><td>SUB</td><td>csr✗ → icache* → dcache✗ → gpr → gpr*</td><td>dcache✗* → gpr → icache → gpr*</td><td>gpr → gpr → icache*（run 1、3）；icache* → gpr → gpr*（run 2）</td></tr>
+<tr><td colspan="4" class="small">其他 8 題（ADD_Flatten、ANDI、AUIPC、BNE_new、LUI、OR、SLTI、XOR）的 <code>llm</code> 都是 icache* → gpr → gpr*。完整表格在 <code>results/llm_refinement/README.md</code>。</td></tr></table>
+
+<p><b>最終模型跑久一點：</b>每個最終模型用 4 核跑 1800 s，各一次。結果全部 UNKNOWN。</p>
+<table><tr><th>題目</th><th>模型（來自哪個策略）</th><th>COI bits</th><th><code>bmc_kissat_10</code>：到 bound 40 的時間（最終 bound）</th><th><code>bmc_kissat_65</code>：到 bound 65 的時間</th><th>IC3 frame</th></tr>
+<tr><td>ADDI</td><td>csr cut + dcache cut（llm）</td><td class="n">4,136</td><td class="n">14.0 min（最終 50）</td><td class="n">16.3 min</td><td class="n">7</td></tr>
+<tr><td>ADDI</td><td>csr cut（bmc）</td><td class="n">4,542</td><td class="n">17.8 min（最終 40）</td><td class="n">26.0 min</td><td class="n">10</td></tr>
+<tr><td>ADDI</td><td>B0</td><td class="n">5,131</td><td class="n">26.5 min（最終 40）</td><td class="n">28.5 min</td><td class="n">10</td></tr>
+<tr><td>BEQ</td><td>csr cut + dcache cut（llm）</td><td class="n">4,136</td><td class="n">20.2 min（最終 40）</td><td class="n">21.8 min</td><td class="n">7</td></tr>
+<tr><td>BEQ</td><td>csr cut（bmc）</td><td class="n">4,542</td><td class="n">沒到 40（最終 30）</td><td class="n">沒到 65</td><td class="n">10</td></tr>
+<tr><td>BEQ</td><td>B0</td><td class="n">5,131</td><td class="n">沒到 40（最終 30）</td><td class="n">沒到 65</td><td class="n">10</td></tr></table>
+<p>LLM 的模型讓 BMC 走得比較快，但 IC3 沒有比較深，所以也沒有證出來。</p>
+<p><b>Flute ADD（只做篩選）：</b>4 種策略的最終模型都在 300 s 內 TIMEOUT，分不出好壞。LLM 跟在 Piccolo 上一樣，保留了 GPR 和 I-cache。</p>
+
+<h2 id="b">3. 實驗 B：更細的選單（PR #16）</h2>
+<p>PR #14 的選單是每個 module instance 選 keep/havoc/cut。在 Piccolo ADDI ILA 上，這個選單的任何組合跑 1 小時都沒有結論。原因是 GPR 檔案必須整個 keep，而 property 要比對全部 31 個 GPR。B 在這個選單上加了三種新選項。</p>
+
+<h3 id="b-opt">3.1 三種新選項</h3>
+<p class="q"><b>問：「新選項」是什麼意思？</b><br>答：就是下面這三種原本選單沒有的抽象方式。它們都由 <code>src/fine_choice.py</code> 改寫 wrapper，或在 Yosys 加 cut point 產生，而且都是 sound 的。</p>
+<div class="grid2">
+<div class="box"><h3>① 拆 property</h3>
+<p>原 assertion 是 35 個 conjunct 的 AND。每個子 property 只保留其中幾個 conjunct，而且可以加一個 case，也就是對 ILA 正在執行的那條指令的欄位設條件。</p>
+<p>指令在 <code>__START__</code> 時被鎖存到一個觀察用的暫存器 <code>__split_inst__</code>（它不影響設計行為），子 property 的 assertion 改成 <code>!case || p</code>。</p></div>
+<div class="box"><h3>② GPR 逐個選</h3>
+<p>原本的 GPR 單元換成 32 個選項 <code>gpr0..gpr31</code>，每個各自有三種等級：</p>
+<ul><li><b>keep</b>：保留</li>
+<li><b>word</b>：暫存器的值保留，但拿掉「ILA 的 xj 等於 RTL 的 arr_j」這條起始 assumption</li>
+<li><b>havoc</b>：RTL 的 <code>arr[j]</code> 和 ILA 的 <code>xj</code> 每拍都是任意值，只跟被移除的 GPR 有關的 assumption 也一起拿掉</li></ul></div>
+<div class="box"><h3>③ 加法器換成 UF（Ackermann）</h3>
+<p>把 ILA 的 <code>n110 = n107 + n109</code> 和 RTL ALU 的 <code>rd_val___1__h6550 = rs1_val_bypassed + imm</code> 配成一對，兩邊的結果每拍都變任意值。</p>
+<p>在 <code>__START__</code> 鎖存兩邊的運算元和結果，再加一條 assumption：<b>運算元相同，結果就相同</b>。</p>
+<p>這樣 IC3 不必學 carry chain，需要的 lemma 都只是「兩個鎖存下來的 word 相等」。</p></div>
+<div class="box"><h3>為什麼 sound</h3>
+<ul><li>cut point 把驅動換成任意值，任意值包含原本的值。</li>
+<li>拿掉 assumption 只會讓限制變少。</li>
+<li>UF：在真實 trace 裡，任意結果可以取真實值，那條 assumption 就自然成立。</li>
+<li>拆 property：下一節證明子 property 涵蓋了所有情況。</li></ul>
+<p>所以所有子 property 都在抽象模型上被證出來，原 property 就在原設計上成立。</p></div></div>
+
+<h3 id="b-count">3.2 ADDI 的 1024 個子 property 怎麼算</h3>
+<table><tr><th>子 property</th><th>比對哪個 conjunct</th><th>case</th><th>個數</th></tr>
+<tr><td><code>mem</code></td><td>pc、load_en、store_en、x0</td><td>所有指令</td><td class="n">1</td></tr>
+<tr><td><code>xk.frame</code>，k = 1..31</td><td>xk</td><td><code>rd != k</code>：這條指令不寫 xk，xk 應該保持不變</td><td class="n">31</td></tr>
+<tr><td><code>xk.rs1=r</code>，k = 1..31，r = 0..31</td><td>xk</td><td><code>rd == k &amp;&amp; rs1 == r</code>：這條指令把 x[r] + imm 寫進 xk</td><td class="n">31 × 32 = 992</td></tr>
+<tr><th colspan="3">合計</th><th class="n">1 + 31 + 992 = 1,024</th></tr></table>
+<p><b>為什麼這樣拆不會漏：</b>對每個 k，<code>rd != k</code> 加上 32 個 <code>rd == k &amp;&amp; rs1 == r</code> 涵蓋了所有指令；而 35 個 conjunct 每一個都出現在某個子 property 裡。所以全部子 property 成立，原 property 就成立（<code>ila_split</code> 有對應的 test）。</p>
+<p><b>為什麼要依 rs1 拆：</b>寫入的情況需要讀 x[r] 的值。依 rs1 拆開後，每個子 property 只需要保留 2 個 GPR（rs1 和 rd），其他 30 個都可以 havoc。不拆就要保留全部 GPR，結果會 TIMEOUT（見 3.4）。</p>
+<p>LUI、AUIPC、JAL 沒有暫存器運算元，寫入的情況不必依 rs1 拆：1 + 31 + 31 = 63 個。</p>
+
+<h3 id="b-blow">3.3 全部拆開，會不會 state 爆炸？</h3>
+<p class="q"><b>問：全部拆開不會 state 爆炸嗎？</b><br>答：每個子 property 的模型不會變大，反而小很多。會增加的是「要跑幾次」，而且是線性增加。</p>
+<ul>
+<li><b>模型大小：</b>拆 property 只多了觀察用的 <code>__split_inst__</code>（32 bit），UF 多了幾個鎖存。因為每個子 property 只保留 1–2 個 GPR，其他 GPR 和 csr、dcache、icache 都 cut，COI 反而大幅縮小。ADDI sample 的最終 COI 中位數是 <b>1,012 bits</b>，LUI 是 788 bits；B0 是 5,131 bits。</li>
+<li><b>每次 check 的難度：</b>每個子 property 是一次獨立的 rIC3 check，中位數 31–46 s，最慢 81 s。</li>
+<li><b>總次數：</b>ADDI 要 1,024 次 check，加起來是 11.0 個「2-CPU 小時」。同時跑 4 個，實際 2 小時 52 分。B0 用 16 核跑 1 小時都沒有結論。</li>
+<li><b>真正會爆炸的是 R-type。</b>ADD、SUB 這類指令要同時依 rs1 和 rs2 拆，寫入的情況變成 31 × 32 × 32 個，總共 1 + 31 + 31,744 = 31,776 個子 property。這是次數爆炸，不是 state 爆炸，但也已經不實用了。可能的方向是利用暫存器編號的對稱性只跑代表性的 case，或換一種拆法。這些都還沒有試。</li>
+</ul>
+<div class="box"><b>COI bits（越短越小）</b>
+<div class="bar"><span class="lab">B0（整條）</span><span class="fill alt" style="width:calc(5131px/12)"></span><span class="val">5,131</span></div>
+<div class="bar"><span class="lab">A 的最佳（整條）</span><span class="fill" style="width:calc(4136px/12)"></span><span class="val">4,136</span></div>
+<div class="bar"><span class="lab">B 子 property 中位數（ADDI）</span><span class="fill good" style="width:calc(1012px/12)"></span><span class="val">1,012</span></div>
+<div class="bar"><span class="lab">B 子 property 中位數（LUI）</span><span class="fill good" style="width:calc(788px/12)"></span><span class="val">788</span></div></div>
+
+<h3 id="b-screen">3.4 為什麼三種選項都需要（ADDI 篩選，300 s）</h3>
+<table><tr><th>子 property</th><th>抽象</th><th>結果</th><th>rIC3 s</th><th>COI bits</th></tr>
+<tr><td><code>x5.frame</code></td><td>不抽象</td><td>UNSAT</td><td class="n">143</td><td class="n">5,163</td></tr>
+<tr><td><code>mem</code></td><td>不抽象</td><td>UNSAT</td><td class="n">122</td><td class="n">5,131</td></tr>
+<tr><td><code>x5.rs1=6</code></td><td>不抽象</td><td>TIMEOUT</td><td class="n">306</td><td class="n">5,163</td></tr>
+<tr><td><code>x5.rs1=6</code></td><td>只換 UF</td><td>TIMEOUT</td><td class="n">306</td><td class="n">5,356</td></tr>
+<tr><td><code>x5.rs1=6</code></td><td>只保留 {5,6}，csr、dcache cut</td><td>TIMEOUT（1500 s 也一樣）</td><td class="n">302</td><td class="n">1,291</td></tr>
+<tr><td><code>x5.rs1=6</code> 且 <code>imm == 0</code>（診斷用）</td><td>同上</td><td>UNSAT</td><td class="n">98</td><td class="n">1,291</td></tr>
+<tr><td><code>x5.rs1=6</code></td><td>同上 + UF</td><td><b>UNSAT</b></td><td class="n">51</td><td class="n">1,484</td></tr>
+<tr><td><code>x5</code>，<code>rd == 5</code>，rs1 不拆</td><td>保留全部 GPR，csr、dcache cut，UF</td><td>TIMEOUT</td><td class="n">303</td><td class="n">4,361</td></tr>
+<tr><td>整條 property</td><td>保留全部 GPR，csr、dcache cut，UF，1800 s</td><td>TIMEOUT</td><td class="n">1,806</td><td class="n">4,329</td></tr></table>
+<ul>
+<li>光是拆 property，frame 和 mem 不抽象就能在約 2 分鐘內證出來。</li>
+<li>寫入的情況卡在加法器：<code>imm == 0</code> 或 <code>rs1 == 0</code> 時證得出來，要加 UF 才能處理一般情況。</li>
+<li>但 UF 必須跟「依 rs1 拆」一起用。不拆，或整條 property 只加 UF，都會 TIMEOUT。</li>
+</ul>
+
+<h3 id="b-arms">3.5 誰來選：auto、LLM、結構規則</h3>
+<p class="q"><b>問：「LLM 只贏過自動 CEGAR，贏不過一條幾行的手寫規則」是什麼意思？</b><br>答：每個子 property 都要決定 36 個選項（3 個單元、32 個 GPR、1 個 UF）的等級。我們比了三種決定方式，下面是結果。</p>
+<table><tr><th>方式</th><th>怎麼決定</th><th>之後</th></tr>
+<tr><td>auto</td><td>從最粗開始：單元全部 cut、GPR 全部 havoc、UF 開啟</td><td>CEGAR，每次退反例裡任意值最多的那個選項</td></tr>
+<tr><td>DeepSeek</td><td>每個子 property 呼叫一次。輸入 case 說明、36 個選項與等級、assertion 和 case；輸出 JSON</td><td>同 auto</td></tr>
+<tr><td>結構規則 S</td><td><code>src/fine_choice.py</code> 的 <code>structural()</code>，不用 LLM（下面是它的虛擬碼）</td><td>同 auto</td></tr></table>
+<pre>def structural(sub, units, ufs):
+    named   = 這個子 property 比對到的 GPR       # 例如 x5
+    sources = case 裡寫的 rs1 / rs2 == r        # 例如 x6
+    rd      = case 裡寫的 rd == k
+    spec = coarsest(...)                        # 單元全部 cut、GPR 全部移除、UF 全開
+    spec["keep_gprs"] = (named - rd) | sources   # 保留被比對的（非 rd）和來源暫存器
+    spec["word_gprs"] = (named &amp; rd) - sources   # 被寫入的 rd 設成 word
+    return spec</pre>
+<p>例如 <code>x5.rs1=6</code>：保留 x6，x5 設成 word，其他 30 個 GPR 移除，csr、dcache、icache 全部 cut，加法器換成 UF。</p>
+
+<p><b>ADDI sample（64 個子 property：mem、31 個 frame、32 個寫入；300 s，最多 refine 10 次）</b></p>
+<table><tr><th>方式</th><th>UNSAT</th><th>TIMEOUT</th><th>refine 次數（64 個合計）</th><th>總時間</th><th>中位數</th><th>LLM</th></tr>
+<tr><td>auto</td><td class="n">34</td><td class="n">30</td><td class="n">315</td><td class="n">23,893 s</td><td class="n">316 s</td><td>—</td></tr>
+<tr><td>DeepSeek</td><td class="n">60</td><td class="n">4</td><td class="n">1</td><td class="n">3,805 s</td><td class="n">39 s</td><td>64 次呼叫、$0.47</td></tr>
+<tr><td>結構規則 S</td><td class="n"><b>64</b></td><td class="n">0</td><td class="n">1</td><td class="n"><b>2,627 s</b></td><td class="n">40 s</td><td>—</td></tr></table>
+<div class="box"><b>ADDI sample 證出幾個（共 64）</b>
+<div class="bar"><span class="lab">auto</span><span class="fill alt" style="width:calc(34px*6)"></span><span class="val">34</span></div>
+<div class="bar"><span class="lab">DeepSeek</span><span class="fill" style="width:calc(60px*6)"></span><span class="val">60</span></div>
+<div class="bar"><span class="lab">結構規則 S</span><span class="fill good" style="width:calc(64px*6)"></span><span class="val">64</span></div>
+<b>總時間（秒）</b>
+<div class="bar"><span class="lab">auto</span><span class="fill alt" style="width:calc(23893px/60)"></span><span class="val">23,893</span></div>
+<div class="bar"><span class="lab">DeepSeek</span><span class="fill" style="width:calc(3805px/60)"></span><span class="val">3,805</span></div>
+<div class="bar"><span class="lab">結構規則 S</span><span class="fill good" style="width:calc(2627px/60)"></span><span class="val">2,627</span></div></div>
+<ul>
+<li><b>auto 為什麼輸：</b>
+<ul>
+<li>frame 的情況，它每次都先把 icache、csr、dcache 退回來，最後才退被比對的 GPR，所以很慢。</li>
+<li>寫入的情況，單元都退回來之後，反例裡任意值最多的變成 UF，它就把 UF 也退回成真的加法器，結果 TIMEOUT。TIMEOUT 不會產生反例，CEGAR 沒辦法再修正。32 個寫入的情況，它只證出 2 個，都是 <code>rs1 = 0</code>。</li>
+</ul></li>
+<li><b>DeepSeek 為什麼贏過 auto：</b>它一開始就選了 csr、dcache、icache 全部 cut，保留被比對的 GPR 和 rs1，64 個合計只 refine 1 次（<code>mem</code> 退回 I-cache）。有 55/64 跟 S 選得一模一樣。</li>
+<li><b>DeepSeek 的失敗：</b>
+<ul>
+<li>4 個寫入的情況保留了加法器（UF 設成 keep），全部 TIMEOUT，沒有反例可以修正。</li>
+<li>在 LUI 和 JAL 各有 1 個 frame 的情況，它把被比對的 GPR 設成 word。這會拿掉起始那條相等的 assumption，所以反例在抽象模型上是真的。但 CEGAR 會先退回反例裡有任意值的單元，refine 10 次就到上限，還沒輪到把那個 GPR 退回 keep。</li>
+</ul></li>
+<li><b>為什麼贏不過 S：</b>選單細到這個程度後，答案直接寫在子 property 的名字裡。<code>x5.rs1=6</code> 就是保留 x6、比對 x5。S 把這件事照字面寫成十行左右的程式。LLM 能做到的最好也就是選出同樣的答案，而它偶爾會選錯。</li>
+<li><b>不公平之處：</b>S 是子 session 看過 wrapper 結構之後寫的，本身帶了人的領域知識。所以這個比較說明的是：這組題目不需要 LLM 的判斷。它不能證明 LLM 在別的題目上沒有用。</li>
+</ul>
+
+<p><b>LUI、AUIPC、JAL（63 個子 property 就是整條 property，所以每一組都是一次完整的證明嘗試）</b></p>
+<table><tr><th>題目</th><th>B0（1800 s）</th><th>S：UNSAT／時間</th><th>DeepSeek：UNSAT／時間</th><th>auto（7 個 sample）／S／DeepSeek 時間</th></tr>
+<tr><td>LUI</td><td>TIMEOUT</td><td class="n">63/63，934 s</td><td class="n">62/63，2,005 s，$0.35</td><td class="n">1,073 / 124 / 209 s</td></tr>
+<tr><td>AUIPC</td><td>TIMEOUT</td><td class="n">63/63，1,204 s</td><td class="n">63/63，1,828 s，$0.43</td><td class="n">1,034 / 152 / 234 s</td></tr>
+<tr><td>JAL</td><td>TIMEOUT</td><td class="n">63/63，1,608 s</td><td class="n">62/63，2,243 s，$0.49</td><td class="n">1,118 / 225 / 222 s</td></tr></table>
+<p>這三條指令沒有加法器擋路，auto 在 sample 上也全部證得出來，但慢了 5–9 倍。</p>
+
+<h3 id="b-full">3.6 ADDI 完整證明</h3>
+<table><tr><th>部分</th><th>子 property</th><th>CPU</th><th>UNSAT</th><th>時間</th><th>中位數</th><th>最慢</th></tr>
+<tr><td>sample（S）</td><td class="n">64</td><td>E 24–27</td><td class="n">64</td><td class="n">2,627 s</td><td class="n">40 s</td><td class="n">72 s</td></tr>
+<tr><td>rd 1–8</td><td class="n">247</td><td>P 12–15</td><td class="n">247</td><td class="n">9,416 s</td><td class="n">38 s</td><td class="n">78 s</td></tr>
+<tr><td>rd 9–20</td><td class="n">372</td><td>E 28–31</td><td class="n">372</td><td class="n">17,246 s</td><td class="n">46 s</td><td class="n">81 s</td></tr>
+<tr><td>rd 21–31</td><td class="n">341</td><td>P 12–15</td><td class="n">341</td><td class="n">10,423 s</td><td class="n">31 s</td><td class="n">48 s</td></tr>
+<tr><th>合計</th><th class="n">1,024</th><th></th><th class="n">1,024</th><th class="n">39,712 s ≈ 11.0 h</th><th></th><th></th></tr></table>
+<p class="ok">1,024 個子 property 全部 UNSAT，所以 Piccolo ADDI 的 ILA property 成立。除了 sample 中的 <code>mem</code> 需要 1 次 refinement（把 I-cache 退回），其他都用結構規則一次就證出來。</p>
+<p class="small">sanity check（<code>results/fine_gpr_choices/scripts/neg.sh</code>）：在同一種 UF 抽象模型上，把 x5 那個 conjunct 的 assertion 改成「x5 <b>不</b>相等」再檢查，深度 11 找到反例，也就是存在一條走到檢查點且 x5 相等的 trace。這表示 UF 的 assumption 沒有把所有 trace 都排除掉（模型不是 vacuous）；它跟上面的 UNSAT 不衝突，因為檢查的是相反的 assertion。</p>
+
+<h3 id="b-base">3.7 拆 property 是前處理：跟「只拆」比（PR #18）</h3>
+<p class="q"><b>問：拆 property 本身就讓問題變小了，怎麼知道 abstraction 有貢獻？</b><br>答：把拆 property 當成前處理，baseline 也一樣先拆。「只拆」就是同一個子 property（同樣的 conjunct 和 case），但不做任何 abstraction：單元、GPR 全部保留，沒有 UF。用同一個 <code>fine_batch.py</code>、同一組 CPU、同樣 300 s，跟 S、DeepSeek、auto 逐條配對比較。</p>
+<table><tr><th>題目</th><th>只拆：UNSAT</th><th>S：UNSAT</th><th>只拆／S 總時間</th><th>兩邊都證出的條數</th><th>S 加速（中位數）</th><th>DeepSeek 加速</th><th>auto 加速</th></tr>
+<tr><td>ADDI sample</td><td class="n">19/64</td><td class="n">64/64</td><td class="n">18,221 / 2,627 s</td><td class="n">19</td><td class="n">7.7×</td><td class="n">6.8×</td><td class="n">1.0×（19 個）</td></tr>
+<tr><td>LUI</td><td class="n">61/63</td><td class="n">63/63</td><td class="n">8,345 / 934 s</td><td class="n">61</td><td class="n">7.7×</td><td class="n">4.5×</td><td class="n">0.8×（7 個）</td></tr>
+<tr><td>AUIPC</td><td class="n">63/63</td><td class="n">63/63</td><td class="n">6,609 / 1,204 s</td><td class="n">63</td><td class="n">5.1×</td><td class="n">3.4×</td><td class="n">0.6×（7 個）</td></tr>
+<tr><td>JAL</td><td class="n">53/63</td><td class="n">63/63</td><td class="n">11,869 / 1,608 s</td><td class="n">53</td><td class="n">6.8×</td><td class="n">6.1×</td><td class="n">1.0×（6 個）</td></tr></table>
+<p class="small">加速 = 只拆時間 ÷ 該方式時間，只算兩邊都 UNSAT 的子 property，含 Yosys build。auto 欄括號是它和只拆都證出的條數：ADDI 是 64 個 sample 裡的 19 個，其他是 3.5 節 7 個 sample 裡的。只拆的 COI 是 5,131–5,163 bits，S 和 DeepSeek 是 788–1,012，auto 是 2,189–2,382（它把單元退回來了）。</p>
+<p><b>ADDI 寫入類：abstraction 讓本來證不出來的變得證得出來</b></p>
+<table><tr><th>方式</th><th>UNSAT / 32</th><th>總時間</th><th>COI bits</th><th>TIMEOUT 時的 BMC 深度 / IC3 frame</th></tr>
+<tr><td>只拆，300 s</td><td class="n">1（<code>rs1 = 0</code>）</td><td class="n">9,877 s</td><td class="n">5,163</td><td>20–30 / 10</td></tr>
+<tr><td>只拆，1800 s（抽 4 條）</td><td class="n">0 / 4</td><td class="n">每條約 1,813 s</td><td class="n">5,163</td><td>130 / 10</td></tr>
+<tr><td>S 拿掉 UF</td><td class="n">1（<code>rs1 = 0</code>）</td><td class="n">9,568 s</td><td class="n">788–884</td><td>81–130 / 7</td></tr>
+<tr><td>S</td><td class="n"><b>32</b></td><td class="n"><b>1,727 s</b></td><td class="n">981–1,077</td><td>—</td></tr></table>
+<p><b>重複計時</b>（<code>docs/evaluation.md</code> 要求）：LUI 和 JAL 各 7 個子 property（mem、x1／x5／x17 的 frame 和寫入），只拆和 S 交替各跑 3 輪，同一組 CPU。</p>
+<table><tr><th>題目</th><th>只拆每輪總時間</th><th>S 每輪總時間</th><th>每個子 property 加速（中位數，範圍）</th></tr>
+<tr><td>LUI</td><td class="n">770、774、784 s</td><td class="n">108、109、108 s</td><td class="n">6.0×（3.6–15.5×）</td></tr>
+<tr><td>JAL</td><td class="n">1,148、1,143、1,136 s</td><td class="n">185、187、186 s</td><td class="n">6.2×（2.8–12.8×；只拆的 <code>x1.frame</code> 三輪都 TIMEOUT）</td></tr></table>
+<ul>
+<li><b>ADDI 寫入類需要 abstraction：</b>只拆 300 s 只證出 <code>rs1 = 0</code> 那條（加法器加的是常數 0），另外抽 4 條放到 1800 s 也是 0/4；S 32 條全證出。拿掉 UF 後，模型雖然只剩不到 900 bits，仍只證出 <code>rs1 = 0</code>：GPR／單元 cut 和 UF 必須一起用。</li>
+<li><b>其他地方是加速：</b>LUI、AUIPC、JAL 的寫入類，只拆也全部證得出來；abstraction 快約 5–8 倍，重複 3 輪結果幾乎一樣（每輪總時間差不到 2%）。</li>
+<li><b>frame 類只拆的 TIMEOUT 不算「需要 abstraction」：</b>只拆證出的 frame 總時間是 101–308 s（含 Yosys build），貼著 rIC3 300 s 的上限；ADDI、JAL 在 E-core 上掉了 14、10 條，LUI、AUIPC 在 P-core 上幾乎都證出。沒有對 frame 類跑更長的時限。</li>
+<li><b>auto 沒有比只拆快：</b>它把單元一個個退回來，最後的模型仍有 2,189–2,382 bits（S、DeepSeek 是 788–1,012），時間跟只拆差不多（0.6–1.0×）；LLM 和 S 都快很多。</li>
+</ul>
+
+<h2 id="concl">4. 結論、限制、下一步</h2>
+<ol>
+<li><b>拆 property 是前處理，不是我們的貢獻；baseline 也一樣先拆。</b>拆完之後再做 RTL abstraction（GPR 逐個選、單元 cut、UF）：ADDI 的寫入類才證得出來；LUI、AUIPC、JAL 只拆也大多證得出來，abstraction 是加速。</li>
+<li><b>我們的貢獻是 RTL abstraction，跟「只拆」比：</b>ADDI 寫入類從 1/32（1800 s 也是 0/4）變成 32/32，且 UF 不可少；其他兩邊都證得出來的地方，S 快約 5–8 倍，重複 3 輪是 6.0× 和 6.2×。</li>
+<li><b>兩個決策點交給 LLM，都比現在的自動作法好。</b>A：每一步都退到需要的單元，只有它停在 4,136 bits。B：60/64 對 34/64，時間只要 auto 的 1/6；比只拆快 3.4–6.8 倍，auto 則跟只拆差不多（0.6–1.0×）。</li>
+<li><b>但都贏不過、或只是追平簡單的規則。</b>這兩組題目的答案都寫在 property 的文字裡：A 的 assertion 點名了 GPR 和 imem，B 的子 property 名字點名了要保留的暫存器。所以目前能說「LLM 選的 abstraction 比只拆和 auto CEGAR 快」，不能說「LLM 比簡單規則好」。</li>
+</ol>
+<p><b>限制</b></p>
+<ul>
+<li>只有一個設計（Piccolo）。A 的 12 題需要保留的單元完全相同。</li>
+<li>A 的標準答案只做到 BMC 深度 20，有兩題只到 18。A 的最終模型都沒有結論。</li>
+<li>B 的時間混用了 P-core 和 E-core，機器上同時還有另一個 session，只有同一組內的時間可以互相比較。</li>
+<li>B 沒做的：Flute、ANDI 和 SLTI 的完整證明（SLTI 沒有可以配對的運算子）、R-type（約 3.2 萬個子 property）。</li>
+<li>只拆 baseline 只跑了 ADDI 的 64 個 sample，不是全部 1,024 個；重複計時只做了 LUI、JAL 各 7 個；只拆是在 S 那批之後約半天才跑，機器負載不同（交替跑的重複計時給出相同的加速）。</li>
+<li>B 的 refinement 有一個限制：只要還有單元在反例裡有任意值，它就不會把 word 的 GPR 退回 keep。DeepSeek 的 2 個失敗就是卡在這裡。</li>
+</ul>
+<p><b>下一步建議</b>：找「需要保留的東西沒有寫在 property 文字裡」的題目，LLM 的判斷才有機會勝過規則。例如 Flute 的 R-type、需要 branch predictor 或 bypass 的 property，或其他 SoC。R-type 也需要比 rs1 × rs2 更省的拆法。</p>
+
+<h2 id="repro">5. 花費與重現</h2>
+<ul>
+<li><b>DeepSeek</b>（README 記錄）：A 115 次呼叫 $0.25；B 的 4 組 LLM arm 共 $1.74（$0.47 + $0.35 + $0.43 + $0.49）。這次約 $2.0，比我上一則訊息說的「約 $2.5」少，以 README 為準。累計約 $32–33，在批准的 $60 以內。API key 只放在 gateway。</li>
+<li><b>A</b>：<a href="https://github.com/swear01/NeuroAbs/pull/15">PR #15</a>（branch <code>feat/llm-refinement</code>）的 <code>results/llm_refinement/</code>，各 run 的紀錄和表格數字都在裡面。run dir <code>/var/tmp/neuroabs-runtime/runs/llm-refine-20261026</code>（mazu，不保證保留）。76 個 test 通過。</li>
+<li><b>B</b>：<a href="https://github.com/swear01/NeuroAbs/pull/16">PR #16</a>（branch <code>feat/fine-gpr-choices</code>）的 <code>results/fine_gpr_choices/</code>，各子 property 的紀錄在 <code>piccolo/&lt;case&gt;/</code>。run dir <code>/var/tmp/neuroabs-runtime/runs/fine-gpr-20261026</code>（mazu，不保證保留）。78 個 test 通過。</li>
+<li><b>只拆 baseline</b>：<a href="https://github.com/swear01/NeuroAbs/pull/18">PR #18</a> 的 <code>results/split_baseline/</code>，表格由 <code>scripts/compare.py</code>、<code>scripts/repeats.py</code> 算出。run dir <code>/var/tmp/neuroabs-runtime/runs/split-baseline-20261026</code>（mazu，不保證保留）。只用 rIC3，沒有 LLM 花費。</li>
+<li>環境：Mazu（i9-14900K），Yosys 0.68+120，rIC3 master <code>8c6df1b</code>，default portfolio。</li>
+</ul>
+</main></html>

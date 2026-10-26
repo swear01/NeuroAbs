@@ -9,6 +9,7 @@ for a choice leaves it at keep.
 import argparse
 import json
 import os
+import re
 import sys
 
 import fine_choice
@@ -72,7 +73,7 @@ def to_spec(sub, assignment, ufs):
         "rd_guard": sub.get("rd_guard", False),
         "keep_gprs": [j for j in range(fine_choice.NUM_GPRS) if assignment.get("gpr{:d}".format(j), "keep") == "keep"],
         "word_gprs": [j for j in range(fine_choice.NUM_GPRS) if assignment.get("gpr{:d}".format(j)) == "word"],
-        "units": {k: v for k, v in assignment.items() if not k.startswith(("gpr", "uf"))},
+        "units": {k: v for k, v in assignment.items() if not re.fullmatch(r"(gpr|uf)\d+", k)},
         "uf": [{"ila": uf["ila"], "rtl": uf["rtl"]} for i, uf in enumerate(ufs)
                if assignment.get("uf{:d}".format(i)) == "uf"],
     }

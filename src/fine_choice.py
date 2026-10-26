@@ -88,7 +88,10 @@ def case_expr(case):
         if not m:
             raise ValueError("bad case term " + part)
         bits, width = FIELDS[m.group(1)]
-        terms.append("({:s}{:s} {:s} {:d}'d{:d})".format(INST_LATCH, bits, m.group(2), width, int(m.group(3))))
+        value = int(m.group(3))
+        if value >= 1 << width:
+            raise ValueError("value {:d} does not fit {:s}".format(value, m.group(1)))
+        terms.append("({:s}{:s} {:s} {:d}'d{:d})".format(INST_LATCH, bits, m.group(2), width, value))
     return " && ".join(terms)
 
 
@@ -365,7 +368,7 @@ def refine(spec, units, counts):
         spec["keep_gprs"] = kept_with(spec, spec.pop("word_gprs"))
         return spec
     target = min(counts, key=lambda k: (-counts[k], k))
-    if target.startswith("gpr"):
+    if re.fullmatch(r"gpr\d+", target):
         j = int(target[3:])
         spec["keep_gprs"] = kept_with(spec, [j])
         spec["word_gprs"] = [w for w in spec.get("word_gprs", []) if w != j]

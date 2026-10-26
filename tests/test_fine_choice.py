@@ -131,6 +131,8 @@ class FineChoiceTest(unittest.TestCase):
         self.assertEqual(self.fine.case_expr("imm!=0"), "(__split_inst__[31:20] != 12'd0)")
         with self.assertRaises(ValueError):
             self.fine.case_expr("funct3==3")
+        with self.assertRaises(ValueError):
+            self.fine.case_expr("rd==32")
 
     def test_removed_words_and_ila_registers_are_cut(self):
         spec = {"states": ["x1"], "keep_gprs": list(range(1, 32))}
@@ -153,6 +155,12 @@ class FineChoiceTest(unittest.TestCase):
         self.assertEqual(refined["units"], {"csr_regfile": "keep"})
         self.assertEqual(spec["units"], {"csr_regfile": "cut"})
         self.assertIsNone(self.fine.refine(spec, UNITS, {}))
+
+    def test_refine_a_unit_whose_id_starts_with_gpr(self):
+        units = UNITS + [{"id": "gpr_regfile_f", "path": "RTL.gpr_regfile.f", "module": "FIFO2", "coi_state_bits": 64,
+                          "memories": [], "levels": ["keep", "cut"]}]
+        spec = {"states": ["x1"], "keep_gprs": [1], "units": {"gpr_regfile_f": "cut"}}
+        self.assertEqual(self.fine.refine(spec, units, {"gpr_regfile_f": 2})["units"], {"gpr_regfile_f": "keep"})
 
     def test_word_level_registers_keep_their_words(self):
         spec = {"states": ["x1"], "keep_gprs": [1], "word_gprs": [2, 3]}

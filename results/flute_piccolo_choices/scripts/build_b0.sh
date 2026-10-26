@@ -21,5 +21,5 @@ chformal -lower;
 sim -clock clk -reset rst -rstlen 1 -n 1 -w wrapper
 write_btor -s $out/b0_$prop.btor2
 YS
-  /usr/bin/time -f "%e s %M KB" -o "$out/b0_$prop.buildtime" "$YOSYS_BIN" -q -s "$out/b0_$prop.ys" > "$out/b0_$prop.yosys.log" 2>&1
+  /usr/bin/time -f "%e s %M KB" -o "$out/b0_$prop.buildtime" "${YOSYS_BIN:-yosys}" -q -s "$out/b0_$prop.ys" > "$out/b0_$prop.yosys.log" 2>&1
 done

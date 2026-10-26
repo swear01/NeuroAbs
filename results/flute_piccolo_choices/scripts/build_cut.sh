@@ -23,4 +23,4 @@ echo "chformal -lower;"
 echo "sim -clock clk -reset rst -rstlen 1 -n 1 -w wrapper"
 echo "write_btor -s $out"
 } > "$ys"
-"$YOSYS_BIN" -q -s "$ys" > "${out%.btor2}.yosys.log" 2>&1
+"${YOSYS_BIN:-yosys}" -q -s "$ys" > "${out%.btor2}.yosys.log" 2>&1

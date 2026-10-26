@@ -247,6 +247,8 @@ def dynamic_coi(model, values):
                 stack.append((abs(model.next[n]), k - 1))
             elif n in model.init:
                 stack.append((abs(model.init[n]), 0))
+            else:
+                free.add((n, 0))
             continue
         args = model.args(n)
         if op == "ite":

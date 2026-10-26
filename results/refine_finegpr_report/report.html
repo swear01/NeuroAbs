@@ -128,8 +128,9 @@ nav li {line-height:1.4}
 <tr><td>ADDI</td><td>csr cut + dcache cut（llm）</td><td class="n">4,136</td><td class="n">14.0 min（最終 50）</td><td class="n">16.3 min</td><td class="n">7</td></tr>
 <tr><td>ADDI</td><td>csr cut（bmc）</td><td class="n">4,542</td><td class="n">17.8 min（最終 40）</td><td class="n">26.0 min</td><td class="n">10</td></tr>
 <tr><td>ADDI</td><td>B0</td><td class="n">5,131</td><td class="n">26.5 min（最終 40）</td><td class="n">28.5 min</td><td class="n">10</td></tr>
-<tr><td>BEQ</td><td>llm</td><td class="n">4,136</td><td class="n">20.2 min（最終 40）</td><td class="n">21.8 min</td><td class="n">7</td></tr>
-<tr><td>BEQ</td><td>bmc / B0</td><td class="n">4,542 / 5,131</td><td class="n">沒到 40（最終 30）</td><td class="n">沒到 65</td><td class="n">10</td></tr></table>
+<tr><td>BEQ</td><td>csr cut + dcache cut（llm）</td><td class="n">4,136</td><td class="n">20.2 min（最終 40）</td><td class="n">21.8 min</td><td class="n">7</td></tr>
+<tr><td>BEQ</td><td>csr cut（bmc）</td><td class="n">4,542</td><td class="n">沒到 40（最終 30）</td><td class="n">沒到 65</td><td class="n">10</td></tr>
+<tr><td>BEQ</td><td>B0</td><td class="n">5,131</td><td class="n">沒到 40（最終 30）</td><td class="n">沒到 65</td><td class="n">10</td></tr></table>
 <p>LLM 的模型讓 BMC 走得比較快，但 IC3 沒有比較深，所以也沒有證出來。</p>
 <p><b>Flute ADD（只做篩選）：</b>4 種策略的最終模型都在 300 s 內 TIMEOUT，分不出好壞。LLM 跟在 Piccolo 上一樣，保留了 GPR 和 I-cache。</p>
 

@@ -1,0 +1,1 @@
+{"name": "pc.rs1=5.rs2=6.split", "spec": {"states": ["pc"], "case": "rs1==5&&rs2==6"}}

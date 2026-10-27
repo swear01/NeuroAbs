@@ -1,0 +1,2 @@
+{"name": "store_en.rs1=5.rs2=6.keep56.cd.uf", "spec": {"states": ["store_en"], "case": "rs1==5&&rs2==6", "keep_gprs": [5, 6], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "keep"}, "uf": [{"ila": "n110", "rtl": "alu_outputs___1_addr__h5583"}]}}
+{"name": "store_en.rs1=5.rs2=6.S+uf", "spec": {"states": ["store_en"], "case": "rs1==5&&rs2==6", "keep_gprs": [5, 6], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": [{"ila": "n110", "rtl": "alu_outputs___1_addr__h5583"}]}}

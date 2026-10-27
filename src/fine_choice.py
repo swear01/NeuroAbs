@@ -142,7 +142,7 @@ def operator_args(text, module, node):
     m = re.compile(r"assign\s+" + re.escape(node) + r"\s*=\s*(.*?);", re.S).search(text, start, end)
     if not m:
         raise ValueError("no assignment of {:s} in {:s}".format(node, module))
-    parts = re.fullmatch(r"\(?\s*([\w$']+)\s*\)?\s*([-+^&|]|<<|>>)\s*\(?\s*([\w$']+)\s*\)?", m.group(1).strip())
+    parts = re.fullmatch(r"\(?\s*([\w$']+)\s*\)?\s*(==|[-+^&|]|<<|>>)\s*\(?\s*([\w$']+)\s*\)?", m.group(1).strip())
     if not parts:
         raise ValueError("{:s} is not a binary operator on two signals".format(node))
     return parts.groups()

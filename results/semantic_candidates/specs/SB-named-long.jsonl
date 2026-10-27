@@ -1,0 +1,1 @@
+{"name": "store_en.rs1=5.rs2=6.split", "spec": {"states": ["store_en"], "case": "rs1==5&&rs2==6"}}

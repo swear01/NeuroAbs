@@ -1,0 +1,4 @@
+{"name": "x5.rs1=6.split", "spec": {"states": ["x5"], "case": "rd==5&&rs1==6"}}
+{"name": "x5.rs1=6.S", "spec": {"states": ["x5"], "case": "rd==5&&rs1==6", "keep_gprs": [6], "word_gprs": [5], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": []}}
+{"name": "load_en.split", "spec": {"states": ["load_en"]}}
+{"name": "load_en.S", "spec": {"states": ["load_en"], "keep_gprs": [], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": []}}

@@ -1,0 +1,3 @@
+{"name": "store_en.split", "spec": {"states": ["store_en"]}}
+{"name": "store_en.S", "spec": {"states": ["store_en"], "keep_gprs": [], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": []}}
+{"name": "pc.split", "spec": {"states": ["pc"]}}

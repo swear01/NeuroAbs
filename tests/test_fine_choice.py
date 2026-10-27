@@ -37,6 +37,7 @@ clk
 input clk;
 assign n110 =  ( n107 ) + ( n109 )  ;
 assign n111 =  ( n107 ) ^ ( n109 )  ;
+assign n112 =  ( n107 ) == ( n109 )  ;
 endmodule
 module mkCPU(CLK
 );
@@ -229,6 +230,7 @@ class FineChoiceTest(unittest.TestCase):
         self.assertEqual(self.fine.operator_args(UF_DESIGN, "riscv__DOT__ADDI", "n110"), ("n107", "+", "n109"))
         self.assertEqual(self.fine.operator_args(UF_DESIGN, "mkCPU", "rd_val___1__h6550"),
                          ("rs1_val_bypassed__h3337", "+", "_theResult___snd__h7382"))
+        self.assertEqual(self.fine.operator_args(UF_DESIGN, "riscv__DOT__ADDI", "n112"), ("n107", "==", "n109"))
         with self.assertRaises(ValueError):
             self.fine.operator_args(UF_DESIGN, "mkCPU", "n110")
 

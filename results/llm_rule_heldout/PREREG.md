@@ -144,3 +144,17 @@ S（`fine_choice.structural`）是在讀過 DeepSeek 的 ADDI 答案之後才寫
   - 本實驗的程式從未讀取 `~/.secrets`。
   - Anthropic API 花費為 US$0。
 - 第 105 行的原文保留不改。
+
+### 2026-10-27T16:51Z（2026-10-28 00:51 +08）：停用 zeus，剩餘工作改在 mazu 跑
+
+- 原因：使用者指示不再使用 zeus。zeus 是較舊的伺服器，使用者沒有打算讓本實驗使用它的資源。第 6 節「計時的 rIC3 只在 zeus 跑」不再適用；原文保留。
+- 停止時間：約 2026-10-28 00:49 +08。當時 zeus 正在跑 XOR 的 LLM arm。這個 job 已停掉，它的部分結果只留作紀錄。
+- 沿用 zeus 結果的指令：SB、BEQ、SH。這三個指令的五個 arm（split、auto、S、DeepSeek fb4、Claude fb2）都已在 zeus 跑完，使用同一組 9 個 CPU 群組。ADDI 訓練與規則挑選也在 zeus 完成，不重跑。
+- 在 mazu 重跑全部五個 arm 的指令：ADD（ADD_Flatten）、SUB、OR、XOR、ANDI、SLTI、LUI、AUIPC、JAL、BNE（BNE_new）。其中 ADD、SUB、OR、BNE 的 LLM arm 已在 zeus 跑完，XOR 的 LLM arm 跑了一部分；這些 zeus 結果只留作紀錄，不進表格。
+- 第 7 節中 SB、BEQ 的重複計時改在 mazu 跑。比較的 sub-property 與配對仍由 zeus 上的測試結果決定，方法照舊。
+- mazu 的 CPU 配置（Intel i9-14900K）：
+  - 只用 P-core CPU 0–11，分成 3 個群組：`0-3`、`4-7`、`8-11`。每組是 2 個 P-core 加上它們的 HT sibling，和 zeus 每組的形狀相同。
+  - CPU 12–15 留給另一個 session；CPU 16–31（E-core）被另一個專案佔用，都不使用。
+  - 同一個指令的所有 arm 都在同一台機器、同一組 CPU 上、以相同平行度執行。
+- mazu 上的批次名為 `mazu`，結果在 `runs/<case>/mazu/`。工具版本與 zeus 相同：rIC3 8c6df1b、同一套 oss-cad-suite、Pyverilog_NeuroAbs。
+- 只換執行機器，不改任何規則、樣本、挑選方式、時間上限或 refinement 上限。

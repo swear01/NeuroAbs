@@ -1,6 +1,7 @@
 """summarize.py <run dir> <arm>...: per test case and arm, the results of PREREG.md section 7.
 
-For every case with <run>/batches/<case>/test.map.json: UNSAT count (of the sampled sub-properties; rejected counts as
+For every case with <run>/batches/<case>/<batch>.map.json (batch "test" for the cases whose five arms all ran on zeus,
+"mazu" for the rest, PREREG.md section 9): UNSAT count (of the sampled sub-properties; rejected counts as
 not proved), the other statuses, refinements, final COI state bits (all checked sub-properties, and UNSAT only) and
 total time.  Writes JSON to stdout.
 """
@@ -10,6 +11,7 @@ import os
 import sys
 
 CASES = ["ADD_Flatten", "SUB", "OR", "XOR", "ANDI", "SLTI", "LUI", "AUIPC", "JAL", "BEQ", "BNE_new", "SB", "SH"]
+ZEUS = {"SB", "BEQ", "SH"}
 
 
 def jsonl(path):
@@ -22,12 +24,13 @@ def main():
     arms = sys.argv[2:]
     out = {}
     for case in CASES:
-        map_path = os.path.join(run, "batches", case, "test.map.json")
+        batch = "test" if case in ZEUS else "mazu"
+        map_path = os.path.join(run, "batches", case, batch + ".map.json")
         if not os.path.exists(map_path):
             continue
         with open(map_path) as f:
             mapping = json.load(f)
-        path = os.path.join(run, "runs", case, "test", "results.jsonl")
+        path = os.path.join(run, "runs", case, batch, "results.jsonl")
         results = {r["name"]: r for r in jsonl(path)} if os.path.exists(path) else {}
         out[case] = {}
         for arm in arms:

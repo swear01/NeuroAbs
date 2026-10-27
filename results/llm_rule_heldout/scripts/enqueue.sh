@@ -1,7 +1,7 @@
 #!/bin/bash
 # enqueue.sh <case> <batch> <job name> <arm>...: specs of the arms on the sampled sub-properties of <case> (an LLM arm
 # <model>-<i> is the rule $H/rules/<model>/rule-<i>.py), merged into $RUN/batches/<case>/<batch>.jsonl, and a queue
-# job <job name> that runs the batch.  Specs are made on the spare CPUs 18-19.
+# job <job name> that runs the batch.  Specs are made on CPUs 0-11.
 set -euo pipefail
 . "$(dirname "$0")/env.sh"
 case=$1 batch=$2 job=$3
@@ -12,7 +12,7 @@ for a in "$@"; do
     split|S|auto) src=$a ;;
     *) src=$H/rules/${a%-*}/rule-${a##*-}.py ;;
   esac
-  taskset -c 18,19,38,39 python3 $H/scripts/specs.py $RUN $case $src $RUN/specs/$case/$a.jsonl
+  taskset -c 0-11 python3 $H/scripts/specs.py $RUN $case $src $RUN/specs/$case/$a.jsonl
 done
 python3 $H/scripts/batch.py $RUN/specs/$case $RUN/batches/$case/$batch.jsonl $RUN/batches/$case/$batch.map.json "$@"
 printf '%s %s\n' $case $batch > $RUN/queue/$job.tmp

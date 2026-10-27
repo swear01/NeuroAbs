@@ -1,6 +1,6 @@
 #!/bin/bash
 # apply.sh <rule.py> <tag>: apply a rule to every sub-property of ADDI, LUI, AUIPC and JAL; compare with S.
-set -e
+set -euo pipefail
 . "$(dirname "$0")/env.sh"
 out=$R/results/llm_rule_pilot/piccolo
 mkdir -p $out $RUN

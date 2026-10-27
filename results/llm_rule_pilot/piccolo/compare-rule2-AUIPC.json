@@ -1,0 +1,1463 @@
+[
+ {
+  "name": "mem",
+  "same": true
+ },
+ {
+  "name": "x1.frame",
+  "same": true
+ },
+ {
+  "name": "x1.write",
+  "same": false,
+  "spec": {
+   "states": [
+    "x1"
+   ],
+   "case": "rd==1",
+   "rd_guard": false,
+   "keep_gprs": [
+    1
+   ],
+   "word_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": []
+  },
+  "structural": {
+   "states": [
+    "x1"
+   ],
+   "case": "rd==1",
+   "rd_guard": false,
+   "keep_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": [
+    {
+     "ila": "n14",
+     "rtl": "rd_val__h5537"
+    }
+   ],
+   "word_gprs": [
+    1
+   ]
+  }
+ },
+ {
+  "name": "x2.frame",
+  "same": true
+ },
+ {
+  "name": "x2.write",
+  "same": false,
+  "spec": {
+   "states": [
+    "x2"
+   ],
+   "case": "rd==2",
+   "rd_guard": false,
+   "keep_gprs": [
+    2
+   ],
+   "word_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": []
+  },
+  "structural": {
+   "states": [
+    "x2"
+   ],
+   "case": "rd==2",
+   "rd_guard": false,
+   "keep_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": [
+    {
+     "ila": "n14",
+     "rtl": "rd_val__h5537"
+    }
+   ],
+   "word_gprs": [
+    2
+   ]
+  }
+ },
+ {
+  "name": "x3.frame",
+  "same": true
+ },
+ {
+  "name": "x3.write",
+  "same": false,
+  "spec": {
+   "states": [
+    "x3"
+   ],
+   "case": "rd==3",
+   "rd_guard": false,
+   "keep_gprs": [
+    3
+   ],
+   "word_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": []
+  },
+  "structural": {
+   "states": [
+    "x3"
+   ],
+   "case": "rd==3",
+   "rd_guard": false,
+   "keep_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": [
+    {
+     "ila": "n14",
+     "rtl": "rd_val__h5537"
+    }
+   ],
+   "word_gprs": [
+    3
+   ]
+  }
+ },
+ {
+  "name": "x4.frame",
+  "same": true
+ },
+ {
+  "name": "x4.write",
+  "same": false,
+  "spec": {
+   "states": [
+    "x4"
+   ],
+   "case": "rd==4",
+   "rd_guard": false,
+   "keep_gprs": [
+    4
+   ],
+   "word_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": []
+  },
+  "structural": {
+   "states": [
+    "x4"
+   ],
+   "case": "rd==4",
+   "rd_guard": false,
+   "keep_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": [
+    {
+     "ila": "n14",
+     "rtl": "rd_val__h5537"
+    }
+   ],
+   "word_gprs": [
+    4
+   ]
+  }
+ },
+ {
+  "name": "x5.frame",
+  "same": true
+ },
+ {
+  "name": "x5.write",
+  "same": false,
+  "spec": {
+   "states": [
+    "x5"
+   ],
+   "case": "rd==5",
+   "rd_guard": false,
+   "keep_gprs": [
+    5
+   ],
+   "word_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": []
+  },
+  "structural": {
+   "states": [
+    "x5"
+   ],
+   "case": "rd==5",
+   "rd_guard": false,
+   "keep_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": [
+    {
+     "ila": "n14",
+     "rtl": "rd_val__h5537"
+    }
+   ],
+   "word_gprs": [
+    5
+   ]
+  }
+ },
+ {
+  "name": "x6.frame",
+  "same": true
+ },
+ {
+  "name": "x6.write",
+  "same": false,
+  "spec": {
+   "states": [
+    "x6"
+   ],
+   "case": "rd==6",
+   "rd_guard": false,
+   "keep_gprs": [
+    6
+   ],
+   "word_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": []
+  },
+  "structural": {
+   "states": [
+    "x6"
+   ],
+   "case": "rd==6",
+   "rd_guard": false,
+   "keep_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": [
+    {
+     "ila": "n14",
+     "rtl": "rd_val__h5537"
+    }
+   ],
+   "word_gprs": [
+    6
+   ]
+  }
+ },
+ {
+  "name": "x7.frame",
+  "same": true
+ },
+ {
+  "name": "x7.write",
+  "same": false,
+  "spec": {
+   "states": [
+    "x7"
+   ],
+   "case": "rd==7",
+   "rd_guard": false,
+   "keep_gprs": [
+    7
+   ],
+   "word_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": []
+  },
+  "structural": {
+   "states": [
+    "x7"
+   ],
+   "case": "rd==7",
+   "rd_guard": false,
+   "keep_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": [
+    {
+     "ila": "n14",
+     "rtl": "rd_val__h5537"
+    }
+   ],
+   "word_gprs": [
+    7
+   ]
+  }
+ },
+ {
+  "name": "x8.frame",
+  "same": true
+ },
+ {
+  "name": "x8.write",
+  "same": false,
+  "spec": {
+   "states": [
+    "x8"
+   ],
+   "case": "rd==8",
+   "rd_guard": false,
+   "keep_gprs": [
+    8
+   ],
+   "word_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": []
+  },
+  "structural": {
+   "states": [
+    "x8"
+   ],
+   "case": "rd==8",
+   "rd_guard": false,
+   "keep_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": [
+    {
+     "ila": "n14",
+     "rtl": "rd_val__h5537"
+    }
+   ],
+   "word_gprs": [
+    8
+   ]
+  }
+ },
+ {
+  "name": "x9.frame",
+  "same": true
+ },
+ {
+  "name": "x9.write",
+  "same": false,
+  "spec": {
+   "states": [
+    "x9"
+   ],
+   "case": "rd==9",
+   "rd_guard": false,
+   "keep_gprs": [
+    9
+   ],
+   "word_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": []
+  },
+  "structural": {
+   "states": [
+    "x9"
+   ],
+   "case": "rd==9",
+   "rd_guard": false,
+   "keep_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": [
+    {
+     "ila": "n14",
+     "rtl": "rd_val__h5537"
+    }
+   ],
+   "word_gprs": [
+    9
+   ]
+  }
+ },
+ {
+  "name": "x10.frame",
+  "same": true
+ },
+ {
+  "name": "x10.write",
+  "same": false,
+  "spec": {
+   "states": [
+    "x10"
+   ],
+   "case": "rd==10",
+   "rd_guard": false,
+   "keep_gprs": [
+    10
+   ],
+   "word_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": []
+  },
+  "structural": {
+   "states": [
+    "x10"
+   ],
+   "case": "rd==10",
+   "rd_guard": false,
+   "keep_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": [
+    {
+     "ila": "n14",
+     "rtl": "rd_val__h5537"
+    }
+   ],
+   "word_gprs": [
+    10
+   ]
+  }
+ },
+ {
+  "name": "x11.frame",
+  "same": true
+ },
+ {
+  "name": "x11.write",
+  "same": false,
+  "spec": {
+   "states": [
+    "x11"
+   ],
+   "case": "rd==11",
+   "rd_guard": false,
+   "keep_gprs": [
+    11
+   ],
+   "word_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": []
+  },
+  "structural": {
+   "states": [
+    "x11"
+   ],
+   "case": "rd==11",
+   "rd_guard": false,
+   "keep_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": [
+    {
+     "ila": "n14",
+     "rtl": "rd_val__h5537"
+    }
+   ],
+   "word_gprs": [
+    11
+   ]
+  }
+ },
+ {
+  "name": "x12.frame",
+  "same": true
+ },
+ {
+  "name": "x12.write",
+  "same": false,
+  "spec": {
+   "states": [
+    "x12"
+   ],
+   "case": "rd==12",
+   "rd_guard": false,
+   "keep_gprs": [
+    12
+   ],
+   "word_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": []
+  },
+  "structural": {
+   "states": [
+    "x12"
+   ],
+   "case": "rd==12",
+   "rd_guard": false,
+   "keep_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": [
+    {
+     "ila": "n14",
+     "rtl": "rd_val__h5537"
+    }
+   ],
+   "word_gprs": [
+    12
+   ]
+  }
+ },
+ {
+  "name": "x13.frame",
+  "same": true
+ },
+ {
+  "name": "x13.write",
+  "same": false,
+  "spec": {
+   "states": [
+    "x13"
+   ],
+   "case": "rd==13",
+   "rd_guard": false,
+   "keep_gprs": [
+    13
+   ],
+   "word_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": []
+  },
+  "structural": {
+   "states": [
+    "x13"
+   ],
+   "case": "rd==13",
+   "rd_guard": false,
+   "keep_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": [
+    {
+     "ila": "n14",
+     "rtl": "rd_val__h5537"
+    }
+   ],
+   "word_gprs": [
+    13
+   ]
+  }
+ },
+ {
+  "name": "x14.frame",
+  "same": true
+ },
+ {
+  "name": "x14.write",
+  "same": false,
+  "spec": {
+   "states": [
+    "x14"
+   ],
+   "case": "rd==14",
+   "rd_guard": false,
+   "keep_gprs": [
+    14
+   ],
+   "word_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": []
+  },
+  "structural": {
+   "states": [
+    "x14"
+   ],
+   "case": "rd==14",
+   "rd_guard": false,
+   "keep_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": [
+    {
+     "ila": "n14",
+     "rtl": "rd_val__h5537"
+    }
+   ],
+   "word_gprs": [
+    14
+   ]
+  }
+ },
+ {
+  "name": "x15.frame",
+  "same": true
+ },
+ {
+  "name": "x15.write",
+  "same": false,
+  "spec": {
+   "states": [
+    "x15"
+   ],
+   "case": "rd==15",
+   "rd_guard": false,
+   "keep_gprs": [
+    15
+   ],
+   "word_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": []
+  },
+  "structural": {
+   "states": [
+    "x15"
+   ],
+   "case": "rd==15",
+   "rd_guard": false,
+   "keep_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": [
+    {
+     "ila": "n14",
+     "rtl": "rd_val__h5537"
+    }
+   ],
+   "word_gprs": [
+    15
+   ]
+  }
+ },
+ {
+  "name": "x16.frame",
+  "same": true
+ },
+ {
+  "name": "x16.write",
+  "same": false,
+  "spec": {
+   "states": [
+    "x16"
+   ],
+   "case": "rd==16",
+   "rd_guard": false,
+   "keep_gprs": [
+    16
+   ],
+   "word_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": []
+  },
+  "structural": {
+   "states": [
+    "x16"
+   ],
+   "case": "rd==16",
+   "rd_guard": false,
+   "keep_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": [
+    {
+     "ila": "n14",
+     "rtl": "rd_val__h5537"
+    }
+   ],
+   "word_gprs": [
+    16
+   ]
+  }
+ },
+ {
+  "name": "x17.frame",
+  "same": true
+ },
+ {
+  "name": "x17.write",
+  "same": false,
+  "spec": {
+   "states": [
+    "x17"
+   ],
+   "case": "rd==17",
+   "rd_guard": false,
+   "keep_gprs": [
+    17
+   ],
+   "word_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": []
+  },
+  "structural": {
+   "states": [
+    "x17"
+   ],
+   "case": "rd==17",
+   "rd_guard": false,
+   "keep_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": [
+    {
+     "ila": "n14",
+     "rtl": "rd_val__h5537"
+    }
+   ],
+   "word_gprs": [
+    17
+   ]
+  }
+ },
+ {
+  "name": "x18.frame",
+  "same": true
+ },
+ {
+  "name": "x18.write",
+  "same": false,
+  "spec": {
+   "states": [
+    "x18"
+   ],
+   "case": "rd==18",
+   "rd_guard": false,
+   "keep_gprs": [
+    18
+   ],
+   "word_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": []
+  },
+  "structural": {
+   "states": [
+    "x18"
+   ],
+   "case": "rd==18",
+   "rd_guard": false,
+   "keep_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": [
+    {
+     "ila": "n14",
+     "rtl": "rd_val__h5537"
+    }
+   ],
+   "word_gprs": [
+    18
+   ]
+  }
+ },
+ {
+  "name": "x19.frame",
+  "same": true
+ },
+ {
+  "name": "x19.write",
+  "same": false,
+  "spec": {
+   "states": [
+    "x19"
+   ],
+   "case": "rd==19",
+   "rd_guard": false,
+   "keep_gprs": [
+    19
+   ],
+   "word_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": []
+  },
+  "structural": {
+   "states": [
+    "x19"
+   ],
+   "case": "rd==19",
+   "rd_guard": false,
+   "keep_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": [
+    {
+     "ila": "n14",
+     "rtl": "rd_val__h5537"
+    }
+   ],
+   "word_gprs": [
+    19
+   ]
+  }
+ },
+ {
+  "name": "x20.frame",
+  "same": true
+ },
+ {
+  "name": "x20.write",
+  "same": false,
+  "spec": {
+   "states": [
+    "x20"
+   ],
+   "case": "rd==20",
+   "rd_guard": false,
+   "keep_gprs": [
+    20
+   ],
+   "word_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": []
+  },
+  "structural": {
+   "states": [
+    "x20"
+   ],
+   "case": "rd==20",
+   "rd_guard": false,
+   "keep_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": [
+    {
+     "ila": "n14",
+     "rtl": "rd_val__h5537"
+    }
+   ],
+   "word_gprs": [
+    20
+   ]
+  }
+ },
+ {
+  "name": "x21.frame",
+  "same": true
+ },
+ {
+  "name": "x21.write",
+  "same": false,
+  "spec": {
+   "states": [
+    "x21"
+   ],
+   "case": "rd==21",
+   "rd_guard": false,
+   "keep_gprs": [
+    21
+   ],
+   "word_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": []
+  },
+  "structural": {
+   "states": [
+    "x21"
+   ],
+   "case": "rd==21",
+   "rd_guard": false,
+   "keep_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": [
+    {
+     "ila": "n14",
+     "rtl": "rd_val__h5537"
+    }
+   ],
+   "word_gprs": [
+    21
+   ]
+  }
+ },
+ {
+  "name": "x22.frame",
+  "same": true
+ },
+ {
+  "name": "x22.write",
+  "same": false,
+  "spec": {
+   "states": [
+    "x22"
+   ],
+   "case": "rd==22",
+   "rd_guard": false,
+   "keep_gprs": [
+    22
+   ],
+   "word_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": []
+  },
+  "structural": {
+   "states": [
+    "x22"
+   ],
+   "case": "rd==22",
+   "rd_guard": false,
+   "keep_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": [
+    {
+     "ila": "n14",
+     "rtl": "rd_val__h5537"
+    }
+   ],
+   "word_gprs": [
+    22
+   ]
+  }
+ },
+ {
+  "name": "x23.frame",
+  "same": true
+ },
+ {
+  "name": "x23.write",
+  "same": false,
+  "spec": {
+   "states": [
+    "x23"
+   ],
+   "case": "rd==23",
+   "rd_guard": false,
+   "keep_gprs": [
+    23
+   ],
+   "word_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": []
+  },
+  "structural": {
+   "states": [
+    "x23"
+   ],
+   "case": "rd==23",
+   "rd_guard": false,
+   "keep_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": [
+    {
+     "ila": "n14",
+     "rtl": "rd_val__h5537"
+    }
+   ],
+   "word_gprs": [
+    23
+   ]
+  }
+ },
+ {
+  "name": "x24.frame",
+  "same": true
+ },
+ {
+  "name": "x24.write",
+  "same": false,
+  "spec": {
+   "states": [
+    "x24"
+   ],
+   "case": "rd==24",
+   "rd_guard": false,
+   "keep_gprs": [
+    24
+   ],
+   "word_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": []
+  },
+  "structural": {
+   "states": [
+    "x24"
+   ],
+   "case": "rd==24",
+   "rd_guard": false,
+   "keep_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": [
+    {
+     "ila": "n14",
+     "rtl": "rd_val__h5537"
+    }
+   ],
+   "word_gprs": [
+    24
+   ]
+  }
+ },
+ {
+  "name": "x25.frame",
+  "same": true
+ },
+ {
+  "name": "x25.write",
+  "same": false,
+  "spec": {
+   "states": [
+    "x25"
+   ],
+   "case": "rd==25",
+   "rd_guard": false,
+   "keep_gprs": [
+    25
+   ],
+   "word_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": []
+  },
+  "structural": {
+   "states": [
+    "x25"
+   ],
+   "case": "rd==25",
+   "rd_guard": false,
+   "keep_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": [
+    {
+     "ila": "n14",
+     "rtl": "rd_val__h5537"
+    }
+   ],
+   "word_gprs": [
+    25
+   ]
+  }
+ },
+ {
+  "name": "x26.frame",
+  "same": true
+ },
+ {
+  "name": "x26.write",
+  "same": false,
+  "spec": {
+   "states": [
+    "x26"
+   ],
+   "case": "rd==26",
+   "rd_guard": false,
+   "keep_gprs": [
+    26
+   ],
+   "word_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": []
+  },
+  "structural": {
+   "states": [
+    "x26"
+   ],
+   "case": "rd==26",
+   "rd_guard": false,
+   "keep_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": [
+    {
+     "ila": "n14",
+     "rtl": "rd_val__h5537"
+    }
+   ],
+   "word_gprs": [
+    26
+   ]
+  }
+ },
+ {
+  "name": "x27.frame",
+  "same": true
+ },
+ {
+  "name": "x27.write",
+  "same": false,
+  "spec": {
+   "states": [
+    "x27"
+   ],
+   "case": "rd==27",
+   "rd_guard": false,
+   "keep_gprs": [
+    27
+   ],
+   "word_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": []
+  },
+  "structural": {
+   "states": [
+    "x27"
+   ],
+   "case": "rd==27",
+   "rd_guard": false,
+   "keep_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": [
+    {
+     "ila": "n14",
+     "rtl": "rd_val__h5537"
+    }
+   ],
+   "word_gprs": [
+    27
+   ]
+  }
+ },
+ {
+  "name": "x28.frame",
+  "same": true
+ },
+ {
+  "name": "x28.write",
+  "same": false,
+  "spec": {
+   "states": [
+    "x28"
+   ],
+   "case": "rd==28",
+   "rd_guard": false,
+   "keep_gprs": [
+    28
+   ],
+   "word_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": []
+  },
+  "structural": {
+   "states": [
+    "x28"
+   ],
+   "case": "rd==28",
+   "rd_guard": false,
+   "keep_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": [
+    {
+     "ila": "n14",
+     "rtl": "rd_val__h5537"
+    }
+   ],
+   "word_gprs": [
+    28
+   ]
+  }
+ },
+ {
+  "name": "x29.frame",
+  "same": true
+ },
+ {
+  "name": "x29.write",
+  "same": false,
+  "spec": {
+   "states": [
+    "x29"
+   ],
+   "case": "rd==29",
+   "rd_guard": false,
+   "keep_gprs": [
+    29
+   ],
+   "word_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": []
+  },
+  "structural": {
+   "states": [
+    "x29"
+   ],
+   "case": "rd==29",
+   "rd_guard": false,
+   "keep_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": [
+    {
+     "ila": "n14",
+     "rtl": "rd_val__h5537"
+    }
+   ],
+   "word_gprs": [
+    29
+   ]
+  }
+ },
+ {
+  "name": "x30.frame",
+  "same": true
+ },
+ {
+  "name": "x30.write",
+  "same": false,
+  "spec": {
+   "states": [
+    "x30"
+   ],
+   "case": "rd==30",
+   "rd_guard": false,
+   "keep_gprs": [
+    30
+   ],
+   "word_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": []
+  },
+  "structural": {
+   "states": [
+    "x30"
+   ],
+   "case": "rd==30",
+   "rd_guard": false,
+   "keep_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": [
+    {
+     "ila": "n14",
+     "rtl": "rd_val__h5537"
+    }
+   ],
+   "word_gprs": [
+    30
+   ]
+  }
+ },
+ {
+  "name": "x31.frame",
+  "same": true
+ },
+ {
+  "name": "x31.write",
+  "same": false,
+  "spec": {
+   "states": [
+    "x31"
+   ],
+   "case": "rd==31",
+   "rd_guard": false,
+   "keep_gprs": [
+    31
+   ],
+   "word_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": []
+  },
+  "structural": {
+   "states": [
+    "x31"
+   ],
+   "case": "rd==31",
+   "rd_guard": false,
+   "keep_gprs": [],
+   "units": {
+    "csr_regfile": "cut",
+    "near_mem_dcache": "cut",
+    "near_mem_icache": "cut"
+   },
+   "uf": [
+    {
+     "ila": "n14",
+     "rtl": "rd_val__h5537"
+    }
+   ],
+   "word_gprs": [
+    31
+   ]
+  }
+ }
+]

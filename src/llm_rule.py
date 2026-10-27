@@ -10,7 +10,8 @@ never repaired.
 Commands:
   prompt    write the exact prompt (system and user message) for a case
   generate  send the prompt to DeepSeek n times and store each answer and the rule it contains
-  apply     run a rule on every sub-property of a case and write the specs and the comparison with fine_choice.structural
+  apply     run a rule on every sub-property of a case and write the comparison with fine_choice.structural
+            (with both specs where they differ)
 """
 import argparse
 import json
@@ -213,11 +214,13 @@ def main(argv=None):
     rows = []
     for s in subs:
         structural = fine_choice.structural(s, [u for u in units if u["id"] != fine_choice.GPR_UNIT], ufs)
-        row = {"name": s["name"], "structural": structural}
+        row = {"name": s["name"]}
         if s["name"] in specs:
-            row.update({"spec": specs[s["name"]], "same": normal(specs[s["name"]]) == normal(structural)})
+            row["same"] = normal(specs[s["name"]]) == normal(structural)
+            if not row["same"]:
+                row.update({"spec": specs[s["name"]], "structural": structural})
         else:
-            row["errors"] = errors[s["name"]]
+            row.update({"errors": errors[s["name"]], "structural": structural})
         rows.append(row)
     with open(args.out, "w") as f:
         json.dump(rows, f, indent=1)

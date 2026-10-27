@@ -60,3 +60,20 @@ rIC3 之後，每個 arm 在 `store_en`（與 `pc`，若有跑）上：
 ## 6. 不做的事
 
 不修補 LLM 答案；不改 `fine_choice`、`fine_choice_llm`、rIC3 或 IC3 內部；不用 AVR；不動留出題 session 的檔案與程序。
+
+## 7. 變更
+
+### 2026-10-28：順序對照與單選重問（呼叫 LLM 之前寫入）
+
+第 1–6 節的結果照實保留。新增的原因：
+
+- 逐題作答的 spec 大多是 ERROR，不是證不出來。兩個模型常對同一個 ILA 節點 `n110` 勾了多個 RTL 加法器，`fine_choice.uf_rewrite` 處理第二個 pair 時丟 `ValueError: n110 is not a binary operator on two signals`。實驗 B 的 prompt 沒說只能選一個。
+- Claude 規則 fb2 的 `op_score` 給 `h5583` 和 `eaddr` 的分數都是 +5，平手時看選單順序，而 `candidates.json` 把 `h5583` 排在第一個。
+
+`fine_choice.py` 不改；讓它接受一對多，等於改變選單的語意。
+
+1. 順序對照（不呼叫 LLM）：`scripts/order.py` 把 SB 的候選順序反過來（`eaddr` 變第一個、`h5583` 變最後一個），用 `llm_rule_heldout/scripts/specs.py` 重新套用 fb2 和 S。若 fb2 改挑 `eaddr`，就在 mazu CPU 12–15 跑 store_en 10 題，設定同第 4 節。spec 與已經跑過的相同時（`batch.py` 的 key），沿用已有的結果。
+2. 單選重問：`scripts/ask.py --single`。system prompt 在實驗 B 的 `fine_choice_context.txt` 後面加一句：「Each ILA operator is paired with at most one RTL operator: among the operator choices that share the same ILA operator, at most one may be "uf"; it is also allowed that none is.」其他文字不變，同樣不提示哪個是對的。只問 store_en 10 題，每題用兩種候選順序各問一次：原順序，以及反順序（`--reverse`，選單 id 依新順序重新編號）。Claude（個人帳號 `claude -p`，`apiKeySource` 必須是 none）和 DeepSeek 各問 20 次，共 40 次。DeepSeek 在 SB 的總花費上限仍是 US$1（含第 3 節已花的部分）。
+   - 若回答仍對同一個 ILA 節點勾了多個 `uf`，記為「多選（不合法）」，不修補、不跑 rIC3，算未證出。
+3. 單選回答的 rIC3：mazu CPU 12–15，store_en，設定同第 4 節（300 s、最多 10 次 refinement）。pc 只跑 spec 和先前不同的。
+4. 報告：每題、每種順序挑了 `h5583`／`eaddr`／`rd_val`／不配／多選；各 arm 在 store_en 上的 `UNSAT` 數 / 10。

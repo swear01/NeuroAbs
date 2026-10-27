@@ -1,0 +1,3292 @@
+{
+ "ranking": [
+  "claude-fb2",
+  "deepseek-fb4",
+  "deepseek-fb5",
+  "deepseek-4",
+  "deepseek-5",
+  "deepseek-fb2",
+  "claude-fb4",
+  "claude-4",
+  "claude-2",
+  "deepseek-2",
+  "claude-fb3",
+  "deepseek-fb1",
+  "claude-fb5",
+  "deepseek-1",
+  "deepseek-3",
+  "deepseek-fb3",
+  "claude-fb1",
+  "claude-3",
+  "claude-1",
+  "claude-5"
+ ],
+ "arms": {
+  "deepseek-1": {
+   "unsat": 6,
+   "rejected": 0,
+   "final_coi_state_bits": 31427,
+   "seconds": 5622.6,
+   "refinements": 49,
+   "subs": [
+    {
+     "sub": "mem",
+     "run": "mem.cd07536b24",
+     "status": "UNSAT",
+     "refinements": 1,
+     "refined": [
+      "near_mem_icache"
+     ],
+     "final_coi_state_bits": 1322,
+     "seconds": 84.98716688156128
+    },
+    {
+     "sub": "x1.frame",
+     "run": "x1.frame.a2cac03a24",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 981,
+     "seconds": 31.63825821876526
+    },
+    {
+     "sub": "x2.rs1=23",
+     "run": "x2.rs1=23.274ac1fcfc",
+     "status": "TIMEOUT",
+     "refinements": 4,
+     "refined": [
+      "near_mem_icache",
+      "csr_regfile",
+      "near_mem_dcache",
+      "uf0"
+     ],
+     "final_coi_state_bits": 2285,
+     "seconds": 499.056521654129
+    },
+    {
+     "sub": "x4.frame",
+     "run": "x4.frame.718a8248bd",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 981,
+     "seconds": 36.72320246696472
+    },
+    {
+     "sub": "x5.rs1=14",
+     "run": "x5.rs1=14.ef0d8104f1",
+     "status": "TIMEOUT",
+     "refinements": 4,
+     "refined": [
+      "near_mem_icache",
+      "csr_regfile",
+      "near_mem_dcache",
+      "uf0"
+     ],
+     "final_coi_state_bits": 2285,
+     "seconds": 503.14031529426575
+    },
+    {
+     "sub": "x6.rs1=8",
+     "run": "x6.rs1=8.696a9a54a4",
+     "status": "TIMEOUT",
+     "refinements": 4,
+     "refined": [
+      "near_mem_icache",
+      "csr_regfile",
+      "near_mem_dcache",
+      "uf0"
+     ],
+     "final_coi_state_bits": 2285,
+     "seconds": 509.757527589798
+    },
+    {
+     "sub": "x7.rs1=14",
+     "run": "x7.rs1=14.869e457e73",
+     "status": "TIMEOUT",
+     "refinements": 4,
+     "refined": [
+      "near_mem_icache",
+      "csr_regfile",
+      "near_mem_dcache",
+      "uf0"
+     ],
+     "final_coi_state_bits": 2285,
+     "seconds": 511.57246565818787
+    },
+    {
+     "sub": "x7.rs1=17",
+     "run": "x7.rs1=17.e36aedf33b",
+     "status": "TIMEOUT",
+     "refinements": 4,
+     "refined": [
+      "near_mem_icache",
+      "csr_regfile",
+      "near_mem_dcache",
+      "uf0"
+     ],
+     "final_coi_state_bits": 2285,
+     "seconds": 503.72365522384644
+    },
+    {
+     "sub": "x8.frame",
+     "run": "x8.frame.75f2b45d96",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 981,
+     "seconds": 38.69735860824585
+    },
+    {
+     "sub": "x14.rs1=0",
+     "run": "x14.rs1=0.c111223597",
+     "status": "UNSAT",
+     "refinements": 4,
+     "refined": [
+      "near_mem_icache",
+      "near_mem_dcache",
+      "csr_regfile",
+      "uf0"
+     ],
+     "final_coi_state_bits": 2252,
+     "seconds": 227.03516101837158
+    },
+    {
+     "sub": "x14.rs1=14",
+     "run": "x14.rs1=14.bd4639b2a8",
+     "status": "TIMEOUT",
+     "refinements": 4,
+     "refined": [
+      "near_mem_icache",
+      "near_mem_dcache",
+      "csr_regfile",
+      "uf0"
+     ],
+     "final_coi_state_bits": 2189,
+     "seconds": 489.2866806983948
+    },
+    {
+     "sub": "x14.rs1=30",
+     "run": "x14.rs1=30.fe2b89fbce",
+     "status": "TIMEOUT",
+     "refinements": 4,
+     "refined": [
+      "near_mem_icache",
+      "csr_regfile",
+      "near_mem_dcache",
+      "uf0"
+     ],
+     "final_coi_state_bits": 2285,
+     "seconds": 507.767760515213
+    },
+    {
+     "sub": "x16.rs1=16",
+     "run": "x16.rs1=16.58e8202569",
+     "status": "TIMEOUT",
+     "refinements": 4,
+     "refined": [
+      "near_mem_icache",
+      "near_mem_dcache",
+      "csr_regfile",
+      "uf0"
+     ],
+     "final_coi_state_bits": 2189,
+     "seconds": 477.10035586357117
+    },
+    {
+     "sub": "x18.rs1=0",
+     "run": "x18.rs1=0.191fe97df6",
+     "status": "UNSAT",
+     "refinements": 4,
+     "refined": [
+      "near_mem_icache",
+      "near_mem_dcache",
+      "csr_regfile",
+      "uf0"
+     ],
+     "final_coi_state_bits": 2252,
+     "seconds": 206.5815131664276
+    },
+    {
+     "sub": "x21.rs1=13",
+     "run": "x21.rs1=13.1b5bd59c8a",
+     "status": "TIMEOUT",
+     "refinements": 4,
+     "refined": [
+      "near_mem_icache",
+      "csr_regfile",
+      "near_mem_dcache",
+      "uf0"
+     ],
+     "final_coi_state_bits": 2285,
+     "seconds": 494.1038212776184
+    },
+    {
+     "sub": "x28.rs1=18",
+     "run": "x28.rs1=18.2e483cf991",
+     "status": "TIMEOUT",
+     "refinements": 4,
+     "refined": [
+      "near_mem_icache",
+      "csr_regfile",
+      "near_mem_dcache",
+      "uf0"
+     ],
+     "final_coi_state_bits": 2285,
+     "seconds": 501.3998935222626
+    }
+   ]
+  },
+  "deepseek-2": {
+   "unsat": 6,
+   "rejected": 0,
+   "final_coi_state_bits": 13853,
+   "seconds": 3387.5,
+   "refinements": 1,
+   "subs": [
+    {
+     "sub": "mem",
+     "run": "mem.c540e22c88",
+     "status": "UNSAT",
+     "refinements": 1,
+     "refined": [
+      "near_mem_icache"
+     ],
+     "final_coi_state_bits": 1129,
+     "seconds": 60.82854437828064
+    },
+    {
+     "sub": "x1.frame",
+     "run": "x1.frame.be62b60797",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 32.23948383331299
+    },
+    {
+     "sub": "x2.rs1=23",
+     "run": "x2.rs1=23.a363280e14",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 885,
+     "seconds": 316.1538915634155
+    },
+    {
+     "sub": "x4.frame",
+     "run": "x4.frame.949172632c",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 37.43080544471741
+    },
+    {
+     "sub": "x5.rs1=14",
+     "run": "x5.rs1=14.6bdfac8468",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 885,
+     "seconds": 316.160227060318
+    },
+    {
+     "sub": "x6.rs1=8",
+     "run": "x6.rs1=8.4f201f88b0",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 885,
+     "seconds": 316.248437166214
+    },
+    {
+     "sub": "x7.rs1=14",
+     "run": "x7.rs1=14.5777e87f3f",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 885,
+     "seconds": 318.5465340614319
+    },
+    {
+     "sub": "x7.rs1=17",
+     "run": "x7.rs1=17.24a948c30e",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 885,
+     "seconds": 317.6443769931793
+    },
+    {
+     "sub": "x8.frame",
+     "run": "x8.frame.b92599c71d",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 38.50666284561157
+    },
+    {
+     "sub": "x14.rs1=0",
+     "run": "x14.rs1=0.d617a52995",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 852,
+     "seconds": 25.54499101638794
+    },
+    {
+     "sub": "x14.rs1=14",
+     "run": "x14.rs1=14.5701f7c46d",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 316.4803583621979
+    },
+    {
+     "sub": "x14.rs1=30",
+     "run": "x14.rs1=30.102cedf074",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 885,
+     "seconds": 316.22308444976807
+    },
+    {
+     "sub": "x16.rs1=16",
+     "run": "x16.rs1=16.ab877b385e",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 316.58677434921265
+    },
+    {
+     "sub": "x18.rs1=0",
+     "run": "x18.rs1=0.0612f2dd41",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 852,
+     "seconds": 26.453712224960327
+    },
+    {
+     "sub": "x21.rs1=13",
+     "run": "x21.rs1=13.71df760aea",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 885,
+     "seconds": 315.8504276275635
+    },
+    {
+     "sub": "x28.rs1=18",
+     "run": "x28.rs1=18.7299488a67",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 885,
+     "seconds": 316.56087279319763
+    }
+   ]
+  },
+  "deepseek-3": {
+   "unsat": 6,
+   "rejected": 0,
+   "final_coi_state_bits": 35025,
+   "seconds": 7840.8,
+   "refinements": 83,
+   "subs": [
+    {
+     "sub": "mem",
+     "run": "mem.51f5d41c98",
+     "status": "UNSAT",
+     "refinements": 1,
+     "refined": [
+      "near_mem_icache"
+     ],
+     "final_coi_state_bits": 1322,
+     "seconds": 70.133385181427
+    },
+    {
+     "sub": "x1.frame",
+     "run": "x1.frame.656891f4dc",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 981,
+     "seconds": 39.04717969894409
+    },
+    {
+     "sub": "x2.rs1=23",
+     "run": "x2.rs1=23.7ee4211c35",
+     "status": "TIMEOUT",
+     "refinements": 8,
+     "refined": [
+      "near_mem_icache",
+      "csr_regfile",
+      "near_mem_dcache",
+      "gpr30",
+      "gpr29",
+      "gpr28",
+      "gpr31",
+      "uf1"
+     ],
+     "final_coi_state_bits": 2674,
+     "seconds": 845.6236073970795
+    },
+    {
+     "sub": "x4.frame",
+     "run": "x4.frame.38b12fa46f",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 981,
+     "seconds": 36.763203620910645
+    },
+    {
+     "sub": "x5.rs1=14",
+     "run": "x5.rs1=14.7f70225d10",
+     "status": "TIMEOUT",
+     "refinements": 6,
+     "refined": [
+      "near_mem_icache",
+      "csr_regfile",
+      "near_mem_dcache",
+      "gpr30",
+      "gpr31",
+      "uf1"
+     ],
+     "final_coi_state_bits": 2480,
+     "seconds": 637.5564563274384
+    },
+    {
+     "sub": "x6.rs1=8",
+     "run": "x6.rs1=8.0ddcb6a04d",
+     "status": "TIMEOUT",
+     "refinements": 7,
+     "refined": [
+      "near_mem_icache",
+      "csr_regfile",
+      "near_mem_dcache",
+      "gpr30",
+      "gpr1",
+      "gpr3",
+      "uf1"
+     ],
+     "final_coi_state_bits": 2577,
+     "seconds": 722.132000207901
+    },
+    {
+     "sub": "x7.rs1=14",
+     "run": "x7.rs1=14.78d470a803",
+     "status": "TIMEOUT",
+     "refinements": 7,
+     "refined": [
+      "near_mem_icache",
+      "csr_regfile",
+      "near_mem_dcache",
+      "gpr30",
+      "gpr31",
+      "gpr15",
+      "uf1"
+     ],
+     "final_coi_state_bits": 2577,
+     "seconds": 708.7490556240082
+    },
+    {
+     "sub": "x7.rs1=17",
+     "run": "x7.rs1=17.105a23a9f3",
+     "status": "TIMEOUT",
+     "refinements": 9,
+     "refined": [
+      "near_mem_icache",
+      "csr_regfile",
+      "near_mem_dcache",
+      "gpr30",
+      "gpr16",
+      "gpr19",
+      "gpr1",
+      "gpr31",
+      "uf1"
+     ],
+     "final_coi_state_bits": 2771,
+     "seconds": 881.3061490058899
+    },
+    {
+     "sub": "x8.frame",
+     "run": "x8.frame.059d6aac0f",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 981,
+     "seconds": 37.526466846466064
+    },
+    {
+     "sub": "x14.rs1=0",
+     "run": "x14.rs1=0.b33e76ab74",
+     "status": "UNSAT",
+     "refinements": 5,
+     "refined": [
+      "near_mem_icache",
+      "csr_regfile",
+      "near_mem_dcache",
+      "gpr31",
+      "uf1"
+     ],
+     "final_coi_state_bits": 2350,
+     "seconds": 326.763879776001
+    },
+    {
+     "sub": "x14.rs1=14",
+     "run": "x14.rs1=14.ac87834c41",
+     "status": "TIMEOUT",
+     "refinements": 5,
+     "refined": [
+      "near_mem_icache",
+      "csr_regfile",
+      "near_mem_dcache",
+      "gpr17",
+      "uf1"
+     ],
+     "final_coi_state_bits": 2286,
+     "seconds": 566.173944234848
+    },
+    {
+     "sub": "x14.rs1=30",
+     "run": "x14.rs1=30.e04287edef",
+     "status": "TIMEOUT",
+     "refinements": 6,
+     "refined": [
+      "near_mem_icache",
+      "csr_regfile",
+      "near_mem_dcache",
+      "gpr31",
+      "gpr29",
+      "uf1"
+     ],
+     "final_coi_state_bits": 2480,
+     "seconds": 640.4266557693481
+    },
+    {
+     "sub": "x16.rs1=16",
+     "run": "x16.rs1=16.6fced080f7",
+     "status": "TIMEOUT",
+     "refinements": 7,
+     "refined": [
+      "near_mem_icache",
+      "csr_regfile",
+      "near_mem_dcache",
+      "gpr17",
+      "gpr1",
+      "gpr19",
+      "uf1"
+     ],
+     "final_coi_state_bits": 2480,
+     "seconds": 726.056093454361
+    },
+    {
+     "sub": "x18.rs1=0",
+     "run": "x18.rs1=0.7e57e96fc5",
+     "status": "UNSAT",
+     "refinements": 4,
+     "refined": [
+      "near_mem_icache",
+      "csr_regfile",
+      "near_mem_dcache",
+      "uf1"
+     ],
+     "final_coi_state_bits": 2253,
+     "seconds": 238.87090826034546
+    },
+    {
+     "sub": "x21.rs1=13",
+     "run": "x21.rs1=13.80763fc2ec",
+     "status": "max_iterations",
+     "refinements": 10,
+     "refined": [
+      "near_mem_icache",
+      "csr_regfile",
+      "near_mem_dcache",
+      "gpr1",
+      "gpr24",
+      "gpr28",
+      "gpr30",
+      "gpr12",
+      "gpr26",
+      "gpr31"
+     ],
+     "final_coi_state_bits": 3158,
+     "seconds": 631.7465169429779
+    },
+    {
+     "sub": "x28.rs1=18",
+     "run": "x28.rs1=18.07e6eb3510",
+     "status": "TIMEOUT",
+     "refinements": 8,
+     "refined": [
+      "near_mem_icache",
+      "csr_regfile",
+      "near_mem_dcache",
+      "gpr30",
+      "gpr19",
+      "gpr17",
+      "gpr31",
+      "uf1"
+     ],
+     "final_coi_state_bits": 2674,
+     "seconds": 731.9111275672913
+    }
+   ]
+  },
+  "deepseek-4": {
+   "unsat": 16,
+   "rejected": 0,
+   "final_coi_state_bits": 16169,
+   "seconds": 968.1,
+   "refinements": 1,
+   "subs": [
+    {
+     "sub": "mem",
+     "run": "mem.c540e22c88",
+     "status": "UNSAT",
+     "refinements": 1,
+     "refined": [
+      "near_mem_icache"
+     ],
+     "final_coi_state_bits": 1129,
+     "seconds": 60.82854437828064
+    },
+    {
+     "sub": "x1.frame",
+     "run": "x1.frame.be62b60797",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 32.23948383331299
+    },
+    {
+     "sub": "x2.rs1=23",
+     "run": "x2.rs1=23.356296e167",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 79.01094007492065
+    },
+    {
+     "sub": "x4.frame",
+     "run": "x4.frame.949172632c",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 37.43080544471741
+    },
+    {
+     "sub": "x5.rs1=14",
+     "run": "x5.rs1=14.362a680731",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 54.704734086990356
+    },
+    {
+     "sub": "x6.rs1=8",
+     "run": "x6.rs1=8.6e1a90ca53",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 82.09672570228577
+    },
+    {
+     "sub": "x7.rs1=14",
+     "run": "x7.rs1=14.f49c3f4218",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 67.07493019104004
+    },
+    {
+     "sub": "x7.rs1=17",
+     "run": "x7.rs1=17.b1e9f466e7",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 72.56292343139648
+    },
+    {
+     "sub": "x8.frame",
+     "run": "x8.frame.b92599c71d",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 38.50666284561157
+    },
+    {
+     "sub": "x14.rs1=0",
+     "run": "x14.rs1=0.b27faa7f96",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1045,
+     "seconds": 42.551501512527466
+    },
+    {
+     "sub": "x14.rs1=14",
+     "run": "x14.rs1=14.43b7e2bb7c",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 981,
+     "seconds": 60.14673948287964
+    },
+    {
+     "sub": "x14.rs1=30",
+     "run": "x14.rs1=30.3bafdb467b",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 82.45094394683838
+    },
+    {
+     "sub": "x16.rs1=16",
+     "run": "x16.rs1=16.e66f9229e0",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 981,
+     "seconds": 64.35670447349548
+    },
+    {
+     "sub": "x18.rs1=0",
+     "run": "x18.rs1=0.472ea05264",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1045,
+     "seconds": 34.49028825759888
+    },
+    {
+     "sub": "x21.rs1=13",
+     "run": "x21.rs1=13.bab091fa3e",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 91.76704621315002
+    },
+    {
+     "sub": "x28.rs1=18",
+     "run": "x28.rs1=18.caffd5be15",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 67.8381896018982
+    }
+   ]
+  },
+  "deepseek-5": {
+   "unsat": 16,
+   "rejected": 0,
+   "final_coi_state_bits": 16169,
+   "seconds": 968.1,
+   "refinements": 1,
+   "subs": [
+    {
+     "sub": "mem",
+     "run": "mem.c540e22c88",
+     "status": "UNSAT",
+     "refinements": 1,
+     "refined": [
+      "near_mem_icache"
+     ],
+     "final_coi_state_bits": 1129,
+     "seconds": 60.82854437828064
+    },
+    {
+     "sub": "x1.frame",
+     "run": "x1.frame.be62b60797",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 32.23948383331299
+    },
+    {
+     "sub": "x2.rs1=23",
+     "run": "x2.rs1=23.356296e167",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 79.01094007492065
+    },
+    {
+     "sub": "x4.frame",
+     "run": "x4.frame.949172632c",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 37.43080544471741
+    },
+    {
+     "sub": "x5.rs1=14",
+     "run": "x5.rs1=14.362a680731",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 54.704734086990356
+    },
+    {
+     "sub": "x6.rs1=8",
+     "run": "x6.rs1=8.6e1a90ca53",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 82.09672570228577
+    },
+    {
+     "sub": "x7.rs1=14",
+     "run": "x7.rs1=14.f49c3f4218",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 67.07493019104004
+    },
+    {
+     "sub": "x7.rs1=17",
+     "run": "x7.rs1=17.b1e9f466e7",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 72.56292343139648
+    },
+    {
+     "sub": "x8.frame",
+     "run": "x8.frame.b92599c71d",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 38.50666284561157
+    },
+    {
+     "sub": "x14.rs1=0",
+     "run": "x14.rs1=0.b27faa7f96",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1045,
+     "seconds": 42.551501512527466
+    },
+    {
+     "sub": "x14.rs1=14",
+     "run": "x14.rs1=14.43b7e2bb7c",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 981,
+     "seconds": 60.14673948287964
+    },
+    {
+     "sub": "x14.rs1=30",
+     "run": "x14.rs1=30.3bafdb467b",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 82.45094394683838
+    },
+    {
+     "sub": "x16.rs1=16",
+     "run": "x16.rs1=16.e66f9229e0",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 981,
+     "seconds": 64.35670447349548
+    },
+    {
+     "sub": "x18.rs1=0",
+     "run": "x18.rs1=0.472ea05264",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1045,
+     "seconds": 34.49028825759888
+    },
+    {
+     "sub": "x21.rs1=13",
+     "run": "x21.rs1=13.bab091fa3e",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 91.76704621315002
+    },
+    {
+     "sub": "x28.rs1=18",
+     "run": "x28.rs1=18.caffd5be15",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 67.8381896018982
+    }
+   ]
+  },
+  "deepseek-fb1": {
+   "unsat": 6,
+   "rejected": 0,
+   "final_coi_state_bits": 20319,
+   "seconds": 3448.9,
+   "refinements": 0,
+   "subs": [
+    {
+     "sub": "mem",
+     "run": "mem.14898d9f3a",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1322,
+     "seconds": 58.10123109817505
+    },
+    {
+     "sub": "x1.frame",
+     "run": "x1.frame.3120772d7c",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1045,
+     "seconds": 35.2745418548584
+    },
+    {
+     "sub": "x2.rs1=23",
+     "run": "x2.rs1=23.8999e148a1",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1354,
+     "seconds": 318.1246180534363
+    },
+    {
+     "sub": "x4.frame",
+     "run": "x4.frame.cdfc34789b",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1045,
+     "seconds": 40.67453479766846
+    },
+    {
+     "sub": "x5.rs1=14",
+     "run": "x5.rs1=14.d7745e36f8",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1354,
+     "seconds": 319.17375326156616
+    },
+    {
+     "sub": "x6.rs1=8",
+     "run": "x6.rs1=8.6c4b3ca103",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1354,
+     "seconds": 317.2393968105316
+    },
+    {
+     "sub": "x7.rs1=14",
+     "run": "x7.rs1=14.b3b6579f88",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1354,
+     "seconds": 319.779079914093
+    },
+    {
+     "sub": "x7.rs1=17",
+     "run": "x7.rs1=17.aedf07bb44",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1354,
+     "seconds": 317.58176589012146
+    },
+    {
+     "sub": "x8.frame",
+     "run": "x8.frame.83643a1f96",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1045,
+     "seconds": 42.31502962112427
+    },
+    {
+     "sub": "x14.rs1=0",
+     "run": "x14.rs1=0.32fafede9c",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1257,
+     "seconds": 46.22106194496155
+    },
+    {
+     "sub": "x14.rs1=14",
+     "run": "x14.rs1=14.27cdd729cc",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1258,
+     "seconds": 317.7664568424225
+    },
+    {
+     "sub": "x14.rs1=30",
+     "run": "x14.rs1=30.d8dd8e904d",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1354,
+     "seconds": 319.43951630592346
+    },
+    {
+     "sub": "x16.rs1=16",
+     "run": "x16.rs1=16.e298275583",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1258,
+     "seconds": 317.6774938106537
+    },
+    {
+     "sub": "x18.rs1=0",
+     "run": "x18.rs1=0.e62b864f0d",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1257,
+     "seconds": 41.865689516067505
+    },
+    {
+     "sub": "x21.rs1=13",
+     "run": "x21.rs1=13.d16b0b9806",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1354,
+     "seconds": 318.8575575351715
+    },
+    {
+     "sub": "x28.rs1=18",
+     "run": "x28.rs1=18.e38c68da42",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1354,
+     "seconds": 318.79390501976013
+    }
+   ]
+  },
+  "deepseek-fb2": {
+   "unsat": 16,
+   "rejected": 0,
+   "final_coi_state_bits": 16169,
+   "seconds": 968.1,
+   "refinements": 1,
+   "subs": [
+    {
+     "sub": "mem",
+     "run": "mem.c540e22c88",
+     "status": "UNSAT",
+     "refinements": 1,
+     "refined": [
+      "near_mem_icache"
+     ],
+     "final_coi_state_bits": 1129,
+     "seconds": 60.82854437828064
+    },
+    {
+     "sub": "x1.frame",
+     "run": "x1.frame.be62b60797",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 32.23948383331299
+    },
+    {
+     "sub": "x2.rs1=23",
+     "run": "x2.rs1=23.356296e167",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 79.01094007492065
+    },
+    {
+     "sub": "x4.frame",
+     "run": "x4.frame.949172632c",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 37.43080544471741
+    },
+    {
+     "sub": "x5.rs1=14",
+     "run": "x5.rs1=14.362a680731",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 54.704734086990356
+    },
+    {
+     "sub": "x6.rs1=8",
+     "run": "x6.rs1=8.6e1a90ca53",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 82.09672570228577
+    },
+    {
+     "sub": "x7.rs1=14",
+     "run": "x7.rs1=14.f49c3f4218",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 67.07493019104004
+    },
+    {
+     "sub": "x7.rs1=17",
+     "run": "x7.rs1=17.b1e9f466e7",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 72.56292343139648
+    },
+    {
+     "sub": "x8.frame",
+     "run": "x8.frame.b92599c71d",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 38.50666284561157
+    },
+    {
+     "sub": "x14.rs1=0",
+     "run": "x14.rs1=0.b27faa7f96",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1045,
+     "seconds": 42.551501512527466
+    },
+    {
+     "sub": "x14.rs1=14",
+     "run": "x14.rs1=14.43b7e2bb7c",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 981,
+     "seconds": 60.14673948287964
+    },
+    {
+     "sub": "x14.rs1=30",
+     "run": "x14.rs1=30.3bafdb467b",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 82.45094394683838
+    },
+    {
+     "sub": "x16.rs1=16",
+     "run": "x16.rs1=16.e66f9229e0",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 981,
+     "seconds": 64.35670447349548
+    },
+    {
+     "sub": "x18.rs1=0",
+     "run": "x18.rs1=0.472ea05264",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1045,
+     "seconds": 34.49028825759888
+    },
+    {
+     "sub": "x21.rs1=13",
+     "run": "x21.rs1=13.bab091fa3e",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 91.76704621315002
+    },
+    {
+     "sub": "x28.rs1=18",
+     "run": "x28.rs1=18.caffd5be15",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 67.8381896018982
+    }
+   ]
+  },
+  "deepseek-fb3": {
+   "unsat": 6,
+   "rejected": 0,
+   "final_coi_state_bits": 53701,
+   "seconds": 3494.8,
+   "refinements": 0,
+   "subs": [
+    {
+     "sub": "mem",
+     "run": "mem.b2b16b73a3",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1129,
+     "seconds": 39.77494668960571
+    },
+    {
+     "sub": "x1.frame",
+     "run": "x1.frame.ded070342a",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 852,
+     "seconds": 34.78808784484863
+    },
+    {
+     "sub": "x2.rs1=23",
+     "run": "x2.rs1=23.2795e53dd8",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 4168,
+     "seconds": 317.1499676704407
+    },
+    {
+     "sub": "x4.frame",
+     "run": "x4.frame.283f0e3fe1",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 852,
+     "seconds": 34.072614431381226
+    },
+    {
+     "sub": "x5.rs1=14",
+     "run": "x5.rs1=14.8f99df5fd1",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 4168,
+     "seconds": 315.3703329563141
+    },
+    {
+     "sub": "x6.rs1=8",
+     "run": "x6.rs1=8.1aff5a8577",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 4168,
+     "seconds": 319.3675353527069
+    },
+    {
+     "sub": "x7.rs1=14",
+     "run": "x7.rs1=14.9a38a88605",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 4168,
+     "seconds": 316.1653859615326
+    },
+    {
+     "sub": "x7.rs1=17",
+     "run": "x7.rs1=17.caf02cdbee",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 4168,
+     "seconds": 316.5913677215576
+    },
+    {
+     "sub": "x8.frame",
+     "run": "x8.frame.cdbf861cd6",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 852,
+     "seconds": 36.918686389923096
+    },
+    {
+     "sub": "x14.rs1=0",
+     "run": "x14.rs1=0.007a4ad54f",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 4168,
+     "seconds": 86.71747136116028
+    },
+    {
+     "sub": "x14.rs1=14",
+     "run": "x14.rs1=14.0cd1f5ea1c",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 4168,
+     "seconds": 316.80025720596313
+    },
+    {
+     "sub": "x14.rs1=30",
+     "run": "x14.rs1=30.11878669ec",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 4168,
+     "seconds": 318.0561444759369
+    },
+    {
+     "sub": "x16.rs1=16",
+     "run": "x16.rs1=16.638f0c5219",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 4168,
+     "seconds": 316.9608705043793
+    },
+    {
+     "sub": "x18.rs1=0",
+     "run": "x18.rs1=0.c375221c0e",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 4168,
+     "seconds": 92.41546273231506
+    },
+    {
+     "sub": "x21.rs1=13",
+     "run": "x21.rs1=13.0a65fb612b",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 4168,
+     "seconds": 318.23231172561646
+    },
+    {
+     "sub": "x28.rs1=18",
+     "run": "x28.rs1=18.8824ac3f1e",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 4168,
+     "seconds": 315.41076707839966
+    }
+   ]
+  },
+  "deepseek-fb4": {
+   "unsat": 16,
+   "rejected": 0,
+   "final_coi_state_bits": 16169,
+   "seconds": 947.0,
+   "refinements": 0,
+   "subs": [
+    {
+     "sub": "mem",
+     "run": "mem.b2b16b73a3",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1129,
+     "seconds": 39.77494668960571
+    },
+    {
+     "sub": "x1.frame",
+     "run": "x1.frame.be62b60797",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 32.23948383331299
+    },
+    {
+     "sub": "x2.rs1=23",
+     "run": "x2.rs1=23.356296e167",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 79.01094007492065
+    },
+    {
+     "sub": "x4.frame",
+     "run": "x4.frame.949172632c",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 37.43080544471741
+    },
+    {
+     "sub": "x5.rs1=14",
+     "run": "x5.rs1=14.362a680731",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 54.704734086990356
+    },
+    {
+     "sub": "x6.rs1=8",
+     "run": "x6.rs1=8.6e1a90ca53",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 82.09672570228577
+    },
+    {
+     "sub": "x7.rs1=14",
+     "run": "x7.rs1=14.f49c3f4218",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 67.07493019104004
+    },
+    {
+     "sub": "x7.rs1=17",
+     "run": "x7.rs1=17.b1e9f466e7",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 72.56292343139648
+    },
+    {
+     "sub": "x8.frame",
+     "run": "x8.frame.b92599c71d",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 38.50666284561157
+    },
+    {
+     "sub": "x14.rs1=0",
+     "run": "x14.rs1=0.b27faa7f96",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1045,
+     "seconds": 42.551501512527466
+    },
+    {
+     "sub": "x14.rs1=14",
+     "run": "x14.rs1=14.43b7e2bb7c",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 981,
+     "seconds": 60.14673948287964
+    },
+    {
+     "sub": "x14.rs1=30",
+     "run": "x14.rs1=30.3bafdb467b",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 82.45094394683838
+    },
+    {
+     "sub": "x16.rs1=16",
+     "run": "x16.rs1=16.e66f9229e0",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 981,
+     "seconds": 64.35670447349548
+    },
+    {
+     "sub": "x18.rs1=0",
+     "run": "x18.rs1=0.472ea05264",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1045,
+     "seconds": 34.49028825759888
+    },
+    {
+     "sub": "x21.rs1=13",
+     "run": "x21.rs1=13.bab091fa3e",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 91.76704621315002
+    },
+    {
+     "sub": "x28.rs1=18",
+     "run": "x28.rs1=18.caffd5be15",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 67.8381896018982
+    }
+   ]
+  },
+  "deepseek-fb5": {
+   "unsat": 16,
+   "rejected": 0,
+   "final_coi_state_bits": 16169,
+   "seconds": 947.0,
+   "refinements": 0,
+   "subs": [
+    {
+     "sub": "mem",
+     "run": "mem.b2b16b73a3",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1129,
+     "seconds": 39.77494668960571
+    },
+    {
+     "sub": "x1.frame",
+     "run": "x1.frame.be62b60797",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 32.23948383331299
+    },
+    {
+     "sub": "x2.rs1=23",
+     "run": "x2.rs1=23.356296e167",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 79.01094007492065
+    },
+    {
+     "sub": "x4.frame",
+     "run": "x4.frame.949172632c",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 37.43080544471741
+    },
+    {
+     "sub": "x5.rs1=14",
+     "run": "x5.rs1=14.362a680731",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 54.704734086990356
+    },
+    {
+     "sub": "x6.rs1=8",
+     "run": "x6.rs1=8.6e1a90ca53",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 82.09672570228577
+    },
+    {
+     "sub": "x7.rs1=14",
+     "run": "x7.rs1=14.f49c3f4218",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 67.07493019104004
+    },
+    {
+     "sub": "x7.rs1=17",
+     "run": "x7.rs1=17.b1e9f466e7",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 72.56292343139648
+    },
+    {
+     "sub": "x8.frame",
+     "run": "x8.frame.b92599c71d",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 38.50666284561157
+    },
+    {
+     "sub": "x14.rs1=0",
+     "run": "x14.rs1=0.b27faa7f96",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1045,
+     "seconds": 42.551501512527466
+    },
+    {
+     "sub": "x14.rs1=14",
+     "run": "x14.rs1=14.43b7e2bb7c",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 981,
+     "seconds": 60.14673948287964
+    },
+    {
+     "sub": "x14.rs1=30",
+     "run": "x14.rs1=30.3bafdb467b",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 82.45094394683838
+    },
+    {
+     "sub": "x16.rs1=16",
+     "run": "x16.rs1=16.e66f9229e0",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 981,
+     "seconds": 64.35670447349548
+    },
+    {
+     "sub": "x18.rs1=0",
+     "run": "x18.rs1=0.472ea05264",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1045,
+     "seconds": 34.49028825759888
+    },
+    {
+     "sub": "x21.rs1=13",
+     "run": "x21.rs1=13.bab091fa3e",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 91.76704621315002
+    },
+    {
+     "sub": "x28.rs1=18",
+     "run": "x28.rs1=18.caffd5be15",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 67.8381896018982
+    }
+   ]
+  },
+  "claude-1": {
+   "unsat": 0,
+   "rejected": 16,
+   "final_coi_state_bits": 0,
+   "seconds": 0,
+   "refinements": 0,
+   "subs": [
+    {
+     "sub": "mem",
+     "status": "rejected",
+     "errors": [
+      "line 39: Try is not allowed",
+      "line 41: ExceptHandler is not allowed",
+      "line 45: Try is not allowed",
+      "line 47: ExceptHandler is not allowed",
+      "line 77: Try is not allowed",
+      "line 79: ExceptHandler is not allowed"
+     ]
+    },
+    {
+     "sub": "x1.frame",
+     "status": "rejected",
+     "errors": [
+      "line 39: Try is not allowed",
+      "line 41: ExceptHandler is not allowed",
+      "line 45: Try is not allowed",
+      "line 47: ExceptHandler is not allowed",
+      "line 77: Try is not allowed",
+      "line 79: ExceptHandler is not allowed"
+     ]
+    },
+    {
+     "sub": "x2.rs1=23",
+     "status": "rejected",
+     "errors": [
+      "line 39: Try is not allowed",
+      "line 41: ExceptHandler is not allowed",
+      "line 45: Try is not allowed",
+      "line 47: ExceptHandler is not allowed",
+      "line 77: Try is not allowed",
+      "line 79: ExceptHandler is not allowed"
+     ]
+    },
+    {
+     "sub": "x4.frame",
+     "status": "rejected",
+     "errors": [
+      "line 39: Try is not allowed",
+      "line 41: ExceptHandler is not allowed",
+      "line 45: Try is not allowed",
+      "line 47: ExceptHandler is not allowed",
+      "line 77: Try is not allowed",
+      "line 79: ExceptHandler is not allowed"
+     ]
+    },
+    {
+     "sub": "x5.rs1=14",
+     "status": "rejected",
+     "errors": [
+      "line 39: Try is not allowed",
+      "line 41: ExceptHandler is not allowed",
+      "line 45: Try is not allowed",
+      "line 47: ExceptHandler is not allowed",
+      "line 77: Try is not allowed",
+      "line 79: ExceptHandler is not allowed"
+     ]
+    },
+    {
+     "sub": "x6.rs1=8",
+     "status": "rejected",
+     "errors": [
+      "line 39: Try is not allowed",
+      "line 41: ExceptHandler is not allowed",
+      "line 45: Try is not allowed",
+      "line 47: ExceptHandler is not allowed",
+      "line 77: Try is not allowed",
+      "line 79: ExceptHandler is not allowed"
+     ]
+    },
+    {
+     "sub": "x7.rs1=14",
+     "status": "rejected",
+     "errors": [
+      "line 39: Try is not allowed",
+      "line 41: ExceptHandler is not allowed",
+      "line 45: Try is not allowed",
+      "line 47: ExceptHandler is not allowed",
+      "line 77: Try is not allowed",
+      "line 79: ExceptHandler is not allowed"
+     ]
+    },
+    {
+     "sub": "x7.rs1=17",
+     "status": "rejected",
+     "errors": [
+      "line 39: Try is not allowed",
+      "line 41: ExceptHandler is not allowed",
+      "line 45: Try is not allowed",
+      "line 47: ExceptHandler is not allowed",
+      "line 77: Try is not allowed",
+      "line 79: ExceptHandler is not allowed"
+     ]
+    },
+    {
+     "sub": "x8.frame",
+     "status": "rejected",
+     "errors": [
+      "line 39: Try is not allowed",
+      "line 41: ExceptHandler is not allowed",
+      "line 45: Try is not allowed",
+      "line 47: ExceptHandler is not allowed",
+      "line 77: Try is not allowed",
+      "line 79: ExceptHandler is not allowed"
+     ]
+    },
+    {
+     "sub": "x14.rs1=0",
+     "status": "rejected",
+     "errors": [
+      "line 39: Try is not allowed",
+      "line 41: ExceptHandler is not allowed",
+      "line 45: Try is not allowed",
+      "line 47: ExceptHandler is not allowed",
+      "line 77: Try is not allowed",
+      "line 79: ExceptHandler is not allowed"
+     ]
+    },
+    {
+     "sub": "x14.rs1=14",
+     "status": "rejected",
+     "errors": [
+      "line 39: Try is not allowed",
+      "line 41: ExceptHandler is not allowed",
+      "line 45: Try is not allowed",
+      "line 47: ExceptHandler is not allowed",
+      "line 77: Try is not allowed",
+      "line 79: ExceptHandler is not allowed"
+     ]
+    },
+    {
+     "sub": "x14.rs1=30",
+     "status": "rejected",
+     "errors": [
+      "line 39: Try is not allowed",
+      "line 41: ExceptHandler is not allowed",
+      "line 45: Try is not allowed",
+      "line 47: ExceptHandler is not allowed",
+      "line 77: Try is not allowed",
+      "line 79: ExceptHandler is not allowed"
+     ]
+    },
+    {
+     "sub": "x16.rs1=16",
+     "status": "rejected",
+     "errors": [
+      "line 39: Try is not allowed",
+      "line 41: ExceptHandler is not allowed",
+      "line 45: Try is not allowed",
+      "line 47: ExceptHandler is not allowed",
+      "line 77: Try is not allowed",
+      "line 79: ExceptHandler is not allowed"
+     ]
+    },
+    {
+     "sub": "x18.rs1=0",
+     "status": "rejected",
+     "errors": [
+      "line 39: Try is not allowed",
+      "line 41: ExceptHandler is not allowed",
+      "line 45: Try is not allowed",
+      "line 47: ExceptHandler is not allowed",
+      "line 77: Try is not allowed",
+      "line 79: ExceptHandler is not allowed"
+     ]
+    },
+    {
+     "sub": "x21.rs1=13",
+     "status": "rejected",
+     "errors": [
+      "line 39: Try is not allowed",
+      "line 41: ExceptHandler is not allowed",
+      "line 45: Try is not allowed",
+      "line 47: ExceptHandler is not allowed",
+      "line 77: Try is not allowed",
+      "line 79: ExceptHandler is not allowed"
+     ]
+    },
+    {
+     "sub": "x28.rs1=18",
+     "status": "rejected",
+     "errors": [
+      "line 39: Try is not allowed",
+      "line 41: ExceptHandler is not allowed",
+      "line 45: Try is not allowed",
+      "line 47: ExceptHandler is not allowed",
+      "line 77: Try is not allowed",
+      "line 79: ExceptHandler is not allowed"
+     ]
+    }
+   ]
+  },
+  "claude-2": {
+   "unsat": 6,
+   "rejected": 0,
+   "final_coi_state_bits": 13843,
+   "seconds": 3380.7,
+   "refinements": 0,
+   "subs": [
+    {
+     "sub": "mem",
+     "run": "mem.b2b16b73a3",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1129,
+     "seconds": 39.77494668960571
+    },
+    {
+     "sub": "x1.frame",
+     "run": "x1.frame.be62b60797",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 32.23948383331299
+    },
+    {
+     "sub": "x2.rs1=23",
+     "run": "x2.rs1=23.6e1b8881b3",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 884,
+     "seconds": 317.83491563796997
+    },
+    {
+     "sub": "x4.frame",
+     "run": "x4.frame.949172632c",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 37.43080544471741
+    },
+    {
+     "sub": "x5.rs1=14",
+     "run": "x5.rs1=14.7fafee9100",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 884,
+     "seconds": 318.90851068496704
+    },
+    {
+     "sub": "x6.rs1=8",
+     "run": "x6.rs1=8.68dcf56f8d",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 884,
+     "seconds": 316.80714321136475
+    },
+    {
+     "sub": "x7.rs1=14",
+     "run": "x7.rs1=14.25321a249a",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 884,
+     "seconds": 315.76049065589905
+    },
+    {
+     "sub": "x7.rs1=17",
+     "run": "x7.rs1=17.3133da3074",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 884,
+     "seconds": 314.70691657066345
+    },
+    {
+     "sub": "x8.frame",
+     "run": "x8.frame.b92599c71d",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 38.50666284561157
+    },
+    {
+     "sub": "x14.rs1=0",
+     "run": "x14.rs1=0.f83457c570",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 851,
+     "seconds": 35.84988474845886
+    },
+    {
+     "sub": "x14.rs1=14",
+     "run": "x14.rs1=14.5701f7c46d",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 316.4803583621979
+    },
+    {
+     "sub": "x14.rs1=30",
+     "run": "x14.rs1=30.eb61965568",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 884,
+     "seconds": 316.46297240257263
+    },
+    {
+     "sub": "x16.rs1=16",
+     "run": "x16.rs1=16.ab877b385e",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 316.58677434921265
+    },
+    {
+     "sub": "x18.rs1=0",
+     "run": "x18.rs1=0.062aec96bd",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 851,
+     "seconds": 29.34698724746704
+    },
+    {
+     "sub": "x21.rs1=13",
+     "run": "x21.rs1=13.b4e10bfc4b",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 884,
+     "seconds": 318.5559792518616
+    },
+    {
+     "sub": "x28.rs1=18",
+     "run": "x28.rs1=18.00863e52b9",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 884,
+     "seconds": 315.4683840274811
+    }
+   ]
+  },
+  "claude-3": {
+   "unsat": 4,
+   "rejected": 12,
+   "final_coi_state_bits": 4078,
+   "seconds": 173.7,
+   "refinements": 0,
+   "subs": [
+    {
+     "sub": "mem",
+     "run": "mem.751d6e1882",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1714,
+     "seconds": 65.49304556846619
+    },
+    {
+     "sub": "x1.frame",
+     "run": "x1.frame.be62b60797",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 32.23948383331299
+    },
+    {
+     "sub": "x2.rs1=23",
+     "status": "rejected",
+     "errors": [
+      "NameError: name 'isinstance' is not defined"
+     ]
+    },
+    {
+     "sub": "x4.frame",
+     "run": "x4.frame.949172632c",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 37.43080544471741
+    },
+    {
+     "sub": "x5.rs1=14",
+     "status": "rejected",
+     "errors": [
+      "NameError: name 'isinstance' is not defined"
+     ]
+    },
+    {
+     "sub": "x6.rs1=8",
+     "status": "rejected",
+     "errors": [
+      "NameError: name 'isinstance' is not defined"
+     ]
+    },
+    {
+     "sub": "x7.rs1=14",
+     "status": "rejected",
+     "errors": [
+      "NameError: name 'isinstance' is not defined"
+     ]
+    },
+    {
+     "sub": "x7.rs1=17",
+     "status": "rejected",
+     "errors": [
+      "NameError: name 'isinstance' is not defined"
+     ]
+    },
+    {
+     "sub": "x8.frame",
+     "run": "x8.frame.b92599c71d",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 38.50666284561157
+    },
+    {
+     "sub": "x14.rs1=0",
+     "status": "rejected",
+     "errors": [
+      "NameError: name 'isinstance' is not defined"
+     ]
+    },
+    {
+     "sub": "x14.rs1=14",
+     "status": "rejected",
+     "errors": [
+      "NameError: name 'isinstance' is not defined"
+     ]
+    },
+    {
+     "sub": "x14.rs1=30",
+     "status": "rejected",
+     "errors": [
+      "NameError: name 'isinstance' is not defined"
+     ]
+    },
+    {
+     "sub": "x16.rs1=16",
+     "status": "rejected",
+     "errors": [
+      "NameError: name 'isinstance' is not defined"
+     ]
+    },
+    {
+     "sub": "x18.rs1=0",
+     "status": "rejected",
+     "errors": [
+      "NameError: name 'isinstance' is not defined"
+     ]
+    },
+    {
+     "sub": "x21.rs1=13",
+     "status": "rejected",
+     "errors": [
+      "NameError: name 'isinstance' is not defined"
+     ]
+    },
+    {
+     "sub": "x28.rs1=18",
+     "status": "rejected",
+     "errors": [
+      "NameError: name 'isinstance' is not defined"
+     ]
+    }
+   ]
+  },
+  "claude-4": {
+   "unsat": 16,
+   "rejected": 0,
+   "final_coi_state_bits": 17576,
+   "seconds": 857.0,
+   "refinements": 0,
+   "subs": [
+    {
+     "sub": "mem",
+     "run": "mem.751d6e1882",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1714,
+     "seconds": 65.49304556846619
+    },
+    {
+     "sub": "x1.frame",
+     "run": "x1.frame.ded070342a",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 852,
+     "seconds": 34.78808784484863
+    },
+    {
+     "sub": "x2.rs1=23",
+     "run": "x2.rs1=23.2fda14ed24",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1141,
+     "seconds": 67.08932900428772
+    },
+    {
+     "sub": "x4.frame",
+     "run": "x4.frame.283f0e3fe1",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 852,
+     "seconds": 34.072614431381226
+    },
+    {
+     "sub": "x5.rs1=14",
+     "run": "x5.rs1=14.889a6f1d91",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1141,
+     "seconds": 61.5837197303772
+    },
+    {
+     "sub": "x6.rs1=8",
+     "run": "x6.rs1=8.4c681a1591",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1141,
+     "seconds": 57.40995955467224
+    },
+    {
+     "sub": "x7.rs1=14",
+     "run": "x7.rs1=14.cde872e649",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1141,
+     "seconds": 59.20034646987915
+    },
+    {
+     "sub": "x7.rs1=17",
+     "run": "x7.rs1=17.5caaa1bd06",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1141,
+     "seconds": 55.54463076591492
+    },
+    {
+     "sub": "x8.frame",
+     "run": "x8.frame.cdbf861cd6",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 852,
+     "seconds": 36.918686389923096
+    },
+    {
+     "sub": "x14.rs1=0",
+     "run": "x14.rs1=0.7f16053aeb",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1044,
+     "seconds": 35.0159125328064
+    },
+    {
+     "sub": "x14.rs1=14",
+     "run": "x14.rs1=14.8a05a36d75",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1045,
+     "seconds": 84.89860773086548
+    },
+    {
+     "sub": "x14.rs1=30",
+     "run": "x14.rs1=30.75cb2a26a0",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1141,
+     "seconds": 59.272449016571045
+    },
+    {
+     "sub": "x16.rs1=16",
+     "run": "x16.rs1=16.2e87cba32d",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1045,
+     "seconds": 61.4452018737793
+    },
+    {
+     "sub": "x18.rs1=0",
+     "run": "x18.rs1=0.4c39597e0d",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1044,
+     "seconds": 33.87059545516968
+    },
+    {
+     "sub": "x21.rs1=13",
+     "run": "x21.rs1=13.35ad7d8980",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1141,
+     "seconds": 49.38362002372742
+    },
+    {
+     "sub": "x28.rs1=18",
+     "run": "x28.rs1=18.b2844fd55d",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1141,
+     "seconds": 61.01767611503601
+    }
+   ]
+  },
+  "claude-5": {
+   "unsat": 0,
+   "rejected": 16,
+   "final_coi_state_bits": 0,
+   "seconds": 0,
+   "refinements": 0,
+   "subs": [
+    {
+     "sub": "mem",
+     "status": "rejected",
+     "errors": [
+      "line 1: only function definitions are allowed at top level",
+      "line 7: only function definitions are allowed at top level",
+      "line 8: only function definitions are allowed at top level",
+      "line 15: attribute isalnum is not allowed"
+     ]
+    },
+    {
+     "sub": "x1.frame",
+     "status": "rejected",
+     "errors": [
+      "line 1: only function definitions are allowed at top level",
+      "line 7: only function definitions are allowed at top level",
+      "line 8: only function definitions are allowed at top level",
+      "line 15: attribute isalnum is not allowed"
+     ]
+    },
+    {
+     "sub": "x2.rs1=23",
+     "status": "rejected",
+     "errors": [
+      "line 1: only function definitions are allowed at top level",
+      "line 7: only function definitions are allowed at top level",
+      "line 8: only function definitions are allowed at top level",
+      "line 15: attribute isalnum is not allowed"
+     ]
+    },
+    {
+     "sub": "x4.frame",
+     "status": "rejected",
+     "errors": [
+      "line 1: only function definitions are allowed at top level",
+      "line 7: only function definitions are allowed at top level",
+      "line 8: only function definitions are allowed at top level",
+      "line 15: attribute isalnum is not allowed"
+     ]
+    },
+    {
+     "sub": "x5.rs1=14",
+     "status": "rejected",
+     "errors": [
+      "line 1: only function definitions are allowed at top level",
+      "line 7: only function definitions are allowed at top level",
+      "line 8: only function definitions are allowed at top level",
+      "line 15: attribute isalnum is not allowed"
+     ]
+    },
+    {
+     "sub": "x6.rs1=8",
+     "status": "rejected",
+     "errors": [
+      "line 1: only function definitions are allowed at top level",
+      "line 7: only function definitions are allowed at top level",
+      "line 8: only function definitions are allowed at top level",
+      "line 15: attribute isalnum is not allowed"
+     ]
+    },
+    {
+     "sub": "x7.rs1=14",
+     "status": "rejected",
+     "errors": [
+      "line 1: only function definitions are allowed at top level",
+      "line 7: only function definitions are allowed at top level",
+      "line 8: only function definitions are allowed at top level",
+      "line 15: attribute isalnum is not allowed"
+     ]
+    },
+    {
+     "sub": "x7.rs1=17",
+     "status": "rejected",
+     "errors": [
+      "line 1: only function definitions are allowed at top level",
+      "line 7: only function definitions are allowed at top level",
+      "line 8: only function definitions are allowed at top level",
+      "line 15: attribute isalnum is not allowed"
+     ]
+    },
+    {
+     "sub": "x8.frame",
+     "status": "rejected",
+     "errors": [
+      "line 1: only function definitions are allowed at top level",
+      "line 7: only function definitions are allowed at top level",
+      "line 8: only function definitions are allowed at top level",
+      "line 15: attribute isalnum is not allowed"
+     ]
+    },
+    {
+     "sub": "x14.rs1=0",
+     "status": "rejected",
+     "errors": [
+      "line 1: only function definitions are allowed at top level",
+      "line 7: only function definitions are allowed at top level",
+      "line 8: only function definitions are allowed at top level",
+      "line 15: attribute isalnum is not allowed"
+     ]
+    },
+    {
+     "sub": "x14.rs1=14",
+     "status": "rejected",
+     "errors": [
+      "line 1: only function definitions are allowed at top level",
+      "line 7: only function definitions are allowed at top level",
+      "line 8: only function definitions are allowed at top level",
+      "line 15: attribute isalnum is not allowed"
+     ]
+    },
+    {
+     "sub": "x14.rs1=30",
+     "status": "rejected",
+     "errors": [
+      "line 1: only function definitions are allowed at top level",
+      "line 7: only function definitions are allowed at top level",
+      "line 8: only function definitions are allowed at top level",
+      "line 15: attribute isalnum is not allowed"
+     ]
+    },
+    {
+     "sub": "x16.rs1=16",
+     "status": "rejected",
+     "errors": [
+      "line 1: only function definitions are allowed at top level",
+      "line 7: only function definitions are allowed at top level",
+      "line 8: only function definitions are allowed at top level",
+      "line 15: attribute isalnum is not allowed"
+     ]
+    },
+    {
+     "sub": "x18.rs1=0",
+     "status": "rejected",
+     "errors": [
+      "line 1: only function definitions are allowed at top level",
+      "line 7: only function definitions are allowed at top level",
+      "line 8: only function definitions are allowed at top level",
+      "line 15: attribute isalnum is not allowed"
+     ]
+    },
+    {
+     "sub": "x21.rs1=13",
+     "status": "rejected",
+     "errors": [
+      "line 1: only function definitions are allowed at top level",
+      "line 7: only function definitions are allowed at top level",
+      "line 8: only function definitions are allowed at top level",
+      "line 15: attribute isalnum is not allowed"
+     ]
+    },
+    {
+     "sub": "x28.rs1=18",
+     "status": "rejected",
+     "errors": [
+      "line 1: only function definitions are allowed at top level",
+      "line 7: only function definitions are allowed at top level",
+      "line 8: only function definitions are allowed at top level",
+      "line 15: attribute isalnum is not allowed"
+     ]
+    }
+   ]
+  },
+  "claude-fb1": {
+   "unsat": 5,
+   "rejected": 0,
+   "final_coi_state_bits": 44785,
+   "seconds": 4171.0,
+   "refinements": 0,
+   "subs": [
+    {
+     "sub": "mem",
+     "run": "mem.e37661c2c6",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 2124,
+     "seconds": 91.5907735824585
+    },
+    {
+     "sub": "x1.frame",
+     "run": "x1.frame.a6b13fe25c",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 5163,
+     "seconds": 323.4848430156708
+    },
+    {
+     "sub": "x2.rs1=23",
+     "run": "x2.rs1=23.f7028c7dee",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 2286,
+     "seconds": 322.4311957359314
+    },
+    {
+     "sub": "x4.frame",
+     "run": "x4.frame.ef64d87768",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 5163,
+     "seconds": 206.87608170509338
+    },
+    {
+     "sub": "x5.rs1=14",
+     "run": "x5.rs1=14.0deac9b1be",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 2286,
+     "seconds": 321.37487030029297
+    },
+    {
+     "sub": "x6.rs1=8",
+     "run": "x6.rs1=8.397f831c22",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 2286,
+     "seconds": 319.2577040195465
+    },
+    {
+     "sub": "x7.rs1=14",
+     "run": "x7.rs1=14.2cf77846a8",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 2286,
+     "seconds": 318.23851013183594
+    },
+    {
+     "sub": "x7.rs1=17",
+     "run": "x7.rs1=17.76ae7075d5",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 2286,
+     "seconds": 320.31776881217957
+    },
+    {
+     "sub": "x8.frame",
+     "run": "x8.frame.69c9adea9c",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 5163,
+     "seconds": 190.97769808769226
+    },
+    {
+     "sub": "x14.rs1=0",
+     "run": "x14.rs1=0.0142f6c3c0",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 2253,
+     "seconds": 93.47615599632263
+    },
+    {
+     "sub": "x14.rs1=14",
+     "run": "x14.rs1=14.8265e75d40",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 2189,
+     "seconds": 323.3923828601837
+    },
+    {
+     "sub": "x14.rs1=30",
+     "run": "x14.rs1=30.56e1c6ed94",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 2286,
+     "seconds": 321.47489857673645
+    },
+    {
+     "sub": "x16.rs1=16",
+     "run": "x16.rs1=16.0c6e06b538",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 2189,
+     "seconds": 323.29416394233704
+    },
+    {
+     "sub": "x18.rs1=0",
+     "run": "x18.rs1=0.a180317226",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 2253,
+     "seconds": 53.22900462150574
+    },
+    {
+     "sub": "x21.rs1=13",
+     "run": "x21.rs1=13.265222b50b",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 2286,
+     "seconds": 320.78887581825256
+    },
+    {
+     "sub": "x28.rs1=18",
+     "run": "x28.rs1=18.70d9148645",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 2286,
+     "seconds": 320.79240226745605
+    }
+   ]
+  },
+  "claude-fb2": {
+   "unsat": 16,
+   "rejected": 0,
+   "final_coi_state_bits": 15773,
+   "seconds": 835.9,
+   "refinements": 0,
+   "subs": [
+    {
+     "sub": "mem",
+     "run": "mem.b2b16b73a3",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1129,
+     "seconds": 39.77494668960571
+    },
+    {
+     "sub": "x1.frame",
+     "run": "x1.frame.be62b60797",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 32.23948383331299
+    },
+    {
+     "sub": "x2.rs1=23",
+     "run": "x2.rs1=23.cfb113492e",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1077,
+     "seconds": 66.82200980186462
+    },
+    {
+     "sub": "x4.frame",
+     "run": "x4.frame.949172632c",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 37.43080544471741
+    },
+    {
+     "sub": "x5.rs1=14",
+     "run": "x5.rs1=14.90312895ad",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1077,
+     "seconds": 66.05047726631165
+    },
+    {
+     "sub": "x6.rs1=8",
+     "run": "x6.rs1=8.64c4620d41",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1077,
+     "seconds": 59.482226610183716
+    },
+    {
+     "sub": "x7.rs1=14",
+     "run": "x7.rs1=14.56354e110a",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1077,
+     "seconds": 50.82128691673279
+    },
+    {
+     "sub": "x7.rs1=17",
+     "run": "x7.rs1=17.7e71636362",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1077,
+     "seconds": 70.31166958808899
+    },
+    {
+     "sub": "x8.frame",
+     "run": "x8.frame.b92599c71d",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 38.50666284561157
+    },
+    {
+     "sub": "x14.rs1=0",
+     "run": "x14.rs1=0.f83457c570",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 851,
+     "seconds": 35.84988474845886
+    },
+    {
+     "sub": "x14.rs1=14",
+     "run": "x14.rs1=14.43b7e2bb7c",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 981,
+     "seconds": 60.14673948287964
+    },
+    {
+     "sub": "x14.rs1=30",
+     "run": "x14.rs1=30.154247fc1a",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1077,
+     "seconds": 54.35640811920166
+    },
+    {
+     "sub": "x16.rs1=16",
+     "run": "x16.rs1=16.e66f9229e0",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 981,
+     "seconds": 64.35670447349548
+    },
+    {
+     "sub": "x18.rs1=0",
+     "run": "x18.rs1=0.062aec96bd",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 851,
+     "seconds": 29.34698724746704
+    },
+    {
+     "sub": "x21.rs1=13",
+     "run": "x21.rs1=13.11496392a0",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1077,
+     "seconds": 62.87810707092285
+    },
+    {
+     "sub": "x28.rs1=18",
+     "run": "x28.rs1=18.092aa30dfd",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1077,
+     "seconds": 67.4832239151001
+    }
+   ]
+  },
+  "claude-fb3": {
+   "unsat": 6,
+   "rejected": 0,
+   "final_coi_state_bits": 14438,
+   "seconds": 3392.1,
+   "refinements": 0,
+   "subs": [
+    {
+     "sub": "mem",
+     "run": "mem.751d6e1882",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1714,
+     "seconds": 65.49304556846619
+    },
+    {
+     "sub": "x1.frame",
+     "run": "x1.frame.be62b60797",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 32.23948383331299
+    },
+    {
+     "sub": "x2.rs1=23",
+     "run": "x2.rs1=23.a363280e14",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 885,
+     "seconds": 316.1538915634155
+    },
+    {
+     "sub": "x4.frame",
+     "run": "x4.frame.949172632c",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 37.43080544471741
+    },
+    {
+     "sub": "x5.rs1=14",
+     "run": "x5.rs1=14.6bdfac8468",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 885,
+     "seconds": 316.160227060318
+    },
+    {
+     "sub": "x6.rs1=8",
+     "run": "x6.rs1=8.4f201f88b0",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 885,
+     "seconds": 316.248437166214
+    },
+    {
+     "sub": "x7.rs1=14",
+     "run": "x7.rs1=14.5777e87f3f",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 885,
+     "seconds": 318.5465340614319
+    },
+    {
+     "sub": "x7.rs1=17",
+     "run": "x7.rs1=17.24a948c30e",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 885,
+     "seconds": 317.6443769931793
+    },
+    {
+     "sub": "x8.frame",
+     "run": "x8.frame.b92599c71d",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 38.50666284561157
+    },
+    {
+     "sub": "x14.rs1=0",
+     "run": "x14.rs1=0.d617a52995",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 852,
+     "seconds": 25.54499101638794
+    },
+    {
+     "sub": "x14.rs1=14",
+     "run": "x14.rs1=14.5701f7c46d",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 316.4803583621979
+    },
+    {
+     "sub": "x14.rs1=30",
+     "run": "x14.rs1=30.102cedf074",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 885,
+     "seconds": 316.22308444976807
+    },
+    {
+     "sub": "x16.rs1=16",
+     "run": "x16.rs1=16.ab877b385e",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 316.58677434921265
+    },
+    {
+     "sub": "x18.rs1=0",
+     "run": "x18.rs1=0.0612f2dd41",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 852,
+     "seconds": 26.453712224960327
+    },
+    {
+     "sub": "x21.rs1=13",
+     "run": "x21.rs1=13.71df760aea",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 885,
+     "seconds": 315.8504276275635
+    },
+    {
+     "sub": "x28.rs1=18",
+     "run": "x28.rs1=18.7299488a67",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 885,
+     "seconds": 316.56087279319763
+    }
+   ]
+  },
+  "claude-fb4": {
+   "unsat": 16,
+   "rejected": 0,
+   "final_coi_state_bits": 16744,
+   "seconds": 865.3,
+   "refinements": 0,
+   "subs": [
+    {
+     "sub": "mem",
+     "run": "mem.751d6e1882",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1714,
+     "seconds": 65.49304556846619
+    },
+    {
+     "sub": "x1.frame",
+     "run": "x1.frame.be62b60797",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 32.23948383331299
+    },
+    {
+     "sub": "x2.rs1=23",
+     "run": "x2.rs1=23.cfb113492e",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1077,
+     "seconds": 66.82200980186462
+    },
+    {
+     "sub": "x4.frame",
+     "run": "x4.frame.949172632c",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 37.43080544471741
+    },
+    {
+     "sub": "x5.rs1=14",
+     "run": "x5.rs1=14.90312895ad",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1077,
+     "seconds": 66.05047726631165
+    },
+    {
+     "sub": "x6.rs1=8",
+     "run": "x6.rs1=8.64c4620d41",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1077,
+     "seconds": 59.482226610183716
+    },
+    {
+     "sub": "x7.rs1=14",
+     "run": "x7.rs1=14.56354e110a",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1077,
+     "seconds": 50.82128691673279
+    },
+    {
+     "sub": "x7.rs1=17",
+     "run": "x7.rs1=17.7e71636362",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1077,
+     "seconds": 70.31166958808899
+    },
+    {
+     "sub": "x8.frame",
+     "run": "x8.frame.b92599c71d",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 38.50666284561157
+    },
+    {
+     "sub": "x14.rs1=0",
+     "run": "x14.rs1=0.7f16053aeb",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1044,
+     "seconds": 35.0159125328064
+    },
+    {
+     "sub": "x14.rs1=14",
+     "run": "x14.rs1=14.43b7e2bb7c",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 981,
+     "seconds": 60.14673948287964
+    },
+    {
+     "sub": "x14.rs1=30",
+     "run": "x14.rs1=30.154247fc1a",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1077,
+     "seconds": 54.35640811920166
+    },
+    {
+     "sub": "x16.rs1=16",
+     "run": "x16.rs1=16.e66f9229e0",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 981,
+     "seconds": 64.35670447349548
+    },
+    {
+     "sub": "x18.rs1=0",
+     "run": "x18.rs1=0.4c39597e0d",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1044,
+     "seconds": 33.87059545516968
+    },
+    {
+     "sub": "x21.rs1=13",
+     "run": "x21.rs1=13.11496392a0",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1077,
+     "seconds": 62.87810707092285
+    },
+    {
+     "sub": "x28.rs1=18",
+     "run": "x28.rs1=18.092aa30dfd",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1077,
+     "seconds": 67.4832239151001
+    }
+   ]
+  },
+  "claude-fb5": {
+   "unsat": 6,
+   "rejected": 0,
+   "final_coi_state_bits": 27538,
+   "seconds": 3533.0,
+   "refinements": 0,
+   "subs": [
+    {
+     "sub": "mem",
+     "run": "mem.751d6e1882",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1714,
+     "seconds": 65.49304556846619
+    },
+    {
+     "sub": "x1.frame",
+     "run": "x1.frame.1e5858cf8c",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1194,
+     "seconds": 48.71950030326843
+    },
+    {
+     "sub": "x2.rs1=23",
+     "run": "x2.rs1=23.708338ad31",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1875,
+     "seconds": 321.8786313533783
+    },
+    {
+     "sub": "x4.frame",
+     "run": "x4.frame.f0d3446127",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1194,
+     "seconds": 55.30979895591736
+    },
+    {
+     "sub": "x5.rs1=14",
+     "run": "x5.rs1=14.49f89260cf",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1875,
+     "seconds": 321.49972772598267
+    },
+    {
+     "sub": "x6.rs1=8",
+     "run": "x6.rs1=8.78ae5546c0",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1875,
+     "seconds": 321.9476044178009
+    },
+    {
+     "sub": "x7.rs1=14",
+     "run": "x7.rs1=14.5efb8baf80",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1875,
+     "seconds": 321.858957529068
+    },
+    {
+     "sub": "x7.rs1=17",
+     "run": "x7.rs1=17.ef02193db7",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1875,
+     "seconds": 323.3931014537811
+    },
+    {
+     "sub": "x8.frame",
+     "run": "x8.frame.f370a4ccc3",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1194,
+     "seconds": 42.496039390563965
+    },
+    {
+     "sub": "x14.rs1=0",
+     "run": "x14.rs1=0.2b016e4916",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1842,
+     "seconds": 55.4723756313324
+    },
+    {
+     "sub": "x14.rs1=14",
+     "run": "x14.rs1=14.64a3a242e0",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1779,
+     "seconds": 321.19731616973877
+    },
+    {
+     "sub": "x14.rs1=30",
+     "run": "x14.rs1=30.8292a79dab",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1875,
+     "seconds": 323.11072731018066
+    },
+    {
+     "sub": "x16.rs1=16",
+     "run": "x16.rs1=16.2ba15c73d0",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1779,
+     "seconds": 320.81355333328247
+    },
+    {
+     "sub": "x18.rs1=0",
+     "run": "x18.rs1=0.39deabc654",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1842,
+     "seconds": 45.14406132698059
+    },
+    {
+     "sub": "x21.rs1=13",
+     "run": "x21.rs1=13.77ed339fb7",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1875,
+     "seconds": 321.32235050201416
+    },
+    {
+     "sub": "x28.rs1=18",
+     "run": "x28.rs1=18.2ce28daa64",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1875,
+     "seconds": 323.32500290870667
+    }
+   ]
+  }
+ }
+}

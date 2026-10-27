@@ -27,7 +27,8 @@ def main():
             continue
         with open(map_path) as f:
             mapping = json.load(f)
-        results = {r["name"]: r for r in jsonl(os.path.join(run, "runs", case, "test", "results.jsonl"))}
+        path = os.path.join(run, "runs", case, "test", "results.jsonl")
+        results = {r["name"]: r for r in jsonl(path)} if os.path.exists(path) else {}
         out[case] = {}
         for arm in arms:
             if arm not in mapping:

@@ -40,7 +40,7 @@
 
 ### Prompt（`prompt/`）
 
-- system 是 `src/llm_rule_context.txt`：level 語意、refinement 說明、規則任務、輸入格式、受限語法、回答格式。
+- system 是當時的 `src/llm_rule_context.txt`（原文在 `prompt/prompt-system.txt`）：level 語意、refinement 說明、規則任務、輸入格式、受限語法、回答格式。[`llm_rule_heldout`](../llm_rule_heldout/PREREG.md) 之後改寫了這個檔案與 operator choice 的欄位，所以重跑 `generate.sh` 不會得到相同的 prompt。
 - user 是 ADDI 的 `design` 加上 7 個不附答案的訓練 sub-property（`prompt/examples-ADDI.json`：`mem`、`x5.frame`、`x17.frame`、`x5.rs1=0`、`x5.rs1=5`、`x5.rs1=6`、`x31.rs1=1`）。
 
 Prompt 中**沒有**以下內容：S 的程式碼或描述、`fine_gpr_choices` README 中關於 S 的結論、`specs-structural*.jsonl`、`llm-decisions.jsonl`、DeepSeek 先前的回答。實際送出的請求與提交的 `prompt-system.txt`、`prompt-user.txt` 逐位元相同（已對照閘道的呼叫紀錄）。

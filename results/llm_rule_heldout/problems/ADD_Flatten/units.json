@@ -1,0 +1,52 @@
+[
+ {
+  "id": "csr_regfile",
+  "path": "RTL.csr_regfile",
+  "module": "mkCSR_RegFile",
+  "coi_state_bits": 480,
+  "memories": [],
+  "levels": [
+   "keep",
+   "cut"
+  ]
+ },
+ {
+  "id": "gpr_regfile_regfile",
+  "path": "RTL.gpr_regfile.regfile",
+  "module": "RegFile",
+  "coi_state_bits": 1024,
+  "memories": [
+   {
+    "name": "RTL.gpr_regfile.regfile.arr",
+    "coi_state_bits": 1024
+   }
+  ],
+  "levels": [
+   "keep",
+   "havoc",
+   "cut"
+  ]
+ },
+ {
+  "id": "near_mem_dcache",
+  "path": "RTL.near_mem.dcache",
+  "module": "mkMMU_Cache",
+  "coi_state_bits": 410,
+  "memories": [],
+  "levels": [
+   "keep",
+   "cut"
+  ]
+ },
+ {
+  "id": "near_mem_icache",
+  "path": "RTL.near_mem.icache",
+  "module": "mkMMU_Cache",
+  "coi_state_bits": 378,
+  "memories": [],
+  "levels": [
+   "keep",
+   "cut"
+  ]
+ }
+]

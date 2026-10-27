@@ -1,0 +1,144 @@
+[
+ {
+  "name": "mem",
+  "states": [
+   "load_en",
+   "pc",
+   "store_en",
+   "x0"
+  ]
+ },
+ {
+  "name": "x1.write",
+  "states": [
+   "x1"
+  ],
+  "case": "rd==1"
+ },
+ {
+  "name": "x2.frame",
+  "states": [
+   "x2"
+  ],
+  "case": "rd!=2"
+ },
+ {
+  "name": "x2.write",
+  "states": [
+   "x2"
+  ],
+  "case": "rd==2"
+ },
+ {
+  "name": "x3.write",
+  "states": [
+   "x3"
+  ],
+  "case": "rd==3"
+ },
+ {
+  "name": "x4.write",
+  "states": [
+   "x4"
+  ],
+  "case": "rd==4"
+ },
+ {
+  "name": "x5.frame",
+  "states": [
+   "x5"
+  ],
+  "case": "rd!=5"
+ },
+ {
+  "name": "x7.frame",
+  "states": [
+   "x7"
+  ],
+  "case": "rd!=7"
+ },
+ {
+  "name": "x8.write",
+  "states": [
+   "x8"
+  ],
+  "case": "rd==8"
+ },
+ {
+  "name": "x14.write",
+  "states": [
+   "x14"
+  ],
+  "case": "rd==14"
+ },
+ {
+  "name": "x16.write",
+  "states": [
+   "x16"
+  ],
+  "case": "rd==16"
+ },
+ {
+  "name": "x18.write",
+  "states": [
+   "x18"
+  ],
+  "case": "rd==18"
+ },
+ {
+  "name": "x20.frame",
+  "states": [
+   "x20"
+  ],
+  "case": "rd!=20"
+ },
+ {
+  "name": "x24.write",
+  "states": [
+   "x24"
+  ],
+  "case": "rd==24"
+ },
+ {
+  "name": "x25.write",
+  "states": [
+   "x25"
+  ],
+  "case": "rd==25"
+ },
+ {
+  "name": "x26.frame",
+  "states": [
+   "x26"
+  ],
+  "case": "rd!=26"
+ },
+ {
+  "name": "x28.write",
+  "states": [
+   "x28"
+  ],
+  "case": "rd==28"
+ },
+ {
+  "name": "x29.write",
+  "states": [
+   "x29"
+  ],
+  "case": "rd==29"
+ },
+ {
+  "name": "x31.frame",
+  "states": [
+   "x31"
+  ],
+  "case": "rd!=31"
+ },
+ {
+  "name": "x31.write",
+  "states": [
+   "x31"
+  ],
+  "case": "rd==31"
+ }
+]

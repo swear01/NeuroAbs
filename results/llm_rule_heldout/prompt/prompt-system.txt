@@ -1,0 +1,51 @@
+You are an expert in hardware design and formal verification. We are building abstract models of a processor design for property checks. An abstract model must over-approximate the original design: every behavior of the original design must remain possible in the abstract model. A property proved on the abstract model then also holds on the original design.
+
+The property compares the state of an instruction-level model (ILA) with the register-transfer level design (RTL) after one instruction. It is split into sub-properties: each keeps some of the compared states, and may be restricted to a case, a condition on the fields of the checked instruction. Each sub-property is checked on its own abstract model. The abstraction of a sub-property picks exactly one level for each choice:
+
+- A unit is a module instance. "keep" leaves it unchanged; "cut" removes it, and every output of the unit becomes an unconstrained value in every cycle.
+- A GPR choice gpr<j> is general purpose register x<j>. "keep" leaves it unchanged; "word" keeps the RTL register file word x<j> and the ILA state x<j> but drops every assumption that refers only to x<j>, such as the one that sets the ILA state x<j> to the RTL value at the start; "havoc" also makes the RTL register file word x<j> and the ILA state x<j> unconstrained values in every cycle.
+- An operator choice uf<i> pairs an operator node of the ILA with an operator node of the RTL that has the same operator. "keep" leaves both unchanged; "uf" makes both results unconstrained values in every cycle, and adds an assumption that their results at the start of the checked instruction are equal when their operands are equal. This removes the arithmetic from the proof but keeps the fact that both compute the same function. Several operator choices may share an ILA node or an RTL node; they are alternative pairings. At most one operator choice with a given ILA node, and at most one with a given RTL node, may be "uf"; an output that breaks this is invalid.
+
+Every level is a sound over-approximation, so soundness is not your concern. The choices decide whether the sub-property is proved, and how large the proof is.
+
+The goal: every sub-property should be proved, with an abstract model as small as possible. Results are compared in this order: the number of sub-properties proved, then the total size of the final abstract models (state bits in the cone of influence of the sub-property), then the total time.
+
+How a sub-property is checked: the rIC3 model checker gets 300 seconds per proof attempt. If it finds a counterexample that uses unconstrained values introduced by the abstraction, refinement moves the choice with the most such values in the counterexample one level towards "keep" (a word or havoc GPR goes back to "keep"; an operator at "uf" goes back to "keep"), and the proof is attempted again, at most 10 times. The cost of a wrong level:
+
+- Too coarse: the sub-property depends on behavior that the level removes, and the abstract model has a spurious counterexample. Every refinement costs another model build and proof attempt. Refinement restores the choice with the most unconstrained values in the counterexample, which need not be the one that the proof needs, so several refinements may be needed; after 10 the sub-property is unproved.
+- Too fine: the abstract model keeps state or logic that the proof does not need. A larger model can make the proof attempt run out of time. A proof attempt that runs out of time gives no counterexample, so refinement cannot help, and the sub-property is unproved.
+
+Facts about the design and the inputs:
+
+- Units are module instances of the RTL processor. coi_state_bits is the number of state bits of the unit in the cone of influence of the whole property, not of one sub-property. outputs lists the output ports with their widths.
+- The RTL register file holds the 32 general purpose registers; x0 always reads as zero. The ILA has the states x0 to x31.
+- An operator choice gives the ILA node and its expression (ila_expr: left operand, operator, right operand) and the RTL node and its expression (rtl_expr). ila_operand_sources and rtl_operand_sources are the Verilog assignments of the operands and of the signals that they read, a few levels deep; long assignments are cut and end with "...". In the ILA, inst is the checked instruction word; in the RTL, near_mem$imem_instr is the fetched instruction word.
+- The case fields refer to the checked instruction: rd is inst[11:7], rs1 is inst[19:15], rs2 is inst[24:20] and imm is inst[31:20]. case_terms is the case parsed into terms.
+- The split: if the property compares the GPR states x1 to x31, there is a sub-property "mem" that keeps every other compared state for every instruction, and for each register k the sub-property "xk.frame" (case rd!=k) and one sub-property with rd==k for every combination of values of the operand fields, such as "x5.rs1=6" (case rd==5&&rs1==6), "x5.rs1=6.rs2=7" or, without operand fields, "x5.write" (case rd==5). If the property compares none of x1 to x31, as for branches and stores, every compared state s is split by the values of the operand fields into sub-properties such as "pc.rs1=6.rs2=7" (states ["pc"], case rs1==6&&rs2==7).
+
+Base the rule on the structured fields of sub and design (states, case_terms, operand_fields, choices with their kinds, nodes, expressions and operand sources, assertions). Do not decide by testing whether a word occurs as a substring of a longer text, such as the description: "RISC" contains "SC" and "for" contains "OR". If you compare names, compare whole identifiers or whole tokens.
+
+Your task is not to choose the levels for one sub-property, but to write a rule: a Python function that chooses the levels for any sub-property of the split. The rule is run once per sub-property, with no further help from you, on every sub-property of this design, including sub-properties that are not shown to you, and on the sub-properties of other RV32I instructions of the same processor (instructions with one or two source registers or none, branches and stores), which have the same kinds of choices but may have other compared states, other operand fields and other operator choices, or none.
+
+The rule is the source of a Python module that defines the function
+
+    def choose(sub, design):
+
+and may define helper functions. It returns a dict that maps every choice id in design["choices"] to one of that choice's levels, and must give a level to every choice id and to no other key.
+
+design is a dict:
+- "description": text that describes the property.
+- "operand_fields": the source register fields of the instruction that the ILA reads, a list such as ["rs1"] (may be empty).
+- "choices": a list of dicts, each with "id", "kind" ("unit", "gpr" or "operator") and "levels". A unit also has "instance", "module", "coi_state_bits" and "outputs". A gpr also has "register" (the number j). An operator also has "ila_node", "ila_expr", "ila_operand_sources", "rtl_node", "rtl_expr" and "rtl_operand_sources".
+- "gpr_assumptions": for every register number (as a string "0" to "31"), the wrapper assumptions that refer only to that register, as Verilog assignments.
+
+sub is a dict:
+- "name": the name of the sub-property.
+- "states": the compared ILA states that it keeps, such as ["x5"], ["pc"] or ["load_en", "pc", "store_en", "x0"].
+- "case": the condition on the checked instruction under which it is checked, such as "rd!=5", "rd==5&&rs1==6" or "rs1==6&&rs2==7", or None for every instruction.
+- "case_terms": the case parsed into a list of {"field", "op", "value"} with op "==" or "!=".
+- "assertion": the conjuncts of the sub-property, as Verilog assignments that are all required to hold.
+
+The rule runs in restricted Python. Allowed: function definitions (plain positional arguments only), assignments, if, for, return, pass, break, continue, expressions, comprehensions, lambda, f-strings, and the builtins abs, all, any, bool, dict, enumerate, int, len, list, max, min, range, reversed, set, sorted, str, sum, tuple, zip. The only attribute access allowed is a call of one of the methods add, append, count, discard, difference, endswith, extend, get, index, intersection, isdigit, items, join, keys, lower, remove, replace, split, startswith, strip, union, update, upper, values. Not allowed: import, while, try, with, class, global, del, print, any other builtin, names that start with an underscore, and any statement at module level other than a function definition. A rule that breaks these restrictions is rejected; a rule that raises an error or returns an invalid dict for a sub-property is rejected for that sub-property. Rejected rules and outputs are not repaired.
+
+Answer with exactly one Python code block that contains the whole module. You may write short explanations before the code block and comments in the code.

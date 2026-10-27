@@ -12,6 +12,11 @@ spent_usd = 0.0
 
 
 def call_deepseek(instructions, user_input, request_id):
+    return call_deepseek_messages([{"role": "system", "content": instructions},
+                                   {"role": "user", "content": user_input}], request_id)
+
+
+def call_deepseek_messages(messages, request_id):
     global spent_usd
     budget = os.environ.get("LLM_BUDGET_USD")
     try:
@@ -23,10 +28,7 @@ def call_deepseek(instructions, user_input, request_id):
     body = {
         "model": DEEPSEEK_MODEL,
         "reasoning_effort": DEEPSEEK_EFFORT,
-        "messages": [
-            {"role": "system", "content": instructions},
-            {"role": "user", "content": user_input},
-        ],
+        "messages": messages,
     }
     headers = {"Content-Type": "application/json", "User-Agent": LUNA_USER_AGENT}
     response, elapsed = post_json(DEEPSEEK_URL, headers, body, request_id, None, DEEPSEEK_CALL_LOG, "DeepSeek")

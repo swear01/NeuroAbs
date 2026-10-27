@@ -10,7 +10,7 @@ CHOICES = [
     {"id": "csr_regfile", "kind": "unit", "levels": ["keep", "cut"]},
     {"id": "gpr0", "kind": "gpr", "register": 0, "levels": ["keep", "word", "havoc"]},
     {"id": "gpr1", "kind": "gpr", "register": 1, "levels": ["keep", "word", "havoc"]},
-    {"id": "uf0", "kind": "operator", "levels": ["keep", "uf"]},
+    {"id": "uf0", "kind": "operator", "ila_node": "n1", "rtl_node": "r1", "levels": ["keep", "uf"]},
 ]
 DESIGN = {"description": "", "operand_fields": ["rs1"], "choices": CHOICES, "gpr_assumptions": {"0": [], "1": []}}
 SUBS = [
@@ -111,6 +111,24 @@ class LlmRuleExecTest(unittest.TestCase):
         self.assertTrue(check(dict(good, gpr2="keep"), CHOICES))
         self.assertTrue(check([], CHOICES))
 
+    def test_check_output_rejects_two_pairings_of_one_node(self):
+        choices = [{"id": "uf0", "kind": "operator", "ila_node": "n1", "rtl_node": "r1", "levels": ["keep", "uf"]},
+                   {"id": "uf1", "kind": "operator", "ila_node": "n1", "rtl_node": "r2", "levels": ["keep", "uf"]},
+                   {"id": "uf2", "kind": "operator", "ila_node": "n2", "rtl_node": "r2", "levels": ["keep", "uf"]}]
+        check = self.rule.check_output
+        self.assertEqual(check({"uf0": "uf", "uf1": "keep", "uf2": "uf"}, choices), [])
+        self.assertEqual(check({"uf0": "uf", "uf1": "uf", "uf2": "keep"}, choices),
+                         ["more than one operator choice at level uf has ila_node n1"])
+        self.assertEqual(check({"uf0": "keep", "uf1": "uf", "uf2": "uf"}, choices),
+                         ["more than one operator choice at level uf has rtl_node r2"])
+
+    def test_operand_sources(self):
+        text = ("module ila(a);\nassign n3 = ( n1 ) + ( n2 ) ;\nassign n1 = inst[19:15] ;\n"
+                "assign n2 = { {20{n4[11]} }, n4} ;\nassign n4 = inst[31:20] ;\nendmodule\n"
+                "module wrapper(clk);\n ila ILA(.a(clk));\nendmodule\n")
+        self.assertEqual(self.rule.operand_sources(text, "ILA", ["n1", "n2"]),
+                         ["n1 = inst[19:15]", "n2 = { {20{n4[11]} }, n4}", "n4 = inst[31:20]"])
+
     def test_apply_rule_rejects_invalid_output(self):
         source = "def choose(sub, design):\n    return {'csr_regfile': 'cut'}\n"
         specs, errors = self.rule.apply_rule(source, DESIGN, SUBS, SUBS, [])
@@ -142,6 +160,40 @@ class LlmRuleExecTest(unittest.TestCase):
         a = {"keep_gprs": [2, 1], "word_gprs": [], "units": {"b": "cut", "a": "keep"}, "uf": []}
         b = {"keep_gprs": [1, 2], "units": {"a": "keep", "b": "cut"}, "uf": [], "states": ["x1"]}
         self.assertEqual(self.rule.normal(a), self.rule.normal(b))
+
+
+class ClaudeCliTest(unittest.TestCase):
+    def setUp(self):
+        sys.path.insert(0, str(SRC))
+        self.addCleanup(sys.path.remove, str(SRC))
+        self.cli = importlib.import_module("claude_cli")
+
+    def events(self, tools=(), content=({"type": "text", "text": "ok"},), result=None):
+        import json
+        return [json.dumps(e) for e in (
+            {"type": "system", "subtype": "init", "model": "m", "tools": list(tools), "mcp_servers": []},
+            {"type": "assistant", "message": {"model": "m", "content": list(content)}},
+            result or {"type": "result", "subtype": "success", "is_error": False, "num_turns": 1})]
+
+    def test_parse_answer(self):
+        init, answer, models, result = self.cli.parse_events(self.events())
+        self.assertEqual((answer, models), ("ok", ["m"]))
+
+    def test_rejects_tools(self):
+        with self.assertRaises(RuntimeError):
+            self.cli.parse_events(self.events(tools=["Read"]))
+        with self.assertRaises(RuntimeError):
+            self.cli.parse_events(self.events(content=[{"type": "tool_use", "name": "Read"}]))
+        with self.assertRaises(RuntimeError):
+            self.cli.parse_events(self.events(result={"type": "result", "subtype": "error_max_turns",
+                                                      "is_error": True, "num_turns": 2}))
+
+    def test_clean_command(self):
+        args = self.cli.command("sys", "id", False)
+        for flag in ("--tools", "--safe-mode", "--strict-mcp-config", "--system-prompt", "--session-id"):
+            self.assertIn(flag, args)
+        self.assertEqual(args[args.index("--tools") + 1], "")
+        self.assertIn("--resume", self.cli.command("sys", "id", True))
 
 
 if __name__ == "__main__":

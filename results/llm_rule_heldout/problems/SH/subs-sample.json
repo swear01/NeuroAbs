@@ -1,0 +1,142 @@
+[
+ {
+  "name": "pc.rs1=0.rs2=0",
+  "states": [
+   "pc"
+  ],
+  "case": "rs1==0&&rs2==0"
+ },
+ {
+  "name": "pc.rs1=0.rs2=7",
+  "states": [
+   "pc"
+  ],
+  "case": "rs1==0&&rs2==7"
+ },
+ {
+  "name": "pc.rs1=2.rs2=23",
+  "states": [
+   "pc"
+  ],
+  "case": "rs1==2&&rs2==23"
+ },
+ {
+  "name": "pc.rs1=5.rs2=14",
+  "states": [
+   "pc"
+  ],
+  "case": "rs1==5&&rs2==14"
+ },
+ {
+  "name": "pc.rs1=6.rs2=8",
+  "states": [
+   "pc"
+  ],
+  "case": "rs1==6&&rs2==8"
+ },
+ {
+  "name": "pc.rs1=7.rs2=14",
+  "states": [
+   "pc"
+  ],
+  "case": "rs1==7&&rs2==14"
+ },
+ {
+  "name": "pc.rs1=7.rs2=17",
+  "states": [
+   "pc"
+  ],
+  "case": "rs1==7&&rs2==17"
+ },
+ {
+  "name": "pc.rs1=14.rs2=14",
+  "states": [
+   "pc"
+  ],
+  "case": "rs1==14&&rs2==14"
+ },
+ {
+  "name": "pc.rs1=21.rs2=13",
+  "states": [
+   "pc"
+  ],
+  "case": "rs1==21&&rs2==13"
+ },
+ {
+  "name": "pc.rs1=28.rs2=18",
+  "states": [
+   "pc"
+  ],
+  "case": "rs1==28&&rs2==18"
+ },
+ {
+  "name": "store_en.rs1=0.rs2=0",
+  "states": [
+   "store_en"
+  ],
+  "case": "rs1==0&&rs2==0"
+ },
+ {
+  "name": "store_en.rs1=1.rs2=28",
+  "states": [
+   "store_en"
+  ],
+  "case": "rs1==1&&rs2==28"
+ },
+ {
+  "name": "store_en.rs1=1.rs2=30",
+  "states": [
+   "store_en"
+  ],
+  "case": "rs1==1&&rs2==30"
+ },
+ {
+  "name": "store_en.rs1=2.rs2=2",
+  "states": [
+   "store_en"
+  ],
+  "case": "rs1==2&&rs2==2"
+ },
+ {
+  "name": "store_en.rs1=15.rs2=11",
+  "states": [
+   "store_en"
+  ],
+  "case": "rs1==15&&rs2==11"
+ },
+ {
+  "name": "store_en.rs1=15.rs2=12",
+  "states": [
+   "store_en"
+  ],
+  "case": "rs1==15&&rs2==12"
+ },
+ {
+  "name": "store_en.rs1=17.rs2=26",
+  "states": [
+   "store_en"
+  ],
+  "case": "rs1==17&&rs2==26"
+ },
+ {
+  "name": "store_en.rs1=19.rs2=29",
+  "states": [
+   "store_en"
+  ],
+  "case": "rs1==19&&rs2==29"
+ },
+ {
+  "name": "store_en.rs1=29.rs2=3",
+  "states": [
+   "store_en"
+  ],
+  "case": "rs1==29&&rs2==3"
+ },
+ {
+  "name": "store_en.rs1=30.rs2=0",
+  "states": [
+   "store_en"
+  ],
+  "case": "rs1==30&&rs2==0"
+ }
+]

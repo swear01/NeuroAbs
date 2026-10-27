@@ -72,3 +72,8 @@
   artifact these are 1, 184, and 121 respectively. Identical statement strings
   currently collide in `update_statement_lineno`, so generated input count is
   not a reliable effective-abstraction count.
+- Do not edit a run script (`batch.sh`, `arm.sh`) while an instance of it is
+  running: bash reads the script incrementally, so the running instance can
+  execute the edited bytes. In `semantic_candidates` this skipped the final
+  `cp`/`.done` step of batch s2 and left `s2.failed`, although all records
+  were written; copy the script or wait for running batches first.

@@ -1,0 +1,8 @@
+{"name": "pc.rs1=12.rs2=3.split", "spec": {"states": ["pc"], "case": "rs1==12&&rs2==3"}}
+{"name": "pc.rs1=12.rs2=3.S+uf", "spec": {"states": ["pc"], "case": "rs1==12&&rs2==3", "keep_gprs": [3, 12], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": [{"ila": "n166", "rtl": "IF_near_mem_imem_instr__59_BITS_19_TO_15_60_EQ_ETC___d216"}]}}
+{"name": "pc.rs1=31.rs2=1.split", "spec": {"states": ["pc"], "case": "rs1==31&&rs2==1"}}
+{"name": "pc.rs1=31.rs2=1.S+uf", "spec": {"states": ["pc"], "case": "rs1==31&&rs2==1", "keep_gprs": [1, 31], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": [{"ila": "n166", "rtl": "IF_near_mem_imem_instr__59_BITS_19_TO_15_60_EQ_ETC___d216"}]}}
+{"name": "pc.rs1=20.rs2=9.split", "spec": {"states": ["pc"], "case": "rs1==20&&rs2==9"}}
+{"name": "pc.rs1=20.rs2=9.S+uf", "spec": {"states": ["pc"], "case": "rs1==20&&rs2==9", "keep_gprs": [9, 20], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": [{"ila": "n166", "rtl": "IF_near_mem_imem_instr__59_BITS_19_TO_15_60_EQ_ETC___d216"}]}}
+{"name": "pc.rs1=7.rs2=26.split", "spec": {"states": ["pc"], "case": "rs1==7&&rs2==26"}}
+{"name": "pc.rs1=7.rs2=26.S+uf", "spec": {"states": ["pc"], "case": "rs1==7&&rs2==26", "keep_gprs": [7, 26], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": [{"ila": "n166", "rtl": "IF_near_mem_imem_instr__59_BITS_19_TO_15_60_EQ_ETC___d216"}]}}

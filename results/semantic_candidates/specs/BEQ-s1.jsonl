@@ -1,0 +1,8 @@
+{"name": "pc.split", "spec": {"states": ["pc"]}}
+{"name": "load_en.split", "spec": {"states": ["load_en"]}}
+{"name": "store_en.split", "spec": {"states": ["store_en"]}}
+{"name": "mem.S", "spec": {"states": ["load_en", "pc", "store_en"], "keep_gprs": [], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": []}}
+{"name": "pc.S", "spec": {"states": ["pc"], "keep_gprs": [], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": []}}
+{"name": "pc.allgpr.cd", "spec": {"states": ["pc"], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "keep"}}}
+{"name": "pc.rs1=5.rs2=6.split", "spec": {"states": ["pc"], "case": "rs1==5&&rs2==6"}}
+{"name": "pc.rs1=5.rs2=6.keep56.cd", "spec": {"states": ["pc"], "case": "rs1==5&&rs2==6", "keep_gprs": [5, 6], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "keep"}}}

@@ -4,15 +4,35 @@
 
 ## 排名與建議
 
-| 排名 | 題目 | 只拆（沒有 abstraction） | 規則 S（現有切法） | 可證的 abstraction（手做） | 文字裡讀不出來的部分 |
-| --- | --- | --- | --- | --- | --- |
-| 1 | Piccolo SB `store_en` | 不拆欄位：300 s TIMEOUT；拆 rs1×rs2 後 5 / 5 個 case 都 TIMEOUT（300 s），(5,6) 在 1200 s 也 TIMEOUT | 只保留 0 個 GPR，10 次 refinement 都是 spurious CEX，沒有結論 | 拆 rs1×rs2，保留 {rs1, rs2}，三個單元全 cut，store 位址加法器 UF：5 / 5 UNSAT，68–103 s；(5,6) 重複 3 次是 83–85 s | 要保留的 GPR（property 只寫 `store_addr`、`store_data`），以及 UF 的 RTL 配對：結構化配對器會選到 load 位址加法器，結果 TIMEOUT |
-| 2 | Piccolo BEQ `pc` | 不拆欄位：300 s TIMEOUT；拆 rs1×rs2 後 5 / 5 都 TIMEOUT，(5,6) 在 1200 s 也 TIMEOUT | 同上：10 次 refinement 用完 | 拆 rs1×rs2，保留 {rs1, rs2}，單元全 cut，比較器 `==` UF：5 / 5 UNSAT，134–186 s（各需 1 次 refinement，把 I-cache 退回）；(5,6) 重複 3 次是 145–146 s | 要保留的 GPR（property 只比 `pc`），以及「要用 rs1×rs2 拆」這個決定。UF 配對用結構化方式就找得到（唯一一個在 `rs*_val` 上的 `==`） |
-| — | Piccolo LB | 寫入類在沒有 abstraction 的模型上就是 SAT（深度 13） | — | — | 不適用：property 本身不成立 |
-| — | PicoRV32 riscv-formal（[`regfile_havoc`](../regfile_havoc/README.md)） | B0 103–202 s 可證 | — | regfile havoc：0.56 倍時間（重複 3 次） | 只有一個 array，「沒點名的 array 都 havoc」這條規則就做得到，對 LLM 沒有空間 |
-| — | Flute | B0 一小時沒有結論 | — | 沒有找到 | `__IEND__` 在第 283 個 cycle 以前到不了（[`flute_piccolo_choices`](../flute_piccolo_choices/README.md)），先要處理深度 |
+每個候選都用同一組非 LLM arm 對照，規則在跑之前就寫死並 commit（見下一節「預先登記的規則」）。COI、S、auto 的數字來自預先登記的 `rules` batch；「手做配對」用的是正確的運算子配對。所有 time limit 都是 300 s，CEGAR 最多 10 次 refinement。每格是：UNSAT 數 / 樣本數（`mem` 加 5 組 (rs1, rs2)）。
 
-建議：下一步做 LLM 對照時，**SB 和 BEQ 一起做**，必要時加上 SH 和 BNE。它們是同一種題型：property 只比較 pc 或記憶體請求，而它依賴哪些 GPR、哪個運算子，要靠指令語意才知道。SB 在兩個決策點（GPR、UF 配對）上都讀不出來；BEQ 只在 GPR 這一點。兩題的 abstraction 一旦選對，都是 TIMEOUT 變成 UNSAT。
+| 排名 | 題目 | 只拆 = COI 規則 | S，現有切法（`mem`） | S，rs1×rs2 切法 | auto（coarsest + CEGAR） | 手做配對（S + 正確 UF） |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1 | Piccolo SB `store_en` | 0 / 6（`mem` 和 5 組 rs1×rs2 都 TIMEOUT；(5,6) 在 1200 s 也 TIMEOUT） | `mem`：10 次 refinement 用完，沒有結論 | 0 / 5：配對器選到 load 位址加法器 `eaddr`，5–6 次 refinement 後 TIMEOUT（477–562 s） | 0 / 6：`mem` 10 次用完；5 組都在 6–10 次 refinement 後 TIMEOUT（542–743 s） | 5 / 5 UNSAT，68–103 s，0 次 refinement；(5,6) 重複 3 次是 83–85 s |
+| 2 | Piccolo BEQ `pc` | 0 / 6（同上；(5,6) 在 1200 s 也 TIMEOUT） | `mem`：10 次 refinement 用完 | 5 / 5 UNSAT，125–174 s（各 1 次 refinement，把 I-cache 退回） | 0 / 6：`mem` 10 次用完；5 組都在 6 次 refinement 後 TIMEOUT（504–537 s） | 同 S，配對器找到的就是正確的比較器 |
+| — | Piccolo LB | 寫入類在沒有 abstraction 的模型上就是 SAT（深度 13） | — | — | — | 不適用：property 本身不成立 |
+| — | PicoRV32 riscv-formal（[`regfile_havoc`](../regfile_havoc/README.md)） | B0 103–202 s 可證 | — | — | — | regfile havoc：0.56 倍時間（重複 3 次）。只有一個 array，「沒點名的 array 都 havoc」這條規則就做得到，對 LLM 沒有空間 |
+| — | Flute | B0 一小時沒有結論 | — | — | — | 沒有找到：`__IEND__` 在第 283 個 cycle 以前到不了（[`flute_piccolo_choices`](../flute_piccolo_choices/README.md)） |
+
+auto 在 BEQ 和 SB 上的失敗方式都一樣：CEGAR 先把三個單元退回來，再把 UF 拿掉（CEX 裡 UF 的 free value 最多），最後加回 rs1、rs2 的 GPR。最終模型（2,286–2,674 bits）在 300 s TIMEOUT。這和 ADDI 上的 auto 相同（[`fine_gpr_choices`](../fine_gpr_choices/README.md)）。
+
+建議：
+
+1. **先做 SB `store_en`**。它是唯一一題所有預先登記的非 LLM arm（COI、S 兩種切法、auto）都證不出來，而存在一個可證的 sound abstraction 的題目。缺的那一步是「store 位址是 rs1 加 S-type 立即數，RTL 對應的是 `alu_outputs___1_addr__h5583`」，而不是 `eaddr__h5553`。這要從指令語意判斷，文字和結構化配對都給不出來。
+2. **BEQ `pc` 當第二題**，只有在 LLM 要自己決定切法時才有意義。如果 rs1×rs2 切法是所有 arm 共用的前處理，預先登記的 S 就已經 5 / 5，LLM 頂多追平。它要測的是：property 只比 `pc`，LLM 能不能看出要依 rs1、rs2 拆，並保留這兩個 GPR。在現有切法上，S、auto、COI 都沒有結論。
+
+SH、BNE 是同一題型，但沒有實測。
+
+## 預先登記的規則
+
+`scripts/rules.py`（commit `21dbf76`，在跑任何 rules run 之前，也在 SB／BEQ 有任何 LLM 答案之前）。它對每個 sub-property 產生三個 spec；產生的 spec 也一起 commit 在 `specs/*-rules.jsonl`：
+
+- **COI**：保留 split-only 模型 COI 裡有 state 的每個單元和 GPR word，不加 UF。在 BEQ、SB 上，四個單元和全部 1,024 bits 的 GPR 都在 COI 裡，所以 COI 的 spec 和只拆相同（缺的單元 level 預設是 keep）。rs1×rs2 的 COI spec 因此沒有重跑，數字用只拆的 run；`mem.coi` 有實際跑。
+- **S**：`fine_choice.structural`，沒有修改：保留 property 比較的 GPR 和 case 點名的 rs1、rs2，所有單元 cut，加上配對器找到的 UF。
+- **auto**：`fine_choice.coarsest`（GPR 全部拿掉，單元全部 cut，加上配對器找到的 UF），再用 `fine_choice.refine` 做 CEGAR，跟 `fine_gpr_choices` 的 auto 相同。
+- **結構化運算子配對器**：ILA 端找一個二元運算子節點，它有一個運算元是 GPR 讀取 mux（assignment 裡選得到 `x31`）；RTL 端找同一個運算子、且有一個運算元叫 `rs1_val*` 或 `rs2_val*` 的節點。有多個候選時，選另一個運算元名字像立即數（`SEXT` 或 `imm`）的那個，否則選原始碼裡的第一個。結果：BEQ 是 `n166`／`…_d216`，SB 是 `n110`／`eaddr__h5553`。
+
+要誠實說明：這些規則雖然是在 LLM 之前寫死的，但**不是在這份 PR 的 rIC3 screen 之前**。寫配對器時，我已經知道 SB 的正確配對因為運算元是 concat，`operator_args` 解析不了；也知道 `eaddr` 配對會 TIMEOUT（`SB/eaddr` screen）。配對器的 tie-break 規則也是在這之後定的。不過，就算改成能解析 concat 的配對器，`h5583` 的另一個運算元是 concat、不含 `SEXT`／`imm`，依同一個 tie-break 還是會選 `eaddr`。下一步的 LLM 實驗要用這個 commit 的 `rules.py`，不能再改。
 
 ## 現有切法為什麼讓 S 失敗
 
@@ -59,7 +79,7 @@
 
 重複計時：(5,6) 的 S+uf 在同一組 CPU 上連跑 3 次。BEQ 是 145、146、145 s，SB 是 85、83、84 s，都是 UNSAT。只拆這邊沒有能比較的時間（全部 TIMEOUT），所以這裡的結論是「能證／不能證」，不是加速倍數。
 
-全部 54 筆紀錄（`scripts/table.py` 產生；BMC／IC3 是最後一個 rIC3 run 的最深 bound 和 frame）：
+全部 52 筆 screen 紀錄（不含預先登記的 `rules` batch，它在後面另列）（`scripts/table.py` 產生；BMC／IC3 是最後一個 rIC3 run 的最深 bound 和 frame）：
 
 | Case | Batch | Sub-property / arm | Status | Ref. | Time s | rIC3 s | Final COI bits | BMC / IC3 (last) | CEX depths |
 | --- | --- | --- | --- | ---: | ---: | ---: | ---: | --- | --- |
@@ -116,13 +136,46 @@
 | SB | s2 | `store_en.rs1=5.rs2=6.keep56.cd` | TIMEOUT | 0 | 310 | 303 | 1,291 | 30 / 10 | - |
 | SB | s2 | `store_en.rs1=5.rs2=6.split` | TIMEOUT | 0 | 311 | 308 | 5,163 | 22 / 11 | - |
 
+預先登記的 `rules` batch（26 筆）：
+
+| Case | Batch | Sub-property / arm | Status | Ref. | Time s | rIC3 s | Final COI bits | BMC / IC3 (last) | CEX depths |
+| --- | --- | --- | --- | ---: | ---: | ---: | ---: | --- | --- |
+| BEQ | rules | `mem.coi` | TIMEOUT | 0 | 311 | 307 | 5,131 | 11 / 10 | - |
+| BEQ | rules | `mem.S` | max_iterations | 10 | 436 | 351 | 2,642 | 10 / 7 | 8,11,11,11,11,11,11,11,11,11,11 |
+| BEQ | rules | `mem.auto` | max_iterations | 10 | 442 | 356 | 2,642 | 10 / 7 | 9,11,11,11,11,11,11,11,11,11,11 |
+| BEQ | rules | `pc.rs1=5.rs2=6.S` | UNSAT | 1 | 134 | 120 | 1,484 | 30 / 14 | 8 |
+| BEQ | rules | `pc.rs1=12.rs2=3.S` | UNSAT | 1 | 150 | 136 | 1,484 | 65 / 16 | 8 |
+| BEQ | rules | `pc.rs1=31.rs2=1.S` | UNSAT | 1 | 159 | 145 | 1,484 | 65 / 16 | 8 |
+| BEQ | rules | `pc.rs1=5.rs2=6.auto` | TIMEOUT | 6 | 505 | 453 | 2,286 | 65 / 10 | 8,11,11,11,11,11 |
+| BEQ | rules | `pc.rs1=12.rs2=3.auto` | TIMEOUT | 6 | 504 | 453 | 2,286 | 65 / 10 | 8,11,11,11,11,11 |
+| BEQ | rules | `pc.rs1=20.rs2=9.S` | UNSAT | 1 | 125 | 109 | 1,484 | 30 / 11 | 8 |
+| BEQ | rules | `pc.rs1=7.rs2=26.S` | UNSAT | 1 | 174 | 157 | 1,484 | 40 / 11 | 8 |
+| BEQ | rules | `pc.rs1=31.rs2=1.auto` | TIMEOUT | 6 | 534 | 470 | 2,286 | 40 / 10 | 8,11,12,11,11,11 |
+| BEQ | rules | `pc.rs1=20.rs2=9.auto` | TIMEOUT | 6 | 532 | 469 | 2,286 | 40 / 10 | 8,11,13,11,11,11 |
+| BEQ | rules | `pc.rs1=7.rs2=26.auto` | TIMEOUT | 6 | 537 | 471 | 2,286 | 65 / 10 | 8,17,11,11,11,11 |
+| SB | rules | `mem.coi` | TIMEOUT | 0 | 312 | 308 | 5,131 | 14 / 11 | - |
+| SB | rules | `mem.auto` | max_iterations | 10 | 448 | 368 | 2,642 | 11 / 7 | 9,11,12,12,12,12,12,12,12,12,12 |
+| SB | rules | `mem.S` | max_iterations | 10 | 448 | 369 | 2,642 | 11 / 6 | 9,11,12,12,12,12,15,12,12,12,12 |
+| SB | rules | `store_en.rs1=5.rs2=6.S` | TIMEOUT | 6 | 526 | 474 | 2,480 | 30 / 11 | 8,12,12,12,12,12 |
+| SB | rules | `store_en.rs1=12.rs2=3.S` | TIMEOUT | 6 | 526 | 474 | 2,480 | 25 / 11 | 8,11,12,12,12,12 |
+| SB | rules | `store_en.rs1=5.rs2=6.auto` | TIMEOUT | 9 | 667 | 588 | 2,577 | 25 / 11 | 8,12,12,12,12,12,12,12,12 |
+| SB | rules | `store_en.rs1=12.rs2=3.auto` | TIMEOUT | 8 | 649 | 569 | 2,480 | 25 / 11 | 8,11,12,12,12,12,12,12 |
+| SB | rules | `store_en.rs1=31.rs2=1.S` | TIMEOUT | 6 | 562 | 500 | 2,480 | 24 / 11 | 10,11,12,12,12,12 |
+| SB | rules | `store_en.rs1=31.rs2=1.auto` | TIMEOUT | 6 | 542 | 477 | 2,286 | 25 / 11 | 8,11,12,12,12,14 |
+| SB | rules | `store_en.rs1=20.rs2=9.S` | TIMEOUT | 5 | 477 | 433 | 2,383 | 30 / 11 | 9,11,12,12,15 |
+| SB | rules | `store_en.rs1=7.rs2=26.S` | TIMEOUT | 6 | 538 | 481 | 2,480 | 30 / 11 | 8,11,12,12,12,13 |
+| SB | rules | `store_en.rs1=20.rs2=9.auto` | TIMEOUT | 10 | 743 | 650 | 2,674 | 25 / 11 | 8,11,12,12,12,12,12,12,12,12 |
+| SB | rules | `store_en.rs1=7.rs2=26.auto` | TIMEOUT | 8 | 585 | 524 | 2,480 | 30 / 11 | 8,11,12,12,12,12,12,12 |
+
+名稱裡的 `keep…` 後綴只是標籤，不一定是完整的保留集合。例如 `pc.rs1=5.rs2=0.keep5.cd` 實際保留 {0, 5}，`pc.rs1=12.rs2=3.keep.cd.uf` 保留 {3, 12}。完整集合在 spec 的 `keep_gprs`，也列在上面的診斷表。
+
 `real` 表示 CEX 裡沒有任何 choice 的 free value，也沒有可退回的 word-level GPR，所以是真反例。`max_iterations` 表示 10 次 refinement 都用完，最後一個模型仍是 SAT。
 
 ## 對 LLM 對照實驗設計的影響
 
 - 在這些題目上，規則 S 輸的不是「該留哪個 GPR」本身，而是現有切法沒有替非 GPR 的 conjunct 依 rs1、rs2 拆 case。一旦拆了，case 名字（`rs1==5&&rs2==6`）就又寫出答案，S 加上正確的 UF 就能 5 / 5。所以給 LLM 的選單要包含「這個 conjunct 要不要依哪些欄位拆」。如果把拆法當成所有 arm 共用的前處理，BEQ 就會回到「從文字讀得出來」。
-- 比 S 更強的結構化規則也可能找到 GPR 依賴：例如在 ILA 端算 conjunct 的 COI，看它經過哪些 `inst[19:15]`／`inst[24:20]` 的 mux。這條規則沒有實作，也沒有測。LLM 對照時應把它當成第二個 baseline，才能說 LLM 勝過結構化規則。
-- UF 配對是 SB 上 LLM 真正有空間的地方：結構化配對器選錯，後果是 TIMEOUT。BEQ 的配對用結構化方式就找得到。
+- 比預先登記的 S 更強的結構化規則也可能找到 GPR 依賴：例如在 ILA 端算 conjunct 的 COI，看它經過哪些 `inst[19:15]`／`inst[24:20]` 的 mux。這條規則沒有預先登記。如果要加進對照，必須在看到任何 LLM 答案之前 commit，跟 `rules.py` 一樣。
+- UF 配對是 SB 上 LLM 真正有空間的地方：預先登記的配對器選錯，後果是 S 0 / 5、auto 0 / 6。BEQ 的配對用配對器就找得到。
 - 更省的拆法（還沒測）：SB 的 `store_addr` 只依賴 rs1、`store_data` 只依賴 rs2；如果能按 conjunct 分開拆，每題只要 32 + 32 個 case，不必 1,024 個。這需要 `split_wrapper` 能依 conjunct 選，而不是依 ILA state 選。
 
 ## 環境
@@ -132,6 +185,9 @@ Mazu（i9-14900K），Yosys 0.68+120，rIC3 master `8c6df1b`（SHA-256 `90e7141b
 - E-core 16–31：s1、s2、s4、rep、eaddr，以及 s3 的 BEQ。
 - s3 的 SB 兩條：E 30–31 或 P 12–13，沒有記錄是哪一條在哪組。
 - long：P 12–13（BEQ）、14–15（SB）。
+- rules：E 20–25（BEQ）、26–31（SB），10:46–11:30。
+
+另一個 session 從 10:58 起在 P-core 12–15 上跑 LLM 規則 pilot（`llm-rule-20261027`）。它和 `rules` batch 用不同的 CPU。`rules` 期間的 1 分鐘 load average 是 0.3–109（`rules-loadavg.log`，每分鐘一筆）。load 偏高是因為每個 rIC3 portfolio 約有 17 個 thread，全都綁在 2 個 CPU 上，所以 load 不代表 CPU 被搶。但記憶體頻寬和 cache 是共用的，`rules` 和 `rep` 之間的時間只能大致比較。
 
 最多 8 個 run 同時跑。機器上還有別的 session，但大多閒置。時間包含兩次 Yosys build 和 witness replay。`units.json` 是從 `fine-gpr-20261026/piccolo-ADDI` 複製來的：BEQ、SB、LB 的單元 instance 和 level 都一樣，只有 `coi_state_bits` 這個資訊欄位可能略有不同。
 
@@ -161,15 +217,22 @@ $S/batch.sh SB-named long $RUN/specs/SB-named-long.jsonl 14-15 1200 0
 $S/batch.sh BEQ rep $RUN/specs/BEQ-rep.jsonl 28-29 300 10
 $S/batch.sh SB-named rep $RUN/specs/SB-named-rep.jsonl 26-27 300 10
 $S/batch.sh SB eaddr $RUN/specs/SB-eaddr.jsonl 30-31 300 10
+mkdir -p $RUN/rules
+python3 $S/rules.py BEQ Piccolo_verification_done/BEQ/wrapper.v $RUN/piccolo-BEQ/units.json $RUN/piccolo-BEQ/s4/pc.rs1=12.rs2=3.split/iter0/model.btor2 $RUN/rules/BEQ.jsonl
+python3 $S/rules.py SB Piccolo_verification_done/SB/wrapper.v $RUN/piccolo-SB/units.json $RUN/piccolo-SB/s1/store_en.split/iter0/model.btor2 $RUN/rules/SB.jsonl
+# rules/<case>-run.jsonl = rules/<case>.jsonl without the rs1×rs2 .coi lines (identical to the split specs)
+$S/batch.sh BEQ rules $RUN/rules/BEQ-run.jsonl 20-21/22-23/24-25 300 10
+$S/batch.sh SB rules $RUN/rules/SB-run.jsonl 26-27/28-29/30-31 300 10
 python3 $S/table.py $RUN
 ```
 
-紀錄（每個子 property 一行）放在 `piccolo/<case>/<batch>.jsonl`，specs 在 `specs/`，每個模型的 SHA-256 在 `model-sha256.txt`。s2 跑的時候我改了 `batch.sh`，bash 會邊跑邊讀腳本，所以 s2 最後的 `cp`／`.done` 沒有執行，留下 `s2.failed`。但 6 筆紀錄都完整寫進了 `results.jsonl`，`s2.jsonl` 是事後手動拷的（`piccolo/*/s2.note`）。沒有任何 `ERROR` 紀錄。
+紀錄（每個子 property 一行）放在 `piccolo/<case>/<batch>.jsonl`，specs 在 `specs/`，每個模型的 SHA-256 在 `model-sha256.txt`。s2 跑的時候我改了 `batch.sh`，bash 會邊跑邊讀腳本，所以 s2 最後的 `cp`／`.done` 沒有執行，留下 `s2.failed`。但 6 筆紀錄都完整寫進了 `results.jsonl`，`s2.jsonl` 是事後手動拷的（`piccolo/*/s2.note`）。沒有任何 `ERROR` 紀錄。`rules` batch 跑的時候，`batch.sh` 的 EXIT trap 有一個 bug：它在函式裡用了 `$2`，而那是函式自己的參數（空的），所以沒有把紀錄拷出來。26 筆紀錄都完整寫進了 `results.jsonl`，`rules.jsonl` 是手動拷的。之後修正為先存成 `b=$2`，並用一個空的 batch 測過。
 
 ## 沒做的與風險
 
 - 每題只有 5 組 (rs1, rs2) 樣本，加上 rs1 = rs2、rs1 = 0 的診斷。完整的 BEQ `pc`、SB `store_en` 各要 1,024 個 case，照樣本時間估計約 40 和 25 小時的兩-CPU 時間。
 - 只拆在 1200 s 只跑了 (5,6) 一條，其他只拆的 case 都是 300 s。
 - 沒有跑 SH、BNE。它們的 conjunct 和 SB、BEQ 相同，但沒有實測。
-- 結構化 baseline 只測了現有的 S 和一個簡單的運算子配對器；更強的 ILA-COI 規則沒有實作。
+- 預先登記的規則是在 LLM 之前，但在這份 PR 的 screen 之後寫的（見「預先登記的規則」），所以配對器的定義可能偏向對 SB 不利。更強的 ILA-COI 規則沒有實作。
+- auto 和 S 各只跑了一次，沒有重複計時；它們的結論是「證不出／證得出」，不是時間比。
 - SB 的 RTL 配對需要先把 concat 命名成 wire。如果 LLM 選單只列出 `operator_args` 認得的節點，正確配對根本不會出現在選單裡。

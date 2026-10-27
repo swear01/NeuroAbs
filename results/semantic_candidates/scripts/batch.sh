@@ -7,11 +7,12 @@ set -euo pipefail
 RUN=/var/tmp/neuroabs-runtime/runs/semantic-cand-20261027
 R=$(cd "$(dirname "$0")/../../.." && pwd)
 d=$RUN/piccolo-$1
+b=$2
 w=$R/Piccolo_verification_done/$1/wrapper.v; [ -e "$d/wrapper.v" ] && w=$d/wrapper.v
 mkdir -p "$d"; rm -f "$d/$2.done" "$d/$2.failed"
 finish() {
-  if [ -e "$d/$2/results.jsonl" ]; then cp "$d/$2/results.jsonl" "$d/$2.jsonl"; fi
-  [ -e "$d/$2.done" ] || touch "$d/$2.failed"
+  if [ -e "$d/$b/results.jsonl" ]; then cp "$d/$b/results.jsonl" "$d/$b.jsonl"; fi
+  [ -e "$d/$b.done" ] || touch "$d/$b.failed"
 }
 trap finish EXIT
 python3 "$R/src/fine_batch.py" --wrapper "$w" --units "$d/units.json" \

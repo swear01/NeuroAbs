@@ -132,3 +132,15 @@ S（`fine_choice.structural`）是在讀過 DeepSeek 的 ADDI 答案之後才寫
 
 - 不修補 LLM 規則；不改 `rules.py`、`fine_choice.refine`、rIC3 或 IC3 內部；不用 AVR；不用 sudo。
 - 不以「與 S 一致」評分。
+
+## 9. 修改
+
+### 2026-10-27T14:48Z（22:48 +08）：取消 Claude 的 API key 備援
+
+- 第 5 節第 105 行的 API key 備援，已依使用者指示取消。`~/.secrets` 中的 `ANTHROPIC_API_KEY` 是實驗室的 key，不是使用者的。
+- Claude 一律使用本機已登入的個人 claude.ai 帳號（`claude -p`）。若個人帳號額度不足、無法使用 opus 或被限流，就停止並回報，不改用任何 API key。
+- 這項備援實際上沒有觸發：
+  - 生成 5 次、回饋 5 次，共 10 次 Claude 呼叫，stream-json 紀錄都是 `apiKeySource: none`、`claude-opus-5-5`。
+  - 本實驗的程式從未讀取 `~/.secrets`。
+  - Anthropic API 花費為 US$0。
+- 第 105 行的原文保留不改。

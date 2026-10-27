@@ -99,6 +99,8 @@ def run_rule(source, design, subs, python=sys.executable):
 
 def apply_rule(source, design, inputs, subs, ufs):
     """Return ({name: spec}, {name: errors}) for every sub-property; inputs are the rule arguments of subs."""
+    if [i["name"] for i in inputs] != [s["name"] for s in subs]:
+        raise ValueError("inputs and subs must name the same sub-properties in the same order")
     by_name = {s["name"]: s for s in subs}
     specs, errors = {}, {}
     for r in run_rule(source, design, inputs):

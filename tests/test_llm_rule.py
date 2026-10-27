@@ -124,6 +124,8 @@ class LlmRuleExecTest(unittest.TestCase):
         self.assertEqual(errors, {})
         self.assertTrue(specs["x1.frame"]["rd_guard"])
         self.assertFalse(specs["mem"]["rd_guard"])
+        with self.assertRaises(ValueError):
+            self.rule.apply_rule(GOOD, DESIGN, SUBS, subs[::-1], ufs)
         self.assertEqual(specs["x1.frame"]["keep_gprs"], list(range(1, 32)))
         self.assertEqual(specs["x1.frame"]["units"], {"csr_regfile": "cut"})
         self.assertEqual(specs["x1.frame"]["uf"], ufs)

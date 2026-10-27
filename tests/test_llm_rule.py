@@ -63,8 +63,8 @@ class LlmRuleExecTest(unittest.TestCase):
             errors = self.exec.validate(source)
             if reason is None:
                 self.assertEqual(errors, [])
-                with self.assertRaises(RuntimeError):
-                    self.rule.run_rule(source, DESIGN, SUBS)
+                results = self.rule.run_rule(source, DESIGN, SUBS)
+                self.assertTrue(all(r["error"].startswith("NameError") for r in results))
             else:
                 self.assertTrue(any(reason in e for e in errors), (source, errors))
 
@@ -85,6 +85,12 @@ class LlmRuleExecTest(unittest.TestCase):
         results = self.rule.run_rule(source, DESIGN, SUBS)
         self.assertIn("output", results[0])
         self.assertTrue(results[1]["error"].startswith("KeyError"))
+
+    def test_undefined_name_is_reported_per_sub_property(self):
+        source = "def choose(sub, design):\n    return isinstance(sub, dict)\n"
+        self.assertEqual(self.exec.validate(source), [])
+        results = self.rule.run_rule(source, DESIGN, SUBS)
+        self.assertTrue(all(r["error"].startswith("NameError") for r in results))
 
     def test_memory_limit_rejects_rule(self):
         with self.assertRaises(RuntimeError):
@@ -107,14 +113,17 @@ class LlmRuleExecTest(unittest.TestCase):
 
     def test_apply_rule_rejects_invalid_output(self):
         source = "def choose(sub, design):\n    return {'csr_regfile': 'cut'}\n"
-        specs, errors = self.rule.apply_rule(source, DESIGN, SUBS, [])
+        specs, errors = self.rule.apply_rule(source, DESIGN, SUBS, SUBS, [])
         self.assertEqual(specs, {})
         self.assertEqual(sorted(errors), ["mem", "x1.frame"])
 
     def test_apply_rule_spec(self):
         ufs = [{"ila": "n1", "rtl": "r1"}]
-        specs, errors = self.rule.apply_rule(GOOD, DESIGN, SUBS, ufs)
+        subs = [dict(SUBS[0], rd_guard=True), SUBS[1]]
+        specs, errors = self.rule.apply_rule(GOOD, DESIGN, SUBS, subs, ufs)
         self.assertEqual(errors, {})
+        self.assertTrue(specs["x1.frame"]["rd_guard"])
+        self.assertFalse(specs["mem"]["rd_guard"])
         self.assertEqual(specs["x1.frame"]["keep_gprs"], list(range(1, 32)))
         self.assertEqual(specs["x1.frame"]["units"], {"csr_regfile": "cut"})
         self.assertEqual(specs["x1.frame"]["uf"], ufs)

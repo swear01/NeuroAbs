@@ -112,9 +112,9 @@ ADDI 的結果只代表抽樣，不是完整證明。
 **規則 3**
 - 比較的 GPR 與來源 GPR 都設為 keep，包括寫入情形的 rd。
 - unit 依描述關鍵字決定：
-  - D-cache 的關鍵字中有 `"LR"`、`"SC"`，四個指令的描述都含有 `"SC"` 子字串，所以 D-cache 一律保留。
+  - D-cache 的關鍵字中有 `"LR"`、`"SC"`，四個指令的描述都含有 `RISC-V`，其中的 `RISC` 含 `"SC"` 子字串，所以 D-cache 一律保留。
   - I-cache 在描述含 `"JAL"`、`"AUIPC"`，或 assertion 含 `pc` 時保留，所以 `mem` 與 AUIPC、JAL 的所有 sub-property 都保留 I-cache。
-- operator 只有在描述含算術指令名稱時設為 uf。ADDI 正確匹配；LUI、AUIPC、JAL 是因為 `"OR"` 子字串誤配。
+- operator 只有在描述含算術指令名稱時設為 uf。ADDI 正確匹配；LUI、AUIPC、JAL 是因為描述中的 `for` 含 `"OR"` 子字串而誤配。依試驗規則，LLM 產生的規則原樣使用，不做修正。
 
 | 指令 | 與 S 的差異 |
 | --- | --- |

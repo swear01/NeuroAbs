@@ -7,6 +7,9 @@ import fine_choice
 case, subs, out, names = sys.argv[1], json.load(open(sys.argv[2])), sys.argv[3], sys.argv[4:]
 units = json.load(open("{:s}/units.json".format(case)))
 ufs = json.load(open("{:s}/uf.json".format(case)))
+missing = sorted(set(names) - {s["name"] for s in subs})
+if missing:
+    raise SystemExit("unknown sub-properties: " + ", ".join(missing))
 with open(out, "w") as f:
     for s in subs:
         if s["name"] in names:

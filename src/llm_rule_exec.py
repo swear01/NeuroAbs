@@ -101,7 +101,7 @@ def main():
         try:
             output = choose(json.loads(json.dumps(sub)), design)
             results.append({"name": sub["name"], "output": json.loads(json.dumps(output))})
-        except (ArithmeticError, LookupError, TypeError, ValueError, AttributeError, RecursionError) as e:
+        except (ArithmeticError, LookupError, NameError, TypeError, ValueError, AttributeError, RecursionError) as e:
             results.append({"name": sub["name"], "error": "{:s}: {:s}".format(type(e).__name__, str(e))})
     json.dump({"results": results}, sys.stdout)
     return 0

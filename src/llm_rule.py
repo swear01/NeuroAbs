@@ -97,10 +97,11 @@ def run_rule(source, design, subs, python=sys.executable):
     return json.loads(proc.stdout)["results"]
 
 
-def apply_rule(source, design, subs, ufs):
-    """Return ({name: spec}, {name: errors}) for every sub-property."""
+def apply_rule(source, design, inputs, subs, ufs):
+    """Return ({name: spec}, {name: errors}) for every sub-property; inputs are the rule arguments of subs."""
+    by_name = {s["name"]: s for s in subs}
     specs, errors = {}, {}
-    for r in run_rule(source, design, subs):
+    for r in run_rule(source, design, inputs):
         if "error" in r:
             errors[r["name"]] = [r["error"]]
             continue
@@ -108,8 +109,7 @@ def apply_rule(source, design, subs, ufs):
         if problems:
             errors[r["name"]] = problems
             continue
-        sub = next(s for s in subs if s["name"] == r["name"])
-        specs[r["name"]] = fine_choice_llm.to_spec(sub, r["output"], ufs)
+        specs[r["name"]] = fine_choice_llm.to_spec(by_name[r["name"]], r["output"], ufs)
     return specs, errors
 
 
@@ -210,7 +210,7 @@ def main(argv=None):
         source = f.read()
     with open(args.subs) as f:
         subs = json.load(f)
-    specs, errors = apply_rule(source, design, [sub_input(s, text) for s in subs], ufs)
+    specs, errors = apply_rule(source, design, [sub_input(s, text) for s in subs], subs, ufs)
     rows = []
     for s in subs:
         structural = fine_choice.structural(s, [u for u in units if u["id"] != fine_choice.GPR_UNIT], ufs)

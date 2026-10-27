@@ -1,0 +1,397 @@
+{
+ "rule1 ADDI": {
+  "subs": 1024,
+  "same": 1024,
+  "different": 0,
+  "rejected": 0
+ },
+ "rule2 ADDI": {
+  "subs": 1024,
+  "same": 32,
+  "different": 992,
+  "rejected": 0,
+  "run": {
+   "n": 16,
+   "status": {
+    "UNSAT": 1,
+    "TIMEOUT": 15
+   },
+   "refinements": 0,
+   "seconds": 4586,
+   "median": 305
+  },
+  "S_same_subs": {
+   "n": 16,
+   "status": {
+    "UNSAT": 16
+   },
+   "refinements": 0,
+   "seconds": 849,
+   "median": 52
+  },
+  "unproved": {
+   "x19.rs1=2": "TIMEOUT",
+   "x2.rs1=4": "TIMEOUT",
+   "x16.rs1=6": "TIMEOUT",
+   "x30.rs1=8": "TIMEOUT",
+   "x13.rs1=10": "TIMEOUT",
+   "x27.rs1=12": "TIMEOUT",
+   "x10.rs1=14": "TIMEOUT",
+   "x24.rs1=16": "TIMEOUT",
+   "x7.rs1=18": "TIMEOUT",
+   "x21.rs1=20": "TIMEOUT",
+   "x4.rs1=22": "TIMEOUT",
+   "x18.rs1=24": "TIMEOUT",
+   "x1.rs1=26": "TIMEOUT",
+   "x15.rs1=28": "TIMEOUT",
+   "x29.rs1=30": "TIMEOUT"
+  }
+ },
+ "rule3 ADDI": {
+  "subs": 1024,
+  "same": 0,
+  "different": 1024,
+  "rejected": 0,
+  "run": {
+   "n": 64,
+   "status": {
+    "UNSAT": 64
+   },
+   "refinements": 0,
+   "seconds": 3085,
+   "median": 42
+  },
+  "S_same_subs": {
+   "n": 64,
+   "status": {
+    "UNSAT": 64
+   },
+   "refinements": 1,
+   "seconds": 2627,
+   "median": 40
+  },
+  "unproved": {}
+ },
+ "S-control ADDI": {
+  "run": {
+   "n": 8,
+   "status": {
+    "UNSAT": 8
+   },
+   "refinements": 1,
+   "seconds": 160,
+   "median": 19
+  },
+  "S_recorded": {
+   "n": 8,
+   "status": {
+    "UNSAT": 8
+   },
+   "refinements": 1,
+   "seconds": 318,
+   "median": 39
+  },
+  "time_ratio_median": 0.52,
+  "time_ratio_range": [
+   0.43,
+   0.57
+  ]
+ },
+ "rule1 LUI": {
+  "subs": 63,
+  "same": 63,
+  "different": 0,
+  "rejected": 0
+ },
+ "rule2 LUI": {
+  "subs": 63,
+  "same": 32,
+  "different": 31,
+  "rejected": 0,
+  "run": {
+   "n": 31,
+   "status": {
+    "UNSAT": 31
+   },
+   "refinements": 0,
+   "seconds": 352,
+   "median": 11
+  },
+  "S_same_subs": {
+   "n": 31,
+   "status": {
+    "UNSAT": 31
+   },
+   "refinements": 0,
+   "seconds": 357,
+   "median": 12
+  },
+  "unproved": {},
+  "whole_case": {
+   "n": 63,
+   "status": {
+    "UNSAT": 63
+   },
+   "refinements": 1,
+   "seconds": 929,
+   "median": 15
+  }
+ },
+ "rule3 LUI": {
+  "subs": 63,
+  "same": 0,
+  "different": 63,
+  "rejected": 0,
+  "run": {
+   "n": 63,
+   "status": {
+    "UNSAT": 63
+   },
+   "refinements": 0,
+   "seconds": 1259,
+   "median": 19
+  },
+  "S_same_subs": {
+   "n": 63,
+   "status": {
+    "UNSAT": 63
+   },
+   "refinements": 1,
+   "seconds": 934,
+   "median": 15
+  },
+  "unproved": {},
+  "whole_case": {
+   "n": 63,
+   "status": {
+    "UNSAT": 63
+   },
+   "refinements": 0,
+   "seconds": 1259,
+   "median": 19
+  }
+ },
+ "S-control LUI": {
+  "run": {
+   "n": 7,
+   "status": {
+    "UNSAT": 7
+   },
+   "refinements": 1,
+   "seconds": 117,
+   "median": 14
+  },
+  "S_recorded": {
+   "n": 7,
+   "status": {
+    "UNSAT": 7
+   },
+   "refinements": 1,
+   "seconds": 124,
+   "median": 15
+  },
+  "time_ratio_median": 0.95,
+  "time_ratio_range": [
+   0.91,
+   0.97
+  ]
+ },
+ "rule1 AUIPC": {
+  "subs": 63,
+  "same": 63,
+  "different": 0,
+  "rejected": 0
+ },
+ "rule2 AUIPC": {
+  "subs": 63,
+  "same": 32,
+  "different": 31,
+  "rejected": 0,
+  "run": {
+   "n": 31,
+   "status": {
+    "UNSAT": 31
+   },
+   "refinements": 0,
+   "seconds": 336,
+   "median": 11
+  },
+  "S_same_subs": {
+   "n": 31,
+   "status": {
+    "UNSAT": 31
+   },
+   "refinements": 0,
+   "seconds": 517,
+   "median": 17
+  },
+  "unproved": {},
+  "whole_case": {
+   "n": 63,
+   "status": {
+    "UNSAT": 63
+   },
+   "refinements": 1,
+   "seconds": 1023,
+   "median": 18
+  }
+ },
+ "rule3 AUIPC": {
+  "subs": 63,
+  "same": 0,
+  "different": 63,
+  "rejected": 0,
+  "run": {
+   "n": 63,
+   "status": {
+    "UNSAT": 63
+   },
+   "refinements": 0,
+   "seconds": 2481,
+   "median": 36
+  },
+  "S_same_subs": {
+   "n": 63,
+   "status": {
+    "UNSAT": 63
+   },
+   "refinements": 1,
+   "seconds": 1204,
+   "median": 18
+  },
+  "unproved": {},
+  "whole_case": {
+   "n": 63,
+   "status": {
+    "UNSAT": 63
+   },
+   "refinements": 0,
+   "seconds": 2481,
+   "median": 36
+  }
+ },
+ "S-control AUIPC": {
+  "run": {
+   "n": 7,
+   "status": {
+    "UNSAT": 7
+   },
+   "refinements": 1,
+   "seconds": 143,
+   "median": 17
+  },
+  "S_recorded": {
+   "n": 7,
+   "status": {
+    "UNSAT": 7
+   },
+   "refinements": 1,
+   "seconds": 152,
+   "median": 18
+  },
+  "time_ratio_median": 0.94,
+  "time_ratio_range": [
+   0.93,
+   0.97
+  ]
+ },
+ "rule1 JAL": {
+  "subs": 63,
+  "same": 63,
+  "different": 0,
+  "rejected": 0
+ },
+ "rule2 JAL": {
+  "subs": 63,
+  "same": 31,
+  "different": 32,
+  "rejected": 0,
+  "run": {
+   "n": 32,
+   "status": {
+    "UNSAT": 32
+   },
+   "refinements": 1,
+   "seconds": 304,
+   "median": 9
+  },
+  "S_same_subs": {
+   "n": 32,
+   "status": {
+    "UNSAT": 32
+   },
+   "refinements": 1,
+   "seconds": 775,
+   "median": 23
+  },
+  "unproved": {},
+  "whole_case": {
+   "n": 63,
+   "status": {
+    "UNSAT": 63
+   },
+   "refinements": 1,
+   "seconds": 1137,
+   "median": 22
+  }
+ },
+ "rule3 JAL": {
+  "subs": 63,
+  "same": 0,
+  "different": 63,
+  "rejected": 0,
+  "run": {
+   "n": 63,
+   "status": {
+    "UNSAT": 63
+   },
+   "refinements": 0,
+   "seconds": 2078,
+   "median": 32
+  },
+  "S_same_subs": {
+   "n": 63,
+   "status": {
+    "UNSAT": 63
+   },
+   "refinements": 1,
+   "seconds": 1608,
+   "median": 25
+  },
+  "unproved": {},
+  "whole_case": {
+   "n": 63,
+   "status": {
+    "UNSAT": 63
+   },
+   "refinements": 0,
+   "seconds": 2078,
+   "median": 32
+  }
+ },
+ "S-control JAL": {
+  "run": {
+   "n": 7,
+   "status": {
+    "UNSAT": 7
+   },
+   "refinements": 1,
+   "seconds": 114,
+   "median": 13
+  },
+  "S_recorded": {
+   "n": 7,
+   "status": {
+    "UNSAT": 7
+   },
+   "refinements": 1,
+   "seconds": 225,
+   "median": 26
+  },
+  "time_ratio_median": 0.52,
+  "time_ratio_range": [
+   0.45,
+   0.54
+  ]
+ }
+}

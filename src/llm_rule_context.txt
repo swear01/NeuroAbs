@@ -1,0 +1,34 @@
+You are an expert in hardware design and formal verification. We are building abstract models of a processor design for property checks. An abstract model must over-approximate the original design: every behavior of the original design must remain possible in the abstract model. A property proved on the abstract model then also holds on the original design.
+
+The property compares the state of an instruction-level model (ILA) with the register-transfer level design (RTL) after one instruction. It is split into sub-properties: each keeps some of the compared states, and may be restricted to a case, a condition on the fields of the checked instruction. Each sub-property is checked on its own abstract model. The abstraction of a sub-property picks exactly one level for each choice:
+
+- A unit is a module instance. "keep" leaves it unchanged; "cut" removes it, and every output of the unit becomes an unconstrained value in every cycle.
+- A GPR choice gpr<j> is general purpose register x<j>. "keep" leaves it unchanged; "word" keeps the RTL register file word x<j> and the ILA state x<j> but drops every assumption that refers only to x<j>, such as the one that sets the ILA state x<j> to the RTL value at the start; "havoc" also makes the RTL register file word x<j> and the ILA state x<j> unconstrained values in every cycle.
+- An operator choice uf<i> pairs an operator of the ILA with the same operator in the RTL. "keep" leaves both unchanged; "uf" makes both results unconstrained values in every cycle, and adds an assumption that their results at the start of the checked instruction are equal when their operands are equal. This removes the arithmetic from the proof but keeps the fact that both compute the same function.
+
+Every level is a sound over-approximation, so soundness is not your concern. The choice decides whether the abstraction is useful. A coarser level removes more state or logic and can make the proof much faster. If the sub-property depends on behavior that the level removes, the abstract model has a spurious counterexample. Refinement then moves one choice back towards "keep" and the proof is attempted again, which costs time; a proof attempt that runs out of time gives no counterexample and cannot be refined. The goal is the coarsest abstraction that the sub-property does not depend on.
+
+Your task is not to choose the levels for one sub-property, but to write a rule: a Python function that chooses the levels for any sub-property of the split. The rule is run once per sub-property, with no further help from you, on every sub-property of this design, including sub-properties that are not shown to you and the sub-properties of other instructions of the same processor, which are split in the same way and have the same kinds of choices but may have other operand fields and other operator choices, or none.
+
+The rule is the source of a Python module that defines the function
+
+    def choose(sub, design):
+
+and may define helper functions. It returns a dict that maps every choice id in design["choices"] to one of that choice's levels, and must give a level to every choice id and to no other key.
+
+design is a dict:
+- "description": text that describes the property.
+- "operand_fields": the source register fields of the instruction that the ILA reads, a list such as ["rs1"] (may be empty).
+- "choices": a list of dicts, each with "id", "kind" ("unit", "gpr" or "operator") and "levels". A unit also has "instance", "module", "coi_state_bits" (state bits in the cone of influence of the whole property) and "outputs" (output ports with widths). A gpr also has "register" (the number j). An operator also has "ila_node", "ila_expr", "rtl_node", "rtl_expr" (the operator node of each side and its left operand, operator and right operand).
+- "gpr_assumptions": for every register number (as a string "0" to "31"), the wrapper assumptions that refer only to that register, as Verilog assignments.
+
+sub is a dict:
+- "name": the name of the sub-property.
+- "states": the compared ILA states that it keeps, such as ["x5"] or ["load_en", "pc", "store_en", "x0"].
+- "case": the condition on the checked instruction under which it is checked, such as "rd!=5" or "rd==5&&rs1==6", or None for every instruction. rd is inst[11:7], rs1 is inst[19:15], rs2 is inst[24:20] and imm is inst[31:20] of the checked instruction.
+- "case_terms": the case parsed into a list of {"field", "op", "value"} with op "==" or "!=".
+- "assertion": the conjuncts of the sub-property, as Verilog assignments that are all required to hold.
+
+The rule runs in restricted Python. Allowed: function definitions (plain positional arguments only), assignments, if, for, return, pass, break, continue, expressions, comprehensions, lambda, f-strings, and the builtins abs, all, any, bool, dict, enumerate, int, len, list, max, min, range, reversed, set, sorted, str, sum, tuple, zip. The only attribute access allowed is a call of one of the methods add, append, count, discard, difference, endswith, extend, get, index, intersection, isdigit, items, join, keys, lower, remove, replace, split, startswith, strip, union, update, upper, values. Not allowed: import, while, try, with, class, global, del, print, any other builtin, names that start with an underscore, and any statement at module level other than a function definition. A rule that breaks these restrictions, raises an error, or returns an invalid dict for any sub-property is rejected; it is not repaired.
+
+Answer with exactly one Python code block that contains the whole module. You may write short explanations before the code block and comments in the code.

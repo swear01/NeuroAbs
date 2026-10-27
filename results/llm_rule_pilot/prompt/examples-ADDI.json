@@ -1,0 +1,53 @@
+[
+ {
+  "name": "mem",
+  "states": [
+   "load_en",
+   "pc",
+   "store_en",
+   "x0"
+  ]
+ },
+ {
+  "name": "x5.frame",
+  "states": [
+   "x5"
+  ],
+  "case": "rd!=5"
+ },
+ {
+  "name": "x17.frame",
+  "states": [
+   "x17"
+  ],
+  "case": "rd!=17"
+ },
+ {
+  "name": "x5.rs1=0",
+  "states": [
+   "x5"
+  ],
+  "case": "rd==5&&rs1==0"
+ },
+ {
+  "name": "x5.rs1=5",
+  "states": [
+   "x5"
+  ],
+  "case": "rd==5&&rs1==5"
+ },
+ {
+  "name": "x5.rs1=6",
+  "states": [
+   "x5"
+  ],
+  "case": "rd==5&&rs1==6"
+ },
+ {
+  "name": "x31.rs1=1",
+  "states": [
+   "x31"
+  ],
+  "case": "rd==31&&rs1==1"
+ }
+]

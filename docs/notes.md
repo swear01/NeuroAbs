@@ -95,3 +95,15 @@
   the command when the pattern appears in it, and kills the session. Start
   long remote jobs with `setsid nohup ... < /dev/null &`; the local `ssh` may
   still not return, but killing it does not stop the job.
+- `fine_choice.uf_rewrite` accepts only one operator pair per ILA node: the
+  second pair on the same node (e.g. SB `n110` with both `h5583` and `eaddr`)
+  raises `ValueError: n110 is not a binary operator on two signals`, so the run
+  is `ERROR`, not unproved. `fine_choice_llm.parse_choices` does not check this;
+  say "at most one" in the prompt or reject such answers.
+- `fine_batch.py` exits 1 whenever any spec ends in `ERROR`, and reruns `ERROR`
+  specs on every later call with the same specs file. Do not chain batches
+  with `&&`. A wait loop `until ! pgrep -f "<pattern>"` never ends when the
+  pattern also appears in the loop's own command line.
+- mazu also runs other sessions' `fine_batch` on the same SB wrapper path; stop
+  your own jobs by exact PID (and their children), never by `pkill -f` on a
+  shared path.

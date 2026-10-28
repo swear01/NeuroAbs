@@ -1,0 +1,50 @@
+{
+ "deepseek": {
+  "pc.rs1=0.rs2=0": "pc.rs1=0.rs2=0.0fd4d3155c",
+  "pc.rs1=0.rs2=7": "pc.rs1=0.rs2=7.7b296c611e",
+  "pc.rs1=2.rs2=23": "pc.rs1=2.rs2=23.a2c285b852",
+  "pc.rs1=5.rs2=14": "pc.rs1=5.rs2=14.ba7ec40d27",
+  "pc.rs1=6.rs2=8": "pc.rs1=6.rs2=8.3072274099",
+  "pc.rs1=7.rs2=14": "pc.rs1=7.rs2=14.c6969d7519",
+  "pc.rs1=7.rs2=17": "pc.rs1=7.rs2=17.ae8b35647b",
+  "pc.rs1=14.rs2=14": "pc.rs1=14.rs2=14.ca772c234a",
+  "pc.rs1=21.rs2=13": "pc.rs1=21.rs2=13.d3890986bf",
+  "pc.rs1=28.rs2=18": "pc.rs1=28.rs2=18.35c4dbe537"
+ },
+ "claude": {
+  "pc.rs1=0.rs2=0": "pc.rs1=0.rs2=0.25cabcd256",
+  "pc.rs1=0.rs2=7": "pc.rs1=0.rs2=7.8faef5bb62",
+  "pc.rs1=2.rs2=23": "pc.rs1=2.rs2=23.35112802fa",
+  "pc.rs1=5.rs2=14": "pc.rs1=5.rs2=14.9c05732104",
+  "pc.rs1=6.rs2=8": "pc.rs1=6.rs2=8.a3b6972fca",
+  "pc.rs1=7.rs2=14": "pc.rs1=7.rs2=14.45e72aa147",
+  "pc.rs1=7.rs2=17": "pc.rs1=7.rs2=17.88b6dadc79",
+  "pc.rs1=14.rs2=14": "pc.rs1=14.rs2=14.5b40f25b64",
+  "pc.rs1=21.rs2=13": "pc.rs1=21.rs2=13.b0835a9a0e",
+  "pc.rs1=28.rs2=18": "pc.rs1=28.rs2=18.197bea2d4b"
+ },
+ "S": {
+  "pc.rs1=0.rs2=0": "pc.rs1=0.rs2=0.7aa3accc7a",
+  "pc.rs1=0.rs2=7": "pc.rs1=0.rs2=7.414ebf5c2f",
+  "pc.rs1=2.rs2=23": "pc.rs1=2.rs2=23.5a570fb9ac",
+  "pc.rs1=5.rs2=14": "pc.rs1=5.rs2=14.f6e11e8653",
+  "pc.rs1=6.rs2=8": "pc.rs1=6.rs2=8.23880a583e",
+  "pc.rs1=7.rs2=14": "pc.rs1=7.rs2=14.f67b804a1a",
+  "pc.rs1=7.rs2=17": "pc.rs1=7.rs2=17.4ec0337d4f",
+  "pc.rs1=14.rs2=14": "pc.rs1=14.rs2=14.752cbd56da",
+  "pc.rs1=21.rs2=13": "pc.rs1=21.rs2=13.197fa41816",
+  "pc.rs1=28.rs2=18": "pc.rs1=28.rs2=18.8578293b29"
+ },
+ "claude-fb2": {
+  "pc.rs1=0.rs2=0": "pc.rs1=0.rs2=0.824b6eb9d8",
+  "pc.rs1=0.rs2=7": "pc.rs1=0.rs2=7.31c79cb082",
+  "pc.rs1=2.rs2=23": "pc.rs1=2.rs2=23.e1e26c4216",
+  "pc.rs1=5.rs2=14": "pc.rs1=5.rs2=14.e67a627d0b",
+  "pc.rs1=6.rs2=8": "pc.rs1=6.rs2=8.80c303101e",
+  "pc.rs1=7.rs2=14": "pc.rs1=7.rs2=14.b0160561d7",
+  "pc.rs1=7.rs2=17": "pc.rs1=7.rs2=17.d88bd33b2c",
+  "pc.rs1=14.rs2=14": "pc.rs1=14.rs2=14.d2a307f8e6",
+  "pc.rs1=21.rs2=13": "pc.rs1=21.rs2=13.6e1530d72b",
+  "pc.rs1=28.rs2=18": "pc.rs1=28.rs2=18.1ca105d95a"
+ }
+}

@@ -1,0 +1,74 @@
+{"name": "mem.c59e7d0c32", "spec": {"states": ["load_en", "pc", "store_en", "x0"], "case": null, "rd_guard": false, "keep_gprs": "all", "units": {}, "uf": []}}
+{"name": "x1.write.ceca009bcb", "spec": {"states": ["x1"], "case": "rd==1", "rd_guard": false, "keep_gprs": "all", "units": {}, "uf": []}}
+{"name": "x2.frame.0d5544db7e", "spec": {"states": ["x2"], "case": "rd!=2", "rd_guard": false, "keep_gprs": "all", "units": {}, "uf": []}}
+{"name": "x2.write.5ec61f9a13", "spec": {"states": ["x2"], "case": "rd==2", "rd_guard": false, "keep_gprs": "all", "units": {}, "uf": []}}
+{"name": "x3.write.cb87ff7cf4", "spec": {"states": ["x3"], "case": "rd==3", "rd_guard": false, "keep_gprs": "all", "units": {}, "uf": []}}
+{"name": "x4.write.e4fa20c474", "spec": {"states": ["x4"], "case": "rd==4", "rd_guard": false, "keep_gprs": "all", "units": {}, "uf": []}}
+{"name": "x5.frame.3e912e2a6a", "spec": {"states": ["x5"], "case": "rd!=5", "rd_guard": false, "keep_gprs": "all", "units": {}, "uf": []}}
+{"name": "x7.frame.f35b60dd49", "spec": {"states": ["x7"], "case": "rd!=7", "rd_guard": false, "keep_gprs": "all", "units": {}, "uf": []}}
+{"name": "x8.write.2d014ddc1e", "spec": {"states": ["x8"], "case": "rd==8", "rd_guard": false, "keep_gprs": "all", "units": {}, "uf": []}}
+{"name": "x14.write.4461baa711", "spec": {"states": ["x14"], "case": "rd==14", "rd_guard": false, "keep_gprs": "all", "units": {}, "uf": []}}
+{"name": "x16.write.f166141324", "spec": {"states": ["x16"], "case": "rd==16", "rd_guard": false, "keep_gprs": "all", "units": {}, "uf": []}}
+{"name": "x18.write.f059554235", "spec": {"states": ["x18"], "case": "rd==18", "rd_guard": false, "keep_gprs": "all", "units": {}, "uf": []}}
+{"name": "x20.frame.41228bacf2", "spec": {"states": ["x20"], "case": "rd!=20", "rd_guard": false, "keep_gprs": "all", "units": {}, "uf": []}}
+{"name": "x24.write.5051f32d7b", "spec": {"states": ["x24"], "case": "rd==24", "rd_guard": false, "keep_gprs": "all", "units": {}, "uf": []}}
+{"name": "x25.write.747b213cbf", "spec": {"states": ["x25"], "case": "rd==25", "rd_guard": false, "keep_gprs": "all", "units": {}, "uf": []}}
+{"name": "x26.frame.bc88eb2c01", "spec": {"states": ["x26"], "case": "rd!=26", "rd_guard": false, "keep_gprs": "all", "units": {}, "uf": []}}
+{"name": "x28.write.53c017bcc3", "spec": {"states": ["x28"], "case": "rd==28", "rd_guard": false, "keep_gprs": "all", "units": {}, "uf": []}}
+{"name": "x29.write.ce58932a35", "spec": {"states": ["x29"], "case": "rd==29", "rd_guard": false, "keep_gprs": "all", "units": {}, "uf": []}}
+{"name": "x31.frame.f11962ceba", "spec": {"states": ["x31"], "case": "rd!=31", "rd_guard": false, "keep_gprs": "all", "units": {}, "uf": []}}
+{"name": "x31.write.5e0d8002c6", "spec": {"states": ["x31"], "case": "rd==31", "rd_guard": false, "keep_gprs": "all", "units": {}, "uf": []}}
+{"name": "mem.ae3f472237", "spec": {"states": ["load_en", "pc", "store_en", "x0"], "case": null, "rd_guard": false, "keep_gprs": [], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": []}}
+{"name": "x1.write.07727a03ce", "spec": {"states": ["x1"], "case": "rd==1", "rd_guard": false, "keep_gprs": [], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": []}}
+{"name": "x2.frame.0c67b760a9", "spec": {"states": ["x2"], "case": "rd!=2", "rd_guard": false, "keep_gprs": [], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": []}}
+{"name": "x2.write.7889504511", "spec": {"states": ["x2"], "case": "rd==2", "rd_guard": false, "keep_gprs": [], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": []}}
+{"name": "x3.write.c576a2a3b8", "spec": {"states": ["x3"], "case": "rd==3", "rd_guard": false, "keep_gprs": [], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": []}}
+{"name": "x4.write.365bf3496e", "spec": {"states": ["x4"], "case": "rd==4", "rd_guard": false, "keep_gprs": [], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": []}}
+{"name": "x5.frame.dcbb3a42ee", "spec": {"states": ["x5"], "case": "rd!=5", "rd_guard": false, "keep_gprs": [], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": []}}
+{"name": "x7.frame.01cacd1596", "spec": {"states": ["x7"], "case": "rd!=7", "rd_guard": false, "keep_gprs": [], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": []}}
+{"name": "x8.write.c5017aaba8", "spec": {"states": ["x8"], "case": "rd==8", "rd_guard": false, "keep_gprs": [], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": []}}
+{"name": "x14.write.614e3f815d", "spec": {"states": ["x14"], "case": "rd==14", "rd_guard": false, "keep_gprs": [], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": []}}
+{"name": "x16.write.fb04bf6587", "spec": {"states": ["x16"], "case": "rd==16", "rd_guard": false, "keep_gprs": [], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": []}}
+{"name": "x18.write.95b80584a1", "spec": {"states": ["x18"], "case": "rd==18", "rd_guard": false, "keep_gprs": [], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": []}}
+{"name": "x20.frame.4abc48356a", "spec": {"states": ["x20"], "case": "rd!=20", "rd_guard": false, "keep_gprs": [], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": []}}
+{"name": "x24.write.954467a7fc", "spec": {"states": ["x24"], "case": "rd==24", "rd_guard": false, "keep_gprs": [], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": []}}
+{"name": "x25.write.aca654cba9", "spec": {"states": ["x25"], "case": "rd==25", "rd_guard": false, "keep_gprs": [], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": []}}
+{"name": "x26.frame.30b441a28c", "spec": {"states": ["x26"], "case": "rd!=26", "rd_guard": false, "keep_gprs": [], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": []}}
+{"name": "x28.write.618da03540", "spec": {"states": ["x28"], "case": "rd==28", "rd_guard": false, "keep_gprs": [], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": []}}
+{"name": "x29.write.6ecf578308", "spec": {"states": ["x29"], "case": "rd==29", "rd_guard": false, "keep_gprs": [], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": []}}
+{"name": "x31.frame.4b852b9407", "spec": {"states": ["x31"], "case": "rd!=31", "rd_guard": false, "keep_gprs": [], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": []}}
+{"name": "x31.write.bdf8c7e677", "spec": {"states": ["x31"], "case": "rd==31", "rd_guard": false, "keep_gprs": [], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": []}}
+{"name": "mem.c540e22c88", "spec": {"states": ["load_en", "pc", "store_en", "x0"], "case": null, "rd_guard": false, "keep_gprs": [0], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": [], "word_gprs": []}}
+{"name": "x1.write.08cdac7275", "spec": {"states": ["x1"], "case": "rd==1", "rd_guard": false, "keep_gprs": [], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": [], "word_gprs": [1]}}
+{"name": "x2.frame.d6b79ed2d6", "spec": {"states": ["x2"], "case": "rd!=2", "rd_guard": false, "keep_gprs": [2], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": [], "word_gprs": []}}
+{"name": "x2.write.a70e4c48c1", "spec": {"states": ["x2"], "case": "rd==2", "rd_guard": false, "keep_gprs": [], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": [], "word_gprs": [2]}}
+{"name": "x3.write.968b79212d", "spec": {"states": ["x3"], "case": "rd==3", "rd_guard": false, "keep_gprs": [], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": [], "word_gprs": [3]}}
+{"name": "x4.write.714459dd94", "spec": {"states": ["x4"], "case": "rd==4", "rd_guard": false, "keep_gprs": [], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": [], "word_gprs": [4]}}
+{"name": "x5.frame.87cb6bfc99", "spec": {"states": ["x5"], "case": "rd!=5", "rd_guard": false, "keep_gprs": [5], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": [], "word_gprs": []}}
+{"name": "x7.frame.da081ea484", "spec": {"states": ["x7"], "case": "rd!=7", "rd_guard": false, "keep_gprs": [7], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": [], "word_gprs": []}}
+{"name": "x8.write.6e8c3448ce", "spec": {"states": ["x8"], "case": "rd==8", "rd_guard": false, "keep_gprs": [], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": [], "word_gprs": [8]}}
+{"name": "x14.write.7cd1ea7f57", "spec": {"states": ["x14"], "case": "rd==14", "rd_guard": false, "keep_gprs": [], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": [], "word_gprs": [14]}}
+{"name": "x16.write.1c7cc9455c", "spec": {"states": ["x16"], "case": "rd==16", "rd_guard": false, "keep_gprs": [], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": [], "word_gprs": [16]}}
+{"name": "x18.write.fa2e5ab6e7", "spec": {"states": ["x18"], "case": "rd==18", "rd_guard": false, "keep_gprs": [], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": [], "word_gprs": [18]}}
+{"name": "x20.frame.aa53c7cf7c", "spec": {"states": ["x20"], "case": "rd!=20", "rd_guard": false, "keep_gprs": [20], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": [], "word_gprs": []}}
+{"name": "x24.write.ba0250c955", "spec": {"states": ["x24"], "case": "rd==24", "rd_guard": false, "keep_gprs": [], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": [], "word_gprs": [24]}}
+{"name": "x25.write.e4535c428a", "spec": {"states": ["x25"], "case": "rd==25", "rd_guard": false, "keep_gprs": [], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": [], "word_gprs": [25]}}
+{"name": "x26.frame.022aacde23", "spec": {"states": ["x26"], "case": "rd!=26", "rd_guard": false, "keep_gprs": [26], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": [], "word_gprs": []}}
+{"name": "x28.write.6488b7e6c5", "spec": {"states": ["x28"], "case": "rd==28", "rd_guard": false, "keep_gprs": [], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": [], "word_gprs": [28]}}
+{"name": "x29.write.f144cdbd34", "spec": {"states": ["x29"], "case": "rd==29", "rd_guard": false, "keep_gprs": [], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": [], "word_gprs": [29]}}
+{"name": "x31.frame.51034e5c18", "spec": {"states": ["x31"], "case": "rd!=31", "rd_guard": false, "keep_gprs": [31], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": [], "word_gprs": []}}
+{"name": "x31.write.eb888eabcf", "spec": {"states": ["x31"], "case": "rd==31", "rd_guard": false, "keep_gprs": [], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": [], "word_gprs": [31]}}
+{"name": "mem.b2b16b73a3", "spec": {"states": ["load_en", "pc", "store_en", "x0"], "case": null, "rd_guard": false, "keep_gprs": [0], "word_gprs": [], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "keep"}, "uf": []}}
+{"name": "x1.write.c944d46fd8", "spec": {"states": ["x1"], "case": "rd==1", "rd_guard": false, "keep_gprs": [1], "word_gprs": [], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": []}}
+{"name": "x2.write.b4cea62369", "spec": {"states": ["x2"], "case": "rd==2", "rd_guard": false, "keep_gprs": [2], "word_gprs": [], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": []}}
+{"name": "x3.write.01dad697ef", "spec": {"states": ["x3"], "case": "rd==3", "rd_guard": false, "keep_gprs": [3], "word_gprs": [], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": []}}
+{"name": "x4.write.6c05c6c79e", "spec": {"states": ["x4"], "case": "rd==4", "rd_guard": false, "keep_gprs": [4], "word_gprs": [], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": []}}
+{"name": "x8.write.6ae1f6d30d", "spec": {"states": ["x8"], "case": "rd==8", "rd_guard": false, "keep_gprs": [8], "word_gprs": [], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": []}}
+{"name": "x14.write.a724a142af", "spec": {"states": ["x14"], "case": "rd==14", "rd_guard": false, "keep_gprs": [14], "word_gprs": [], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": []}}
+{"name": "x16.write.eb8bc71420", "spec": {"states": ["x16"], "case": "rd==16", "rd_guard": false, "keep_gprs": [16], "word_gprs": [], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": []}}
+{"name": "x18.write.a06d892dd0", "spec": {"states": ["x18"], "case": "rd==18", "rd_guard": false, "keep_gprs": [18], "word_gprs": [], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": []}}
+{"name": "x24.write.64f7871010", "spec": {"states": ["x24"], "case": "rd==24", "rd_guard": false, "keep_gprs": [24], "word_gprs": [], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": []}}
+{"name": "x25.write.d9d7e9769f", "spec": {"states": ["x25"], "case": "rd==25", "rd_guard": false, "keep_gprs": [25], "word_gprs": [], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": []}}
+{"name": "x28.write.f3a64386bc", "spec": {"states": ["x28"], "case": "rd==28", "rd_guard": false, "keep_gprs": [28], "word_gprs": [], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": []}}
+{"name": "x29.write.0996eaa44d", "spec": {"states": ["x29"], "case": "rd==29", "rd_guard": false, "keep_gprs": [29], "word_gprs": [], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": []}}
+{"name": "x31.write.90e7e4319e", "spec": {"states": ["x31"], "case": "rd==31", "rd_guard": false, "keep_gprs": [31], "word_gprs": [], "units": {"csr_regfile": "cut", "near_mem_dcache": "cut", "near_mem_icache": "cut"}, "uf": []}}

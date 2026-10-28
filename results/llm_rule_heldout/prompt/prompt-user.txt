@@ -1,0 +1,945 @@
+The design and the choices (the design argument of choose):
+{
+ "description": "Benchmark: Piccolo / ADDI.\nProperty focus: verify the decode and execution behavior for the RISC-V ADDI instruction.\nInstruction source: near_mem$imem_instr, a 32-bit instruction word constrained to {12'bx,5'bx,3'b000,5'bx,7'b0010011}.\nAbstraction hint: signals used only by non-ADDI instructions are expected to be safe abstraction candidates after constant propagation.",
+ "operand_fields": [
+  "rs1"
+ ],
+ "choices": [
+  {
+   "id": "csr_regfile",
+   "levels": [
+    "keep",
+    "cut"
+   ],
+   "kind": "unit",
+   "instance": "RTL.csr_regfile",
+   "module": "mkCSR_RegFile",
+   "coi_state_bits": 480,
+   "outputs": [
+    "RDY_server_reset_request_put[1]",
+    "RDY_server_reset_response_get[1]",
+    "read_csr[33]",
+    "read_csr_port2[33]",
+    "mav_read_csr[33]",
+    "mav_csr_write[32]",
+    "read_misa[28]",
+    "read_mstatus[32]",
+    "read_ustatus[32]",
+    "read_satp[32]",
+    "csr_trap_actions[98]",
+    "RDY_csr_trap_actions[1]",
+    "csr_ret_actions[66]",
+    "RDY_csr_ret_actions[1]",
+    "read_csr_minstret[64]",
+    "read_csr_mcycle[64]",
+    "read_csr_mtime[64]",
+    "access_permitted_1[1]",
+    "access_permitted_2[1]",
+    "csr_counter_read_fault[1]",
+    "csr_mip_read[32]",
+    "interrupt_pending[5]",
+    "wfi_resume[1]",
+    "nmi_pending[1]",
+    "RDY_debug[1]",
+    "RTL__DOT__csr_regfile__DOT__rg_nmi[1]",
+    "RTL__DOT__csr_regfile__DOT__f_reset_rsps__DOT__full_reg[1]",
+    "RTL__DOT__csr_regfile__DOT__f_reset_rsps__DOT__empty_reg[1]",
+    "RTL__DOT__csr_regfile__DOT__rg_state[1]"
+   ]
+  },
+  {
+   "id": "near_mem_dcache",
+   "levels": [
+    "keep",
+    "cut"
+   ],
+   "kind": "unit",
+   "instance": "RTL.near_mem.dcache",
+   "module": "mkMMU_Cache",
+   "coi_state_bits": 410,
+   "outputs": [
+    "RDY_set_verbosity[1]",
+    "RDY_server_reset_request_put[1]",
+    "RDY_server_reset_response_get[1]",
+    "valid[1]",
+    "addr[32]",
+    "word64[64]",
+    "st_amo_val[64]",
+    "exc[1]",
+    "exc_code[4]",
+    "RDY_server_flush_request_put[1]",
+    "RDY_server_flush_response_get[1]",
+    "RDY_tlb_flush[1]",
+    "mem_master_awvalid[1]",
+    "mem_master_awid[4]",
+    "mem_master_awaddr[64]",
+    "mem_master_awlen[8]",
+    "mem_master_awsize[3]",
+    "mem_master_awburst[2]",
+    "mem_master_awlock[1]",
+    "mem_master_awcache[4]",
+    "mem_master_awprot[3]",
+    "mem_master_awqos[4]",
+    "mem_master_awregion[4]",
+    "mem_master_wvalid[1]",
+    "mem_master_wdata[64]",
+    "mem_master_wstrb[8]",
+    "mem_master_wlast[1]",
+    "mem_master_bready[1]",
+    "mem_master_arvalid[1]",
+    "mem_master_arid[4]",
+    "mem_master_araddr[64]",
+    "mem_master_arlen[8]",
+    "mem_master_arsize[3]",
+    "mem_master_arburst[2]",
+    "mem_master_arlock[1]",
+    "mem_master_arcache[4]",
+    "mem_master_arprot[3]",
+    "mem_master_arqos[4]",
+    "mem_master_arregion[4]",
+    "mem_master_rready[1]",
+    "RTL__DOT__near_mem__DOT__icache__DOT__master_xactor_f_rd_data__DOT__empty_reg[1]",
+    "RTL__DOT__near_mem__DOT__icache__DOT__f_reset_reqs__DOT__empty_reg[1]",
+    "RTL__DOT__near_mem__DOT__dcache__DOT__f_reset_rsps__DOT__empty_reg[1]",
+    "RTL__DOT__near_mem__DOT__icache__DOT__f_reset_reqs__DOT__full_reg[1]",
+    "RTL__DOT__near_mem__DOT__dcache__DOT__f_fabric_write_reqs__DOT__full_reg[1]",
+    "RTL__DOT__near_mem__DOT__icache__DOT__f_fabric_write_reqs__DOT__empty_reg[1]",
+    "RTL__DOT__near_mem__DOT__icache__DOT__f_fabric_write_reqs__DOT__full_reg[1]",
+    "RTL__DOT__near_mem__DOT__icache__DOT__f_reset_rsps__DOT__full_reg[1]",
+    "RTL__DOT__near_mem__DOT__icache__DOT__master_xactor_f_rd_addr__DOT__empty_reg[1]",
+    "RTL__DOT__near_mem__DOT__icache__DOT__master_xactor_f_rd_addr__DOT__full_reg[1]",
+    "RTL__DOT__near_mem__DOT__icache__DOT__master_xactor_f_rd_data__DOT__full_reg[1]",
+    "RTL__DOT__near_mem__DOT__icache__DOT__master_xactor_f_wr_addr__DOT__empty_reg[1]",
+    "RTL__DOT__near_mem__DOT__icache__DOT__master_xactor_f_wr_data__DOT__full_reg[1]",
+    "RTL__DOT__near_mem__DOT__icache__DOT__master_xactor_f_wr_resp__DOT__empty_reg[1]",
+    "RTL__DOT__near_mem__DOT__icache__DOT__f_reset_rsps__DOT__empty_reg[1]",
+    "RTL__DOT__near_mem__DOT__icache__DOT__master_xactor_f_wr_resp__DOT__full_reg[1]",
+    "RTL__DOT__near_mem__DOT__dcache__DOT__master_xactor_f_wr_resp__DOT__empty_reg[1]",
+    "RTL__DOT__near_mem__DOT__dcache__DOT__master_xactor_f_rd_addr__DOT__empty_reg[1]",
+    "RTL__DOT__near_mem__DOT__dcache__DOT__master_xactor_f_wr_addr__DOT__full_reg[1]",
+    "RTL__DOT__near_mem__DOT__dcache__DOT__master_xactor_f_wr_data__DOT__empty_reg[1]",
+    "RTL__DOT__near_mem__DOT__dcache__DOT__master_xactor_f_rd_data__DOT__empty_reg[1]",
+    "RTL__DOT__near_mem__DOT__dcache__DOT__master_xactor_f_wr_addr__DOT__empty_reg[1]",
+    "RTL__DOT__near_mem__DOT__dcache__DOT__master_xactor_f_rd_addr__DOT__full_reg[1]",
+    "RTL__DOT__near_mem__DOT__dcache__DOT__master_xactor_f_rd_data__DOT__full_reg[1]",
+    "RTL__DOT__near_mem__DOT__icache__DOT__master_xactor_f_wr_addr__DOT__full_reg[1]",
+    "RTL__DOT__near_mem__DOT__dcache__DOT__f_fabric_write_reqs__DOT__empty_reg[1]",
+    "RTL__DOT__near_mem__DOT__dcache__DOT__master_xactor_f_wr_data__DOT__full_reg[1]",
+    "RTL__DOT__near_mem__DOT__dcache__DOT__f_reset_rsps__DOT__full_reg[1]",
+    "RTL__DOT__near_mem__DOT__dcache__DOT__master_xactor_f_wr_resp__DOT__full_reg[1]",
+    "RTL__DOT__near_mem__DOT__dcache__DOT__f_reset_reqs__DOT__empty_reg[1]",
+    "RTL__DOT__near_mem__DOT__dcache__DOT__rg_pa[32]",
+    "RTL__DOT__near_mem__DOT__dcache__DOT__f_reset_reqs__DOT__full_reg[1]",
+    "RTL__DOT__near_mem__DOT__icache__DOT__master_xactor_f_wr_data__DOT__empty_reg[1]",
+    "RTL__DOT__near_mem__DOT__dcache__DOT__rg_addr[32]"
+   ]
+  },
+  {
+   "id": "near_mem_icache",
+   "levels": [
+    "keep",
+    "cut"
+   ],
+   "kind": "unit",
+   "instance": "RTL.near_mem.icache",
+   "module": "mkMMU_Cache",
+   "coi_state_bits": 378,
+   "outputs": [
+    "RDY_set_verbosity[1]",
+    "RDY_server_reset_request_put[1]",
+    "RDY_server_reset_response_get[1]",
+    "valid[1]",
+    "addr[32]",
+    "word64[64]",
+    "st_amo_val[64]",
+    "exc[1]",
+    "exc_code[4]",
+    "RDY_server_flush_request_put[1]",
+    "RDY_server_flush_response_get[1]",
+    "RDY_tlb_flush[1]",
+    "mem_master_awvalid[1]",
+    "mem_master_awid[4]",
+    "mem_master_awaddr[64]",
+    "mem_master_awlen[8]",
+    "mem_master_awsize[3]",
+    "mem_master_awburst[2]",
+    "mem_master_awlock[1]",
+    "mem_master_awcache[4]",
+    "mem_master_awprot[3]",
+    "mem_master_awqos[4]",
+    "mem_master_awregion[4]",
+    "mem_master_wvalid[1]",
+    "mem_master_wdata[64]",
+    "mem_master_wstrb[8]",
+    "mem_master_wlast[1]",
+    "mem_master_bready[1]",
+    "mem_master_arvalid[1]",
+    "mem_master_arid[4]",
+    "mem_master_araddr[64]",
+    "mem_master_arlen[8]",
+    "mem_master_arsize[3]",
+    "mem_master_arburst[2]",
+    "mem_master_arlock[1]",
+    "mem_master_arcache[4]",
+    "mem_master_arprot[3]",
+    "mem_master_arqos[4]",
+    "mem_master_arregion[4]",
+    "mem_master_rready[1]",
+    "RTL__DOT__near_mem__DOT__icache__DOT__master_xactor_f_rd_data__DOT__empty_reg[1]",
+    "RTL__DOT__near_mem__DOT__icache__DOT__f_reset_reqs__DOT__empty_reg[1]",
+    "RTL__DOT__near_mem__DOT__dcache__DOT__f_reset_rsps__DOT__empty_reg[1]",
+    "RTL__DOT__near_mem__DOT__icache__DOT__f_reset_reqs__DOT__full_reg[1]",
+    "RTL__DOT__near_mem__DOT__dcache__DOT__f_fabric_write_reqs__DOT__full_reg[1]",
+    "RTL__DOT__near_mem__DOT__icache__DOT__f_fabric_write_reqs__DOT__empty_reg[1]",
+    "RTL__DOT__near_mem__DOT__icache__DOT__f_fabric_write_reqs__DOT__full_reg[1]",
+    "RTL__DOT__near_mem__DOT__icache__DOT__f_reset_rsps__DOT__full_reg[1]",
+    "RTL__DOT__near_mem__DOT__icache__DOT__master_xactor_f_rd_addr__DOT__empty_reg[1]",
+    "RTL__DOT__near_mem__DOT__icache__DOT__master_xactor_f_rd_addr__DOT__full_reg[1]",
+    "RTL__DOT__near_mem__DOT__icache__DOT__master_xactor_f_rd_data__DOT__full_reg[1]",
+    "RTL__DOT__near_mem__DOT__icache__DOT__master_xactor_f_wr_addr__DOT__empty_reg[1]",
+    "RTL__DOT__near_mem__DOT__icache__DOT__master_xactor_f_wr_data__DOT__full_reg[1]",
+    "RTL__DOT__near_mem__DOT__icache__DOT__master_xactor_f_wr_resp__DOT__empty_reg[1]",
+    "RTL__DOT__near_mem__DOT__icache__DOT__f_reset_rsps__DOT__empty_reg[1]",
+    "RTL__DOT__near_mem__DOT__icache__DOT__master_xactor_f_wr_resp__DOT__full_reg[1]",
+    "RTL__DOT__near_mem__DOT__dcache__DOT__master_xactor_f_wr_resp__DOT__empty_reg[1]",
+    "RTL__DOT__near_mem__DOT__dcache__DOT__master_xactor_f_rd_addr__DOT__empty_reg[1]",
+    "RTL__DOT__near_mem__DOT__dcache__DOT__master_xactor_f_wr_addr__DOT__full_reg[1]",
+    "RTL__DOT__near_mem__DOT__dcache__DOT__master_xactor_f_wr_data__DOT__empty_reg[1]",
+    "RTL__DOT__near_mem__DOT__dcache__DOT__master_xactor_f_rd_data__DOT__empty_reg[1]",
+    "RTL__DOT__near_mem__DOT__dcache__DOT__master_xactor_f_wr_addr__DOT__empty_reg[1]",
+    "RTL__DOT__near_mem__DOT__dcache__DOT__master_xactor_f_rd_addr__DOT__full_reg[1]",
+    "RTL__DOT__near_mem__DOT__dcache__DOT__master_xactor_f_rd_data__DOT__full_reg[1]",
+    "RTL__DOT__near_mem__DOT__icache__DOT__master_xactor_f_wr_addr__DOT__full_reg[1]",
+    "RTL__DOT__near_mem__DOT__dcache__DOT__f_fabric_write_reqs__DOT__empty_reg[1]",
+    "RTL__DOT__near_mem__DOT__dcache__DOT__master_xactor_f_wr_data__DOT__full_reg[1]",
+    "RTL__DOT__near_mem__DOT__dcache__DOT__f_reset_rsps__DOT__full_reg[1]",
+    "RTL__DOT__near_mem__DOT__dcache__DOT__master_xactor_f_wr_resp__DOT__full_reg[1]",
+    "RTL__DOT__near_mem__DOT__dcache__DOT__f_reset_reqs__DOT__empty_reg[1]",
+    "RTL__DOT__near_mem__DOT__dcache__DOT__rg_pa[32]",
+    "RTL__DOT__near_mem__DOT__dcache__DOT__f_reset_reqs__DOT__full_reg[1]",
+    "RTL__DOT__near_mem__DOT__icache__DOT__master_xactor_f_wr_data__DOT__empty_reg[1]",
+    "RTL__DOT__near_mem__DOT__dcache__DOT__rg_addr[32]"
+   ]
+  },
+  {
+   "id": "gpr0",
+   "levels": [
+    "keep",
+    "word",
+    "havoc"
+   ],
+   "kind": "gpr",
+   "register": 0
+  },
+  {
+   "id": "gpr1",
+   "levels": [
+    "keep",
+    "word",
+    "havoc"
+   ],
+   "kind": "gpr",
+   "register": 1
+  },
+  {
+   "id": "gpr2",
+   "levels": [
+    "keep",
+    "word",
+    "havoc"
+   ],
+   "kind": "gpr",
+   "register": 2
+  },
+  {
+   "id": "gpr3",
+   "levels": [
+    "keep",
+    "word",
+    "havoc"
+   ],
+   "kind": "gpr",
+   "register": 3
+  },
+  {
+   "id": "gpr4",
+   "levels": [
+    "keep",
+    "word",
+    "havoc"
+   ],
+   "kind": "gpr",
+   "register": 4
+  },
+  {
+   "id": "gpr5",
+   "levels": [
+    "keep",
+    "word",
+    "havoc"
+   ],
+   "kind": "gpr",
+   "register": 5
+  },
+  {
+   "id": "gpr6",
+   "levels": [
+    "keep",
+    "word",
+    "havoc"
+   ],
+   "kind": "gpr",
+   "register": 6
+  },
+  {
+   "id": "gpr7",
+   "levels": [
+    "keep",
+    "word",
+    "havoc"
+   ],
+   "kind": "gpr",
+   "register": 7
+  },
+  {
+   "id": "gpr8",
+   "levels": [
+    "keep",
+    "word",
+    "havoc"
+   ],
+   "kind": "gpr",
+   "register": 8
+  },
+  {
+   "id": "gpr9",
+   "levels": [
+    "keep",
+    "word",
+    "havoc"
+   ],
+   "kind": "gpr",
+   "register": 9
+  },
+  {
+   "id": "gpr10",
+   "levels": [
+    "keep",
+    "word",
+    "havoc"
+   ],
+   "kind": "gpr",
+   "register": 10
+  },
+  {
+   "id": "gpr11",
+   "levels": [
+    "keep",
+    "word",
+    "havoc"
+   ],
+   "kind": "gpr",
+   "register": 11
+  },
+  {
+   "id": "gpr12",
+   "levels": [
+    "keep",
+    "word",
+    "havoc"
+   ],
+   "kind": "gpr",
+   "register": 12
+  },
+  {
+   "id": "gpr13",
+   "levels": [
+    "keep",
+    "word",
+    "havoc"
+   ],
+   "kind": "gpr",
+   "register": 13
+  },
+  {
+   "id": "gpr14",
+   "levels": [
+    "keep",
+    "word",
+    "havoc"
+   ],
+   "kind": "gpr",
+   "register": 14
+  },
+  {
+   "id": "gpr15",
+   "levels": [
+    "keep",
+    "word",
+    "havoc"
+   ],
+   "kind": "gpr",
+   "register": 15
+  },
+  {
+   "id": "gpr16",
+   "levels": [
+    "keep",
+    "word",
+    "havoc"
+   ],
+   "kind": "gpr",
+   "register": 16
+  },
+  {
+   "id": "gpr17",
+   "levels": [
+    "keep",
+    "word",
+    "havoc"
+   ],
+   "kind": "gpr",
+   "register": 17
+  },
+  {
+   "id": "gpr18",
+   "levels": [
+    "keep",
+    "word",
+    "havoc"
+   ],
+   "kind": "gpr",
+   "register": 18
+  },
+  {
+   "id": "gpr19",
+   "levels": [
+    "keep",
+    "word",
+    "havoc"
+   ],
+   "kind": "gpr",
+   "register": 19
+  },
+  {
+   "id": "gpr20",
+   "levels": [
+    "keep",
+    "word",
+    "havoc"
+   ],
+   "kind": "gpr",
+   "register": 20
+  },
+  {
+   "id": "gpr21",
+   "levels": [
+    "keep",
+    "word",
+    "havoc"
+   ],
+   "kind": "gpr",
+   "register": 21
+  },
+  {
+   "id": "gpr22",
+   "levels": [
+    "keep",
+    "word",
+    "havoc"
+   ],
+   "kind": "gpr",
+   "register": 22
+  },
+  {
+   "id": "gpr23",
+   "levels": [
+    "keep",
+    "word",
+    "havoc"
+   ],
+   "kind": "gpr",
+   "register": 23
+  },
+  {
+   "id": "gpr24",
+   "levels": [
+    "keep",
+    "word",
+    "havoc"
+   ],
+   "kind": "gpr",
+   "register": 24
+  },
+  {
+   "id": "gpr25",
+   "levels": [
+    "keep",
+    "word",
+    "havoc"
+   ],
+   "kind": "gpr",
+   "register": 25
+  },
+  {
+   "id": "gpr26",
+   "levels": [
+    "keep",
+    "word",
+    "havoc"
+   ],
+   "kind": "gpr",
+   "register": 26
+  },
+  {
+   "id": "gpr27",
+   "levels": [
+    "keep",
+    "word",
+    "havoc"
+   ],
+   "kind": "gpr",
+   "register": 27
+  },
+  {
+   "id": "gpr28",
+   "levels": [
+    "keep",
+    "word",
+    "havoc"
+   ],
+   "kind": "gpr",
+   "register": 28
+  },
+  {
+   "id": "gpr29",
+   "levels": [
+    "keep",
+    "word",
+    "havoc"
+   ],
+   "kind": "gpr",
+   "register": 29
+  },
+  {
+   "id": "gpr30",
+   "levels": [
+    "keep",
+    "word",
+    "havoc"
+   ],
+   "kind": "gpr",
+   "register": 30
+  },
+  {
+   "id": "gpr31",
+   "levels": [
+    "keep",
+    "word",
+    "havoc"
+   ],
+   "kind": "gpr",
+   "register": 31
+  },
+  {
+   "id": "uf0",
+   "levels": [
+    "keep",
+    "uf"
+   ],
+   "kind": "operator",
+   "ila_node": "n110",
+   "ila_expr": [
+    "n107",
+    "+",
+    "n109"
+   ],
+   "ila_operand_sources": [
+    "n107 = ( n17 ) ? ( x31 ) : ( n106 )",
+    "n17 = ( n15 ) == ( bv_5_31_n16 )",
+    "n106 = ( n19 ) ? ( x30 ) : ( n105 )",
+    "n15 = inst[19:15]",
+    "bv_5_31_n16 = 5'h1f",
+    "n19 = ( n15 ) == ( bv_5_30_n18 )",
+    "n109 = { {20{n108[11]} }, n108}",
+    "n108 = inst[31:20]"
+   ],
+   "rtl_node": "alu_outputs___1_addr__h5583",
+   "rtl_expr": [
+    "rs1_val_bypassed__h3337",
+    "+",
+    "alu_outputs___1_addr__h5583__rhs"
+   ],
+   "rtl_operand_sources": [
+    "rs1_val_bypassed__h3337 = (near_mem$imem_instr[19:15] == 5'd0) ? 32'd0 : val__h5074",
+    "val__h5074 = (IF_stage2_rg_full_3_THEN_IF_stage2_rg_stage2_4_ETC___d142 == 2'd2 && IF_stage2_rg_full_3_THEN_IF_stage2_rg_stage2_4_ETC___d161) ? x_out_bypass_rd_val__h4969 : rd_val__h5072",
+    "IF_stage2_rg_full_3_THEN_IF_stage2_rg_stage2_4_ETC___d142 = stage2_rg_full ? CASE_stage2_rg_stage2_BITS_102_TO_101_0_2_1_IF_ETC__q5 : 2'd0",
+    "IF_stage2_rg_full_3_THEN_IF_stage2_rg_stage2_4_ETC___d161 = stage2_rg_stage2[100:96] == near_mem$imem_instr[19:15]",
+    "x_out_bypass_rd_val__h4969 = (stage2_rg_stage2[102:101] == 2'd0) ? stage2_rg_stage2[63:32] : output_stage2___1_bypass_rd_val__h4960",
+    "rd_val__h5072 = (stage3_rg_full && stage3_rg_stage3[37] && stage3_rg_stage3[36:32] == near_mem$imem_instr[19:15]) ? stage3_rg_stage3[31:0] : gpr_regfile$read_rs1",
+    "alu_outputs___1_addr__h5583__rhs = { {20{near_memimem_instr_BITS_31_TO_25_CONCAT_near__ETC__q6[11]}}, near_memimem_instr_BITS_31_TO_25_CONCAT_near__ETC__q6 }",
+    "near_memimem_instr_BITS_31_TO_25_CONCAT_near__ETC__q6 = { near_mem$imem_instr[31:25], near_mem$imem_instr[11:7] }"
+   ]
+  },
+  {
+   "id": "uf1",
+   "levels": [
+    "keep",
+    "uf"
+   ],
+   "kind": "operator",
+   "ila_node": "n110",
+   "ila_expr": [
+    "n107",
+    "+",
+    "n109"
+   ],
+   "ila_operand_sources": [
+    "n107 = ( n17 ) ? ( x31 ) : ( n106 )",
+    "n17 = ( n15 ) == ( bv_5_31_n16 )",
+    "n106 = ( n19 ) ? ( x30 ) : ( n105 )",
+    "n15 = inst[19:15]",
+    "bv_5_31_n16 = 5'h1f",
+    "n19 = ( n15 ) == ( bv_5_30_n18 )",
+    "n109 = { {20{n108[11]} }, n108}",
+    "n108 = inst[31:20]"
+   ],
+   "rtl_node": "eaddr__h5553",
+   "rtl_expr": [
+    "rs1_val_bypassed__h3337",
+    "+",
+    "SEXT_near_mem_imem_instr__59_BITS_31_TO_20_02___d303"
+   ],
+   "rtl_operand_sources": [
+    "rs1_val_bypassed__h3337 = (near_mem$imem_instr[19:15] == 5'd0) ? 32'd0 : val__h5074",
+    "val__h5074 = (IF_stage2_rg_full_3_THEN_IF_stage2_rg_stage2_4_ETC___d142 == 2'd2 && IF_stage2_rg_full_3_THEN_IF_stage2_rg_stage2_4_ETC___d161) ? x_out_bypass_rd_val__h4969 : rd_val__h5072",
+    "IF_stage2_rg_full_3_THEN_IF_stage2_rg_stage2_4_ETC___d142 = stage2_rg_full ? CASE_stage2_rg_stage2_BITS_102_TO_101_0_2_1_IF_ETC__q5 : 2'd0",
+    "IF_stage2_rg_full_3_THEN_IF_stage2_rg_stage2_4_ETC___d161 = stage2_rg_stage2[100:96] == near_mem$imem_instr[19:15]",
+    "x_out_bypass_rd_val__h4969 = (stage2_rg_stage2[102:101] == 2'd0) ? stage2_rg_stage2[63:32] : output_stage2___1_bypass_rd_val__h4960",
+    "rd_val__h5072 = (stage3_rg_full && stage3_rg_stage3[37] && stage3_rg_stage3[36:32] == near_mem$imem_instr[19:15]) ? stage3_rg_stage3[31:0] : gpr_regfile$read_rs1",
+    "SEXT_near_mem_imem_instr__59_BITS_31_TO_20_02___d303 = { {20{near_memimem_instr_BITS_31_TO_20__q7[11]}}, near_memimem_instr_BITS_31_TO_20__q7 }",
+    "near_memimem_instr_BITS_31_TO_20__q7 = near_mem$imem_instr[31:20]"
+   ]
+  },
+  {
+   "id": "uf2",
+   "levels": [
+    "keep",
+    "uf"
+   ],
+   "kind": "operator",
+   "ila_node": "n110",
+   "ila_expr": [
+    "n107",
+    "+",
+    "n109"
+   ],
+   "ila_operand_sources": [
+    "n107 = ( n17 ) ? ( x31 ) : ( n106 )",
+    "n17 = ( n15 ) == ( bv_5_31_n16 )",
+    "n106 = ( n19 ) ? ( x30 ) : ( n105 )",
+    "n15 = inst[19:15]",
+    "bv_5_31_n16 = 5'h1f",
+    "n19 = ( n15 ) == ( bv_5_30_n18 )",
+    "n109 = { {20{n108[11]} }, n108}",
+    "n108 = inst[31:20]"
+   ],
+   "rtl_node": "rd_val___1__h6550",
+   "rtl_expr": [
+    "rs1_val_bypassed__h3337",
+    "+",
+    "_theResult___snd__h7382"
+   ],
+   "rtl_operand_sources": [
+    "rs1_val_bypassed__h3337 = (near_mem$imem_instr[19:15] == 5'd0) ? 32'd0 : val__h5074",
+    "val__h5074 = (IF_stage2_rg_full_3_THEN_IF_stage2_rg_stage2_4_ETC___d142 == 2'd2 && IF_stage2_rg_full_3_THEN_IF_stage2_rg_stage2_4_ETC___d161) ? x_out_bypass_rd_val__h4969 : rd_val__h5072",
+    "IF_stage2_rg_full_3_THEN_IF_stage2_rg_stage2_4_ETC___d142 = stage2_rg_full ? CASE_stage2_rg_stage2_BITS_102_TO_101_0_2_1_IF_ETC__q5 : 2'd0",
+    "IF_stage2_rg_full_3_THEN_IF_stage2_rg_stage2_4_ETC___d161 = stage2_rg_stage2[100:96] == near_mem$imem_instr[19:15]",
+    "x_out_bypass_rd_val__h4969 = (stage2_rg_stage2[102:101] == 2'd0) ? stage2_rg_stage2[63:32] : output_stage2___1_bypass_rd_val__h4960",
+    "rd_val__h5072 = (stage3_rg_full && stage3_rg_stage3[37] && stage3_rg_stage3[36:32] == near_mem$imem_instr[19:15]) ? stage3_rg_stage3[31:0] : gpr_regfile$read_rs1",
+    "_theResult___snd__h7382 = (near_mem$imem_instr[6:0] == 7'b0010011) ? SEXT_near_mem_imem_instr__59_BITS_31_TO_20_02___d303 : rs2_val__h5339",
+    "SEXT_near_mem_imem_instr__59_BITS_31_TO_20_02___d303 = { {20{near_memimem_instr_BITS_31_TO_20__q7[11]}}, near_memimem_instr_BITS_31_TO_20__q7 }",
+    "rs2_val__h5339 = (near_mem$imem_instr[24:20] == 5'd0) ? 32'd0 : val__h5134",
+    "near_memimem_instr_BITS_31_TO_20__q7 = near_mem$imem_instr[31:20]",
+    "val__h5134 = (IF_stage2_rg_full_3_THEN_IF_stage2_rg_stage2_4_ETC___d142 == 2'd2 && IF_stage2_rg_full_3_THEN_IF_stage2_rg_stage2_4_ETC___d163) ? x_out_bypass_rd_val__h4969 : rd_val__h5132"
+   ]
+  }
+ ],
+ "gpr_assumptions": {
+  "0": [
+   "variable_map_assume___p86__ = (!(__START__))||((__ILA_SO_x0)==(0))"
+  ],
+  "1": [
+   "post_value_holder__p57__ = (!((((__START__)||(__STARTED__))&&(!(__auxvar2__recorder_sn_condmet)))&&(monitor_s3)))||((__auxvar2__recorder)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_1_))",
+   "variable_map_assume___p87__ = (!(__START__))||(((!(__START__))||((__ILA_SO_x1)==(__auxvar2__recorder)))&&((!((!(__START__))&&(__IEND__)))||((__ILA_SO_x1)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_1_))))"
+  ],
+  "2": [
+   "post_value_holder__p39__ = (!((((__START__)||(__STARTED__))&&(!(__auxvar13__recorder_sn_condmet)))&&(monitor_s3)))||((__auxvar13__recorder)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_2_))",
+   "variable_map_assume___p98__ = (!(__START__))||(((!(__START__))||((__ILA_SO_x2)==(__auxvar13__recorder)))&&((!((!(__START__))&&(__IEND__)))||((__ILA_SO_x2)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_2_))))"
+  ],
+  "3": [
+   "post_value_holder__p51__ = (!((((__START__)||(__STARTED__))&&(!(__auxvar24__recorder_sn_condmet)))&&(monitor_s3)))||((__auxvar24__recorder)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_3_))",
+   "variable_map_assume___p109__ = (!(__START__))||(((!(__START__))||((__ILA_SO_x3)==(__auxvar24__recorder)))&&((!((!(__START__))&&(__IEND__)))||((__ILA_SO_x3)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_3_))))"
+  ],
+  "4": [
+   "post_value_holder__p54__ = (!((((__START__)||(__STARTED__))&&(!(__auxvar27__recorder_sn_condmet)))&&(monitor_s3)))||((__auxvar27__recorder)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_4_))",
+   "variable_map_assume___p112__ = (!(__START__))||(((!(__START__))||((__ILA_SO_x4)==(__auxvar27__recorder)))&&((!((!(__START__))&&(__IEND__)))||((__ILA_SO_x4)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_4_))))"
+  ],
+  "5": [
+   "post_value_holder__p55__ = (!((((__START__)||(__STARTED__))&&(!(__auxvar28__recorder_sn_condmet)))&&(monitor_s3)))||((__auxvar28__recorder)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_5_))",
+   "variable_map_assume___p113__ = (!(__START__))||(((!(__START__))||((__ILA_SO_x5)==(__auxvar28__recorder)))&&((!((!(__START__))&&(__IEND__)))||((__ILA_SO_x5)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_5_))))"
+  ],
+  "6": [
+   "post_value_holder__p56__ = (!((((__START__)||(__STARTED__))&&(!(__auxvar29__recorder_sn_condmet)))&&(monitor_s3)))||((__auxvar29__recorder)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_6_))",
+   "variable_map_assume___p114__ = (!(__START__))||(((!(__START__))||((__ILA_SO_x6)==(__auxvar29__recorder)))&&((!((!(__START__))&&(__IEND__)))||((__ILA_SO_x6)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_6_))))"
+  ],
+  "7": [
+   "post_value_holder__p58__ = (!((((__START__)||(__STARTED__))&&(!(__auxvar30__recorder_sn_condmet)))&&(monitor_s3)))||((__auxvar30__recorder)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_7_))",
+   "variable_map_assume___p115__ = (!(__START__))||(((!(__START__))||((__ILA_SO_x7)==(__auxvar30__recorder)))&&((!((!(__START__))&&(__IEND__)))||((__ILA_SO_x7)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_7_))))"
+  ],
+  "8": [
+   "post_value_holder__p59__ = (!((((__START__)||(__STARTED__))&&(!(__auxvar31__recorder_sn_condmet)))&&(monitor_s3)))||((__auxvar31__recorder)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_8_))",
+   "variable_map_assume___p116__ = (!(__START__))||(((!(__START__))||((__ILA_SO_x8)==(__auxvar31__recorder)))&&((!((!(__START__))&&(__IEND__)))||((__ILA_SO_x8)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_8_))))"
+  ],
+  "9": [
+   "post_value_holder__p60__ = (!((((__START__)||(__STARTED__))&&(!(__auxvar32__recorder_sn_condmet)))&&(monitor_s3)))||((__auxvar32__recorder)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_9_))",
+   "variable_map_assume___p117__ = (!(__START__))||(((!(__START__))||((__ILA_SO_x9)==(__auxvar32__recorder)))&&((!((!(__START__))&&(__IEND__)))||((__ILA_SO_x9)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_9_))))"
+  ],
+  "10": [
+   "post_value_holder__p67__ = (!((((__START__)||(__STARTED__))&&(!(__auxvar3__recorder_sn_condmet)))&&(monitor_s3)))||((__auxvar3__recorder)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_10_))",
+   "variable_map_assume___p88__ = (!(__START__))||(((!(__START__))||((__ILA_SO_x10)==(__auxvar3__recorder)))&&((!((!(__START__))&&(__IEND__)))||((__ILA_SO_x10)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_10_))))"
+  ],
+  "11": [
+   "post_value_holder__p68__ = (!((((__START__)||(__STARTED__))&&(!(__auxvar4__recorder_sn_condmet)))&&(monitor_s3)))||((__auxvar4__recorder)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_11_))",
+   "variable_map_assume___p89__ = (!(__START__))||(((!(__START__))||((__ILA_SO_x11)==(__auxvar4__recorder)))&&((!((!(__START__))&&(__IEND__)))||((__ILA_SO_x11)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_11_))))"
+  ],
+  "12": [
+   "post_value_holder__p69__ = (!((((__START__)||(__STARTED__))&&(!(__auxvar5__recorder_sn_condmet)))&&(monitor_s3)))||((__auxvar5__recorder)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_12_))",
+   "variable_map_assume___p90__ = (!(__START__))||(((!(__START__))||((__ILA_SO_x12)==(__auxvar5__recorder)))&&((!((!(__START__))&&(__IEND__)))||((__ILA_SO_x12)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_12_))))"
+  ],
+  "13": [
+   "post_value_holder__p70__ = (!((((__START__)||(__STARTED__))&&(!(__auxvar6__recorder_sn_condmet)))&&(monitor_s3)))||((__auxvar6__recorder)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_13_))",
+   "variable_map_assume___p91__ = (!(__START__))||(((!(__START__))||((__ILA_SO_x13)==(__auxvar6__recorder)))&&((!((!(__START__))&&(__IEND__)))||((__ILA_SO_x13)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_13_))))"
+  ],
+  "14": [
+   "post_value_holder__p71__ = (!((((__START__)||(__STARTED__))&&(!(__auxvar7__recorder_sn_condmet)))&&(monitor_s3)))||((__auxvar7__recorder)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_14_))",
+   "variable_map_assume___p92__ = (!(__START__))||(((!(__START__))||((__ILA_SO_x14)==(__auxvar7__recorder)))&&((!((!(__START__))&&(__IEND__)))||((__ILA_SO_x14)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_14_))))"
+  ],
+  "15": [
+   "post_value_holder__p72__ = (!((((__START__)||(__STARTED__))&&(!(__auxvar8__recorder_sn_condmet)))&&(monitor_s3)))||((__auxvar8__recorder)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_15_))",
+   "variable_map_assume___p93__ = (!(__START__))||(((!(__START__))||((__ILA_SO_x15)==(__auxvar8__recorder)))&&((!((!(__START__))&&(__IEND__)))||((__ILA_SO_x15)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_15_))))"
+  ],
+  "16": [
+   "post_value_holder__p73__ = (!((((__START__)||(__STARTED__))&&(!(__auxvar9__recorder_sn_condmet)))&&(monitor_s3)))||((__auxvar9__recorder)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_16_))",
+   "variable_map_assume___p94__ = (!(__START__))||(((!(__START__))||((__ILA_SO_x16)==(__auxvar9__recorder)))&&((!((!(__START__))&&(__IEND__)))||((__ILA_SO_x16)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_16_))))"
+  ],
+  "17": [
+   "post_value_holder__p36__ = (!((((__START__)||(__STARTED__))&&(!(__auxvar10__recorder_sn_condmet)))&&(monitor_s3)))||((__auxvar10__recorder)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_17_))",
+   "variable_map_assume___p95__ = (!(__START__))||(((!(__START__))||((__ILA_SO_x17)==(__auxvar10__recorder)))&&((!((!(__START__))&&(__IEND__)))||((__ILA_SO_x17)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_17_))))"
+  ],
+  "18": [
+   "post_value_holder__p37__ = (!((((__START__)||(__STARTED__))&&(!(__auxvar11__recorder_sn_condmet)))&&(monitor_s3)))||((__auxvar11__recorder)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_18_))",
+   "variable_map_assume___p96__ = (!(__START__))||(((!(__START__))||((__ILA_SO_x18)==(__auxvar11__recorder)))&&((!((!(__START__))&&(__IEND__)))||((__ILA_SO_x18)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_18_))))"
+  ],
+  "19": [
+   "post_value_holder__p38__ = (!((((__START__)||(__STARTED__))&&(!(__auxvar12__recorder_sn_condmet)))&&(monitor_s3)))||((__auxvar12__recorder)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_19_))",
+   "variable_map_assume___p97__ = (!(__START__))||(((!(__START__))||((__ILA_SO_x19)==(__auxvar12__recorder)))&&((!((!(__START__))&&(__IEND__)))||((__ILA_SO_x19)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_19_))))"
+  ],
+  "20": [
+   "post_value_holder__p40__ = (!((((__START__)||(__STARTED__))&&(!(__auxvar14__recorder_sn_condmet)))&&(monitor_s3)))||((__auxvar14__recorder)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_20_))",
+   "variable_map_assume___p99__ = (!(__START__))||(((!(__START__))||((__ILA_SO_x20)==(__auxvar14__recorder)))&&((!((!(__START__))&&(__IEND__)))||((__ILA_SO_x20)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_20_))))"
+  ],
+  "21": [
+   "post_value_holder__p41__ = (!((((__START__)||(__STARTED__))&&(!(__auxvar15__recorder_sn_condmet)))&&(monitor_s3)))||((__auxvar15__recorder)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_21_))",
+   "variable_map_assume___p100__ = (!(__START__))||(((!(__START__))||((__ILA_SO_x21)==(__auxvar15__recorder)))&&((!((!(__START__))&&(__IEND__)))||((__ILA_SO_x21)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_21_))))"
+  ],
+  "22": [
+   "post_value_holder__p42__ = (!((((__START__)||(__STARTED__))&&(!(__auxvar16__recorder_sn_condmet)))&&(monitor_s3)))||((__auxvar16__recorder)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_22_))",
+   "variable_map_assume___p101__ = (!(__START__))||(((!(__START__))||((__ILA_SO_x22)==(__auxvar16__recorder)))&&((!((!(__START__))&&(__IEND__)))||((__ILA_SO_x22)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_22_))))"
+  ],
+  "23": [
+   "post_value_holder__p43__ = (!((((__START__)||(__STARTED__))&&(!(__auxvar17__recorder_sn_condmet)))&&(monitor_s3)))||((__auxvar17__recorder)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_23_))",
+   "variable_map_assume___p102__ = (!(__START__))||(((!(__START__))||((__ILA_SO_x23)==(__auxvar17__recorder)))&&((!((!(__START__))&&(__IEND__)))||((__ILA_SO_x23)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_23_))))"
+  ],
+  "24": [
+   "post_value_holder__p44__ = (!((((__START__)||(__STARTED__))&&(!(__auxvar18__recorder_sn_condmet)))&&(monitor_s3)))||((__auxvar18__recorder)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_24_))",
+   "variable_map_assume___p103__ = (!(__START__))||(((!(__START__))||((__ILA_SO_x24)==(__auxvar18__recorder)))&&((!((!(__START__))&&(__IEND__)))||((__ILA_SO_x24)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_24_))))"
+  ],
+  "25": [
+   "post_value_holder__p45__ = (!((((__START__)||(__STARTED__))&&(!(__auxvar19__recorder_sn_condmet)))&&(monitor_s3)))||((__auxvar19__recorder)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_25_))",
+   "variable_map_assume___p104__ = (!(__START__))||(((!(__START__))||((__ILA_SO_x25)==(__auxvar19__recorder)))&&((!((!(__START__))&&(__IEND__)))||((__ILA_SO_x25)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_25_))))"
+  ],
+  "26": [
+   "post_value_holder__p47__ = (!((((__START__)||(__STARTED__))&&(!(__auxvar20__recorder_sn_condmet)))&&(monitor_s3)))||((__auxvar20__recorder)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_26_))",
+   "variable_map_assume___p105__ = (!(__START__))||(((!(__START__))||((__ILA_SO_x26)==(__auxvar20__recorder)))&&((!((!(__START__))&&(__IEND__)))||((__ILA_SO_x26)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_26_))))"
+  ],
+  "27": [
+   "post_value_holder__p48__ = (!((((__START__)||(__STARTED__))&&(!(__auxvar21__recorder_sn_condmet)))&&(monitor_s3)))||((__auxvar21__recorder)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_27_))",
+   "variable_map_assume___p106__ = (!(__START__))||(((!(__START__))||((__ILA_SO_x27)==(__auxvar21__recorder)))&&((!((!(__START__))&&(__IEND__)))||((__ILA_SO_x27)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_27_))))"
+  ],
+  "28": [
+   "post_value_holder__p49__ = (!((((__START__)||(__STARTED__))&&(!(__auxvar22__recorder_sn_condmet)))&&(monitor_s3)))||((__auxvar22__recorder)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_28_))",
+   "variable_map_assume___p107__ = (!(__START__))||(((!(__START__))||((__ILA_SO_x28)==(__auxvar22__recorder)))&&((!((!(__START__))&&(__IEND__)))||((__ILA_SO_x28)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_28_))))"
+  ],
+  "29": [
+   "post_value_holder__p50__ = (!((((__START__)||(__STARTED__))&&(!(__auxvar23__recorder_sn_condmet)))&&(monitor_s3)))||((__auxvar23__recorder)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_29_))",
+   "variable_map_assume___p108__ = (!(__START__))||(((!(__START__))||((__ILA_SO_x29)==(__auxvar23__recorder)))&&((!((!(__START__))&&(__IEND__)))||((__ILA_SO_x29)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_29_))))"
+  ],
+  "30": [
+   "post_value_holder__p52__ = (!((((__START__)||(__STARTED__))&&(!(__auxvar25__recorder_sn_condmet)))&&(monitor_s3)))||((__auxvar25__recorder)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_30_))",
+   "variable_map_assume___p110__ = (!(__START__))||(((!(__START__))||((__ILA_SO_x30)==(__auxvar25__recorder)))&&((!((!(__START__))&&(__IEND__)))||((__ILA_SO_x30)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_30_))))"
+  ],
+  "31": [
+   "post_value_holder__p53__ = (!((((__START__)||(__STARTED__))&&(!(__auxvar26__recorder_sn_condmet)))&&(monitor_s3)))||((__auxvar26__recorder)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_31_))",
+   "variable_map_assume___p111__ = (!(__START__))||(((!(__START__))||((__ILA_SO_x31)==(__auxvar26__recorder)))&&((!((!(__START__))&&(__IEND__)))||((__ILA_SO_x31)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_31_))))"
+  ]
+ }
+}
+
+Training examples: sub-property arguments of choose for this design. They show the format; the rule is applied to every sub-property of the split, including ones not shown here.
+
+{
+ "name": "mem",
+ "states": [
+  "load_en",
+  "pc",
+  "store_en",
+  "x0"
+ ],
+ "case": null,
+ "case_terms": [],
+ "assertion": [
+  "variable_map_assert__p118__ = (!(__IEND__))||((!(__IEND__))||((__ILA_SO_load_en)==(((mem_req_en)==(1'b1))&&((mem_req_op)==(1'b0)))))",
+  "variable_map_assert__p119__ = (!(__IEND__))||(((!(__START__))||((__ILA_SO_pc)==(RTL__DOT__near_mem$imem_pc)))&&((!((!(__START__))&&(__IEND__)))||((__ILA_SO_pc)==(__auxvar1__recorder))))",
+  "variable_map_assert__p120__ = (!(__IEND__))||((!(__IEND__))||((__ILA_SO_store_en)==(((mem_req_en)==(1'b1))&&((mem_req_op)==(1'b1)))))",
+  "variable_map_assert__p121__ = (!(__IEND__))||((__ILA_SO_x0)==(0))"
+ ]
+}
+
+{
+ "name": "x5.frame",
+ "states": [
+  "x5"
+ ],
+ "case": "rd!=5",
+ "case_terms": [
+  {
+   "field": "rd",
+   "op": "!=",
+   "value": 5
+  }
+ ],
+ "assertion": [
+  "variable_map_assert__p148__ = (!(__IEND__))||(((!(__START__))||((__ILA_SO_x5)==(__auxvar28__recorder)))&&((!((!(__START__))&&(__IEND__)))||((__ILA_SO_x5)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_5_))))"
+ ]
+}
+
+{
+ "name": "x17.frame",
+ "states": [
+  "x17"
+ ],
+ "case": "rd!=17",
+ "case_terms": [
+  {
+   "field": "rd",
+   "op": "!=",
+   "value": 17
+  }
+ ],
+ "assertion": [
+  "variable_map_assert__p130__ = (!(__IEND__))||(((!(__START__))||((__ILA_SO_x17)==(__auxvar10__recorder)))&&((!((!(__START__))&&(__IEND__)))||((__ILA_SO_x17)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_17_))))"
+ ]
+}
+
+{
+ "name": "x5.rs1=0",
+ "states": [
+  "x5"
+ ],
+ "case": "rd==5&&rs1==0",
+ "case_terms": [
+  {
+   "field": "rd",
+   "op": "==",
+   "value": 5
+  },
+  {
+   "field": "rs1",
+   "op": "==",
+   "value": 0
+  }
+ ],
+ "assertion": [
+  "variable_map_assert__p148__ = (!(__IEND__))||(((!(__START__))||((__ILA_SO_x5)==(__auxvar28__recorder)))&&((!((!(__START__))&&(__IEND__)))||((__ILA_SO_x5)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_5_))))"
+ ]
+}
+
+{
+ "name": "x5.rs1=5",
+ "states": [
+  "x5"
+ ],
+ "case": "rd==5&&rs1==5",
+ "case_terms": [
+  {
+   "field": "rd",
+   "op": "==",
+   "value": 5
+  },
+  {
+   "field": "rs1",
+   "op": "==",
+   "value": 5
+  }
+ ],
+ "assertion": [
+  "variable_map_assert__p148__ = (!(__IEND__))||(((!(__START__))||((__ILA_SO_x5)==(__auxvar28__recorder)))&&((!((!(__START__))&&(__IEND__)))||((__ILA_SO_x5)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_5_))))"
+ ]
+}
+
+{
+ "name": "x5.rs1=6",
+ "states": [
+  "x5"
+ ],
+ "case": "rd==5&&rs1==6",
+ "case_terms": [
+  {
+   "field": "rd",
+   "op": "==",
+   "value": 5
+  },
+  {
+   "field": "rs1",
+   "op": "==",
+   "value": 6
+  }
+ ],
+ "assertion": [
+  "variable_map_assert__p148__ = (!(__IEND__))||(((!(__START__))||((__ILA_SO_x5)==(__auxvar28__recorder)))&&((!((!(__START__))&&(__IEND__)))||((__ILA_SO_x5)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_5_))))"
+ ]
+}
+
+{
+ "name": "x31.rs1=1",
+ "states": [
+  "x31"
+ ],
+ "case": "rd==31&&rs1==1",
+ "case_terms": [
+  {
+   "field": "rd",
+   "op": "==",
+   "value": 31
+  },
+  {
+   "field": "rs1",
+   "op": "==",
+   "value": 1
+  }
+ ],
+ "assertion": [
+  "variable_map_assert__p146__ = (!(__IEND__))||(((!(__START__))||((__ILA_SO_x31)==(__auxvar26__recorder)))&&((!((!(__START__))&&(__IEND__)))||((__ILA_SO_x31)==(RTL__DOT__gpr_regfile__DOT__regfile__DOT__arr_31_))))"
+ ]
+}

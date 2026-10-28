@@ -1,0 +1,144 @@
+[
+ {
+  "name": "mem",
+  "states": [
+   "load_en",
+   "pc",
+   "store_en",
+   "x0"
+  ]
+ },
+ {
+  "name": "x1.frame",
+  "states": [
+   "x1"
+  ],
+  "case": "rd!=1"
+ },
+ {
+  "name": "x2.rs1=2.rs2=24",
+  "states": [
+   "x2"
+  ],
+  "case": "rd==2&&rs1==2&&rs2==24"
+ },
+ {
+  "name": "x2.rs1=28.rs2=13",
+  "states": [
+   "x2"
+  ],
+  "case": "rd==2&&rs1==28&&rs2==13"
+ },
+ {
+  "name": "x3.rs1=6.rs2=0",
+  "states": [
+   "x3"
+  ],
+  "case": "rd==3&&rs1==6&&rs2==0"
+ },
+ {
+  "name": "x4.rs1=11.rs2=11",
+  "states": [
+   "x4"
+  ],
+  "case": "rd==4&&rs1==11&&rs2==11"
+ },
+ {
+  "name": "x5.rs1=28.rs2=8",
+  "states": [
+   "x5"
+  ],
+  "case": "rd==5&&rs1==28&&rs2==8"
+ },
+ {
+  "name": "x6.rs1=24.rs2=28",
+  "states": [
+   "x6"
+  ],
+  "case": "rd==6&&rs1==24&&rs2==28"
+ },
+ {
+  "name": "x8.rs1=2.rs2=30",
+  "states": [
+   "x8"
+  ],
+  "case": "rd==8&&rs1==2&&rs2==30"
+ },
+ {
+  "name": "x8.rs1=6.rs2=15",
+  "states": [
+   "x8"
+  ],
+  "case": "rd==8&&rs1==6&&rs2==15"
+ },
+ {
+  "name": "x8.rs1=16.rs2=16",
+  "states": [
+   "x8"
+  ],
+  "case": "rd==8&&rs1==16&&rs2==16"
+ },
+ {
+  "name": "x14.frame",
+  "states": [
+   "x14"
+  ],
+  "case": "rd!=14"
+ },
+ {
+  "name": "x14.rs1=0.rs2=0",
+  "states": [
+   "x14"
+  ],
+  "case": "rd==14&&rs1==0&&rs2==0"
+ },
+ {
+  "name": "x16.frame",
+  "states": [
+   "x16"
+  ],
+  "case": "rd!=16"
+ },
+ {
+  "name": "x16.rs1=12.rs2=13",
+  "states": [
+   "x16"
+  ],
+  "case": "rd==16&&rs1==12&&rs2==13"
+ },
+ {
+  "name": "x19.rs1=27.rs2=19",
+  "states": [
+   "x19"
+  ],
+  "case": "rd==19&&rs1==27&&rs2==19"
+ },
+ {
+  "name": "x23.rs1=17.rs2=8",
+  "states": [
+   "x23"
+  ],
+  "case": "rd==23&&rs1==17&&rs2==8"
+ },
+ {
+  "name": "x25.rs1=0.rs2=5",
+  "states": [
+   "x25"
+  ],
+  "case": "rd==25&&rs1==0&&rs2==5"
+ },
+ {
+  "name": "x29.rs1=6.rs2=29",
+  "states": [
+   "x29"
+  ],
+  "case": "rd==29&&rs1==6&&rs2==29"
+ },
+ {
+  "name": "x31.rs1=14.rs2=6",
+  "states": [
+   "x31"
+  ],
+  "case": "rd==31&&rs1==14&&rs2==6"
+ }
+]

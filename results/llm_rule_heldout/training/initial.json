@@ -1,0 +1,1750 @@
+{
+ "ranking": [
+  "deepseek-4",
+  "deepseek-5",
+  "claude-4",
+  "claude-2",
+  "deepseek-2",
+  "deepseek-1",
+  "deepseek-3",
+  "claude-3",
+  "claude-1",
+  "claude-5"
+ ],
+ "arms": {
+  "deepseek-1": {
+   "unsat": 6,
+   "rejected": 0,
+   "final_coi_state_bits": 31427,
+   "seconds": 5622.6,
+   "refinements": 49,
+   "subs": [
+    {
+     "sub": "mem",
+     "run": "mem.cd07536b24",
+     "status": "UNSAT",
+     "refinements": 1,
+     "refined": [
+      "near_mem_icache"
+     ],
+     "final_coi_state_bits": 1322,
+     "seconds": 84.98716688156128
+    },
+    {
+     "sub": "x1.frame",
+     "run": "x1.frame.a2cac03a24",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 981,
+     "seconds": 31.63825821876526
+    },
+    {
+     "sub": "x2.rs1=23",
+     "run": "x2.rs1=23.274ac1fcfc",
+     "status": "TIMEOUT",
+     "refinements": 4,
+     "refined": [
+      "near_mem_icache",
+      "csr_regfile",
+      "near_mem_dcache",
+      "uf0"
+     ],
+     "final_coi_state_bits": 2285,
+     "seconds": 499.056521654129
+    },
+    {
+     "sub": "x4.frame",
+     "run": "x4.frame.718a8248bd",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 981,
+     "seconds": 36.72320246696472
+    },
+    {
+     "sub": "x5.rs1=14",
+     "run": "x5.rs1=14.ef0d8104f1",
+     "status": "TIMEOUT",
+     "refinements": 4,
+     "refined": [
+      "near_mem_icache",
+      "csr_regfile",
+      "near_mem_dcache",
+      "uf0"
+     ],
+     "final_coi_state_bits": 2285,
+     "seconds": 503.14031529426575
+    },
+    {
+     "sub": "x6.rs1=8",
+     "run": "x6.rs1=8.696a9a54a4",
+     "status": "TIMEOUT",
+     "refinements": 4,
+     "refined": [
+      "near_mem_icache",
+      "csr_regfile",
+      "near_mem_dcache",
+      "uf0"
+     ],
+     "final_coi_state_bits": 2285,
+     "seconds": 509.757527589798
+    },
+    {
+     "sub": "x7.rs1=14",
+     "run": "x7.rs1=14.869e457e73",
+     "status": "TIMEOUT",
+     "refinements": 4,
+     "refined": [
+      "near_mem_icache",
+      "csr_regfile",
+      "near_mem_dcache",
+      "uf0"
+     ],
+     "final_coi_state_bits": 2285,
+     "seconds": 511.57246565818787
+    },
+    {
+     "sub": "x7.rs1=17",
+     "run": "x7.rs1=17.e36aedf33b",
+     "status": "TIMEOUT",
+     "refinements": 4,
+     "refined": [
+      "near_mem_icache",
+      "csr_regfile",
+      "near_mem_dcache",
+      "uf0"
+     ],
+     "final_coi_state_bits": 2285,
+     "seconds": 503.72365522384644
+    },
+    {
+     "sub": "x8.frame",
+     "run": "x8.frame.75f2b45d96",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 981,
+     "seconds": 38.69735860824585
+    },
+    {
+     "sub": "x14.rs1=0",
+     "run": "x14.rs1=0.c111223597",
+     "status": "UNSAT",
+     "refinements": 4,
+     "refined": [
+      "near_mem_icache",
+      "near_mem_dcache",
+      "csr_regfile",
+      "uf0"
+     ],
+     "final_coi_state_bits": 2252,
+     "seconds": 227.03516101837158
+    },
+    {
+     "sub": "x14.rs1=14",
+     "run": "x14.rs1=14.bd4639b2a8",
+     "status": "TIMEOUT",
+     "refinements": 4,
+     "refined": [
+      "near_mem_icache",
+      "near_mem_dcache",
+      "csr_regfile",
+      "uf0"
+     ],
+     "final_coi_state_bits": 2189,
+     "seconds": 489.2866806983948
+    },
+    {
+     "sub": "x14.rs1=30",
+     "run": "x14.rs1=30.fe2b89fbce",
+     "status": "TIMEOUT",
+     "refinements": 4,
+     "refined": [
+      "near_mem_icache",
+      "csr_regfile",
+      "near_mem_dcache",
+      "uf0"
+     ],
+     "final_coi_state_bits": 2285,
+     "seconds": 507.767760515213
+    },
+    {
+     "sub": "x16.rs1=16",
+     "run": "x16.rs1=16.58e8202569",
+     "status": "TIMEOUT",
+     "refinements": 4,
+     "refined": [
+      "near_mem_icache",
+      "near_mem_dcache",
+      "csr_regfile",
+      "uf0"
+     ],
+     "final_coi_state_bits": 2189,
+     "seconds": 477.10035586357117
+    },
+    {
+     "sub": "x18.rs1=0",
+     "run": "x18.rs1=0.191fe97df6",
+     "status": "UNSAT",
+     "refinements": 4,
+     "refined": [
+      "near_mem_icache",
+      "near_mem_dcache",
+      "csr_regfile",
+      "uf0"
+     ],
+     "final_coi_state_bits": 2252,
+     "seconds": 206.5815131664276
+    },
+    {
+     "sub": "x21.rs1=13",
+     "run": "x21.rs1=13.1b5bd59c8a",
+     "status": "TIMEOUT",
+     "refinements": 4,
+     "refined": [
+      "near_mem_icache",
+      "csr_regfile",
+      "near_mem_dcache",
+      "uf0"
+     ],
+     "final_coi_state_bits": 2285,
+     "seconds": 494.1038212776184
+    },
+    {
+     "sub": "x28.rs1=18",
+     "run": "x28.rs1=18.2e483cf991",
+     "status": "TIMEOUT",
+     "refinements": 4,
+     "refined": [
+      "near_mem_icache",
+      "csr_regfile",
+      "near_mem_dcache",
+      "uf0"
+     ],
+     "final_coi_state_bits": 2285,
+     "seconds": 501.3998935222626
+    }
+   ]
+  },
+  "deepseek-2": {
+   "unsat": 6,
+   "rejected": 0,
+   "final_coi_state_bits": 13853,
+   "seconds": 3387.5,
+   "refinements": 1,
+   "subs": [
+    {
+     "sub": "mem",
+     "run": "mem.c540e22c88",
+     "status": "UNSAT",
+     "refinements": 1,
+     "refined": [
+      "near_mem_icache"
+     ],
+     "final_coi_state_bits": 1129,
+     "seconds": 60.82854437828064
+    },
+    {
+     "sub": "x1.frame",
+     "run": "x1.frame.be62b60797",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 32.23948383331299
+    },
+    {
+     "sub": "x2.rs1=23",
+     "run": "x2.rs1=23.a363280e14",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 885,
+     "seconds": 316.1538915634155
+    },
+    {
+     "sub": "x4.frame",
+     "run": "x4.frame.949172632c",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 37.43080544471741
+    },
+    {
+     "sub": "x5.rs1=14",
+     "run": "x5.rs1=14.6bdfac8468",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 885,
+     "seconds": 316.160227060318
+    },
+    {
+     "sub": "x6.rs1=8",
+     "run": "x6.rs1=8.4f201f88b0",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 885,
+     "seconds": 316.248437166214
+    },
+    {
+     "sub": "x7.rs1=14",
+     "run": "x7.rs1=14.5777e87f3f",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 885,
+     "seconds": 318.5465340614319
+    },
+    {
+     "sub": "x7.rs1=17",
+     "run": "x7.rs1=17.24a948c30e",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 885,
+     "seconds": 317.6443769931793
+    },
+    {
+     "sub": "x8.frame",
+     "run": "x8.frame.b92599c71d",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 38.50666284561157
+    },
+    {
+     "sub": "x14.rs1=0",
+     "run": "x14.rs1=0.d617a52995",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 852,
+     "seconds": 25.54499101638794
+    },
+    {
+     "sub": "x14.rs1=14",
+     "run": "x14.rs1=14.5701f7c46d",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 316.4803583621979
+    },
+    {
+     "sub": "x14.rs1=30",
+     "run": "x14.rs1=30.102cedf074",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 885,
+     "seconds": 316.22308444976807
+    },
+    {
+     "sub": "x16.rs1=16",
+     "run": "x16.rs1=16.ab877b385e",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 316.58677434921265
+    },
+    {
+     "sub": "x18.rs1=0",
+     "run": "x18.rs1=0.0612f2dd41",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 852,
+     "seconds": 26.453712224960327
+    },
+    {
+     "sub": "x21.rs1=13",
+     "run": "x21.rs1=13.71df760aea",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 885,
+     "seconds": 315.8504276275635
+    },
+    {
+     "sub": "x28.rs1=18",
+     "run": "x28.rs1=18.7299488a67",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 885,
+     "seconds": 316.56087279319763
+    }
+   ]
+  },
+  "deepseek-3": {
+   "unsat": 6,
+   "rejected": 0,
+   "final_coi_state_bits": 35025,
+   "seconds": 7840.8,
+   "refinements": 83,
+   "subs": [
+    {
+     "sub": "mem",
+     "run": "mem.51f5d41c98",
+     "status": "UNSAT",
+     "refinements": 1,
+     "refined": [
+      "near_mem_icache"
+     ],
+     "final_coi_state_bits": 1322,
+     "seconds": 70.133385181427
+    },
+    {
+     "sub": "x1.frame",
+     "run": "x1.frame.656891f4dc",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 981,
+     "seconds": 39.04717969894409
+    },
+    {
+     "sub": "x2.rs1=23",
+     "run": "x2.rs1=23.7ee4211c35",
+     "status": "TIMEOUT",
+     "refinements": 8,
+     "refined": [
+      "near_mem_icache",
+      "csr_regfile",
+      "near_mem_dcache",
+      "gpr30",
+      "gpr29",
+      "gpr28",
+      "gpr31",
+      "uf1"
+     ],
+     "final_coi_state_bits": 2674,
+     "seconds": 845.6236073970795
+    },
+    {
+     "sub": "x4.frame",
+     "run": "x4.frame.38b12fa46f",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 981,
+     "seconds": 36.763203620910645
+    },
+    {
+     "sub": "x5.rs1=14",
+     "run": "x5.rs1=14.7f70225d10",
+     "status": "TIMEOUT",
+     "refinements": 6,
+     "refined": [
+      "near_mem_icache",
+      "csr_regfile",
+      "near_mem_dcache",
+      "gpr30",
+      "gpr31",
+      "uf1"
+     ],
+     "final_coi_state_bits": 2480,
+     "seconds": 637.5564563274384
+    },
+    {
+     "sub": "x6.rs1=8",
+     "run": "x6.rs1=8.0ddcb6a04d",
+     "status": "TIMEOUT",
+     "refinements": 7,
+     "refined": [
+      "near_mem_icache",
+      "csr_regfile",
+      "near_mem_dcache",
+      "gpr30",
+      "gpr1",
+      "gpr3",
+      "uf1"
+     ],
+     "final_coi_state_bits": 2577,
+     "seconds": 722.132000207901
+    },
+    {
+     "sub": "x7.rs1=14",
+     "run": "x7.rs1=14.78d470a803",
+     "status": "TIMEOUT",
+     "refinements": 7,
+     "refined": [
+      "near_mem_icache",
+      "csr_regfile",
+      "near_mem_dcache",
+      "gpr30",
+      "gpr31",
+      "gpr15",
+      "uf1"
+     ],
+     "final_coi_state_bits": 2577,
+     "seconds": 708.7490556240082
+    },
+    {
+     "sub": "x7.rs1=17",
+     "run": "x7.rs1=17.105a23a9f3",
+     "status": "TIMEOUT",
+     "refinements": 9,
+     "refined": [
+      "near_mem_icache",
+      "csr_regfile",
+      "near_mem_dcache",
+      "gpr30",
+      "gpr16",
+      "gpr19",
+      "gpr1",
+      "gpr31",
+      "uf1"
+     ],
+     "final_coi_state_bits": 2771,
+     "seconds": 881.3061490058899
+    },
+    {
+     "sub": "x8.frame",
+     "run": "x8.frame.059d6aac0f",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 981,
+     "seconds": 37.526466846466064
+    },
+    {
+     "sub": "x14.rs1=0",
+     "run": "x14.rs1=0.b33e76ab74",
+     "status": "UNSAT",
+     "refinements": 5,
+     "refined": [
+      "near_mem_icache",
+      "csr_regfile",
+      "near_mem_dcache",
+      "gpr31",
+      "uf1"
+     ],
+     "final_coi_state_bits": 2350,
+     "seconds": 326.763879776001
+    },
+    {
+     "sub": "x14.rs1=14",
+     "run": "x14.rs1=14.ac87834c41",
+     "status": "TIMEOUT",
+     "refinements": 5,
+     "refined": [
+      "near_mem_icache",
+      "csr_regfile",
+      "near_mem_dcache",
+      "gpr17",
+      "uf1"
+     ],
+     "final_coi_state_bits": 2286,
+     "seconds": 566.173944234848
+    },
+    {
+     "sub": "x14.rs1=30",
+     "run": "x14.rs1=30.e04287edef",
+     "status": "TIMEOUT",
+     "refinements": 6,
+     "refined": [
+      "near_mem_icache",
+      "csr_regfile",
+      "near_mem_dcache",
+      "gpr31",
+      "gpr29",
+      "uf1"
+     ],
+     "final_coi_state_bits": 2480,
+     "seconds": 640.4266557693481
+    },
+    {
+     "sub": "x16.rs1=16",
+     "run": "x16.rs1=16.6fced080f7",
+     "status": "TIMEOUT",
+     "refinements": 7,
+     "refined": [
+      "near_mem_icache",
+      "csr_regfile",
+      "near_mem_dcache",
+      "gpr17",
+      "gpr1",
+      "gpr19",
+      "uf1"
+     ],
+     "final_coi_state_bits": 2480,
+     "seconds": 726.056093454361
+    },
+    {
+     "sub": "x18.rs1=0",
+     "run": "x18.rs1=0.7e57e96fc5",
+     "status": "UNSAT",
+     "refinements": 4,
+     "refined": [
+      "near_mem_icache",
+      "csr_regfile",
+      "near_mem_dcache",
+      "uf1"
+     ],
+     "final_coi_state_bits": 2253,
+     "seconds": 238.87090826034546
+    },
+    {
+     "sub": "x21.rs1=13",
+     "run": "x21.rs1=13.80763fc2ec",
+     "status": "max_iterations",
+     "refinements": 10,
+     "refined": [
+      "near_mem_icache",
+      "csr_regfile",
+      "near_mem_dcache",
+      "gpr1",
+      "gpr24",
+      "gpr28",
+      "gpr30",
+      "gpr12",
+      "gpr26",
+      "gpr31"
+     ],
+     "final_coi_state_bits": 3158,
+     "seconds": 631.7465169429779
+    },
+    {
+     "sub": "x28.rs1=18",
+     "run": "x28.rs1=18.07e6eb3510",
+     "status": "TIMEOUT",
+     "refinements": 8,
+     "refined": [
+      "near_mem_icache",
+      "csr_regfile",
+      "near_mem_dcache",
+      "gpr30",
+      "gpr19",
+      "gpr17",
+      "gpr31",
+      "uf1"
+     ],
+     "final_coi_state_bits": 2674,
+     "seconds": 731.9111275672913
+    }
+   ]
+  },
+  "deepseek-4": {
+   "unsat": 16,
+   "rejected": 0,
+   "final_coi_state_bits": 16169,
+   "seconds": 968.1,
+   "refinements": 1,
+   "subs": [
+    {
+     "sub": "mem",
+     "run": "mem.c540e22c88",
+     "status": "UNSAT",
+     "refinements": 1,
+     "refined": [
+      "near_mem_icache"
+     ],
+     "final_coi_state_bits": 1129,
+     "seconds": 60.82854437828064
+    },
+    {
+     "sub": "x1.frame",
+     "run": "x1.frame.be62b60797",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 32.23948383331299
+    },
+    {
+     "sub": "x2.rs1=23",
+     "run": "x2.rs1=23.356296e167",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 79.01094007492065
+    },
+    {
+     "sub": "x4.frame",
+     "run": "x4.frame.949172632c",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 37.43080544471741
+    },
+    {
+     "sub": "x5.rs1=14",
+     "run": "x5.rs1=14.362a680731",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 54.704734086990356
+    },
+    {
+     "sub": "x6.rs1=8",
+     "run": "x6.rs1=8.6e1a90ca53",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 82.09672570228577
+    },
+    {
+     "sub": "x7.rs1=14",
+     "run": "x7.rs1=14.f49c3f4218",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 67.07493019104004
+    },
+    {
+     "sub": "x7.rs1=17",
+     "run": "x7.rs1=17.b1e9f466e7",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 72.56292343139648
+    },
+    {
+     "sub": "x8.frame",
+     "run": "x8.frame.b92599c71d",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 38.50666284561157
+    },
+    {
+     "sub": "x14.rs1=0",
+     "run": "x14.rs1=0.b27faa7f96",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1045,
+     "seconds": 42.551501512527466
+    },
+    {
+     "sub": "x14.rs1=14",
+     "run": "x14.rs1=14.43b7e2bb7c",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 981,
+     "seconds": 60.14673948287964
+    },
+    {
+     "sub": "x14.rs1=30",
+     "run": "x14.rs1=30.3bafdb467b",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 82.45094394683838
+    },
+    {
+     "sub": "x16.rs1=16",
+     "run": "x16.rs1=16.e66f9229e0",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 981,
+     "seconds": 64.35670447349548
+    },
+    {
+     "sub": "x18.rs1=0",
+     "run": "x18.rs1=0.472ea05264",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1045,
+     "seconds": 34.49028825759888
+    },
+    {
+     "sub": "x21.rs1=13",
+     "run": "x21.rs1=13.bab091fa3e",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 91.76704621315002
+    },
+    {
+     "sub": "x28.rs1=18",
+     "run": "x28.rs1=18.caffd5be15",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 67.8381896018982
+    }
+   ]
+  },
+  "deepseek-5": {
+   "unsat": 16,
+   "rejected": 0,
+   "final_coi_state_bits": 16169,
+   "seconds": 968.1,
+   "refinements": 1,
+   "subs": [
+    {
+     "sub": "mem",
+     "run": "mem.c540e22c88",
+     "status": "UNSAT",
+     "refinements": 1,
+     "refined": [
+      "near_mem_icache"
+     ],
+     "final_coi_state_bits": 1129,
+     "seconds": 60.82854437828064
+    },
+    {
+     "sub": "x1.frame",
+     "run": "x1.frame.be62b60797",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 32.23948383331299
+    },
+    {
+     "sub": "x2.rs1=23",
+     "run": "x2.rs1=23.356296e167",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 79.01094007492065
+    },
+    {
+     "sub": "x4.frame",
+     "run": "x4.frame.949172632c",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 37.43080544471741
+    },
+    {
+     "sub": "x5.rs1=14",
+     "run": "x5.rs1=14.362a680731",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 54.704734086990356
+    },
+    {
+     "sub": "x6.rs1=8",
+     "run": "x6.rs1=8.6e1a90ca53",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 82.09672570228577
+    },
+    {
+     "sub": "x7.rs1=14",
+     "run": "x7.rs1=14.f49c3f4218",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 67.07493019104004
+    },
+    {
+     "sub": "x7.rs1=17",
+     "run": "x7.rs1=17.b1e9f466e7",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 72.56292343139648
+    },
+    {
+     "sub": "x8.frame",
+     "run": "x8.frame.b92599c71d",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 38.50666284561157
+    },
+    {
+     "sub": "x14.rs1=0",
+     "run": "x14.rs1=0.b27faa7f96",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1045,
+     "seconds": 42.551501512527466
+    },
+    {
+     "sub": "x14.rs1=14",
+     "run": "x14.rs1=14.43b7e2bb7c",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 981,
+     "seconds": 60.14673948287964
+    },
+    {
+     "sub": "x14.rs1=30",
+     "run": "x14.rs1=30.3bafdb467b",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 82.45094394683838
+    },
+    {
+     "sub": "x16.rs1=16",
+     "run": "x16.rs1=16.e66f9229e0",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 981,
+     "seconds": 64.35670447349548
+    },
+    {
+     "sub": "x18.rs1=0",
+     "run": "x18.rs1=0.472ea05264",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1045,
+     "seconds": 34.49028825759888
+    },
+    {
+     "sub": "x21.rs1=13",
+     "run": "x21.rs1=13.bab091fa3e",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 91.76704621315002
+    },
+    {
+     "sub": "x28.rs1=18",
+     "run": "x28.rs1=18.caffd5be15",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1078,
+     "seconds": 67.8381896018982
+    }
+   ]
+  },
+  "claude-1": {
+   "unsat": 0,
+   "rejected": 16,
+   "final_coi_state_bits": 0,
+   "seconds": 0,
+   "refinements": 0,
+   "subs": [
+    {
+     "sub": "mem",
+     "status": "rejected",
+     "errors": [
+      "line 39: Try is not allowed",
+      "line 41: ExceptHandler is not allowed",
+      "line 45: Try is not allowed",
+      "line 47: ExceptHandler is not allowed",
+      "line 77: Try is not allowed",
+      "line 79: ExceptHandler is not allowed"
+     ]
+    },
+    {
+     "sub": "x1.frame",
+     "status": "rejected",
+     "errors": [
+      "line 39: Try is not allowed",
+      "line 41: ExceptHandler is not allowed",
+      "line 45: Try is not allowed",
+      "line 47: ExceptHandler is not allowed",
+      "line 77: Try is not allowed",
+      "line 79: ExceptHandler is not allowed"
+     ]
+    },
+    {
+     "sub": "x2.rs1=23",
+     "status": "rejected",
+     "errors": [
+      "line 39: Try is not allowed",
+      "line 41: ExceptHandler is not allowed",
+      "line 45: Try is not allowed",
+      "line 47: ExceptHandler is not allowed",
+      "line 77: Try is not allowed",
+      "line 79: ExceptHandler is not allowed"
+     ]
+    },
+    {
+     "sub": "x4.frame",
+     "status": "rejected",
+     "errors": [
+      "line 39: Try is not allowed",
+      "line 41: ExceptHandler is not allowed",
+      "line 45: Try is not allowed",
+      "line 47: ExceptHandler is not allowed",
+      "line 77: Try is not allowed",
+      "line 79: ExceptHandler is not allowed"
+     ]
+    },
+    {
+     "sub": "x5.rs1=14",
+     "status": "rejected",
+     "errors": [
+      "line 39: Try is not allowed",
+      "line 41: ExceptHandler is not allowed",
+      "line 45: Try is not allowed",
+      "line 47: ExceptHandler is not allowed",
+      "line 77: Try is not allowed",
+      "line 79: ExceptHandler is not allowed"
+     ]
+    },
+    {
+     "sub": "x6.rs1=8",
+     "status": "rejected",
+     "errors": [
+      "line 39: Try is not allowed",
+      "line 41: ExceptHandler is not allowed",
+      "line 45: Try is not allowed",
+      "line 47: ExceptHandler is not allowed",
+      "line 77: Try is not allowed",
+      "line 79: ExceptHandler is not allowed"
+     ]
+    },
+    {
+     "sub": "x7.rs1=14",
+     "status": "rejected",
+     "errors": [
+      "line 39: Try is not allowed",
+      "line 41: ExceptHandler is not allowed",
+      "line 45: Try is not allowed",
+      "line 47: ExceptHandler is not allowed",
+      "line 77: Try is not allowed",
+      "line 79: ExceptHandler is not allowed"
+     ]
+    },
+    {
+     "sub": "x7.rs1=17",
+     "status": "rejected",
+     "errors": [
+      "line 39: Try is not allowed",
+      "line 41: ExceptHandler is not allowed",
+      "line 45: Try is not allowed",
+      "line 47: ExceptHandler is not allowed",
+      "line 77: Try is not allowed",
+      "line 79: ExceptHandler is not allowed"
+     ]
+    },
+    {
+     "sub": "x8.frame",
+     "status": "rejected",
+     "errors": [
+      "line 39: Try is not allowed",
+      "line 41: ExceptHandler is not allowed",
+      "line 45: Try is not allowed",
+      "line 47: ExceptHandler is not allowed",
+      "line 77: Try is not allowed",
+      "line 79: ExceptHandler is not allowed"
+     ]
+    },
+    {
+     "sub": "x14.rs1=0",
+     "status": "rejected",
+     "errors": [
+      "line 39: Try is not allowed",
+      "line 41: ExceptHandler is not allowed",
+      "line 45: Try is not allowed",
+      "line 47: ExceptHandler is not allowed",
+      "line 77: Try is not allowed",
+      "line 79: ExceptHandler is not allowed"
+     ]
+    },
+    {
+     "sub": "x14.rs1=14",
+     "status": "rejected",
+     "errors": [
+      "line 39: Try is not allowed",
+      "line 41: ExceptHandler is not allowed",
+      "line 45: Try is not allowed",
+      "line 47: ExceptHandler is not allowed",
+      "line 77: Try is not allowed",
+      "line 79: ExceptHandler is not allowed"
+     ]
+    },
+    {
+     "sub": "x14.rs1=30",
+     "status": "rejected",
+     "errors": [
+      "line 39: Try is not allowed",
+      "line 41: ExceptHandler is not allowed",
+      "line 45: Try is not allowed",
+      "line 47: ExceptHandler is not allowed",
+      "line 77: Try is not allowed",
+      "line 79: ExceptHandler is not allowed"
+     ]
+    },
+    {
+     "sub": "x16.rs1=16",
+     "status": "rejected",
+     "errors": [
+      "line 39: Try is not allowed",
+      "line 41: ExceptHandler is not allowed",
+      "line 45: Try is not allowed",
+      "line 47: ExceptHandler is not allowed",
+      "line 77: Try is not allowed",
+      "line 79: ExceptHandler is not allowed"
+     ]
+    },
+    {
+     "sub": "x18.rs1=0",
+     "status": "rejected",
+     "errors": [
+      "line 39: Try is not allowed",
+      "line 41: ExceptHandler is not allowed",
+      "line 45: Try is not allowed",
+      "line 47: ExceptHandler is not allowed",
+      "line 77: Try is not allowed",
+      "line 79: ExceptHandler is not allowed"
+     ]
+    },
+    {
+     "sub": "x21.rs1=13",
+     "status": "rejected",
+     "errors": [
+      "line 39: Try is not allowed",
+      "line 41: ExceptHandler is not allowed",
+      "line 45: Try is not allowed",
+      "line 47: ExceptHandler is not allowed",
+      "line 77: Try is not allowed",
+      "line 79: ExceptHandler is not allowed"
+     ]
+    },
+    {
+     "sub": "x28.rs1=18",
+     "status": "rejected",
+     "errors": [
+      "line 39: Try is not allowed",
+      "line 41: ExceptHandler is not allowed",
+      "line 45: Try is not allowed",
+      "line 47: ExceptHandler is not allowed",
+      "line 77: Try is not allowed",
+      "line 79: ExceptHandler is not allowed"
+     ]
+    }
+   ]
+  },
+  "claude-2": {
+   "unsat": 6,
+   "rejected": 0,
+   "final_coi_state_bits": 13843,
+   "seconds": 3380.7,
+   "refinements": 0,
+   "subs": [
+    {
+     "sub": "mem",
+     "run": "mem.b2b16b73a3",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1129,
+     "seconds": 39.77494668960571
+    },
+    {
+     "sub": "x1.frame",
+     "run": "x1.frame.be62b60797",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 32.23948383331299
+    },
+    {
+     "sub": "x2.rs1=23",
+     "run": "x2.rs1=23.6e1b8881b3",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 884,
+     "seconds": 317.83491563796997
+    },
+    {
+     "sub": "x4.frame",
+     "run": "x4.frame.949172632c",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 37.43080544471741
+    },
+    {
+     "sub": "x5.rs1=14",
+     "run": "x5.rs1=14.7fafee9100",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 884,
+     "seconds": 318.90851068496704
+    },
+    {
+     "sub": "x6.rs1=8",
+     "run": "x6.rs1=8.68dcf56f8d",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 884,
+     "seconds": 316.80714321136475
+    },
+    {
+     "sub": "x7.rs1=14",
+     "run": "x7.rs1=14.25321a249a",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 884,
+     "seconds": 315.76049065589905
+    },
+    {
+     "sub": "x7.rs1=17",
+     "run": "x7.rs1=17.3133da3074",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 884,
+     "seconds": 314.70691657066345
+    },
+    {
+     "sub": "x8.frame",
+     "run": "x8.frame.b92599c71d",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 38.50666284561157
+    },
+    {
+     "sub": "x14.rs1=0",
+     "run": "x14.rs1=0.f83457c570",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 851,
+     "seconds": 35.84988474845886
+    },
+    {
+     "sub": "x14.rs1=14",
+     "run": "x14.rs1=14.5701f7c46d",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 316.4803583621979
+    },
+    {
+     "sub": "x14.rs1=30",
+     "run": "x14.rs1=30.eb61965568",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 884,
+     "seconds": 316.46297240257263
+    },
+    {
+     "sub": "x16.rs1=16",
+     "run": "x16.rs1=16.ab877b385e",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 316.58677434921265
+    },
+    {
+     "sub": "x18.rs1=0",
+     "run": "x18.rs1=0.062aec96bd",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 851,
+     "seconds": 29.34698724746704
+    },
+    {
+     "sub": "x21.rs1=13",
+     "run": "x21.rs1=13.b4e10bfc4b",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 884,
+     "seconds": 318.5559792518616
+    },
+    {
+     "sub": "x28.rs1=18",
+     "run": "x28.rs1=18.00863e52b9",
+     "status": "TIMEOUT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 884,
+     "seconds": 315.4683840274811
+    }
+   ]
+  },
+  "claude-3": {
+   "unsat": 4,
+   "rejected": 12,
+   "final_coi_state_bits": 4078,
+   "seconds": 173.7,
+   "refinements": 0,
+   "subs": [
+    {
+     "sub": "mem",
+     "run": "mem.751d6e1882",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1714,
+     "seconds": 65.49304556846619
+    },
+    {
+     "sub": "x1.frame",
+     "run": "x1.frame.be62b60797",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 32.23948383331299
+    },
+    {
+     "sub": "x2.rs1=23",
+     "status": "rejected",
+     "errors": [
+      "NameError: name 'isinstance' is not defined"
+     ]
+    },
+    {
+     "sub": "x4.frame",
+     "run": "x4.frame.949172632c",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 37.43080544471741
+    },
+    {
+     "sub": "x5.rs1=14",
+     "status": "rejected",
+     "errors": [
+      "NameError: name 'isinstance' is not defined"
+     ]
+    },
+    {
+     "sub": "x6.rs1=8",
+     "status": "rejected",
+     "errors": [
+      "NameError: name 'isinstance' is not defined"
+     ]
+    },
+    {
+     "sub": "x7.rs1=14",
+     "status": "rejected",
+     "errors": [
+      "NameError: name 'isinstance' is not defined"
+     ]
+    },
+    {
+     "sub": "x7.rs1=17",
+     "status": "rejected",
+     "errors": [
+      "NameError: name 'isinstance' is not defined"
+     ]
+    },
+    {
+     "sub": "x8.frame",
+     "run": "x8.frame.b92599c71d",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 788,
+     "seconds": 38.50666284561157
+    },
+    {
+     "sub": "x14.rs1=0",
+     "status": "rejected",
+     "errors": [
+      "NameError: name 'isinstance' is not defined"
+     ]
+    },
+    {
+     "sub": "x14.rs1=14",
+     "status": "rejected",
+     "errors": [
+      "NameError: name 'isinstance' is not defined"
+     ]
+    },
+    {
+     "sub": "x14.rs1=30",
+     "status": "rejected",
+     "errors": [
+      "NameError: name 'isinstance' is not defined"
+     ]
+    },
+    {
+     "sub": "x16.rs1=16",
+     "status": "rejected",
+     "errors": [
+      "NameError: name 'isinstance' is not defined"
+     ]
+    },
+    {
+     "sub": "x18.rs1=0",
+     "status": "rejected",
+     "errors": [
+      "NameError: name 'isinstance' is not defined"
+     ]
+    },
+    {
+     "sub": "x21.rs1=13",
+     "status": "rejected",
+     "errors": [
+      "NameError: name 'isinstance' is not defined"
+     ]
+    },
+    {
+     "sub": "x28.rs1=18",
+     "status": "rejected",
+     "errors": [
+      "NameError: name 'isinstance' is not defined"
+     ]
+    }
+   ]
+  },
+  "claude-4": {
+   "unsat": 16,
+   "rejected": 0,
+   "final_coi_state_bits": 17576,
+   "seconds": 857.0,
+   "refinements": 0,
+   "subs": [
+    {
+     "sub": "mem",
+     "run": "mem.751d6e1882",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1714,
+     "seconds": 65.49304556846619
+    },
+    {
+     "sub": "x1.frame",
+     "run": "x1.frame.ded070342a",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 852,
+     "seconds": 34.78808784484863
+    },
+    {
+     "sub": "x2.rs1=23",
+     "run": "x2.rs1=23.2fda14ed24",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1141,
+     "seconds": 67.08932900428772
+    },
+    {
+     "sub": "x4.frame",
+     "run": "x4.frame.283f0e3fe1",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 852,
+     "seconds": 34.072614431381226
+    },
+    {
+     "sub": "x5.rs1=14",
+     "run": "x5.rs1=14.889a6f1d91",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1141,
+     "seconds": 61.5837197303772
+    },
+    {
+     "sub": "x6.rs1=8",
+     "run": "x6.rs1=8.4c681a1591",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1141,
+     "seconds": 57.40995955467224
+    },
+    {
+     "sub": "x7.rs1=14",
+     "run": "x7.rs1=14.cde872e649",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1141,
+     "seconds": 59.20034646987915
+    },
+    {
+     "sub": "x7.rs1=17",
+     "run": "x7.rs1=17.5caaa1bd06",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1141,
+     "seconds": 55.54463076591492
+    },
+    {
+     "sub": "x8.frame",
+     "run": "x8.frame.cdbf861cd6",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 852,
+     "seconds": 36.918686389923096
+    },
+    {
+     "sub": "x14.rs1=0",
+     "run": "x14.rs1=0.7f16053aeb",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1044,
+     "seconds": 35.0159125328064
+    },
+    {
+     "sub": "x14.rs1=14",
+     "run": "x14.rs1=14.8a05a36d75",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1045,
+     "seconds": 84.89860773086548
+    },
+    {
+     "sub": "x14.rs1=30",
+     "run": "x14.rs1=30.75cb2a26a0",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1141,
+     "seconds": 59.272449016571045
+    },
+    {
+     "sub": "x16.rs1=16",
+     "run": "x16.rs1=16.2e87cba32d",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1045,
+     "seconds": 61.4452018737793
+    },
+    {
+     "sub": "x18.rs1=0",
+     "run": "x18.rs1=0.4c39597e0d",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1044,
+     "seconds": 33.87059545516968
+    },
+    {
+     "sub": "x21.rs1=13",
+     "run": "x21.rs1=13.35ad7d8980",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1141,
+     "seconds": 49.38362002372742
+    },
+    {
+     "sub": "x28.rs1=18",
+     "run": "x28.rs1=18.b2844fd55d",
+     "status": "UNSAT",
+     "refinements": 0,
+     "refined": [],
+     "final_coi_state_bits": 1141,
+     "seconds": 61.01767611503601
+    }
+   ]
+  },
+  "claude-5": {
+   "unsat": 0,
+   "rejected": 16,
+   "final_coi_state_bits": 0,
+   "seconds": 0,
+   "refinements": 0,
+   "subs": [
+    {
+     "sub": "mem",
+     "status": "rejected",
+     "errors": [
+      "line 1: only function definitions are allowed at top level",
+      "line 7: only function definitions are allowed at top level",
+      "line 8: only function definitions are allowed at top level",
+      "line 15: attribute isalnum is not allowed"
+     ]
+    },
+    {
+     "sub": "x1.frame",
+     "status": "rejected",
+     "errors": [
+      "line 1: only function definitions are allowed at top level",
+      "line 7: only function definitions are allowed at top level",
+      "line 8: only function definitions are allowed at top level",
+      "line 15: attribute isalnum is not allowed"
+     ]
+    },
+    {
+     "sub": "x2.rs1=23",
+     "status": "rejected",
+     "errors": [
+      "line 1: only function definitions are allowed at top level",
+      "line 7: only function definitions are allowed at top level",
+      "line 8: only function definitions are allowed at top level",
+      "line 15: attribute isalnum is not allowed"
+     ]
+    },
+    {
+     "sub": "x4.frame",
+     "status": "rejected",
+     "errors": [
+      "line 1: only function definitions are allowed at top level",
+      "line 7: only function definitions are allowed at top level",
+      "line 8: only function definitions are allowed at top level",
+      "line 15: attribute isalnum is not allowed"
+     ]
+    },
+    {
+     "sub": "x5.rs1=14",
+     "status": "rejected",
+     "errors": [
+      "line 1: only function definitions are allowed at top level",
+      "line 7: only function definitions are allowed at top level",
+      "line 8: only function definitions are allowed at top level",
+      "line 15: attribute isalnum is not allowed"
+     ]
+    },
+    {
+     "sub": "x6.rs1=8",
+     "status": "rejected",
+     "errors": [
+      "line 1: only function definitions are allowed at top level",
+      "line 7: only function definitions are allowed at top level",
+      "line 8: only function definitions are allowed at top level",
+      "line 15: attribute isalnum is not allowed"
+     ]
+    },
+    {
+     "sub": "x7.rs1=14",
+     "status": "rejected",
+     "errors": [
+      "line 1: only function definitions are allowed at top level",
+      "line 7: only function definitions are allowed at top level",
+      "line 8: only function definitions are allowed at top level",
+      "line 15: attribute isalnum is not allowed"
+     ]
+    },
+    {
+     "sub": "x7.rs1=17",
+     "status": "rejected",
+     "errors": [
+      "line 1: only function definitions are allowed at top level",
+      "line 7: only function definitions are allowed at top level",
+      "line 8: only function definitions are allowed at top level",
+      "line 15: attribute isalnum is not allowed"
+     ]
+    },
+    {
+     "sub": "x8.frame",
+     "status": "rejected",
+     "errors": [
+      "line 1: only function definitions are allowed at top level",
+      "line 7: only function definitions are allowed at top level",
+      "line 8: only function definitions are allowed at top level",
+      "line 15: attribute isalnum is not allowed"
+     ]
+    },
+    {
+     "sub": "x14.rs1=0",
+     "status": "rejected",
+     "errors": [
+      "line 1: only function definitions are allowed at top level",
+      "line 7: only function definitions are allowed at top level",
+      "line 8: only function definitions are allowed at top level",
+      "line 15: attribute isalnum is not allowed"
+     ]
+    },
+    {
+     "sub": "x14.rs1=14",
+     "status": "rejected",
+     "errors": [
+      "line 1: only function definitions are allowed at top level",
+      "line 7: only function definitions are allowed at top level",
+      "line 8: only function definitions are allowed at top level",
+      "line 15: attribute isalnum is not allowed"
+     ]
+    },
+    {
+     "sub": "x14.rs1=30",
+     "status": "rejected",
+     "errors": [
+      "line 1: only function definitions are allowed at top level",
+      "line 7: only function definitions are allowed at top level",
+      "line 8: only function definitions are allowed at top level",
+      "line 15: attribute isalnum is not allowed"
+     ]
+    },
+    {
+     "sub": "x16.rs1=16",
+     "status": "rejected",
+     "errors": [
+      "line 1: only function definitions are allowed at top level",
+      "line 7: only function definitions are allowed at top level",
+      "line 8: only function definitions are allowed at top level",
+      "line 15: attribute isalnum is not allowed"
+     ]
+    },
+    {
+     "sub": "x18.rs1=0",
+     "status": "rejected",
+     "errors": [
+      "line 1: only function definitions are allowed at top level",
+      "line 7: only function definitions are allowed at top level",
+      "line 8: only function definitions are allowed at top level",
+      "line 15: attribute isalnum is not allowed"
+     ]
+    },
+    {
+     "sub": "x21.rs1=13",
+     "status": "rejected",
+     "errors": [
+      "line 1: only function definitions are allowed at top level",
+      "line 7: only function definitions are allowed at top level",
+      "line 8: only function definitions are allowed at top level",
+      "line 15: attribute isalnum is not allowed"
+     ]
+    },
+    {
+     "sub": "x28.rs1=18",
+     "status": "rejected",
+     "errors": [
+      "line 1: only function definitions are allowed at top level",
+      "line 7: only function definitions are allowed at top level",
+      "line 8: only function definitions are allowed at top level",
+      "line 15: attribute isalnum is not allowed"
+     ]
+    }
+   ]
+  }
+ }
+}

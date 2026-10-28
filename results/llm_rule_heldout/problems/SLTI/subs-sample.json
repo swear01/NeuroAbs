@@ -1,0 +1,144 @@
+[
+ {
+  "name": "mem",
+  "states": [
+   "load_en",
+   "pc",
+   "store_en",
+   "x0"
+  ]
+ },
+ {
+  "name": "x1.rs1=28",
+  "states": [
+   "x1"
+  ],
+  "case": "rd==1&&rs1==28"
+ },
+ {
+  "name": "x1.rs1=30",
+  "states": [
+   "x1"
+  ],
+  "case": "rd==1&&rs1==30"
+ },
+ {
+  "name": "x2.rs1=23",
+  "states": [
+   "x2"
+  ],
+  "case": "rd==2&&rs1==23"
+ },
+ {
+  "name": "x3.rs1=3",
+  "states": [
+   "x3"
+  ],
+  "case": "rd==3&&rs1==3"
+ },
+ {
+  "name": "x4.rs1=15",
+  "states": [
+   "x4"
+  ],
+  "case": "rd==4&&rs1==15"
+ },
+ {
+  "name": "x5.rs1=14",
+  "states": [
+   "x5"
+  ],
+  "case": "rd==5&&rs1==14"
+ },
+ {
+  "name": "x6.rs1=8",
+  "states": [
+   "x6"
+  ],
+  "case": "rd==6&&rs1==8"
+ },
+ {
+  "name": "x7.rs1=14",
+  "states": [
+   "x7"
+  ],
+  "case": "rd==7&&rs1==14"
+ },
+ {
+  "name": "x7.rs1=17",
+  "states": [
+   "x7"
+  ],
+  "case": "rd==7&&rs1==17"
+ },
+ {
+  "name": "x8.rs1=24",
+  "states": [
+   "x8"
+  ],
+  "case": "rd==8&&rs1==24"
+ },
+ {
+  "name": "x14.frame",
+  "states": [
+   "x14"
+  ],
+  "case": "rd!=14"
+ },
+ {
+  "name": "x14.rs1=0",
+  "states": [
+   "x14"
+  ],
+  "case": "rd==14&&rs1==0"
+ },
+ {
+  "name": "x14.rs1=30",
+  "states": [
+   "x14"
+  ],
+  "case": "rd==14&&rs1==30"
+ },
+ {
+  "name": "x16.frame",
+  "states": [
+   "x16"
+  ],
+  "case": "rd!=16"
+ },
+ {
+  "name": "x18.frame",
+  "states": [
+   "x18"
+  ],
+  "case": "rd!=18"
+ },
+ {
+  "name": "x21.rs1=13",
+  "states": [
+   "x21"
+  ],
+  "case": "rd==21&&rs1==13"
+ },
+ {
+  "name": "x24.rs1=0",
+  "states": [
+   "x24"
+  ],
+  "case": "rd==24&&rs1==0"
+ },
+ {
+  "name": "x28.rs1=18",
+  "states": [
+   "x28"
+  ],
+  "case": "rd==28&&rs1==18"
+ },
+ {
+  "name": "x31.rs1=31",
+  "states": [
+   "x31"
+  ],
+  "case": "rd==31&&rs1==31"
+ }
+]

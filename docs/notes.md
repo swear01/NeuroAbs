@@ -77,3 +77,21 @@
   execute the edited bytes. In `semantic_candidates` this skipped the final
   `cp`/`.done` step of batch s2 and left `s2.failed`, although all records
   were written; copy the script or wait for running batches first.
+- `claude -p` (Claude Code 2.1.302, claude.ai login) with `--system-prompt`,
+  `--tools ""`, `--safe-mode`, `--setting-sources ""` and an empty
+  `--strict-mcp-config` still sends a second system block (working directory,
+  platform, model identity, date) and a user-email reminder before the user
+  message, and uses effort `medium` by default. The session transcript under
+  `~/.claude/projects/<cwd>/` records the exact request (`prompt_snapshot`,
+  `api-request-blob`, `api-request.params`); check it rather than assuming the
+  prompt is the only context. `src/claude_cli.py` runs it with only HOME, PATH,
+  USER and LANG in the environment so that no API key or session variable is
+  inherited.
+- The DeepSeek gateway's last fallback for `deepseek-flash` is OpenRouter
+  (`~deepseek/deepseek-flash-latest`). `llm_rule.ask` stops unless the served
+  model is `deepseek-v4.1-flash` (OpenCode Go) or `deepseek/deepseek-v4.1-flash`
+  (Command Code) and the response has no `provider` field.
+- Over `ssh`, `pkill -f <pattern>` also matches the remote `bash -c` that runs
+  the command when the pattern appears in it, and kills the session. Start
+  long remote jobs with `setsid nohup ... < /dev/null &`; the local `ssh` may
+  still not return, but killing it does not stop the job.

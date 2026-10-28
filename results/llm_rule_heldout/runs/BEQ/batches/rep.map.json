@@ -1,0 +1,140 @@
+[
+ {
+  "llm": "deepseek-fb4",
+  "base": "split",
+  "subs": [
+   "load_en.rs1=0.rs2=0",
+   "load_en.rs1=2.rs2=23",
+   "load_en.rs1=5.rs2=14"
+  ],
+  "runs": {
+   "load_en.rs1=0.rs2=0": [
+    "load_en.rs1=0.rs2=0.59231b36e4",
+    "load_en.rs1=0.rs2=0.7a9a803a31"
+   ],
+   "load_en.rs1=2.rs2=23": [
+    "load_en.rs1=2.rs2=23.ec63c78eeb",
+    "load_en.rs1=2.rs2=23.1be6e1154a"
+   ],
+   "load_en.rs1=5.rs2=14": [
+    "load_en.rs1=5.rs2=14.174c56eae8",
+    "load_en.rs1=5.rs2=14.d2a1e8e663"
+   ]
+  }
+ },
+ {
+  "llm": "deepseek-fb4",
+  "base": "S",
+  "subs": [
+   "load_en.rs1=0.rs2=0",
+   "load_en.rs1=2.rs2=23",
+   "load_en.rs1=5.rs2=14"
+  ],
+  "runs": {
+   "load_en.rs1=0.rs2=0": [
+    "load_en.rs1=0.rs2=0.59231b36e4",
+    "load_en.rs1=0.rs2=0.491ef829b1"
+   ],
+   "load_en.rs1=2.rs2=23": [
+    "load_en.rs1=2.rs2=23.ec63c78eeb",
+    "load_en.rs1=2.rs2=23.3dd295f71d"
+   ],
+   "load_en.rs1=5.rs2=14": [
+    "load_en.rs1=5.rs2=14.174c56eae8",
+    "load_en.rs1=5.rs2=14.c3293e58b4"
+   ]
+  }
+ },
+ {
+  "llm": "deepseek-fb4",
+  "base": "auto",
+  "subs": [
+   "load_en.rs1=0.rs2=0",
+   "load_en.rs1=2.rs2=23",
+   "load_en.rs1=5.rs2=14"
+  ],
+  "runs": {
+   "load_en.rs1=0.rs2=0": [
+    "load_en.rs1=0.rs2=0.59231b36e4",
+    "load_en.rs1=0.rs2=0.e18c7817ba"
+   ],
+   "load_en.rs1=2.rs2=23": [
+    "load_en.rs1=2.rs2=23.ec63c78eeb",
+    "load_en.rs1=2.rs2=23.4b20815500"
+   ],
+   "load_en.rs1=5.rs2=14": [
+    "load_en.rs1=5.rs2=14.174c56eae8",
+    "load_en.rs1=5.rs2=14.7698bc93e3"
+   ]
+  }
+ },
+ {
+  "llm": "claude-fb2",
+  "base": "split",
+  "subs": [
+   "load_en.rs1=0.rs2=0",
+   "load_en.rs1=2.rs2=23",
+   "load_en.rs1=5.rs2=14"
+  ],
+  "runs": {
+   "load_en.rs1=0.rs2=0": [
+    "load_en.rs1=0.rs2=0.762e05d65f",
+    "load_en.rs1=0.rs2=0.7a9a803a31"
+   ],
+   "load_en.rs1=2.rs2=23": [
+    "load_en.rs1=2.rs2=23.3dd295f71d",
+    "load_en.rs1=2.rs2=23.1be6e1154a"
+   ],
+   "load_en.rs1=5.rs2=14": [
+    "load_en.rs1=5.rs2=14.c3293e58b4",
+    "load_en.rs1=5.rs2=14.d2a1e8e663"
+   ]
+  }
+ },
+ {
+  "llm": "claude-fb2",
+  "base": "S",
+  "subs": [
+   "load_en.rs1=0.rs2=0",
+   "load_en.rs1=2.rs2=23",
+   "load_en.rs1=5.rs2=14"
+  ],
+  "runs": {
+   "load_en.rs1=0.rs2=0": [
+    "load_en.rs1=0.rs2=0.762e05d65f",
+    "load_en.rs1=0.rs2=0.491ef829b1"
+   ],
+   "load_en.rs1=2.rs2=23": [
+    "load_en.rs1=2.rs2=23.3dd295f71d",
+    "load_en.rs1=2.rs2=23.3dd295f71d"
+   ],
+   "load_en.rs1=5.rs2=14": [
+    "load_en.rs1=5.rs2=14.c3293e58b4",
+    "load_en.rs1=5.rs2=14.c3293e58b4"
+   ]
+  }
+ },
+ {
+  "llm": "claude-fb2",
+  "base": "auto",
+  "subs": [
+   "load_en.rs1=0.rs2=0",
+   "load_en.rs1=2.rs2=23",
+   "load_en.rs1=5.rs2=14"
+  ],
+  "runs": {
+   "load_en.rs1=0.rs2=0": [
+    "load_en.rs1=0.rs2=0.762e05d65f",
+    "load_en.rs1=0.rs2=0.e18c7817ba"
+   ],
+   "load_en.rs1=2.rs2=23": [
+    "load_en.rs1=2.rs2=23.3dd295f71d",
+    "load_en.rs1=2.rs2=23.4b20815500"
+   ],
+   "load_en.rs1=5.rs2=14": [
+    "load_en.rs1=5.rs2=14.c3293e58b4",
+    "load_en.rs1=5.rs2=14.7698bc93e3"
+   ]
+  }
+ }
+]

@@ -1,0 +1,140 @@
+[
+ {
+  "llm": "deepseek-fb4",
+  "base": "split",
+  "subs": [
+   "pc.rs1=0.rs2=0",
+   "pc.rs1=0.rs2=7",
+   "pc.rs1=7.rs2=17"
+  ],
+  "runs": {
+   "pc.rs1=0.rs2=0": [
+    "pc.rs1=0.rs2=0.b646190cb7",
+    "pc.rs1=0.rs2=0.5ee27da96b"
+   ],
+   "pc.rs1=0.rs2=7": [
+    "pc.rs1=0.rs2=7.944bce9de9",
+    "pc.rs1=0.rs2=7.9c5ce0d67d"
+   ],
+   "pc.rs1=7.rs2=17": [
+    "pc.rs1=7.rs2=17.67f46316bb",
+    "pc.rs1=7.rs2=17.a1ce17c39a"
+   ]
+  }
+ },
+ {
+  "llm": "deepseek-fb4",
+  "base": "S",
+  "subs": [
+   "pc.rs1=0.rs2=0",
+   "pc.rs1=0.rs2=7",
+   "pc.rs1=2.rs2=23"
+  ],
+  "runs": {
+   "pc.rs1=0.rs2=0": [
+    "pc.rs1=0.rs2=0.b646190cb7",
+    "pc.rs1=0.rs2=0.7aa3accc7a"
+   ],
+   "pc.rs1=0.rs2=7": [
+    "pc.rs1=0.rs2=7.944bce9de9",
+    "pc.rs1=0.rs2=7.414ebf5c2f"
+   ],
+   "pc.rs1=2.rs2=23": [
+    "pc.rs1=2.rs2=23.d97ded46dc",
+    "pc.rs1=2.rs2=23.5a570fb9ac"
+   ]
+  }
+ },
+ {
+  "llm": "deepseek-fb4",
+  "base": "auto",
+  "subs": [
+   "pc.rs1=0.rs2=0",
+   "pc.rs1=0.rs2=7",
+   "pc.rs1=2.rs2=23"
+  ],
+  "runs": {
+   "pc.rs1=0.rs2=0": [
+    "pc.rs1=0.rs2=0.b646190cb7",
+    "pc.rs1=0.rs2=0.d9ce29d3a4"
+   ],
+   "pc.rs1=0.rs2=7": [
+    "pc.rs1=0.rs2=7.944bce9de9",
+    "pc.rs1=0.rs2=7.aaa14739af"
+   ],
+   "pc.rs1=2.rs2=23": [
+    "pc.rs1=2.rs2=23.d97ded46dc",
+    "pc.rs1=2.rs2=23.3735824f9f"
+   ]
+  }
+ },
+ {
+  "llm": "claude-fb2",
+  "base": "split",
+  "subs": [
+   "pc.rs1=0.rs2=0",
+   "pc.rs1=0.rs2=7",
+   "pc.rs1=7.rs2=17"
+  ],
+  "runs": {
+   "pc.rs1=0.rs2=0": [
+    "pc.rs1=0.rs2=0.824b6eb9d8",
+    "pc.rs1=0.rs2=0.5ee27da96b"
+   ],
+   "pc.rs1=0.rs2=7": [
+    "pc.rs1=0.rs2=7.31c79cb082",
+    "pc.rs1=0.rs2=7.9c5ce0d67d"
+   ],
+   "pc.rs1=7.rs2=17": [
+    "pc.rs1=7.rs2=17.d88bd33b2c",
+    "pc.rs1=7.rs2=17.a1ce17c39a"
+   ]
+  }
+ },
+ {
+  "llm": "claude-fb2",
+  "base": "S",
+  "subs": [
+   "pc.rs1=0.rs2=0",
+   "pc.rs1=0.rs2=7",
+   "pc.rs1=2.rs2=23"
+  ],
+  "runs": {
+   "pc.rs1=0.rs2=0": [
+    "pc.rs1=0.rs2=0.824b6eb9d8",
+    "pc.rs1=0.rs2=0.7aa3accc7a"
+   ],
+   "pc.rs1=0.rs2=7": [
+    "pc.rs1=0.rs2=7.31c79cb082",
+    "pc.rs1=0.rs2=7.414ebf5c2f"
+   ],
+   "pc.rs1=2.rs2=23": [
+    "pc.rs1=2.rs2=23.e1e26c4216",
+    "pc.rs1=2.rs2=23.5a570fb9ac"
+   ]
+  }
+ },
+ {
+  "llm": "claude-fb2",
+  "base": "auto",
+  "subs": [
+   "pc.rs1=0.rs2=0",
+   "pc.rs1=0.rs2=7",
+   "pc.rs1=2.rs2=23"
+  ],
+  "runs": {
+   "pc.rs1=0.rs2=0": [
+    "pc.rs1=0.rs2=0.824b6eb9d8",
+    "pc.rs1=0.rs2=0.d9ce29d3a4"
+   ],
+   "pc.rs1=0.rs2=7": [
+    "pc.rs1=0.rs2=7.31c79cb082",
+    "pc.rs1=0.rs2=7.aaa14739af"
+   ],
+   "pc.rs1=2.rs2=23": [
+    "pc.rs1=2.rs2=23.e1e26c4216",
+    "pc.rs1=2.rs2=23.3735824f9f"
+   ]
+  }
+ }
+]

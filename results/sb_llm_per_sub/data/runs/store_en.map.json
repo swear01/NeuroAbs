@@ -1,0 +1,110 @@
+{
+ "deepseek": {
+  "store_en.rs1=0.rs2=0": "store_en.rs1=0.rs2=0.ca6d5fdacd",
+  "store_en.rs1=1.rs2=28": "store_en.rs1=1.rs2=28.8e4c0e7b5a",
+  "store_en.rs1=1.rs2=30": "store_en.rs1=1.rs2=30.221e3a9849",
+  "store_en.rs1=2.rs2=2": "store_en.rs1=2.rs2=2.44a68f39ca",
+  "store_en.rs1=15.rs2=11": "store_en.rs1=15.rs2=11.606aeaec15",
+  "store_en.rs1=15.rs2=12": "store_en.rs1=15.rs2=12.1bae00b009",
+  "store_en.rs1=17.rs2=26": "store_en.rs1=17.rs2=26.cb6eaba72b",
+  "store_en.rs1=19.rs2=29": "store_en.rs1=19.rs2=29.0b54f62e6a",
+  "store_en.rs1=29.rs2=3": "store_en.rs1=29.rs2=3.6645f60f42",
+  "store_en.rs1=30.rs2=0": "store_en.rs1=30.rs2=0.b38cd16d73"
+ },
+ "claude": {
+  "store_en.rs1=0.rs2=0": "store_en.rs1=0.rs2=0.2dd8928eb4",
+  "store_en.rs1=1.rs2=28": "store_en.rs1=1.rs2=28.3499f84931",
+  "store_en.rs1=1.rs2=30": "store_en.rs1=1.rs2=30.378c8b7159",
+  "store_en.rs1=2.rs2=2": "store_en.rs1=2.rs2=2.1e46202df6",
+  "store_en.rs1=15.rs2=11": "store_en.rs1=15.rs2=11.29a50d2edd",
+  "store_en.rs1=15.rs2=12": "store_en.rs1=15.rs2=12.5d8d2b0987",
+  "store_en.rs1=17.rs2=26": "store_en.rs1=17.rs2=26.2123650b25",
+  "store_en.rs1=19.rs2=29": "store_en.rs1=19.rs2=29.4e22920cf5",
+  "store_en.rs1=29.rs2=3": "store_en.rs1=29.rs2=3.186118bd81",
+  "store_en.rs1=30.rs2=0": "store_en.rs1=30.rs2=0.7d5ec62d05"
+ },
+ "S": {
+  "store_en.rs1=0.rs2=0": "store_en.rs1=0.rs2=0.8a2de696cd",
+  "store_en.rs1=1.rs2=28": "store_en.rs1=1.rs2=28.64bd063b3a",
+  "store_en.rs1=1.rs2=30": "store_en.rs1=1.rs2=30.1e71d02843",
+  "store_en.rs1=2.rs2=2": "store_en.rs1=2.rs2=2.d870442e33",
+  "store_en.rs1=15.rs2=11": "store_en.rs1=15.rs2=11.01abe05098",
+  "store_en.rs1=15.rs2=12": "store_en.rs1=15.rs2=12.cef312b87a",
+  "store_en.rs1=17.rs2=26": "store_en.rs1=17.rs2=26.562548f418",
+  "store_en.rs1=19.rs2=29": "store_en.rs1=19.rs2=29.524e58a70e",
+  "store_en.rs1=29.rs2=3": "store_en.rs1=29.rs2=3.80938dc5d0",
+  "store_en.rs1=30.rs2=0": "store_en.rs1=30.rs2=0.bd2e9717fe"
+ },
+ "claude-fb2": {
+  "store_en.rs1=0.rs2=0": "store_en.rs1=0.rs2=0.fc974a9efe",
+  "store_en.rs1=1.rs2=28": "store_en.rs1=1.rs2=28.17da1f9724",
+  "store_en.rs1=1.rs2=30": "store_en.rs1=1.rs2=30.defd6c13d3",
+  "store_en.rs1=2.rs2=2": "store_en.rs1=2.rs2=2.37dba73cdc",
+  "store_en.rs1=15.rs2=11": "store_en.rs1=15.rs2=11.7b6a3d8a71",
+  "store_en.rs1=15.rs2=12": "store_en.rs1=15.rs2=12.71173c3379",
+  "store_en.rs1=17.rs2=26": "store_en.rs1=17.rs2=26.89de73e64d",
+  "store_en.rs1=19.rs2=29": "store_en.rs1=19.rs2=29.5bae56be30",
+  "store_en.rs1=29.rs2=3": "store_en.rs1=29.rs2=3.62752f3871",
+  "store_en.rs1=30.rs2=0": "store_en.rs1=30.rs2=0.70f258a0a8"
+ },
+ "claude-fb2-rev": {
+  "store_en.rs1=0.rs2=0": "store_en.rs1=0.rs2=0.fc974a9efe",
+  "store_en.rs1=1.rs2=28": "store_en.rs1=1.rs2=28.64bd063b3a",
+  "store_en.rs1=1.rs2=30": "store_en.rs1=1.rs2=30.1e71d02843",
+  "store_en.rs1=2.rs2=2": "store_en.rs1=2.rs2=2.d870442e33",
+  "store_en.rs1=15.rs2=11": "store_en.rs1=15.rs2=11.01abe05098",
+  "store_en.rs1=15.rs2=12": "store_en.rs1=15.rs2=12.cef312b87a",
+  "store_en.rs1=17.rs2=26": "store_en.rs1=17.rs2=26.562548f418",
+  "store_en.rs1=19.rs2=29": "store_en.rs1=19.rs2=29.524e58a70e",
+  "store_en.rs1=29.rs2=3": "store_en.rs1=29.rs2=3.80938dc5d0",
+  "store_en.rs1=30.rs2=0": "store_en.rs1=30.rs2=0.bd2e9717fe"
+ },
+ "single-claude-single": {
+  "store_en.rs1=0.rs2=0": "store_en.rs1=0.rs2=0.8a2de696cd",
+  "store_en.rs1=1.rs2=28": "store_en.rs1=1.rs2=28.3499f84931",
+  "store_en.rs1=1.rs2=30": "store_en.rs1=1.rs2=30.defd6c13d3",
+  "store_en.rs1=2.rs2=2": "store_en.rs1=2.rs2=2.fb8b3856df",
+  "store_en.rs1=15.rs2=11": "store_en.rs1=15.rs2=11.7518dc6d8c",
+  "store_en.rs1=15.rs2=12": "store_en.rs1=15.rs2=12.29827f7c43",
+  "store_en.rs1=17.rs2=26": "store_en.rs1=17.rs2=26.561e111ff2",
+  "store_en.rs1=19.rs2=29": "store_en.rs1=19.rs2=29.010ff17165",
+  "store_en.rs1=29.rs2=3": "store_en.rs1=29.rs2=3.f42d276cf3",
+  "store_en.rs1=30.rs2=0": "store_en.rs1=30.rs2=0.71e8a15c0d"
+ },
+ "single-claude-single-rev": {
+  "store_en.rs1=0.rs2=0": "store_en.rs1=0.rs2=0.1197969ce8",
+  "store_en.rs1=1.rs2=28": "store_en.rs1=1.rs2=28.3499f84931",
+  "store_en.rs1=1.rs2=30": "store_en.rs1=1.rs2=30.25989858da",
+  "store_en.rs1=2.rs2=2": "store_en.rs1=2.rs2=2.fb8b3856df",
+  "store_en.rs1=15.rs2=11": "store_en.rs1=15.rs2=11.7518dc6d8c",
+  "store_en.rs1=15.rs2=12": "store_en.rs1=15.rs2=12.c326b28eda",
+  "store_en.rs1=17.rs2=26": "store_en.rs1=17.rs2=26.561e111ff2",
+  "store_en.rs1=19.rs2=29": "store_en.rs1=19.rs2=29.010ff17165",
+  "store_en.rs1=29.rs2=3": "store_en.rs1=29.rs2=3.62752f3871",
+  "store_en.rs1=30.rs2=0": "store_en.rs1=30.rs2=0.e5be3ba2dc"
+ },
+ "single-deepseek-single": {
+  "store_en.rs1=0.rs2=0": "store_en.rs1=0.rs2=0.8a2de696cd",
+  "store_en.rs1=1.rs2=28": "store_en.rs1=1.rs2=28.4a7eb4669c",
+  "store_en.rs1=1.rs2=30": "store_en.rs1=1.rs2=30.d6d3f28379",
+  "store_en.rs1=2.rs2=2": "store_en.rs1=2.rs2=2.d870442e33",
+  "store_en.rs1=15.rs2=11": "store_en.rs1=15.rs2=11.7b6a3d8a71",
+  "store_en.rs1=15.rs2=12": "store_en.rs1=15.rs2=12.16987feedc",
+  "store_en.rs1=17.rs2=26": "store_en.rs1=17.rs2=26.cb6eaba72b",
+  "store_en.rs1=19.rs2=29": "store_en.rs1=19.rs2=29.9e092c19c9",
+  "store_en.rs1=29.rs2=3": "store_en.rs1=29.rs2=3.80938dc5d0",
+  "store_en.rs1=30.rs2=0": "store_en.rs1=30.rs2=0.70f258a0a8"
+ },
+ "single-deepseek-single-rev": {
+  "store_en.rs1=0.rs2=0": "store_en.rs1=0.rs2=0.fc974a9efe",
+  "store_en.rs1=1.rs2=28": "store_en.rs1=1.rs2=28.17da1f9724",
+  "store_en.rs1=1.rs2=30": "store_en.rs1=1.rs2=30.1e71d02843",
+  "store_en.rs1=2.rs2=2": "store_en.rs1=2.rs2=2.206a220e3f",
+  "store_en.rs1=15.rs2=11": "store_en.rs1=15.rs2=11.7b6a3d8a71",
+  "store_en.rs1=15.rs2=12": "store_en.rs1=15.rs2=12.71173c3379",
+  "store_en.rs1=17.rs2=26": "store_en.rs1=17.rs2=26.562548f418",
+  "store_en.rs1=19.rs2=29": "store_en.rs1=19.rs2=29.524e58a70e",
+  "store_en.rs1=29.rs2=3": "store_en.rs1=29.rs2=3.f4378bb8da",
+  "store_en.rs1=30.rs2=0": "store_en.rs1=30.rs2=0.bd2e9717fe"
+ }
+}

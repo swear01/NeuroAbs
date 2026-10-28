@@ -300,6 +300,8 @@ def main(argv=None):
         with open(args.examples) as f:
             examples = [sub_input(s, text) for s in json.load(f)]
         message = build_prompt(design, examples)
+        if args.command == "generate" and os.path.exists(os.path.join(args.out, "answers.jsonl")):
+            raise SystemExit("answers.jsonl already exists in " + args.out)
         os.makedirs(args.out, exist_ok=True)
         with open(os.path.join(args.out, "prompt-system.txt"), "w") as f:
             f.write(rule_context)
@@ -308,8 +310,6 @@ def main(argv=None):
         if args.command == "prompt":
             return 0
         os.chdir(args.out)
-        if os.path.exists("answers.jsonl"):
-            raise SystemExit("answers.jsonl already exists in " + args.out)
         for i in range(1, args.samples + 1):
             record = dict(ask(args.backend, message, "rule-{:d}.py".format(i), i), sample=i)
             with open("answers.jsonl", "a") as f:

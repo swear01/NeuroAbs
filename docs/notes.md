@@ -111,4 +111,6 @@
   drivers and logic loops; add a constant-1 wire and pass `-enable` (`abstract
   -init` is fine). `write_btor` also emits `N uext S -1 w` that rIC3's btor
   parser panics on (`parse.rs:26`); rewrite to `N const S 0..0` as in the bench.
-  Used by `src/case_study.py`; results in `results/case_study_fifo_vis/`.
+  Used by `src/case_study.py` (per-bench settings in `bench/case.json`, committed
+  next to the results); results in `results/case_study_fifo_vis/` and
+  `results/case_study_lrg_arb/`.

@@ -190,11 +190,11 @@ class Study:
     def build(self, tag, cond, ops, reach=False):
         """Build <tag>.btor2: the concrete flow of build.ys with piece property and class-A ops applied."""
         d = self.dir
-        flat = "flat.il"
+        flat = "flat_{:s}.il".format(tag)
         rc, out = self.yosys(
             "read_verilog -sv -formal bench/prep/fifo_vis.sv; prep -top main; flatten; hierarchy -check; "
             "delete t:$print; chformal -lower; {:s}memory -nomap; memory_map; opt_clean; write_rtlil {:s}".format(
-                "chformal -assert -remove; " if cond else "", flat), "build_flat.log")
+                "chformal -assert -remove; " if cond else "", flat), "build_flat_{:s}.log".format(tag))
         os.chdir(d)
         if rc:
             raise RuntimeError("yosys flat build failed: " + out[-500:])
@@ -319,10 +319,11 @@ def init(args):
     st = Study.__new__(Study)
     st.dir = wd
     st.state_path = os.path.join(wd, "state.json")
-    rc, out = subprocess.getstatusoutput(
-        "cd {0} && yosys -q -p 'read_verilog -sv -formal bench/prep/fifo_vis.sv; prep -top main; flatten; "
-        "hierarchy -check; delete t:$print; chformal -lower; memory -nomap; memory_map; opt_clean; "
-        "write_rtlil flat.il'".format(wd))
+    r = subprocess.run(["yosys", "-q", "-p",
+                        "read_verilog -sv -formal bench/prep/fifo_vis.sv; prep -top main; flatten; "
+                        "hierarchy -check; delete t:$print; chformal -lower; memory -nomap; memory_map; opt_clean; "
+                        "write_rtlil flat.il"], cwd=wd, capture_output=True, text=True)
+    rc, out = r.returncode, r.stdout + r.stderr
     if rc:
         raise SystemExit(out)
     il = open(os.path.join(wd, "flat.il")).read()

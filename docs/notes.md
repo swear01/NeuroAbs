@@ -107,3 +107,8 @@
 - mazu also runs other sessions' `fine_batch` on the same SB wrapper path; stop
   your own jobs by exact PID (and their children), never by `pkill -f` on a
   shared path.
+- Yosys 0.69: unconditional `abstract -value` / `abstract -state` leave conflicting
+  drivers and logic loops; add a constant-1 wire and pass `-enable` (`abstract
+  -init` is fine). `write_btor` also emits `N uext S -1 w` that rIC3's btor
+  parser panics on (`parse.rs:26`); rewrite to `N const S 0..0` as in the bench.
+  Used by `src/case_study.py`; results in `results/case_study_fifo_vis/`.

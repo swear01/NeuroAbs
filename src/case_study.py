@@ -553,8 +553,9 @@ def lemma_summary(st, p):
     return verdict, s
 
 
-def cmd_decide(st, timeouts, rows, counter, cap):
-    """One LLM call for all pieces that timed out this round: resplit / abstract / both, each with a reason."""
+def cmd_decide(st, timeouts, rows, counter, cap, auto=()):
+    """One LLM call for all pieces that timed out this round: resplit / abstract / both, each with a reason.
+    `auto` are timed-out pieces the tool already split itself; they are shown but not part of the decision."""
     rnd = st.s["round"]
     with concurrent.futures.ThreadPoolExecutor(PARALLEL) as ex:
         t0 = now()
@@ -570,23 +571,28 @@ def cmd_decide(st, timeouts, rows, counter, cap):
     if not todo:
         return
     user = ["Step: DECIDE (round {:d}). rIC3 portfolio, cap {:d} s per piece. Results of this round:".format(rnd, cap)]
-    user += ["- {:s}: {:s} {:.1f} s".format(*r) for r in rows]
-    user.append("Pieces that timed out (decide for each: \"resplit\", \"abstract\" or \"both\", with a reason):")
+    user += ["- {:s}: {:s} {:.1f} s{:s}".format(*r, " (already split by the tool's auto index expansion: not yours to decide)"
+                                                   if r[0] in auto else "") for r in rows]
+    user.append("Pieces to decide ({:d}; decide for exactly these ids, each: \"resplit\", \"abstract\" or \"both\", with a reason):".format(len(todo)))
     for p in todo:
         v = st.s["pieces"][p]
         user.append("- {:s}: case {:s}\n  operators now: {:s}\n  already fixed bits: {:s}\n  {:s}".format(
             p, v["cond"], json.dumps(v["ops"]), json.dumps(v["fixed"]), sums[p][1]))
-    user.append("Proved pieces are never touched again. Budget: at most {:d} new pieces this round, {:d} rounds in "
-                "total ({:d} left); the cap grows to {:d} s in later rounds.".format(
-                    MAX_NEW, MAX_ROUNDS, MAX_ROUNDS - rnd, CAPS[min(rnd // 2, len(CAPS) - 1)]))
+    left = MAX_NEW - counter[0]
+    user.append("Proved pieces are never touched again. Budget: {:d} new pieces left this round ({:d} per round, {:d} already "
+                "made by the tool's auto splits); the new pieces of all your splits together must fit in it. An index split of "
+                "b bits makes 2^b pieces, minus those that contradict the piece's case. {:d} rounds in total ({:d} left); the "
+                "cap grows to {:d} s in later rounds.".format(
+                    left, MAX_NEW, counter[0], MAX_ROUNDS, MAX_ROUNDS - rnd, CAPS[min(rnd // 2, len(CAPS) - 1)]))
     user.append(sig_list(st))
     user.append('Answer: {"pieces":{"<piece id>":{"action":"resplit|abstract|both","reason":"...",'
                 '"split":<explicit cases or index direction, for resplit/both>,"ops":[<operator>, ...] (for abstract/both)}, ...}}')
 
     def validate(data):
         plan, total = {}, 0
-        if set(data["pieces"]) != set(todo):
-            raise ValueError("pieces must be exactly {}".format(todo))
+        missing = [p for p in todo if p not in data["pieces"]]
+        if missing:
+            raise ValueError("no decision for {}; decide for exactly {} (other ids are ignored)".format(missing, todo))
         for p in todo:
             d = data["pieces"][p]
             if d["action"] not in ("resplit", "abstract", "both") or not str(d.get("reason", "")).strip():
@@ -599,9 +605,9 @@ def cmd_decide(st, timeouts, rows, counter, cap):
             kids = expand(st, d["split"], p) if d["action"] != "abstract" else []
             total += len(kids)
             plan[p] = dict(action=d["action"], reason=d["reason"], ops=ops, kids=kids, split=d.get("split"))
-        if total + counter[0] > MAX_NEW:
-            raise ValueError("{:d} new pieces ({:d} already made by the tool's auto splits), at most {:d} per round".format(
-                total, counter[0], MAX_NEW))
+        if total > left:
+            raise ValueError("{:d} new pieces, but only {:d} are left this round ({:d} per round, {:d} already made by the "
+                             "tool's auto splits)".format(total, left, MAX_NEW, counter[0]))
         return plan, "accepted: " + ", ".join("{:s} {:s}".format(p, x["action"]) for p, x in plan.items()), \
             {p: {"action": x["action"], "reason": x["reason"], "split": x["split"], "ops": x["ops"]} for p, x in plan.items()}
 
@@ -669,7 +675,7 @@ def cmd_run(st, args):
             cmd_cegar(st, args)
             cmd_refine(st, args)
         timeouts = [p for p in todo if s["pieces"][p]["status"] == "timeout"]
-        counter = [0]
+        counter, auto = [0], []
         for p in list(timeouts):  # "auto" index directions: the tool takes the next bit, no LLM call
             v = s["pieces"][p]
             d = v["direction"]
@@ -678,9 +684,10 @@ def cmd_run(st, args):
                 st.event("auto_expand", piece=p, index=d["index"], fixed=v["fixed"])
                 add_children(st, p, kids, v["ops"], rnd + 1, counter)
                 timeouts.remove(p)
+                auto.append(p)
         st.save()
         if rnd < MAX_ROUNDS and timeouts:
-            cmd_decide(st, timeouts, rows, counter, cap)
+            cmd_decide(st, timeouts, rows, counter, cap, auto)
         st.save()
     left = {p: v["status"] for p, v in s["pieces"].items() if v["status"] not in ("proved", "split")}
     print("done after round", s["round"], "unresolved:", left or "none")

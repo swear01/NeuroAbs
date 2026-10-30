@@ -114,3 +114,12 @@
   Used by `src/case_study.py` (per-bench settings in `bench/case.json`, committed
   next to the results); results in `results/case_study_fifo_vis/` and
   `results/case_study_lrg_arb/`.
+  The adaptive flow (parallel pieces, escalating caps, LLM-chosen resplit/abstract on
+  timeouts) is in the same file; results in `results/adaptive_split/`. `case.json` takes an optional `top` (default `main`); `run --budget` (default 1200) caps
+  end-to-end wall seconds and clips each round's cap to what is left.
+- Yosys `abstract` rejects an operator with both `-enable` and `-enablen`
+  ("Multiple enable condition are not supported"); `validate_op` rejects it so
+  the LLM retries instead of the piece ending in `BUILD_ERROR`.
+- rIC3 cannot print named lemmas on a run that does not finish (`--cert` only on
+  UNSAT, anonymous latches); the log gives depth, lemmas per frame and `mic`
+  lengths, which is all the LLM is shown as the "IC3 lemma summary".

@@ -336,9 +336,6 @@ def init(args):
         m = re.search(r"connect \\Q (\\\S+|\S+)", cell.group(1))
         if m:
             ffq.add(m.group(1).lstrip("\\"))
-    ports = {}
-    for m in re.finditer(r"wire (?:(?:width (\d+)) )?(?:(?:upto|offset \d+|signed) )*?(input|output|)\s*(?:\d+ )?(\\\S+)", main):
-        pass
     sigs = []
     for line in main.splitlines():
         m = re.match(r"\s*wire (.*?)(\\\S+)\s*$", line)

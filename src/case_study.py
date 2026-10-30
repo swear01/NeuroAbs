@@ -36,8 +36,9 @@ Yosys-flattened design, step by step. Tools check every step: you only (1) split
 {rtl}
 
 ## Property
-The model has one assertion, checked in every cycle: if rst is low then equal == 1 ("assert (!rst -> equal)").
-The model is the flattened netlist; there is one assumption: rst is high in the first cycle.
+{property}
+The model is the flattened netlist; there is one assumption: rst is high in the first cycle. The assertion is also \
+available as two 1-bit signals: prop_en (the assertion is enforced while it is high) and prop_a (the asserted value).
 
 ## Signals
 Signals are named by the identifiers listed in each request (the flattened Yosys wire name with every non-alphanumeric \
@@ -45,16 +46,16 @@ character replaced by '_', for example sr.tail is sr_tail and sr.mem[3] is sr_me
 
 ## Split
 A split is a list of cases, each a Verilog boolean expression over signal identifiers (evaluated in every cycle, on the \
-current values of states, inputs and wires). Piece i checks: case_i -> (rst | equal) in every cycle. The split is accepted \
+current values of states, inputs and wires). Piece i checks: case_i -> (~prop_en | prop_a) in every cycle. The split is accepted \
 only if a SAT check shows that the OR of the cases is true for ALL values of the signals (it covers every situation, \
 reachable or not).
 
 ## Abstraction operators (class A: every one only adds behaviours, so UNSAT on the abstract model is a real proof)
 - {{"op":"abstract_value","target":ID,"enable":ID|null,"enablen":ID|null,"slice":"hi:lo"|"i"|null}}: replace the driver of wire ID by a free value (same as cutpoint). enable/enablen: free only while the 1-bit signal is high/low.
-- {{"op":"abstract_state","target":ID,"enable":...,"enablen":...,"slice":...,"initstates":N|null}}: register ID loads a free value every clock edge (while enable holds / in the first N cycles). Memory words are registers sr_mem_0 .. sr_mem_15 and rb_mem_0 .. rb_mem_15, so this also covers memory havoc.
+- {{"op":"abstract_state","target":ID,"enable":...,"enablen":...,"slice":...,"initstates":N|null}}: register ID loads a free value every clock edge (while enable holds / in the first N cycles). {mem_havoc}
 - {{"op":"abstract_init","target":ID,"slice":...}}: register ID gets a free initial value.
 - {{"op":"drop_assume"}}: remove the assumption (rst is high in the first cycle).
-Not available (reject if you use them): any other operator, rewriting expressions, new assumptions or lemmas, cutpoint -blackbox (the design is flat), UF pairing (the two FIFOs do not compute the same functions).
+Not available (reject if you use them): any other operator, rewriting expressions, new assumptions or lemmas, cutpoint -blackbox (the design is flat), UF pairing. {unavailable}
 
 ## Verdicts
 rIC3 (portfolio of IC3/BMC/k-induction) returns UNSAT (piece proved), SAT (counterexample; replayed on the concrete \
@@ -70,12 +71,19 @@ def now():
     return time.time()
 
 
+def load_cfg(workdir):
+    """Per-bench settings: rtl (prompt), sv (read by Yosys), property, mem_havoc, unavailable; mem_re, alias_re optional."""
+    with open(os.path.join(workdir, "bench", "case.json")) as f:
+        return json.load(f)
+
+
 class Study:
     def __init__(self, workdir):
         self.dir = os.path.abspath(workdir)
         self.state_path = os.path.join(self.dir, "state.json")
         with open(self.state_path) as f:
             self.s = json.load(f)
+        self.cfg = load_cfg(self.dir)
 
     def save(self):
         with open(self.state_path, "w") as f:
@@ -90,7 +98,9 @@ class Study:
         s = self.s
         if s["calls"] >= MAX_CALLS:
             raise SystemExit("LLM call limit of {:d} reached".format(MAX_CALLS))
-        system = SYSTEM.format(rtl=open(os.path.join(self.dir, "bench/design/fifo_vis.sv")).read())
+        c = self.cfg
+        system = SYSTEM.format(rtl=open(os.path.join(self.dir, c["rtl"])).read(), property=c["property"],
+                               mem_havoc=c["mem_havoc"], unavailable=c["unavailable"])
         messages = [{"role": "system", "content": system}] + (history or []) + [{"role": "user", "content": user}]
         os.chdir(self.dir)
         s["calls"] += 1
@@ -165,7 +175,7 @@ class Study:
     def piece_module(self, expr_by_name, outputs, name="__piece"):
         known = self.ident_map()
         used = sorted({i for e in expr_by_name.values() for i in re.findall(r"(?<![\d'])\b[A-Za-z_]\w*", e)} |
-                      {"rst", "equal"})
+                      {"prop_a", "prop_en"})
         ports = ["input [{:d}:0] {:s}".format(known[i]["width"] - 1, i) for i in used] + \
                 ["output {:s}".format(o) for o in outputs]
         body = ["module {:s}({:s});".format(name, ", ".join(ports))]
@@ -194,28 +204,36 @@ class Study:
         d = self.dir
         flat = "flat_{:s}.il".format(tag)
         rc, out = self.yosys(
-            "read_verilog -sv -formal bench/prep/fifo_vis.sv; prep -top main; flatten; hierarchy -check; "
-            "delete t:$print; chformal -lower; {:s}memory -nomap; memory_map; opt_clean; write_rtlil {:s}".format(
-                "chformal -assert -remove; " if cond else "", flat), "build_flat_{:s}.log".format(tag))
+            "read_verilog -sv -formal {:s}; prep -top main; flatten; hierarchy -check; "
+            "delete t:$print; chformal -lower; memory -nomap; memory_map; opt_clean; write_rtlil {:s}".format(
+                self.cfg["sv"], flat), "build_flat_{:s}.log".format(tag))
         os.chdir(d)
         if rc:
             raise RuntimeError("yosys flat build failed: " + out[-500:])
         il = open(flat).read()
-        patch = "  wire \\__one\n  connect \\__one 1'1\n"
+        top = il.index("module \\main")
+        end = il.index("\nend\n", top) + 1
+        m = re.search(r"  cell \$assert [^\n]*\n(?:(?!  end\n).*\n)*?  end\n", il[top:end])
+        if m is None or len(re.findall(r"  cell \$assert ", il[top:end])) != 1:
+            raise RuntimeError("expected exactly one assertion in module main")
+        a = re.search(r"connect \\A (.*)", m.group(0)).group(1)
+        en = re.search(r"connect \\EN (.*)", m.group(0)).group(1)
+        main = il[top:end]
+        if cond:
+            main = main.replace(m.group(0), "")
+        patch = "  wire \\__one\n  connect \\__one 1'1\n  wire \\prop_a\n  connect \\prop_a {:s}\n  wire \\prop_en\n  connect \\prop_en {:s}\n".format(a, en)
         script = []
         if cond:
             script.append("read_verilog -sv {:s}.v".format(tag))
             body, used = self.piece_module({"c": cond}, ["ok"])
-            body.append("assign ok = ~(c & ~rst);" if reach else "assign ok = ~c | rst | equal;")
+            body.append("assign ok = ~(c & prop_en);" if reach else "assign ok = ~c | ~prop_en | prop_a;")
             body.append("endmodule")
             open("{:s}.v".format(tag), "w").write("\n".join(body))
             ids = self.ident_map()
             conns = "".join("    connect \\{:s} \\{:s}\n".format(i, ids[i]["name"] if i in ids else i) for i in used)
             patch += ("  wire \\__ok\n  cell \\__piece \\__piece_i\n{:s}    connect \\ok \\__ok\n  end\n"
                       "  cell $assert \\__piece_assert\n    connect \\A \\__ok\n    connect \\EN 1'1\n  end\n").format(conns)
-        top = il.index("module \\main")
-        end = il.index("\nend\n", top) + 1
-        open("{:s}.il".format(tag), "w").write(il[:end] + patch + il[end:])
+        open("{:s}.il".format(tag), "w").write(il[:top] + main + patch + il[end:])
         script += ["read_rtlil {:s}.il".format(tag)]
         if cond:
             script += ["hierarchy -top main", "flatten"]
@@ -228,9 +246,11 @@ class Study:
         path = "{:s}.btor2".format(tag)
         text = open(os.path.join(self.dir, path)).read()
         width = dict(re.findall(r"^(\d+) sort bitvec (\d+)$", text, flags=re.M))
-        text = re.sub(r"^(\d+) uext (\d+) -1 \d+$",
+        text, n_uext = re.subn(r"^(\d+) uext (\d+) -1 \d+$",
                       lambda m: "{:s} const {:s} {:s}".format(m.group(1), m.group(2), "0" * int(width[m.group(2)])),
                       text, flags=re.M)
+        if n_uext:
+            self.event("uext_rewrite", tag=tag, count=n_uext)
         open(os.path.join(self.dir, path), "w").write(text)
         return path
 
@@ -307,7 +327,7 @@ class Study:
                 pass
             p.wait()
         lines = [x.strip() for x in open(log, errors="replace")]
-        v = "TIMEOUT" if to else "UNSAT" if "UNSAT" in lines else "SAT" if "SAT" in lines else "ERROR"
+        v = "TIMEOUT" if to else "UNSAT" if "UNSAT" in lines else "SAT" if "SAT" in lines else "UNKNOWN" if "UNKNOWN" in lines else "ERROR"
         return v, now() - t0, log
 
 
@@ -321,8 +341,9 @@ def init(args):
     st = Study.__new__(Study)
     st.dir = wd
     st.state_path = os.path.join(wd, "state.json")
+    cfg = load_cfg(wd)
     r = subprocess.run(["yosys", "-q", "-p",
-                        "read_verilog -sv -formal bench/prep/fifo_vis.sv; prep -top main; flatten; "
+                        "read_verilog -sv -formal " + cfg["sv"] + "; prep -top main; flatten; "
                         "hierarchy -check; delete t:$print; chformal -lower; memory -nomap; memory_map; opt_clean; "
                         "write_rtlil flat.il"], cwd=wd, capture_output=True, text=True)
     rc, out = r.returncode, r.stdout + r.stderr
@@ -345,11 +366,12 @@ def init(args):
         w = re.search(r"width (\d+)", attrs)
         sigs.append({"name": name, "id": sanitize(name), "width": int(w.group(1)) if w else 1,
                      "input": "input" in attrs.split(), "state": name in ffq})
-    alias = re.compile(r"(sr|rb)\.(clk|dataIn|pop|push|rst)")
-    sigs = [x for x in sigs if x["name"] != "clk" and "$" not in x["name"] and "\\" not in x["name"]
+    alias = re.compile(cfg["alias_re"] if cfg.get("alias_re") else r"(?!)")
+    sigs = [x for x in sigs if x["name"] != "clk" and "$" not in x["name"] and ":" not in x["name"] and "\\" not in x["name"]
             and not alias.fullmatch(x["name"])]
+    sigs += [{"name": n, "id": n, "width": 1, "input": False, "state": False} for n in ("prop_a", "prop_en")]
     ids = [x["id"] for x in sigs]
-    assert len(ids) == len(set(ids)), "identifier collision"
+    assert len(ids) == len(set(ids)), "identifier collision: {}".format(sorted({i for i in ids if ids.count(i) > 1}))
     state = {"round": 1, "calls": 0, "signals": sigs, "pieces": {},
              "cum": {"input_tokens": 0, "output_tokens": 0, "cache_hit": 0, "cache_miss": 0, "cost_usd": 0.0,
                      "latency_s": 0.0}}
@@ -358,9 +380,10 @@ def init(args):
 
 
 def signal_table(st):
+    mem = re.compile(st.cfg["mem_re"] if st.cfg.get("mem_re") else r"(?!)")
     rows = ["{:s}  width {:d}  {:s}".format(x["id"], x["width"], "input" if x["input"] else "register" if x["state"] else "wire")
-            for x in st.signals() if x["state"] is False or not re.fullmatch(r"(sr|rb)_mem_\d+", x["id"])]
-    return "\n".join(rows) + "\nsr_mem_0 .. sr_mem_15 and rb_mem_0 .. rb_mem_15: registers, width 4 (the FIFO storage)"
+            for x in st.signals() if x["state"] is False or not mem.fullmatch(x["id"])]
+    return "\n".join(rows) + ("\n" + st.cfg["mem_note"] if st.cfg.get("mem_note") else "")
 
 
 def cmd_split(st, args):
@@ -456,6 +479,7 @@ def cmd_check(st, args):
     todo = args.pieces or [p for p, v in st.s["pieces"].items() if v["status"] in ("planned", "timeout", "refined")]
     for p in todo:
         st.s["pieces"][p]["attempt"] = st.s["pieces"][p].get("attempt", -1) + 1
+    t0 = now()
     with concurrent.futures.ThreadPoolExecutor(2) as ex:
         futs = [ex.submit(run_check, st, p, args.timeout) for p in todo]
         for f in concurrent.futures.as_completed(futs):
@@ -467,6 +491,43 @@ def cmd_check(st, args):
                      cond=v["cond"])
             print(p, verdict, round(secs, 1), flush=True)
             st.save()
+    st.event("check_pass", pieces=todo, timeout=args.timeout, wall_s=now() - t0)
+
+
+def cmd_split_only(st, args):
+    """Control: the same leaf pieces with no operators."""
+    todo = args.pieces or [p for p, v in st.s["pieces"].items() if v["status"] != "split"]
+
+    def one(p):
+        tag = p + "_so"
+        try:
+            model = st.build(tag, st.s["pieces"][p]["cond"], [])
+        except RuntimeError:
+            return p, "BUILD_ERROR", 0.0
+        verdict, secs, _ = st.ric3(model, args.timeout, tag)
+        return p, verdict, secs
+
+    t0 = now()
+    with concurrent.futures.ThreadPoolExecutor(2) as ex:
+        for p, verdict, secs in ex.map(one, todo):
+            st.s["pieces"][p]["split_only"] = {"verdict": verdict, "seconds": round(secs, 1), "timeout": args.timeout}
+            st.event("split_only", piece=p, verdict=verdict, seconds=secs, timeout=args.timeout)
+            print(p, verdict, round(secs, 1), flush=True)
+    st.event("split_only_pass", pieces=todo, timeout=args.timeout, wall_s=now() - t0)
+    st.save()
+
+
+def cmd_report(st, args):
+    """LLM time and rIC3 time, reported separately."""
+    ev = [json.loads(x) for x in open(os.path.join(st.dir, "tool_events.jsonl"))]
+    calls = [json.loads(x) for x in open(os.path.join(st.dir, "llm_calls.jsonl"))]
+    print("LLM: {:d} calls, {:.1f} s latency, {:d} in / {:d} out tokens, {:.4f} USD".format(
+        len(calls), sum(c["latency_s"] for c in calls), sum(c["input_tokens"] or 0 for c in calls),
+        sum(c["output_tokens"] or 0 for c in calls), sum(c["cost_usd"] for c in calls)))
+    for kind in ("check_pass", "split_only_pass"):
+        for e in (e for e in ev if e["kind"] == kind):
+            print("rIC3 {:s} round {:d}: {:d} pieces, cap {:d} s, wall {:.1f} s".format(
+                kind, e["round"], len(e["pieces"]), e["timeout"], e["wall_s"]))
 
 
 def witness_file(log, dest):
@@ -503,12 +564,12 @@ def replay(st, p):
         row = {"cycle": k}
         for n in cm.states:
             nm = cm.names.get(n)
-            if not nm or nm.endswith("first") or "mem" in nm:
+            if not nm or nm.endswith("first") or (st.cfg.get("mem_re") and re.fullmatch(st.cfg["mem_re"], sanitize(nm))):
                 continue
             an = next((x for x in am.states if aname.get(x) == nm), None)
             row[nm] = (av[k][an] if an else None, cv[k][n])
         for n in cm.inputs:
-            if cm.names.get(n) in ("push", "pop", "dataIn", "rst"):
+            if cm.names.get(n) and cm.names[n] != "clk":
                 row[cm.names[n]] = cv[k][n]
         table.append(row)
     return any(bad_c), len(frames) - 1, table, bad_c
@@ -560,8 +621,8 @@ def cmd_refine(st, args):
 def cmd_vacuity(st, args):
     for p in [p for p, v in st.s["pieces"].items() if v["status"] == "proved" and "vacuity" not in v]:
         v = st.s["pieces"][p]
-        # 1. case reachable on the abstract model: BMC for (case & !rst) must be SAT.
-        reach = st.build(p + "_reach", v["cond"], v["ops"], reach=True)
+        # 1. case reachable on the concrete model: BMC for (case & !rst) must be SAT.
+        reach = st.build(p + "_reach", v["cond"], [], reach=True)
         rv, rs, _ = st.ric3(reach, 300, p + "_reach", engine=("bmc", "--end", "40"))
         # 2. non-vacuous: with every register free (combinational check) the piece assertion can be violated.
         sat_ok = st.nonvacuous(p, v)
@@ -573,7 +634,7 @@ def cmd_vacuity(st, args):
 
 def nonvacuous(self, p, v):
     body, _ = self.piece_module({"c": v["cond"]}, ["ok"], "__nv")
-    body += ["assign ok = ~c | rst | equal;", "endmodule"]
+    body += ["assign ok = ~c | ~prop_en | prop_a;", "endmodule"]
     open(os.path.join(self.dir, p + "_nv.v"), "w").write("\n".join(body))
     rc, out = self.yosys("read_verilog -sv {:s}_nv.v; prep -top __nv; sat -prove ok 1 -verify".format(p), p + "_nv.log")
     if rc and "proof did fail" not in out:
@@ -586,7 +647,7 @@ Study.nonvacuous = nonvacuous
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("cmd", choices=["init", "split", "abstract", "check", "cegar", "refine", "vacuity", "next-round"])
+    ap.add_argument("cmd", choices=["init", "split", "abstract", "check", "cegar", "refine", "vacuity", "next-round", "split-only", "report"])
     ap.add_argument("--workdir", required=True)
     ap.add_argument("--pieces", nargs="*")
     ap.add_argument("--timeout", type=int, default=60)
@@ -602,7 +663,7 @@ def main():
         st.save()
         return
     {"split": cmd_split, "abstract": cmd_abstract, "check": cmd_check, "cegar": cmd_cegar,
-     "refine": cmd_refine, "vacuity": cmd_vacuity}[args.cmd](st, args)
+     "refine": cmd_refine, "vacuity": cmd_vacuity, "split-only": cmd_split_only, "report": cmd_report}[args.cmd](st, args)
 
 
 if __name__ == "__main__":

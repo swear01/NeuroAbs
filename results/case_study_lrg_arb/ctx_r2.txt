@@ -1,0 +1,1 @@
+Result of round 1: pieces r1_c0..r1_c3 were proved by rIC3 in 1-3 s each (concrete, no operators). Piece r1_c4 (the case you called the only substantive one) was concrete as well and rIC3 TIMEOUT at 60 s. Split r1_c4 into smaller cases that are easier to prove; the new cases must cover exactly r1_c4.

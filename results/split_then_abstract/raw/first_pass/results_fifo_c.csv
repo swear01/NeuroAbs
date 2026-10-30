@@ -1,0 +1,17 @@
+exp,variant,piece,ops,verdict,seconds,build_s,spurious
+fifo,c,c6_t0_c,31,SAT,0.1,0.0,yes
+fifo,c,c6_t1_c,31,SAT,0.0,0.0,yes
+fifo,c,c6_t2_c,31,SAT,0.1,0.0,yes
+fifo,c,c6_t3_c,31,SAT,0.1,0.0,yes
+fifo,c,c6_t4_c,31,SAT,0.0,0.0,yes
+fifo,c,c6_t5_c,31,SAT,0.1,0.0,yes
+fifo,c,c6_t6_c,31,SAT,0.1,0.0,yes
+fifo,c,c6_t7_c,31,SAT,0.1,0.0,yes
+fifo,c,c6_t8_c,31,SAT,0.1,0.0,yes
+fifo,c,c6_t9_c,31,SAT,0.1,0.0,yes
+fifo,c,c6_t10_c,31,SAT,0.1,0.0,yes
+fifo,c,c6_t11_c,31,SAT,0.1,0.0,yes
+fifo,c,c6_t12_c,31,SAT,0.1,0.1,yes
+fifo,c,c6_t13_c,31,SAT,0.1,0.0,yes
+fifo,c,c6_t14_c,31,SAT,0.2,0.0,yes
+fifo,c,c6_t15_c,31,SAT,0.1,0.0,yes

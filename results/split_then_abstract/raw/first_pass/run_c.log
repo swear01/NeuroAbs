@@ -1,0 +1,18 @@
+coverage True
+{'exp': 'fifo', 'variant': 'c', 'piece': 'c6_t1_c', 'ops': 31, 'verdict': 'SAT', 'seconds': 0.0, 'build_s': 0.0, 'spurious': 'yes'}
+{'exp': 'fifo', 'variant': 'c', 'piece': 'c6_t3_c', 'ops': 31, 'verdict': 'SAT', 'seconds': 0.1, 'build_s': 0.0, 'spurious': 'yes'}
+{'exp': 'fifo', 'variant': 'c', 'piece': 'c6_t0_c', 'ops': 31, 'verdict': 'SAT', 'seconds': 0.1, 'build_s': 0.0, 'spurious': 'yes'}
+{'exp': 'fifo', 'variant': 'c', 'piece': 'c6_t2_c', 'ops': 31, 'verdict': 'SAT', 'seconds': 0.1, 'build_s': 0.0, 'spurious': 'yes'}
+{'exp': 'fifo', 'variant': 'c', 'piece': 'c6_t4_c', 'ops': 31, 'verdict': 'SAT', 'seconds': 0.0, 'build_s': 0.0, 'spurious': 'yes'}
+{'exp': 'fifo', 'variant': 'c', 'piece': 'c6_t7_c', 'ops': 31, 'verdict': 'SAT', 'seconds': 0.1, 'build_s': 0.0, 'spurious': 'yes'}
+{'exp': 'fifo', 'variant': 'c', 'piece': 'c6_t6_c', 'ops': 31, 'verdict': 'SAT', 'seconds': 0.1, 'build_s': 0.0, 'spurious': 'yes'}
+{'exp': 'fifo', 'variant': 'c', 'piece': 'c6_t5_c', 'ops': 31, 'verdict': 'SAT', 'seconds': 0.1, 'build_s': 0.0, 'spurious': 'yes'}
+{'exp': 'fifo', 'variant': 'c', 'piece': 'c6_t8_c', 'ops': 31, 'verdict': 'SAT', 'seconds': 0.1, 'build_s': 0.0, 'spurious': 'yes'}
+{'exp': 'fifo', 'variant': 'c', 'piece': 'c6_t9_c', 'ops': 31, 'verdict': 'SAT', 'seconds': 0.1, 'build_s': 0.0, 'spurious': 'yes'}
+{'exp': 'fifo', 'variant': 'c', 'piece': 'c6_t10_c', 'ops': 31, 'verdict': 'SAT', 'seconds': 0.1, 'build_s': 0.0, 'spurious': 'yes'}
+{'exp': 'fifo', 'variant': 'c', 'piece': 'c6_t11_c', 'ops': 31, 'verdict': 'SAT', 'seconds': 0.1, 'build_s': 0.0, 'spurious': 'yes'}
+{'exp': 'fifo', 'variant': 'c', 'piece': 'c6_t12_c', 'ops': 31, 'verdict': 'SAT', 'seconds': 0.1, 'build_s': 0.1, 'spurious': 'yes'}
+{'exp': 'fifo', 'variant': 'c', 'piece': 'c6_t13_c', 'ops': 31, 'verdict': 'SAT', 'seconds': 0.1, 'build_s': 0.0, 'spurious': 'yes'}
+{'exp': 'fifo', 'variant': 'c', 'piece': 'c6_t15_c', 'ops': 31, 'verdict': 'SAT', 'seconds': 0.1, 'build_s': 0.0, 'spurious': 'yes'}
+{'exp': 'fifo', 'variant': 'c', 'piece': 'c6_t14_c', 'ops': 31, 'verdict': 'SAT', 'seconds': 0.2, 'build_s': 0.0, 'spurious': 'yes'}
+DONE

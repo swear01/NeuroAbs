@@ -1,0 +1,3 @@
+coverage True
+{'exp': 'fifo', 'variant': 'w', 'piece': 'c6_whole_w', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 137.3, 'build_s': 0.0, 'spurious': '', 'load1': 26.4599609375}
+DONE

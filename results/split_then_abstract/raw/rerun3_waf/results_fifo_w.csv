@@ -1,0 +1,2 @@
+exp,variant,piece,ops,verdict,seconds,build_s,spurious,load1
+fifo,w,c6_whole_w,0,UNSAT,137.3,0.0,,26.4599609375

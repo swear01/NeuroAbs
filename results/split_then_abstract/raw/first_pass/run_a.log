@@ -1,0 +1,18 @@
+coverage True
+{'exp': 'fifo', 'variant': 'a', 'piece': 'c6_t2_a', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 2.6, 'build_s': 0.0, 'spurious': ''}
+{'exp': 'fifo', 'variant': 'a', 'piece': 'c6_t0_a', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 6.5, 'build_s': 0.1, 'spurious': ''}
+{'exp': 'fifo', 'variant': 'a', 'piece': 'c6_t3_a', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 6.7, 'build_s': 0.0, 'spurious': ''}
+{'exp': 'fifo', 'variant': 'a', 'piece': 'c6_t1_a', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 8.3, 'build_s': 0.0, 'spurious': ''}
+{'exp': 'fifo', 'variant': 'a', 'piece': 'c6_t4_a', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 6.4, 'build_s': 0.1, 'spurious': ''}
+{'exp': 'fifo', 'variant': 'a', 'piece': 'c6_t5_a', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 5.9, 'build_s': 0.1, 'spurious': ''}
+{'exp': 'fifo', 'variant': 'a', 'piece': 'c6_t6_a', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 8.0, 'build_s': 0.2, 'spurious': ''}
+{'exp': 'fifo', 'variant': 'a', 'piece': 'c6_t7_a', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 8.1, 'build_s': 0.2, 'spurious': ''}
+{'exp': 'fifo', 'variant': 'a', 'piece': 'c6_t8_a', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 8.7, 'build_s': 0.1, 'spurious': ''}
+{'exp': 'fifo', 'variant': 'a', 'piece': 'c6_t10_a', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 4.1, 'build_s': 0.1, 'spurious': ''}
+{'exp': 'fifo', 'variant': 'a', 'piece': 'c6_t9_a', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 6.5, 'build_s': 0.2, 'spurious': ''}
+{'exp': 'fifo', 'variant': 'a', 'piece': 'c6_t11_a', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 5.8, 'build_s': 0.1, 'spurious': ''}
+{'exp': 'fifo', 'variant': 'a', 'piece': 'c6_t12_a', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 7.3, 'build_s': 0.1, 'spurious': ''}
+{'exp': 'fifo', 'variant': 'a', 'piece': 'c6_t14_a', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 7.2, 'build_s': 0.1, 'spurious': ''}
+{'exp': 'fifo', 'variant': 'a', 'piece': 'c6_t13_a', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 8.4, 'build_s': 0.1, 'spurious': ''}
+{'exp': 'fifo', 'variant': 'a', 'piece': 'c6_t15_a', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 6.0, 'build_s': 0.1, 'spurious': ''}
+DONE

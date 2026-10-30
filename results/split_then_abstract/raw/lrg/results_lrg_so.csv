@@ -1,0 +1,9 @@
+exp,variant,piece,ops,verdict,seconds,build_s,spurious
+lrg,so,p0_1_so,0,UNSAT,0.2,0.0,
+lrg,so,p1_0_so,0,UNSAT,0.2,0.0,
+lrg,so,p3_4_so,0,UNSAT,0.1,0.0,
+lrg,so,p7_8_so,0,UNSAT,0.2,0.0,
+lrg,so,p0_15_so,0,UNSAT,0.1,0.0,
+lrg,so,p15_0_so,0,UNSAT,0.2,0.1,
+lrg,so,p2_11_so,0,UNSAT,0.2,0.1,
+lrg,so,p12_5_so,0,UNSAT,0.2,0.1,

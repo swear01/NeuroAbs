@@ -1,0 +1,1233 @@
+{
+ "round": 3,
+ "calls": 1,
+ "signals": [
+  {
+   "name": "rst",
+   "id": "rst",
+   "width": 1,
+   "input": true,
+   "state": false
+  },
+  {
+   "name": "ranks_raw[9]",
+   "id": "ranks_raw_9",
+   "width": 5,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "ranks_raw[8]",
+   "id": "ranks_raw_8",
+   "width": 5,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "ranks_raw[7]",
+   "id": "ranks_raw_7",
+   "width": 5,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "ranks_raw[6]",
+   "id": "ranks_raw_6",
+   "width": 5,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "ranks_raw[5]",
+   "id": "ranks_raw_5",
+   "width": 5,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "ranks_raw[4]",
+   "id": "ranks_raw_4",
+   "width": 5,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "ranks_raw[3]",
+   "id": "ranks_raw_3",
+   "width": 5,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "ranks_raw[2]",
+   "id": "ranks_raw_2",
+   "width": 5,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "ranks_raw[1]",
+   "id": "ranks_raw_1",
+   "width": 5,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "ranks_raw[15]",
+   "id": "ranks_raw_15",
+   "width": 5,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "ranks_raw[14]",
+   "id": "ranks_raw_14",
+   "width": 5,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "ranks_raw[13]",
+   "id": "ranks_raw_13",
+   "width": 5,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "ranks_raw[12]",
+   "id": "ranks_raw_12",
+   "width": 5,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "ranks_raw[11]",
+   "id": "ranks_raw_11",
+   "width": 5,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "ranks_raw[10]",
+   "id": "ranks_raw_10",
+   "width": 5,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "ranks_raw[0]",
+   "id": "ranks_raw_0",
+   "width": 5,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "ranks[9]",
+   "id": "ranks_9",
+   "width": 5,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "ranks[8]",
+   "id": "ranks_8",
+   "width": 5,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "ranks[7]",
+   "id": "ranks_7",
+   "width": 5,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "ranks[6]",
+   "id": "ranks_6",
+   "width": 5,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "ranks[5]",
+   "id": "ranks_5",
+   "width": 5,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "ranks[4]",
+   "id": "ranks_4",
+   "width": 5,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "ranks[3]",
+   "id": "ranks_3",
+   "width": 5,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "ranks[2]",
+   "id": "ranks_2",
+   "width": 5,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "ranks[1]",
+   "id": "ranks_1",
+   "width": 5,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "ranks[15]",
+   "id": "ranks_15",
+   "width": 5,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "ranks[14]",
+   "id": "ranks_14",
+   "width": 5,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "ranks[13]",
+   "id": "ranks_13",
+   "width": 5,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "ranks[12]",
+   "id": "ranks_12",
+   "width": 5,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "ranks[11]",
+   "id": "ranks_11",
+   "width": 5,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "ranks[10]",
+   "id": "ranks_10",
+   "width": 5,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "ranks[0]",
+   "id": "ranks_0",
+   "width": 5,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "o_grant_vec_ref",
+   "id": "o_grant_vec_ref",
+   "width": 16,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "o_grant_vec_raw",
+   "id": "o_grant_vec_raw",
+   "width": 16,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "in_req_vec",
+   "id": "in_req_vec",
+   "width": 16,
+   "input": true,
+   "state": false
+  },
+  {
+   "name": "chosen_priority",
+   "id": "chosen_priority",
+   "width": 5,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "chosen",
+   "id": "chosen",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "arbitrary_requester_raw",
+   "id": "arbitrary_requester_raw",
+   "width": 5,
+   "input": true,
+   "state": false
+  },
+  {
+   "name": "arbitrary_requester",
+   "id": "arbitrary_requester",
+   "width": 5,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "another_arbitrary_requester_raw",
+   "id": "another_arbitrary_requester_raw",
+   "width": 5,
+   "input": true,
+   "state": false
+  },
+  {
+   "name": "another_arbitrary_requester",
+   "id": "another_arbitrary_requester",
+   "width": 5,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "__bb_first",
+   "id": "bb_first",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "prop_a",
+   "id": "prop_a",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "prop_en",
+   "id": "prop_en",
+   "width": 1,
+   "input": false,
+   "state": false
+  }
+ ],
+ "pieces": {
+  "r1_c0": {
+   "cond": "arbitrary_requester[4:2] == 3'd0",
+   "ops": [],
+   "status": "split",
+   "round": 1,
+   "parent": null,
+   "fixed": {
+    "arbitrary_requester": 2
+   },
+   "direction": {
+    "index": "arbitrary_requester",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r1_c0_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r2_c0",
+    "r2_c1"
+   ]
+  },
+  "r1_c1": {
+   "cond": "arbitrary_requester[4:2] == 3'd1",
+   "ops": [],
+   "status": "split",
+   "round": 1,
+   "parent": null,
+   "fixed": {
+    "arbitrary_requester": 2
+   },
+   "direction": {
+    "index": "arbitrary_requester",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r1_c1_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r2_c2",
+    "r2_c3"
+   ]
+  },
+  "r1_c2": {
+   "cond": "arbitrary_requester[4:2] == 3'd2",
+   "ops": [],
+   "status": "split",
+   "round": 1,
+   "parent": null,
+   "fixed": {
+    "arbitrary_requester": 2
+   },
+   "direction": {
+    "index": "arbitrary_requester",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r1_c2_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r2_c4",
+    "r2_c5"
+   ]
+  },
+  "r1_c3": {
+   "cond": "arbitrary_requester[4:2] == 3'd3",
+   "ops": [],
+   "status": "split",
+   "round": 1,
+   "parent": null,
+   "fixed": {
+    "arbitrary_requester": 2
+   },
+   "direction": {
+    "index": "arbitrary_requester",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r1_c3_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r2_c6",
+    "r2_c7"
+   ]
+  },
+  "r1_c4": {
+   "cond": "arbitrary_requester[4:2] == 3'd4",
+   "ops": [],
+   "status": "split",
+   "round": 1,
+   "parent": null,
+   "fixed": {
+    "arbitrary_requester": 2
+   },
+   "direction": {
+    "index": "arbitrary_requester",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r1_c4_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r2_c8",
+    "r2_c9"
+   ]
+  },
+  "r1_c5": {
+   "cond": "arbitrary_requester[4:2] == 3'd5",
+   "ops": [],
+   "status": "split",
+   "round": 1,
+   "parent": null,
+   "fixed": {
+    "arbitrary_requester": 2
+   },
+   "direction": {
+    "index": "arbitrary_requester",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r1_c5_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r2_c10",
+    "r2_c11"
+   ]
+  },
+  "r1_c6": {
+   "cond": "arbitrary_requester[4:2] == 3'd6",
+   "ops": [],
+   "status": "proved",
+   "round": 1,
+   "parent": null,
+   "fixed": {
+    "arbitrary_requester": 2
+   },
+   "direction": {
+    "index": "arbitrary_requester",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r1_c6_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 1.2,
+    "timeout": 3
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r1_c7": {
+   "cond": "arbitrary_requester[4:2] == 3'd7",
+   "ops": [],
+   "status": "proved",
+   "round": 1,
+   "parent": null,
+   "fixed": {
+    "arbitrary_requester": 2
+   },
+   "direction": {
+    "index": "arbitrary_requester",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r1_c7_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 2.3,
+    "timeout": 3
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r2_c0": {
+   "cond": "(arbitrary_requester[4:2] == 3'd0) & (arbitrary_requester[1:1] == 1'd0)",
+   "ops": [],
+   "status": "split",
+   "round": 2,
+   "parent": "r1_c0",
+   "fixed": {
+    "arbitrary_requester": 1
+   },
+   "direction": {
+    "index": "arbitrary_requester",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r2_c0_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r3_c0",
+    "r3_c1"
+   ]
+  },
+  "r2_c1": {
+   "cond": "(arbitrary_requester[4:2] == 3'd0) & (arbitrary_requester[1:1] == 1'd1)",
+   "ops": [],
+   "status": "split",
+   "round": 2,
+   "parent": "r1_c0",
+   "fixed": {
+    "arbitrary_requester": 1
+   },
+   "direction": {
+    "index": "arbitrary_requester",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r2_c1_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r3_c2",
+    "r3_c3"
+   ]
+  },
+  "r2_c2": {
+   "cond": "(arbitrary_requester[4:2] == 3'd1) & (arbitrary_requester[1:1] == 1'd0)",
+   "ops": [],
+   "status": "split",
+   "round": 2,
+   "parent": "r1_c1",
+   "fixed": {
+    "arbitrary_requester": 1
+   },
+   "direction": {
+    "index": "arbitrary_requester",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r2_c2_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r3_c4",
+    "r3_c5"
+   ]
+  },
+  "r2_c3": {
+   "cond": "(arbitrary_requester[4:2] == 3'd1) & (arbitrary_requester[1:1] == 1'd1)",
+   "ops": [],
+   "status": "split",
+   "round": 2,
+   "parent": "r1_c1",
+   "fixed": {
+    "arbitrary_requester": 1
+   },
+   "direction": {
+    "index": "arbitrary_requester",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r2_c3_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r3_c6",
+    "r3_c7"
+   ]
+  },
+  "r2_c4": {
+   "cond": "(arbitrary_requester[4:2] == 3'd2) & (arbitrary_requester[1:1] == 1'd0)",
+   "ops": [],
+   "status": "split",
+   "round": 2,
+   "parent": "r1_c2",
+   "fixed": {
+    "arbitrary_requester": 1
+   },
+   "direction": {
+    "index": "arbitrary_requester",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r2_c4_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r3_c8",
+    "r3_c9"
+   ]
+  },
+  "r2_c5": {
+   "cond": "(arbitrary_requester[4:2] == 3'd2) & (arbitrary_requester[1:1] == 1'd1)",
+   "ops": [],
+   "status": "split",
+   "round": 2,
+   "parent": "r1_c2",
+   "fixed": {
+    "arbitrary_requester": 1
+   },
+   "direction": {
+    "index": "arbitrary_requester",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r2_c5_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r3_c10",
+    "r3_c11"
+   ]
+  },
+  "r2_c6": {
+   "cond": "(arbitrary_requester[4:2] == 3'd3) & (arbitrary_requester[1:1] == 1'd0)",
+   "ops": [],
+   "status": "split",
+   "round": 2,
+   "parent": "r1_c3",
+   "fixed": {
+    "arbitrary_requester": 1
+   },
+   "direction": {
+    "index": "arbitrary_requester",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r2_c6_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r3_c12",
+    "r3_c13"
+   ]
+  },
+  "r2_c7": {
+   "cond": "(arbitrary_requester[4:2] == 3'd3) & (arbitrary_requester[1:1] == 1'd1)",
+   "ops": [],
+   "status": "split",
+   "round": 2,
+   "parent": "r1_c3",
+   "fixed": {
+    "arbitrary_requester": 1
+   },
+   "direction": {
+    "index": "arbitrary_requester",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r2_c7_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r3_c14",
+    "r3_c15"
+   ]
+  },
+  "r2_c8": {
+   "cond": "(arbitrary_requester[4:2] == 3'd4) & (arbitrary_requester[1:1] == 1'd0)",
+   "ops": [],
+   "status": "proved",
+   "round": 2,
+   "parent": "r1_c4",
+   "fixed": {
+    "arbitrary_requester": 1
+   },
+   "direction": {
+    "index": "arbitrary_requester",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r2_c8_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 5,
+    "timeout": 5,
+    "by": "ic3 summary run"
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r2_c9": {
+   "cond": "(arbitrary_requester[4:2] == 3'd4) & (arbitrary_requester[1:1] == 1'd1)",
+   "ops": [],
+   "status": "proved",
+   "round": 2,
+   "parent": "r1_c4",
+   "fixed": {
+    "arbitrary_requester": 1
+   },
+   "direction": {
+    "index": "arbitrary_requester",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r2_c9_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 1.2,
+    "timeout": 3
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r2_c10": {
+   "cond": "(arbitrary_requester[4:2] == 3'd5) & (arbitrary_requester[1:1] == 1'd0)",
+   "ops": [],
+   "status": "proved",
+   "round": 2,
+   "parent": "r1_c5",
+   "fixed": {
+    "arbitrary_requester": 1
+   },
+   "direction": {
+    "index": "arbitrary_requester",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r2_c10_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 2.2,
+    "timeout": 3
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r2_c11": {
+   "cond": "(arbitrary_requester[4:2] == 3'd5) & (arbitrary_requester[1:1] == 1'd1)",
+   "ops": [],
+   "status": "proved",
+   "round": 2,
+   "parent": "r1_c5",
+   "fixed": {
+    "arbitrary_requester": 1
+   },
+   "direction": {
+    "index": "arbitrary_requester",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r2_c11_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 5,
+    "timeout": 5,
+    "by": "ic3 summary run"
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r3_c0": {
+   "cond": "((arbitrary_requester[4:2] == 3'd0) & (arbitrary_requester[1:1] == 1'd0)) & (arbitrary_requester[0:0] == 1'd0)",
+   "ops": [],
+   "status": "proved",
+   "round": 3,
+   "parent": "r2_c0",
+   "fixed": {
+    "arbitrary_requester": 0
+   },
+   "direction": {
+    "index": "arbitrary_requester",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r3_c0_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 4.5,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r3_c1": {
+   "cond": "((arbitrary_requester[4:2] == 3'd0) & (arbitrary_requester[1:1] == 1'd0)) & (arbitrary_requester[0:0] == 1'd1)",
+   "ops": [],
+   "status": "proved",
+   "round": 3,
+   "parent": "r2_c0",
+   "fixed": {
+    "arbitrary_requester": 0
+   },
+   "direction": {
+    "index": "arbitrary_requester",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r3_c1_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 4.6,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r3_c2": {
+   "cond": "((arbitrary_requester[4:2] == 3'd0) & (arbitrary_requester[1:1] == 1'd1)) & (arbitrary_requester[0:0] == 1'd0)",
+   "ops": [],
+   "status": "proved",
+   "round": 3,
+   "parent": "r2_c1",
+   "fixed": {
+    "arbitrary_requester": 0
+   },
+   "direction": {
+    "index": "arbitrary_requester",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r3_c2_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 3.7,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r3_c3": {
+   "cond": "((arbitrary_requester[4:2] == 3'd0) & (arbitrary_requester[1:1] == 1'd1)) & (arbitrary_requester[0:0] == 1'd1)",
+   "ops": [],
+   "status": "proved",
+   "round": 3,
+   "parent": "r2_c1",
+   "fixed": {
+    "arbitrary_requester": 0
+   },
+   "direction": {
+    "index": "arbitrary_requester",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r3_c3_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 4.3,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r3_c4": {
+   "cond": "((arbitrary_requester[4:2] == 3'd1) & (arbitrary_requester[1:1] == 1'd0)) & (arbitrary_requester[0:0] == 1'd0)",
+   "ops": [],
+   "status": "proved",
+   "round": 3,
+   "parent": "r2_c2",
+   "fixed": {
+    "arbitrary_requester": 0
+   },
+   "direction": {
+    "index": "arbitrary_requester",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r3_c4_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 4.5,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r3_c5": {
+   "cond": "((arbitrary_requester[4:2] == 3'd1) & (arbitrary_requester[1:1] == 1'd0)) & (arbitrary_requester[0:0] == 1'd1)",
+   "ops": [],
+   "status": "proved",
+   "round": 3,
+   "parent": "r2_c2",
+   "fixed": {
+    "arbitrary_requester": 0
+   },
+   "direction": {
+    "index": "arbitrary_requester",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r3_c5_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 8.5,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r3_c6": {
+   "cond": "((arbitrary_requester[4:2] == 3'd1) & (arbitrary_requester[1:1] == 1'd1)) & (arbitrary_requester[0:0] == 1'd0)",
+   "ops": [],
+   "status": "proved",
+   "round": 3,
+   "parent": "r2_c3",
+   "fixed": {
+    "arbitrary_requester": 0
+   },
+   "direction": {
+    "index": "arbitrary_requester",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r3_c6_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 5.1,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r3_c7": {
+   "cond": "((arbitrary_requester[4:2] == 3'd1) & (arbitrary_requester[1:1] == 1'd1)) & (arbitrary_requester[0:0] == 1'd1)",
+   "ops": [],
+   "status": "proved",
+   "round": 3,
+   "parent": "r2_c3",
+   "fixed": {
+    "arbitrary_requester": 0
+   },
+   "direction": {
+    "index": "arbitrary_requester",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r3_c7_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 4.0,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r3_c8": {
+   "cond": "((arbitrary_requester[4:2] == 3'd2) & (arbitrary_requester[1:1] == 1'd0)) & (arbitrary_requester[0:0] == 1'd0)",
+   "ops": [],
+   "status": "proved",
+   "round": 3,
+   "parent": "r2_c4",
+   "fixed": {
+    "arbitrary_requester": 0
+   },
+   "direction": {
+    "index": "arbitrary_requester",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r3_c8_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 2.0,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r3_c9": {
+   "cond": "((arbitrary_requester[4:2] == 3'd2) & (arbitrary_requester[1:1] == 1'd0)) & (arbitrary_requester[0:0] == 1'd1)",
+   "ops": [],
+   "status": "proved",
+   "round": 3,
+   "parent": "r2_c4",
+   "fixed": {
+    "arbitrary_requester": 0
+   },
+   "direction": {
+    "index": "arbitrary_requester",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r3_c9_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 4.7,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r3_c10": {
+   "cond": "((arbitrary_requester[4:2] == 3'd2) & (arbitrary_requester[1:1] == 1'd1)) & (arbitrary_requester[0:0] == 1'd0)",
+   "ops": [],
+   "status": "proved",
+   "round": 3,
+   "parent": "r2_c5",
+   "fixed": {
+    "arbitrary_requester": 0
+   },
+   "direction": {
+    "index": "arbitrary_requester",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r3_c10_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 4.5,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r3_c11": {
+   "cond": "((arbitrary_requester[4:2] == 3'd2) & (arbitrary_requester[1:1] == 1'd1)) & (arbitrary_requester[0:0] == 1'd1)",
+   "ops": [],
+   "status": "proved",
+   "round": 3,
+   "parent": "r2_c5",
+   "fixed": {
+    "arbitrary_requester": 0
+   },
+   "direction": {
+    "index": "arbitrary_requester",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r3_c11_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 2.9,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r3_c12": {
+   "cond": "((arbitrary_requester[4:2] == 3'd3) & (arbitrary_requester[1:1] == 1'd0)) & (arbitrary_requester[0:0] == 1'd0)",
+   "ops": [],
+   "status": "proved",
+   "round": 3,
+   "parent": "r2_c6",
+   "fixed": {
+    "arbitrary_requester": 0
+   },
+   "direction": {
+    "index": "arbitrary_requester",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r3_c12_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 3.9,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r3_c13": {
+   "cond": "((arbitrary_requester[4:2] == 3'd3) & (arbitrary_requester[1:1] == 1'd0)) & (arbitrary_requester[0:0] == 1'd1)",
+   "ops": [],
+   "status": "proved",
+   "round": 3,
+   "parent": "r2_c6",
+   "fixed": {
+    "arbitrary_requester": 0
+   },
+   "direction": {
+    "index": "arbitrary_requester",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r3_c13_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 3.5,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r3_c14": {
+   "cond": "((arbitrary_requester[4:2] == 3'd3) & (arbitrary_requester[1:1] == 1'd1)) & (arbitrary_requester[0:0] == 1'd0)",
+   "ops": [],
+   "status": "proved",
+   "round": 3,
+   "parent": "r2_c7",
+   "fixed": {
+    "arbitrary_requester": 0
+   },
+   "direction": {
+    "index": "arbitrary_requester",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r3_c14_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 2.1,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r3_c15": {
+   "cond": "((arbitrary_requester[4:2] == 3'd3) & (arbitrary_requester[1:1] == 1'd1)) & (arbitrary_requester[0:0] == 1'd1)",
+   "ops": [],
+   "status": "proved",
+   "round": 3,
+   "parent": "r2_c7",
+   "fixed": {
+    "arbitrary_requester": 0
+   },
+   "direction": {
+    "index": "arbitrary_requester",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r3_c15_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 2.8,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  }
+ },
+ "cum": {
+  "input_tokens": 2437,
+  "output_tokens": 509,
+  "cache_hit": 0,
+  "cache_miss": 0,
+  "cost_usd": 0.0013419,
+  "latency_s": 7.581152439117432
+ }
+}

@@ -1,0 +1,7 @@
+{
+ "sv": "bench/prep/fifo_ref_64_ebmc.sv",
+ "rtl": "bench/prep/fifo_ref_64_ebmc.sv",
+ "property": "The model has one assertion, checked in every cycle: !rst -> (!(pop && (!ALLOW_BYPASS || fifo_size > 0)) || (data_out == ref_fifo[ref_fifo_head])). I.e. the FIFO output equals the reference FIFO entry at the head pointer.",
+ "unavailable": "",
+ "mem_havoc": "The ref_fifo array is flattened into registers; abstract_state on one is a reference-memory havoc."
+}

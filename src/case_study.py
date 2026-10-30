@@ -13,6 +13,7 @@ import re
 import signal
 import subprocess
 import sys
+import threading
 import time
 import types
 
@@ -24,8 +25,15 @@ import btor_witness  # noqa: E402
 import deepseek_chat  # noqa: E402
 from deepseek_prices import usage_cost  # noqa: E402
 
+# --no-index-hint drops exactly these three pieces of guidance (system prompt x2, plan request x1); everything else is identical
+INDEX_HINT = True
+HINT_SOURCE = ("Split on the source of hardness, not on output conditions: a proof over all indices or all slots stays whole under a split on "
+               "outputs (full, empty, flags), but fixing the index register or pointer it quantifies over instantiates it. ")
+HINT_USE = " Use this for an index or pointer register."
+HINT_PLAN = " (which index, pointer or slot does the proof quantify over)"
 RIC3 = "/var/tmp/agentic-ic3-tools/ric3-master-4d63899/target/release/ric3"
 MAX_CALLS, MAX_ROUNDS = 40, 8
+LLM_TIMEOUT = 300  # wall seconds per request; one retry, then the run stops as unsolved (llm_timeout)
 PARALLEL = 8       # pieces checked at once (rIC3 portfolio each; they share cores)
 CAPS = (3, 20, 120)  # rIC3 cap per piece in seconds: rounds 1-2, 3-4, 5+
 MAX_NEW = 32       # new pieces per round
@@ -55,13 +63,11 @@ A split is a list of cases, each a Verilog boolean expression over signal identi
 current values of states, inputs and wires). Piece i checks: case_i -> (~prop_en | prop_a) in every cycle. The split is accepted \
 only if a SAT check shows that the OR of the cases is true for ALL values of the signals (it covers every situation, \
 reachable or not). When a piece is split again, its new cases are intersected with the piece's own case and must cover it.
-Split on the source of hardness, not on output conditions: a proof over all indices or all slots stays whole under a split on \
-outputs (full, empty, flags), but fixing the index register or pointer it quantifies over instantiates it. Two ways to \
-give a split:
+{hint_source}Two ways to give a split:
 - {{"cases":[{{"id":"c0","condition":"<verilog expression>"}}, ...]}}: explicit cases (at most 16 per piece).
 - {{"index":ID,"bits":n,"auto":true|false}}: the tool splits register ID on its n highest bits not yet fixed in this piece \
 (2^n cases, top bit first). With "auto":true, children that time out are split on the next bit by the tool, without \
-asking you again. Use this for an index or pointer register.
+asking you again.{hint_use}
 Pieces already proved are never touched again.
 
 ## Abstraction operators (class A: every one only adds behaviours, so UNSAT on the abstract model is a real proof)
@@ -84,6 +90,32 @@ Answer with one JSON object and nothing else (no markdown fence). The shape is g
 
 def now():
     return time.time()
+
+
+class LLMTimeout(Exception):
+    pass
+
+
+def call_with_timeout(fn, *args):
+    """fn(*args) in a daemon thread; a hung request is abandoned after LLM_TIMEOUT s and retried once."""
+    for attempt in (1, 2):
+        box = {}
+
+        def work():
+            try:
+                box["r"] = fn(*args)
+            except BaseException as e:  # re-raised in the caller
+                box["e"] = e
+        th = threading.Thread(target=work, daemon=True)
+        th.start()
+        th.join(LLM_TIMEOUT)
+        if th.is_alive():
+            print("LLM request timed out after {:d} s (attempt {:d})".format(LLM_TIMEOUT, attempt), flush=True)
+            continue
+        if "e" in box:
+            raise box["e"]
+        return box["r"]
+    raise LLMTimeout()
 
 
 def load_cfg(workdir):
@@ -116,12 +148,13 @@ class Study:
             raise SystemExit("LLM call limit of {:d} reached".format(MAX_CALLS))
         c = self.cfg
         system = SYSTEM.format(rtl=open(os.path.join(self.dir, c["rtl"])).read(), property=c["property"],
-                               mem_havoc=c["mem_havoc"], unavailable=c["unavailable"])
+                               mem_havoc=c["mem_havoc"], unavailable=c["unavailable"],
+                               hint_source=HINT_SOURCE if INDEX_HINT else "", hint_use=HINT_USE if INDEX_HINT else "")
         messages = [{"role": "system", "content": system}] + (history or []) + [{"role": "user", "content": user}]
         os.chdir(self.dir)
         s["calls"] += 1
         t0 = now()
-        response, latency = deepseek_chat.call_deepseek_messages(messages, s["calls"])
+        response, latency = call_with_timeout(deepseek_chat.call_deepseek_messages, messages, s["calls"])
         usage = response.get("usage") or {}
         out = deepseek_chat.chat_text(response)
         cost = usage_cost(usage)
@@ -481,10 +514,10 @@ def add_children(st, parent, kids, ops, rnd, counter):
 
 
 def plan_first_split(st):
-    user = ("Step: PLAN SPLIT (round 1). Propose the first split of the property: where does the hardness come from "
-            "(which index, pointer or slot does the proof quantify over)? Each piece is first checked with a {:d} s "
+    user = ("Step: PLAN SPLIT (round 1). Propose the first split of the property: where does the hardness come from"
+            "{:s}? Each piece is first checked with a {:d} s "
             "cap, 8 pieces at a time; pieces that time out come back to you with timings.\n\n{:s}\n\n"
-            'Answer: {{"split":<explicit cases or index direction>,"reason":"..."}}').format(CAPS[0], sig_list(st))
+            'Answer: {{"split":<explicit cases or index direction>,"reason":"..."}}').format(HINT_PLAN if INDEX_HINT else "", CAPS[0], sig_list(st))
 
     def validate(data):
         kids = expand(st, data["split"], None)
@@ -622,7 +655,7 @@ def cmd_run(st, args):
         s["round"] = rnd
         left = args.budget - (now() - t_start)
         if left < 5 and rnd > 1:
-            st.event("budget_exhausted", round=rnd, budget=args.budget)
+            st.event("budget_exhausted", budget=args.budget)
             break
         if rnd == 1 and not s["pieces"]:
             plan_first_split(st)
@@ -812,13 +845,23 @@ def main():
     ap.add_argument("--timeout", type=int, default=60, help="split-only cap in seconds")
     ap.add_argument("--caps", default=",".join(map(str, CAPS)), help="run: rIC3 cap per piece for rounds 1-2, 3-4, 5+")
     ap.add_argument("--budget", type=int, default=1200, help="run: end-to-end wall seconds (LLM + rIC3); caps are clipped to what is left")
+    ap.add_argument("--no-index-hint", action="store_true", help="run: leave out the prompt guidance that points at the quantified index or pointer")
     args = ap.parse_args()
+    global INDEX_HINT
+    INDEX_HINT = not args.no_index_hint
     if args.cmd == "init":
         return init(args)
     st = Study(args.workdir)
     st.event("load", cmd=args.cmd, phase="start", load=os.getloadavg())
     try:
-        {"run": cmd_run, "split-only": cmd_split_only, "vacuity": cmd_vacuity, "report": cmd_report}[args.cmd](st, args)
+        try:
+            {"run": cmd_run, "split-only": cmd_split_only, "vacuity": cmd_vacuity, "report": cmd_report}[args.cmd](st, args)
+        except LLMTimeout:
+            st.s["unsolved"] = "llm_timeout"
+            st.save()
+            st.event("llm_timeout", calls=st.s["calls"])
+            print("unsolved: llm_timeout")
+            sys.exit(3)
     finally:
         st.event("load", cmd=args.cmd, phase="end", load=os.getloadavg())
 

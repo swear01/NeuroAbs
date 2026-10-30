@@ -1,0 +1,31 @@
+DONE /var/tmp/neuroabs-runtime/ablation-A/lrg_arb-hint-1 rc=0 wall=28.042228941
+DONE /var/tmp/neuroabs-runtime/ablation-A/lrg_arb-nohint-1 rc=0 wall=414.082232202
+DONE /var/tmp/neuroabs-runtime/ablation-A/fifo_vis-hint-1 rc=0 wall=1112.414139924
+DONE /var/tmp/neuroabs-runtime/ablation-A/fifo_vis-nohint-1 rc=1 wall=710.124121254
+DONE /var/tmp/neuroabs-runtime/ablation-A/simple_cam_8-hint-1 rc=143 wall=2050.622437585
+HUNG simple_cam_8-hint-1 killed after gateway request pending >1600 s (cegar_refine, round 4); rerun at end
+TIMEOUT-PATCH applied to src-ablation at 18:12:14; runs started after this have LLM_TIMEOUT=300+1 retry
+DONE /var/tmp/neuroabs-runtime/ablation-A/simple_cam_8-nohint-1 rc=1 wall=1649.995463242
+DONE /var/tmp/neuroabs-runtime/ablation-A/fifo_ref_16-hint-1 rc=1 wall=1384.753792005
+DONE /var/tmp/neuroabs-runtime/ablation-A/fifo_ref_16-nohint-1 rc=0 wall=1122.757859862
+DONE /var/tmp/neuroabs-runtime/ablation-A/lrg_arb-hint-2 rc=0 wall=57.512762335
+DONE /var/tmp/neuroabs-runtime/ablation-A/lrg_arb-nohint-2 rc=0 wall=170.311061390
+DONE /var/tmp/neuroabs-runtime/ablation-A/fifo_vis-hint-2 rc=1 wall=733.056750290
+BUDGET-EVENT-FIX applied to src-ablation at 20:09:48 (TypeError on budget_exhausted event)
+DONE /var/tmp/neuroabs-runtime/ablation-A/fifo_vis-nohint-2 rc=0 wall=484.393259790
+DONE /var/tmp/neuroabs-runtime/ablation-A/simple_cam_8-hint-2 rc=0 wall=2262.602394939
+DONE /var/tmp/neuroabs-runtime/ablation-A/simple_cam_8-nohint-2 rc=1 wall=378.433428596
+DONE /var/tmp/neuroabs-runtime/ablation-A/fifo_ref_16-hint-2 rc=0 wall=798.948279661
+DONE /var/tmp/neuroabs-runtime/ablation-A/fifo_ref_16-nohint-2 rc=0 wall=449.111705919
+DONE /var/tmp/neuroabs-runtime/ablation-A/lrg_arb-hint-3 rc=0 wall=23.753628964
+DONE /var/tmp/neuroabs-runtime/ablation-A/lrg_arb-nohint-3 rc=0 wall=256.192309959
+DONE /var/tmp/neuroabs-runtime/ablation-A/fifo_vis-hint-3 rc=0 wall=1106.741978299
+DONE /var/tmp/neuroabs-runtime/ablation-A/fifo_vis-nohint-3 rc=0 wall=569.241152633
+DONE /var/tmp/neuroabs-runtime/ablation-A/simple_cam_8-hint-3 rc=0 wall=49.182905965
+DONE /var/tmp/neuroabs-runtime/ablation-A/simple_cam_8-nohint-3 rc=1 wall=699.385609334
+DONE /var/tmp/neuroabs-runtime/ablation-A/fifo_ref_16-hint-3 rc=1 wall=547.570686611
+DONE /var/tmp/neuroabs-runtime/ablation-A/fifo_ref_16-nohint-3 rc=0 wall=1314.941876381
+CHAIN-FINISHED
+RERUN simple_cam_8-hint-1 started 22:41:46 (old dir kept as -hung)
+DONE /var/tmp/neuroabs-runtime/ablation-A/simple_cam_8-hint-1 rc=0 wall=1406.597411071
+CHAIN-FINISHED

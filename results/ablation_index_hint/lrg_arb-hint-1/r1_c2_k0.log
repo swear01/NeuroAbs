@@ -1,0 +1,82 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2026  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.68+120 (git sha1 a34d3baae-dirty, Release, Clang /usr/bin/clang++ 21.1.8)
+
+-- Running command `read_verilog -sv r1_c2_k0.v; read_rtlil r1_c2_k0.il; hierarchy -top main; flatten; opt_clean; async2sync; dffunmap; setundef -undriven -anyseq; setundef -anyseq; opt_clean; check -assert; write_btor -s r1_c2_k0.btor2' --
+
+1. Executing Verilog-2005 frontend: r1_c2_k0.v
+Parsing SystemVerilog input from `r1_c2_k0.v' to AST representation.
+Generating RTLIL representation for module `\__piece'.
+Successfully finished Verilog frontend.
+
+2. Executing RTLIL frontend.
+Input filename: r1_c2_k0.il
+
+3. Executing HIERARCHY pass (managing design hierarchy).
+
+3.1. Analyzing design hierarchy..
+Top module:  \main
+Used module:     \__piece
+
+3.2. Analyzing design hierarchy..
+Top module:  \main
+Used module:     \__piece
+Removed 0 unused modules.
+Module main directly or indirectly contains formal properties -> setting "keep" attribute.
+
+4. Executing FLATTEN pass (flatten design).
+Deleting now unused module __piece.
+<suppressed ~1 debug messages>
+
+5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \main..
+Removed 0 unused cells and 4 unused wires.
+<suppressed ~1 debug messages>
+
+6. Executing ASYNC2SYNC pass.
+Replacing main.$procdff$447 ($adff): ARST=\rst, D=1'1, Q=\chosen
+Replacing main.$procdff$453 ($adff): ARST=\rst, D=\ranks_raw[0], Q=\ranks[0]
+Replacing main.$procdff$456 ($adff): ARST=\rst, D=\ranks_raw[1], Q=\ranks[1]
+Replacing main.$procdff$459 ($adff): ARST=\rst, D=\ranks_raw[2], Q=\ranks[2]
+Replacing main.$procdff$462 ($adff): ARST=\rst, D=\ranks_raw[3], Q=\ranks[3]
+Replacing main.$procdff$465 ($adff): ARST=\rst, D=\ranks_raw[4], Q=\ranks[4]
+Replacing main.$procdff$468 ($adff): ARST=\rst, D=\ranks_raw[5], Q=\ranks[5]
+Replacing main.$procdff$471 ($adff): ARST=\rst, D=\ranks_raw[6], Q=\ranks[6]
+Replacing main.$procdff$474 ($adff): ARST=\rst, D=\ranks_raw[7], Q=\ranks[7]
+Replacing main.$procdff$477 ($adff): ARST=\rst, D=\ranks_raw[8], Q=\ranks[8]
+Replacing main.$procdff$480 ($adff): ARST=\rst, D=\ranks_raw[9], Q=\ranks[9]
+Replacing main.$procdff$483 ($adff): ARST=\rst, D=\ranks_raw[10], Q=\ranks[10]
+Replacing main.$procdff$486 ($adff): ARST=\rst, D=\ranks_raw[11], Q=\ranks[11]
+Replacing main.$procdff$489 ($adff): ARST=\rst, D=\ranks_raw[12], Q=\ranks[12]
+Replacing main.$procdff$492 ($adff): ARST=\rst, D=\ranks_raw[13], Q=\ranks[13]
+Replacing main.$procdff$495 ($adff): ARST=\rst, D=\ranks_raw[14], Q=\ranks[14]
+Replacing main.$procdff$498 ($adff): ARST=\rst, D=\ranks_raw[15], Q=\ranks[15]
+
+7. Executing DFFUNMAP pass (unmap clock enable and synchronous reset from FFs).
+
+8. Executing SETUNDEF pass (replace undef values with defined constants).
+
+9. Executing SETUNDEF pass (replace undef values with defined constants).
+
+10. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \main..
+
+11. Executing CHECK pass (checking for obvious problems).
+Checking module main...
+Found and reported 0 problems.
+
+12. Executing BTOR backend.
+
+12.1. Executing BMUXMAP pass.
+
+12.2. Executing DEMUXMAP pass.
+
+12.3. Executing BWMUXMAP pass.
+
+End of script. Logfile hash: a8a2e0c1c0, time: 0.01s, user: 0.00s, system: 0.00s, MEM: 27.02 MB peak
+Yosys 0.68+120 (git sha1 a34d3baae-dirty, Release, Clang /usr/bin/clang++ 21.1.8)
+Time spent: 36% 2x opt_clean (0 sec), 16% 2x read_rtlil (0 sec), ...

@@ -1,0 +1,4 @@
+DONE /var/tmp/neuroabs-runtime/large-B/simple_cam_16 rc=0 wall=209.561021345
+DONE /var/tmp/neuroabs-runtime/large-B/fifo_ref_64 rc=1 wall=308.689568844
+CHAIN-FINISHED
+DONE /var/tmp/neuroabs-runtime/large-B/fifo_ref_64-run2 rc=1 wall=413.813390894

@@ -1,0 +1,7 @@
+{
+"12": "dut.pop",
+"154": "dut.data_in",
+"155": "dut.push",
+"176": "fv_env.ref_fifo$rdreg[0]",
+"22": "dut.buffer$rdreg[0]"
+}

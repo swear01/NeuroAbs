@@ -50,3 +50,30 @@ Fixing both indices already makes each piece trivial (0.1-0.2 s versus ~2 s per 
 ## Files
 
 `run.py`, `raw/first_pass/` (fifo a b c d e), `raw/rerun_de/` (fifo d e repeat), `raw/rerun2_wab/` (fifo w a b), `raw/rerun3_waf/` (fifo w a f), `raw/lrg/` (so, free, freev). Each directory has `results_*.csv` and the run logs with per-piece rows.
+
+## 3. Real cut (follow-up): does removing the registers help?
+
+New op `cut` in `run.py` (`src/case_study.py` untouched): after `flatten`, `delete w:<reg> %ci1 c:* %i` removes the flip-flop driving the target; the existing `setundef -undriven -anyseq; opt_clean` then leaves its output free and drops the dead next-state logic. Yosys writes such an output as a `state` with no `next`/`init`, so `run.py` rewrites those nodes to `input` before rIC3 (same semantics: free every cycle). Counts are btor2 nodes (a multi-bit register is one node); `inputs` includes the rewritten nodes. Everything below ran in one batch on 2026-10-30 (w, a, b, g concurrently, 1 job each; then h; load 0.7 at start, then 30-50 because of the unrelated job; `load1` per piece is in the CSVs, `raw/rerun4_cut/`).
+
+Old path check: **`abstract -state/-value -enable __one` leaves the freed registers' original flip-flops and next-state logic in the model.** The state-node count is the same as without the op (lrg 20 -> 20, fifo c6 39 -> 39), the line count goes up (lrg 496 -> 552, fifo 459 -> 489), and the freed value is a new free input that only the property reads. Earlier "states 24 -> 52" counts included those free nodes written as `state`; they are inputs, not extra registers.
+
+| Design | Variant | state nodes | input nodes | btor2 lines | Pieces | Verdicts | Per-piece time mean / max | Spurious |
+|---|---|---|---|---|---|---|---|---|
+| lrg p0_1 | so (split only) | 20 | 9 | 496 | 8 | 8 UNSAT | 0.2 / 0.2 s | - |
+| lrg | free (`abstract_state`) | 20 | 37 | 552 | 8 | 8 UNSAT | 0.1 / 0.2 s | none |
+| lrg | freev (`abstract_value`) | 20 | 23 | 524 | 8 | 8 UNSAT | 0.1 / 0.1 s | none |
+| lrg | **cut** other 14 ranks | **6** | 74 | **459** | 8 | 8 UNSAT | 0.1 / 0.1 s | none |
+| fifo c6_t0 | w: whole, no split | 39 | 19 | 456 | 1 | UNSAT | 168 s | - |
+| fifo | a: split on `rb_tail` | 39 | 19 | 459 | 16 | 16 UNSAT | 7.1 / 9.6 s | - |
+| fifo | b: other 15 `rb_mem` freed (`abstract_state`) | 39 | 34 | 489 | 16 | 16 UNSAT | 7.0 / 10.1 s | none |
+| fifo | **g: other 15 `rb_mem` cut** | **24** | 68 | **419** | 16 | 16 UNSAT | 7.1 / 9.6 s | none |
+| fifo | **h: g + all 16 `sr_mem` cut** (sanity) | 8 | 83 | 385 | 16 | 16 **SAT** at 0.1 s | 0.1 / 0.1 s | **yes, 16/16** |
+
+Load (fifo batch): `uptime` 0.74 at start, 30 when w/a/b/g finished and while h ran; per-piece load was 6-51 for a/b/g and 30 for w/h, so w (168 s here, 137-145 s earlier, 92 s historically) is the noisiest number. a, b and g ran concurrently and show the same means.
+
+Reading:
+- The cut really shrinks the model: lrg 20 -> 6 state nodes and 496 -> 459 lines; fifo 39 -> 24 state nodes (15 removed, matching the 15 freed slots) and 459 -> 419 lines. h (all sr slots too) goes to 8 states, and its 16/16 spurious SAT, replayed on the concrete model, confirms the cut is applied.
+- **Shrinking does not make rIC3 faster here**: fifo a / b / g are 7.1 / 7.0 / 7.1 s mean per piece (same batch); lrg is 0.1-0.2 s in every variant. The split is what removes the hardness; the freed slots were already irrelevant to the proof, as COI-style reduction in rIC3 would also drop them, so removing them explicitly buys nothing measurable.
+- So the Phase 1 verdict stands with the real cut: split-then-abstract is sound (no spurious CEX) where the freed state is dead for the piece, and it is not faster on these two designs. A design where the freed state is large and rIC3 does not already discard it would be needed to see a gain.
+
+Raw: `raw/rerun4_cut/{fifo,lrg}/` (`results_*.csv` with `states`, `freed_to_input`, `inputs`, `lines`, `load1`; run logs; `load_*.txt`).

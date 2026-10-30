@@ -1,0 +1,10 @@
+coverage True
+{'exp': 'lrg', 'variant': 'freev', 'piece': 'p3_4_freev', 'ops': 14, 'verdict': 'UNSAT', 'seconds': 0.1, 'build_s': 0.0, 'states': 20, 'freed_to_input': 18, 'inputs': 23, 'lines': 524, 'spurious': '', 'load1': 0.8037109375}
+{'exp': 'lrg', 'variant': 'freev', 'piece': 'p1_0_freev', 'ops': 14, 'verdict': 'UNSAT', 'seconds': 0.1, 'build_s': 0.0, 'states': 20, 'freed_to_input': 18, 'inputs': 23, 'lines': 524, 'spurious': '', 'load1': 0.8037109375}
+{'exp': 'lrg', 'variant': 'freev', 'piece': 'p0_1_freev', 'ops': 14, 'verdict': 'UNSAT', 'seconds': 0.1, 'build_s': 0.0, 'states': 20, 'freed_to_input': 18, 'inputs': 23, 'lines': 524, 'spurious': '', 'load1': 0.8037109375}
+{'exp': 'lrg', 'variant': 'freev', 'piece': 'p7_8_freev', 'ops': 14, 'verdict': 'UNSAT', 'seconds': 0.1, 'build_s': 0.0, 'states': 20, 'freed_to_input': 18, 'inputs': 23, 'lines': 524, 'spurious': '', 'load1': 0.8037109375}
+{'exp': 'lrg', 'variant': 'freev', 'piece': 'p0_15_freev', 'ops': 14, 'verdict': 'UNSAT', 'seconds': 0.1, 'build_s': 0.0, 'states': 20, 'freed_to_input': 18, 'inputs': 23, 'lines': 524, 'spurious': '', 'load1': 0.8037109375}
+{'exp': 'lrg', 'variant': 'freev', 'piece': 'p15_0_freev', 'ops': 14, 'verdict': 'UNSAT', 'seconds': 0.1, 'build_s': 0.0, 'states': 20, 'freed_to_input': 18, 'inputs': 23, 'lines': 524, 'spurious': '', 'load1': 0.8037109375}
+{'exp': 'lrg', 'variant': 'freev', 'piece': 'p2_11_freev', 'ops': 14, 'verdict': 'UNSAT', 'seconds': 0.1, 'build_s': 0.0, 'states': 20, 'freed_to_input': 18, 'inputs': 23, 'lines': 524, 'spurious': '', 'load1': 0.8037109375}
+{'exp': 'lrg', 'variant': 'freev', 'piece': 'p12_5_freev', 'ops': 14, 'verdict': 'UNSAT', 'seconds': 0.1, 'build_s': 0.0, 'states': 20, 'freed_to_input': 18, 'inputs': 23, 'lines': 524, 'spurious': '', 'load1': 0.8037109375}
+DONE

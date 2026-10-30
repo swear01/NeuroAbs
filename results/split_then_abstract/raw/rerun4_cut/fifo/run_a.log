@@ -1,0 +1,18 @@
+coverage True
+{'exp': 'fifo', 'variant': 'a', 'piece': 'c6_t0_a', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 5.5, 'build_s': 0.0, 'states': 39, 'freed_to_input': 14, 'inputs': 19, 'lines': 459, 'spurious': '', 'load1': 5.88525390625}
+{'exp': 'fifo', 'variant': 'a', 'piece': 'c6_t1_a', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 9.6, 'build_s': 0.1, 'states': 39, 'freed_to_input': 14, 'inputs': 19, 'lines': 460, 'spurious': '', 'load1': 14.89404296875}
+{'exp': 'fifo', 'variant': 'a', 'piece': 'c6_t2_a', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 5.6, 'build_s': 0.0, 'states': 39, 'freed_to_input': 14, 'inputs': 19, 'lines': 460, 'spurious': '', 'load1': 18.90673828125}
+{'exp': 'fifo', 'variant': 'a', 'piece': 'c6_t3_a', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 5.6, 'build_s': 0.1, 'states': 39, 'freed_to_input': 14, 'inputs': 19, 'lines': 460, 'spurious': '', 'load1': 24.80859375}
+{'exp': 'fifo', 'variant': 'a', 'piece': 'c6_t4_a', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 5.4, 'build_s': 0.0, 'states': 39, 'freed_to_input': 14, 'inputs': 19, 'lines': 460, 'spurious': '', 'load1': 27.947265625}
+{'exp': 'fifo', 'variant': 'a', 'piece': 'c6_t5_a', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 5.4, 'build_s': 0.2, 'states': 39, 'freed_to_input': 14, 'inputs': 19, 'lines': 460, 'spurious': '', 'load1': 30.91455078125}
+{'exp': 'fifo', 'variant': 'a', 'piece': 'c6_t6_a', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 8.9, 'build_s': 0.1, 'states': 39, 'freed_to_input': 14, 'inputs': 19, 'lines': 460, 'spurious': '', 'load1': 34.95458984375}
+{'exp': 'fifo', 'variant': 'a', 'piece': 'c6_t7_a', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 7.1, 'build_s': 0.1, 'states': 39, 'freed_to_input': 14, 'inputs': 19, 'lines': 460, 'spurious': '', 'load1': 37.44091796875}
+{'exp': 'fifo', 'variant': 'a', 'piece': 'c6_t8_a', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 8.7, 'build_s': 0.1, 'states': 39, 'freed_to_input': 14, 'inputs': 19, 'lines': 459, 'spurious': '', 'load1': 41.5244140625}
+{'exp': 'fifo', 'variant': 'a', 'piece': 'c6_t9_a', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 4.9, 'build_s': 0.1, 'states': 39, 'freed_to_input': 14, 'inputs': 19, 'lines': 459, 'spurious': '', 'load1': 42.203125}
+{'exp': 'fifo', 'variant': 'a', 'piece': 'c6_t10_a', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 8.6, 'build_s': 0.1, 'states': 39, 'freed_to_input': 14, 'inputs': 19, 'lines': 459, 'spurious': '', 'load1': 45.7822265625}
+{'exp': 'fifo', 'variant': 'a', 'piece': 'c6_t11_a', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 6.6, 'build_s': 0.1, 'states': 39, 'freed_to_input': 14, 'inputs': 19, 'lines': 459, 'spurious': '', 'load1': 47.2412109375}
+{'exp': 'fifo', 'variant': 'a', 'piece': 'c6_t12_a', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 6.8, 'build_s': 0.2, 'states': 39, 'freed_to_input': 14, 'inputs': 19, 'lines': 459, 'spurious': '', 'load1': 48.66357421875}
+{'exp': 'fifo', 'variant': 'a', 'piece': 'c6_t13_a', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 7.3, 'build_s': 0.1, 'states': 39, 'freed_to_input': 14, 'inputs': 19, 'lines': 459, 'spurious': '', 'load1': 49.9169921875}
+{'exp': 'fifo', 'variant': 'a', 'piece': 'c6_t14_a', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 8.0, 'build_s': 0.1, 'states': 39, 'freed_to_input': 14, 'inputs': 19, 'lines': 459, 'spurious': '', 'load1': 49.84326171875}
+{'exp': 'fifo', 'variant': 'a', 'piece': 'c6_t15_a', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 9.2, 'build_s': 0.1, 'states': 39, 'freed_to_input': 14, 'inputs': 19, 'lines': 459, 'spurious': '', 'load1': 50.91455078125}
+DONE

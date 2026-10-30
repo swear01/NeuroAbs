@@ -1,0 +1,9 @@
+exp,variant,piece,ops,verdict,seconds,build_s,states,freed_to_input,inputs,lines,spurious,load1
+lrg,cut,p0_1_cut,14,UNSAT,0.1,0.0,6,69,74,459,,0.8037109375
+lrg,cut,p1_0_cut,14,UNSAT,0.1,0.0,6,69,74,459,,0.8037109375
+lrg,cut,p3_4_cut,14,UNSAT,0.1,0.0,6,63,68,449,,0.8037109375
+lrg,cut,p7_8_cut,14,UNSAT,0.1,0.0,6,65,70,453,,0.8037109375
+lrg,cut,p0_15_cut,14,UNSAT,0.1,0.0,6,64,69,449,,0.8037109375
+lrg,cut,p15_0_cut,14,UNSAT,0.1,0.0,6,64,69,449,,0.8037109375
+lrg,cut,p2_11_cut,14,UNSAT,0.1,0.0,6,64,69,451,,0.8037109375
+lrg,cut,p12_5_cut,14,UNSAT,0.1,0.0,6,64,69,451,,0.8037109375

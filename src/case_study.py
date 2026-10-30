@@ -439,6 +439,8 @@ def expand(st, spec, parent):
         n = min(int(spec.get("bits", 1)), low)
         if n < 1:
             raise ValueError("every bit of {:s} is already fixed in this piece".format(t))
+        if 2 ** n > MAX_NEW:
+            raise ValueError("splitting {:d} bits gives {:d} pieces, more than the {:d} allowed per round".format(n, 2 ** n, MAX_NEW))
         cases = []
         for v in range(2 ** n):
             hi, lo = low - 1, low - n

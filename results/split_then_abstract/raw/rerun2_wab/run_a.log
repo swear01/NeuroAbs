@@ -1,0 +1,18 @@
+coverage True
+{'exp': 'fifo', 'variant': 'a', 'piece': 'c6_t1_a', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 7.0, 'build_s': 0.0, 'spurious': '', 'load1': 42.00244140625}
+{'exp': 'fifo', 'variant': 'a', 'piece': 'c6_t0_a', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 9.2, 'build_s': 0.0, 'spurious': '', 'load1': 42.00244140625}
+{'exp': 'fifo', 'variant': 'a', 'piece': 'c6_t2_a', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 7.3, 'build_s': 0.1, 'spurious': '', 'load1': 44.96533203125}
+{'exp': 'fifo', 'variant': 'a', 'piece': 'c6_t3_a', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 8.7, 'build_s': 0.1, 'spurious': '', 'load1': 47.77099609375}
+{'exp': 'fifo', 'variant': 'a', 'piece': 'c6_t4_a', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 10.2, 'build_s': 0.2, 'spurious': '', 'load1': 51.525390625}
+{'exp': 'fifo', 'variant': 'a', 'piece': 'c6_t5_a', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 8.6, 'build_s': 0.1, 'spurious': '', 'load1': 51.525390625}
+{'exp': 'fifo', 'variant': 'a', 'piece': 'c6_t6_a', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 7.5, 'build_s': 0.1, 'spurious': '', 'load1': 53.9658203125}
+{'exp': 'fifo', 'variant': 'a', 'piece': 'c6_t7_a', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 11.2, 'build_s': 0.1, 'spurious': '', 'load1': 54.9296875}
+{'exp': 'fifo', 'variant': 'a', 'piece': 'c6_t8_a', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 10.9, 'build_s': 0.2, 'spurious': '', 'load1': 56.9375}
+{'exp': 'fifo', 'variant': 'a', 'piece': 'c6_t9_a', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 7.0, 'build_s': 0.1, 'spurious': '', 'load1': 59.02490234375}
+{'exp': 'fifo', 'variant': 'a', 'piece': 'c6_t11_a', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 6.2, 'build_s': 0.1, 'spurious': '', 'load1': 60.70458984375}
+{'exp': 'fifo', 'variant': 'a', 'piece': 'c6_t10_a', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 9.5, 'build_s': 0.1, 'spurious': '', 'load1': 60.70458984375}
+{'exp': 'fifo', 'variant': 'a', 'piece': 'c6_t12_a', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 9.2, 'build_s': 0.1, 'spurious': '', 'load1': 63.67138671875}
+{'exp': 'fifo', 'variant': 'a', 'piece': 'c6_t13_a', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 11.5, 'build_s': 1.4, 'spurious': '', 'load1': 65.69970703125}
+{'exp': 'fifo', 'variant': 'a', 'piece': 'c6_t14_a', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 11.4, 'build_s': 0.1, 'spurious': '', 'load1': 65.6435546875}
+{'exp': 'fifo', 'variant': 'a', 'piece': 'c6_t15_a', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 6.8, 'build_s': 0.1, 'spurious': '', 'load1': 65.6435546875}
+DONE

@@ -1,0 +1,17 @@
+exp,variant,piece,ops,verdict,seconds,build_s,spurious,load1
+fifo,b,c6_t0_b,15,UNSAT,10.0,0.0,,44.96533203125
+fifo,b,c6_t1_b,15,UNSAT,13.5,0.0,,44.96533203125
+fifo,b,c6_t2_b,15,UNSAT,7.8,0.1,,47.77099609375
+fifo,b,c6_t3_b,15,UNSAT,7.0,0.1,,50.35205078125
+fifo,b,c6_t4_b,15,UNSAT,8.7,0.1,,51.525390625
+fifo,b,c6_t5_b,15,UNSAT,9.4,0.1,,53.9658203125
+fifo,b,c6_t6_b,15,UNSAT,7.7,0.1,,53.9658203125
+fifo,b,c6_t7_b,15,UNSAT,10.8,0.1,,56.9375
+fifo,b,c6_t8_b,15,UNSAT,8.7,0.1,,56.9375
+fifo,b,c6_t9_b,15,UNSAT,6.7,0.1,,59.02490234375
+fifo,b,c6_t10_b,15,UNSAT,5.4,0.1,,59.02490234375
+fifo,b,c6_t11_b,15,UNSAT,12.4,0.1,,63.67138671875
+fifo,b,c6_t12_b,15,UNSAT,7.7,0.2,,62.25
+fifo,b,c6_t13_b,15,UNSAT,5.1,0.1,,63.67138671875
+fifo,b,c6_t14_b,15,UNSAT,11.1,0.2,,65.6435546875
+fifo,b,c6_t15_b,15,UNSAT,7.8,0.1,,65.6435546875

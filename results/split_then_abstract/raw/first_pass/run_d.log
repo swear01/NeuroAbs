@@ -1,0 +1,18 @@
+coverage True
+{'exp': 'fifo', 'variant': 'd', 'piece': 'c6_s0_d', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 15.1, 'build_s': 0.0, 'spurious': ''}
+{'exp': 'fifo', 'variant': 'd', 'piece': 'c6_s1_d', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 27.3, 'build_s': 0.0, 'spurious': ''}
+{'exp': 'fifo', 'variant': 'd', 'piece': 'c6_s3_d', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 68.1, 'build_s': 0.0, 'spurious': ''}
+{'exp': 'fifo', 'variant': 'd', 'piece': 'c6_s2_d', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 68.4, 'build_s': 0.0, 'spurious': ''}
+{'exp': 'fifo', 'variant': 'd', 'piece': 'c6_s5_d', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 109.4, 'build_s': 0.1, 'spurious': ''}
+{'exp': 'fifo', 'variant': 'd', 'piece': 'c6_s4_d', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 130.6, 'build_s': 0.1, 'spurious': ''}
+{'exp': 'fifo', 'variant': 'd', 'piece': 'c6_s7_d', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 111.3, 'build_s': 0.2, 'spurious': ''}
+{'exp': 'fifo', 'variant': 'd', 'piece': 'c6_s6_d', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 149.7, 'build_s': 0.1, 'spurious': ''}
+{'exp': 'fifo', 'variant': 'd', 'piece': 'c6_s8_d', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 94.2, 'build_s': 0.1, 'spurious': ''}
+{'exp': 'fifo', 'variant': 'd', 'piece': 'c6_s10_d', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 61.3, 'build_s': 0.1, 'spurious': ''}
+{'exp': 'fifo', 'variant': 'd', 'piece': 'c6_s11_d', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 26.5, 'build_s': 0.1, 'spurious': ''}
+{'exp': 'fifo', 'variant': 'd', 'piece': 'c6_s9_d', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 103.8, 'build_s': 0.1, 'spurious': ''}
+{'exp': 'fifo', 'variant': 'd', 'piece': 'c6_s12_d', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 65.8, 'build_s': 0.1, 'spurious': ''}
+{'exp': 'fifo', 'variant': 'd', 'piece': 'c6_s15_d', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 53.2, 'build_s': 0.2, 'spurious': ''}
+{'exp': 'fifo', 'variant': 'd', 'piece': 'c6_s14_d', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 68.9, 'build_s': 0.2, 'spurious': ''}
+{'exp': 'fifo', 'variant': 'd', 'piece': 'c6_s13_d', 'ops': 0, 'verdict': 'UNSAT', 'seconds': 73.4, 'build_s': 0.1, 'spurious': ''}
+DONE

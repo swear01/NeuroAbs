@@ -214,9 +214,10 @@ class Study:
         top = il.index("module \\main")
         end = il.index("\nend\n", top) + 1
         m = re.search(r"  cell \$assert [^\n]*\n(?:(?!  end\n).*\n)*?  end\n", il[top:end])
+        if m is None or len(re.findall(r"  cell \$assert ", il[top:end])) != 1:
+            raise RuntimeError("expected exactly one assertion in module main")
         a = re.search(r"connect \\A (.*)", m.group(0)).group(1)
         en = re.search(r"connect \\EN (.*)", m.group(0)).group(1)
-        assert len(re.findall(r"  cell \$assert ", il[top:end])) == 1, "expected exactly one assertion"
         main = il[top:end]
         if cond:
             main = main.replace(m.group(0), "")
@@ -501,7 +502,7 @@ def cmd_split_only(st, args):
         tag = p + "_so"
         try:
             model = st.build(tag, st.s["pieces"][p]["cond"], [])
-        except RuntimeError as e:
+        except RuntimeError:
             return p, "BUILD_ERROR", 0.0
         verdict, secs, _ = st.ric3(model, args.timeout, tag)
         return p, verdict, secs

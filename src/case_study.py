@@ -51,7 +51,7 @@ reachable or not).
 
 ## Abstraction operators (class A: every one only adds behaviours, so UNSAT on the abstract model is a real proof)
 - {{"op":"abstract_value","target":ID,"enable":ID|null,"enablen":ID|null,"slice":"hi:lo"|"i"|null}}: replace the driver of wire ID by a free value (same as cutpoint). enable/enablen: free only while the 1-bit signal is high/low.
-- {{"op":"abstract_state","target":ID,"enable":...,"enablen":...,"slice":...,"initstates":N|null}}: register ID loads a free value every clock edge (while enable holds / in the first N cycles). Memory words are registers sr_mem_0 .. rb_mem_15, so this also covers memory havoc.
+- {{"op":"abstract_state","target":ID,"enable":...,"enablen":...,"slice":...,"initstates":N|null}}: register ID loads a free value every clock edge (while enable holds / in the first N cycles). Memory words are registers sr_mem_0 .. sr_mem_15 and rb_mem_0 .. rb_mem_15, so this also covers memory havoc.
 - {{"op":"abstract_init","target":ID,"slice":...}}: register ID gets a free initial value.
 - {{"op":"drop_assume"}}: remove the assumption (rst is high in the first cycle).
 Not available (reject if you use them): any other operator, rewriting expressions, new assumptions or lemmas, cutpoint -blackbox (the design is flat), UF pairing (the two FIFOs do not compute the same functions).
@@ -144,7 +144,7 @@ class Study:
     # ---- Yosys -----------------------------------------------------------------------------------------------
     def yosys(self, script, log):
         path = os.path.join(self.dir, log)
-        r = subprocess.run(["yosys", "-q", "-l", path, "-p", script], capture_output=True, text=True)
+        r = subprocess.run(["yosys", "-q", "-l", path, "-p", script], capture_output=True, text=True, cwd=self.dir)
         return r.returncode, r.stdout + r.stderr
 
     def signals(self):
@@ -184,6 +184,8 @@ class Study:
         open(path, "w").write("\n".join(body))
         rc, out = self.yosys("read_verilog -sv coverage.v; prep -top __cover; sat -show-inputs -prove covered 1 -verify",
                              "coverage.log")
+        if rc and "proof did fail" not in out:
+            raise RuntimeError("coverage check could not run:\n" + out[-800:])
         return rc == 0, out
 
     # ---- models ----------------------------------------------------------------------------------------------
@@ -472,7 +474,9 @@ def cmd_check(st, args):
 
 def witness_file(log, dest):
     lines = open(log, errors="replace").read().splitlines()
-    i = next(k for k, line in enumerate(lines) if line.strip().lower() == "sat" and k + 1 < len(lines) and lines[k + 1].startswith("b"))
+    i = next((k for k, line in enumerate(lines) if line.strip().lower() == "sat"), None)
+    if i is None:
+        raise RuntimeError("no SAT witness marker in " + log)
     open(dest, "w").write("sat\n" + "\n".join(lines[i + 1:]) + "\n")
 
 
@@ -496,7 +500,6 @@ def replay(st, p):
                    "state": {cst[ast[i]]: val for i, val in fr["state"].items() if k == 0 and ast.get(i) in cst}})
     av, cv = btor_witness.simulate(am, frames), btor_witness.simulate(cm, cf)
     bad_c = [any(btor_witness.value_of(c, int(cm.nodes[b][1][2])) == 1 for b in cm.bad) for c in cv]
-    names = [n for n in cm.states if n in cm.names and cm.names[n] in set(aname.values())]
     table = []
     for k in range(len(frames)):
         row = {"cycle": k}
@@ -571,11 +574,12 @@ def cmd_vacuity(st, args):
 
 
 def nonvacuous(self, p, v):
-    ids = self.ident_map()
-    body, used = self.piece_module({"c": v["cond"]}, ["ok"], "__nv")
+    body, _ = self.piece_module({"c": v["cond"]}, ["ok"], "__nv")
     body += ["assign ok = ~c | rst | equal;", "endmodule"]
     open(os.path.join(self.dir, p + "_nv.v"), "w").write("\n".join(body))
-    rc, _ = self.yosys("read_verilog -sv {:s}_nv.v; prep -top __nv; sat -prove ok 1 -verify".format(p), p + "_nv.log")
+    rc, out = self.yosys("read_verilog -sv {:s}_nv.v; prep -top __nv; sat -prove ok 1 -verify".format(p), p + "_nv.log")
+    if rc and "proof did fail" not in out:
+        raise RuntimeError("non-vacuity check could not run:\n" + out[-800:])
     return rc != 0
 
 

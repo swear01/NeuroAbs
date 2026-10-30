@@ -1,0 +1,1733 @@
+{
+ "round": 6,
+ "calls": 2,
+ "signals": [
+  {
+   "name": "size",
+   "id": "size",
+   "width": 5,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "rst",
+   "id": "rst",
+   "width": 1,
+   "input": true,
+   "state": false
+  },
+  {
+   "name": "push",
+   "id": "push",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "pop",
+   "id": "pop",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "full",
+   "id": "full",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "error",
+   "id": "error",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "empty",
+   "id": "empty",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "data_out",
+   "id": "data_out",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "data_in",
+   "id": "data_in",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "fv_env.__bb_first",
+   "id": "fv_env___bb_first",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "fv_env.clk",
+   "id": "fv_env_clk",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "fv_env.data_in",
+   "id": "fv_env_data_in",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "fv_env.data_out",
+   "id": "fv_env_data_out",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "fv_env.empty",
+   "id": "fv_env_empty",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "fv_env.error",
+   "id": "fv_env_error",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "fv_env.fifo_size",
+   "id": "fv_env_fifo_size",
+   "width": 5,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "fv_env.full",
+   "id": "fv_env_full",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "fv_env.pop",
+   "id": "fv_env_pop",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "fv_env.push",
+   "id": "fv_env_push",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "fv_env.ref_fifo_head",
+   "id": "fv_env_ref_fifo_head",
+   "width": 5,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "fv_env.ref_fifo_tail",
+   "id": "fv_env_ref_fifo_tail",
+   "width": 5,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "fv_env.rst",
+   "id": "fv_env_rst",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "fv_env.size",
+   "id": "fv_env_size",
+   "width": 5,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "dut.bypass_detected",
+   "id": "dut_bypass_detected",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "dut.clk",
+   "id": "dut_clk",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "dut.data_in",
+   "id": "dut_data_in",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "dut.data_out",
+   "id": "dut_data_out",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "dut.empty",
+   "id": "dut_empty",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "dut.error",
+   "id": "dut_error",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "dut.full",
+   "id": "dut_full",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "dut.head",
+   "id": "dut_head",
+   "width": 5,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "dut.pop",
+   "id": "dut_pop",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "dut.push",
+   "id": "dut_push",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "dut.rst",
+   "id": "dut_rst",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "dut.size",
+   "id": "dut_size",
+   "width": 5,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "dut.tail",
+   "id": "dut_tail",
+   "width": 5,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "dut.buffer[0]",
+   "id": "dut_buffer_0",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "dut.buffer[1]",
+   "id": "dut_buffer_1",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "dut.buffer[2]",
+   "id": "dut_buffer_2",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "dut.buffer[3]",
+   "id": "dut_buffer_3",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "dut.buffer[4]",
+   "id": "dut_buffer_4",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "dut.buffer[5]",
+   "id": "dut_buffer_5",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "dut.buffer[6]",
+   "id": "dut_buffer_6",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "dut.buffer[7]",
+   "id": "dut_buffer_7",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "dut.buffer[8]",
+   "id": "dut_buffer_8",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "dut.buffer[9]",
+   "id": "dut_buffer_9",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "dut.buffer[10]",
+   "id": "dut_buffer_10",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "dut.buffer[11]",
+   "id": "dut_buffer_11",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "dut.buffer[12]",
+   "id": "dut_buffer_12",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "dut.buffer[13]",
+   "id": "dut_buffer_13",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "dut.buffer[14]",
+   "id": "dut_buffer_14",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "dut.buffer[15]",
+   "id": "dut_buffer_15",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "fv_env.ref_fifo[0]",
+   "id": "fv_env_ref_fifo_0",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "fv_env.ref_fifo[1]",
+   "id": "fv_env_ref_fifo_1",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "fv_env.ref_fifo[2]",
+   "id": "fv_env_ref_fifo_2",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "fv_env.ref_fifo[3]",
+   "id": "fv_env_ref_fifo_3",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "fv_env.ref_fifo[4]",
+   "id": "fv_env_ref_fifo_4",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "fv_env.ref_fifo[5]",
+   "id": "fv_env_ref_fifo_5",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "fv_env.ref_fifo[6]",
+   "id": "fv_env_ref_fifo_6",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "fv_env.ref_fifo[7]",
+   "id": "fv_env_ref_fifo_7",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "fv_env.ref_fifo[8]",
+   "id": "fv_env_ref_fifo_8",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "fv_env.ref_fifo[9]",
+   "id": "fv_env_ref_fifo_9",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "fv_env.ref_fifo[10]",
+   "id": "fv_env_ref_fifo_10",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "fv_env.ref_fifo[11]",
+   "id": "fv_env_ref_fifo_11",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "fv_env.ref_fifo[12]",
+   "id": "fv_env_ref_fifo_12",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "fv_env.ref_fifo[13]",
+   "id": "fv_env_ref_fifo_13",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "fv_env.ref_fifo[14]",
+   "id": "fv_env_ref_fifo_14",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "fv_env.ref_fifo[15]",
+   "id": "fv_env_ref_fifo_15",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "prop_a",
+   "id": "prop_a",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "prop_en",
+   "id": "prop_en",
+   "width": 1,
+   "input": false,
+   "state": false
+  }
+ ],
+ "pieces": {
+  "r1_c0": {
+   "cond": "fv_env_ref_fifo_head[4:4] == 1'd0",
+   "ops": [],
+   "status": "split",
+   "round": 1,
+   "parent": null,
+   "fixed": {
+    "fv_env_ref_fifo_head": 4
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r1_c0_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r2_c0",
+    "r2_c1"
+   ]
+  },
+  "r1_c1": {
+   "cond": "fv_env_ref_fifo_head[4:4] == 1'd1",
+   "ops": [],
+   "status": "proved",
+   "round": 1,
+   "parent": null,
+   "fixed": {
+    "fv_env_ref_fifo_head": 4
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r1_c1_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 0.0,
+    "timeout": 3
+   },
+   "split_only": {
+    "verdict": "UNSAT",
+    "seconds": 0.1,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "UNKNOWN",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r2_c0": {
+   "cond": "(fv_env_ref_fifo_head[4:4] == 1'd0) & (fv_env_ref_fifo_head[3:3] == 1'd0)",
+   "ops": [],
+   "status": "split",
+   "round": 2,
+   "parent": "r1_c0",
+   "fixed": {
+    "fv_env_ref_fifo_head": 3
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r2_c0_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r3_c0",
+    "r3_c1"
+   ]
+  },
+  "r2_c1": {
+   "cond": "(fv_env_ref_fifo_head[4:4] == 1'd0) & (fv_env_ref_fifo_head[3:3] == 1'd1)",
+   "ops": [],
+   "status": "split",
+   "round": 2,
+   "parent": "r1_c0",
+   "fixed": {
+    "fv_env_ref_fifo_head": 3
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r2_c1_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r3_c2",
+    "r3_c3"
+   ]
+  },
+  "r3_c0": {
+   "cond": "((fv_env_ref_fifo_head[4:4] == 1'd0) & (fv_env_ref_fifo_head[3:3] == 1'd0)) & (fv_env_ref_fifo_head[2:2] == 1'd0)",
+   "ops": [],
+   "status": "split",
+   "round": 3,
+   "parent": "r2_c0",
+   "fixed": {
+    "fv_env_ref_fifo_head": 2
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r3_c0_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r4_c0",
+    "r4_c1"
+   ]
+  },
+  "r3_c1": {
+   "cond": "((fv_env_ref_fifo_head[4:4] == 1'd0) & (fv_env_ref_fifo_head[3:3] == 1'd0)) & (fv_env_ref_fifo_head[2:2] == 1'd1)",
+   "ops": [],
+   "status": "split",
+   "round": 3,
+   "parent": "r2_c0",
+   "fixed": {
+    "fv_env_ref_fifo_head": 2
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r3_c1_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r4_c2",
+    "r4_c3"
+   ]
+  },
+  "r3_c2": {
+   "cond": "((fv_env_ref_fifo_head[4:4] == 1'd0) & (fv_env_ref_fifo_head[3:3] == 1'd1)) & (fv_env_ref_fifo_head[2:2] == 1'd0)",
+   "ops": [],
+   "status": "split",
+   "round": 3,
+   "parent": "r2_c1",
+   "fixed": {
+    "fv_env_ref_fifo_head": 2
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r3_c2_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r4_c4",
+    "r4_c5"
+   ]
+  },
+  "r3_c3": {
+   "cond": "((fv_env_ref_fifo_head[4:4] == 1'd0) & (fv_env_ref_fifo_head[3:3] == 1'd1)) & (fv_env_ref_fifo_head[2:2] == 1'd1)",
+   "ops": [],
+   "status": "split",
+   "round": 3,
+   "parent": "r2_c1",
+   "fixed": {
+    "fv_env_ref_fifo_head": 2
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r3_c3_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r4_c6",
+    "r4_c7"
+   ]
+  },
+  "r4_c0": {
+   "cond": "(((fv_env_ref_fifo_head[4:4] == 1'd0) & (fv_env_ref_fifo_head[3:3] == 1'd0)) & (fv_env_ref_fifo_head[2:2] == 1'd0)) & (fv_env_ref_fifo_head[1:1] == 1'd0)",
+   "ops": [],
+   "status": "split",
+   "round": 4,
+   "parent": "r3_c0",
+   "fixed": {
+    "fv_env_ref_fifo_head": 1
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r4_c0_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r5_c0",
+    "r5_c1"
+   ]
+  },
+  "r4_c1": {
+   "cond": "(((fv_env_ref_fifo_head[4:4] == 1'd0) & (fv_env_ref_fifo_head[3:3] == 1'd0)) & (fv_env_ref_fifo_head[2:2] == 1'd0)) & (fv_env_ref_fifo_head[1:1] == 1'd1)",
+   "ops": [],
+   "status": "split",
+   "round": 4,
+   "parent": "r3_c0",
+   "fixed": {
+    "fv_env_ref_fifo_head": 1
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r4_c1_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r5_c2",
+    "r5_c3"
+   ]
+  },
+  "r4_c2": {
+   "cond": "(((fv_env_ref_fifo_head[4:4] == 1'd0) & (fv_env_ref_fifo_head[3:3] == 1'd0)) & (fv_env_ref_fifo_head[2:2] == 1'd1)) & (fv_env_ref_fifo_head[1:1] == 1'd0)",
+   "ops": [],
+   "status": "split",
+   "round": 4,
+   "parent": "r3_c1",
+   "fixed": {
+    "fv_env_ref_fifo_head": 1
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r4_c2_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r5_c4",
+    "r5_c5"
+   ]
+  },
+  "r4_c3": {
+   "cond": "(((fv_env_ref_fifo_head[4:4] == 1'd0) & (fv_env_ref_fifo_head[3:3] == 1'd0)) & (fv_env_ref_fifo_head[2:2] == 1'd1)) & (fv_env_ref_fifo_head[1:1] == 1'd1)",
+   "ops": [],
+   "status": "split",
+   "round": 4,
+   "parent": "r3_c1",
+   "fixed": {
+    "fv_env_ref_fifo_head": 1
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r4_c3_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r5_c6",
+    "r5_c7"
+   ]
+  },
+  "r4_c4": {
+   "cond": "(((fv_env_ref_fifo_head[4:4] == 1'd0) & (fv_env_ref_fifo_head[3:3] == 1'd1)) & (fv_env_ref_fifo_head[2:2] == 1'd0)) & (fv_env_ref_fifo_head[1:1] == 1'd0)",
+   "ops": [],
+   "status": "split",
+   "round": 4,
+   "parent": "r3_c2",
+   "fixed": {
+    "fv_env_ref_fifo_head": 1
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r4_c4_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r5_c8",
+    "r5_c9"
+   ]
+  },
+  "r4_c5": {
+   "cond": "(((fv_env_ref_fifo_head[4:4] == 1'd0) & (fv_env_ref_fifo_head[3:3] == 1'd1)) & (fv_env_ref_fifo_head[2:2] == 1'd0)) & (fv_env_ref_fifo_head[1:1] == 1'd1)",
+   "ops": [],
+   "status": "split",
+   "round": 4,
+   "parent": "r3_c2",
+   "fixed": {
+    "fv_env_ref_fifo_head": 1
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r4_c5_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r5_c10",
+    "r5_c11"
+   ]
+  },
+  "r4_c6": {
+   "cond": "(((fv_env_ref_fifo_head[4:4] == 1'd0) & (fv_env_ref_fifo_head[3:3] == 1'd1)) & (fv_env_ref_fifo_head[2:2] == 1'd1)) & (fv_env_ref_fifo_head[1:1] == 1'd0)",
+   "ops": [],
+   "status": "split",
+   "round": 4,
+   "parent": "r3_c3",
+   "fixed": {
+    "fv_env_ref_fifo_head": 1
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r4_c6_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r5_c12",
+    "r5_c13"
+   ]
+  },
+  "r4_c7": {
+   "cond": "(((fv_env_ref_fifo_head[4:4] == 1'd0) & (fv_env_ref_fifo_head[3:3] == 1'd1)) & (fv_env_ref_fifo_head[2:2] == 1'd1)) & (fv_env_ref_fifo_head[1:1] == 1'd1)",
+   "ops": [],
+   "status": "split",
+   "round": 4,
+   "parent": "r3_c3",
+   "fixed": {
+    "fv_env_ref_fifo_head": 1
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r4_c7_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r5_c14",
+    "r5_c15"
+   ]
+  },
+  "r5_c0": {
+   "cond": "((((fv_env_ref_fifo_head[4:4] == 1'd0) & (fv_env_ref_fifo_head[3:3] == 1'd0)) & (fv_env_ref_fifo_head[2:2] == 1'd0)) & (fv_env_ref_fifo_head[1:1] == 1'd0)) & (fv_env_ref_fifo_head[0:0] == 1'd0)",
+   "ops": [],
+   "status": "proved",
+   "round": 5,
+   "parent": "r4_c0",
+   "fixed": {
+    "fv_env_ref_fifo_head": 0
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r5_c0_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 110.3,
+    "timeout": 120
+   },
+   "split_only": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r5_c1": {
+   "cond": "((((fv_env_ref_fifo_head[4:4] == 1'd0) & (fv_env_ref_fifo_head[3:3] == 1'd0)) & (fv_env_ref_fifo_head[2:2] == 1'd0)) & (fv_env_ref_fifo_head[1:1] == 1'd0)) & (fv_env_ref_fifo_head[0:0] == 1'd1)",
+   "ops": [],
+   "status": "split",
+   "round": 5,
+   "parent": "r4_c0",
+   "fixed": {
+    "fv_env_ref_fifo_head": 0
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r5_c1_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 120.0,
+    "timeout": 120
+   },
+   "children": [
+    "r6_c0",
+    "r6_c1"
+   ]
+  },
+  "r5_c2": {
+   "cond": "((((fv_env_ref_fifo_head[4:4] == 1'd0) & (fv_env_ref_fifo_head[3:3] == 1'd0)) & (fv_env_ref_fifo_head[2:2] == 1'd0)) & (fv_env_ref_fifo_head[1:1] == 1'd1)) & (fv_env_ref_fifo_head[0:0] == 1'd0)",
+   "ops": [],
+   "status": "split",
+   "round": 5,
+   "parent": "r4_c1",
+   "fixed": {
+    "fv_env_ref_fifo_head": 0
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r5_c2_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 120.0,
+    "timeout": 120
+   },
+   "children": [
+    "r6_c2",
+    "r6_c3"
+   ]
+  },
+  "r5_c3": {
+   "cond": "((((fv_env_ref_fifo_head[4:4] == 1'd0) & (fv_env_ref_fifo_head[3:3] == 1'd0)) & (fv_env_ref_fifo_head[2:2] == 1'd0)) & (fv_env_ref_fifo_head[1:1] == 1'd1)) & (fv_env_ref_fifo_head[0:0] == 1'd1)",
+   "ops": [],
+   "status": "proved",
+   "round": 5,
+   "parent": "r4_c1",
+   "fixed": {
+    "fv_env_ref_fifo_head": 0
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r5_c3_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 110.5,
+    "timeout": 120
+   },
+   "split_only": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r5_c4": {
+   "cond": "((((fv_env_ref_fifo_head[4:4] == 1'd0) & (fv_env_ref_fifo_head[3:3] == 1'd0)) & (fv_env_ref_fifo_head[2:2] == 1'd1)) & (fv_env_ref_fifo_head[1:1] == 1'd0)) & (fv_env_ref_fifo_head[0:0] == 1'd0)",
+   "ops": [],
+   "status": "split",
+   "round": 5,
+   "parent": "r4_c2",
+   "fixed": {
+    "fv_env_ref_fifo_head": 0
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r5_c4_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 120.0,
+    "timeout": 120
+   },
+   "children": [
+    "r6_c4",
+    "r6_c5"
+   ]
+  },
+  "r5_c5": {
+   "cond": "((((fv_env_ref_fifo_head[4:4] == 1'd0) & (fv_env_ref_fifo_head[3:3] == 1'd0)) & (fv_env_ref_fifo_head[2:2] == 1'd1)) & (fv_env_ref_fifo_head[1:1] == 1'd0)) & (fv_env_ref_fifo_head[0:0] == 1'd1)",
+   "ops": [],
+   "status": "split",
+   "round": 5,
+   "parent": "r4_c2",
+   "fixed": {
+    "fv_env_ref_fifo_head": 0
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r5_c5_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 120.0,
+    "timeout": 120
+   },
+   "children": [
+    "r6_c6",
+    "r6_c7"
+   ]
+  },
+  "r5_c6": {
+   "cond": "((((fv_env_ref_fifo_head[4:4] == 1'd0) & (fv_env_ref_fifo_head[3:3] == 1'd0)) & (fv_env_ref_fifo_head[2:2] == 1'd1)) & (fv_env_ref_fifo_head[1:1] == 1'd1)) & (fv_env_ref_fifo_head[0:0] == 1'd0)",
+   "ops": [],
+   "status": "proved",
+   "round": 5,
+   "parent": "r4_c3",
+   "fixed": {
+    "fv_env_ref_fifo_head": 0
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r5_c6_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 100.8,
+    "timeout": 120
+   },
+   "split_only": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r5_c7": {
+   "cond": "((((fv_env_ref_fifo_head[4:4] == 1'd0) & (fv_env_ref_fifo_head[3:3] == 1'd0)) & (fv_env_ref_fifo_head[2:2] == 1'd1)) & (fv_env_ref_fifo_head[1:1] == 1'd1)) & (fv_env_ref_fifo_head[0:0] == 1'd1)",
+   "ops": [],
+   "status": "proved",
+   "round": 5,
+   "parent": "r4_c3",
+   "fixed": {
+    "fv_env_ref_fifo_head": 0
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r5_c7_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 99.5,
+    "timeout": 120
+   },
+   "split_only": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r5_c8": {
+   "cond": "((((fv_env_ref_fifo_head[4:4] == 1'd0) & (fv_env_ref_fifo_head[3:3] == 1'd1)) & (fv_env_ref_fifo_head[2:2] == 1'd0)) & (fv_env_ref_fifo_head[1:1] == 1'd0)) & (fv_env_ref_fifo_head[0:0] == 1'd0)",
+   "ops": [],
+   "status": "split",
+   "round": 5,
+   "parent": "r4_c4",
+   "fixed": {
+    "fv_env_ref_fifo_head": 0
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r5_c8_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 120.0,
+    "timeout": 120
+   },
+   "children": [
+    "r6_c8",
+    "r6_c9"
+   ]
+  },
+  "r5_c9": {
+   "cond": "((((fv_env_ref_fifo_head[4:4] == 1'd0) & (fv_env_ref_fifo_head[3:3] == 1'd1)) & (fv_env_ref_fifo_head[2:2] == 1'd0)) & (fv_env_ref_fifo_head[1:1] == 1'd0)) & (fv_env_ref_fifo_head[0:0] == 1'd1)",
+   "ops": [],
+   "status": "proved",
+   "round": 5,
+   "parent": "r4_c4",
+   "fixed": {
+    "fv_env_ref_fifo_head": 0
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r5_c9_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 87.2,
+    "timeout": 120
+   },
+   "split_only": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r5_c10": {
+   "cond": "((((fv_env_ref_fifo_head[4:4] == 1'd0) & (fv_env_ref_fifo_head[3:3] == 1'd1)) & (fv_env_ref_fifo_head[2:2] == 1'd0)) & (fv_env_ref_fifo_head[1:1] == 1'd1)) & (fv_env_ref_fifo_head[0:0] == 1'd0)",
+   "ops": [],
+   "status": "proved",
+   "round": 5,
+   "parent": "r4_c5",
+   "fixed": {
+    "fv_env_ref_fifo_head": 0
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r5_c10_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 112.7,
+    "timeout": 120
+   },
+   "split_only": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r5_c11": {
+   "cond": "((((fv_env_ref_fifo_head[4:4] == 1'd0) & (fv_env_ref_fifo_head[3:3] == 1'd1)) & (fv_env_ref_fifo_head[2:2] == 1'd0)) & (fv_env_ref_fifo_head[1:1] == 1'd1)) & (fv_env_ref_fifo_head[0:0] == 1'd1)",
+   "ops": [],
+   "status": "split",
+   "round": 5,
+   "parent": "r4_c5",
+   "fixed": {
+    "fv_env_ref_fifo_head": 0
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r5_c11_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 120.0,
+    "timeout": 120
+   },
+   "children": [
+    "r6_c10",
+    "r6_c11"
+   ]
+  },
+  "r5_c12": {
+   "cond": "((((fv_env_ref_fifo_head[4:4] == 1'd0) & (fv_env_ref_fifo_head[3:3] == 1'd1)) & (fv_env_ref_fifo_head[2:2] == 1'd1)) & (fv_env_ref_fifo_head[1:1] == 1'd0)) & (fv_env_ref_fifo_head[0:0] == 1'd0)",
+   "ops": [],
+   "status": "proved",
+   "round": 5,
+   "parent": "r4_c6",
+   "fixed": {
+    "fv_env_ref_fifo_head": 0
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r5_c12_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 95.8,
+    "timeout": 120
+   },
+   "split_only": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r5_c13": {
+   "cond": "((((fv_env_ref_fifo_head[4:4] == 1'd0) & (fv_env_ref_fifo_head[3:3] == 1'd1)) & (fv_env_ref_fifo_head[2:2] == 1'd1)) & (fv_env_ref_fifo_head[1:1] == 1'd0)) & (fv_env_ref_fifo_head[0:0] == 1'd1)",
+   "ops": [],
+   "status": "proved",
+   "round": 5,
+   "parent": "r4_c6",
+   "fixed": {
+    "fv_env_ref_fifo_head": 0
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r5_c13_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 111.7,
+    "timeout": 120
+   },
+   "split_only": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r5_c14": {
+   "cond": "((((fv_env_ref_fifo_head[4:4] == 1'd0) & (fv_env_ref_fifo_head[3:3] == 1'd1)) & (fv_env_ref_fifo_head[2:2] == 1'd1)) & (fv_env_ref_fifo_head[1:1] == 1'd1)) & (fv_env_ref_fifo_head[0:0] == 1'd0)",
+   "ops": [],
+   "status": "proved",
+   "round": 5,
+   "parent": "r4_c7",
+   "fixed": {
+    "fv_env_ref_fifo_head": 0
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r5_c14_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 111.5,
+    "timeout": 120
+   },
+   "split_only": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r5_c15": {
+   "cond": "((((fv_env_ref_fifo_head[4:4] == 1'd0) & (fv_env_ref_fifo_head[3:3] == 1'd1)) & (fv_env_ref_fifo_head[2:2] == 1'd1)) & (fv_env_ref_fifo_head[1:1] == 1'd1)) & (fv_env_ref_fifo_head[0:0] == 1'd1)",
+   "ops": [],
+   "status": "proved",
+   "round": 5,
+   "parent": "r4_c7",
+   "fixed": {
+    "fv_env_ref_fifo_head": 0
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r5_c15_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 106.7,
+    "timeout": 120
+   },
+   "split_only": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r6_c0": {
+   "cond": "(((((fv_env_ref_fifo_head[4:4] == 1'd0) & (fv_env_ref_fifo_head[3:3] == 1'd0)) & (fv_env_ref_fifo_head[2:2] == 1'd0)) & (fv_env_ref_fifo_head[1:1] == 1'd0)) & (fv_env_ref_fifo_head[0:0] == 1'd1)) & (dut_head[4:4] == 1'd0)",
+   "ops": [],
+   "status": "proved",
+   "round": 6,
+   "parent": "r5_c1",
+   "fixed": {
+    "fv_env_ref_fifo_head": 0,
+    "dut_head": 4
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c0_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 95.7,
+    "timeout": 120
+   },
+   "split_only": {
+    "verdict": "UNSAT",
+    "seconds": 23.9,
+    "timeout": 200
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r6_c1": {
+   "cond": "(((((fv_env_ref_fifo_head[4:4] == 1'd0) & (fv_env_ref_fifo_head[3:3] == 1'd0)) & (fv_env_ref_fifo_head[2:2] == 1'd0)) & (fv_env_ref_fifo_head[1:1] == 1'd0)) & (fv_env_ref_fifo_head[0:0] == 1'd1)) & (dut_head[4:4] == 1'd1)",
+   "ops": [],
+   "status": "proved",
+   "round": 6,
+   "parent": "r5_c1",
+   "fixed": {
+    "fv_env_ref_fifo_head": 0,
+    "dut_head": 4
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c1_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 0.1,
+    "timeout": 120
+   },
+   "split_only": {
+    "verdict": "UNSAT",
+    "seconds": 0.1,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "UNKNOWN",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r6_c2": {
+   "cond": "(((((fv_env_ref_fifo_head[4:4] == 1'd0) & (fv_env_ref_fifo_head[3:3] == 1'd0)) & (fv_env_ref_fifo_head[2:2] == 1'd0)) & (fv_env_ref_fifo_head[1:1] == 1'd1)) & (fv_env_ref_fifo_head[0:0] == 1'd0)) & (dut_head[4:4] == 1'd0)",
+   "ops": [],
+   "status": "proved",
+   "round": 6,
+   "parent": "r5_c2",
+   "fixed": {
+    "fv_env_ref_fifo_head": 0,
+    "dut_head": 4
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c2_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 102.3,
+    "timeout": 120
+   },
+   "split_only": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r6_c3": {
+   "cond": "(((((fv_env_ref_fifo_head[4:4] == 1'd0) & (fv_env_ref_fifo_head[3:3] == 1'd0)) & (fv_env_ref_fifo_head[2:2] == 1'd0)) & (fv_env_ref_fifo_head[1:1] == 1'd1)) & (fv_env_ref_fifo_head[0:0] == 1'd0)) & (dut_head[4:4] == 1'd1)",
+   "ops": [],
+   "status": "proved",
+   "round": 6,
+   "parent": "r5_c2",
+   "fixed": {
+    "fv_env_ref_fifo_head": 0,
+    "dut_head": 4
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c3_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 0.1,
+    "timeout": 120
+   },
+   "split_only": {
+    "verdict": "UNSAT",
+    "seconds": 0.1,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "UNKNOWN",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r6_c4": {
+   "cond": "(((((fv_env_ref_fifo_head[4:4] == 1'd0) & (fv_env_ref_fifo_head[3:3] == 1'd0)) & (fv_env_ref_fifo_head[2:2] == 1'd1)) & (fv_env_ref_fifo_head[1:1] == 1'd0)) & (fv_env_ref_fifo_head[0:0] == 1'd0)) & (dut_head[4:4] == 1'd0)",
+   "ops": [],
+   "status": "proved",
+   "round": 6,
+   "parent": "r5_c4",
+   "fixed": {
+    "fv_env_ref_fifo_head": 0,
+    "dut_head": 4
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c4_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 96.9,
+    "timeout": 120
+   },
+   "split_only": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r6_c5": {
+   "cond": "(((((fv_env_ref_fifo_head[4:4] == 1'd0) & (fv_env_ref_fifo_head[3:3] == 1'd0)) & (fv_env_ref_fifo_head[2:2] == 1'd1)) & (fv_env_ref_fifo_head[1:1] == 1'd0)) & (fv_env_ref_fifo_head[0:0] == 1'd0)) & (dut_head[4:4] == 1'd1)",
+   "ops": [],
+   "status": "proved",
+   "round": 6,
+   "parent": "r5_c4",
+   "fixed": {
+    "fv_env_ref_fifo_head": 0,
+    "dut_head": 4
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c5_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 0.0,
+    "timeout": 120
+   },
+   "split_only": {
+    "verdict": "UNSAT",
+    "seconds": 0.1,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "UNKNOWN",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r6_c6": {
+   "cond": "(((((fv_env_ref_fifo_head[4:4] == 1'd0) & (fv_env_ref_fifo_head[3:3] == 1'd0)) & (fv_env_ref_fifo_head[2:2] == 1'd1)) & (fv_env_ref_fifo_head[1:1] == 1'd0)) & (fv_env_ref_fifo_head[0:0] == 1'd1)) & (dut_head[4:4] == 1'd0)",
+   "ops": [],
+   "status": "proved",
+   "round": 6,
+   "parent": "r5_c5",
+   "fixed": {
+    "fv_env_ref_fifo_head": 0,
+    "dut_head": 4
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c6_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 94.8,
+    "timeout": 120
+   },
+   "split_only": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r6_c7": {
+   "cond": "(((((fv_env_ref_fifo_head[4:4] == 1'd0) & (fv_env_ref_fifo_head[3:3] == 1'd0)) & (fv_env_ref_fifo_head[2:2] == 1'd1)) & (fv_env_ref_fifo_head[1:1] == 1'd0)) & (fv_env_ref_fifo_head[0:0] == 1'd1)) & (dut_head[4:4] == 1'd1)",
+   "ops": [],
+   "status": "proved",
+   "round": 6,
+   "parent": "r5_c5",
+   "fixed": {
+    "fv_env_ref_fifo_head": 0,
+    "dut_head": 4
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c7_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 0.1,
+    "timeout": 120
+   },
+   "split_only": {
+    "verdict": "UNSAT",
+    "seconds": 0.1,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "UNKNOWN",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r6_c8": {
+   "cond": "(((((fv_env_ref_fifo_head[4:4] == 1'd0) & (fv_env_ref_fifo_head[3:3] == 1'd1)) & (fv_env_ref_fifo_head[2:2] == 1'd0)) & (fv_env_ref_fifo_head[1:1] == 1'd0)) & (fv_env_ref_fifo_head[0:0] == 1'd0)) & (dut_head[4:4] == 1'd0)",
+   "ops": [],
+   "status": "proved",
+   "round": 6,
+   "parent": "r5_c8",
+   "fixed": {
+    "fv_env_ref_fifo_head": 0,
+    "dut_head": 4
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c8_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 100.0,
+    "timeout": 120
+   },
+   "split_only": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r6_c9": {
+   "cond": "(((((fv_env_ref_fifo_head[4:4] == 1'd0) & (fv_env_ref_fifo_head[3:3] == 1'd1)) & (fv_env_ref_fifo_head[2:2] == 1'd0)) & (fv_env_ref_fifo_head[1:1] == 1'd0)) & (fv_env_ref_fifo_head[0:0] == 1'd0)) & (dut_head[4:4] == 1'd1)",
+   "ops": [],
+   "status": "proved",
+   "round": 6,
+   "parent": "r5_c8",
+   "fixed": {
+    "fv_env_ref_fifo_head": 0,
+    "dut_head": 4
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c9_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 0.1,
+    "timeout": 120
+   },
+   "split_only": {
+    "verdict": "UNSAT",
+    "seconds": 0.1,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "UNKNOWN",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r6_c10": {
+   "cond": "(((((fv_env_ref_fifo_head[4:4] == 1'd0) & (fv_env_ref_fifo_head[3:3] == 1'd1)) & (fv_env_ref_fifo_head[2:2] == 1'd0)) & (fv_env_ref_fifo_head[1:1] == 1'd1)) & (fv_env_ref_fifo_head[0:0] == 1'd1)) & (dut_head[4:4] == 1'd0)",
+   "ops": [],
+   "status": "proved",
+   "round": 6,
+   "parent": "r5_c11",
+   "fixed": {
+    "fv_env_ref_fifo_head": 0,
+    "dut_head": 4
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c10_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 98.0,
+    "timeout": 120
+   },
+   "split_only": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r6_c11": {
+   "cond": "(((((fv_env_ref_fifo_head[4:4] == 1'd0) & (fv_env_ref_fifo_head[3:3] == 1'd1)) & (fv_env_ref_fifo_head[2:2] == 1'd0)) & (fv_env_ref_fifo_head[1:1] == 1'd1)) & (fv_env_ref_fifo_head[0:0] == 1'd1)) & (dut_head[4:4] == 1'd1)",
+   "ops": [],
+   "status": "proved",
+   "round": 6,
+   "parent": "r5_c11",
+   "fixed": {
+    "fv_env_ref_fifo_head": 0,
+    "dut_head": 4
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c11_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 0.1,
+    "timeout": 120
+   },
+   "split_only": {
+    "verdict": "UNSAT",
+    "seconds": 0.1,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "UNKNOWN",
+    "assertion_violable_when_registers_free": true
+   }
+  }
+ },
+ "cum": {
+  "input_tokens": 8700,
+  "output_tokens": 6129,
+  "cache_hit": 0,
+  "cache_miss": 0,
+  "cost_usd": 0.009362688,
+  "latency_s": 48.35181784629822
+ }
+}

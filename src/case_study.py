@@ -87,7 +87,7 @@ def now():
 
 
 def load_cfg(workdir):
-    """Per-bench settings: rtl (prompt), sv (read by Yosys), property, mem_havoc, unavailable; mem_re, alias_re optional."""
+    """Per-bench settings: top (default main), rtl (prompt), sv (read by Yosys), property, mem_havoc, unavailable; mem_re, alias_re optional."""
     with open(os.path.join(workdir, "bench", "case.json")) as f:
         return json.load(f)
 
@@ -226,14 +226,14 @@ class Study:
         d = self.dir
         flat = "flat_{:s}.il".format(tag)
         rc, out = self.yosys(
-            "read_verilog -sv -formal {:s}; prep -top main; flatten; hierarchy -check; "
+            "read_verilog -sv -formal {:s}; prep -top {:s}; flatten; hierarchy -check; "
             "delete t:$print; chformal -lower; memory -nomap; memory_map; opt_clean; write_rtlil {:s}".format(
-                self.cfg["sv"], flat), "build_flat_{:s}.log".format(tag))
+                self.cfg["sv"], self.cfg.get("top", "main"), flat), "build_flat_{:s}.log".format(tag))
         os.chdir(d)
         if rc:
             raise RuntimeError("yosys flat build failed: " + out[-500:])
         il = open(flat).read()
-        top = il.index("module \\main")
+        top = il.index("module \\" + self.cfg.get("top", "main") + "\n")
         end = il.index("\nend\n", top) + 1
         m = re.search(r"  cell \$assert [^\n]*\n(?:(?!  end\n).*\n)*?  end\n", il[top:end])
         a = re.search(r"connect \\A (.*)", m.group(0)).group(1)
@@ -257,7 +257,7 @@ class Study:
         open("{:s}.il".format(tag), "w").write(il[:top] + main + patch + il[end:])
         script += ["read_rtlil {:s}.il".format(tag)]
         if cond:
-            script += ["hierarchy -top main", "flatten"]
+            script += ["hierarchy -top " + self.cfg.get("top", "main"), "flatten"]
         script += self.op_commands(ops)
         script += ["opt_clean", "async2sync", "dffunmap", "setundef -undriven -anyseq", "setundef -anyseq",
                    "opt_clean", "check -assert", "write_btor -s {:s}.btor2".format(tag)]
@@ -368,14 +368,14 @@ def init(args):
     st.state_path = os.path.join(wd, "state.json")
     cfg = load_cfg(wd)
     r = subprocess.run(["yosys", "-q", "-p",
-                        "read_verilog -sv -formal " + cfg["sv"] + "; prep -top main; flatten; "
+                        "read_verilog -sv -formal " + cfg["sv"] + "; prep -top " + cfg.get("top", "main") + "; flatten; "
                         "hierarchy -check; delete t:$print; chformal -lower; memory -nomap; memory_map; opt_clean; "
                         "write_rtlil flat.il"], cwd=wd, capture_output=True, text=True)
     rc, out = r.returncode, r.stdout + r.stderr
     if rc:
         raise SystemExit(out)
     il = open(os.path.join(wd, "flat.il")).read()
-    main = il[il.index("module \\main"):]
+    main = il[il.index("module \\" + cfg.get("top", "main") + "\n"):]
     main = main[:main.index("\nend\n")]
     ffq = set()
     for cell in re.finditer(r"cell \$(?:a|s)?dff\w* [^\n]*\n(.*?)\n  end", main, re.S):
@@ -615,15 +615,20 @@ def cmd_run(st, args):
     CAPS = tuple(int(x) for x in args.caps.split(","))
     caps = CAPS
     s = st.s
+    t_start = now()
     for rnd in range(s["round"], MAX_ROUNDS + 1):
         s["round"] = rnd
+        left = args.budget - (now() - t_start)
+        if left < 5 and rnd > 1:
+            st.event("budget_exhausted", round=rnd, budget=args.budget)
+            break
         if rnd == 1 and not s["pieces"]:
             plan_first_split(st)
             st.save()
         todo = [p for p, v in s["pieces"].items() if v["status"] == "open"]
         if not todo:
             break
-        cap = caps[min((rnd - 1) // 2, len(caps) - 1)]
+        cap = min(caps[min((rnd - 1) // 2, len(caps) - 1)], int(args.budget - (now() - t_start)))
         rows = check_pass(st, todo, cap)
         if any(v["status"] == "sat" for v in s["pieces"].values()):
             cmd_cegar(st, args)
@@ -801,6 +806,7 @@ def main():
     ap.add_argument("--pieces", nargs="*")
     ap.add_argument("--timeout", type=int, default=60, help="split-only cap in seconds")
     ap.add_argument("--caps", default=",".join(map(str, CAPS)), help="run: rIC3 cap per piece for rounds 1-2, 3-4, 5+")
+    ap.add_argument("--budget", type=int, default=1200, help="run: end-to-end wall seconds (LLM + rIC3); caps are clipped to what is left")
     args = ap.parse_args()
     if args.cmd == "init":
         return init(args)

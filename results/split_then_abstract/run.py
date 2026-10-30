@@ -1,6 +1,7 @@
 """Hand-made split-then-abstract experiments (no LLM). Reuses src/case_study.py unchanged.
 
-usage (from the work dir, which holds bench/, state.json): python3 run.py <exp> <variant> [--only k,k]
+usage (from the work dir, which holds bench/, state.json): python3 run.py <exp> <variant> [<i,j> ...]
+(SRC = path to NeuroAbs src/; JOBS = parallel rIC3 runs; <i,j> pairs apply to lrg only)
   fifo d|e     split c6 on sr_tail value (16 pieces); d = no abstraction, e = sr_mem slots above the tail freed
                (data only moves up the shift register, so slots above sr_tail cannot reach slot sr_tail)
   fifo f       as b but abstract_value (cut the register output to a free input; adds no state)
@@ -12,7 +13,7 @@ usage (from the work dir, which holds bench/, state.json): python3 run.py <exp> 
                c = b + all sr_mem freed (sr is a shift register: no per-slot split)
   lrg  so|free  <i,j pairs>: both arbitrary requesters fixed; so = split only, free = also free other ranks
 """
-import concurrent.futures, csv, json, os, re, sys, time
+import concurrent.futures, csv, os, re, sys, time
 sys.path.insert(0, os.environ["SRC"])
 import case_study as cs
 
@@ -89,8 +90,8 @@ def main():
         pieces = lrg_pieces(variant, pairs)
         ok, out = True, "pairs are samples, not a cover"
     print("coverage", ok, flush=True)
-    assert ok, out
-    rows = []
+    if not ok:
+        raise RuntimeError(out)
 
     def one(name):
         cond, ops = pieces[name]

@@ -170,7 +170,7 @@ class Study:
     # ---- Yosys -----------------------------------------------------------------------------------------------
     def yosys(self, script, log):
         path = os.path.join(self.dir, log)
-        r = subprocess.run(["yosys", "-q", "-l", path, "-p", script], capture_output=True, text=True)
+        r = subprocess.run(["yosys", "-q", "-l", path, "-p", script], capture_output=True, text=True, cwd=self.dir)
         return r.returncode, r.stdout + r.stderr
 
     def signals(self):
@@ -210,6 +210,8 @@ class Study:
         open(path, "w").write("\n".join(body))
         rc, out = self.yosys("read_verilog -sv coverage.v; prep -top __cover; sat -show-inputs -prove covered 1 -verify",
                              "coverage.log")
+        if rc and "proof did fail" not in out:
+            raise RuntimeError("coverage check could not run:\n" + out[-800:])
         return rc == 0, out
 
     def empty(self, expr):
@@ -236,9 +238,10 @@ class Study:
         top = il.index("module \\" + self.cfg.get("top", "main") + "\n")
         end = il.index("\nend\n", top) + 1
         m = re.search(r"  cell \$assert [^\n]*\n(?:(?!  end\n).*\n)*?  end\n", il[top:end])
+        if m is None or len(re.findall(r"  cell \$assert ", il[top:end])) != 1:
+            raise RuntimeError("expected exactly one assertion in module main")
         a = re.search(r"connect \\A (.*)", m.group(0)).group(1)
         en = re.search(r"connect \\EN (.*)", m.group(0)).group(1)
-        assert len(re.findall(r"  cell \$assert ", il[top:end])) == 1, "expected exactly one assertion"
         main = il[top:end]
         if cond:
             main = main.replace(m.group(0), "")
@@ -382,9 +385,6 @@ def init(args):
         m = re.search(r"connect \\Q (\\\S+|\S+)", cell.group(1))
         if m:
             ffq.add(m.group(1).lstrip("\\"))
-    ports = {}
-    for m in re.finditer(r"wire (?:(?:width (\d+)) )?(?:(?:upto|offset \d+|signed) )*?(input|output|)\s*(?:\d+ )?(\\\S+)", main):
-        pass
     sigs = []
     for line in main.splitlines():
         m = re.match(r"\s*wire (.*?)(\\\S+)\s*$", line)
@@ -659,7 +659,7 @@ def cmd_split_only(st, args):
         tag = p + "_so"
         try:
             model = st.build(tag, st.s["pieces"][p]["cond"], [])
-        except RuntimeError as e:
+        except RuntimeError:
             return p, "BUILD_ERROR", 0.0
         verdict, secs, _ = st.ric3(model, args.timeout, tag)
         return p, verdict, secs
@@ -689,7 +689,10 @@ def cmd_report(st, args):
 
 def witness_file(log, dest):
     lines = open(log, errors="replace").read().splitlines()
-    i = next(k for k, line in enumerate(lines) if line.strip().lower() == "sat" and k + 1 < len(lines) and lines[k + 1].startswith("b"))
+    i = next((k for k, line in enumerate(lines) if line.strip().lower() == "sat" and k + 1 < len(lines)
+              and lines[k + 1].strip()[:1] in ("b", "#", "@")), None)
+    if i is None:
+        raise RuntimeError("no SAT witness marker in " + log)
     open(dest, "w").write("sat\n" + "\n".join(lines[i + 1:]) + "\n")
 
 
@@ -713,7 +716,6 @@ def replay(st, p):
                    "state": {cst[ast[i]]: val for i, val in fr["state"].items() if k == 0 and ast.get(i) in cst}})
     av, cv = btor_witness.simulate(am, frames), btor_witness.simulate(cm, cf)
     bad_c = [any(btor_witness.value_of(c, int(cm.nodes[b][1][2])) == 1 for b in cm.bad) for c in cv]
-    names = [n for n in cm.states if n in cm.names and cm.names[n] in set(aname.values())]
     table = []
     for k in range(len(frames)):
         row = {"cycle": k}
@@ -788,11 +790,12 @@ def cmd_vacuity(st, args):
 
 
 def nonvacuous(self, p, v):
-    ids = self.ident_map()
-    body, used = self.piece_module({"c": v["cond"]}, ["ok"], "__nv")
+    body, _ = self.piece_module({"c": v["cond"]}, ["ok"], "__nv")
     body += ["assign ok = ~c | ~prop_en | prop_a;", "endmodule"]
     open(os.path.join(self.dir, p + "_nv.v"), "w").write("\n".join(body))
-    rc, _ = self.yosys("read_verilog -sv {:s}_nv.v; prep -top __nv; sat -prove ok 1 -verify".format(p), p + "_nv.log")
+    rc, out = self.yosys("read_verilog -sv {:s}_nv.v; prep -top __nv; sat -prove ok 1 -verify".format(p), p + "_nv.log")
+    if rc and "proof did fail" not in out:
+        raise RuntimeError("non-vacuity check could not run:\n" + out[-800:])
     return rc != 0
 
 

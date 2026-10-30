@@ -1,0 +1,18 @@
+coverage True
+{'exp': 'fifo', 'variant': 'h', 'piece': 'c6_t3_h', 'ops': 31, 'verdict': 'SAT', 'seconds': 0.0, 'build_s': 0.0, 'states': 8, 'freed_to_input': 77, 'inputs': 82, 'lines': 385, 'spurious': 'yes', 'load1': 30.1455078125}
+{'exp': 'fifo', 'variant': 'h', 'piece': 'c6_t2_h', 'ops': 31, 'verdict': 'SAT', 'seconds': 0.0, 'build_s': 0.0, 'states': 8, 'freed_to_input': 77, 'inputs': 82, 'lines': 385, 'spurious': 'yes', 'load1': 30.1455078125}
+{'exp': 'fifo', 'variant': 'h', 'piece': 'c6_t1_h', 'ops': 31, 'verdict': 'SAT', 'seconds': 0.0, 'build_s': 0.0, 'states': 8, 'freed_to_input': 77, 'inputs': 82, 'lines': 385, 'spurious': 'yes', 'load1': 30.1455078125}
+{'exp': 'fifo', 'variant': 'h', 'piece': 'c6_t0_h', 'ops': 31, 'verdict': 'SAT', 'seconds': 0.0, 'build_s': 0.0, 'states': 8, 'freed_to_input': 78, 'inputs': 83, 'lines': 385, 'spurious': 'yes', 'load1': 30.1455078125}
+{'exp': 'fifo', 'variant': 'h', 'piece': 'c6_t4_h', 'ops': 31, 'verdict': 'SAT', 'seconds': 0.0, 'build_s': 0.0, 'states': 8, 'freed_to_input': 78, 'inputs': 83, 'lines': 387, 'spurious': 'yes', 'load1': 30.1455078125}
+{'exp': 'fifo', 'variant': 'h', 'piece': 'c6_t6_h', 'ops': 31, 'verdict': 'SAT', 'seconds': 0.0, 'build_s': 0.2, 'states': 8, 'freed_to_input': 78, 'inputs': 83, 'lines': 387, 'spurious': 'yes', 'load1': 30.1455078125}
+{'exp': 'fifo', 'variant': 'h', 'piece': 'c6_t7_h', 'ops': 31, 'verdict': 'SAT', 'seconds': 0.1, 'build_s': 0.2, 'states': 8, 'freed_to_input': 78, 'inputs': 83, 'lines': 387, 'spurious': 'yes', 'load1': 30.1455078125}
+{'exp': 'fifo', 'variant': 'h', 'piece': 'c6_t5_h', 'ops': 31, 'verdict': 'SAT', 'seconds': 0.1, 'build_s': 0.2, 'states': 8, 'freed_to_input': 78, 'inputs': 83, 'lines': 387, 'spurious': 'yes', 'load1': 30.1455078125}
+{'exp': 'fifo', 'variant': 'h', 'piece': 'c6_t8_h', 'ops': 31, 'verdict': 'SAT', 'seconds': 0.0, 'build_s': 0.0, 'states': 8, 'freed_to_input': 79, 'inputs': 84, 'lines': 387, 'spurious': 'yes', 'load1': 30.1455078125}
+{'exp': 'fifo', 'variant': 'h', 'piece': 'c6_t9_h', 'ops': 31, 'verdict': 'SAT', 'seconds': 0.1, 'build_s': 0.0, 'states': 8, 'freed_to_input': 79, 'inputs': 84, 'lines': 387, 'spurious': 'yes', 'load1': 30.1455078125}
+{'exp': 'fifo', 'variant': 'h', 'piece': 'c6_t10_h', 'ops': 31, 'verdict': 'SAT', 'seconds': 0.1, 'build_s': 0.0, 'states': 8, 'freed_to_input': 79, 'inputs': 84, 'lines': 387, 'spurious': 'yes', 'load1': 30.1455078125}
+{'exp': 'fifo', 'variant': 'h', 'piece': 'c6_t11_h', 'ops': 31, 'verdict': 'SAT', 'seconds': 0.1, 'build_s': 0.1, 'states': 8, 'freed_to_input': 83, 'inputs': 88, 'lines': 395, 'spurious': 'yes', 'load1': 30.1455078125}
+{'exp': 'fifo', 'variant': 'h', 'piece': 'c6_t12_h', 'ops': 31, 'verdict': 'SAT', 'seconds': 0.1, 'build_s': 0.1, 'states': 8, 'freed_to_input': 80, 'inputs': 85, 'lines': 389, 'spurious': 'yes', 'load1': 30.1455078125}
+{'exp': 'fifo', 'variant': 'h', 'piece': 'c6_t13_h', 'ops': 31, 'verdict': 'SAT', 'seconds': 0.1, 'build_s': 0.0, 'states': 8, 'freed_to_input': 79, 'inputs': 84, 'lines': 387, 'spurious': 'yes', 'load1': 30.1455078125}
+{'exp': 'fifo', 'variant': 'h', 'piece': 'c6_t14_h', 'ops': 31, 'verdict': 'SAT', 'seconds': 0.1, 'build_s': 0.0, 'states': 8, 'freed_to_input': 76, 'inputs': 81, 'lines': 381, 'spurious': 'yes', 'load1': 30.1455078125}
+{'exp': 'fifo', 'variant': 'h', 'piece': 'c6_t15_h', 'ops': 31, 'verdict': 'SAT', 'seconds': 0.1, 'build_s': 0.1, 'states': 8, 'freed_to_input': 77, 'inputs': 82, 'lines': 383, 'spurious': 'yes', 'load1': 30.1455078125}
+DONE

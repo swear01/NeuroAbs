@@ -110,11 +110,8 @@ def main():
                    build_s=round(build_s, 1), states=len(re.findall(r"^\d+ state ", text, re.M)), freed_to_input=len(free_states),
                    inputs=len(re.findall(r"^\d+ input ", text, re.M)), lines=text.count("\n"), spurious="", load1=os.getloadavg()[0])
         if v == "SAT":
-            try:
-                real = cs.replay(st, name)[0]
-                row["spurious"] = "no" if real else "yes"
-            except Exception as e:  # replay is evidence only; keep the verdict
-                row["spurious"] = "replay-error: %s" % e
+            real = cs.replay(st, name)[0]
+            row["spurious"] = "no" if real else "yes"
         print(row, flush=True)
         return row
 

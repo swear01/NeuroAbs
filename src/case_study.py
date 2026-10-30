@@ -471,7 +471,8 @@ def cmd_check(st, args):
 
 def witness_file(log, dest):
     lines = open(log, errors="replace").read().splitlines()
-    i = next((k for k, line in enumerate(lines) if line.strip().lower() == "sat"), None)
+    i = next((k for k, line in enumerate(lines) if line.strip().lower() == "sat" and k + 1 < len(lines)
+              and lines[k + 1].strip()[:1] in ("b", "#", "@")), None)
     if i is None:
         raise RuntimeError("no SAT witness marker in " + log)
     open(dest, "w").write("sat\n" + "\n".join(lines[i + 1:]) + "\n")

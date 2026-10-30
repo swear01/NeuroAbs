@@ -1,0 +1,109 @@
+{"kind": "load", "round": 1, "time": 1793366572.9197874, "cmd": "run", "phase": "start", "load": [69.27734375, 84.361328125, 66.2919921875]}
+{"kind": "coverage", "round": 1, "time": 1793366579.4813817, "scope": null, "cases": ["arbitrary_requester[4:1] == 4'd0", "arbitrary_requester[4:1] == 4'd1", "arbitrary_requester[4:1] == 4'd2", "arbitrary_requester[4:1] == 4'd3", "arbitrary_requester[4:1] == 4'd4", "arbitrary_requester[4:1] == 4'd5", "arbitrary_requester[4:1] == 4'd6", "arbitrary_requester[4:1] == 4'd7", "arbitrary_requester[4:1] == 4'd8", "arbitrary_requester[4:1] == 4'd9", "arbitrary_requester[4:1] == 4'd10", "arbitrary_requester[4:1] == 4'd11", "arbitrary_requester[4:1] == 4'd12", "arbitrary_requester[4:1] == 4'd13", "arbitrary_requester[4:1] == 4'd14", "arbitrary_requester[4:1] == 4'd15"], "ok": true, "detail": ""}
+{"kind": "check", "round": 1, "time": 1793366582.5388246, "piece": "r1_c5", "tag": "r1_c5_k0", "verdict": "TIMEOUT", "seconds": 3.0013296604156494, "timeout": 3, "ops": [], "cond": "arbitrary_requester[4:1] == 4'd5"}
+{"kind": "check", "round": 1, "time": 1793366582.5389273, "piece": "r1_c6", "tag": "r1_c6_k0", "verdict": "TIMEOUT", "seconds": 3.0023539066314697, "timeout": 3, "ops": [], "cond": "arbitrary_requester[4:1] == 4'd6"}
+{"kind": "check", "round": 1, "time": 1793366582.5389676, "piece": "r1_c2", "tag": "r1_c2_k0", "verdict": "TIMEOUT", "seconds": 3.0052504539489746, "timeout": 3, "ops": [], "cond": "arbitrary_requester[4:1] == 4'd2"}
+{"kind": "check", "round": 1, "time": 1793366582.5480754, "piece": "r1_c3", "tag": "r1_c3_k0", "verdict": "TIMEOUT", "seconds": 3.0018370151519775, "timeout": 3, "ops": [], "cond": "arbitrary_requester[4:1] == 4'd3"}
+{"kind": "check", "round": 1, "time": 1793366582.5481498, "piece": "r1_c7", "tag": "r1_c7_k0", "verdict": "TIMEOUT", "seconds": 3.0019960403442383, "timeout": 3, "ops": [], "cond": "arbitrary_requester[4:1] == 4'd7"}
+{"kind": "check", "round": 1, "time": 1793366582.549911, "piece": "r1_c1", "tag": "r1_c1_k0", "verdict": "TIMEOUT", "seconds": 3.002983331680298, "timeout": 3, "ops": [], "cond": "arbitrary_requester[4:1] == 4'd1"}
+{"kind": "check", "round": 1, "time": 1793366582.550142, "piece": "r1_c4", "tag": "r1_c4_k0", "verdict": "TIMEOUT", "seconds": 3.0024056434631348, "timeout": 3, "ops": [], "cond": "arbitrary_requester[4:1] == 4'd4"}
+{"kind": "check", "round": 1, "time": 1793366582.5564659, "piece": "r1_c0", "tag": "r1_c0_k0", "verdict": "TIMEOUT", "seconds": 3.006178617477417, "timeout": 3, "ops": [], "cond": "arbitrary_requester[4:1] == 4'd0"}
+{"kind": "check", "round": 1, "time": 1793366583.772757, "piece": "r1_c12", "tag": "r1_c12_k0", "verdict": "UNSAT", "seconds": 1.1675689220428467, "timeout": 3, "ops": [], "cond": "arbitrary_requester[4:1] == 4'd12"}
+{"kind": "check", "round": 1, "time": 1793366584.7763453, "piece": "r1_c13", "tag": "r1_c13_k0", "verdict": "UNSAT", "seconds": 2.171943426132202, "timeout": 3, "ops": [], "cond": "arbitrary_requester[4:1] == 4'd13"}
+{"kind": "check", "round": 1, "time": 1793366585.608695, "piece": "r1_c14", "tag": "r1_c14_k0", "verdict": "TIMEOUT", "seconds": 3.001436948776245, "timeout": 3, "ops": [], "cond": "arbitrary_requester[4:1] == 4'd14"}
+{"kind": "check", "round": 1, "time": 1793366585.6115913, "piece": "r1_c11", "tag": "r1_c11_k0", "verdict": "TIMEOUT", "seconds": 3.004448413848877, "timeout": 3, "ops": [], "cond": "arbitrary_requester[4:1] == 4'd11"}
+{"kind": "check", "round": 1, "time": 1793366585.6159303, "piece": "r1_c8", "tag": "r1_c8_k0", "verdict": "TIMEOUT", "seconds": 3.0011587142944336, "timeout": 3, "ops": [], "cond": "arbitrary_requester[4:1] == 4'd8"}
+{"kind": "check", "round": 1, "time": 1793366585.616808, "piece": "r1_c9", "tag": "r1_c9_k0", "verdict": "TIMEOUT", "seconds": 3.003492832183838, "timeout": 3, "ops": [], "cond": "arbitrary_requester[4:1] == 4'd9"}
+{"kind": "check", "round": 1, "time": 1793366585.6168835, "piece": "r1_c15", "tag": "r1_c15_k0", "verdict": "TIMEOUT", "seconds": 3.0042548179626465, "timeout": 3, "ops": [], "cond": "arbitrary_requester[4:1] == 4'd15"}
+{"kind": "check", "round": 1, "time": 1793366585.618831, "piece": "r1_c10", "tag": "r1_c10_k0", "verdict": "TIMEOUT", "seconds": 3.0037052631378174, "timeout": 3, "ops": [], "cond": "arbitrary_requester[4:1] == 4'd10"}
+{"kind": "check_pass", "round": 1, "time": 1793366585.619728, "pieces": ["r1_c0", "r1_c1", "r1_c2", "r1_c3", "r1_c4", "r1_c5", "r1_c6", "r1_c7", "r1_c8", "r1_c9", "r1_c10", "r1_c11", "r1_c12", "r1_c13", "r1_c14", "r1_c15"], "timeout": 3, "wall_s": 6.137483835220337}
+{"kind": "coverage", "round": 1, "time": 1793366585.6381316, "scope": "arbitrary_requester[4:1] == 4'd0", "cases": ["arbitrary_requester[0:0] == 1'd0", "arbitrary_requester[0:0] == 1'd1"], "ok": true, "detail": ""}
+{"kind": "pruned_empty", "round": 1, "time": 1793366585.6715586, "scope": "arbitrary_requester[4:1] == 4'd0", "dropped": []}
+{"kind": "auto_expand", "round": 1, "time": 1793366585.6716251, "piece": "r1_c0", "index": "arbitrary_requester", "fixed": {"arbitrary_requester": 1}}
+{"kind": "coverage", "round": 1, "time": 1793366585.688521, "scope": "arbitrary_requester[4:1] == 4'd1", "cases": ["arbitrary_requester[0:0] == 1'd0", "arbitrary_requester[0:0] == 1'd1"], "ok": true, "detail": ""}
+{"kind": "pruned_empty", "round": 1, "time": 1793366585.7216918, "scope": "arbitrary_requester[4:1] == 4'd1", "dropped": []}
+{"kind": "auto_expand", "round": 1, "time": 1793366585.7217584, "piece": "r1_c1", "index": "arbitrary_requester", "fixed": {"arbitrary_requester": 1}}
+{"kind": "coverage", "round": 1, "time": 1793366585.738864, "scope": "arbitrary_requester[4:1] == 4'd2", "cases": ["arbitrary_requester[0:0] == 1'd0", "arbitrary_requester[0:0] == 1'd1"], "ok": true, "detail": ""}
+{"kind": "pruned_empty", "round": 1, "time": 1793366585.7732556, "scope": "arbitrary_requester[4:1] == 4'd2", "dropped": []}
+{"kind": "auto_expand", "round": 1, "time": 1793366585.7733219, "piece": "r1_c2", "index": "arbitrary_requester", "fixed": {"arbitrary_requester": 1}}
+{"kind": "coverage", "round": 1, "time": 1793366585.7902136, "scope": "arbitrary_requester[4:1] == 4'd3", "cases": ["arbitrary_requester[0:0] == 1'd0", "arbitrary_requester[0:0] == 1'd1"], "ok": true, "detail": ""}
+{"kind": "pruned_empty", "round": 1, "time": 1793366585.8248549, "scope": "arbitrary_requester[4:1] == 4'd3", "dropped": []}
+{"kind": "auto_expand", "round": 1, "time": 1793366585.8249261, "piece": "r1_c3", "index": "arbitrary_requester", "fixed": {"arbitrary_requester": 1}}
+{"kind": "coverage", "round": 1, "time": 1793366585.8423867, "scope": "arbitrary_requester[4:1] == 4'd4", "cases": ["arbitrary_requester[0:0] == 1'd0", "arbitrary_requester[0:0] == 1'd1"], "ok": true, "detail": ""}
+{"kind": "pruned_empty", "round": 1, "time": 1793366585.8761804, "scope": "arbitrary_requester[4:1] == 4'd4", "dropped": []}
+{"kind": "auto_expand", "round": 1, "time": 1793366585.8762438, "piece": "r1_c4", "index": "arbitrary_requester", "fixed": {"arbitrary_requester": 1}}
+{"kind": "coverage", "round": 1, "time": 1793366585.8930647, "scope": "arbitrary_requester[4:1] == 4'd5", "cases": ["arbitrary_requester[0:0] == 1'd0", "arbitrary_requester[0:0] == 1'd1"], "ok": true, "detail": ""}
+{"kind": "pruned_empty", "round": 1, "time": 1793366585.9266922, "scope": "arbitrary_requester[4:1] == 4'd5", "dropped": []}
+{"kind": "auto_expand", "round": 1, "time": 1793366585.9267576, "piece": "r1_c5", "index": "arbitrary_requester", "fixed": {"arbitrary_requester": 1}}
+{"kind": "coverage", "round": 1, "time": 1793366585.9437885, "scope": "arbitrary_requester[4:1] == 4'd6", "cases": ["arbitrary_requester[0:0] == 1'd0", "arbitrary_requester[0:0] == 1'd1"], "ok": true, "detail": ""}
+{"kind": "pruned_empty", "round": 1, "time": 1793366585.9776208, "scope": "arbitrary_requester[4:1] == 4'd6", "dropped": []}
+{"kind": "auto_expand", "round": 1, "time": 1793366585.977689, "piece": "r1_c6", "index": "arbitrary_requester", "fixed": {"arbitrary_requester": 1}}
+{"kind": "coverage", "round": 1, "time": 1793366585.9945087, "scope": "arbitrary_requester[4:1] == 4'd7", "cases": ["arbitrary_requester[0:0] == 1'd0", "arbitrary_requester[0:0] == 1'd1"], "ok": true, "detail": ""}
+{"kind": "pruned_empty", "round": 1, "time": 1793366586.027931, "scope": "arbitrary_requester[4:1] == 4'd7", "dropped": []}
+{"kind": "auto_expand", "round": 1, "time": 1793366586.0279963, "piece": "r1_c7", "index": "arbitrary_requester", "fixed": {"arbitrary_requester": 1}}
+{"kind": "summary_pass", "round": 1, "time": 1793366586.0946357, "pieces": ["r1_c8", "r1_c9", "r1_c10", "r1_c11", "r1_c14", "r1_c15"], "timeout": 5, "wall_s": 0.06564021110534668}
+{"kind": "summary", "round": 1, "time": 1793366586.0946994, "piece": "r1_c8", "verdict": "UNSAT", "text": "IC3 alone proved it in 0.1 s"}
+{"kind": "summary", "round": 1, "time": 1793366586.0947335, "piece": "r1_c9", "verdict": "UNSAT", "text": "IC3 alone proved it in 0.1 s"}
+{"kind": "summary", "round": 1, "time": 1793366586.0947635, "piece": "r1_c10", "verdict": "UNSAT", "text": "IC3 alone proved it in 0.1 s"}
+{"kind": "summary", "round": 1, "time": 1793366586.0947917, "piece": "r1_c11", "verdict": "UNSAT", "text": "IC3 alone proved it in 0.1 s"}
+{"kind": "summary", "round": 1, "time": 1793366586.0948193, "piece": "r1_c14", "verdict": "UNSAT", "text": "IC3 alone proved it in 0.0 s"}
+{"kind": "summary", "round": 1, "time": 1793366586.0948465, "piece": "r1_c15", "verdict": "UNSAT", "text": "IC3 alone proved it in 0.1 s"}
+{"kind": "check", "round": 2, "time": 1793366589.1491525, "piece": "r2_c0", "tag": "r2_c0_k0", "verdict": "TIMEOUT", "seconds": 3.002493143081665, "timeout": 3, "ops": [], "cond": "(arbitrary_requester[4:1] == 4'd0) & (arbitrary_requester[0:0] == 1'd0)"}
+{"kind": "check", "round": 2, "time": 1793366589.1530404, "piece": "r2_c4", "tag": "r2_c4_k0", "verdict": "TIMEOUT", "seconds": 3.008070468902588, "timeout": 3, "ops": [], "cond": "(arbitrary_requester[4:1] == 4'd2) & (arbitrary_requester[0:0] == 1'd0)"}
+{"kind": "check", "round": 2, "time": 1793366589.156255, "piece": "r2_c5", "tag": "r2_c5_k0", "verdict": "TIMEOUT", "seconds": 3.0055298805236816, "timeout": 3, "ops": [], "cond": "(arbitrary_requester[4:1] == 4'd2) & (arbitrary_requester[0:0] == 1'd1)"}
+{"kind": "check", "round": 2, "time": 1793366589.1590233, "piece": "r2_c3", "tag": "r2_c3_k0", "verdict": "TIMEOUT", "seconds": 3.004157066345215, "timeout": 3, "ops": [], "cond": "(arbitrary_requester[4:1] == 4'd1) & (arbitrary_requester[0:0] == 1'd1)"}
+{"kind": "check", "round": 2, "time": 1793366589.1686249, "piece": "r2_c2", "tag": "r2_c2_k0", "verdict": "TIMEOUT", "seconds": 3.002185106277466, "timeout": 3, "ops": [], "cond": "(arbitrary_requester[4:1] == 4'd1) & (arbitrary_requester[0:0] == 1'd0)"}
+{"kind": "check", "round": 2, "time": 1793366589.1687124, "piece": "r2_c7", "tag": "r2_c7_k0", "verdict": "TIMEOUT", "seconds": 3.002617835998535, "timeout": 3, "ops": [], "cond": "(arbitrary_requester[4:1] == 4'd3) & (arbitrary_requester[0:0] == 1'd1)"}
+{"kind": "check", "round": 2, "time": 1793366589.1687658, "piece": "r2_c6", "tag": "r2_c6_k0", "verdict": "TIMEOUT", "seconds": 3.005095958709717, "timeout": 3, "ops": [], "cond": "(arbitrary_requester[4:1] == 4'd3) & (arbitrary_requester[0:0] == 1'd0)"}
+{"kind": "check", "round": 2, "time": 1793366589.1699061, "piece": "r2_c1", "tag": "r2_c1_k0", "verdict": "TIMEOUT", "seconds": 3.0053985118865967, "timeout": 3, "ops": [], "cond": "(arbitrary_requester[4:1] == 4'd0) & (arbitrary_requester[0:0] == 1'd1)"}
+{"kind": "check", "round": 2, "time": 1793366590.8109722, "piece": "r2_c11", "tag": "r2_c11_k0", "verdict": "UNSAT", "seconds": 1.5819242000579834, "timeout": 3, "ops": [], "cond": "(arbitrary_requester[4:1] == 4'd5) & (arbitrary_requester[0:0] == 1'd1)"}
+{"kind": "check", "round": 2, "time": 1793366591.6260555, "piece": "r2_c14", "tag": "r2_c14_k0", "verdict": "UNSAT", "seconds": 2.409677267074585, "timeout": 3, "ops": [], "cond": "(arbitrary_requester[4:1] == 4'd7) & (arbitrary_requester[0:0] == 1'd0)"}
+{"kind": "check", "round": 2, "time": 1793366591.7441304, "piece": "r2_c15", "tag": "r2_c15_k0", "verdict": "UNSAT", "seconds": 2.527053117752075, "timeout": 3, "ops": [], "cond": "(arbitrary_requester[4:1] == 4'd7) & (arbitrary_requester[0:0] == 1'd1)"}
+{"kind": "check", "round": 2, "time": 1793366592.1638525, "piece": "r2_c13", "tag": "r2_c13_k0", "verdict": "UNSAT", "seconds": 2.9275052547454834, "timeout": 3, "ops": [], "cond": "(arbitrary_requester[4:1] == 4'd6) & (arbitrary_requester[0:0] == 1'd1)"}
+{"kind": "check", "round": 2, "time": 1793366592.2188592, "piece": "r2_c10", "tag": "r2_c10_k0", "verdict": "TIMEOUT", "seconds": 3.0013997554779053, "timeout": 3, "ops": [], "cond": "(arbitrary_requester[4:1] == 4'd5) & (arbitrary_requester[0:0] == 1'd0)"}
+{"kind": "check", "round": 2, "time": 1793366592.225809, "piece": "r2_c8", "tag": "r2_c8_k0", "verdict": "TIMEOUT", "seconds": 3.001559257507324, "timeout": 3, "ops": [], "cond": "(arbitrary_requester[4:1] == 4'd4) & (arbitrary_requester[0:0] == 1'd0)"}
+{"kind": "check", "round": 2, "time": 1793366592.2313662, "piece": "r2_c9", "tag": "r2_c9_k0", "verdict": "TIMEOUT", "seconds": 3.0015735626220703, "timeout": 3, "ops": [], "cond": "(arbitrary_requester[4:1] == 4'd4) & (arbitrary_requester[0:0] == 1'd1)"}
+{"kind": "check", "round": 2, "time": 1793366592.2388303, "piece": "r2_c12", "tag": "r2_c12_k0", "verdict": "TIMEOUT", "seconds": 3.001554489135742, "timeout": 3, "ops": [], "cond": "(arbitrary_requester[4:1] == 4'd6) & (arbitrary_requester[0:0] == 1'd0)"}
+{"kind": "check_pass", "round": 2, "time": 1793366592.2395496, "pieces": ["r2_c0", "r2_c1", "r2_c2", "r2_c3", "r2_c4", "r2_c5", "r2_c6", "r2_c7", "r2_c8", "r2_c9", "r2_c10", "r2_c11", "r2_c12", "r2_c13", "r2_c14", "r2_c15"], "timeout": 3, "wall_s": 6.143754243850708}
+{"kind": "summary_pass", "round": 2, "time": 1793366596.6016276, "pieces": ["r2_c0", "r2_c1", "r2_c2", "r2_c3", "r2_c4", "r2_c5", "r2_c6", "r2_c7", "r2_c8", "r2_c9", "r2_c10", "r2_c12"], "timeout": 5, "wall_s": 4.359264612197876}
+{"kind": "summary", "round": 2, "time": 1793366596.601708, "piece": "r2_c0", "verdict": "UNSAT", "text": "IC3 alone proved it in 1.4 s"}
+{"kind": "summary", "round": 2, "time": 1793366596.601741, "piece": "r2_c1", "verdict": "UNSAT", "text": "IC3 alone proved it in 2.1 s"}
+{"kind": "summary", "round": 2, "time": 1793366596.6017702, "piece": "r2_c2", "verdict": "UNSAT", "text": "IC3 alone proved it in 2.1 s"}
+{"kind": "summary", "round": 2, "time": 1793366596.6017988, "piece": "r2_c3", "verdict": "UNSAT", "text": "IC3 alone proved it in 1.6 s"}
+{"kind": "summary", "round": 2, "time": 1793366596.6018262, "piece": "r2_c4", "verdict": "UNSAT", "text": "IC3 alone proved it in 2.4 s"}
+{"kind": "summary", "round": 2, "time": 1793366596.6018534, "piece": "r2_c5", "verdict": "UNSAT", "text": "IC3 alone proved it in 1.7 s"}
+{"kind": "summary", "round": 2, "time": 1793366596.6018808, "piece": "r2_c6", "verdict": "UNSAT", "text": "IC3 alone proved it in 1.7 s"}
+{"kind": "summary", "round": 2, "time": 1793366596.6019082, "piece": "r2_c7", "verdict": "UNSAT", "text": "IC3 alone proved it in 1.8 s"}
+{"kind": "summary", "round": 2, "time": 1793366596.6019351, "piece": "r2_c8", "verdict": "UNSAT", "text": "IC3 alone proved it in 2.6 s"}
+{"kind": "summary", "round": 2, "time": 1793366596.6019623, "piece": "r2_c9", "verdict": "UNSAT", "text": "IC3 alone proved it in 2.8 s"}
+{"kind": "summary", "round": 2, "time": 1793366596.6019897, "piece": "r2_c10", "verdict": "UNSAT", "text": "IC3 alone proved it in 1.8 s"}
+{"kind": "summary", "round": 2, "time": 1793366596.6020215, "piece": "r2_c12", "verdict": "UNSAT", "text": "IC3 alone proved it in 1.5 s"}
+{"kind": "load", "round": 3, "time": 1793366596.6030781, "cmd": "run", "phase": "end", "load": [57.0, 80.1142578125, 65.357421875]}
+{"kind": "load", "round": 2, "time": 1793366596.6750457, "cmd": "report", "phase": "start", "load": [57.0, 80.1142578125, 65.357421875]}
+{"kind": "load", "round": 2, "time": 1793366596.6756792, "cmd": "report", "phase": "end", "load": [57.0, 80.1142578125, 65.357421875]}
+{"kind": "load", "round": 2, "time": 1793366596.7437916, "cmd": "vacuity", "phase": "start", "load": [57.0, 80.1142578125, 65.357421875]}
+{"kind": "vacuity", "round": 2, "time": 1793366596.839309, "piece": "r1_c8", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "vacuity", "round": 2, "time": 1793366596.9302921, "piece": "r1_c9", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "vacuity", "round": 2, "time": 1793366597.0221584, "piece": "r1_c10", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "vacuity", "round": 2, "time": 1793366597.114398, "piece": "r1_c11", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "vacuity", "round": 2, "time": 1793366597.2068403, "piece": "r1_c12", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "vacuity", "round": 2, "time": 1793366597.2994547, "piece": "r1_c13", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "vacuity", "round": 2, "time": 1793366597.3903327, "piece": "r1_c14", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "vacuity", "round": 2, "time": 1793366597.4825447, "piece": "r1_c15", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "vacuity", "round": 2, "time": 1793366597.5734935, "piece": "r2_c0", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "vacuity", "round": 2, "time": 1793366597.664559, "piece": "r2_c1", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "vacuity", "round": 2, "time": 1793366597.7531188, "piece": "r2_c2", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "vacuity", "round": 2, "time": 1793366597.84134, "piece": "r2_c3", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "vacuity", "round": 2, "time": 1793366597.9296033, "piece": "r2_c4", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "vacuity", "round": 2, "time": 1793366598.0185874, "piece": "r2_c5", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "vacuity", "round": 2, "time": 1793366598.1083438, "piece": "r2_c6", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "vacuity", "round": 2, "time": 1793366598.1992304, "piece": "r2_c7", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "vacuity", "round": 2, "time": 1793366598.2895436, "piece": "r2_c8", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "vacuity", "round": 2, "time": 1793366598.3800256, "piece": "r2_c9", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "vacuity", "round": 2, "time": 1793366598.4703608, "piece": "r2_c10", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "vacuity", "round": 2, "time": 1793366598.5604875, "piece": "r2_c11", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "vacuity", "round": 2, "time": 1793366598.650983, "piece": "r2_c12", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "vacuity", "round": 2, "time": 1793366598.7411168, "piece": "r2_c13", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "vacuity", "round": 2, "time": 1793366598.8312469, "piece": "r2_c14", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "vacuity", "round": 2, "time": 1793366598.920798, "piece": "r2_c15", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "load", "round": 2, "time": 1793366598.92199, "cmd": "vacuity", "phase": "end", "load": [52.755859375, 78.8505859375, 65.02783203125]}

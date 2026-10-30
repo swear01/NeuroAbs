@@ -1,0 +1,9221 @@
+{
+ "round": 6,
+ "calls": 10,
+ "signals": [
+  {
+   "name": "size",
+   "id": "size",
+   "width": 5,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "rst",
+   "id": "rst",
+   "width": 1,
+   "input": true,
+   "state": false
+  },
+  {
+   "name": "push",
+   "id": "push",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "pop",
+   "id": "pop",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "full",
+   "id": "full",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "error",
+   "id": "error",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "empty",
+   "id": "empty",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "data_out",
+   "id": "data_out",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "data_in",
+   "id": "data_in",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "fv_env.__bb_first",
+   "id": "fv_env___bb_first",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "fv_env.clk",
+   "id": "fv_env_clk",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "fv_env.data_in",
+   "id": "fv_env_data_in",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "fv_env.data_out",
+   "id": "fv_env_data_out",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "fv_env.empty",
+   "id": "fv_env_empty",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "fv_env.error",
+   "id": "fv_env_error",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "fv_env.fifo_size",
+   "id": "fv_env_fifo_size",
+   "width": 5,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "fv_env.full",
+   "id": "fv_env_full",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "fv_env.pop",
+   "id": "fv_env_pop",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "fv_env.push",
+   "id": "fv_env_push",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "fv_env.ref_fifo_head",
+   "id": "fv_env_ref_fifo_head",
+   "width": 5,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "fv_env.ref_fifo_tail",
+   "id": "fv_env_ref_fifo_tail",
+   "width": 5,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "fv_env.rst",
+   "id": "fv_env_rst",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "fv_env.size",
+   "id": "fv_env_size",
+   "width": 5,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "dut.bypass_detected",
+   "id": "dut_bypass_detected",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "dut.clk",
+   "id": "dut_clk",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "dut.data_in",
+   "id": "dut_data_in",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "dut.data_out",
+   "id": "dut_data_out",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "dut.empty",
+   "id": "dut_empty",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "dut.error",
+   "id": "dut_error",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "dut.full",
+   "id": "dut_full",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "dut.head",
+   "id": "dut_head",
+   "width": 5,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "dut.pop",
+   "id": "dut_pop",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "dut.push",
+   "id": "dut_push",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "dut.rst",
+   "id": "dut_rst",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "dut.size",
+   "id": "dut_size",
+   "width": 5,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "dut.tail",
+   "id": "dut_tail",
+   "width": 5,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "dut.buffer[0]",
+   "id": "dut_buffer_0",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "dut.buffer[1]",
+   "id": "dut_buffer_1",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "dut.buffer[2]",
+   "id": "dut_buffer_2",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "dut.buffer[3]",
+   "id": "dut_buffer_3",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "dut.buffer[4]",
+   "id": "dut_buffer_4",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "dut.buffer[5]",
+   "id": "dut_buffer_5",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "dut.buffer[6]",
+   "id": "dut_buffer_6",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "dut.buffer[7]",
+   "id": "dut_buffer_7",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "dut.buffer[8]",
+   "id": "dut_buffer_8",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "dut.buffer[9]",
+   "id": "dut_buffer_9",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "dut.buffer[10]",
+   "id": "dut_buffer_10",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "dut.buffer[11]",
+   "id": "dut_buffer_11",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "dut.buffer[12]",
+   "id": "dut_buffer_12",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "dut.buffer[13]",
+   "id": "dut_buffer_13",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "dut.buffer[14]",
+   "id": "dut_buffer_14",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "dut.buffer[15]",
+   "id": "dut_buffer_15",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "fv_env.ref_fifo[0]",
+   "id": "fv_env_ref_fifo_0",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "fv_env.ref_fifo[1]",
+   "id": "fv_env_ref_fifo_1",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "fv_env.ref_fifo[2]",
+   "id": "fv_env_ref_fifo_2",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "fv_env.ref_fifo[3]",
+   "id": "fv_env_ref_fifo_3",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "fv_env.ref_fifo[4]",
+   "id": "fv_env_ref_fifo_4",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "fv_env.ref_fifo[5]",
+   "id": "fv_env_ref_fifo_5",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "fv_env.ref_fifo[6]",
+   "id": "fv_env_ref_fifo_6",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "fv_env.ref_fifo[7]",
+   "id": "fv_env_ref_fifo_7",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "fv_env.ref_fifo[8]",
+   "id": "fv_env_ref_fifo_8",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "fv_env.ref_fifo[9]",
+   "id": "fv_env_ref_fifo_9",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "fv_env.ref_fifo[10]",
+   "id": "fv_env_ref_fifo_10",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "fv_env.ref_fifo[11]",
+   "id": "fv_env_ref_fifo_11",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "fv_env.ref_fifo[12]",
+   "id": "fv_env_ref_fifo_12",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "fv_env.ref_fifo[13]",
+   "id": "fv_env_ref_fifo_13",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "fv_env.ref_fifo[14]",
+   "id": "fv_env_ref_fifo_14",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "fv_env.ref_fifo[15]",
+   "id": "fv_env_ref_fifo_15",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "prop_a",
+   "id": "prop_a",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "prop_en",
+   "id": "prop_en",
+   "width": 1,
+   "input": false,
+   "state": false
+  }
+ ],
+ "pieces": {
+  "r1_c0": {
+   "cond": "fv_env_fifo_size == 0",
+   "ops": [],
+   "status": "proved",
+   "round": 1,
+   "parent": null,
+   "fixed": {},
+   "direction": null,
+   "attempt": 0,
+   "tag": "r1_c0_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 2.2,
+    "timeout": 3
+   }
+  },
+  "r1_c1": {
+   "cond": "fv_env_fifo_size != 0 && !pop",
+   "ops": [],
+   "status": "proved",
+   "round": 1,
+   "parent": null,
+   "fixed": {},
+   "direction": null,
+   "attempt": 0,
+   "tag": "r1_c1_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 1.2,
+    "timeout": 3
+   }
+  },
+  "r1_c2": {
+   "cond": "fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head",
+   "ops": [],
+   "status": "split",
+   "round": 1,
+   "parent": null,
+   "fixed": {},
+   "direction": null,
+   "attempt": 0,
+   "tag": "r1_c2_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r2_c0",
+    "r2_c1",
+    "r2_c2",
+    "r2_c3",
+    "r2_c4",
+    "r2_c5",
+    "r2_c6",
+    "r2_c7",
+    "r2_c8",
+    "r2_c9",
+    "r2_c10",
+    "r2_c11",
+    "r2_c12",
+    "r2_c13",
+    "r2_c14",
+    "r2_c15"
+   ]
+  },
+  "r1_c3": {
+   "cond": "fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head",
+   "ops": [],
+   "status": "split",
+   "round": 1,
+   "parent": null,
+   "fixed": {},
+   "direction": null,
+   "attempt": 0,
+   "tag": "r1_c3_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r2_c16",
+    "r2_c17",
+    "r2_c18",
+    "r2_c19",
+    "r2_c20",
+    "r2_c21",
+    "r2_c22",
+    "r2_c23",
+    "r2_c24",
+    "r2_c25",
+    "r2_c26",
+    "r2_c27",
+    "r2_c28",
+    "r2_c29",
+    "r2_c30",
+    "r2_c31"
+   ]
+  },
+  "r2_c0": {
+   "cond": "(fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd0)",
+   "ops": [],
+   "status": "split",
+   "round": 2,
+   "parent": "r1_c2",
+   "fixed": {
+    "dut_head": 1
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r2_c0_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r3_c0",
+    "r3_c1"
+   ]
+  },
+  "r2_c1": {
+   "cond": "(fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd1)",
+   "ops": [],
+   "status": "split",
+   "round": 2,
+   "parent": "r1_c2",
+   "fixed": {
+    "dut_head": 1
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r2_c1_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r3_c2",
+    "r3_c3"
+   ]
+  },
+  "r2_c2": {
+   "cond": "(fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd2)",
+   "ops": [],
+   "status": "split",
+   "round": 2,
+   "parent": "r1_c2",
+   "fixed": {
+    "dut_head": 1
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r2_c2_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r3_c4",
+    "r3_c5"
+   ]
+  },
+  "r2_c3": {
+   "cond": "(fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd3)",
+   "ops": [],
+   "status": "split",
+   "round": 2,
+   "parent": "r1_c2",
+   "fixed": {
+    "dut_head": 1
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r2_c3_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r3_c6",
+    "r3_c7"
+   ]
+  },
+  "r2_c4": {
+   "cond": "(fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd4)",
+   "ops": [],
+   "status": "split",
+   "round": 2,
+   "parent": "r1_c2",
+   "fixed": {
+    "dut_head": 1
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r2_c4_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r3_c8",
+    "r3_c9"
+   ]
+  },
+  "r2_c5": {
+   "cond": "(fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd5)",
+   "ops": [],
+   "status": "split",
+   "round": 2,
+   "parent": "r1_c2",
+   "fixed": {
+    "dut_head": 1
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r2_c5_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r3_c10",
+    "r3_c11"
+   ]
+  },
+  "r2_c6": {
+   "cond": "(fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd6)",
+   "ops": [],
+   "status": "split",
+   "round": 2,
+   "parent": "r1_c2",
+   "fixed": {
+    "dut_head": 1
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r2_c6_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r3_c12",
+    "r3_c13"
+   ]
+  },
+  "r2_c7": {
+   "cond": "(fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd7)",
+   "ops": [],
+   "status": "split",
+   "round": 2,
+   "parent": "r1_c2",
+   "fixed": {
+    "dut_head": 1
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r2_c7_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r3_c14",
+    "r3_c15"
+   ]
+  },
+  "r2_c8": {
+   "cond": "(fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd8)",
+   "ops": [],
+   "status": "proved",
+   "round": 2,
+   "parent": "r1_c2",
+   "fixed": {
+    "dut_head": 1
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r2_c8_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 0.1,
+    "timeout": 3
+   }
+  },
+  "r2_c9": {
+   "cond": "(fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd9)",
+   "ops": [],
+   "status": "proved",
+   "round": 2,
+   "parent": "r1_c2",
+   "fixed": {
+    "dut_head": 1
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r2_c9_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 0.1,
+    "timeout": 3
+   }
+  },
+  "r2_c10": {
+   "cond": "(fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd10)",
+   "ops": [],
+   "status": "proved",
+   "round": 2,
+   "parent": "r1_c2",
+   "fixed": {
+    "dut_head": 1
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r2_c10_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 0.1,
+    "timeout": 3
+   }
+  },
+  "r2_c11": {
+   "cond": "(fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd11)",
+   "ops": [],
+   "status": "proved",
+   "round": 2,
+   "parent": "r1_c2",
+   "fixed": {
+    "dut_head": 1
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r2_c11_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 0.1,
+    "timeout": 3
+   }
+  },
+  "r2_c12": {
+   "cond": "(fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd12)",
+   "ops": [],
+   "status": "proved",
+   "round": 2,
+   "parent": "r1_c2",
+   "fixed": {
+    "dut_head": 1
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r2_c12_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 0.1,
+    "timeout": 3
+   }
+  },
+  "r2_c13": {
+   "cond": "(fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd13)",
+   "ops": [],
+   "status": "proved",
+   "round": 2,
+   "parent": "r1_c2",
+   "fixed": {
+    "dut_head": 1
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r2_c13_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 0.0,
+    "timeout": 3
+   }
+  },
+  "r2_c14": {
+   "cond": "(fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd14)",
+   "ops": [],
+   "status": "proved",
+   "round": 2,
+   "parent": "r1_c2",
+   "fixed": {
+    "dut_head": 1
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r2_c14_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 0.0,
+    "timeout": 3
+   }
+  },
+  "r2_c15": {
+   "cond": "(fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd15)",
+   "ops": [],
+   "status": "proved",
+   "round": 2,
+   "parent": "r1_c2",
+   "fixed": {
+    "dut_head": 1
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r2_c15_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 0.1,
+    "timeout": 3
+   }
+  },
+  "r2_c16": {
+   "cond": "(fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd0)",
+   "ops": [],
+   "status": "split",
+   "round": 2,
+   "parent": "r1_c3",
+   "fixed": {
+    "dut_head": 1
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r2_c16_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r3_c16",
+    "r3_c17"
+   ]
+  },
+  "r2_c17": {
+   "cond": "(fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd1)",
+   "ops": [],
+   "status": "split",
+   "round": 2,
+   "parent": "r1_c3",
+   "fixed": {
+    "dut_head": 1
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r2_c17_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r3_c18",
+    "r3_c19"
+   ]
+  },
+  "r2_c18": {
+   "cond": "(fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd2)",
+   "ops": [],
+   "status": "split",
+   "round": 2,
+   "parent": "r1_c3",
+   "fixed": {
+    "dut_head": 1
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r2_c18_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r3_c20",
+    "r3_c21"
+   ]
+  },
+  "r2_c19": {
+   "cond": "(fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd3)",
+   "ops": [],
+   "status": "split",
+   "round": 2,
+   "parent": "r1_c3",
+   "fixed": {
+    "dut_head": 1
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r2_c19_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r3_c22",
+    "r3_c23"
+   ]
+  },
+  "r2_c20": {
+   "cond": "(fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd4)",
+   "ops": [],
+   "status": "split",
+   "round": 2,
+   "parent": "r1_c3",
+   "fixed": {
+    "dut_head": 1
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r2_c20_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r3_c24",
+    "r3_c25"
+   ]
+  },
+  "r2_c21": {
+   "cond": "(fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd5)",
+   "ops": [],
+   "status": "split",
+   "round": 2,
+   "parent": "r1_c3",
+   "fixed": {
+    "dut_head": 1
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r2_c21_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r3_c26",
+    "r3_c27"
+   ]
+  },
+  "r2_c22": {
+   "cond": "(fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd6)",
+   "ops": [],
+   "status": "split",
+   "round": 2,
+   "parent": "r1_c3",
+   "fixed": {
+    "dut_head": 1
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r2_c22_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r3_c28",
+    "r3_c29"
+   ]
+  },
+  "r2_c23": {
+   "cond": "(fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd7)",
+   "ops": [],
+   "status": "split",
+   "round": 2,
+   "parent": "r1_c3",
+   "fixed": {
+    "dut_head": 1
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r2_c23_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r3_c30",
+    "r3_c31"
+   ]
+  },
+  "r2_c24": {
+   "cond": "(fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd8)",
+   "ops": [],
+   "status": "proved",
+   "round": 2,
+   "parent": "r1_c3",
+   "fixed": {
+    "dut_head": 1
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r2_c24_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 0.1,
+    "timeout": 3
+   }
+  },
+  "r2_c25": {
+   "cond": "(fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd9)",
+   "ops": [],
+   "status": "proved",
+   "round": 2,
+   "parent": "r1_c3",
+   "fixed": {
+    "dut_head": 1
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r2_c25_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 0.1,
+    "timeout": 3
+   }
+  },
+  "r2_c26": {
+   "cond": "(fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd10)",
+   "ops": [],
+   "status": "proved",
+   "round": 2,
+   "parent": "r1_c3",
+   "fixed": {
+    "dut_head": 1
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r2_c26_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 0.0,
+    "timeout": 3
+   }
+  },
+  "r2_c27": {
+   "cond": "(fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd11)",
+   "ops": [],
+   "status": "proved",
+   "round": 2,
+   "parent": "r1_c3",
+   "fixed": {
+    "dut_head": 1
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r2_c27_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 0.0,
+    "timeout": 3
+   }
+  },
+  "r2_c28": {
+   "cond": "(fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd12)",
+   "ops": [],
+   "status": "proved",
+   "round": 2,
+   "parent": "r1_c3",
+   "fixed": {
+    "dut_head": 1
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r2_c28_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 0.0,
+    "timeout": 3
+   }
+  },
+  "r2_c29": {
+   "cond": "(fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd13)",
+   "ops": [],
+   "status": "proved",
+   "round": 2,
+   "parent": "r1_c3",
+   "fixed": {
+    "dut_head": 1
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r2_c29_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 0.0,
+    "timeout": 3
+   }
+  },
+  "r2_c30": {
+   "cond": "(fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd14)",
+   "ops": [],
+   "status": "proved",
+   "round": 2,
+   "parent": "r1_c3",
+   "fixed": {
+    "dut_head": 1
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r2_c30_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 0.0,
+    "timeout": 3
+   }
+  },
+  "r2_c31": {
+   "cond": "(fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd15)",
+   "ops": [],
+   "status": "proved",
+   "round": 2,
+   "parent": "r1_c3",
+   "fixed": {
+    "dut_head": 1
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r2_c31_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 0.0,
+    "timeout": 3
+   }
+  },
+  "r3_c0": {
+   "cond": "((fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd0)) & (dut_head[0:0] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_15"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_15"
+    }
+   ],
+   "status": "split",
+   "round": 3,
+   "parent": "r2_c0",
+   "fixed": {
+    "dut_head": 0
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 1,
+   "tag": "r3_c0_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r5_c0",
+    "r5_c1"
+   ]
+  },
+  "r3_c1": {
+   "cond": "((fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd0)) & (dut_head[0:0] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_15"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_15"
+    }
+   ],
+   "status": "split",
+   "round": 3,
+   "parent": "r2_c0",
+   "fixed": {
+    "dut_head": 0
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 1,
+   "tag": "r3_c1_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r5_c2",
+    "r5_c3"
+   ]
+  },
+  "r3_c2": {
+   "cond": "((fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd1)) & (dut_head[0:0] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_15"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_15"
+    }
+   ],
+   "status": "split",
+   "round": 3,
+   "parent": "r2_c1",
+   "fixed": {
+    "dut_head": 0
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 1,
+   "tag": "r3_c2_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r5_c4",
+    "r5_c5"
+   ]
+  },
+  "r3_c3": {
+   "cond": "((fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd1)) & (dut_head[0:0] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_15"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_15"
+    }
+   ],
+   "status": "split",
+   "round": 3,
+   "parent": "r2_c1",
+   "fixed": {
+    "dut_head": 0
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 1,
+   "tag": "r3_c3_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r5_c6",
+    "r5_c7"
+   ]
+  },
+  "r3_c4": {
+   "cond": "((fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd2)) & (dut_head[0:0] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_15"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_15"
+    }
+   ],
+   "status": "split",
+   "round": 3,
+   "parent": "r2_c2",
+   "fixed": {
+    "dut_head": 0
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 1,
+   "tag": "r3_c4_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r5_c8",
+    "r5_c9"
+   ]
+  },
+  "r3_c5": {
+   "cond": "((fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd2)) & (dut_head[0:0] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_15"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_15"
+    }
+   ],
+   "status": "split",
+   "round": 3,
+   "parent": "r2_c2",
+   "fixed": {
+    "dut_head": 0
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 1,
+   "tag": "r3_c5_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r5_c10",
+    "r5_c11"
+   ]
+  },
+  "r3_c6": {
+   "cond": "((fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd3)) & (dut_head[0:0] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_15"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_15"
+    }
+   ],
+   "status": "split",
+   "round": 3,
+   "parent": "r2_c3",
+   "fixed": {
+    "dut_head": 0
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 1,
+   "tag": "r3_c6_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r5_c12",
+    "r5_c13"
+   ]
+  },
+  "r3_c7": {
+   "cond": "((fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd3)) & (dut_head[0:0] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_15"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_15"
+    }
+   ],
+   "status": "split",
+   "round": 3,
+   "parent": "r2_c3",
+   "fixed": {
+    "dut_head": 0
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 1,
+   "tag": "r3_c7_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r5_c14",
+    "r5_c15"
+   ]
+  },
+  "r3_c8": {
+   "cond": "((fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd4)) & (dut_head[0:0] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_15"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_15"
+    }
+   ],
+   "status": "split",
+   "round": 3,
+   "parent": "r2_c4",
+   "fixed": {
+    "dut_head": 0
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 1,
+   "tag": "r3_c8_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r5_c16",
+    "r5_c17"
+   ]
+  },
+  "r3_c9": {
+   "cond": "((fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd4)) & (dut_head[0:0] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_15"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_15"
+    }
+   ],
+   "status": "split",
+   "round": 3,
+   "parent": "r2_c4",
+   "fixed": {
+    "dut_head": 0
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 1,
+   "tag": "r3_c9_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r5_c18",
+    "r5_c19"
+   ]
+  },
+  "r3_c10": {
+   "cond": "((fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd5)) & (dut_head[0:0] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_15"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_15"
+    }
+   ],
+   "status": "split",
+   "round": 3,
+   "parent": "r2_c5",
+   "fixed": {
+    "dut_head": 0
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 1,
+   "tag": "r3_c10_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r5_c20",
+    "r5_c21"
+   ]
+  },
+  "r3_c11": {
+   "cond": "((fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd5)) & (dut_head[0:0] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_15"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_15"
+    }
+   ],
+   "status": "split",
+   "round": 3,
+   "parent": "r2_c5",
+   "fixed": {
+    "dut_head": 0
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 1,
+   "tag": "r3_c11_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r5_c22",
+    "r5_c23"
+   ]
+  },
+  "r3_c12": {
+   "cond": "((fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd6)) & (dut_head[0:0] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_15"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_15"
+    }
+   ],
+   "status": "split",
+   "round": 3,
+   "parent": "r2_c6",
+   "fixed": {
+    "dut_head": 0
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 1,
+   "tag": "r3_c12_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r5_c24",
+    "r5_c25"
+   ]
+  },
+  "r3_c13": {
+   "cond": "((fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd6)) & (dut_head[0:0] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_15"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_15"
+    }
+   ],
+   "status": "split",
+   "round": 3,
+   "parent": "r2_c6",
+   "fixed": {
+    "dut_head": 0
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 1,
+   "tag": "r3_c13_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r5_c26",
+    "r5_c27"
+   ]
+  },
+  "r3_c14": {
+   "cond": "((fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd7)) & (dut_head[0:0] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_15"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_15"
+    }
+   ],
+   "status": "split",
+   "round": 3,
+   "parent": "r2_c7",
+   "fixed": {
+    "dut_head": 0
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 1,
+   "tag": "r3_c14_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r5_c28",
+    "r5_c29"
+   ]
+  },
+  "r3_c15": {
+   "cond": "((fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd7)) & (dut_head[0:0] == 1'd1)",
+   "ops": [],
+   "status": "proved",
+   "round": 3,
+   "parent": "r2_c7",
+   "fixed": {
+    "dut_head": 0
+   },
+   "direction": {
+    "index": "dut_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r3_c15_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 18.6,
+    "timeout": 20
+   }
+  },
+  "r3_c16": {
+   "cond": "((fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd0)) & (dut_head[0])",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_15"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_1"
+    }
+   ],
+   "status": "split",
+   "round": 3,
+   "parent": "r2_c16",
+   "fixed": {
+    "dut_head": 1
+   },
+   "direction": null,
+   "attempt": 1,
+   "tag": "r3_c16_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r5_c30",
+    "r5_c31"
+   ]
+  },
+  "r3_c17": {
+   "cond": "((fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd0)) & (!dut_head[0])",
+   "ops": [
+    {
+     "op": "abstract_value",
+     "target": "data_in"
+    }
+   ],
+   "status": "proved",
+   "round": 3,
+   "parent": "r2_c16",
+   "fixed": {
+    "dut_head": 1
+   },
+   "direction": null,
+   "attempt": 2,
+   "tag": "r3_c17_k2",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 116.0,
+    "timeout": 120
+   }
+  },
+  "r3_c18": {
+   "cond": "((fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd1)) & (dut_head[0])",
+   "ops": [
+    {
+     "op": "abstract_value",
+     "target": "data_in"
+    }
+   ],
+   "status": "proved",
+   "round": 3,
+   "parent": "r2_c17",
+   "fixed": {
+    "dut_head": 1
+   },
+   "direction": null,
+   "attempt": 2,
+   "tag": "r3_c18_k2",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 84.8,
+    "timeout": 120
+   }
+  },
+  "r3_c19": {
+   "cond": "((fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd1)) & (!dut_head[0])",
+   "ops": [
+    {
+     "op": "abstract_value",
+     "target": "data_in"
+    }
+   ],
+   "status": "split",
+   "round": 3,
+   "parent": "r2_c17",
+   "fixed": {
+    "dut_head": 1
+   },
+   "direction": null,
+   "attempt": 2,
+   "tag": "r3_c19_k2",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 120.0,
+    "timeout": 120
+   },
+   "children": [
+    "r6_c0",
+    "r6_c1",
+    "r6_c2",
+    "r6_c3",
+    "r6_c4",
+    "r6_c5",
+    "r6_c6",
+    "r6_c7",
+    "r6_c8",
+    "r6_c9",
+    "r6_c10",
+    "r6_c11",
+    "r6_c12",
+    "r6_c13",
+    "r6_c14",
+    "r6_c15"
+   ]
+  },
+  "r3_c20": {
+   "cond": "((fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd2)) & (dut_head[0])",
+   "ops": [
+    {
+     "op": "abstract_value",
+     "target": "data_in"
+    }
+   ],
+   "status": "proved",
+   "round": 3,
+   "parent": "r2_c18",
+   "fixed": {
+    "dut_head": 1
+   },
+   "direction": null,
+   "attempt": 2,
+   "tag": "r3_c20_k2",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 96.0,
+    "timeout": 120
+   }
+  },
+  "r3_c21": {
+   "cond": "((fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd2)) & (!dut_head[0])",
+   "ops": [
+    {
+     "op": "abstract_value",
+     "target": "data_in"
+    }
+   ],
+   "status": "proved",
+   "round": 3,
+   "parent": "r2_c18",
+   "fixed": {
+    "dut_head": 1
+   },
+   "direction": null,
+   "attempt": 2,
+   "tag": "r3_c21_k2",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 107.9,
+    "timeout": 120
+   }
+  },
+  "r3_c22": {
+   "cond": "((fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd3)) & (dut_head[0])",
+   "ops": [
+    {
+     "op": "abstract_value",
+     "target": "data_in"
+    }
+   ],
+   "status": "proved",
+   "round": 3,
+   "parent": "r2_c19",
+   "fixed": {
+    "dut_head": 1
+   },
+   "direction": null,
+   "attempt": 2,
+   "tag": "r3_c22_k2",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 65.8,
+    "timeout": 120
+   }
+  },
+  "r3_c23": {
+   "cond": "((fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd3)) & (!dut_head[0])",
+   "ops": [
+    {
+     "op": "abstract_value",
+     "target": "data_in"
+    }
+   ],
+   "status": "proved",
+   "round": 3,
+   "parent": "r2_c19",
+   "fixed": {
+    "dut_head": 1
+   },
+   "direction": null,
+   "attempt": 2,
+   "tag": "r3_c23_k2",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 116.5,
+    "timeout": 120
+   }
+  },
+  "r3_c24": {
+   "cond": "((fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd4)) & (dut_head[0])",
+   "ops": [
+    {
+     "op": "abstract_value",
+     "target": "data_in"
+    }
+   ],
+   "status": "proved",
+   "round": 3,
+   "parent": "r2_c20",
+   "fixed": {
+    "dut_head": 1
+   },
+   "direction": null,
+   "attempt": 2,
+   "tag": "r3_c24_k2",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 99.0,
+    "timeout": 120
+   }
+  },
+  "r3_c25": {
+   "cond": "((fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd4)) & (!dut_head[0])",
+   "ops": [
+    {
+     "op": "abstract_value",
+     "target": "data_in"
+    }
+   ],
+   "status": "proved",
+   "round": 3,
+   "parent": "r2_c20",
+   "fixed": {
+    "dut_head": 1
+   },
+   "direction": null,
+   "attempt": 2,
+   "tag": "r3_c25_k2",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 96.1,
+    "timeout": 120
+   }
+  },
+  "r3_c26": {
+   "cond": "((fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd5)) & (dut_head[0])",
+   "ops": [
+    {
+     "op": "abstract_value",
+     "target": "data_in"
+    }
+   ],
+   "status": "proved",
+   "round": 3,
+   "parent": "r2_c21",
+   "fixed": {
+    "dut_head": 1
+   },
+   "direction": null,
+   "attempt": 2,
+   "tag": "r3_c26_k2",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 109.8,
+    "timeout": 120
+   }
+  },
+  "r3_c27": {
+   "cond": "((fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd5)) & (!dut_head[0])",
+   "ops": [
+    {
+     "op": "abstract_value",
+     "target": "data_in"
+    }
+   ],
+   "status": "proved",
+   "round": 3,
+   "parent": "r2_c21",
+   "fixed": {
+    "dut_head": 1
+   },
+   "direction": null,
+   "attempt": 2,
+   "tag": "r3_c27_k2",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 95.5,
+    "timeout": 120
+   }
+  },
+  "r3_c28": {
+   "cond": "((fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd6)) & (dut_head[0])",
+   "ops": [
+    {
+     "op": "abstract_value",
+     "target": "data_in"
+    }
+   ],
+   "status": "proved",
+   "round": 3,
+   "parent": "r2_c22",
+   "fixed": {
+    "dut_head": 1
+   },
+   "direction": null,
+   "attempt": 2,
+   "tag": "r3_c28_k2",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 95.0,
+    "timeout": 120
+   }
+  },
+  "r3_c29": {
+   "cond": "((fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd6)) & (!dut_head[0])",
+   "ops": [
+    {
+     "op": "abstract_value",
+     "target": "data_in"
+    }
+   ],
+   "status": "proved",
+   "round": 3,
+   "parent": "r2_c22",
+   "fixed": {
+    "dut_head": 1
+   },
+   "direction": null,
+   "attempt": 2,
+   "tag": "r3_c29_k2",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 98.8,
+    "timeout": 120
+   }
+  },
+  "r3_c30": {
+   "cond": "((fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd7)) & (dut_head[0])",
+   "ops": [
+    {
+     "op": "abstract_value",
+     "target": "data_in"
+    }
+   ],
+   "status": "split",
+   "round": 3,
+   "parent": "r2_c23",
+   "fixed": {
+    "dut_head": 1
+   },
+   "direction": null,
+   "attempt": 2,
+   "tag": "r3_c30_k2",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 120.0,
+    "timeout": 120
+   },
+   "children": [
+    "r6_c16",
+    "r6_c17",
+    "r6_c18",
+    "r6_c19",
+    "r6_c20",
+    "r6_c21",
+    "r6_c22",
+    "r6_c23",
+    "r6_c24",
+    "r6_c25",
+    "r6_c26",
+    "r6_c27",
+    "r6_c28",
+    "r6_c29",
+    "r6_c30",
+    "r6_c31"
+   ]
+  },
+  "r3_c31": {
+   "cond": "((fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd7)) & (!dut_head[0])",
+   "ops": [
+    {
+     "op": "abstract_value",
+     "target": "data_in"
+    }
+   ],
+   "status": "proved",
+   "round": 3,
+   "parent": "r2_c23",
+   "fixed": {
+    "dut_head": 1
+   },
+   "direction": null,
+   "attempt": 2,
+   "tag": "r3_c31_k2",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 115.3,
+    "timeout": 120
+   }
+  },
+  "r5_c0": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd0)) & (dut_head[0:0] == 1'd0)) & ((dut_size == fv_env_fifo_size) && ((dut_tail - dut_head) == (fv_env_ref_fifo_tail - fv_env_ref_fifo_head)))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_15"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r3_c0",
+   "fixed": {
+    "dut_head": 0
+   },
+   "direction": null,
+   "attempt": 0,
+   "tag": "r5_c0_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 5.3,
+    "timeout": 120
+   }
+  },
+  "r5_c1": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd0)) & (dut_head[0:0] == 1'd0)) & (!((dut_size == fv_env_fifo_size) && ((dut_tail - dut_head) == (fv_env_ref_fifo_tail - fv_env_ref_fifo_head))))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_15"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r3_c0",
+   "fixed": {
+    "dut_head": 0
+   },
+   "direction": null,
+   "attempt": 0,
+   "tag": "r5_c1_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 24.3,
+    "timeout": 120
+   }
+  },
+  "r5_c2": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd0)) & (dut_head[0:0] == 1'd1)) & ((dut_size == fv_env_fifo_size) && ((dut_tail - dut_head) == (fv_env_ref_fifo_tail - fv_env_ref_fifo_head)))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_15"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r3_c1",
+   "fixed": {
+    "dut_head": 0
+   },
+   "direction": null,
+   "attempt": 0,
+   "tag": "r5_c2_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 3.4,
+    "timeout": 120
+   }
+  },
+  "r5_c3": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd0)) & (dut_head[0:0] == 1'd1)) & (!((dut_size == fv_env_fifo_size) && ((dut_tail - dut_head) == (fv_env_ref_fifo_tail - fv_env_ref_fifo_head))))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_15"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r3_c1",
+   "fixed": {
+    "dut_head": 0
+   },
+   "direction": null,
+   "attempt": 0,
+   "tag": "r5_c3_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 28.3,
+    "timeout": 120
+   }
+  },
+  "r5_c4": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd1)) & (dut_head[0:0] == 1'd0)) & ((dut_size == fv_env_fifo_size) && ((dut_tail - dut_head) == (fv_env_ref_fifo_tail - fv_env_ref_fifo_head)))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_15"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r3_c2",
+   "fixed": {
+    "dut_head": 0
+   },
+   "direction": null,
+   "attempt": 0,
+   "tag": "r5_c4_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 6.5,
+    "timeout": 120
+   }
+  },
+  "r5_c5": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd1)) & (dut_head[0:0] == 1'd0)) & (!((dut_size == fv_env_fifo_size) && ((dut_tail - dut_head) == (fv_env_ref_fifo_tail - fv_env_ref_fifo_head))))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_15"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r3_c2",
+   "fixed": {
+    "dut_head": 0
+   },
+   "direction": null,
+   "attempt": 0,
+   "tag": "r5_c5_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 29.3,
+    "timeout": 120
+   }
+  },
+  "r5_c6": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd1)) & (dut_head[0:0] == 1'd1)) & ((dut_size == fv_env_fifo_size) && ((dut_tail - dut_head) == (fv_env_ref_fifo_tail - fv_env_ref_fifo_head)))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_15"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r3_c3",
+   "fixed": {
+    "dut_head": 0
+   },
+   "direction": null,
+   "attempt": 0,
+   "tag": "r5_c6_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 1.4,
+    "timeout": 120
+   }
+  },
+  "r5_c7": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd1)) & (dut_head[0:0] == 1'd1)) & (!((dut_size == fv_env_fifo_size) && ((dut_tail - dut_head) == (fv_env_ref_fifo_tail - fv_env_ref_fifo_head))))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_15"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r3_c3",
+   "fixed": {
+    "dut_head": 0
+   },
+   "direction": null,
+   "attempt": 0,
+   "tag": "r5_c7_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 17.0,
+    "timeout": 120
+   }
+  },
+  "r5_c8": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd2)) & (dut_head[0:0] == 1'd0)) & ((dut_size == fv_env_fifo_size) && ((dut_tail - dut_head) == (fv_env_ref_fifo_tail - fv_env_ref_fifo_head)))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_15"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r3_c4",
+   "fixed": {
+    "dut_head": 0
+   },
+   "direction": null,
+   "attempt": 0,
+   "tag": "r5_c8_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 2.5,
+    "timeout": 120
+   }
+  },
+  "r5_c9": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd2)) & (dut_head[0:0] == 1'd0)) & (!((dut_size == fv_env_fifo_size) && ((dut_tail - dut_head) == (fv_env_ref_fifo_tail - fv_env_ref_fifo_head))))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_15"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r3_c4",
+   "fixed": {
+    "dut_head": 0
+   },
+   "direction": null,
+   "attempt": 0,
+   "tag": "r5_c9_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 41.0,
+    "timeout": 120
+   }
+  },
+  "r5_c10": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd2)) & (dut_head[0:0] == 1'd1)) & ((dut_size == fv_env_fifo_size) && ((dut_tail - dut_head) == (fv_env_ref_fifo_tail - fv_env_ref_fifo_head)))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_15"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r3_c5",
+   "fixed": {
+    "dut_head": 0
+   },
+   "direction": null,
+   "attempt": 0,
+   "tag": "r5_c10_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 3.6,
+    "timeout": 120
+   }
+  },
+  "r5_c11": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd2)) & (dut_head[0:0] == 1'd1)) & (!((dut_size == fv_env_fifo_size) && ((dut_tail - dut_head) == (fv_env_ref_fifo_tail - fv_env_ref_fifo_head))))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_15"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r3_c5",
+   "fixed": {
+    "dut_head": 0
+   },
+   "direction": null,
+   "attempt": 0,
+   "tag": "r5_c11_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 38.5,
+    "timeout": 120
+   }
+  },
+  "r5_c12": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd3)) & (dut_head[0:0] == 1'd0)) & ((dut_size == fv_env_fifo_size) && ((dut_tail - dut_head) == (fv_env_ref_fifo_tail - fv_env_ref_fifo_head)))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_15"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r3_c6",
+   "fixed": {
+    "dut_head": 0
+   },
+   "direction": null,
+   "attempt": 0,
+   "tag": "r5_c12_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 3.5,
+    "timeout": 120
+   }
+  },
+  "r5_c13": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd3)) & (dut_head[0:0] == 1'd0)) & (!((dut_size == fv_env_fifo_size) && ((dut_tail - dut_head) == (fv_env_ref_fifo_tail - fv_env_ref_fifo_head))))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_15"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r3_c6",
+   "fixed": {
+    "dut_head": 0
+   },
+   "direction": null,
+   "attempt": 0,
+   "tag": "r5_c13_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 48.9,
+    "timeout": 120
+   }
+  },
+  "r5_c14": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd3)) & (dut_head[0:0] == 1'd1)) & ((dut_size == fv_env_fifo_size) && ((dut_tail - dut_head) == (fv_env_ref_fifo_tail - fv_env_ref_fifo_head)))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_15"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r3_c7",
+   "fixed": {
+    "dut_head": 0
+   },
+   "direction": null,
+   "attempt": 0,
+   "tag": "r5_c14_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 5.0,
+    "timeout": 120
+   }
+  },
+  "r5_c15": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd3)) & (dut_head[0:0] == 1'd1)) & (!((dut_size == fv_env_fifo_size) && ((dut_tail - dut_head) == (fv_env_ref_fifo_tail - fv_env_ref_fifo_head))))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_15"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r3_c7",
+   "fixed": {
+    "dut_head": 0
+   },
+   "direction": null,
+   "attempt": 0,
+   "tag": "r5_c15_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 31.3,
+    "timeout": 120
+   }
+  },
+  "r5_c16": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd4)) & (dut_head[0:0] == 1'd0)) & ((dut_size == fv_env_fifo_size) && ((dut_tail - dut_head) == (fv_env_ref_fifo_tail - fv_env_ref_fifo_head)))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_15"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r3_c8",
+   "fixed": {
+    "dut_head": 0
+   },
+   "direction": null,
+   "attempt": 0,
+   "tag": "r5_c16_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 4.6,
+    "timeout": 120
+   }
+  },
+  "r5_c17": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd4)) & (dut_head[0:0] == 1'd0)) & (!((dut_size == fv_env_fifo_size) && ((dut_tail - dut_head) == (fv_env_ref_fifo_tail - fv_env_ref_fifo_head))))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_15"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r3_c8",
+   "fixed": {
+    "dut_head": 0
+   },
+   "direction": null,
+   "attempt": 0,
+   "tag": "r5_c17_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 19.3,
+    "timeout": 120
+   }
+  },
+  "r5_c18": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd4)) & (dut_head[0:0] == 1'd1)) & ((dut_size == fv_env_fifo_size) && ((dut_tail - dut_head) == (fv_env_ref_fifo_tail - fv_env_ref_fifo_head)))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_15"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r3_c9",
+   "fixed": {
+    "dut_head": 0
+   },
+   "direction": null,
+   "attempt": 0,
+   "tag": "r5_c18_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 8.4,
+    "timeout": 120
+   }
+  },
+  "r5_c19": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd4)) & (dut_head[0:0] == 1'd1)) & (!((dut_size == fv_env_fifo_size) && ((dut_tail - dut_head) == (fv_env_ref_fifo_tail - fv_env_ref_fifo_head))))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_15"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r3_c9",
+   "fixed": {
+    "dut_head": 0
+   },
+   "direction": null,
+   "attempt": 0,
+   "tag": "r5_c19_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 59.7,
+    "timeout": 120
+   }
+  },
+  "r5_c20": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd5)) & (dut_head[0:0] == 1'd0)) & ((dut_size == fv_env_fifo_size) && ((dut_tail - dut_head) == (fv_env_ref_fifo_tail - fv_env_ref_fifo_head)))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_15"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r3_c10",
+   "fixed": {
+    "dut_head": 0
+   },
+   "direction": null,
+   "attempt": 0,
+   "tag": "r5_c20_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 3.7,
+    "timeout": 120
+   }
+  },
+  "r5_c21": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd5)) & (dut_head[0:0] == 1'd0)) & (!((dut_size == fv_env_fifo_size) && ((dut_tail - dut_head) == (fv_env_ref_fifo_tail - fv_env_ref_fifo_head))))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_15"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r3_c10",
+   "fixed": {
+    "dut_head": 0
+   },
+   "direction": null,
+   "attempt": 0,
+   "tag": "r5_c21_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 45.1,
+    "timeout": 120
+   }
+  },
+  "r5_c22": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd5)) & (dut_head[0:0] == 1'd1)) & ((dut_size == fv_env_fifo_size) && ((dut_tail - dut_head) == (fv_env_ref_fifo_tail - fv_env_ref_fifo_head)))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_15"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r3_c11",
+   "fixed": {
+    "dut_head": 0
+   },
+   "direction": null,
+   "attempt": 0,
+   "tag": "r5_c22_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 3.5,
+    "timeout": 120
+   }
+  },
+  "r5_c23": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd5)) & (dut_head[0:0] == 1'd1)) & (!((dut_size == fv_env_fifo_size) && ((dut_tail - dut_head) == (fv_env_ref_fifo_tail - fv_env_ref_fifo_head))))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_15"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r3_c11",
+   "fixed": {
+    "dut_head": 0
+   },
+   "direction": null,
+   "attempt": 0,
+   "tag": "r5_c23_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 27.4,
+    "timeout": 120
+   }
+  },
+  "r5_c24": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd6)) & (dut_head[0:0] == 1'd0)) & ((dut_size == fv_env_fifo_size) && ((dut_tail - dut_head) == (fv_env_ref_fifo_tail - fv_env_ref_fifo_head)))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_15"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r3_c12",
+   "fixed": {
+    "dut_head": 0
+   },
+   "direction": null,
+   "attempt": 0,
+   "tag": "r5_c24_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 2.4,
+    "timeout": 120
+   }
+  },
+  "r5_c25": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd6)) & (dut_head[0:0] == 1'd0)) & (!((dut_size == fv_env_fifo_size) && ((dut_tail - dut_head) == (fv_env_ref_fifo_tail - fv_env_ref_fifo_head))))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_15"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r3_c12",
+   "fixed": {
+    "dut_head": 0
+   },
+   "direction": null,
+   "attempt": 0,
+   "tag": "r5_c25_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 22.2,
+    "timeout": 120
+   }
+  },
+  "r5_c26": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd6)) & (dut_head[0:0] == 1'd1)) & ((dut_size == fv_env_fifo_size) && ((dut_tail - dut_head) == (fv_env_ref_fifo_tail - fv_env_ref_fifo_head)))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_15"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r3_c13",
+   "fixed": {
+    "dut_head": 0
+   },
+   "direction": null,
+   "attempt": 0,
+   "tag": "r5_c26_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 11.5,
+    "timeout": 120
+   }
+  },
+  "r5_c27": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd6)) & (dut_head[0:0] == 1'd1)) & (!((dut_size == fv_env_fifo_size) && ((dut_tail - dut_head) == (fv_env_ref_fifo_tail - fv_env_ref_fifo_head))))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_15"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r3_c13",
+   "fixed": {
+    "dut_head": 0
+   },
+   "direction": null,
+   "attempt": 0,
+   "tag": "r5_c27_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 39.7,
+    "timeout": 120
+   }
+  },
+  "r5_c28": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd7)) & (dut_head[0:0] == 1'd0)) & ((dut_size == fv_env_fifo_size) && ((dut_tail - dut_head) == (fv_env_ref_fifo_tail - fv_env_ref_fifo_head)))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_15"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r3_c14",
+   "fixed": {
+    "dut_head": 0
+   },
+   "direction": null,
+   "attempt": 0,
+   "tag": "r5_c28_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 4.9,
+    "timeout": 120
+   }
+  },
+  "r5_c29": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head == fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd7)) & (dut_head[0:0] == 1'd0)) & (!((dut_size == fv_env_fifo_size) && ((dut_tail - dut_head) == (fv_env_ref_fifo_tail - fv_env_ref_fifo_head))))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_15"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r3_c14",
+   "fixed": {
+    "dut_head": 0
+   },
+   "direction": null,
+   "attempt": 0,
+   "tag": "r5_c29_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 28.7,
+    "timeout": 120
+   }
+  },
+  "r5_c30": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd0)) & (dut_head[0])) & ((dut_size == fv_env_fifo_size) && ((dut_tail - dut_head) == (fv_env_ref_fifo_tail - fv_env_ref_fifo_head)))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_15"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_1"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r3_c16",
+   "fixed": {
+    "dut_head": 1
+   },
+   "direction": null,
+   "attempt": 0,
+   "tag": "r5_c30_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 34.1,
+    "timeout": 120
+   }
+  },
+  "r5_c31": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd0)) & (dut_head[0])) & (!((dut_size == fv_env_fifo_size) && ((dut_tail - dut_head) == (fv_env_ref_fifo_tail - fv_env_ref_fifo_head))))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "dut_buffer_15"
+    },
+    {
+     "op": "abstract_state",
+     "target": "fv_env_ref_fifo_1"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r3_c16",
+   "fixed": {
+    "dut_head": 1
+   },
+   "direction": null,
+   "attempt": 0,
+   "tag": "r5_c31_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 54.9,
+    "timeout": 120
+   }
+  },
+  "r6_c0": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd1)) & (!dut_head[0])) & (fv_env_ref_fifo_head[4:1] == 4'd0)",
+   "ops": [
+    {
+     "op": "abstract_value",
+     "target": "data_in"
+    }
+   ],
+   "status": "proved",
+   "round": 6,
+   "parent": "r3_c19",
+   "fixed": {
+    "dut_head": 1,
+    "fv_env_ref_fifo_head": 1
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c0_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 20.1,
+    "timeout": 120
+   }
+  },
+  "r6_c1": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd1)) & (!dut_head[0])) & (fv_env_ref_fifo_head[4:1] == 4'd1)",
+   "ops": [
+    {
+     "op": "abstract_value",
+     "target": "data_in"
+    }
+   ],
+   "status": "proved",
+   "round": 6,
+   "parent": "r3_c19",
+   "fixed": {
+    "dut_head": 1,
+    "fv_env_ref_fifo_head": 1
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c1_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 46.3,
+    "timeout": 120
+   }
+  },
+  "r6_c2": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd1)) & (!dut_head[0])) & (fv_env_ref_fifo_head[4:1] == 4'd2)",
+   "ops": [
+    {
+     "op": "abstract_value",
+     "target": "data_in"
+    }
+   ],
+   "status": "proved",
+   "round": 6,
+   "parent": "r3_c19",
+   "fixed": {
+    "dut_head": 1,
+    "fv_env_ref_fifo_head": 1
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c2_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 39.0,
+    "timeout": 120
+   }
+  },
+  "r6_c3": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd1)) & (!dut_head[0])) & (fv_env_ref_fifo_head[4:1] == 4'd3)",
+   "ops": [
+    {
+     "op": "abstract_value",
+     "target": "data_in"
+    }
+   ],
+   "status": "proved",
+   "round": 6,
+   "parent": "r3_c19",
+   "fixed": {
+    "dut_head": 1,
+    "fv_env_ref_fifo_head": 1
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c3_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 36.8,
+    "timeout": 120
+   }
+  },
+  "r6_c4": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd1)) & (!dut_head[0])) & (fv_env_ref_fifo_head[4:1] == 4'd4)",
+   "ops": [
+    {
+     "op": "abstract_value",
+     "target": "data_in"
+    }
+   ],
+   "status": "proved",
+   "round": 6,
+   "parent": "r3_c19",
+   "fixed": {
+    "dut_head": 1,
+    "fv_env_ref_fifo_head": 1
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c4_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 46.3,
+    "timeout": 120
+   }
+  },
+  "r6_c5": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd1)) & (!dut_head[0])) & (fv_env_ref_fifo_head[4:1] == 4'd5)",
+   "ops": [
+    {
+     "op": "abstract_value",
+     "target": "data_in"
+    }
+   ],
+   "status": "proved",
+   "round": 6,
+   "parent": "r3_c19",
+   "fixed": {
+    "dut_head": 1,
+    "fv_env_ref_fifo_head": 1
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c5_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 53.1,
+    "timeout": 120
+   }
+  },
+  "r6_c6": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd1)) & (!dut_head[0])) & (fv_env_ref_fifo_head[4:1] == 4'd6)",
+   "ops": [
+    {
+     "op": "abstract_value",
+     "target": "data_in"
+    }
+   ],
+   "status": "proved",
+   "round": 6,
+   "parent": "r3_c19",
+   "fixed": {
+    "dut_head": 1,
+    "fv_env_ref_fifo_head": 1
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c6_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 21.4,
+    "timeout": 120
+   }
+  },
+  "r6_c7": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd1)) & (!dut_head[0])) & (fv_env_ref_fifo_head[4:1] == 4'd7)",
+   "ops": [
+    {
+     "op": "abstract_value",
+     "target": "data_in"
+    }
+   ],
+   "status": "proved",
+   "round": 6,
+   "parent": "r3_c19",
+   "fixed": {
+    "dut_head": 1,
+    "fv_env_ref_fifo_head": 1
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c7_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 36.0,
+    "timeout": 120
+   }
+  },
+  "r6_c8": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd1)) & (!dut_head[0])) & (fv_env_ref_fifo_head[4:1] == 4'd8)",
+   "ops": [
+    {
+     "op": "abstract_value",
+     "target": "data_in"
+    }
+   ],
+   "status": "proved",
+   "round": 6,
+   "parent": "r3_c19",
+   "fixed": {
+    "dut_head": 1,
+    "fv_env_ref_fifo_head": 1
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c8_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 0.1,
+    "timeout": 120
+   }
+  },
+  "r6_c9": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd1)) & (!dut_head[0])) & (fv_env_ref_fifo_head[4:1] == 4'd9)",
+   "ops": [
+    {
+     "op": "abstract_value",
+     "target": "data_in"
+    }
+   ],
+   "status": "proved",
+   "round": 6,
+   "parent": "r3_c19",
+   "fixed": {
+    "dut_head": 1,
+    "fv_env_ref_fifo_head": 1
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c9_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 0.1,
+    "timeout": 120
+   }
+  },
+  "r6_c10": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd1)) & (!dut_head[0])) & (fv_env_ref_fifo_head[4:1] == 4'd10)",
+   "ops": [
+    {
+     "op": "abstract_value",
+     "target": "data_in"
+    }
+   ],
+   "status": "proved",
+   "round": 6,
+   "parent": "r3_c19",
+   "fixed": {
+    "dut_head": 1,
+    "fv_env_ref_fifo_head": 1
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c10_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 0.1,
+    "timeout": 120
+   }
+  },
+  "r6_c11": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd1)) & (!dut_head[0])) & (fv_env_ref_fifo_head[4:1] == 4'd11)",
+   "ops": [
+    {
+     "op": "abstract_value",
+     "target": "data_in"
+    }
+   ],
+   "status": "proved",
+   "round": 6,
+   "parent": "r3_c19",
+   "fixed": {
+    "dut_head": 1,
+    "fv_env_ref_fifo_head": 1
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c11_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 0.1,
+    "timeout": 120
+   }
+  },
+  "r6_c12": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd1)) & (!dut_head[0])) & (fv_env_ref_fifo_head[4:1] == 4'd12)",
+   "ops": [
+    {
+     "op": "abstract_value",
+     "target": "data_in"
+    }
+   ],
+   "status": "proved",
+   "round": 6,
+   "parent": "r3_c19",
+   "fixed": {
+    "dut_head": 1,
+    "fv_env_ref_fifo_head": 1
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c12_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 0.2,
+    "timeout": 120
+   }
+  },
+  "r6_c13": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd1)) & (!dut_head[0])) & (fv_env_ref_fifo_head[4:1] == 4'd13)",
+   "ops": [
+    {
+     "op": "abstract_value",
+     "target": "data_in"
+    }
+   ],
+   "status": "proved",
+   "round": 6,
+   "parent": "r3_c19",
+   "fixed": {
+    "dut_head": 1,
+    "fv_env_ref_fifo_head": 1
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c13_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 0.1,
+    "timeout": 120
+   }
+  },
+  "r6_c14": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd1)) & (!dut_head[0])) & (fv_env_ref_fifo_head[4:1] == 4'd14)",
+   "ops": [
+    {
+     "op": "abstract_value",
+     "target": "data_in"
+    }
+   ],
+   "status": "proved",
+   "round": 6,
+   "parent": "r3_c19",
+   "fixed": {
+    "dut_head": 1,
+    "fv_env_ref_fifo_head": 1
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c14_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 0.1,
+    "timeout": 120
+   }
+  },
+  "r6_c15": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd1)) & (!dut_head[0])) & (fv_env_ref_fifo_head[4:1] == 4'd15)",
+   "ops": [
+    {
+     "op": "abstract_value",
+     "target": "data_in"
+    }
+   ],
+   "status": "proved",
+   "round": 6,
+   "parent": "r3_c19",
+   "fixed": {
+    "dut_head": 1,
+    "fv_env_ref_fifo_head": 1
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c15_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 0.1,
+    "timeout": 120
+   }
+  },
+  "r6_c16": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd7)) & (dut_head[0])) & (fv_env_ref_fifo_head[4:1] == 4'd0)",
+   "ops": [
+    {
+     "op": "abstract_value",
+     "target": "data_in"
+    }
+   ],
+   "status": "proved",
+   "round": 6,
+   "parent": "r3_c30",
+   "fixed": {
+    "dut_head": 1,
+    "fv_env_ref_fifo_head": 1
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c16_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 33.6,
+    "timeout": 120
+   }
+  },
+  "r6_c17": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd7)) & (dut_head[0])) & (fv_env_ref_fifo_head[4:1] == 4'd1)",
+   "ops": [
+    {
+     "op": "abstract_value",
+     "target": "data_in"
+    }
+   ],
+   "status": "proved",
+   "round": 6,
+   "parent": "r3_c30",
+   "fixed": {
+    "dut_head": 1,
+    "fv_env_ref_fifo_head": 1
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c17_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 30.3,
+    "timeout": 120
+   }
+  },
+  "r6_c18": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd7)) & (dut_head[0])) & (fv_env_ref_fifo_head[4:1] == 4'd2)",
+   "ops": [
+    {
+     "op": "abstract_value",
+     "target": "data_in"
+    }
+   ],
+   "status": "proved",
+   "round": 6,
+   "parent": "r3_c30",
+   "fixed": {
+    "dut_head": 1,
+    "fv_env_ref_fifo_head": 1
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c18_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 21.1,
+    "timeout": 120
+   }
+  },
+  "r6_c19": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd7)) & (dut_head[0])) & (fv_env_ref_fifo_head[4:1] == 4'd3)",
+   "ops": [
+    {
+     "op": "abstract_value",
+     "target": "data_in"
+    }
+   ],
+   "status": "proved",
+   "round": 6,
+   "parent": "r3_c30",
+   "fixed": {
+    "dut_head": 1,
+    "fv_env_ref_fifo_head": 1
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c19_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 33.1,
+    "timeout": 120
+   }
+  },
+  "r6_c20": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd7)) & (dut_head[0])) & (fv_env_ref_fifo_head[4:1] == 4'd4)",
+   "ops": [
+    {
+     "op": "abstract_value",
+     "target": "data_in"
+    }
+   ],
+   "status": "proved",
+   "round": 6,
+   "parent": "r3_c30",
+   "fixed": {
+    "dut_head": 1,
+    "fv_env_ref_fifo_head": 1
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c20_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 16.3,
+    "timeout": 120
+   }
+  },
+  "r6_c21": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd7)) & (dut_head[0])) & (fv_env_ref_fifo_head[4:1] == 4'd5)",
+   "ops": [
+    {
+     "op": "abstract_value",
+     "target": "data_in"
+    }
+   ],
+   "status": "proved",
+   "round": 6,
+   "parent": "r3_c30",
+   "fixed": {
+    "dut_head": 1,
+    "fv_env_ref_fifo_head": 1
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c21_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 22.9,
+    "timeout": 120
+   }
+  },
+  "r6_c22": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd7)) & (dut_head[0])) & (fv_env_ref_fifo_head[4:1] == 4'd6)",
+   "ops": [
+    {
+     "op": "abstract_value",
+     "target": "data_in"
+    }
+   ],
+   "status": "proved",
+   "round": 6,
+   "parent": "r3_c30",
+   "fixed": {
+    "dut_head": 1,
+    "fv_env_ref_fifo_head": 1
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c22_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 19.0,
+    "timeout": 120
+   }
+  },
+  "r6_c23": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd7)) & (dut_head[0])) & (fv_env_ref_fifo_head[4:1] == 4'd7)",
+   "ops": [
+    {
+     "op": "abstract_value",
+     "target": "data_in"
+    }
+   ],
+   "status": "proved",
+   "round": 6,
+   "parent": "r3_c30",
+   "fixed": {
+    "dut_head": 1,
+    "fv_env_ref_fifo_head": 1
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c23_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 16.5,
+    "timeout": 120
+   }
+  },
+  "r6_c24": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd7)) & (dut_head[0])) & (fv_env_ref_fifo_head[4:1] == 4'd8)",
+   "ops": [
+    {
+     "op": "abstract_value",
+     "target": "data_in"
+    }
+   ],
+   "status": "proved",
+   "round": 6,
+   "parent": "r3_c30",
+   "fixed": {
+    "dut_head": 1,
+    "fv_env_ref_fifo_head": 1
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c24_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 0.2,
+    "timeout": 120
+   }
+  },
+  "r6_c25": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd7)) & (dut_head[0])) & (fv_env_ref_fifo_head[4:1] == 4'd9)",
+   "ops": [
+    {
+     "op": "abstract_value",
+     "target": "data_in"
+    }
+   ],
+   "status": "proved",
+   "round": 6,
+   "parent": "r3_c30",
+   "fixed": {
+    "dut_head": 1,
+    "fv_env_ref_fifo_head": 1
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c25_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 0.1,
+    "timeout": 120
+   }
+  },
+  "r6_c26": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd7)) & (dut_head[0])) & (fv_env_ref_fifo_head[4:1] == 4'd10)",
+   "ops": [
+    {
+     "op": "abstract_value",
+     "target": "data_in"
+    }
+   ],
+   "status": "proved",
+   "round": 6,
+   "parent": "r3_c30",
+   "fixed": {
+    "dut_head": 1,
+    "fv_env_ref_fifo_head": 1
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c26_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 0.1,
+    "timeout": 120
+   }
+  },
+  "r6_c27": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd7)) & (dut_head[0])) & (fv_env_ref_fifo_head[4:1] == 4'd11)",
+   "ops": [
+    {
+     "op": "abstract_value",
+     "target": "data_in"
+    }
+   ],
+   "status": "proved",
+   "round": 6,
+   "parent": "r3_c30",
+   "fixed": {
+    "dut_head": 1,
+    "fv_env_ref_fifo_head": 1
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c27_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 0.1,
+    "timeout": 120
+   }
+  },
+  "r6_c28": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd7)) & (dut_head[0])) & (fv_env_ref_fifo_head[4:1] == 4'd12)",
+   "ops": [
+    {
+     "op": "abstract_value",
+     "target": "data_in"
+    }
+   ],
+   "status": "proved",
+   "round": 6,
+   "parent": "r3_c30",
+   "fixed": {
+    "dut_head": 1,
+    "fv_env_ref_fifo_head": 1
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c28_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 0.1,
+    "timeout": 120
+   }
+  },
+  "r6_c29": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd7)) & (dut_head[0])) & (fv_env_ref_fifo_head[4:1] == 4'd13)",
+   "ops": [
+    {
+     "op": "abstract_value",
+     "target": "data_in"
+    }
+   ],
+   "status": "proved",
+   "round": 6,
+   "parent": "r3_c30",
+   "fixed": {
+    "dut_head": 1,
+    "fv_env_ref_fifo_head": 1
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c29_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 0.1,
+    "timeout": 120
+   }
+  },
+  "r6_c30": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd7)) & (dut_head[0])) & (fv_env_ref_fifo_head[4:1] == 4'd14)",
+   "ops": [
+    {
+     "op": "abstract_value",
+     "target": "data_in"
+    }
+   ],
+   "status": "proved",
+   "round": 6,
+   "parent": "r3_c30",
+   "fixed": {
+    "dut_head": 1,
+    "fv_env_ref_fifo_head": 1
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c30_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 0.2,
+    "timeout": 120
+   }
+  },
+  "r6_c31": {
+   "cond": "(((fv_env_fifo_size != 0 && pop && dut_head != fv_env_ref_fifo_head) & (dut_head[4:1] == 4'd7)) & (dut_head[0])) & (fv_env_ref_fifo_head[4:1] == 4'd15)",
+   "ops": [
+    {
+     "op": "abstract_value",
+     "target": "data_in"
+    }
+   ],
+   "status": "proved",
+   "round": 6,
+   "parent": "r3_c30",
+   "fixed": {
+    "dut_head": 1,
+    "fv_env_ref_fifo_head": 1
+   },
+   "direction": {
+    "index": "fv_env_ref_fifo_head",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c31_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 0.1,
+    "timeout": 120
+   }
+  }
+ },
+ "cum": {
+  "input_tokens": 118624,
+  "output_tokens": 87096,
+  "cache_hit": 0,
+  "cache_miss": 0,
+  "cost_usd": 0.11989401599999999,
+  "latency_s": 518.2109041213989
+ }
+}

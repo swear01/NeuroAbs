@@ -1,0 +1,17 @@
+read_verilog -sv -formal  /var/tmp/agentic-ic3-runtime/bench/cold/llmm-simple_cam_16_ebmc/prep/simple_cam_16_ebmc.sv
+prep -top simple_cam
+flatten
+hierarchy -check
+delete t:$print
+chformal -lower
+memory -nomap
+memory_map
+opt_clean
+async2sync
+dffunmap
+setundef -undriven -anyseq
+setundef -anyseq
+opt_clean
+check -assert
+stat
+write_btor -s /var/tmp/agentic-ic3-runtime/bench/cold/llmm-simple_cam_16_ebmc/model.btor2

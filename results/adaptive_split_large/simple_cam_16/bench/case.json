@@ -1,0 +1,8 @@
+{
+ "top": "simple_cam",
+ "sv": "bench/prep/simple_cam_16_ebmc.sv",
+ "rtl": "bench/prep/simple_cam_16_ebmc.sv",
+ "property": "The model has one assertion, checked in every cycle: !rst -> (!(chosen & chosen_not_popped & (lookup_id == chosen_push_id)) || (|lookup_match)). I.e. a CAM id that was pushed and never popped since must be found by lookup.",
+ "unavailable": "",
+ "mem_havoc": "The cam array is flattened into registers (the 16 entries are slices of cam); abstract_state on cam, cam_valid or entity_cnt is an entry havoc."
+}

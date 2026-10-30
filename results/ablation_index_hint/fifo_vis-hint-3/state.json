@@ -1,0 +1,6989 @@
+{
+ "round": 5,
+ "calls": 10,
+ "signals": [
+  {
+   "name": "srFull",
+   "id": "srFull",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "srEmpty",
+   "id": "srEmpty",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "srDataOut",
+   "id": "srDataOut",
+   "width": 4,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "rst",
+   "id": "rst",
+   "width": 1,
+   "input": true,
+   "state": false
+  },
+  {
+   "name": "rbFull",
+   "id": "rbFull",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "rbEmpty",
+   "id": "rbEmpty",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "rbDataOut",
+   "id": "rbDataOut",
+   "width": 4,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "push",
+   "id": "push",
+   "width": 1,
+   "input": true,
+   "state": false
+  },
+  {
+   "name": "pop",
+   "id": "pop",
+   "width": 1,
+   "input": true,
+   "state": false
+  },
+  {
+   "name": "equal",
+   "id": "equal",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "dataIn",
+   "id": "dataIn",
+   "width": 4,
+   "input": true,
+   "state": false
+  },
+  {
+   "name": "__bb_first",
+   "id": "bb_first",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "sr.dataOut",
+   "id": "sr_dataOut",
+   "width": 4,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "sr.empty",
+   "id": "sr_empty",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "sr.full",
+   "id": "sr_full",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "sr.mem[0]",
+   "id": "sr_mem_0",
+   "width": 4,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "sr.mem[10]",
+   "id": "sr_mem_10",
+   "width": 4,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "sr.mem[11]",
+   "id": "sr_mem_11",
+   "width": 4,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "sr.mem[12]",
+   "id": "sr_mem_12",
+   "width": 4,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "sr.mem[13]",
+   "id": "sr_mem_13",
+   "width": 4,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "sr.mem[14]",
+   "id": "sr_mem_14",
+   "width": 4,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "sr.mem[15]",
+   "id": "sr_mem_15",
+   "width": 4,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "sr.mem[1]",
+   "id": "sr_mem_1",
+   "width": 4,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "sr.mem[2]",
+   "id": "sr_mem_2",
+   "width": 4,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "sr.mem[3]",
+   "id": "sr_mem_3",
+   "width": 4,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "sr.mem[4]",
+   "id": "sr_mem_4",
+   "width": 4,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "sr.mem[5]",
+   "id": "sr_mem_5",
+   "width": 4,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "sr.mem[6]",
+   "id": "sr_mem_6",
+   "width": 4,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "sr.mem[7]",
+   "id": "sr_mem_7",
+   "width": 4,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "sr.mem[8]",
+   "id": "sr_mem_8",
+   "width": 4,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "sr.mem[9]",
+   "id": "sr_mem_9",
+   "width": 4,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "sr.tail",
+   "id": "sr_tail",
+   "width": 4,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "rb.dataOut",
+   "id": "rb_dataOut",
+   "width": 4,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "rb.empty",
+   "id": "rb_empty",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "rb.full",
+   "id": "rb_full",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "rb.head",
+   "id": "rb_head",
+   "width": 4,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "rb.tail",
+   "id": "rb_tail",
+   "width": 4,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "rb.mem[0]",
+   "id": "rb_mem_0",
+   "width": 4,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "rb.mem[1]",
+   "id": "rb_mem_1",
+   "width": 4,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "rb.mem[2]",
+   "id": "rb_mem_2",
+   "width": 4,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "rb.mem[3]",
+   "id": "rb_mem_3",
+   "width": 4,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "rb.mem[4]",
+   "id": "rb_mem_4",
+   "width": 4,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "rb.mem[5]",
+   "id": "rb_mem_5",
+   "width": 4,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "rb.mem[6]",
+   "id": "rb_mem_6",
+   "width": 4,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "rb.mem[7]",
+   "id": "rb_mem_7",
+   "width": 4,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "rb.mem[8]",
+   "id": "rb_mem_8",
+   "width": 4,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "rb.mem[9]",
+   "id": "rb_mem_9",
+   "width": 4,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "rb.mem[10]",
+   "id": "rb_mem_10",
+   "width": 4,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "rb.mem[11]",
+   "id": "rb_mem_11",
+   "width": 4,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "rb.mem[12]",
+   "id": "rb_mem_12",
+   "width": 4,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "rb.mem[13]",
+   "id": "rb_mem_13",
+   "width": 4,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "rb.mem[14]",
+   "id": "rb_mem_14",
+   "width": 4,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "rb.mem[15]",
+   "id": "rb_mem_15",
+   "width": 4,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "prop_a",
+   "id": "prop_a",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "prop_en",
+   "id": "prop_en",
+   "width": 1,
+   "input": false,
+   "state": false
+  }
+ ],
+ "pieces": {
+  "r1_c0": {
+   "cond": "sr_tail[3:0] == 4'd0",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    }
+   ],
+   "status": "split",
+   "round": 1,
+   "parent": null,
+   "fixed": {
+    "sr_tail": 0
+   },
+   "direction": {
+    "index": "sr_tail",
+    "auto": true
+   },
+   "attempt": 1,
+   "tag": "r1_c0_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r3_c4",
+    "r3_c5"
+   ]
+  },
+  "r1_c1": {
+   "cond": "sr_tail[3:0] == 4'd1",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    }
+   ],
+   "status": "split",
+   "round": 1,
+   "parent": null,
+   "fixed": {
+    "sr_tail": 0
+   },
+   "direction": {
+    "index": "sr_tail",
+    "auto": true
+   },
+   "attempt": 1,
+   "tag": "r1_c1_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r3_c6",
+    "r3_c7"
+   ]
+  },
+  "r1_c2": {
+   "cond": "sr_tail[3:0] == 4'd2",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    }
+   ],
+   "status": "split",
+   "round": 1,
+   "parent": null,
+   "fixed": {
+    "sr_tail": 0
+   },
+   "direction": {
+    "index": "sr_tail",
+    "auto": true
+   },
+   "attempt": 1,
+   "tag": "r1_c2_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r3_c8",
+    "r3_c9"
+   ]
+  },
+  "r1_c3": {
+   "cond": "sr_tail[3:0] == 4'd3",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    }
+   ],
+   "status": "split",
+   "round": 1,
+   "parent": null,
+   "fixed": {
+    "sr_tail": 0
+   },
+   "direction": {
+    "index": "sr_tail",
+    "auto": true
+   },
+   "attempt": 1,
+   "tag": "r1_c3_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r3_c10",
+    "r3_c11"
+   ]
+  },
+  "r1_c4": {
+   "cond": "sr_tail[3:0] == 4'd4",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    }
+   ],
+   "status": "split",
+   "round": 1,
+   "parent": null,
+   "fixed": {
+    "sr_tail": 0
+   },
+   "direction": {
+    "index": "sr_tail",
+    "auto": true
+   },
+   "attempt": 1,
+   "tag": "r1_c4_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r3_c12",
+    "r3_c13"
+   ]
+  },
+  "r1_c5": {
+   "cond": "sr_tail[3:0] == 4'd5",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    }
+   ],
+   "status": "split",
+   "round": 1,
+   "parent": null,
+   "fixed": {
+    "sr_tail": 0
+   },
+   "direction": {
+    "index": "sr_tail",
+    "auto": true
+   },
+   "attempt": 1,
+   "tag": "r1_c5_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r3_c14",
+    "r3_c15"
+   ]
+  },
+  "r1_c6": {
+   "cond": "sr_tail[3:0] == 4'd6",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    }
+   ],
+   "status": "split",
+   "round": 1,
+   "parent": null,
+   "fixed": {
+    "sr_tail": 0
+   },
+   "direction": {
+    "index": "sr_tail",
+    "auto": true
+   },
+   "attempt": 1,
+   "tag": "r1_c6_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r3_c16",
+    "r3_c17"
+   ]
+  },
+  "r1_c7": {
+   "cond": "sr_tail[3:0] == 4'd7",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    }
+   ],
+   "status": "split",
+   "round": 1,
+   "parent": null,
+   "fixed": {
+    "sr_tail": 0
+   },
+   "direction": {
+    "index": "sr_tail",
+    "auto": true
+   },
+   "attempt": 1,
+   "tag": "r1_c7_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r3_c18",
+    "r3_c19"
+   ]
+  },
+  "r1_c8": {
+   "cond": "sr_tail[3:0] == 4'd8",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    }
+   ],
+   "status": "split",
+   "round": 1,
+   "parent": null,
+   "fixed": {
+    "sr_tail": 0
+   },
+   "direction": {
+    "index": "sr_tail",
+    "auto": true
+   },
+   "attempt": 1,
+   "tag": "r1_c8_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r3_c20",
+    "r3_c21"
+   ]
+  },
+  "r1_c9": {
+   "cond": "sr_tail[3:0] == 4'd9",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    }
+   ],
+   "status": "split",
+   "round": 1,
+   "parent": null,
+   "fixed": {
+    "sr_tail": 0
+   },
+   "direction": {
+    "index": "sr_tail",
+    "auto": true
+   },
+   "attempt": 1,
+   "tag": "r1_c9_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r3_c22",
+    "r3_c23"
+   ]
+  },
+  "r1_c10": {
+   "cond": "sr_tail[3:0] == 4'd10",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    }
+   ],
+   "status": "split",
+   "round": 1,
+   "parent": null,
+   "fixed": {
+    "sr_tail": 0
+   },
+   "direction": {
+    "index": "sr_tail",
+    "auto": true
+   },
+   "attempt": 1,
+   "tag": "r1_c10_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r3_c24",
+    "r3_c25"
+   ]
+  },
+  "r1_c11": {
+   "cond": "sr_tail[3:0] == 4'd11",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    }
+   ],
+   "status": "split",
+   "round": 1,
+   "parent": null,
+   "fixed": {
+    "sr_tail": 0
+   },
+   "direction": {
+    "index": "sr_tail",
+    "auto": true
+   },
+   "attempt": 1,
+   "tag": "r1_c11_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r3_c26",
+    "r3_c27"
+   ]
+  },
+  "r1_c12": {
+   "cond": "sr_tail[3:0] == 4'd12",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    }
+   ],
+   "status": "split",
+   "round": 1,
+   "parent": null,
+   "fixed": {
+    "sr_tail": 0
+   },
+   "direction": {
+    "index": "sr_tail",
+    "auto": true
+   },
+   "attempt": 1,
+   "tag": "r1_c12_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r3_c28",
+    "r3_c29"
+   ]
+  },
+  "r1_c13": {
+   "cond": "sr_tail[3:0] == 4'd13",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    }
+   ],
+   "status": "split",
+   "round": 1,
+   "parent": null,
+   "fixed": {
+    "sr_tail": 0
+   },
+   "direction": {
+    "index": "sr_tail",
+    "auto": true
+   },
+   "attempt": 1,
+   "tag": "r1_c13_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r3_c30",
+    "r3_c31"
+   ]
+  },
+  "r1_c14": {
+   "cond": "sr_tail[3:0] == 4'd14",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    }
+   ],
+   "status": "proved",
+   "round": 1,
+   "parent": null,
+   "fixed": {
+    "sr_tail": 0
+   },
+   "direction": {
+    "index": "sr_tail",
+    "auto": true
+   },
+   "attempt": 4,
+   "tag": "r1_c14_k4",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 83.4,
+    "timeout": 120
+   },
+   "cex": {
+    "depth": 35,
+    "table": [
+     {
+      "cycle": 0,
+      "sr.tail": [
+       15,
+       15
+      ],
+      "rb.tail": [
+       15,
+       15
+      ],
+      "rb.head": [
+       15,
+       15
+      ],
+      "rb.empty": [
+       1,
+       1
+      ],
+      "sr.empty": [
+       1,
+       1
+      ],
+      "dataIn": 15,
+      "pop": 1,
+      "push": 1,
+      "rst": 1
+     },
+     {
+      "cycle": 1,
+      "sr.tail": [
+       0,
+       0
+      ],
+      "rb.tail": [
+       15,
+       0
+      ],
+      "rb.head": [
+       0,
+       0
+      ],
+      "rb.empty": [
+       1,
+       1
+      ],
+      "sr.empty": [
+       1,
+       1
+      ],
+      "dataIn": 15,
+      "pop": 1,
+      "push": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 2,
+      "sr.tail": [
+       0,
+       0
+      ],
+      "rb.tail": [
+       15,
+       0
+      ],
+      "rb.head": [
+       1,
+       1
+      ],
+      "rb.empty": [
+       0,
+       0
+      ],
+      "sr.empty": [
+       0,
+       0
+      ],
+      "dataIn": 15,
+      "pop": 1,
+      "push": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 3,
+      "sr.tail": [
+       1,
+       1
+      ],
+      "rb.tail": [
+       15,
+       0
+      ],
+      "rb.head": [
+       2,
+       2
+      ],
+      "rb.empty": [
+       0,
+       0
+      ],
+      "sr.empty": [
+       0,
+       0
+      ],
+      "dataIn": 15,
+      "pop": 1,
+      "push": 0,
+      "rst": 0
+     },
+     {
+      "cycle": 4,
+      "sr.tail": [
+       0,
+       0
+      ],
+      "rb.tail": [
+       15,
+       1
+      ],
+      "rb.head": [
+       2,
+       2
+      ],
+      "rb.empty": [
+       0,
+       0
+      ],
+      "sr.empty": [
+       0,
+       0
+      ],
+      "dataIn": 15,
+      "pop": 1,
+      "push": 0,
+      "rst": 0
+     },
+     {
+      "cycle": 5,
+      "sr.tail": [
+       0,
+       0
+      ],
+      "rb.tail": [
+       13,
+       2
+      ],
+      "rb.head": [
+       2,
+       2
+      ],
+      "rb.empty": [
+       0,
+       1
+      ],
+      "sr.empty": [
+       1,
+       1
+      ],
+      "dataIn": 15,
+      "pop": 0,
+      "push": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 6,
+      "sr.tail": [
+       0,
+       0
+      ],
+      "rb.tail": [
+       14,
+       2
+      ],
+      "rb.head": [
+       3,
+       3
+      ],
+      "rb.empty": [
+       0,
+       0
+      ],
+      "sr.empty": [
+       0,
+       0
+      ],
+      "dataIn": 15,
+      "pop": 0,
+      "push": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 7,
+      "sr.tail": [
+       1,
+       1
+      ],
+      "rb.tail": [
+       15,
+       2
+      ],
+      "rb.head": [
+       4,
+       4
+      ],
+      "rb.empty": [
+       0,
+       0
+      ],
+      "sr.empty": [
+       0,
+       0
+      ],
+      "dataIn": 15,
+      "pop": 1,
+      "push": 0,
+      "rst": 0
+     },
+     {
+      "cycle": 8,
+      "sr.tail": [
+       0,
+       0
+      ],
+      "rb.tail": [
+       3,
+       3
+      ],
+      "rb.head": [
+       4,
+       4
+      ],
+      "rb.empty": [
+       0,
+       0
+      ],
+      "sr.empty": [
+       0,
+       0
+      ],
+      "dataIn": 15,
+      "pop": 1,
+      "push": 0,
+      "rst": 0
+     },
+     {
+      "cycle": 9,
+      "sr.tail": [
+       0,
+       0
+      ],
+      "rb.tail": [
+       15,
+       4
+      ],
+      "rb.head": [
+       4,
+       4
+      ],
+      "rb.empty": [
+       1,
+       1
+      ],
+      "sr.empty": [
+       1,
+       1
+      ],
+      "dataIn": 15,
+      "pop": 1,
+      "push": 0,
+      "rst": 0
+     },
+     {
+      "cycle": 10,
+      "sr.tail": [
+       0,
+       0
+      ],
+      "rb.tail": [
+       15,
+       4
+      ],
+      "rb.head": [
+       4,
+       4
+      ],
+      "rb.empty": [
+       1,
+       1
+      ],
+      "sr.empty": [
+       1,
+       1
+      ],
+      "dataIn": 15,
+      "pop": 1,
+      "push": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 11,
+      "sr.tail": [
+       0,
+       0
+      ],
+      "rb.tail": [
+       15,
+       4
+      ],
+      "rb.head": [
+       5,
+       5
+      ],
+      "rb.empty": [
+       0,
+       0
+      ],
+      "sr.empty": [
+       0,
+       0
+      ],
+      "dataIn": 15,
+      "pop": 1,
+      "push": 0,
+      "rst": 0
+     },
+     {
+      "cycle": 12,
+      "sr.tail": [
+       0,
+       0
+      ],
+      "rb.tail": [
+       11,
+       5
+      ],
+      "rb.head": [
+       5,
+       5
+      ],
+      "rb.empty": [
+       0,
+       1
+      ],
+      "sr.empty": [
+       1,
+       1
+      ],
+      "dataIn": 15,
+      "pop": 1,
+      "push": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 13,
+      "sr.tail": [
+       0,
+       0
+      ],
+      "rb.tail": [
+       15,
+       5
+      ],
+      "rb.head": [
+       6,
+       6
+      ],
+      "rb.empty": [
+       0,
+       0
+      ],
+      "sr.empty": [
+       0,
+       0
+      ],
+      "dataIn": 15,
+      "pop": 1,
+      "push": 0,
+      "rst": 0
+     },
+     {
+      "cycle": 14,
+      "sr.tail": [
+       0,
+       0
+      ],
+      "rb.tail": [
+       13,
+       6
+      ],
+      "rb.head": [
+       6,
+       6
+      ],
+      "rb.empty": [
+       0,
+       1
+      ],
+      "sr.empty": [
+       1,
+       1
+      ],
+      "dataIn": 15,
+      "pop": 1,
+      "push": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 15,
+      "sr.tail": [
+       0,
+       0
+      ],
+      "rb.tail": [
+       13,
+       6
+      ],
+      "rb.head": [
+       7,
+       7
+      ],
+      "rb.empty": [
+       0,
+       0
+      ],
+      "sr.empty": [
+       0,
+       0
+      ],
+      "dataIn": 15,
+      "pop": 1,
+      "push": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 16,
+      "sr.tail": [
+       1,
+       1
+      ],
+      "rb.tail": [
+       7,
+       6
+      ],
+      "rb.head": [
+       8,
+       8
+      ],
+      "rb.empty": [
+       0,
+       0
+      ],
+      "sr.empty": [
+       0,
+       0
+      ],
+      "dataIn": 15,
+      "pop": 1,
+      "push": 0,
+      "rst": 0
+     },
+     {
+      "cycle": 17,
+      "sr.tail": [
+       0,
+       0
+      ],
+      "rb.tail": [
+       15,
+       7
+      ],
+      "rb.head": [
+       8,
+       8
+      ],
+      "rb.empty": [
+       1,
+       0
+      ],
+      "sr.empty": [
+       0,
+       0
+      ],
+      "dataIn": 15,
+      "pop": 1,
+      "push": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 18,
+      "sr.tail": [
+       1,
+       1
+      ],
+      "rb.tail": [
+       8,
+       7
+      ],
+      "rb.head": [
+       9,
+       9
+      ],
+      "rb.empty": [
+       0,
+       0
+      ],
+      "sr.empty": [
+       0,
+       0
+      ],
+      "dataIn": 15,
+      "pop": 1,
+      "push": 0,
+      "rst": 0
+     },
+     {
+      "cycle": 19,
+      "sr.tail": [
+       0,
+       0
+      ],
+      "rb.tail": [
+       15,
+       8
+      ],
+      "rb.head": [
+       9,
+       9
+      ],
+      "rb.empty": [
+       1,
+       0
+      ],
+      "sr.empty": [
+       0,
+       0
+      ],
+      "dataIn": 15,
+      "pop": 1,
+      "push": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 20,
+      "sr.tail": [
+       1,
+       1
+      ],
+      "rb.tail": [
+       9,
+       8
+      ],
+      "rb.head": [
+       10,
+       10
+      ],
+      "rb.empty": [
+       0,
+       0
+      ],
+      "sr.empty": [
+       0,
+       0
+      ],
+      "dataIn": 15,
+      "pop": 1,
+      "push": 0,
+      "rst": 0
+     },
+     {
+      "cycle": 21,
+      "sr.tail": [
+       0,
+       0
+      ],
+      "rb.tail": [
+       15,
+       9
+      ],
+      "rb.head": [
+       10,
+       10
+      ],
+      "rb.empty": [
+       1,
+       0
+      ],
+      "sr.empty": [
+       0,
+       0
+      ],
+      "dataIn": 13,
+      "pop": 1,
+      "push": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 22,
+      "sr.tail": [
+       1,
+       1
+      ],
+      "rb.tail": [
+       11,
+       9
+      ],
+      "rb.head": [
+       11,
+       11
+      ],
+      "rb.empty": [
+       0,
+       0
+      ],
+      "sr.empty": [
+       0,
+       0
+      ],
+      "dataIn": 15,
+      "pop": 1,
+      "push": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 23,
+      "sr.tail": [
+       2,
+       2
+      ],
+      "rb.tail": [
+       14,
+       9
+      ],
+      "rb.head": [
+       11,
+       12
+      ],
+      "rb.empty": [
+       0,
+       0
+      ],
+      "sr.empty": [
+       0,
+       0
+      ],
+      "dataIn": 15,
+      "pop": 1,
+      "push": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 24,
+      "sr.tail": [
+       3,
+       3
+      ],
+      "rb.tail": [
+       12,
+       9
+      ],
+      "rb.head": [
+       12,
+       13
+      ],
+      "rb.empty": [
+       0,
+       0
+      ],
+      "sr.empty": [
+       0,
+       0
+      ],
+      "dataIn": 15,
+      "pop": 1,
+      "push": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 25,
+      "sr.tail": [
+       4,
+       4
+      ],
+      "rb.tail": [
+       12,
+       9
+      ],
+      "rb.head": [
+       12,
+       14
+      ],
+      "rb.empty": [
+       0,
+       0
+      ],
+      "sr.empty": [
+       0,
+       0
+      ],
+      "dataIn": 15,
+      "pop": 1,
+      "push": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 26,
+      "sr.tail": [
+       5,
+       5
+      ],
+      "rb.tail": [
+       12,
+       9
+      ],
+      "rb.head": [
+       12,
+       15
+      ],
+      "rb.empty": [
+       0,
+       0
+      ],
+      "sr.empty": [
+       0,
+       0
+      ],
+      "dataIn": 15,
+      "pop": 1,
+      "push": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 27,
+      "sr.tail": [
+       6,
+       6
+      ],
+      "rb.tail": [
+       12,
+       9
+      ],
+      "rb.head": [
+       12,
+       0
+      ],
+      "rb.empty": [
+       0,
+       0
+      ],
+      "sr.empty": [
+       0,
+       0
+      ],
+      "dataIn": 15,
+      "pop": 1,
+      "push": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 28,
+      "sr.tail": [
+       7,
+       7
+      ],
+      "rb.tail": [
+       12,
+       9
+      ],
+      "rb.head": [
+       12,
+       1
+      ],
+      "rb.empty": [
+       0,
+       0
+      ],
+      "sr.empty": [
+       0,
+       0
+      ],
+      "dataIn": 15,
+      "pop": 1,
+      "push": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 29,
+      "sr.tail": [
+       8,
+       8
+      ],
+      "rb.tail": [
+       12,
+       9
+      ],
+      "rb.head": [
+       12,
+       2
+      ],
+      "rb.empty": [
+       0,
+       0
+      ],
+      "sr.empty": [
+       0,
+       0
+      ],
+      "dataIn": 15,
+      "pop": 0,
+      "push": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 30,
+      "sr.tail": [
+       9,
+       9
+      ],
+      "rb.tail": [
+       12,
+       9
+      ],
+      "rb.head": [
+       12,
+       3
+      ],
+      "rb.empty": [
+       0,
+       0
+      ],
+      "sr.empty": [
+       0,
+       0
+      ],
+      "dataIn": 15,
+      "pop": 0,
+      "push": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 31,
+      "sr.tail": [
+       10,
+       10
+      ],
+      "rb.tail": [
+       12,
+       9
+      ],
+      "rb.head": [
+       12,
+       4
+      ],
+      "rb.empty": [
+       0,
+       0
+      ],
+      "sr.empty": [
+       0,
+       0
+      ],
+      "dataIn": 15,
+      "pop": 1,
+      "push": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 32,
+      "sr.tail": [
+       11,
+       11
+      ],
+      "rb.tail": [
+       11,
+       9
+      ],
+      "rb.head": [
+       12,
+       5
+      ],
+      "rb.empty": [
+       0,
+       0
+      ],
+      "sr.empty": [
+       0,
+       0
+      ],
+      "dataIn": 15,
+      "pop": 1,
+      "push": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 33,
+      "sr.tail": [
+       12,
+       12
+      ],
+      "rb.tail": [
+       11,
+       9
+      ],
+      "rb.head": [
+       13,
+       6
+      ],
+      "rb.empty": [
+       0,
+       0
+      ],
+      "sr.empty": [
+       0,
+       0
+      ],
+      "dataIn": 13,
+      "pop": 0,
+      "push": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 34,
+      "sr.tail": [
+       13,
+       13
+      ],
+      "rb.tail": [
+       10,
+       9
+      ],
+      "rb.head": [
+       14,
+       7
+      ],
+      "rb.empty": [
+       0,
+       0
+      ],
+      "sr.empty": [
+       0,
+       0
+      ],
+      "dataIn": 13,
+      "pop": 0,
+      "push": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 35,
+      "sr.tail": [
+       14,
+       14
+      ],
+      "rb.tail": [
+       15,
+       9
+      ],
+      "rb.head": [
+       15,
+       8
+      ],
+      "rb.empty": [
+       0,
+       0
+      ],
+      "sr.empty": [
+       0,
+       0
+      ],
+      "dataIn": 15,
+      "pop": 1,
+      "push": 1,
+      "rst": 0
+     }
+    ]
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r1_c15": {
+   "cond": "sr_tail[3:0] == 4'd15",
+   "ops": [],
+   "status": "split",
+   "round": 1,
+   "parent": null,
+   "fixed": {
+    "sr_tail": 0
+   },
+   "direction": {
+    "index": "sr_tail",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r1_c15_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r2_c0",
+    "r2_c1"
+   ]
+  },
+  "r2_c0": {
+   "cond": "(sr_tail[3:0] == 4'd15) & (rb_tail[3:3] == 1'd0)",
+   "ops": [],
+   "status": "split",
+   "round": 2,
+   "parent": "r1_c15",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 3
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r2_c0_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r3_c0",
+    "r3_c1"
+   ]
+  },
+  "r2_c1": {
+   "cond": "(sr_tail[3:0] == 4'd15) & (rb_tail[3:3] == 1'd1)",
+   "ops": [],
+   "status": "split",
+   "round": 2,
+   "parent": "r1_c15",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 3
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r2_c1_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r3_c2",
+    "r3_c3"
+   ]
+  },
+  "r3_c0": {
+   "cond": "((sr_tail[3:0] == 4'd15) & (rb_tail[3:3] == 1'd0)) & (rb_tail[2:2] == 1'd0)",
+   "ops": [],
+   "status": "proved",
+   "round": 3,
+   "parent": "r2_c0",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 2
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r3_c0_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 19.5,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r3_c1": {
+   "cond": "((sr_tail[3:0] == 4'd15) & (rb_tail[3:3] == 1'd0)) & (rb_tail[2:2] == 1'd1)",
+   "ops": [],
+   "status": "split",
+   "round": 3,
+   "parent": "r2_c0",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 2
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r3_c1_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r4_c0",
+    "r4_c1"
+   ]
+  },
+  "r3_c2": {
+   "cond": "((sr_tail[3:0] == 4'd15) & (rb_tail[3:3] == 1'd1)) & (rb_tail[2:2] == 1'd0)",
+   "ops": [],
+   "status": "proved",
+   "round": 3,
+   "parent": "r2_c1",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 2
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r3_c2_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 13.3,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r3_c3": {
+   "cond": "((sr_tail[3:0] == 4'd15) & (rb_tail[3:3] == 1'd1)) & (rb_tail[2:2] == 1'd1)",
+   "ops": [],
+   "status": "proved",
+   "round": 3,
+   "parent": "r2_c1",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 2
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r3_c3_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 13.7,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "UNKNOWN",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r3_c4": {
+   "cond": "(sr_tail[3:0] == 4'd0) & (rb_tail[3:3] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    }
+   ],
+   "status": "proved",
+   "round": 3,
+   "parent": "r1_c0",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 3
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": false
+   },
+   "attempt": 0,
+   "tag": "r3_c4_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 9.5,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r3_c5": {
+   "cond": "(sr_tail[3:0] == 4'd0) & (rb_tail[3:3] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    }
+   ],
+   "status": "proved",
+   "round": 3,
+   "parent": "r1_c0",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 3
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": false
+   },
+   "attempt": 0,
+   "tag": "r3_c5_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 13.4,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r3_c6": {
+   "cond": "(sr_tail[3:0] == 4'd1) & (rb_tail[3:3] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    }
+   ],
+   "status": "proved",
+   "round": 3,
+   "parent": "r1_c1",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 3
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": false
+   },
+   "attempt": 2,
+   "tag": "r3_c6_k2",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 27.6,
+    "timeout": 120
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r3_c7": {
+   "cond": "(sr_tail[3:0] == 4'd1) & (rb_tail[3:3] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    }
+   ],
+   "status": "proved",
+   "round": 3,
+   "parent": "r1_c1",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 3
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": false
+   },
+   "attempt": 2,
+   "tag": "r3_c7_k2",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 41.9,
+    "timeout": 120
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r3_c8": {
+   "cond": "(sr_tail[3:0] == 4'd2) & (rb_tail[3:3] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    }
+   ],
+   "status": "proved",
+   "round": 3,
+   "parent": "r1_c2",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 3
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": false
+   },
+   "attempt": 2,
+   "tag": "r3_c8_k2",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 28.9,
+    "timeout": 120
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r3_c9": {
+   "cond": "(sr_tail[3:0] == 4'd2) & (rb_tail[3:3] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    }
+   ],
+   "status": "proved",
+   "round": 3,
+   "parent": "r1_c2",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 3
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": false
+   },
+   "attempt": 2,
+   "tag": "r3_c9_k2",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 56.2,
+    "timeout": 120
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r3_c10": {
+   "cond": "(sr_tail[3:0] == 4'd3) & (rb_tail[3:3] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    }
+   ],
+   "status": "proved",
+   "round": 3,
+   "parent": "r1_c3",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 3
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": false
+   },
+   "attempt": 2,
+   "tag": "r3_c10_k2",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 40.6,
+    "timeout": 120
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r3_c11": {
+   "cond": "(sr_tail[3:0] == 4'd3) & (rb_tail[3:3] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    }
+   ],
+   "status": "proved",
+   "round": 3,
+   "parent": "r1_c3",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 3
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": false
+   },
+   "attempt": 2,
+   "tag": "r3_c11_k2",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 44.4,
+    "timeout": 120
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r3_c12": {
+   "cond": "(sr_tail[3:0] == 4'd4) & (rb_tail[3:3] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    }
+   ],
+   "status": "proved",
+   "round": 3,
+   "parent": "r1_c4",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 3
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": false
+   },
+   "attempt": 2,
+   "tag": "r3_c12_k2",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 72.7,
+    "timeout": 120
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r3_c13": {
+   "cond": "(sr_tail[3:0] == 4'd4) & (rb_tail[3:3] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    }
+   ],
+   "status": "proved",
+   "round": 3,
+   "parent": "r1_c4",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 3
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": false
+   },
+   "attempt": 2,
+   "tag": "r3_c13_k2",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 41.3,
+    "timeout": 120
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r3_c14": {
+   "cond": "(sr_tail[3:0] == 4'd5) & (rb_tail[3:3] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    }
+   ],
+   "status": "split",
+   "round": 3,
+   "parent": "r1_c5",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 3
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": false
+   },
+   "attempt": 0,
+   "tag": "r3_c14_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r4_c2",
+    "r4_c3"
+   ]
+  },
+  "r3_c15": {
+   "cond": "(sr_tail[3:0] == 4'd5) & (rb_tail[3:3] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_7"
+    }
+   ],
+   "status": "split",
+   "round": 3,
+   "parent": "r1_c5",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 3
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r3_c15_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r5_c16",
+    "r5_c17"
+   ]
+  },
+  "r3_c16": {
+   "cond": "(sr_tail[3:0] == 4'd6) & (rb_tail[3:3] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    }
+   ],
+   "status": "split",
+   "round": 3,
+   "parent": "r1_c6",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 3
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": false
+   },
+   "attempt": 0,
+   "tag": "r3_c16_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r4_c4",
+    "r4_c5"
+   ]
+  },
+  "r3_c17": {
+   "cond": "(sr_tail[3:0] == 4'd6) & (rb_tail[3:3] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_7"
+    }
+   ],
+   "status": "split",
+   "round": 3,
+   "parent": "r1_c6",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 3
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r3_c17_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r5_c18",
+    "r5_c19"
+   ]
+  },
+  "r3_c18": {
+   "cond": "(sr_tail[3:0] == 4'd7) & (rb_tail[3:3] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    }
+   ],
+   "status": "split",
+   "round": 3,
+   "parent": "r1_c7",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 3
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": false
+   },
+   "attempt": 0,
+   "tag": "r3_c18_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r4_c6",
+    "r4_c7"
+   ]
+  },
+  "r3_c19": {
+   "cond": "(sr_tail[3:0] == 4'd7) & (rb_tail[3:3] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_7"
+    }
+   ],
+   "status": "split",
+   "round": 3,
+   "parent": "r1_c7",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 3
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r3_c19_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r5_c20",
+    "r5_c21"
+   ]
+  },
+  "r3_c20": {
+   "cond": "(sr_tail[3:0] == 4'd8) & (rb_tail[3:3] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    }
+   ],
+   "status": "split",
+   "round": 3,
+   "parent": "r1_c8",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 3
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": false
+   },
+   "attempt": 0,
+   "tag": "r3_c20_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r4_c8",
+    "r4_c9"
+   ]
+  },
+  "r3_c21": {
+   "cond": "(sr_tail[3:0] == 4'd8) & (rb_tail[3:3] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_7"
+    }
+   ],
+   "status": "split",
+   "round": 3,
+   "parent": "r1_c8",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 3
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r3_c21_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r5_c22",
+    "r5_c23"
+   ]
+  },
+  "r3_c22": {
+   "cond": "(sr_tail[3:0] == 4'd9) & (rb_tail[3:3] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    }
+   ],
+   "status": "split",
+   "round": 3,
+   "parent": "r1_c9",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 3
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": false
+   },
+   "attempt": 0,
+   "tag": "r3_c22_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r4_c10",
+    "r4_c11"
+   ]
+  },
+  "r3_c23": {
+   "cond": "(sr_tail[3:0] == 4'd9) & (rb_tail[3:3] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_7"
+    }
+   ],
+   "status": "split",
+   "round": 3,
+   "parent": "r1_c9",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 3
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r3_c23_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r5_c24",
+    "r5_c25"
+   ]
+  },
+  "r3_c24": {
+   "cond": "(sr_tail[3:0] == 4'd10) & (rb_tail[3:3] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    }
+   ],
+   "status": "split",
+   "round": 3,
+   "parent": "r1_c10",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 3
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": false
+   },
+   "attempt": 0,
+   "tag": "r3_c24_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r4_c12",
+    "r4_c13"
+   ]
+  },
+  "r3_c25": {
+   "cond": "(sr_tail[3:0] == 4'd10) & (rb_tail[3:3] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_7"
+    }
+   ],
+   "status": "split",
+   "round": 3,
+   "parent": "r1_c10",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 3
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r3_c25_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r5_c26",
+    "r5_c27"
+   ]
+  },
+  "r3_c26": {
+   "cond": "(sr_tail[3:0] == 4'd11) & (rb_tail[3:3] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    }
+   ],
+   "status": "split",
+   "round": 3,
+   "parent": "r1_c11",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 3
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": false
+   },
+   "attempt": 0,
+   "tag": "r3_c26_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r4_c14",
+    "r4_c15"
+   ]
+  },
+  "r3_c27": {
+   "cond": "(sr_tail[3:0] == 4'd11) & (rb_tail[3:3] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_7"
+    }
+   ],
+   "status": "split",
+   "round": 3,
+   "parent": "r1_c11",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 3
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r3_c27_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r5_c28",
+    "r5_c29"
+   ]
+  },
+  "r3_c28": {
+   "cond": "(sr_tail[3:0] == 4'd12) & (rb_tail[3:3] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    }
+   ],
+   "status": "split",
+   "round": 3,
+   "parent": "r1_c12",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 3
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": false
+   },
+   "attempt": 0,
+   "tag": "r3_c28_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r4_c16",
+    "r4_c17"
+   ]
+  },
+  "r3_c29": {
+   "cond": "(sr_tail[3:0] == 4'd12) & (rb_tail[3:3] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_7"
+    }
+   ],
+   "status": "split",
+   "round": 3,
+   "parent": "r1_c12",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 3
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r3_c29_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r5_c30",
+    "r5_c31"
+   ]
+  },
+  "r3_c30": {
+   "cond": "(sr_tail[3:0] == 4'd13) & (rb_tail[3:3] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    }
+   ],
+   "status": "proved",
+   "round": 3,
+   "parent": "r1_c13",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 3
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": false
+   },
+   "attempt": 0,
+   "tag": "r3_c30_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 19.7,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r3_c31": {
+   "cond": "(sr_tail[3:0] == 4'd13) & (rb_tail[3:3] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    }
+   ],
+   "status": "proved",
+   "round": 3,
+   "parent": "r1_c13",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 3
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": false
+   },
+   "attempt": 0,
+   "tag": "r3_c31_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 19.7,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r4_c0": {
+   "cond": "(((sr_tail[3:0] == 4'd15) & (rb_tail[3:3] == 1'd0)) & (rb_tail[2:2] == 1'd1)) & (rb_tail[1:1] == 1'd0)",
+   "ops": [],
+   "status": "proved",
+   "round": 4,
+   "parent": "r3_c1",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 1
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r4_c0_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 4.8,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r4_c1": {
+   "cond": "(((sr_tail[3:0] == 4'd15) & (rb_tail[3:3] == 1'd0)) & (rb_tail[2:2] == 1'd1)) & (rb_tail[1:1] == 1'd1)",
+   "ops": [],
+   "status": "proved",
+   "round": 4,
+   "parent": "r3_c1",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 1
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r4_c1_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 4.1,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r4_c2": {
+   "cond": "((sr_tail[3:0] == 4'd5) & (rb_tail[3:3] == 1'd0)) & (rb_tail[2:2] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_15"
+    }
+   ],
+   "status": "split",
+   "round": 4,
+   "parent": "r3_c14",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 2
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r4_c2_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r5_c0",
+    "r5_c1"
+   ]
+  },
+  "r4_c3": {
+   "cond": "((sr_tail[3:0] == 4'd5) & (rb_tail[3:3] == 1'd0)) & (rb_tail[2:2] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_15"
+    }
+   ],
+   "status": "split",
+   "round": 4,
+   "parent": "r3_c14",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 2
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r4_c3_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r5_c2",
+    "r5_c3"
+   ]
+  },
+  "r4_c4": {
+   "cond": "((sr_tail[3:0] == 4'd6) & (rb_tail[3:3] == 1'd0)) & (rb_tail[2:2] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_15"
+    }
+   ],
+   "status": "split",
+   "round": 4,
+   "parent": "r3_c16",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 2
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r4_c4_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r5_c4",
+    "r5_c5"
+   ]
+  },
+  "r4_c5": {
+   "cond": "((sr_tail[3:0] == 4'd6) & (rb_tail[3:3] == 1'd0)) & (rb_tail[2:2] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_15"
+    }
+   ],
+   "status": "split",
+   "round": 4,
+   "parent": "r3_c16",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 2
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r4_c5_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r5_c6",
+    "r5_c7"
+   ]
+  },
+  "r4_c6": {
+   "cond": "((sr_tail[3:0] == 4'd7) & (rb_tail[3:3] == 1'd0)) & (rb_tail[2:2] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_15"
+    }
+   ],
+   "status": "split",
+   "round": 4,
+   "parent": "r3_c18",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 2
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r4_c6_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r5_c8",
+    "r5_c9"
+   ]
+  },
+  "r4_c7": {
+   "cond": "((sr_tail[3:0] == 4'd7) & (rb_tail[3:3] == 1'd0)) & (rb_tail[2:2] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_15"
+    }
+   ],
+   "status": "split",
+   "round": 4,
+   "parent": "r3_c18",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 2
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r4_c7_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r5_c10",
+    "r5_c11"
+   ]
+  },
+  "r4_c8": {
+   "cond": "((sr_tail[3:0] == 4'd8) & (rb_tail[3:3] == 1'd0)) & (rb_tail[2:2] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_15"
+    }
+   ],
+   "status": "split",
+   "round": 4,
+   "parent": "r3_c20",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 2
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r4_c8_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r5_c12",
+    "r5_c13"
+   ]
+  },
+  "r4_c9": {
+   "cond": "((sr_tail[3:0] == 4'd8) & (rb_tail[3:3] == 1'd0)) & (rb_tail[2:2] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_15"
+    }
+   ],
+   "status": "split",
+   "round": 4,
+   "parent": "r3_c20",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 2
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r4_c9_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r5_c14",
+    "r5_c15"
+   ]
+  },
+  "r4_c10": {
+   "cond": "((sr_tail[3:0] == 4'd9) & (rb_tail[3:3] == 1'd0)) & (rb_tail[2:2] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_15"
+    }
+   ],
+   "status": "proved",
+   "round": 4,
+   "parent": "r3_c22",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 2
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r4_c10_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 18.9,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r4_c11": {
+   "cond": "((sr_tail[3:0] == 4'd9) & (rb_tail[3:3] == 1'd0)) & (rb_tail[2:2] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_3"
+    }
+   ],
+   "status": "proved",
+   "round": 4,
+   "parent": "r3_c22",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 2
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": true
+   },
+   "attempt": 1,
+   "tag": "r4_c11_k1",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 19.5,
+    "timeout": 120
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r4_c12": {
+   "cond": "((sr_tail[3:0] == 4'd10) & (rb_tail[3:3] == 1'd0)) & (rb_tail[2:2] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_7"
+    }
+   ],
+   "status": "proved",
+   "round": 4,
+   "parent": "r3_c24",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 2
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": true
+   },
+   "attempt": 1,
+   "tag": "r4_c12_k1",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 31.2,
+    "timeout": 120
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r4_c13": {
+   "cond": "((sr_tail[3:0] == 4'd10) & (rb_tail[3:3] == 1'd0)) & (rb_tail[2:2] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_2"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_3"
+    }
+   ],
+   "status": "proved",
+   "round": 4,
+   "parent": "r3_c24",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 2
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": true
+   },
+   "attempt": 1,
+   "tag": "r4_c13_k1",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 23.7,
+    "timeout": 120
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r4_c14": {
+   "cond": "((sr_tail[3:0] == 4'd11) & (rb_tail[3:3] == 1'd0)) & (rb_tail[2:2] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_4"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_5"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_7"
+    }
+   ],
+   "status": "proved",
+   "round": 4,
+   "parent": "r3_c26",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 2
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": true
+   },
+   "attempt": 1,
+   "tag": "r4_c14_k1",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 40.7,
+    "timeout": 120
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r4_c15": {
+   "cond": "((sr_tail[3:0] == 4'd11) & (rb_tail[3:3] == 1'd0)) & (rb_tail[2:2] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_15"
+    }
+   ],
+   "status": "proved",
+   "round": 4,
+   "parent": "r3_c26",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 2
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r4_c15_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 17.8,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r4_c16": {
+   "cond": "((sr_tail[3:0] == 4'd12) & (rb_tail[3:3] == 1'd0)) & (rb_tail[2:2] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_15"
+    }
+   ],
+   "status": "proved",
+   "round": 4,
+   "parent": "r3_c28",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 2
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r4_c16_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 18.8,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r4_c17": {
+   "cond": "((sr_tail[3:0] == 4'd12) & (rb_tail[3:3] == 1'd0)) & (rb_tail[2:2] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_15"
+    }
+   ],
+   "status": "proved",
+   "round": 4,
+   "parent": "r3_c28",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 2
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r4_c17_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 7.8,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r5_c0": {
+   "cond": "(((sr_tail[3:0] == 4'd5) & (rb_tail[3:3] == 1'd0)) & (rb_tail[2:2] == 1'd0)) & (rb_tail[1:1] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r4_c2",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 1
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r5_c0_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 21.2,
+    "timeout": 120
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r5_c1": {
+   "cond": "(((sr_tail[3:0] == 4'd5) & (rb_tail[3:3] == 1'd0)) & (rb_tail[2:2] == 1'd0)) & (rb_tail[1:1] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r4_c2",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 1
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r5_c1_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 15.9,
+    "timeout": 120
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r5_c2": {
+   "cond": "(((sr_tail[3:0] == 4'd5) & (rb_tail[3:3] == 1'd0)) & (rb_tail[2:2] == 1'd1)) & (rb_tail[1:1] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r4_c3",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 1
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r5_c2_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 10.8,
+    "timeout": 120
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r5_c3": {
+   "cond": "(((sr_tail[3:0] == 4'd5) & (rb_tail[3:3] == 1'd0)) & (rb_tail[2:2] == 1'd1)) & (rb_tail[1:1] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r4_c3",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 1
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r5_c3_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 17.8,
+    "timeout": 120
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r5_c4": {
+   "cond": "(((sr_tail[3:0] == 4'd6) & (rb_tail[3:3] == 1'd0)) & (rb_tail[2:2] == 1'd0)) & (rb_tail[1:1] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r4_c4",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 1
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r5_c4_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 19.2,
+    "timeout": 120
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r5_c5": {
+   "cond": "(((sr_tail[3:0] == 4'd6) & (rb_tail[3:3] == 1'd0)) & (rb_tail[2:2] == 1'd0)) & (rb_tail[1:1] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r4_c4",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 1
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r5_c5_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 8.0,
+    "timeout": 120
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r5_c6": {
+   "cond": "(((sr_tail[3:0] == 4'd6) & (rb_tail[3:3] == 1'd0)) & (rb_tail[2:2] == 1'd1)) & (rb_tail[1:1] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r4_c5",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 1
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r5_c6_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 11.1,
+    "timeout": 120
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r5_c7": {
+   "cond": "(((sr_tail[3:0] == 4'd6) & (rb_tail[3:3] == 1'd0)) & (rb_tail[2:2] == 1'd1)) & (rb_tail[1:1] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r4_c5",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 1
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r5_c7_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 6.7,
+    "timeout": 120
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r5_c8": {
+   "cond": "(((sr_tail[3:0] == 4'd7) & (rb_tail[3:3] == 1'd0)) & (rb_tail[2:2] == 1'd0)) & (rb_tail[1:1] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r4_c6",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 1
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r5_c8_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 28.5,
+    "timeout": 120
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r5_c9": {
+   "cond": "(((sr_tail[3:0] == 4'd7) & (rb_tail[3:3] == 1'd0)) & (rb_tail[2:2] == 1'd0)) & (rb_tail[1:1] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r4_c6",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 1
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r5_c9_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 9.0,
+    "timeout": 120
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r5_c10": {
+   "cond": "(((sr_tail[3:0] == 4'd7) & (rb_tail[3:3] == 1'd0)) & (rb_tail[2:2] == 1'd1)) & (rb_tail[1:1] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r4_c7",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 1
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r5_c10_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 16.9,
+    "timeout": 120
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r5_c11": {
+   "cond": "(((sr_tail[3:0] == 4'd7) & (rb_tail[3:3] == 1'd0)) & (rb_tail[2:2] == 1'd1)) & (rb_tail[1:1] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r4_c7",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 1
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r5_c11_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 22.4,
+    "timeout": 120
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r5_c12": {
+   "cond": "(((sr_tail[3:0] == 4'd8) & (rb_tail[3:3] == 1'd0)) & (rb_tail[2:2] == 1'd0)) & (rb_tail[1:1] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r4_c8",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 1
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r5_c12_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 11.2,
+    "timeout": 120
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r5_c13": {
+   "cond": "(((sr_tail[3:0] == 4'd8) & (rb_tail[3:3] == 1'd0)) & (rb_tail[2:2] == 1'd0)) & (rb_tail[1:1] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r4_c8",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 1
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r5_c13_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 12.5,
+    "timeout": 120
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r5_c14": {
+   "cond": "(((sr_tail[3:0] == 4'd8) & (rb_tail[3:3] == 1'd0)) & (rb_tail[2:2] == 1'd1)) & (rb_tail[1:1] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r4_c9",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 1
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r5_c14_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 17.5,
+    "timeout": 120
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r5_c15": {
+   "cond": "(((sr_tail[3:0] == 4'd8) & (rb_tail[3:3] == 1'd0)) & (rb_tail[2:2] == 1'd1)) & (rb_tail[1:1] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "rb_mem_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r4_c9",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 1
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r5_c15_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 17.2,
+    "timeout": 120
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r5_c16": {
+   "cond": "((sr_tail[3:0] == 4'd5) & (rb_tail[3:3] == 1'd1)) & (rb_tail[2:2] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r3_c15",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 2
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": false
+   },
+   "attempt": 0,
+   "tag": "r5_c16_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 24.0,
+    "timeout": 120
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r5_c17": {
+   "cond": "((sr_tail[3:0] == 4'd5) & (rb_tail[3:3] == 1'd1)) & (rb_tail[2:2] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r3_c15",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 2
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": false
+   },
+   "attempt": 0,
+   "tag": "r5_c17_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 24.6,
+    "timeout": 120
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r5_c18": {
+   "cond": "((sr_tail[3:0] == 4'd6) & (rb_tail[3:3] == 1'd1)) & (rb_tail[2:2] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r3_c17",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 2
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": false
+   },
+   "attempt": 0,
+   "tag": "r5_c18_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 37.1,
+    "timeout": 120
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r5_c19": {
+   "cond": "((sr_tail[3:0] == 4'd6) & (rb_tail[3:3] == 1'd1)) & (rb_tail[2:2] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_7"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r3_c17",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 2
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": false
+   },
+   "attempt": 0,
+   "tag": "r5_c19_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 24.1,
+    "timeout": 120
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r5_c20": {
+   "cond": "((sr_tail[3:0] == 4'd7) & (rb_tail[3:3] == 1'd1)) & (rb_tail[2:2] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r3_c19",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 2
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": false
+   },
+   "attempt": 0,
+   "tag": "r5_c20_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 37.4,
+    "timeout": 120
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r5_c21": {
+   "cond": "((sr_tail[3:0] == 4'd7) & (rb_tail[3:3] == 1'd1)) & (rb_tail[2:2] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_8"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r3_c19",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 2
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": false
+   },
+   "attempt": 0,
+   "tag": "r5_c21_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 26.7,
+    "timeout": 120
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r5_c22": {
+   "cond": "((sr_tail[3:0] == 4'd8) & (rb_tail[3:3] == 1'd1)) & (rb_tail[2:2] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r3_c21",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 2
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": false
+   },
+   "attempt": 0,
+   "tag": "r5_c22_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 22.3,
+    "timeout": 120
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r5_c23": {
+   "cond": "((sr_tail[3:0] == 4'd8) & (rb_tail[3:3] == 1'd1)) & (rb_tail[2:2] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r3_c21",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 2
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": false
+   },
+   "attempt": 0,
+   "tag": "r5_c23_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 24.7,
+    "timeout": 120
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r5_c24": {
+   "cond": "((sr_tail[3:0] == 4'd9) & (rb_tail[3:3] == 1'd1)) & (rb_tail[2:2] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r3_c23",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 2
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": false
+   },
+   "attempt": 0,
+   "tag": "r5_c24_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 30.4,
+    "timeout": 120
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r5_c25": {
+   "cond": "((sr_tail[3:0] == 4'd9) & (rb_tail[3:3] == 1'd1)) & (rb_tail[2:2] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_10"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r3_c23",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 2
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": false
+   },
+   "attempt": 0,
+   "tag": "r5_c25_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 23.2,
+    "timeout": 120
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r5_c26": {
+   "cond": "((sr_tail[3:0] == 4'd10) & (rb_tail[3:3] == 1'd1)) & (rb_tail[2:2] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r3_c25",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 2
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": false
+   },
+   "attempt": 0,
+   "tag": "r5_c26_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 20.7,
+    "timeout": 120
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r5_c27": {
+   "cond": "((sr_tail[3:0] == 4'd10) & (rb_tail[3:3] == 1'd1)) & (rb_tail[2:2] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_11"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r3_c25",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 2
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": false
+   },
+   "attempt": 0,
+   "tag": "r5_c27_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 18.9,
+    "timeout": 120
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r5_c28": {
+   "cond": "((sr_tail[3:0] == 4'd11) & (rb_tail[3:3] == 1'd1)) & (rb_tail[2:2] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r3_c27",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 2
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": false
+   },
+   "attempt": 0,
+   "tag": "r5_c28_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 19.7,
+    "timeout": 120
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r5_c29": {
+   "cond": "((sr_tail[3:0] == 4'd11) & (rb_tail[3:3] == 1'd1)) & (rb_tail[2:2] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r3_c27",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 2
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": false
+   },
+   "attempt": 0,
+   "tag": "r5_c29_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 16.7,
+    "timeout": 120
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r5_c30": {
+   "cond": "((sr_tail[3:0] == 4'd12) & (rb_tail[3:3] == 1'd1)) & (rb_tail[2:2] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r3_c29",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 2
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": false
+   },
+   "attempt": 0,
+   "tag": "r5_c30_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 16.2,
+    "timeout": 120
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r5_c31": {
+   "cond": "((sr_tail[3:0] == 4'd12) & (rb_tail[3:3] == 1'd1)) & (rb_tail[2:2] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_13"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_14"
+    },
+    {
+     "op": "abstract_state",
+     "target": "sr_mem_15"
+    }
+   ],
+   "status": "proved",
+   "round": 5,
+   "parent": "r3_c29",
+   "fixed": {
+    "sr_tail": 0,
+    "rb_tail": 2
+   },
+   "direction": {
+    "index": "rb_tail",
+    "auto": false
+   },
+   "attempt": 0,
+   "tag": "r5_c31_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 7.6,
+    "timeout": 120
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  }
+ },
+ "cum": {
+  "input_tokens": 93859,
+  "output_tokens": 96378,
+  "cache_hit": 0,
+  "cache_miss": 0,
+  "cost_usd": 0.12574794,
+  "latency_s": 601.0878033638
+ }
+}

@@ -1,0 +1,187 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2026  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.68+120 (git sha1 a34d3baae-dirty, Release, Clang /usr/bin/clang++ 21.1.8)
+
+-- Running command `read_verilog -sv r5_c1_k0.v; read_rtlil r5_c1_k0.il; hierarchy -top main; flatten; abstract -state -enable __one w:dut.buffer\[1\]; abstract -state -enable __one w:dut.buffer\[2\]; abstract -state -enable __one w:dut.buffer\[3\]; abstract -state -enable __one w:dut.buffer\[4\]; abstract -state -enable __one w:dut.buffer\[5\]; abstract -state -enable __one w:dut.buffer\[6\]; abstract -state -enable __one w:dut.buffer\[7\]; abstract -state -enable __one w:dut.buffer\[8\]; abstract -state -enable __one w:dut.buffer\[9\]; abstract -state -enable __one w:dut.buffer\[10\]; abstract -state -enable __one w:dut.buffer\[11\]; abstract -state -enable __one w:dut.buffer\[12\]; abstract -state -enable __one w:dut.buffer\[13\]; abstract -state -enable __one w:dut.buffer\[14\]; abstract -state -enable __one w:dut.buffer\[15\]; abstract -state -enable __one w:fv_env.ref_fifo\[1\]; abstract -state -enable __one w:fv_env.ref_fifo\[2\]; abstract -state -enable __one w:fv_env.ref_fifo\[3\]; abstract -state -enable __one w:fv_env.ref_fifo\[4\]; abstract -state -enable __one w:fv_env.ref_fifo\[5\]; abstract -state -enable __one w:fv_env.ref_fifo\[6\]; abstract -state -enable __one w:fv_env.ref_fifo\[7\]; abstract -state -enable __one w:fv_env.ref_fifo\[8\]; abstract -state -enable __one w:fv_env.ref_fifo\[9\]; abstract -state -enable __one w:fv_env.ref_fifo\[10\]; abstract -state -enable __one w:fv_env.ref_fifo\[11\]; abstract -state -enable __one w:fv_env.ref_fifo\[12\]; abstract -state -enable __one w:fv_env.ref_fifo\[13\]; abstract -state -enable __one w:fv_env.ref_fifo\[14\]; abstract -state -enable __one w:fv_env.ref_fifo\[15\]; opt_clean; async2sync; dffunmap; setundef -undriven -anyseq; setundef -anyseq; opt_clean; check -assert; write_btor -s r5_c1_k0.btor2' --
+
+1. Executing Verilog-2005 frontend: r5_c1_k0.v
+Parsing SystemVerilog input from `r5_c1_k0.v' to AST representation.
+Generating RTLIL representation for module `\__piece'.
+Successfully finished Verilog frontend.
+
+2. Executing RTLIL frontend.
+Input filename: r5_c1_k0.il
+
+3. Executing HIERARCHY pass (managing design hierarchy).
+
+3.1. Analyzing design hierarchy..
+Top module:  \main
+Used module:     \__piece
+
+3.2. Analyzing design hierarchy..
+Top module:  \main
+Used module:     \__piece
+Removed 0 unused modules.
+Module main directly or indirectly contains formal properties -> setting "keep" attribute.
+
+4. Executing FLATTEN pass (flatten design).
+Deleting now unused module __piece.
+<suppressed ~1 debug messages>
+
+5. Executing ABSTRACT pass.
+Abstracted 1 stateful cells.
+<suppressed ~2 debug messages>
+
+6. Executing ABSTRACT pass.
+Abstracted 1 stateful cells.
+<suppressed ~2 debug messages>
+
+7. Executing ABSTRACT pass.
+Abstracted 1 stateful cells.
+<suppressed ~2 debug messages>
+
+8. Executing ABSTRACT pass.
+Abstracted 1 stateful cells.
+<suppressed ~2 debug messages>
+
+9. Executing ABSTRACT pass.
+Abstracted 1 stateful cells.
+<suppressed ~2 debug messages>
+
+10. Executing ABSTRACT pass.
+Abstracted 1 stateful cells.
+<suppressed ~2 debug messages>
+
+11. Executing ABSTRACT pass.
+Abstracted 1 stateful cells.
+<suppressed ~2 debug messages>
+
+12. Executing ABSTRACT pass.
+Abstracted 1 stateful cells.
+<suppressed ~2 debug messages>
+
+13. Executing ABSTRACT pass.
+Abstracted 1 stateful cells.
+<suppressed ~2 debug messages>
+
+14. Executing ABSTRACT pass.
+Abstracted 1 stateful cells.
+<suppressed ~2 debug messages>
+
+15. Executing ABSTRACT pass.
+Abstracted 1 stateful cells.
+<suppressed ~2 debug messages>
+
+16. Executing ABSTRACT pass.
+Abstracted 1 stateful cells.
+<suppressed ~2 debug messages>
+
+17. Executing ABSTRACT pass.
+Abstracted 1 stateful cells.
+<suppressed ~2 debug messages>
+
+18. Executing ABSTRACT pass.
+Abstracted 1 stateful cells.
+<suppressed ~2 debug messages>
+
+19. Executing ABSTRACT pass.
+Abstracted 1 stateful cells.
+<suppressed ~2 debug messages>
+
+20. Executing ABSTRACT pass.
+Abstracted 1 stateful cells.
+<suppressed ~2 debug messages>
+
+21. Executing ABSTRACT pass.
+Abstracted 1 stateful cells.
+<suppressed ~2 debug messages>
+
+22. Executing ABSTRACT pass.
+Abstracted 1 stateful cells.
+<suppressed ~2 debug messages>
+
+23. Executing ABSTRACT pass.
+Abstracted 1 stateful cells.
+<suppressed ~2 debug messages>
+
+24. Executing ABSTRACT pass.
+Abstracted 1 stateful cells.
+<suppressed ~2 debug messages>
+
+25. Executing ABSTRACT pass.
+Abstracted 1 stateful cells.
+<suppressed ~2 debug messages>
+
+26. Executing ABSTRACT pass.
+Abstracted 1 stateful cells.
+<suppressed ~2 debug messages>
+
+27. Executing ABSTRACT pass.
+Abstracted 1 stateful cells.
+<suppressed ~2 debug messages>
+
+28. Executing ABSTRACT pass.
+Abstracted 1 stateful cells.
+<suppressed ~2 debug messages>
+
+29. Executing ABSTRACT pass.
+Abstracted 1 stateful cells.
+<suppressed ~2 debug messages>
+
+30. Executing ABSTRACT pass.
+Abstracted 1 stateful cells.
+<suppressed ~2 debug messages>
+
+31. Executing ABSTRACT pass.
+Abstracted 1 stateful cells.
+<suppressed ~2 debug messages>
+
+32. Executing ABSTRACT pass.
+Abstracted 1 stateful cells.
+<suppressed ~2 debug messages>
+
+33. Executing ABSTRACT pass.
+Abstracted 1 stateful cells.
+<suppressed ~2 debug messages>
+
+34. Executing ABSTRACT pass.
+Abstracted 1 stateful cells.
+<suppressed ~2 debug messages>
+
+35. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \main..
+Removed 0 unused cells and 4 unused wires.
+<suppressed ~1 debug messages>
+
+36. Executing ASYNC2SYNC pass.
+
+37. Executing DFFUNMAP pass (unmap clock enable and synchronous reset from FFs).
+
+38. Executing SETUNDEF pass (replace undef values with defined constants).
+
+39. Executing SETUNDEF pass (replace undef values with defined constants).
+
+40. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \main..
+Removed 28 unused cells and 31 unused wires.
+<suppressed ~29 debug messages>
+
+41. Executing CHECK pass (checking for obvious problems).
+Checking module main...
+Found and reported 0 problems.
+
+42. Executing BTOR backend.
+
+42.1. Executing BMUXMAP pass.
+
+42.2. Executing DEMUXMAP pass.
+
+42.3. Executing BWMUXMAP pass.
+
+End of script. Logfile hash: 8b811d424d, time: 0.05s, user: 0.01s, system: 0.01s, MEM: 199.00 MB peak
+Yosys 0.68+120 (git sha1 a34d3baae-dirty, Release, Clang /usr/bin/clang++ 21.1.8)
+Time spent: 29% 2x opt_clean (0 sec), 22% 30x abstract (0 sec), ...

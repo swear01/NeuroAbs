@@ -1,0 +1,5723 @@
+{
+ "round": 4,
+ "calls": 27,
+ "signals": [
+  {
+   "name": "rst",
+   "id": "rst",
+   "width": 1,
+   "input": true,
+   "state": false
+  },
+  {
+   "name": "push_raw",
+   "id": "push_raw",
+   "width": 1,
+   "input": true,
+   "state": false
+  },
+  {
+   "name": "push_ptr",
+   "id": "push_ptr",
+   "width": 8,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "push_num_of_pops",
+   "id": "push_num_of_pops",
+   "width": 1,
+   "input": true,
+   "state": false
+  },
+  {
+   "name": "push_match",
+   "id": "push_match",
+   "width": 8,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "push_id",
+   "id": "push_id",
+   "width": 3,
+   "input": true,
+   "state": false
+  },
+  {
+   "name": "push",
+   "id": "push",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "pop_match",
+   "id": "pop_match",
+   "width": 8,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "pop_id",
+   "id": "pop_id",
+   "width": 3,
+   "input": true,
+   "state": false
+  },
+  {
+   "name": "pop_evict",
+   "id": "pop_evict",
+   "width": 8,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "pop",
+   "id": "pop",
+   "width": 1,
+   "input": true,
+   "state": false
+  },
+  {
+   "name": "lookup_match",
+   "id": "lookup_match",
+   "width": 8,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "lookup_id",
+   "id": "lookup_id",
+   "width": 3,
+   "input": true,
+   "state": false
+  },
+  {
+   "name": "lookup",
+   "id": "lookup",
+   "width": 1,
+   "input": true,
+   "state": false
+  },
+  {
+   "name": "l",
+   "id": "l",
+   "width": 32,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "k",
+   "id": "k",
+   "width": 32,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "j",
+   "id": "j",
+   "width": 32,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "i",
+   "id": "i",
+   "width": 32,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "entity_cnt_ns",
+   "id": "entity_cnt_ns",
+   "width": 8,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "entity_cnt",
+   "id": "entity_cnt",
+   "width": 8,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "chosen_push_id",
+   "id": "chosen_push_id",
+   "width": 3,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "chosen_push",
+   "id": "chosen_push",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "chosen_not_popped",
+   "id": "chosen_not_popped",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "chosen",
+   "id": "chosen",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "cam_valid_ns",
+   "id": "cam_valid_ns",
+   "width": 8,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "cam_valid",
+   "id": "cam_valid",
+   "width": 8,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "cam_ns",
+   "id": "cam_ns",
+   "width": 24,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "cam",
+   "id": "cam",
+   "width": 24,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "__bb_first",
+   "id": "bb_first",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "prop_a",
+   "id": "prop_a",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "prop_en",
+   "id": "prop_en",
+   "width": 1,
+   "input": false,
+   "state": false
+  }
+ ],
+ "pieces": {
+  "r1_c0": {
+   "cond": "|(push_match) ? push_match[0] : (push_ptr[0] | ~|(push_ptr))",
+   "ops": [],
+   "status": "split",
+   "round": 1,
+   "parent": null,
+   "fixed": {},
+   "direction": null,
+   "attempt": 0,
+   "tag": "r1_c0_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r2_c0",
+    "r2_c1",
+    "r2_c2"
+   ]
+  },
+  "r1_c1": {
+   "cond": "|(push_match) ? push_match[1] : (push_ptr[1] | ~|(push_ptr))",
+   "ops": [],
+   "status": "split",
+   "round": 1,
+   "parent": null,
+   "fixed": {},
+   "direction": null,
+   "attempt": 0,
+   "tag": "r1_c1_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r2_c3",
+    "r2_c4",
+    "r2_c5"
+   ]
+  },
+  "r1_c2": {
+   "cond": "|(push_match) ? push_match[2] : (push_ptr[2] | ~|(push_ptr))",
+   "ops": [],
+   "status": "split",
+   "round": 1,
+   "parent": null,
+   "fixed": {},
+   "direction": null,
+   "attempt": 0,
+   "tag": "r1_c2_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r2_c6",
+    "r2_c7",
+    "r2_c8"
+   ]
+  },
+  "r1_c3": {
+   "cond": "|(push_match) ? push_match[3] : (push_ptr[3] | ~|(push_ptr))",
+   "ops": [],
+   "status": "split",
+   "round": 1,
+   "parent": null,
+   "fixed": {},
+   "direction": null,
+   "attempt": 0,
+   "tag": "r1_c3_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r2_c9",
+    "r2_c10",
+    "r2_c11"
+   ]
+  },
+  "r1_c4": {
+   "cond": "|(push_match) ? push_match[4] : (push_ptr[4] | ~|(push_ptr))",
+   "ops": [],
+   "status": "split",
+   "round": 1,
+   "parent": null,
+   "fixed": {},
+   "direction": null,
+   "attempt": 0,
+   "tag": "r1_c4_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r2_c12",
+    "r2_c13",
+    "r2_c14"
+   ]
+  },
+  "r1_c5": {
+   "cond": "|(push_match) ? push_match[5] : (push_ptr[5] | ~|(push_ptr))",
+   "ops": [],
+   "status": "split",
+   "round": 1,
+   "parent": null,
+   "fixed": {},
+   "direction": null,
+   "attempt": 0,
+   "tag": "r1_c5_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r2_c15",
+    "r2_c16",
+    "r2_c17"
+   ]
+  },
+  "r1_c6": {
+   "cond": "|(push_match) ? push_match[6] : (push_ptr[6] | ~|(push_ptr))",
+   "ops": [],
+   "status": "split",
+   "round": 1,
+   "parent": null,
+   "fixed": {},
+   "direction": null,
+   "attempt": 0,
+   "tag": "r1_c6_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r2_c18",
+    "r2_c19",
+    "r2_c20"
+   ]
+  },
+  "r1_c7": {
+   "cond": "|(push_match) ? push_match[7] : (push_ptr[7] | ~|(push_ptr))",
+   "ops": [],
+   "status": "split",
+   "round": 1,
+   "parent": null,
+   "fixed": {},
+   "direction": null,
+   "attempt": 0,
+   "tag": "r1_c7_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r2_c21",
+    "r2_c22",
+    "r2_c23"
+   ]
+  },
+  "r2_c0": {
+   "cond": "(|(push_match) ? push_match[0] : (push_ptr[0] | ~|(push_ptr))) & (!(chosen & chosen_not_popped))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "proved",
+   "round": 2,
+   "parent": "r1_c0",
+   "fixed": {},
+   "direction": null,
+   "attempt": 0,
+   "tag": "r2_c0_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 1.2,
+    "timeout": 3
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r2_c1": {
+   "cond": "(|(push_match) ? push_match[0] : (push_ptr[0] | ~|(push_ptr))) & (chosen & chosen_not_popped & (lookup_id != chosen_push_id))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "proved",
+   "round": 2,
+   "parent": "r1_c0",
+   "fixed": {},
+   "direction": null,
+   "attempt": 0,
+   "tag": "r2_c1_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 5,
+    "timeout": 5,
+    "by": "ic3 summary run"
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r2_c2": {
+   "cond": "(|(push_match) ? push_match[0] : (push_ptr[0] | ~|(push_ptr))) & (chosen & chosen_not_popped & (lookup_id == chosen_push_id))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 2,
+   "parent": "r1_c0",
+   "fixed": {},
+   "direction": null,
+   "attempt": 0,
+   "tag": "r2_c2_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r3_c0",
+    "r3_c1",
+    "r3_c2",
+    "r3_c3"
+   ]
+  },
+  "r2_c3": {
+   "cond": "(|(push_match) ? push_match[1] : (push_ptr[1] | ~|(push_ptr))) & (!(chosen & chosen_not_popped))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "proved",
+   "round": 2,
+   "parent": "r1_c1",
+   "fixed": {},
+   "direction": null,
+   "attempt": 0,
+   "tag": "r2_c3_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 5,
+    "timeout": 5,
+    "by": "ic3 summary run"
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r2_c4": {
+   "cond": "(|(push_match) ? push_match[1] : (push_ptr[1] | ~|(push_ptr))) & (chosen & chosen_not_popped & (lookup_id != chosen_push_id))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "proved",
+   "round": 2,
+   "parent": "r1_c1",
+   "fixed": {},
+   "direction": null,
+   "attempt": 0,
+   "tag": "r2_c4_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 5,
+    "timeout": 5,
+    "by": "ic3 summary run"
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r2_c5": {
+   "cond": "(|(push_match) ? push_match[1] : (push_ptr[1] | ~|(push_ptr))) & (chosen & chosen_not_popped & (lookup_id == chosen_push_id))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 2,
+   "parent": "r1_c1",
+   "fixed": {},
+   "direction": null,
+   "attempt": 0,
+   "tag": "r2_c5_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r3_c4",
+    "r3_c5",
+    "r3_c6",
+    "r3_c7"
+   ]
+  },
+  "r2_c6": {
+   "cond": "(|(push_match) ? push_match[2] : (push_ptr[2] | ~|(push_ptr))) & (!(chosen & chosen_not_popped))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "proved",
+   "round": 2,
+   "parent": "r1_c2",
+   "fixed": {},
+   "direction": null,
+   "attempt": 0,
+   "tag": "r2_c6_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 2.2,
+    "timeout": 3
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r2_c7": {
+   "cond": "(|(push_match) ? push_match[2] : (push_ptr[2] | ~|(push_ptr))) & (chosen & chosen_not_popped & (lookup_id != chosen_push_id))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "proved",
+   "round": 2,
+   "parent": "r1_c2",
+   "fixed": {},
+   "direction": null,
+   "attempt": 0,
+   "tag": "r2_c7_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 5,
+    "timeout": 5,
+    "by": "ic3 summary run"
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r2_c8": {
+   "cond": "(|(push_match) ? push_match[2] : (push_ptr[2] | ~|(push_ptr))) & (chosen & chosen_not_popped & (lookup_id == chosen_push_id))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 2,
+   "parent": "r1_c2",
+   "fixed": {},
+   "direction": null,
+   "attempt": 0,
+   "tag": "r2_c8_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r3_c8",
+    "r3_c9",
+    "r3_c10",
+    "r3_c11"
+   ]
+  },
+  "r2_c9": {
+   "cond": "(|(push_match) ? push_match[3] : (push_ptr[3] | ~|(push_ptr))) & (!(chosen & chosen_not_popped))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "proved",
+   "round": 2,
+   "parent": "r1_c3",
+   "fixed": {},
+   "direction": null,
+   "attempt": 0,
+   "tag": "r2_c9_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 2.0,
+    "timeout": 3
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r2_c10": {
+   "cond": "(|(push_match) ? push_match[3] : (push_ptr[3] | ~|(push_ptr))) & (chosen & chosen_not_popped & (lookup_id != chosen_push_id))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "proved",
+   "round": 2,
+   "parent": "r1_c3",
+   "fixed": {},
+   "direction": null,
+   "attempt": 0,
+   "tag": "r2_c10_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 5,
+    "timeout": 5,
+    "by": "ic3 summary run"
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r2_c11": {
+   "cond": "(|(push_match) ? push_match[3] : (push_ptr[3] | ~|(push_ptr))) & (chosen & chosen_not_popped & (lookup_id == chosen_push_id))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 2,
+   "parent": "r1_c3",
+   "fixed": {},
+   "direction": null,
+   "attempt": 0,
+   "tag": "r2_c11_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r3_c12",
+    "r3_c13",
+    "r3_c14",
+    "r3_c15"
+   ]
+  },
+  "r2_c12": {
+   "cond": "(|(push_match) ? push_match[4] : (push_ptr[4] | ~|(push_ptr))) & (!(chosen & chosen_not_popped))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "proved",
+   "round": 2,
+   "parent": "r1_c4",
+   "fixed": {},
+   "direction": null,
+   "attempt": 0,
+   "tag": "r2_c12_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 2.3,
+    "timeout": 3
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r2_c13": {
+   "cond": "(|(push_match) ? push_match[4] : (push_ptr[4] | ~|(push_ptr))) & (chosen & chosen_not_popped & (lookup_id != chosen_push_id))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "proved",
+   "round": 2,
+   "parent": "r1_c4",
+   "fixed": {},
+   "direction": null,
+   "attempt": 0,
+   "tag": "r2_c13_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 5,
+    "timeout": 5,
+    "by": "ic3 summary run"
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r2_c14": {
+   "cond": "(|(push_match) ? push_match[4] : (push_ptr[4] | ~|(push_ptr))) & (chosen & chosen_not_popped & (lookup_id == chosen_push_id))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 2,
+   "parent": "r1_c4",
+   "fixed": {},
+   "direction": null,
+   "attempt": 0,
+   "tag": "r2_c14_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r3_c16",
+    "r3_c17",
+    "r3_c18",
+    "r3_c19"
+   ]
+  },
+  "r2_c15": {
+   "cond": "(|(push_match) ? push_match[5] : (push_ptr[5] | ~|(push_ptr))) & (!(chosen & chosen_not_popped))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "proved",
+   "round": 2,
+   "parent": "r1_c5",
+   "fixed": {},
+   "direction": null,
+   "attempt": 0,
+   "tag": "r2_c15_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 5,
+    "timeout": 5,
+    "by": "ic3 summary run"
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r2_c16": {
+   "cond": "(|(push_match) ? push_match[5] : (push_ptr[5] | ~|(push_ptr))) & (chosen & chosen_not_popped & (lookup_id != chosen_push_id))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "proved",
+   "round": 2,
+   "parent": "r1_c5",
+   "fixed": {},
+   "direction": null,
+   "attempt": 0,
+   "tag": "r2_c16_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 5,
+    "timeout": 5,
+    "by": "ic3 summary run"
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r2_c17": {
+   "cond": "(|(push_match) ? push_match[5] : (push_ptr[5] | ~|(push_ptr))) & (chosen & chosen_not_popped & (lookup_id == chosen_push_id))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 2,
+   "parent": "r1_c5",
+   "fixed": {},
+   "direction": null,
+   "attempt": 0,
+   "tag": "r2_c17_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r3_c20",
+    "r3_c21",
+    "r3_c22",
+    "r3_c23"
+   ]
+  },
+  "r2_c18": {
+   "cond": "(|(push_match) ? push_match[6] : (push_ptr[6] | ~|(push_ptr))) & (!(chosen & chosen_not_popped))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "proved",
+   "round": 2,
+   "parent": "r1_c6",
+   "fixed": {},
+   "direction": null,
+   "attempt": 0,
+   "tag": "r2_c18_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r2_c19": {
+   "cond": "(|(push_match) ? push_match[6] : (push_ptr[6] | ~|(push_ptr))) & (chosen & chosen_not_popped & (lookup_id != chosen_push_id))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "proved",
+   "round": 2,
+   "parent": "r1_c6",
+   "fixed": {},
+   "direction": null,
+   "attempt": 0,
+   "tag": "r2_c19_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 5,
+    "timeout": 5,
+    "by": "ic3 summary run"
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r2_c20": {
+   "cond": "(|(push_match) ? push_match[6] : (push_ptr[6] | ~|(push_ptr))) & (chosen & chosen_not_popped & (lookup_id == chosen_push_id))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 2,
+   "parent": "r1_c6",
+   "fixed": {},
+   "direction": null,
+   "attempt": 0,
+   "tag": "r2_c20_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r3_c24",
+    "r3_c25",
+    "r3_c26",
+    "r3_c27"
+   ]
+  },
+  "r2_c21": {
+   "cond": "(|(push_match) ? push_match[7] : (push_ptr[7] | ~|(push_ptr))) & (!(chosen & chosen_not_popped))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "proved",
+   "round": 2,
+   "parent": "r1_c7",
+   "fixed": {},
+   "direction": null,
+   "attempt": 0,
+   "tag": "r2_c21_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 5,
+    "timeout": 5,
+    "by": "ic3 summary run"
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r2_c22": {
+   "cond": "(|(push_match) ? push_match[7] : (push_ptr[7] | ~|(push_ptr))) & (chosen & chosen_not_popped & (lookup_id != chosen_push_id))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "proved",
+   "round": 2,
+   "parent": "r1_c7",
+   "fixed": {},
+   "direction": null,
+   "attempt": 0,
+   "tag": "r2_c22_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 5,
+    "timeout": 5,
+    "by": "ic3 summary run"
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r2_c23": {
+   "cond": "(|(push_match) ? push_match[7] : (push_ptr[7] | ~|(push_ptr))) & (chosen & chosen_not_popped & (lookup_id == chosen_push_id))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 2,
+   "parent": "r1_c7",
+   "fixed": {},
+   "direction": null,
+   "attempt": 0,
+   "tag": "r2_c23_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r3_c28",
+    "r3_c29",
+    "r3_c30",
+    "r3_c31"
+   ]
+  },
+  "r3_c0": {
+   "cond": "((|(push_match) ? push_match[0] : (push_ptr[0] | ~|(push_ptr))) & (chosen & chosen_not_popped & (lookup_id == chosen_push_id))) & (chosen_push_id[2:1] == 2'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam",
+     "slice": "23:3"
+    }
+   ],
+   "status": "open",
+   "round": 3,
+   "parent": "r2_c2",
+   "fixed": {
+    "chosen_push_id": 1
+   },
+   "direction": {
+    "index": "chosen_push_id",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r3_c0_k1",
+   "last": {
+    "verdict": "SAT",
+    "seconds": 0.0,
+    "timeout": 20
+   },
+   "cex": {
+    "depth": 2,
+    "table": [
+     {
+      "cycle": 0,
+      "cam_valid": [
+       255,
+       255
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       1,
+       1
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       1,
+       1
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 0,
+      "pop_id": 7,
+      "push_id": 7,
+      "push_num_of_pops": 0,
+      "push_raw": 0,
+      "rst": 1
+     },
+     {
+      "cycle": 1,
+      "cam_valid": [
+       254,
+       0
+      ],
+      "cam": [
+       16777167,
+       16777215
+      ],
+      "chosen": [
+       0,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       1,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 0,
+      "pop_id": 0,
+      "push_id": 1,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 2,
+      "cam_valid": [
+       50,
+       1
+      ],
+      "cam": [
+       16728025,
+       16777209
+      ],
+      "chosen": [
+       1,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       1,
+       7
+      ],
+      "entity_cnt": [
+       1,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 1,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 7,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     }
+    ]
+   }
+  },
+  "r3_c1": {
+   "cond": "((|(push_match) ? push_match[0] : (push_ptr[0] | ~|(push_ptr))) & (chosen & chosen_not_popped & (lookup_id == chosen_push_id))) & (chosen_push_id[2:1] == 2'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 3,
+   "parent": "r2_c2",
+   "fixed": {
+    "chosen_push_id": 1
+   },
+   "direction": {
+    "index": "chosen_push_id",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r3_c1_k1",
+   "last": {
+    "verdict": "SAT",
+    "seconds": 0.0,
+    "timeout": 20
+   },
+   "cex": {
+    "depth": 2,
+    "table": [
+     {
+      "cycle": 0,
+      "cam_valid": [
+       255,
+       255
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       1,
+       1
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       1,
+       1
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 0,
+      "pop_id": 7,
+      "push_id": 7,
+      "push_num_of_pops": 0,
+      "push_raw": 0,
+      "rst": 1
+     },
+     {
+      "cycle": 1,
+      "cam_valid": [
+       254,
+       0
+      ],
+      "cam": [
+       16777183,
+       16777215
+      ],
+      "chosen": [
+       0,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       1,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 0,
+      "pop_id": 6,
+      "push_id": 3,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 2,
+      "cam_valid": [
+       32,
+       1
+      ],
+      "cam": [
+       16744443,
+       16777211
+      ],
+      "chosen": [
+       1,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       3,
+       7
+      ],
+      "entity_cnt": [
+       1,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 3,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 7,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     }
+    ]
+   }
+  },
+  "r3_c2": {
+   "cond": "((|(push_match) ? push_match[0] : (push_ptr[0] | ~|(push_ptr))) & (chosen & chosen_not_popped & (lookup_id == chosen_push_id))) & (chosen_push_id[2:1] == 2'd2)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam",
+     "slice": "23:3"
+    }
+   ],
+   "status": "open",
+   "round": 3,
+   "parent": "r2_c2",
+   "fixed": {
+    "chosen_push_id": 1
+   },
+   "direction": {
+    "index": "chosen_push_id",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r3_c2_k1",
+   "last": {
+    "verdict": "SAT",
+    "seconds": 0.0,
+    "timeout": 20
+   },
+   "cex": {
+    "depth": 2,
+    "table": [
+     {
+      "cycle": 0,
+      "cam_valid": [
+       255,
+       255
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       1,
+       1
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       1,
+       1
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 0,
+      "pop_id": 7,
+      "push_id": 7,
+      "push_num_of_pops": 0,
+      "push_raw": 0,
+      "rst": 1
+     },
+     {
+      "cycle": 1,
+      "cam_valid": [
+       254,
+       0
+      ],
+      "cam": [
+       16776191,
+       16777215
+      ],
+      "chosen": [
+       0,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       1,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 0,
+      "pop_id": 1,
+      "push_id": 5,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 2,
+      "cam_valid": [
+       50,
+       1
+      ],
+      "cam": [
+       16728029,
+       16777213
+      ],
+      "chosen": [
+       1,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       5,
+       7
+      ],
+      "entity_cnt": [
+       1,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 5,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 7,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     }
+    ]
+   }
+  },
+  "r3_c3": {
+   "cond": "((|(push_match) ? push_match[0] : (push_ptr[0] | ~|(push_ptr))) & (chosen & chosen_not_popped & (lookup_id == chosen_push_id))) & (chosen_push_id[2:1] == 2'd3)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam",
+     "slice": "23:3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam_valid",
+     "enable": "rst",
+     "slice": "7:1"
+    }
+   ],
+   "status": "open",
+   "round": 3,
+   "parent": "r2_c2",
+   "fixed": {
+    "chosen_push_id": 1
+   },
+   "direction": {
+    "index": "chosen_push_id",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r3_c3_k1",
+   "last": {
+    "verdict": "SAT",
+    "seconds": 0.0,
+    "timeout": 20
+   },
+   "cex": {
+    "depth": 2,
+    "table": [
+     {
+      "cycle": 0,
+      "cam_valid": [
+       255,
+       255
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       1,
+       1
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       1,
+       1
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 0,
+      "pop_id": 7,
+      "push_id": 7,
+      "push_num_of_pops": 0,
+      "push_raw": 0,
+      "rst": 1
+     },
+     {
+      "cycle": 1,
+      "cam_valid": [
+       254,
+       0
+      ],
+      "cam": [
+       16744447,
+       16777215
+      ],
+      "chosen": [
+       0,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       1,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 0,
+      "pop_id": 7,
+      "push_id": 6,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 2,
+      "cam_valid": [
+       18,
+       1
+      ],
+      "cam": [
+       16760798,
+       16777214
+      ],
+      "chosen": [
+       1,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       0
+      ],
+      "chosen_push_id": [
+       6,
+       7
+      ],
+      "entity_cnt": [
+       1,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 6,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 7,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     }
+    ]
+   }
+  },
+  "r3_c4": {
+   "cond": "((|(push_match) ? push_match[1] : (push_ptr[1] | ~|(push_ptr))) & (chosen & chosen_not_popped & (lookup_id == chosen_push_id))) & (chosen_push_id[2:1] == 2'd0)",
+   "ops": [
+    {
+     "op": "abstract_init",
+     "target": "entity_cnt"
+    },
+    {
+     "op": "abstract_init",
+     "target": "cam",
+     "slice": "2:0"
+    },
+    {
+     "op": "abstract_init",
+     "target": "cam",
+     "slice": "23:6"
+    },
+    {
+     "op": "abstract_init",
+     "target": "cam_valid",
+     "slice": "0:0"
+    },
+    {
+     "op": "abstract_init",
+     "target": "cam_valid",
+     "slice": "7:2"
+    }
+   ],
+   "status": "open",
+   "round": 3,
+   "parent": "r2_c5",
+   "fixed": {
+    "chosen_push_id": 1
+   },
+   "direction": {
+    "index": "chosen_push_id",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r3_c4_k1",
+   "last": {
+    "verdict": "SAT",
+    "seconds": 0.0,
+    "timeout": 20
+   },
+   "cex": {
+    "depth": 2,
+    "table": [
+     {
+      "cycle": 0,
+      "cam_valid": [
+       255,
+       255
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       1,
+       1
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       2,
+       2
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 5,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 1
+     },
+     {
+      "cycle": 1,
+      "cam_valid": [
+       252,
+       0
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       0,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       2,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 1,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 2,
+      "cam_valid": [
+       253,
+       1
+      ],
+      "cam": [
+       16777215,
+       16777209
+      ],
+      "chosen": [
+       1,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       0
+      ],
+      "chosen_push_id": [
+       1,
+       7
+      ],
+      "entity_cnt": [
+       2,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 1,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 2,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     }
+    ]
+   }
+  },
+  "r3_c5": {
+   "cond": "((|(push_match) ? push_match[1] : (push_ptr[1] | ~|(push_ptr))) & (chosen & chosen_not_popped & (lookup_id == chosen_push_id))) & (chosen_push_id[2:1] == 2'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam",
+     "slice": "23:6"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam_valid",
+     "slice": "7:2"
+    }
+   ],
+   "status": "open",
+   "round": 3,
+   "parent": "r2_c5",
+   "fixed": {
+    "chosen_push_id": 1
+   },
+   "direction": {
+    "index": "chosen_push_id",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r3_c5_k1",
+   "last": {
+    "verdict": "SAT",
+    "seconds": 0.0,
+    "timeout": 20
+   },
+   "cex": {
+    "depth": 2,
+    "table": [
+     {
+      "cycle": 0,
+      "cam_valid": [
+       255,
+       255
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       1,
+       1
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       2,
+       2
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 5,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 1
+     },
+     {
+      "cycle": 1,
+      "cam_valid": [
+       252,
+       0
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       0,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       2,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 1,
+      "pop_id": 3,
+      "push_id": 2,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 2,
+      "cam_valid": [
+       253,
+       1
+      ],
+      "cam": [
+       16777215,
+       16777210
+      ],
+      "chosen": [
+       1,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       2,
+       7
+      ],
+      "entity_cnt": [
+       2,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 2,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 2,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     }
+    ]
+   }
+  },
+  "r3_c6": {
+   "cond": "((|(push_match) ? push_match[1] : (push_ptr[1] | ~|(push_ptr))) & (chosen & chosen_not_popped & (lookup_id == chosen_push_id))) & (chosen_push_id[2:1] == 2'd2)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 3,
+   "parent": "r2_c5",
+   "fixed": {
+    "chosen_push_id": 1
+   },
+   "direction": {
+    "index": "chosen_push_id",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r3_c6_k1",
+   "last": {
+    "verdict": "SAT",
+    "seconds": 0.0,
+    "timeout": 20
+   },
+   "cex": {
+    "depth": 2,
+    "table": [
+     {
+      "cycle": 0,
+      "cam_valid": [
+       255,
+       255
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       1,
+       1
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       2,
+       2
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 5,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 1
+     },
+     {
+      "cycle": 1,
+      "cam_valid": [
+       252,
+       0
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       0,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       2,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 1,
+      "pop_id": 3,
+      "push_id": 5,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 2,
+      "cam_valid": [
+       253,
+       1
+      ],
+      "cam": [
+       16776958,
+       16777213
+      ],
+      "chosen": [
+       1,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       5,
+       7
+      ],
+      "entity_cnt": [
+       2,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 5,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 2,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     }
+    ]
+   }
+  },
+  "r3_c7": {
+   "cond": "((|(push_match) ? push_match[1] : (push_ptr[1] | ~|(push_ptr))) & (chosen & chosen_not_popped & (lookup_id == chosen_push_id))) & (chosen_push_id[2:1] == 2'd3)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 3,
+   "parent": "r2_c5",
+   "fixed": {
+    "chosen_push_id": 1
+   },
+   "direction": {
+    "index": "chosen_push_id",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r3_c7_k1",
+   "last": {
+    "verdict": "SAT",
+    "seconds": 0.0,
+    "timeout": 20
+   },
+   "cex": {
+    "depth": 2,
+    "table": [
+     {
+      "cycle": 0,
+      "cam_valid": [
+       255,
+       255
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       1,
+       1
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       2,
+       2
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 1,
+      "pop_id": 3,
+      "push_id": 5,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 1
+     },
+     {
+      "cycle": 1,
+      "cam_valid": [
+       253,
+       0
+      ],
+      "cam": [
+       16777214,
+       16777215
+      ],
+      "chosen": [
+       0,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       2,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 6,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 2,
+      "cam_valid": [
+       121,
+       1
+      ],
+      "cam": [
+       16777205,
+       16777214
+      ],
+      "chosen": [
+       1,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       0
+      ],
+      "chosen_push_id": [
+       6,
+       7
+      ],
+      "entity_cnt": [
+       2,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 6,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 3,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     }
+    ]
+   }
+  },
+  "r3_c8": {
+   "cond": "((|(push_match) ? push_match[2] : (push_ptr[2] | ~|(push_ptr))) & (chosen & chosen_not_popped & (lookup_id == chosen_push_id))) & (chosen_push_id[2:1] == 2'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam",
+     "slice": "23:9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam_valid",
+     "slice": "7:3"
+    }
+   ],
+   "status": "open",
+   "round": 3,
+   "parent": "r2_c8",
+   "fixed": {
+    "chosen_push_id": 1
+   },
+   "direction": {
+    "index": "chosen_push_id",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r3_c8_k1",
+   "last": {
+    "verdict": "SAT",
+    "seconds": 0.0,
+    "timeout": 20
+   },
+   "cex": {
+    "depth": 2,
+    "table": [
+     {
+      "cycle": 0,
+      "cam_valid": [
+       255,
+       255
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       1,
+       1
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       4,
+       4
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 7,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 1
+     },
+     {
+      "cycle": 1,
+      "cam_valid": [
+       250,
+       0
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       0,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       4,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 1,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 2,
+      "cam_valid": [
+       251,
+       1
+      ],
+      "cam": [
+       16777215,
+       16777209
+      ],
+      "chosen": [
+       1,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       0
+      ],
+      "chosen_push_id": [
+       1,
+       7
+      ],
+      "entity_cnt": [
+       4,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 1,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 2,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     }
+    ]
+   }
+  },
+  "r3_c9": {
+   "cond": "((|(push_match) ? push_match[2] : (push_ptr[2] | ~|(push_ptr))) & (chosen & chosen_not_popped & (lookup_id == chosen_push_id))) & (chosen_push_id[2:1] == 2'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam",
+     "slice": "5:0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam",
+     "slice": "23:9"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam_valid",
+     "slice": "7:3"
+    }
+   ],
+   "status": "open",
+   "round": 3,
+   "parent": "r2_c8",
+   "fixed": {
+    "chosen_push_id": 1
+   },
+   "direction": {
+    "index": "chosen_push_id",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r3_c9_k1",
+   "last": {
+    "verdict": "SAT",
+    "seconds": 0.0,
+    "timeout": 20
+   },
+   "cex": {
+    "depth": 2,
+    "table": [
+     {
+      "cycle": 0,
+      "cam_valid": [
+       255,
+       255
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       1,
+       1
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       4,
+       4
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 7,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 1
+     },
+     {
+      "cycle": 1,
+      "cam_valid": [
+       250,
+       0
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       0,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       4,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 1,
+      "pop_id": 3,
+      "push_id": 2,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 2,
+      "cam_valid": [
+       251,
+       1
+      ],
+      "cam": [
+       16777215,
+       16777210
+      ],
+      "chosen": [
+       1,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       2,
+       7
+      ],
+      "entity_cnt": [
+       4,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 2,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 2,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     }
+    ]
+   }
+  },
+  "r3_c10": {
+   "cond": "((|(push_match) ? push_match[2] : (push_ptr[2] | ~|(push_ptr))) & (chosen & chosen_not_popped & (lookup_id == chosen_push_id))) & (chosen_push_id[2:1] == 2'd2)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 3,
+   "parent": "r2_c8",
+   "fixed": {
+    "chosen_push_id": 1
+   },
+   "direction": {
+    "index": "chosen_push_id",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r3_c10_k1",
+   "last": {
+    "verdict": "SAT",
+    "seconds": 0.0,
+    "timeout": 20
+   },
+   "cex": {
+    "depth": 2,
+    "table": [
+     {
+      "cycle": 0,
+      "cam_valid": [
+       255,
+       255
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       1,
+       1
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       4,
+       4
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 7,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 1
+     },
+     {
+      "cycle": 1,
+      "cam_valid": [
+       250,
+       0
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       0,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       4,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 1,
+      "pop_id": 3,
+      "push_id": 5,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 2,
+      "cam_valid": [
+       251,
+       1
+      ],
+      "cam": [
+       16777182,
+       16777213
+      ],
+      "chosen": [
+       1,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       5,
+       7
+      ],
+      "entity_cnt": [
+       4,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 5,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 2,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     }
+    ]
+   }
+  },
+  "r3_c11": {
+   "cond": "((|(push_match) ? push_match[2] : (push_ptr[2] | ~|(push_ptr))) & (chosen & chosen_not_popped & (lookup_id == chosen_push_id))) & (chosen_push_id[2:1] == 2'd3)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 3,
+   "parent": "r2_c8",
+   "fixed": {
+    "chosen_push_id": 1
+   },
+   "direction": {
+    "index": "chosen_push_id",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r3_c11_k1",
+   "last": {
+    "verdict": "SAT",
+    "seconds": 0.0,
+    "timeout": 20
+   },
+   "cex": {
+    "depth": 2,
+    "table": [
+     {
+      "cycle": 0,
+      "cam_valid": [
+       255,
+       255
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       1,
+       1
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       4,
+       4
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 1,
+      "pop_id": 6,
+      "push_id": 7,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 1
+     },
+     {
+      "cycle": 1,
+      "cam_valid": [
+       251,
+       0
+      ],
+      "cam": [
+       16777214,
+       16777215
+      ],
+      "chosen": [
+       0,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       4,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 1,
+      "pop_id": 3,
+      "push_id": 6,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 2,
+      "cam_valid": [
+       187,
+       1
+      ],
+      "cam": [
+       16777151,
+       16777214
+      ],
+      "chosen": [
+       1,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       6,
+       7
+      ],
+      "entity_cnt": [
+       4,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 6,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 2,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     }
+    ]
+   }
+  },
+  "r3_c12": {
+   "cond": "((|(push_match) ? push_match[3] : (push_ptr[3] | ~|(push_ptr))) & (chosen & chosen_not_popped & (lookup_id == chosen_push_id))) & (chosen_push_id[2:1] == 2'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam",
+     "slice": "8:3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam",
+     "slice": "23:12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam_valid",
+     "slice": "2:1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam_valid",
+     "slice": "7:4"
+    }
+   ],
+   "status": "open",
+   "round": 3,
+   "parent": "r2_c11",
+   "fixed": {
+    "chosen_push_id": 1
+   },
+   "direction": {
+    "index": "chosen_push_id",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r3_c12_k1",
+   "last": {
+    "verdict": "SAT",
+    "seconds": 0.0,
+    "timeout": 20
+   },
+   "cex": {
+    "depth": 2,
+    "table": [
+     {
+      "cycle": 0,
+      "cam_valid": [
+       255,
+       255
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       1,
+       1
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       8,
+       8
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 5,
+      "push_num_of_pops": 0,
+      "push_raw": 0,
+      "rst": 1
+     },
+     {
+      "cycle": 1,
+      "cam_valid": [
+       246,
+       0
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       0,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       8,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 1,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 2,
+      "cam_valid": [
+       247,
+       1
+      ],
+      "cam": [
+       16777215,
+       16777209
+      ],
+      "chosen": [
+       1,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       0
+      ],
+      "chosen_push_id": [
+       1,
+       7
+      ],
+      "entity_cnt": [
+       8,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 1,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 2,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     }
+    ]
+   }
+  },
+  "r3_c13": {
+   "cond": "((|(push_match) ? push_match[3] : (push_ptr[3] | ~|(push_ptr))) & (chosen & chosen_not_popped & (lookup_id == chosen_push_id))) & (chosen_push_id[2:1] == 2'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 3,
+   "parent": "r2_c11",
+   "fixed": {
+    "chosen_push_id": 1
+   },
+   "direction": {
+    "index": "chosen_push_id",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r3_c13_k1",
+   "last": {
+    "verdict": "SAT",
+    "seconds": 0.0,
+    "timeout": 20
+   },
+   "cex": {
+    "depth": 2,
+    "table": [
+     {
+      "cycle": 0,
+      "cam_valid": [
+       255,
+       255
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       1,
+       1
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       8,
+       8
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 5,
+      "push_num_of_pops": 0,
+      "push_raw": 0,
+      "rst": 1
+     },
+     {
+      "cycle": 1,
+      "cam_valid": [
+       246,
+       0
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       0,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       8,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 1,
+      "pop_id": 3,
+      "push_id": 2,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 2,
+      "cam_valid": [
+       247,
+       1
+      ],
+      "cam": [
+       16777215,
+       16777210
+      ],
+      "chosen": [
+       1,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       2,
+       7
+      ],
+      "entity_cnt": [
+       8,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 2,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 2,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     }
+    ]
+   }
+  },
+  "r3_c14": {
+   "cond": "((|(push_match) ? push_match[3] : (push_ptr[3] | ~|(push_ptr))) & (chosen & chosen_not_popped & (lookup_id == chosen_push_id))) & (chosen_push_id[2:1] == 2'd2)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 3,
+   "parent": "r2_c11",
+   "fixed": {
+    "chosen_push_id": 1
+   },
+   "direction": {
+    "index": "chosen_push_id",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r3_c14_k1",
+   "last": {
+    "verdict": "SAT",
+    "seconds": 0.0,
+    "timeout": 20
+   },
+   "cex": {
+    "depth": 2,
+    "table": [
+     {
+      "cycle": 0,
+      "cam_valid": [
+       255,
+       255
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       1,
+       1
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       8,
+       8
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 5,
+      "push_num_of_pops": 0,
+      "push_raw": 0,
+      "rst": 1
+     },
+     {
+      "cycle": 1,
+      "cam_valid": [
+       246,
+       0
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       0,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       8,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 1,
+      "pop_id": 3,
+      "push_id": 5,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 2,
+      "cam_valid": [
+       247,
+       1
+      ],
+      "cam": [
+       16777182,
+       16777213
+      ],
+      "chosen": [
+       1,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       5,
+       7
+      ],
+      "entity_cnt": [
+       8,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 5,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 2,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     }
+    ]
+   }
+  },
+  "r3_c15": {
+   "cond": "((|(push_match) ? push_match[3] : (push_ptr[3] | ~|(push_ptr))) & (chosen & chosen_not_popped & (lookup_id == chosen_push_id))) & (chosen_push_id[2:1] == 2'd3)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam",
+     "slice": "23:12"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam_valid",
+     "slice": "7:4"
+    }
+   ],
+   "status": "open",
+   "round": 3,
+   "parent": "r2_c11",
+   "fixed": {
+    "chosen_push_id": 1
+   },
+   "direction": {
+    "index": "chosen_push_id",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r3_c15_k1",
+   "last": {
+    "verdict": "SAT",
+    "seconds": 0.0,
+    "timeout": 20
+   },
+   "cex": {
+    "depth": 2,
+    "table": [
+     {
+      "cycle": 0,
+      "cam_valid": [
+       255,
+       255
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       1,
+       1
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       8,
+       8
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 5,
+      "push_num_of_pops": 0,
+      "push_raw": 0,
+      "rst": 1
+     },
+     {
+      "cycle": 1,
+      "cam_valid": [
+       245,
+       0
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       0,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       8,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 0,
+      "pop_id": 3,
+      "push_id": 6,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 2,
+      "cam_valid": [
+       215,
+       1
+      ],
+      "cam": [
+       16777215,
+       16777214
+      ],
+      "chosen": [
+       1,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       6,
+       7
+      ],
+      "entity_cnt": [
+       8,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 6,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 2,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     }
+    ]
+   }
+  },
+  "r3_c16": {
+   "cond": "((|(push_match) ? push_match[4] : (push_ptr[4] | ~|(push_ptr))) & (chosen & chosen_not_popped & (lookup_id == chosen_push_id))) & (chosen_push_id[2:1] == 2'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam",
+     "slice": "11:0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam",
+     "slice": "23:15"
+    }
+   ],
+   "status": "open",
+   "round": 3,
+   "parent": "r2_c14",
+   "fixed": {
+    "chosen_push_id": 1
+   },
+   "direction": {
+    "index": "chosen_push_id",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r3_c16_k1",
+   "last": {
+    "verdict": "SAT",
+    "seconds": 0.0,
+    "timeout": 20
+   },
+   "cex": {
+    "depth": 2,
+    "table": [
+     {
+      "cycle": 0,
+      "cam_valid": [
+       255,
+       255
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       1,
+       1
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       16,
+       16
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 7,
+      "push_num_of_pops": 0,
+      "push_raw": 0,
+      "rst": 1
+     },
+     {
+      "cycle": 1,
+      "cam_valid": [
+       238,
+       0
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       0,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       16,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 1,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 2,
+      "cam_valid": [
+       239,
+       1
+      ],
+      "cam": [
+       16777215,
+       16777209
+      ],
+      "chosen": [
+       1,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       0
+      ],
+      "chosen_push_id": [
+       1,
+       7
+      ],
+      "entity_cnt": [
+       16,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 1,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 2,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     }
+    ]
+   }
+  },
+  "r3_c17": {
+   "cond": "((|(push_match) ? push_match[4] : (push_ptr[4] | ~|(push_ptr))) & (chosen & chosen_not_popped & (lookup_id == chosen_push_id))) & (chosen_push_id[2:1] == 2'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam",
+     "slice": "11:0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam",
+     "slice": "23:15"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam_valid",
+     "enablen": "rst",
+     "slice": "3:0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam_valid",
+     "enablen": "rst",
+     "slice": "7:5"
+    }
+   ],
+   "status": "open",
+   "round": 3,
+   "parent": "r2_c14",
+   "fixed": {
+    "chosen_push_id": 1
+   },
+   "direction": {
+    "index": "chosen_push_id",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r3_c17_k1",
+   "last": {
+    "verdict": "SAT",
+    "seconds": 0.0,
+    "timeout": 20
+   },
+   "cex": {
+    "depth": 2,
+    "table": [
+     {
+      "cycle": 0,
+      "cam_valid": [
+       255,
+       255
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       1,
+       1
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       16,
+       16
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 7,
+      "push_num_of_pops": 0,
+      "push_raw": 0,
+      "rst": 1
+     },
+     {
+      "cycle": 1,
+      "cam_valid": [
+       238,
+       0
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       0,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       16,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 1,
+      "pop_id": 3,
+      "push_id": 2,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 2,
+      "cam_valid": [
+       239,
+       1
+      ],
+      "cam": [
+       16777215,
+       16777210
+      ],
+      "chosen": [
+       1,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       2,
+       7
+      ],
+      "entity_cnt": [
+       16,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 2,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 2,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     }
+    ]
+   }
+  },
+  "r3_c18": {
+   "cond": "((|(push_match) ? push_match[4] : (push_ptr[4] | ~|(push_ptr))) & (chosen & chosen_not_popped & (lookup_id == chosen_push_id))) & (chosen_push_id[2:1] == 2'd2)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 3,
+   "parent": "r2_c14",
+   "fixed": {
+    "chosen_push_id": 1
+   },
+   "direction": {
+    "index": "chosen_push_id",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r3_c18_k1",
+   "last": {
+    "verdict": "SAT",
+    "seconds": 0.0,
+    "timeout": 20
+   },
+   "cex": {
+    "depth": 2,
+    "table": [
+     {
+      "cycle": 0,
+      "cam_valid": [
+       255,
+       255
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       1,
+       1
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       16,
+       16
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 7,
+      "push_num_of_pops": 0,
+      "push_raw": 0,
+      "rst": 1
+     },
+     {
+      "cycle": 1,
+      "cam_valid": [
+       238,
+       0
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       0,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       16,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 1,
+      "pop_id": 3,
+      "push_id": 5,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 2,
+      "cam_valid": [
+       239,
+       1
+      ],
+      "cam": [
+       8388606,
+       16777213
+      ],
+      "chosen": [
+       1,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       5,
+       7
+      ],
+      "entity_cnt": [
+       16,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 5,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 2,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     }
+    ]
+   }
+  },
+  "r3_c19": {
+   "cond": "((|(push_match) ? push_match[4] : (push_ptr[4] | ~|(push_ptr))) & (chosen & chosen_not_popped & (lookup_id == chosen_push_id))) & (chosen_push_id[2:1] == 2'd3)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam",
+     "slice": "23:15"
+    }
+   ],
+   "status": "open",
+   "round": 3,
+   "parent": "r2_c14",
+   "fixed": {
+    "chosen_push_id": 1
+   },
+   "direction": {
+    "index": "chosen_push_id",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r3_c19_k1",
+   "last": {
+    "verdict": "SAT",
+    "seconds": 0.0,
+    "timeout": 20
+   },
+   "cex": {
+    "depth": 2,
+    "table": [
+     {
+      "cycle": 0,
+      "cam_valid": [
+       255,
+       255
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       1,
+       1
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       16,
+       16
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 5,
+      "push_num_of_pops": 0,
+      "push_raw": 0,
+      "rst": 1
+     },
+     {
+      "cycle": 1,
+      "cam_valid": [
+       237,
+       0
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       0,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       16,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 6,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 2,
+      "cam_valid": [
+       79,
+       1
+      ],
+      "cam": [
+       16777215,
+       16777214
+      ],
+      "chosen": [
+       1,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       0
+      ],
+      "chosen_push_id": [
+       6,
+       7
+      ],
+      "entity_cnt": [
+       16,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 6,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 3,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     }
+    ]
+   }
+  },
+  "r3_c20": {
+   "cond": "((|(push_match) ? push_match[5] : (push_ptr[5] | ~|(push_ptr))) & (chosen & chosen_not_popped & (lookup_id == chosen_push_id))) & (chosen_push_id[2:1] == 2'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam",
+     "slice": "14:3"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam",
+     "slice": "23:18"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam_valid",
+     "slice": "4:1"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam_valid",
+     "slice": "7:6"
+    }
+   ],
+   "status": "open",
+   "round": 3,
+   "parent": "r2_c17",
+   "fixed": {
+    "chosen_push_id": 1
+   },
+   "direction": {
+    "index": "chosen_push_id",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r3_c20_k1",
+   "last": {
+    "verdict": "SAT",
+    "seconds": 0.0,
+    "timeout": 20
+   },
+   "cex": {
+    "depth": 2,
+    "table": [
+     {
+      "cycle": 0,
+      "cam_valid": [
+       223,
+       223
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       1,
+       1
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       32,
+       32
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 5,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 1
+     },
+     {
+      "cycle": 1,
+      "cam_valid": [
+       222,
+       0
+      ],
+      "cam": [
+       16711679,
+       16711679
+      ],
+      "chosen": [
+       0,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       32,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 1,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 2,
+      "cam_valid": [
+       223,
+       1
+      ],
+      "cam": [
+       16711679,
+       16711673
+      ],
+      "chosen": [
+       1,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       0
+      ],
+      "chosen_push_id": [
+       1,
+       7
+      ],
+      "entity_cnt": [
+       32,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 1,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 2,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     }
+    ]
+   }
+  },
+  "r3_c21": {
+   "cond": "((|(push_match) ? push_match[5] : (push_ptr[5] | ~|(push_ptr))) & (chosen & chosen_not_popped & (lookup_id == chosen_push_id))) & (chosen_push_id[2:1] == 2'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam",
+     "slice": "14:0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam",
+     "slice": "23:18"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam_valid",
+     "slice": "4:0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam_valid",
+     "slice": "7:6"
+    }
+   ],
+   "status": "spurious",
+   "round": 3,
+   "parent": "r2_c17",
+   "fixed": {
+    "chosen_push_id": 1
+   },
+   "direction": {
+    "index": "chosen_push_id",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r3_c21_k1",
+   "last": {
+    "verdict": "SAT",
+    "seconds": 0.0,
+    "timeout": 20
+   },
+   "cex": {
+    "depth": 2,
+    "table": [
+     {
+      "cycle": 0,
+      "cam_valid": [
+       223,
+       223
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       1,
+       1
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       32,
+       32
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 5,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 1
+     },
+     {
+      "cycle": 1,
+      "cam_valid": [
+       222,
+       0
+      ],
+      "cam": [
+       16711679,
+       16711679
+      ],
+      "chosen": [
+       0,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       32,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 1,
+      "pop_id": 3,
+      "push_id": 2,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 2,
+      "cam_valid": [
+       223,
+       1
+      ],
+      "cam": [
+       16711679,
+       16711674
+      ],
+      "chosen": [
+       1,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       2,
+       7
+      ],
+      "entity_cnt": [
+       32,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 2,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 2,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     }
+    ]
+   }
+  },
+  "r3_c22": {
+   "cond": "((|(push_match) ? push_match[5] : (push_ptr[5] | ~|(push_ptr))) & (chosen & chosen_not_popped & (lookup_id == chosen_push_id))) & (chosen_push_id[2:1] == 2'd2)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam",
+     "slice": "14:0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam",
+     "slice": "23:18"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam_valid",
+     "slice": "4:0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam_valid",
+     "slice": "7:6"
+    }
+   ],
+   "status": "spurious",
+   "round": 3,
+   "parent": "r2_c17",
+   "fixed": {
+    "chosen_push_id": 1
+   },
+   "direction": {
+    "index": "chosen_push_id",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r3_c22_k1",
+   "last": {
+    "verdict": "SAT",
+    "seconds": 0.0,
+    "timeout": 20
+   },
+   "cex": {
+    "depth": 2,
+    "table": [
+     {
+      "cycle": 0,
+      "cam_valid": [
+       223,
+       223
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       1,
+       1
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       32,
+       32
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 7,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 1
+     },
+     {
+      "cycle": 1,
+      "cam_valid": [
+       222,
+       0
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       0,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       32,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 1,
+      "pop_id": 3,
+      "push_id": 4,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 2,
+      "cam_valid": [
+       223,
+       1
+      ],
+      "cam": [
+       16777215,
+       16777212
+      ],
+      "chosen": [
+       1,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       4,
+       7
+      ],
+      "entity_cnt": [
+       32,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 4,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 2,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     }
+    ]
+   }
+  },
+  "r3_c23": {
+   "cond": "((|(push_match) ? push_match[5] : (push_ptr[5] | ~|(push_ptr))) & (chosen & chosen_not_popped & (lookup_id == chosen_push_id))) & (chosen_push_id[2:1] == 2'd3)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam",
+     "slice": "14:0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam",
+     "slice": "23:18"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam_valid",
+     "slice": "4:0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam_valid",
+     "slice": "7:6"
+    }
+   ],
+   "status": "spurious",
+   "round": 3,
+   "parent": "r2_c17",
+   "fixed": {
+    "chosen_push_id": 1
+   },
+   "direction": {
+    "index": "chosen_push_id",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r3_c23_k1",
+   "last": {
+    "verdict": "SAT",
+    "seconds": 0.0,
+    "timeout": 20
+   },
+   "cex": {
+    "depth": 2,
+    "table": [
+     {
+      "cycle": 0,
+      "cam_valid": [
+       255,
+       255
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       1,
+       1
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       32,
+       32
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 1,
+      "pop_id": 3,
+      "push_id": 7,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 1
+     },
+     {
+      "cycle": 1,
+      "cam_valid": [
+       222,
+       0
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       0,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       32,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 0,
+      "pop_id": 7,
+      "push_id": 6,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 2,
+      "cam_valid": [
+       31,
+       1
+      ],
+      "cam": [
+       16777215,
+       16777214
+      ],
+      "chosen": [
+       1,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       0
+      ],
+      "chosen_push_id": [
+       6,
+       7
+      ],
+      "entity_cnt": [
+       32,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 6,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 3,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     }
+    ]
+   }
+  },
+  "r3_c24": {
+   "cond": "((|(push_match) ? push_match[6] : (push_ptr[6] | ~|(push_ptr))) & (chosen & chosen_not_popped & (lookup_id == chosen_push_id))) & (chosen_push_id[2:1] == 2'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam",
+     "slice": "17:0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam",
+     "slice": "23:21"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam_valid",
+     "slice": "5:0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam_valid",
+     "slice": "7:7"
+    }
+   ],
+   "status": "spurious",
+   "round": 3,
+   "parent": "r2_c20",
+   "fixed": {
+    "chosen_push_id": 1
+   },
+   "direction": {
+    "index": "chosen_push_id",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r3_c24_k1",
+   "last": {
+    "verdict": "SAT",
+    "seconds": 0.0,
+    "timeout": 20
+   },
+   "cex": {
+    "depth": 2,
+    "table": [
+     {
+      "cycle": 0,
+      "cam_valid": [
+       255,
+       255
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       1,
+       1
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       64,
+       64
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 7,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 1
+     },
+     {
+      "cycle": 1,
+      "cam_valid": [
+       190,
+       0
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       0,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       64,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 1,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 2,
+      "cam_valid": [
+       191,
+       1
+      ],
+      "cam": [
+       16777215,
+       16777209
+      ],
+      "chosen": [
+       1,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       0
+      ],
+      "chosen_push_id": [
+       1,
+       7
+      ],
+      "entity_cnt": [
+       64,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 1,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 2,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     }
+    ]
+   }
+  },
+  "r3_c25": {
+   "cond": "((|(push_match) ? push_match[6] : (push_ptr[6] | ~|(push_ptr))) & (chosen & chosen_not_popped & (lookup_id == chosen_push_id))) & (chosen_push_id[2:1] == 2'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam",
+     "slice": "17:0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam",
+     "slice": "23:21"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam_valid",
+     "slice": "5:0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam_valid",
+     "slice": "7:7"
+    }
+   ],
+   "status": "spurious",
+   "round": 3,
+   "parent": "r2_c20",
+   "fixed": {
+    "chosen_push_id": 1
+   },
+   "direction": {
+    "index": "chosen_push_id",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r3_c25_k1",
+   "last": {
+    "verdict": "SAT",
+    "seconds": 0.0,
+    "timeout": 20
+   },
+   "cex": {
+    "depth": 2,
+    "table": [
+     {
+      "cycle": 0,
+      "cam_valid": [
+       255,
+       255
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       1,
+       1
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       64,
+       64
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 7,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 1
+     },
+     {
+      "cycle": 1,
+      "cam_valid": [
+       190,
+       0
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       0,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       64,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 1,
+      "pop_id": 3,
+      "push_id": 2,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 2,
+      "cam_valid": [
+       191,
+       1
+      ],
+      "cam": [
+       16777215,
+       16777210
+      ],
+      "chosen": [
+       1,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       2,
+       7
+      ],
+      "entity_cnt": [
+       64,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 2,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 2,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     }
+    ]
+   }
+  },
+  "r3_c26": {
+   "cond": "((|(push_match) ? push_match[6] : (push_ptr[6] | ~|(push_ptr))) & (chosen & chosen_not_popped & (lookup_id == chosen_push_id))) & (chosen_push_id[2:1] == 2'd2)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam",
+     "slice": "17:0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam",
+     "slice": "23:21"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam_valid",
+     "slice": "5:0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam_valid",
+     "slice": "7:7"
+    }
+   ],
+   "status": "spurious",
+   "round": 3,
+   "parent": "r2_c20",
+   "fixed": {
+    "chosen_push_id": 1
+   },
+   "direction": {
+    "index": "chosen_push_id",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r3_c26_k1",
+   "last": {
+    "verdict": "SAT",
+    "seconds": 0.0,
+    "timeout": 20
+   },
+   "cex": {
+    "depth": 2,
+    "table": [
+     {
+      "cycle": 0,
+      "cam_valid": [
+       255,
+       255
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       1,
+       1
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       64,
+       64
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 7,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 1
+     },
+     {
+      "cycle": 1,
+      "cam_valid": [
+       190,
+       0
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       0,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       64,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 1,
+      "pop_id": 3,
+      "push_id": 4,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 2,
+      "cam_valid": [
+       191,
+       1
+      ],
+      "cam": [
+       16777215,
+       16777212
+      ],
+      "chosen": [
+       1,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       4,
+       7
+      ],
+      "entity_cnt": [
+       64,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 4,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 2,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     }
+    ]
+   }
+  },
+  "r3_c27": {
+   "cond": "((|(push_match) ? push_match[6] : (push_ptr[6] | ~|(push_ptr))) & (chosen & chosen_not_popped & (lookup_id == chosen_push_id))) & (chosen_push_id[2:1] == 2'd3)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam",
+     "slice": "17:0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam",
+     "slice": "23:21"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam_valid",
+     "slice": "5:0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam_valid",
+     "slice": "7:7"
+    }
+   ],
+   "status": "spurious",
+   "round": 3,
+   "parent": "r2_c20",
+   "fixed": {
+    "chosen_push_id": 1
+   },
+   "direction": {
+    "index": "chosen_push_id",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r3_c27_k1",
+   "last": {
+    "verdict": "SAT",
+    "seconds": 0.0,
+    "timeout": 20
+   },
+   "cex": {
+    "depth": 2,
+    "table": [
+     {
+      "cycle": 0,
+      "cam_valid": [
+       255,
+       255
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       1,
+       1
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       64,
+       64
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 7,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 1
+     },
+     {
+      "cycle": 1,
+      "cam_valid": [
+       190,
+       0
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       0,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       64,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 6,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 2,
+      "cam_valid": [
+       191,
+       1
+      ],
+      "cam": [
+       16776191,
+       16777214
+      ],
+      "chosen": [
+       1,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       0
+      ],
+      "chosen_push_id": [
+       6,
+       7
+      ],
+      "entity_cnt": [
+       64,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 6,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 2,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     }
+    ]
+   }
+  },
+  "r3_c28": {
+   "cond": "((|(push_match) ? push_match[7] : (push_ptr[7] | ~|(push_ptr))) & (chosen & chosen_not_popped & (lookup_id == chosen_push_id))) & (chosen_push_id[2:1] == 2'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam",
+     "slice": "20:0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam_valid",
+     "slice": "6:0"
+    }
+   ],
+   "status": "spurious",
+   "round": 3,
+   "parent": "r2_c23",
+   "fixed": {
+    "chosen_push_id": 1
+   },
+   "direction": {
+    "index": "chosen_push_id",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r3_c28_k1",
+   "last": {
+    "verdict": "SAT",
+    "seconds": 0.0,
+    "timeout": 20
+   },
+   "cex": {
+    "depth": 2,
+    "table": [
+     {
+      "cycle": 0,
+      "cam_valid": [
+       255,
+       255
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       1,
+       1
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       128,
+       128
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 5,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 1
+     },
+     {
+      "cycle": 1,
+      "cam_valid": [
+       126,
+       0
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       0,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       128,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 1,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 2,
+      "cam_valid": [
+       127,
+       1
+      ],
+      "cam": [
+       16777215,
+       16777209
+      ],
+      "chosen": [
+       1,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       0
+      ],
+      "chosen_push_id": [
+       1,
+       7
+      ],
+      "entity_cnt": [
+       128,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 1,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 2,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     }
+    ]
+   }
+  },
+  "r3_c29": {
+   "cond": "((|(push_match) ? push_match[7] : (push_ptr[7] | ~|(push_ptr))) & (chosen & chosen_not_popped & (lookup_id == chosen_push_id))) & (chosen_push_id[2:1] == 2'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam",
+     "slice": "20:0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam_valid",
+     "slice": "6:0"
+    }
+   ],
+   "status": "spurious",
+   "round": 3,
+   "parent": "r2_c23",
+   "fixed": {
+    "chosen_push_id": 1
+   },
+   "direction": {
+    "index": "chosen_push_id",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r3_c29_k1",
+   "last": {
+    "verdict": "SAT",
+    "seconds": 0.0,
+    "timeout": 20
+   },
+   "cex": {
+    "depth": 2,
+    "table": [
+     {
+      "cycle": 0,
+      "cam_valid": [
+       255,
+       255
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       1,
+       1
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       128,
+       128
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 5,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 1
+     },
+     {
+      "cycle": 1,
+      "cam_valid": [
+       126,
+       0
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       0,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       128,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 1,
+      "pop_id": 3,
+      "push_id": 2,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 2,
+      "cam_valid": [
+       127,
+       1
+      ],
+      "cam": [
+       16777215,
+       16777210
+      ],
+      "chosen": [
+       1,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       2,
+       7
+      ],
+      "entity_cnt": [
+       128,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 2,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 2,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     }
+    ]
+   }
+  },
+  "r3_c30": {
+   "cond": "((|(push_match) ? push_match[7] : (push_ptr[7] | ~|(push_ptr))) & (chosen & chosen_not_popped & (lookup_id == chosen_push_id))) & (chosen_push_id[2:1] == 2'd2)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam",
+     "slice": "20:0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam_valid",
+     "slice": "6:0"
+    }
+   ],
+   "status": "spurious",
+   "round": 3,
+   "parent": "r2_c23",
+   "fixed": {
+    "chosen_push_id": 1
+   },
+   "direction": {
+    "index": "chosen_push_id",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r3_c30_k1",
+   "last": {
+    "verdict": "SAT",
+    "seconds": 0.0,
+    "timeout": 20
+   },
+   "cex": {
+    "depth": 2,
+    "table": [
+     {
+      "cycle": 0,
+      "cam_valid": [
+       251,
+       251
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       1,
+       1
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       128,
+       128
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 5,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 1
+     },
+     {
+      "cycle": 1,
+      "cam_valid": [
+       126,
+       0
+      ],
+      "cam": [
+       16777215,
+       16777087
+      ],
+      "chosen": [
+       0,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       128,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 1,
+      "pop_id": 3,
+      "push_id": 4,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 2,
+      "cam_valid": [
+       127,
+       1
+      ],
+      "cam": [
+       16777215,
+       16777084
+      ],
+      "chosen": [
+       1,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       4,
+       7
+      ],
+      "entity_cnt": [
+       128,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 4,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 2,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     }
+    ]
+   }
+  },
+  "r3_c31": {
+   "cond": "((|(push_match) ? push_match[7] : (push_ptr[7] | ~|(push_ptr))) & (chosen & chosen_not_popped & (lookup_id == chosen_push_id))) & (chosen_push_id[2:1] == 2'd3)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam",
+     "slice": "20:0"
+    },
+    {
+     "op": "abstract_state",
+     "target": "cam_valid",
+     "slice": "6:0"
+    }
+   ],
+   "status": "spurious",
+   "round": 3,
+   "parent": "r2_c23",
+   "fixed": {
+    "chosen_push_id": 1
+   },
+   "direction": {
+    "index": "chosen_push_id",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r3_c31_k1",
+   "last": {
+    "verdict": "SAT",
+    "seconds": 0.0,
+    "timeout": 20
+   },
+   "cex": {
+    "depth": 2,
+    "table": [
+     {
+      "cycle": 0,
+      "cam_valid": [
+       255,
+       255
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       1,
+       1
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       128,
+       128
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 5,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 1
+     },
+     {
+      "cycle": 1,
+      "cam_valid": [
+       126,
+       0
+      ],
+      "cam": [
+       16777215,
+       16777215
+      ],
+      "chosen": [
+       0,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       1
+      ],
+      "chosen_push_id": [
+       7,
+       7
+      ],
+      "entity_cnt": [
+       128,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 7,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 6,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     },
+     {
+      "cycle": 2,
+      "cam_valid": [
+       127,
+       1
+      ],
+      "cam": [
+       16769023,
+       16777214
+      ],
+      "chosen": [
+       1,
+       0
+      ],
+      "chosen_not_popped": [
+       1,
+       0
+      ],
+      "chosen_push_id": [
+       6,
+       7
+      ],
+      "entity_cnt": [
+       128,
+       0
+      ],
+      "lookup": 0,
+      "lookup_id": 6,
+      "pop": 1,
+      "pop_id": 7,
+      "push_id": 3,
+      "push_num_of_pops": 0,
+      "push_raw": 1,
+      "rst": 0
+     }
+    ]
+   }
+  }
+ },
+ "cum": {
+  "input_tokens": 100426,
+  "output_tokens": 264794,
+  "cache_hit": 0,
+  "cache_miss": 0,
+  "cost_usd": 0.33181173599999997,
+  "latency_s": 1849.2983911037445
+ }
+}

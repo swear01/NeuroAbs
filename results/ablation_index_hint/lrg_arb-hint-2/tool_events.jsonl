@@ -1,0 +1,32 @@
+{"kind": "load", "round": 1, "time": 1793361089.469337, "cmd": "run", "phase": "start", "load": [3.5263671875, 3.54931640625, 11.46630859375]}
+{"kind": "coverage", "round": 1, "time": 1793361130.1404192, "scope": null, "cases": ["arbitrary_requester[4:4] == 1'd0", "arbitrary_requester[4:4] == 1'd1"], "ok": true, "detail": ""}
+{"kind": "check", "round": 1, "time": 1793361131.4345062, "piece": "r1_c1", "tag": "r1_c1_k0", "verdict": "UNSAT", "seconds": 1.216947078704834, "timeout": 3, "ops": [], "cond": "arbitrary_requester[4:4] == 1'd1"}
+{"kind": "check", "round": 1, "time": 1793361133.2195287, "piece": "r1_c0", "tag": "r1_c0_k0", "verdict": "TIMEOUT", "seconds": 3.0019631385803223, "timeout": 3, "ops": [], "cond": "arbitrary_requester[4:4] == 1'd0"}
+{"kind": "check_pass", "round": 1, "time": 1793361133.219856, "pieces": ["r1_c0", "r1_c1"], "timeout": 3, "wall_s": 3.0787672996520996}
+{"kind": "coverage", "round": 1, "time": 1793361133.2407107, "scope": "arbitrary_requester[4:4] == 1'd0", "cases": ["arbitrary_requester[3:3] == 1'd0", "arbitrary_requester[3:3] == 1'd1"], "ok": true, "detail": ""}
+{"kind": "pruned_empty", "round": 1, "time": 1793361133.277261, "scope": "arbitrary_requester[4:4] == 1'd0", "dropped": []}
+{"kind": "auto_expand", "round": 1, "time": 1793361133.2773345, "piece": "r1_c0", "index": "arbitrary_requester", "fixed": {"arbitrary_requester": 4}}
+{"kind": "check", "round": 2, "time": 1793361136.3571117, "piece": "r2_c0", "tag": "r2_c0_k0", "verdict": "TIMEOUT", "seconds": 3.003037452697754, "timeout": 3, "ops": [], "cond": "(arbitrary_requester[4:4] == 1'd0) & (arbitrary_requester[3:3] == 1'd0)"}
+{"kind": "check", "round": 2, "time": 1793361136.3572254, "piece": "r2_c1", "tag": "r2_c1_k0", "verdict": "TIMEOUT", "seconds": 3.0035409927368164, "timeout": 3, "ops": [], "cond": "(arbitrary_requester[4:4] == 1'd0) & (arbitrary_requester[3:3] == 1'd1)"}
+{"kind": "check_pass", "round": 2, "time": 1793361136.3582704, "pieces": ["r2_c0", "r2_c1"], "timeout": 3, "wall_s": 3.0801100730895996}
+{"kind": "coverage", "round": 2, "time": 1793361136.3781688, "scope": "(arbitrary_requester[4:4] == 1'd0) & (arbitrary_requester[3:3] == 1'd0)", "cases": ["arbitrary_requester[2:2] == 1'd0", "arbitrary_requester[2:2] == 1'd1"], "ok": true, "detail": ""}
+{"kind": "pruned_empty", "round": 2, "time": 1793361136.4138658, "scope": "(arbitrary_requester[4:4] == 1'd0) & (arbitrary_requester[3:3] == 1'd0)", "dropped": []}
+{"kind": "auto_expand", "round": 2, "time": 1793361136.4139378, "piece": "r2_c0", "index": "arbitrary_requester", "fixed": {"arbitrary_requester": 3}}
+{"kind": "coverage", "round": 2, "time": 1793361136.432014, "scope": "(arbitrary_requester[4:4] == 1'd0) & (arbitrary_requester[3:3] == 1'd1)", "cases": ["arbitrary_requester[2:2] == 1'd0", "arbitrary_requester[2:2] == 1'd1"], "ok": true, "detail": ""}
+{"kind": "pruned_empty", "round": 2, "time": 1793361136.4677763, "scope": "(arbitrary_requester[4:4] == 1'd0) & (arbitrary_requester[3:3] == 1'd1)", "dropped": []}
+{"kind": "auto_expand", "round": 2, "time": 1793361136.4678504, "piece": "r2_c1", "index": "arbitrary_requester", "fixed": {"arbitrary_requester": 3}}
+{"kind": "check", "round": 3, "time": 1793361142.6423275, "piece": "r3_c0", "tag": "r3_c0_k0", "verdict": "UNSAT", "seconds": 6.09952712059021, "timeout": 20, "ops": [], "cond": "((arbitrary_requester[4:4] == 1'd0) & (arbitrary_requester[3:3] == 1'd0)) & (arbitrary_requester[2:2] == 1'd0)"}
+{"kind": "check", "round": 3, "time": 1793361143.9371188, "piece": "r3_c3", "tag": "r3_c3_k0", "verdict": "UNSAT", "seconds": 7.393819570541382, "timeout": 20, "ops": [], "cond": "((arbitrary_requester[4:4] == 1'd0) & (arbitrary_requester[3:3] == 1'd1)) & (arbitrary_requester[2:2] == 1'd1)"}
+{"kind": "check", "round": 3, "time": 1793361146.4942684, "piece": "r3_c2", "tag": "r3_c2_k0", "verdict": "UNSAT", "seconds": 9.950422048568726, "timeout": 20, "ops": [], "cond": "((arbitrary_requester[4:4] == 1'd0) & (arbitrary_requester[3:3] == 1'd1)) & (arbitrary_requester[2:2] == 1'd0)"}
+{"kind": "check", "round": 3, "time": 1793361146.9105797, "piece": "r3_c1", "tag": "r3_c1_k0", "verdict": "UNSAT", "seconds": 10.366834878921509, "timeout": 20, "ops": [], "cond": "((arbitrary_requester[4:4] == 1'd0) & (arbitrary_requester[3:3] == 1'd0)) & (arbitrary_requester[2:2] == 1'd1)"}
+{"kind": "check_pass", "round": 3, "time": 1793361146.9111464, "pieces": ["r3_c0", "r3_c1", "r3_c2", "r3_c3"], "timeout": 20, "wall_s": 10.44229793548584}
+{"kind": "load", "round": 4, "time": 1793361146.9127164, "cmd": "run", "phase": "end", "load": [14.75439453125, 5.9658203125, 11.79638671875]}
+{"kind": "load", "round": 3, "time": 1793361146.9839146, "cmd": "report", "phase": "start", "load": [14.75439453125, 5.9658203125, 11.79638671875]}
+{"kind": "load", "round": 3, "time": 1793361146.9843605, "cmd": "report", "phase": "end", "load": [14.75439453125, 5.9658203125, 11.79638671875]}
+{"kind": "load", "round": 3, "time": 1793361147.0539336, "cmd": "vacuity", "phase": "start", "load": [14.75439453125, 5.9658203125, 11.79638671875]}
+{"kind": "vacuity", "round": 3, "time": 1793361147.1526344, "piece": "r1_c1", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "vacuity", "round": 3, "time": 1793361147.2485287, "piece": "r3_c0", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "vacuity", "round": 3, "time": 1793361147.3437932, "piece": "r3_c1", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "vacuity", "round": 3, "time": 1793361147.439698, "piece": "r3_c2", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "vacuity", "round": 3, "time": 1793361147.5353932, "piece": "r3_c3", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "load", "round": 3, "time": 1793361147.536102, "cmd": "vacuity", "phase": "end", "load": [13.97314453125, 5.94970703125, 11.759765625]}

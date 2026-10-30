@@ -1,0 +1,20 @@
+{
+  "name": "llmm-fifo_ref_64_ebmc",
+  "group": "cold",
+  "paper_name": null,
+  "source": {
+    "repo": "TechnionFV/large_lemma_miners",
+    "commit": "f836890",
+    "path": "benchmarks/hard/fifo_ref_64_ebmc.sv"
+  },
+  "top": "main",
+  "rtl_files": [
+    "design/fifo_ref_64_ebmc.sv"
+  ],
+  "btor2": "model.btor2",
+  "build": "scripts/build_bench.sh --llmm-prop design/fifo_ref_64_ebmc.sv main . (yosys script in build.ys)",
+  "expected": "safe",
+  "derived_from": null,
+  "rename_map": null,
+  "mutation": null
+}

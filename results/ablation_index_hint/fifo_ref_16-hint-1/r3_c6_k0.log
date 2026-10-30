@@ -1,0 +1,127 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2026  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.68+120 (git sha1 a34d3baae-dirty, Release, Clang /usr/bin/clang++ 21.1.8)
+
+-- Running command `read_verilog -sv r3_c6_k0.v; read_rtlil r3_c6_k0.il; hierarchy -top main; flatten; abstract -state -enable __one w:dut.buffer\[0\]; abstract -state -enable __one w:dut.buffer\[1\]; abstract -state -enable __one w:dut.buffer\[2\]; abstract -state -enable __one w:dut.buffer\[4\]; abstract -state -enable __one w:dut.buffer\[5\]; abstract -state -enable __one w:dut.buffer\[6\]; abstract -state -enable __one w:dut.buffer\[7\]; abstract -state -enable __one w:dut.buffer\[8\]; abstract -state -enable __one w:dut.buffer\[9\]; abstract -state -enable __one w:dut.buffer\[10\]; abstract -state -enable __one w:dut.buffer\[11\]; abstract -state -enable __one w:dut.buffer\[12\]; abstract -state -enable __one w:dut.buffer\[13\]; abstract -state -enable __one w:dut.buffer\[14\]; abstract -state -enable __one w:dut.buffer\[15\]; opt_clean; async2sync; dffunmap; setundef -undriven -anyseq; setundef -anyseq; opt_clean; check -assert; write_btor -s r3_c6_k0.btor2' --
+
+1. Executing Verilog-2005 frontend: r3_c6_k0.v
+Parsing SystemVerilog input from `r3_c6_k0.v' to AST representation.
+Generating RTLIL representation for module `\__piece'.
+Successfully finished Verilog frontend.
+
+2. Executing RTLIL frontend.
+Input filename: r3_c6_k0.il
+
+3. Executing HIERARCHY pass (managing design hierarchy).
+
+3.1. Analyzing design hierarchy..
+Top module:  \main
+Used module:     \__piece
+
+3.2. Analyzing design hierarchy..
+Top module:  \main
+Used module:     \__piece
+Removed 0 unused modules.
+Module main directly or indirectly contains formal properties -> setting "keep" attribute.
+
+4. Executing FLATTEN pass (flatten design).
+Deleting now unused module __piece.
+<suppressed ~1 debug messages>
+
+5. Executing ABSTRACT pass.
+Abstracted 1 stateful cells.
+<suppressed ~2 debug messages>
+
+6. Executing ABSTRACT pass.
+Abstracted 1 stateful cells.
+<suppressed ~2 debug messages>
+
+7. Executing ABSTRACT pass.
+Abstracted 1 stateful cells.
+<suppressed ~2 debug messages>
+
+8. Executing ABSTRACT pass.
+Abstracted 1 stateful cells.
+<suppressed ~2 debug messages>
+
+9. Executing ABSTRACT pass.
+Abstracted 1 stateful cells.
+<suppressed ~2 debug messages>
+
+10. Executing ABSTRACT pass.
+Abstracted 1 stateful cells.
+<suppressed ~2 debug messages>
+
+11. Executing ABSTRACT pass.
+Abstracted 1 stateful cells.
+<suppressed ~2 debug messages>
+
+12. Executing ABSTRACT pass.
+Abstracted 1 stateful cells.
+<suppressed ~2 debug messages>
+
+13. Executing ABSTRACT pass.
+Abstracted 1 stateful cells.
+<suppressed ~2 debug messages>
+
+14. Executing ABSTRACT pass.
+Abstracted 1 stateful cells.
+<suppressed ~2 debug messages>
+
+15. Executing ABSTRACT pass.
+Abstracted 1 stateful cells.
+<suppressed ~2 debug messages>
+
+16. Executing ABSTRACT pass.
+Abstracted 1 stateful cells.
+<suppressed ~2 debug messages>
+
+17. Executing ABSTRACT pass.
+Abstracted 1 stateful cells.
+<suppressed ~2 debug messages>
+
+18. Executing ABSTRACT pass.
+Abstracted 1 stateful cells.
+<suppressed ~2 debug messages>
+
+19. Executing ABSTRACT pass.
+Abstracted 1 stateful cells.
+<suppressed ~2 debug messages>
+
+20. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \main..
+Removed 0 unused cells and 4 unused wires.
+<suppressed ~1 debug messages>
+
+21. Executing ASYNC2SYNC pass.
+
+22. Executing DFFUNMAP pass (unmap clock enable and synchronous reset from FFs).
+
+23. Executing SETUNDEF pass (replace undef values with defined constants).
+
+24. Executing SETUNDEF pass (replace undef values with defined constants).
+
+25. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \main..
+Removed 27 unused cells and 30 unused wires.
+<suppressed ~28 debug messages>
+
+26. Executing CHECK pass (checking for obvious problems).
+Checking module main...
+Found and reported 0 problems.
+
+27. Executing BTOR backend.
+
+27.1. Executing BMUXMAP pass.
+
+27.2. Executing DEMUXMAP pass.
+
+27.3. Executing BWMUXMAP pass.
+
+End of script. Logfile hash: bce17ff818, time: 0.01s, user: 0.01s, system: 0.01s, MEM: 206.65 MB peak
+Yosys 0.68+120 (git sha1 a34d3baae-dirty, Release, Clang /usr/bin/clang++ 21.1.8)
+Time spent: 33% 2x opt_clean (0 sec), 15% 15x abstract (0 sec), ...

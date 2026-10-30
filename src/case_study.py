@@ -630,7 +630,7 @@ def cmd_run(st, args):
         todo = [p for p, v in s["pieces"].items() if v["status"] == "open"]
         if not todo:
             break
-        cap = min(caps[min((rnd - 1) // 2, len(caps) - 1)], int(args.budget - (now() - t_start)))
+        cap = max(1, min(caps[min((rnd - 1) // 2, len(caps) - 1)], int(args.budget - (now() - t_start))))
         rows = check_pass(st, todo, cap)
         if any(v["status"] == "sat" for v in s["pieces"].values()):
             cmd_cegar(st, args)
@@ -640,7 +640,7 @@ def cmd_run(st, args):
         for p in list(timeouts):  # "auto" index directions: the tool takes the next bit, no LLM call
             v = s["pieces"][p]
             d = v["direction"]
-            if d and d["auto"] and v["fixed"].get(d["index"], 1) > 0 and counter[0] + 2 <= MAX_NEW // 2:  # the other half of the budget stays for the LLM's own splits
+            if rnd < MAX_ROUNDS and d and d["auto"] and v["fixed"].get(d["index"], 1) > 0 and counter[0] + 2 <= MAX_NEW // 2:  # the other half of the budget stays for the LLM's own splits
                 kids = expand(st, {"index": d["index"], "bits": 1, "auto": True}, p)
                 st.event("auto_expand", piece=p, index=d["index"], fixed=v["fixed"])
                 add_children(st, p, kids, v["ops"], rnd + 1, counter)

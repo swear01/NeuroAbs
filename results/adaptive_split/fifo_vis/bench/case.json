@@ -1,0 +1,10 @@
+{
+ "sv": "bench/prep/fifo_vis.sv",
+ "rtl": "bench/design/fifo_vis.sv",
+ "property": "The model has one assertion, checked in every cycle: if rst is low then equal == 1 (\"assert (!rst -> equal)\").",
+ "mem_re": "(sr|rb)_mem_\\d+",
+ "mem_note": "sr_mem_0 .. sr_mem_15 and rb_mem_0 .. rb_mem_15: registers, width 4 (the FIFO storage)",
+ "mem_havoc": "Memory words are registers sr_mem_0 .. rb_mem_15, so this also covers memory havoc.",
+ "alias_re": "(sr|rb)\\.(clk|dataIn|pop|push|rst)",
+ "unavailable": "(The two FIFOs do not compute the same functions.)"
+}

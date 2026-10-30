@@ -1,0 +1,7 @@
+{
+ "sv": "bench/prep/lrg_arb_lrg_16_ebmc.sv",
+ "rtl": "bench/prep/lrg_arb_lrg_16_ebmc.sv",
+ "property": "The model has one assertion, checked in every cycle: !rst -> (!(chosen & o_grant_vec_ref[arbitrary_requester]) || ~in_req_vec[another_arbitrary_requester] || ranks[arbitrary_requester] < ranks[another_arbitrary_requester]).",
+ "unavailable": "",
+ "mem_havoc": "The ranks array is flattened into registers; abstract_state on a register or a slice of it is a rank havoc."
+}

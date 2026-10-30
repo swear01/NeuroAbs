@@ -1,8 +1,9 @@
-"""Manual case study: DeepSeek runs the split / abstract / check / CEGAR flow on one design (issue #25).
+"""Case study: DeepSeek drives an adaptive tree of splits (and class-A abstractions) on one design (issues #23, #25).
 
-Each subcommand is one step of the flow; state lives in <workdir>/state.json and every LLM call is one
-record of <workdir>/llm_calls.jsonl.  The tools (Yosys, SAT coverage check, rIC3, replay) judge every
-answer; the LLM only splits and picks class-A operators.
+`run` is the whole flow: an initial split, then rounds of (parallel rIC3 check with a short cap -> replay of SAT
+pieces -> LLM decision for the pieces that timed out: resplit / abstract / both).  State lives in
+<workdir>/state.json and every LLM call is one record of <workdir>/llm_calls.jsonl.  The tools (Yosys, SAT
+coverage check, rIC3, replay) judge every answer; the LLM only splits and picks class-A operators.
 """
 import argparse
 import concurrent.futures
@@ -24,7 +25,12 @@ import deepseek_chat  # noqa: E402
 from deepseek_prices import usage_cost  # noqa: E402
 
 RIC3 = "/var/tmp/agentic-ic3-tools/ric3-master-4d63899/target/release/ric3"
-MAX_CALLS, MAX_ROUNDS = 30, 5
+MAX_CALLS, MAX_ROUNDS = 40, 8
+PARALLEL = 8       # pieces checked at once (rIC3 portfolio each; they share cores)
+CAPS = (3, 20, 120)  # rIC3 cap per piece in seconds: rounds 1-2, 3-4, 5+
+MAX_NEW = 32       # new pieces per round
+SUMMARY_S = 5      # single-engine IC3 run that feeds the lemma summary
+# class A operators; operator 8 of #24 ("k symbolic memory slots") is added here, in validate_op and in op_commands
 OPS = {"abstract_value": "-value", "abstract_state": "-state", "abstract_init": "-init"}
 EXPR_OK = re.compile(r"[A-Za-z0-9_\s()!~&|^=<>+\-?:\[\]{}',]*")
 
@@ -48,7 +54,15 @@ character replaced by '_', for example sr.tail is sr_tail and sr.mem[3] is sr_me
 A split is a list of cases, each a Verilog boolean expression over signal identifiers (evaluated in every cycle, on the \
 current values of states, inputs and wires). Piece i checks: case_i -> (~prop_en | prop_a) in every cycle. The split is accepted \
 only if a SAT check shows that the OR of the cases is true for ALL values of the signals (it covers every situation, \
-reachable or not).
+reachable or not). When a piece is split again, its new cases are intersected with the piece's own case and must cover it.
+Split on the source of hardness, not on output conditions: a proof over all indices or all slots stays whole under a split on \
+outputs (full, empty, flags), but fixing the index register or pointer it quantifies over instantiates it. Two ways to \
+give a split:
+- {{"cases":[{{"id":"c0","condition":"<verilog expression>"}}, ...]}}: explicit cases (at most 16 per piece).
+- {{"index":ID,"bits":n,"auto":true|false}}: the tool splits register ID on its n highest bits not yet fixed in this piece \
+(2^n cases, top bit first). With "auto":true, children that time out are split on the next bit by the tool, without \
+asking you again. Use this for an index or pointer register.
+Pieces already proved are never touched again.
 
 ## Abstraction operators (class A: every one only adds behaviours, so UNSAT on the abstract model is a real proof)
 - {{"op":"abstract_value","target":ID,"enable":ID|null,"enablen":ID|null,"slice":"hi:lo"|"i"|null}}: replace the driver of wire ID by a free value (same as cutpoint). enable/enablen: free only while the 1-bit signal is high/low.
@@ -59,7 +73,8 @@ Not available (reject if you use them): any other operator, rewriting expression
 
 ## Verdicts
 rIC3 (portfolio of IC3/BMC/k-induction) returns UNSAT (piece proved), SAT (counterexample; replayed on the concrete \
-model: real if it reproduces, spurious otherwise) or TIMEOUT. Prefer fewer free values: when refining, prefer enable or \
+model: real if it reproduces, spurious otherwise) or TIMEOUT. The cap per piece is short (3 s at first, longer in later \
+rounds), so a timeout means "not easy yet", not "impossible". Prefer fewer free values: when refining, prefer enable or \
 slice over restoring a whole signal.
 
 ## Answer format
@@ -84,6 +99,7 @@ class Study:
         with open(self.state_path) as f:
             self.s = json.load(f)
         self.cfg = load_cfg(self.dir)
+        os.chdir(self.dir)
 
     def save(self):
         with open(self.state_path, "w") as f:
@@ -139,11 +155,11 @@ class Study:
             out, rec = self.llm(step, user, history, note="attempt {:d}".format(attempt + 1))
             try:
                 data = json.loads(out)
-                result, verdict = validate(data)
+                result, verdict, extra = validate(data)
             except (json.JSONDecodeError, ValueError, KeyError, TypeError) as e:
                 verdict = "rejected: " + str(e)
-                result = None
-            self.finish_call(rec, verdict, failure=None if result is not None else "pending-classification")
+                result = extra = None
+            self.finish_call(rec, verdict, failure=None if result is not None else "pending-classification", extra=extra)
             if result is not None:
                 return result, rec
             history = history + [{"role": "user", "content": user}, {"role": "assistant", "content": out}]
@@ -195,6 +211,14 @@ class Study:
         rc, out = self.yosys("read_verilog -sv coverage.v; prep -top __cover; sat -show-inputs -prove covered 1 -verify",
                              "coverage.log")
         return rc == 0, out
+
+    def empty(self, expr):
+        """SAT check: expr is false for all signal values."""
+        body, used = self.piece_module({"e": expr}, ["none"], "__empty")
+        body += ["assign none = ~e;", "endmodule"]
+        open(os.path.join(self.dir, "empty.v"), "w").write("\n".join(body))
+        rc, _ = self.yosys("read_verilog -sv empty.v; prep -top __empty; sat -prove none 1 -verify", "empty.log")
+        return rc == 0
 
     # ---- models ----------------------------------------------------------------------------------------------
     def build(self, tag, cond, ops, reach=False):
@@ -292,6 +316,8 @@ class Study:
                 if op[k] not in ids or ids[op[k]]["width"] != 1:
                     raise ValueError("{:s} must be a 1-bit signal identifier".format(k))
                 out[k] = op[k]
+        if out.get("enable") and out.get("enablen"):
+            raise ValueError("enable and enablen cannot both be set on one operator (yosys abstract supports one enable condition)")
         if op.get("slice"):
             m = re.fullmatch(r"(\d+)(:(\d+))?", str(op["slice"]))
             if not m or int(m.group(1)) >= ids[t]["width"] or (m.group(3) and int(m.group(3)) > int(m.group(1))):
@@ -301,18 +327,20 @@ class Study:
             if op["op"] != "abstract_state" or not isinstance(op["initstates"], int) or op["initstates"] < 1:
                 raise ValueError("initstates is only for abstract_state, a positive integer")
             out["initstates"] = op["initstates"]
+        # hook: operator 8 of #24 ("k symbolic memory slots") is validated here once implemented
         if op["op"] == "abstract_init" and (out.get("enable") or out.get("enablen")):
             raise ValueError("abstract_init does not support enable")
         return out
 
     # ---- rIC3 ------------------------------------------------------------------------------------------------
-    def ric3(self, model, timeout, tag, engine=("portfolio",)):
+    def ric3(self, model, timeout, tag, engine=("portfolio",), env=None):
         log = os.path.join(self.dir, "logs", tag + ".log")
         os.makedirs(os.path.dirname(log), exist_ok=True)
         t0 = now()
         with open(log, "w") as f:
             p = subprocess.Popen([RIC3, "check", "--ui", "false", "--cex", os.path.join(self.dir, model), *engine],
-                                 stdout=f, stderr=subprocess.STDOUT, start_new_session=True)
+                                 stdout=f, stderr=subprocess.STDOUT, start_new_session=True,
+                                 env={**os.environ, **(env or {})})
             try:
                 p.wait(timeout=timeout)
                 to = False
@@ -386,112 +414,236 @@ def signal_table(st):
     return "\n".join(rows) + ("\n" + st.cfg["mem_note"] if st.cfg.get("mem_note") else "")
 
 
-def cmd_split(st, args):
-    scope = None
-    if args.pieces:
-        scope = " | ".join("({:s})".format(st.s["pieces"][p]["cond"]) for p in args.pieces)
-    user = ["Step: PLAN SPLIT (round {:d}).".format(st.s["round"])]
-    if args.pieces:
-        user.append("Re-split only these pieces, which timed out ({:s}); the new cases must cover exactly their union:\n{:s}".format(
-            ", ".join(args.pieces), "\n".join("- {:s}: {:s}".format(p, st.s["pieces"][p]["cond"]) for p in args.pieces)))
-        if args.context:
-            user.append(open(args.context).read())
+def sig_list(st):
+    return "Signals:\n" + signal_table(st)
+
+
+def new_piece(st, cond, parent, ops, fixed, direction, rnd):
+    return {"cond": cond, "ops": list(ops), "status": "open", "round": rnd, "parent": parent, "fixed": fixed,
+            "direction": direction}
+
+
+def expand(st, spec, parent):
+    """Turn a split spec into [(case, fixed, direction)] for the piece `parent` (None = whole property) and SAT-check
+    that the cases cover the parent's case."""
+    ids = st.ident_map()
+    scope = st.s["pieces"][parent]["cond"] if parent else None
+    fixed0 = dict(st.s["pieces"][parent]["fixed"]) if parent else {}
+    if not isinstance(spec, dict):
+        raise ValueError("split must be a JSON object")
+    if "index" in spec:
+        t = spec["index"]
+        if t not in ids:
+            raise ValueError("index {!r} is not a signal identifier".format(t))
+        low = fixed0.get(t, ids[t]["width"])
+        n = min(int(spec.get("bits", 1)), low)
+        if n < 1:
+            raise ValueError("every bit of {:s} is already fixed in this piece".format(t))
+        cases = []
+        for v in range(2 ** n):
+            hi, lo = low - 1, low - n
+            cases.append("{:s}[{:d}:{:d}] == {:d}'d{:d}".format(t, hi, lo, n, v))
+        fixed = {**fixed0, t: low - n}
+        direction = {"index": t, "auto": bool(spec.get("auto"))}
     else:
-        user.append("Propose a split of the property into cases.")
-    user.append("Signals:\n" + signal_table(st))
-    user.append('Answer: {"cases":[{"id":"c0","condition":"<verilog expression>"}, ...],"reason":"..."}')
-    user = "\n\n".join(user)
-
-    def validate(data):
-        cases = data["cases"]
-        if not isinstance(cases, list) or not 1 <= len(cases) <= 12:
-            raise ValueError("cases must be a list of 1 to 12 entries")
-        conds = [st.check_expr(c["condition"]) for c in cases]
-        ids = [c["id"] for c in cases]
-        if len(set(ids)) != len(ids):
+        raw = spec.get("cases")
+        if not isinstance(raw, list) or not 1 <= len(raw) <= 16:
+            raise ValueError("cases must be a list of 1 to 16 entries")
+        cases = [st.check_expr(c["condition"]) for c in raw]
+        if len({c["id"] for c in raw}) != len(raw):
             raise ValueError("duplicate case ids")
-        ok, out = st.coverage(scope, conds)
-        st.event("coverage", scope=scope, cases=conds, ok=ok, detail=out[-800:])
-        if not ok:
-            raise ValueError("SAT coverage check failed: the cases do not cover every situation. Counterexample "
-                             "(signal values where no case holds):\n" + out[-800:])
-        return list(zip(ids, conds)), "accepted: coverage SAT-checked, {:d} cases".format(len(cases))
-
-    cases, rec = st.ask("plan_split", user, validate)
-    if args.pieces:
-        for p in args.pieces:
-            st.s["pieces"][p]["status"] = "split"
-    pre = "r{:d}".format(st.s["round"])
-    for cid, cond in cases:
-        st.s["pieces"]["{:s}_{:s}".format(pre, cid)] = {"cond": cond, "ops": [], "status": "new", "round": st.s["round"]}
-    st.save()
-    print(json.dumps(cases, indent=1))
+        fixed, direction = fixed0, None
+    ok, out = st.coverage(scope, cases)
+    st.event("coverage", scope=scope, cases=cases, ok=ok, detail=out[-800:])
+    if not ok:
+        raise ValueError("SAT coverage check failed: the cases do not cover the piece's case. Counterexample "
+                         "(signal values where no case holds):\n" + out[-800:])
+    if scope and "index" in spec:  # a bit that the piece's case already fixes yields contradictory cases: drop them
+        keep = [c for c in cases if not st.empty("({:s}) & ({:s})".format(scope, c))]
+        st.event("pruned_empty", scope=scope, dropped=[c for c in cases if c not in keep])
+        cases = keep
+    return [("({:s}) & ({:s})".format(scope, c) if scope else c, fixed, direction) for c in cases]
 
 
-def cmd_abstract(st, args):
-    todo = [p for p, v in st.s["pieces"].items() if v["status"] == "new"]
-    user = ["Step: PLAN ABSTRACTION (round {:d}). Choose class-A operators for each piece. An empty list means no "
-            "abstraction (the concrete piece).".format(st.s["round"]), "Pieces:"]
-    user += ["- {:s}: {:s}".format(p, st.s["pieces"][p]["cond"]) for p in todo]
-    if args.context:
-        user.append(open(args.context).read())
-    user.append("Signals:\n" + signal_table(st))
-    user.append('Answer: {"pieces":{"<piece id>":[<operator>, ...], ...},"reason":"..."}')
-    user = "\n\n".join(user)
-    rejected = {}
+def add_children(st, parent, kids, ops, rnd, counter):
+    out = []
+    for cond, fixed, direction in kids:
+        pid = "r{:d}_c{:d}".format(rnd, counter[0])
+        counter[0] += 1
+        st.s["pieces"][pid] = new_piece(st, cond, parent, ops, fixed, direction, rnd)
+        out.append(pid)
+    if parent:
+        st.s["pieces"][parent]["status"] = "split"
+        st.s["pieces"][parent]["children"] = out
+    return out
+
+
+def plan_first_split(st):
+    user = ("Step: PLAN SPLIT (round 1). Propose the first split of the property: where does the hardness come from "
+            "(which index, pointer or slot does the proof quantify over)? Each piece is first checked with a {:d} s "
+            "cap, 8 pieces at a time; pieces that time out come back to you with timings.\n\n{:s}\n\n"
+            'Answer: {{"split":<explicit cases or index direction>,"reason":"..."}}').format(CAPS[0], sig_list(st))
 
     def validate(data):
-        plan = data["pieces"]
-        if set(plan) != set(todo):
-            raise ValueError("pieces must be exactly {}".format(todo))
-        accepted = {}
-        for p in todo:
-            accepted[p] = []
-            for op in plan[p]:
-                try:
-                    accepted[p].append(st.validate_op(op))
-                except (ValueError, KeyError, TypeError) as e:
-                    rejected.setdefault(p, []).append((op, str(e)))
-        return accepted, "accepted {:d} ops, rejected {:d}".format(
-            sum(map(len, accepted.values())), sum(map(len, rejected.values())))
+        kids = expand(st, data["split"], None)
+        return kids, "accepted: coverage SAT-checked, {:d} cases".format(len(kids)), \
+            {"split": data["split"], "reason": data.get("reason")}
 
-    plan, rec = st.ask("plan_abstraction", user, validate)
-    for p, ops in plan.items():
-        st.s["pieces"][p]["ops"] = ops
-        st.s["pieces"][p]["status"] = "planned"
-    st.event("abstraction", plan=plan, rejected={p: [[o, e] for o, e in v] for p, v in rejected.items()})
-    st.save()
-    print(json.dumps({"accepted": plan, "rejected": rejected}, indent=1))
+    kids, rec = st.ask("plan_split", user, validate)
+    ids = add_children(st, None, kids, [], 1, [0])
+    print(json.dumps({i: st.s["pieces"][i]["cond"] for i in ids}, indent=1))
+
+
+def lemma_summary(st, p):
+    """Single-engine IC3 run on the piece's model for SUMMARY_S seconds: rIC3 does not print lemma contents on a run that
+    does not finish (--cert only on UNSAT, and its latches are anonymous), so this reports depth, lemmas per frame and
+    generalised-lemma length from the trace log."""
+    v = st.s["pieces"][p]
+    tag = v["tag"] + "_ic3"
+    verdict, secs, log = st.ric3(v["tag"] + ".btor2", SUMMARY_S, tag, engine=("ic3",), env={"RUST_LOG": "trace"})
+    text = open(log, errors="replace").read()
+    depth = re.findall(r"no counterexample up to depth (\d+)", text)
+    frames = re.findall(r"frames \[\d+\]: ([\d ]+)", text)
+    mic = [int(x) for x in re.findall(r"mic from \d+ to (\d+) len", text)][-200:]
+    latches = re.findall(r"preprocessed ts has \d+ vars, \d+ inputs, (\d+) latches", text)
+    s = "single-engine IC3, {:d} s: ".format(SUMMARY_S)
+    if verdict == "UNSAT":
+        return verdict, "IC3 alone proved it in {:.1f} s".format(secs)
+    s += "reached depth {:s}".format(depth[-1] if depth else "0")
+    if frames:
+        s += "; lemmas per frame at the end [{:s}]".format(frames[-1].strip().replace(" ", ", "))
+    if mic:
+        s += "; recent lemmas have {:.1f} literals on average out of {:s} state bits (rIC3 does not name them)".format(
+            sum(mic) / len(mic), latches[-1] if latches else "?")
+    return verdict, s
+
+
+def cmd_decide(st, timeouts, rows, counter, cap):
+    """One LLM call for all pieces that timed out this round: resplit / abstract / both, each with a reason."""
+    rnd = st.s["round"]
+    with concurrent.futures.ThreadPoolExecutor(PARALLEL) as ex:
+        t0 = now()
+        sums = dict(zip(timeouts, ex.map(lambda p: lemma_summary(st, p), timeouts)))
+    st.event("summary_pass", pieces=timeouts, timeout=SUMMARY_S, wall_s=now() - t0)
+    for p, (verdict, text) in list(sums.items()):
+        if verdict == "UNSAT":
+            st.s["pieces"][p]["status"] = "proved"
+            st.s["pieces"][p]["last"] = {"verdict": "UNSAT", "seconds": SUMMARY_S, "timeout": SUMMARY_S, "by": "ic3 summary run"}
+            del sums[p]
+        st.event("summary", piece=p, verdict=verdict, text=text)
+    todo = list(sums)
+    if not todo:
+        return
+    user = ["Step: DECIDE (round {:d}). rIC3 portfolio, cap {:d} s per piece. Results of this round:".format(rnd, cap)]
+    user += ["- {:s}: {:s} {:.1f} s".format(*r) for r in rows]
+    user.append("Pieces that timed out (decide for each: \"resplit\", \"abstract\" or \"both\", with a reason):")
+    for p in todo:
+        v = st.s["pieces"][p]
+        user.append("- {:s}: case {:s}\n  operators now: {:s}\n  already fixed bits: {:s}\n  {:s}".format(
+            p, v["cond"], json.dumps(v["ops"]), json.dumps(v["fixed"]), sums[p][1]))
+    user.append("Proved pieces are never touched again. Budget: at most {:d} new pieces this round, {:d} rounds in "
+                "total ({:d} left); the cap grows to {:d} s in later rounds.".format(
+                    MAX_NEW, MAX_ROUNDS, MAX_ROUNDS - rnd, CAPS[min(rnd // 2, len(CAPS) - 1)]))
+    user.append(sig_list(st))
+    user.append('Answer: {"pieces":{"<piece id>":{"action":"resplit|abstract|both","reason":"...",'
+                '"split":<explicit cases or index direction, for resplit/both>,"ops":[<operator>, ...] (for abstract/both)}, ...}}')
+
+    def validate(data):
+        plan, total = {}, 0
+        if set(data["pieces"]) != set(todo):
+            raise ValueError("pieces must be exactly {}".format(todo))
+        for p in todo:
+            d = data["pieces"][p]
+            if d["action"] not in ("resplit", "abstract", "both") or not str(d.get("reason", "")).strip():
+                raise ValueError("{:s}: action must be resplit, abstract or both, and a reason is required".format(p))
+            ops = st.s["pieces"][p]["ops"]
+            if d["action"] != "resplit":
+                ops = [st.validate_op(op) for op in d["ops"]]
+                if d["action"] == "abstract" and ops == st.s["pieces"][p]["ops"]:
+                    raise ValueError("{:s}: the operator list is unchanged".format(p))
+            kids = expand(st, d["split"], p) if d["action"] != "abstract" else []
+            total += len(kids)
+            plan[p] = dict(action=d["action"], reason=d["reason"], ops=ops, kids=kids, split=d.get("split"))
+        if total + counter[0] > MAX_NEW:
+            raise ValueError("{:d} new pieces ({:d} already made by the tool's auto splits), at most {:d} per round".format(
+                total, counter[0], MAX_NEW))
+        return plan, "accepted: " + ", ".join("{:s} {:s}".format(p, x["action"]) for p, x in plan.items()), \
+            {p: {"action": x["action"], "reason": x["reason"], "split": x["split"], "ops": x["ops"]} for p, x in plan.items()}
+
+    plan, rec = st.ask("decide", "\n".join(user), validate)
+    for p, x in plan.items():
+        if x["action"] == "abstract":
+            st.s["pieces"][p]["ops"], st.s["pieces"][p]["status"] = x["ops"], "open"
+        else:
+            add_children(st, p, x["kids"], x["ops"], rnd + 1, counter)
+        print(p, x["action"], "-", x["reason"])
 
 
 def run_check(st, p, timeout):
     v = st.s["pieces"][p]
-    tag = "{:s}_k{:d}".format(p, v.get("attempt", 0))
+    v["attempt"] = v.get("attempt", -1) + 1
+    tag = "{:s}_k{:d}".format(p, v["attempt"])
     try:
         model = st.build(tag, v["cond"], v["ops"])
     except RuntimeError as e:
+        st.event("build_error", piece=p, error=str(e)[:500])
         return p, "BUILD_ERROR", 0.0, str(e), tag
     verdict, secs, log = st.ric3(model, timeout, tag)
     return p, verdict, secs, log, tag
 
 
-def cmd_check(st, args):
-    todo = args.pieces or [p for p, v in st.s["pieces"].items() if v["status"] in ("planned", "timeout", "refined")]
-    for p in todo:
-        st.s["pieces"][p]["attempt"] = st.s["pieces"][p].get("attempt", -1) + 1
+def check_pass(st, todo, cap):
     t0 = now()
-    with concurrent.futures.ThreadPoolExecutor(2) as ex:
-        futs = [ex.submit(run_check, st, p, args.timeout) for p in todo]
+    rows = []
+    with concurrent.futures.ThreadPoolExecutor(PARALLEL) as ex:
+        futs = [ex.submit(run_check, st, p, cap) for p in todo]
         for f in concurrent.futures.as_completed(futs):
             p, verdict, secs, log, tag = f.result()
             v = st.s["pieces"][p]
             v["status"] = {"UNSAT": "proved", "SAT": "sat", "TIMEOUT": "timeout"}.get(verdict, "error")
-            v["tag"], v["last"] = tag, {"verdict": verdict, "seconds": round(secs, 1), "timeout": args.timeout}
-            st.event("check", piece=p, tag=tag, verdict=verdict, seconds=secs, timeout=args.timeout, ops=v["ops"],
-                     cond=v["cond"])
+            v["tag"], v["last"] = tag, {"verdict": verdict, "seconds": round(secs, 1), "timeout": cap}
+            st.event("check", piece=p, tag=tag, verdict=verdict, seconds=secs, timeout=cap, ops=v["ops"], cond=v["cond"])
+            rows.append((p, verdict, secs))
             print(p, verdict, round(secs, 1), flush=True)
+    st.event("check_pass", pieces=todo, timeout=cap, wall_s=now() - t0)
+    st.save()
+    return sorted(rows)
+
+
+def cmd_run(st, args):
+    global CAPS
+    CAPS = tuple(int(x) for x in args.caps.split(","))
+    caps = CAPS
+    s = st.s
+    for rnd in range(s["round"], MAX_ROUNDS + 1):
+        s["round"] = rnd
+        if rnd == 1 and not s["pieces"]:
+            plan_first_split(st)
             st.save()
-    st.event("check_pass", pieces=todo, timeout=args.timeout, wall_s=now() - t0)
+        todo = [p for p, v in s["pieces"].items() if v["status"] == "open"]
+        if not todo:
+            break
+        cap = caps[min((rnd - 1) // 2, len(caps) - 1)]
+        rows = check_pass(st, todo, cap)
+        if any(v["status"] == "sat" for v in s["pieces"].values()):
+            cmd_cegar(st, args)
+            cmd_refine(st, args)
+        timeouts = [p for p in todo if s["pieces"][p]["status"] == "timeout"]
+        counter = [0]
+        for p in list(timeouts):  # "auto" index directions: the tool takes the next bit, no LLM call
+            v = s["pieces"][p]
+            d = v["direction"]
+            if d and d["auto"] and v["fixed"].get(d["index"], 1) > 0 and counter[0] + 2 <= MAX_NEW // 2:  # the other half of the budget stays for the LLM's own splits
+                kids = expand(st, {"index": d["index"], "bits": 1, "auto": True}, p)
+                st.event("auto_expand", piece=p, index=d["index"], fixed=v["fixed"])
+                add_children(st, p, kids, v["ops"], rnd + 1, counter)
+                timeouts.remove(p)
+        st.save()
+        if rnd < MAX_ROUNDS and timeouts:
+            cmd_decide(st, timeouts, rows, counter, cap)
+        st.save()
+    left = {p: v["status"] for p, v in s["pieces"].items() if v["status"] not in ("proved", "split")}
+    print("done after round", s["round"], "unresolved:", left or "none")
 
 
 def cmd_split_only(st, args):
@@ -508,7 +660,7 @@ def cmd_split_only(st, args):
         return p, verdict, secs
 
     t0 = now()
-    with concurrent.futures.ThreadPoolExecutor(2) as ex:
+    with concurrent.futures.ThreadPoolExecutor(PARALLEL) as ex:
         for p, verdict, secs in ex.map(one, todo):
             st.s["pieces"][p]["split_only"] = {"verdict": verdict, "seconds": round(secs, 1), "timeout": args.timeout}
             st.event("split_only", piece=p, verdict=verdict, seconds=secs, timeout=args.timeout)
@@ -524,7 +676,7 @@ def cmd_report(st, args):
     print("LLM: {:d} calls, {:.1f} s latency, {:d} in / {:d} out tokens, {:.4f} USD".format(
         len(calls), sum(c["latency_s"] for c in calls), sum(c["input_tokens"] or 0 for c in calls),
         sum(c["output_tokens"] or 0 for c in calls), sum(c["cost_usd"] for c in calls)))
-    for kind in ("check_pass", "split_only_pass"):
+    for kind in ("check_pass", "summary_pass", "split_only_pass"):
         for e in (e for e in ev if e["kind"] == kind):
             print("rIC3 {:s} round {:d}: {:d} pieces, cap {:d} s, wall {:.1f} s".format(
                 kind, e["round"], len(e["pieces"]), e["timeout"], e["wall_s"]))
@@ -608,10 +760,10 @@ def cmd_refine(st, args):
             ops = [st.validate_op(op) for op in data["ops"]]
             if ops == v["ops"]:
                 raise ValueError("the operator list is unchanged")
-            return ops, "accepted refined list"
+            return ops, "accepted refined list", {"ops": ops, "reason": data.get("reason")}
 
         ops, rec = st.ask("cegar_refine", user, validate)
-        v["ops"], v["status"] = ops, "refined"
+        v["ops"], v["status"] = ops, "open"
         print(p, json.dumps(ops))
     st.save()
 
@@ -644,23 +796,20 @@ Study.nonvacuous = nonvacuous
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("cmd", choices=["init", "split", "abstract", "check", "cegar", "refine", "vacuity", "next-round", "split-only", "report"])
+    ap.add_argument("cmd", choices=["init", "run", "vacuity", "split-only", "report"])
     ap.add_argument("--workdir", required=True)
     ap.add_argument("--pieces", nargs="*")
-    ap.add_argument("--timeout", type=int, default=60)
-    ap.add_argument("--context", help="file with extra input appended to the prompt")
+    ap.add_argument("--timeout", type=int, default=60, help="split-only cap in seconds")
+    ap.add_argument("--caps", default=",".join(map(str, CAPS)), help="run: rIC3 cap per piece for rounds 1-2, 3-4, 5+")
     args = ap.parse_args()
     if args.cmd == "init":
         return init(args)
     st = Study(args.workdir)
-    if args.cmd == "next-round":
-        if st.s["round"] >= MAX_ROUNDS:
-            raise SystemExit("round limit reached")
-        st.s["round"] += 1
-        st.save()
-        return
-    {"split": cmd_split, "abstract": cmd_abstract, "check": cmd_check, "cegar": cmd_cegar,
-     "refine": cmd_refine, "vacuity": cmd_vacuity, "split-only": cmd_split_only, "report": cmd_report}[args.cmd](st, args)
+    st.event("load", cmd=args.cmd, phase="start", load=os.getloadavg())
+    try:
+        {"run": cmd_run, "split-only": cmd_split_only, "vacuity": cmd_vacuity, "report": cmd_report}[args.cmd](st, args)
+    finally:
+        st.event("load", cmd=args.cmd, phase="end", load=os.getloadavg())
 
 
 if __name__ == "__main__":

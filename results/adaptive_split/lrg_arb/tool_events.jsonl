@@ -1,0 +1,42 @@
+{"kind": "load", "round": 1, "time": 1793325683.8824203, "cmd": "run", "phase": "start", "load": [0.22998046875, 0.12744140625, 0.10693359375]}
+{"kind": "coverage", "round": 1, "time": 1793325716.024052, "scope": null, "cases": ["arbitrary_requester == 5'd0", "arbitrary_requester == 5'd1", "arbitrary_requester == 5'd2", "arbitrary_requester == 5'd3", "arbitrary_requester == 5'd4", "arbitrary_requester == 5'd5", "arbitrary_requester == 5'd6", "arbitrary_requester == 5'd7", "arbitrary_requester == 5'd8", "arbitrary_requester == 5'd9", "arbitrary_requester == 5'd10", "arbitrary_requester == 5'd11", "arbitrary_requester == 5'd12", "arbitrary_requester == 5'd13", "arbitrary_requester == 5'd14", "arbitrary_requester == 5'd15"], "ok": false, "detail": "ERROR: Called with -verify and proof did fail!\n"}
+{"kind": "coverage", "round": 1, "time": 1793325720.4439843, "scope": null, "cases": ["arbitrary_requester[4] == 1'b0", "arbitrary_requester[4] == 1'b1"], "ok": true, "detail": ""}
+{"kind": "check", "round": 1, "time": 1793325721.7530181, "piece": "r1_c1", "tag": "r1_c1_k0", "verdict": "UNSAT", "seconds": 1.2184605598449707, "timeout": 3, "ops": [], "cond": "arbitrary_requester[4] == 1'b1"}
+{"kind": "check", "round": 1, "time": 1793325723.5383098, "piece": "r1_c0", "tag": "r1_c0_k0", "verdict": "TIMEOUT", "seconds": 3.001770496368408, "timeout": 3, "ops": [], "cond": "arbitrary_requester[4] == 1'b0"}
+{"kind": "check_pass", "round": 1, "time": 1793325723.5386767, "pieces": ["r1_c0", "r1_c1"], "timeout": 3, "wall_s": 3.0932719707489014}
+{"kind": "summary_pass", "round": 1, "time": 1793325728.5529041, "pieces": ["r1_c0"], "timeout": 5, "wall_s": 5.012873649597168}
+{"kind": "summary", "round": 1, "time": 1793325728.5529413, "piece": "r1_c0", "verdict": "TIMEOUT", "text": "single-engine IC3, 5 s: reached depth 6; lemmas per frame at the end [1, 48, 167, 487, 422, 398, 878, 48]; recent lemmas have 5.4 literals on average out of 92 state bits (rIC3 does not name them)"}
+{"kind": "coverage", "round": 1, "time": 1793325737.2624254, "scope": "arbitrary_requester[4] == 1'b0", "cases": ["arbitrary_requester[4:3] == 2'd0", "arbitrary_requester[4:3] == 2'd1", "arbitrary_requester[4:3] == 2'd2", "arbitrary_requester[4:3] == 2'd3"], "ok": true, "detail": ""}
+{"kind": "pruned_empty", "round": 1, "time": 1793325737.4498353, "scope": "arbitrary_requester[4] == 1'b0", "dropped": ["arbitrary_requester[4:3] == 2'd2", "arbitrary_requester[4:3] == 2'd3"]}
+{"kind": "check", "round": 2, "time": 1793325740.537664, "piece": "r2_c0", "tag": "r2_c0_k0", "verdict": "TIMEOUT", "seconds": 3.0031399726867676, "timeout": 3, "ops": [], "cond": "(arbitrary_requester[4] == 1'b0) & (arbitrary_requester[4:3] == 2'd0)"}
+{"kind": "check", "round": 2, "time": 1793325740.5411127, "piece": "r2_c1", "tag": "r2_c1_k0", "verdict": "TIMEOUT", "seconds": 3.001544713973999, "timeout": 3, "ops": [], "cond": "(arbitrary_requester[4] == 1'b0) & (arbitrary_requester[4:3] == 2'd1)"}
+{"kind": "check_pass", "round": 2, "time": 1793325740.5414336, "pieces": ["r2_c0", "r2_c1"], "timeout": 3, "wall_s": 3.0900943279266357}
+{"kind": "coverage", "round": 2, "time": 1793325740.5591679, "scope": "(arbitrary_requester[4] == 1'b0) & (arbitrary_requester[4:3] == 2'd0)", "cases": ["arbitrary_requester[2:2] == 1'd0", "arbitrary_requester[2:2] == 1'd1"], "ok": true, "detail": ""}
+{"kind": "pruned_empty", "round": 2, "time": 1793325740.5892982, "scope": "(arbitrary_requester[4] == 1'b0) & (arbitrary_requester[4:3] == 2'd0)", "dropped": []}
+{"kind": "auto_expand", "round": 2, "time": 1793325740.5893552, "piece": "r2_c0", "index": "arbitrary_requester", "fixed": {"arbitrary_requester": 3}}
+{"kind": "coverage", "round": 2, "time": 1793325740.6076033, "scope": "(arbitrary_requester[4] == 1'b0) & (arbitrary_requester[4:3] == 2'd1)", "cases": ["arbitrary_requester[2:2] == 1'd0", "arbitrary_requester[2:2] == 1'd1"], "ok": true, "detail": ""}
+{"kind": "pruned_empty", "round": 2, "time": 1793325740.697296, "scope": "(arbitrary_requester[4] == 1'b0) & (arbitrary_requester[4:3] == 2'd1)", "dropped": []}
+{"kind": "auto_expand", "round": 2, "time": 1793325740.697451, "piece": "r2_c1", "index": "arbitrary_requester", "fixed": {"arbitrary_requester": 3}}
+{"kind": "check", "round": 3, "time": 1793325748.4911153, "piece": "r3_c1", "tag": "r3_c1_k0", "verdict": "UNSAT", "seconds": 7.705615282058716, "timeout": 20, "ops": [], "cond": "((arbitrary_requester[4] == 1'b0) & (arbitrary_requester[4:3] == 2'd0)) & (arbitrary_requester[2:2] == 1'd1)"}
+{"kind": "check", "round": 3, "time": 1793325748.8811114, "piece": "r3_c2", "tag": "r3_c2_k0", "verdict": "UNSAT", "seconds": 8.097806930541992, "timeout": 20, "ops": [], "cond": "((arbitrary_requester[4] == 1'b0) & (arbitrary_requester[4:3] == 2'd1)) & (arbitrary_requester[2:2] == 1'd0)"}
+{"kind": "check", "round": 3, "time": 1793325749.5837772, "piece": "r3_c0", "tag": "r3_c0_k0", "verdict": "UNSAT", "seconds": 8.797308206558228, "timeout": 20, "ops": [], "cond": "((arbitrary_requester[4] == 1'b0) & (arbitrary_requester[4:3] == 2'd0)) & (arbitrary_requester[2:2] == 1'd0)"}
+{"kind": "check", "round": 3, "time": 1793325749.9032419, "piece": "r3_c3", "tag": "r3_c3_k0", "verdict": "UNSAT", "seconds": 9.116777420043945, "timeout": 20, "ops": [], "cond": "((arbitrary_requester[4] == 1'b0) & (arbitrary_requester[4:3] == 2'd1)) & (arbitrary_requester[2:2] == 1'd1)"}
+{"kind": "check_pass", "round": 3, "time": 1793325749.9038632, "pieces": ["r3_c0", "r3_c1", "r3_c2", "r3_c3"], "timeout": 20, "wall_s": 9.204047203063965}
+{"kind": "load", "round": 4, "time": 1793325749.9056983, "cmd": "run", "phase": "end", "load": [7.79443359375, 1.74853515625, 0.6328125]}
+{"kind": "load", "round": 3, "time": 1793325749.954935, "cmd": "split-only", "phase": "start", "load": [7.79443359375, 1.74853515625, 0.6328125]}
+{"kind": "split_only", "round": 3, "time": 1793325751.2472136, "piece": "r1_c1", "verdict": "UNSAT", "seconds": 1.2282345294952393, "timeout": 20}
+{"kind": "split_only", "round": 3, "time": 1793325758.1665616, "piece": "r3_c0", "verdict": "UNSAT", "seconds": 8.153798580169678, "timeout": 20}
+{"kind": "split_only", "round": 3, "time": 1793325759.5301058, "piece": "r3_c1", "verdict": "UNSAT", "seconds": 9.516367673873901, "timeout": 20}
+{"kind": "split_only", "round": 3, "time": 1793325759.791214, "piece": "r3_c2", "verdict": "UNSAT", "seconds": 9.769951820373535, "timeout": 20}
+{"kind": "split_only", "round": 3, "time": 1793325759.8825245, "piece": "r3_c3", "verdict": "UNSAT", "seconds": 9.869910955429077, "timeout": 20}
+{"kind": "split_only_pass", "round": 3, "time": 1793325759.8831642, "pieces": ["r1_c1", "r3_c0", "r3_c1", "r3_c2", "r3_c3"], "timeout": 20, "wall_s": 9.928168058395386}
+{"kind": "load", "round": 3, "time": 1793325759.8841116, "cmd": "split-only", "phase": "end", "load": [16.43603515625, 3.798828125, 1.3125]}
+{"kind": "load", "round": 3, "time": 1793325759.9476585, "cmd": "vacuity", "phase": "start", "load": [16.43603515625, 3.798828125, 1.3125]}
+{"kind": "vacuity", "round": 3, "time": 1793325760.0807178, "piece": "r1_c1", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "vacuity", "round": 3, "time": 1793325760.2386935, "piece": "r3_c0", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "vacuity", "round": 3, "time": 1793325760.4030976, "piece": "r3_c1", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "vacuity", "round": 3, "time": 1793325760.5576909, "piece": "r3_c2", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "vacuity", "round": 3, "time": 1793325760.71658, "piece": "r3_c3", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "load", "round": 3, "time": 1793325760.7182655, "cmd": "vacuity", "phase": "end", "load": [15.19970703125, 3.751953125, 1.310546875]}
+{"kind": "load", "round": 3, "time": 1793325760.7874973, "cmd": "report", "phase": "start", "load": [15.19970703125, 3.751953125, 1.310546875]}
+{"kind": "load", "round": 3, "time": 1793325760.7877982, "cmd": "report", "phase": "end", "load": [15.19970703125, 3.751953125, 1.310546875]}

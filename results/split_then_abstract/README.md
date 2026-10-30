@@ -11,7 +11,7 @@ c6 = `!rst & !srEmpty & !rbEmpty & (srFull==rbFull) & (srDataOut!=rbDataOut)`. S
 | Variant | Pieces | Verdicts | Per-piece time (mean / max) | Sum of times | Spurious CEX | Batch / load |
 |---|---|---|---|---|---|---|
 | w: whole c6, no split | 1 | UNSAT | 137.3 s | 137.3 s | - | rerun3, load ~26 (earlier batch rerun2: 144.5 s at load ~32; the old known value is 92.3 s) |
-| a: split on `rb_tail`, no abstraction | 16 | 16 UNSAT | 5.3 / 11 s | 85 s | - | rerun3, load ~37, 4 at a time (1 st: 1 job) |
+| a: split on `rb_tail`, no abstraction | 16 | 16 UNSAT | 5.3 / 11 s | 85 s | - | rerun3, load ~37, 1 job |
 | a (again) | 16 | 16 UNSAT | 8.9 / 12 s | 142 s | - | rerun2, load ~55 |
 | a (first pass) | 16 | 16 UNSAT | 6.7 / 9 s | 106 s | - | first pass, 4 at a time |
 | b: a + other 15 `rb_mem_j` freed (`abstract_state`) | 16 | 16 UNSAT | 8.7 / 14 s | 140 s | - | rerun2 (same batch as a: 8.9 s), load ~56 |

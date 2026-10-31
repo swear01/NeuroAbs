@@ -19,8 +19,10 @@ for r in $RUNS; do
   uptime > uptime_start.txt; t0=$(date +%s.%N)
   python src/case_study.py run --workdir . --budget $budget $FLAG > run.out 2>&1; rc=$?; echo $rc > run.rc
   echo "$(date +%s.%N) - $t0" | bc > wall_s.txt; uptime > uptime_run_end.txt
-  # rc 0/1/3 are verdicts (done / stuck in decide / llm_timeout); a traceback or rc >= 2 is a crash and is rerun next time
-  if [ $rc -ge 2 -a $rc -ne 3 ] || grep -q '^Traceback' run.out; then echo "CRASH $W rc=$rc" >> "$ROOT/chain.status"; continue; fi
+  # rc 0/1/3 are verdicts (done / stuck in decide / llm_timeout); anything else or a traceback is a crash:
+  # keep the workdir as $W.crash-<time> for inspection and rerun the cell on the next invocation
+  case $rc in 0|1|3) grep -q '^Traceback' run.out && rc="$rc-traceback" ;; esac
+  case $rc in 0|1|3) ;; *) mv "$W" "$W.crash-$(date +%s)"; echo "CRASH $W rc=$rc" >> "$ROOT/chain.status"; continue ;; esac
   python src/case_study.py report --workdir . > report.out 2>&1
   timeout 1800 python src/case_study.py vacuity --workdir . > vacuity.out 2>&1; echo $? > vacuity.rc
   uptime > uptime_end.txt

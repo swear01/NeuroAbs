@@ -232,7 +232,7 @@ def dynamic_coi(model, values, visited=None):
             if value_of(frame, int(model.nodes[c][1][2])) != 1:
                 raise ValueError("the witness violates a constraint in frame {:d}".format(k))
     stack = [(abs(int(model.nodes[violated[0]][1][2])), last)]
-    seen = set() if visited is None else visited
+    seen = set()
     free = set()
     while stack:
         n, k = stack.pop()
@@ -264,6 +264,8 @@ def dynamic_coi(model, values, visited=None):
                 stack.append((abs(deciding[0]), k))
                 continue
         stack.extend((abs(a), k) for a in args)
+    if visited is not None:
+        visited.update(seen)
     return free
 
 

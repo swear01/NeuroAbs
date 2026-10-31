@@ -55,9 +55,16 @@ def one(wd):
             for k in range(0, len(groups), cs.DECIDE_GROUPS):
                 gids = {"g{:d}".format(k + i + 1): g for i, g in enumerate(groups[k:k + cs.DECIDE_GROUPS])}
                 sizes.append(len(cs.decide_prompt(st, gids, rows, sums, auto, 0, 0, 20)))
+            if not sizes:  # the regexes above read the pre-#32 prompt layout only
+                print(json.dumps(dict(out, error="no case lines parsed")), flush=True)
+                continue
             out.update(pieces=len(todo), groups=len(groups), new_calls=len(sizes), new_bytes=sum(sizes), new_max_bytes=max(sizes))
         else:
-            p = re.search(r"Piece (\S+) \(case", old).group(1)
+            m = re.search(r"Piece (\S+) \(case", old)
+            if not m:
+                print(json.dumps(dict(out, error="piece id not found")), flush=True)
+                continue
+            p = m.group(1)
             st.build(pieces[p]["tag"], pieces[p]["cond"], pieces[p]["ops"])  # the run deleted its models
             real, depth, table, bad, coi = cs.replay(st, p)
             pieces[p]["cex"] = {"depth": depth, "table": table, "coi": coi}

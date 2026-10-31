@@ -94,6 +94,7 @@ class DecideTest(unittest.TestCase):
 class FormatTest(unittest.TestCase):
     def test_fold_and_range_targets_round_trip(self):
         self.assertEqual(cs.fold(["a_0", "a_1", "a_2", "m_1", "m_2", "x"]), ["a_{0..2}", "m_1", "m_2", "x"])
+        self.assertEqual(cs.fold(["r_00", "r_01", "r_02"]), ["r_00", "r_01", "r_02"])
         ops = [{"op": "abstract_state", "target": "f_{:d}".format(i)} for i in range(15)] + [{"op": "drop_assume"}]
         self.assertEqual(cs.expand_ops(cs.json.loads(cs.fmt_ops(ops))), ops)
 

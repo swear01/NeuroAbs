@@ -402,7 +402,7 @@ def fold(names):
     """['m_1', 'm_2', 'm_3', 'x'] -> ['m_{1..3}', 'x']: runs of 3 or more consecutive numeric suffixes."""
     out, i = [], 0
     while i < len(names):
-        m, j = re.fullmatch(r"(.*_)(\d+)", names[i]), i
+        m, j = re.fullmatch(r"(.*_)(0|[1-9]\d*)", names[i]), i  # zero-padded suffixes stay unfolded: unfold uses str(k)
         while m and j + 1 < len(names) and names[j + 1] == m.group(1) + str(int(m.group(2)) + j + 1 - i):
             j += 1
         out += names[i:j + 1] if j - i < 2 else ["{:s}{{{:s}..{:d}}}".format(m.group(1), m.group(2), int(m.group(2)) + j - i)]
@@ -704,7 +704,7 @@ def decide_chunk(st, gids, user, quota, counter):
         return plan, "accepted: " + ", ".join("{:s} {:s}".format(p, x["action"]) for p, x in plan.items()), \
             {p: {"action": x["action"], "reason": x["reason"], "split": x["split"], "ops": x["ops"]} for p, x in plan.items()}
 
-    plan, rec = st.ask("decide", user, validate)
+    plan, _ = st.ask("decide", user, validate)
     return plan
 
 
@@ -827,7 +827,9 @@ def witness_file(log, dest):
 
 
 def replay(st, p):
-    """Replay the abstract counterexample on the concrete piece; return (real, depth, table)."""
+    """Replay the abstract counterexample on the concrete piece; return (real, depth, table, concrete bad per frame,
+    coi): coi is the sorted (register name, frame) pairs of the abstract trace's dynamic cone of influence, None when the
+    simulated trace does not violate the property."""
     v = st.s["pieces"][p]
     tag = v["tag"]
     wit = os.path.join(st.dir, "logs", tag + ".wit")

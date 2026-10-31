@@ -1,7 +1,7 @@
 # usage (on mazu): bash decide_fix_chain.sh ROOT SRCDIR   -- reruns after the decide-quota fix, sequential, resumable
 # fifo_ref_64 twice (budget 1800), then 3 runs of each ablation cell that got stuck in decide (budget 1200)
 . /var/tmp/neuroabs-runtime/env-20261024.sh
-ROOT=$1; SRC=$2
+ROOT=$(realpath "${1:?ROOT}"); SRC=$(realpath "${2:?SRCDIR}")
 B=/var/tmp/neuroabs-runtime
 RUNS="fifo_ref_64:large-B/fifo_ref_64:hint:1800:1 fifo_ref_64:large-B/fifo_ref_64:hint:1800:2"
 for rep in 1 2 3; do
@@ -22,7 +22,9 @@ for r in $RUNS; do
   python src/case_study.py report --workdir . > report.out 2>&1
   timeout 1800 python src/case_study.py vacuity --workdir . > vacuity.out 2>&1
   uptime > uptime_end.txt
-  rm -f flat_*.il *.btor2 *_k0.v *_k0.il *_reach.* *_nv.* ; touch .done
+  rm -f flat_*.il *.btor2 *_k0.v *_k0.il *_reach.* *_nv.*
+  # rc 0/1/3 are verdicts (done / stuck in decide / llm_timeout); only a crash or missing interpreter is rerun
+  [ "$(cat run.rc)" -lt 126 ] && touch .done
   echo "DONE $W rc=$(cat run.rc) wall=$(cat wall_s.txt)" >> $ROOT/chain.status
 done
 echo CHAIN-FINISHED >> $ROOT/chain.status

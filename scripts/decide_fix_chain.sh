@@ -10,21 +10,21 @@ for rep in 1 2 3; do
 done
 for r in $RUNS; do
   IFS=: read b dir mode budget rep <<< "$r"
-  W=$ROOT/$b-$mode-$rep
-  [ -f $W/.done ] && continue
-  rm -rf $W; mkdir -p $W; cp -r $B/$dir/bench $W/; cp -r $SRC $W/src
-  cd $W
-  python src/case_study.py init --workdir . > init.out 2>&1 || { echo FAIL-init $W >> $ROOT/chain.status; continue; }
+  W="$ROOT/$b-$mode-$rep"
+  [ -f "$W/.done" ] && continue
+  rm -rf "$W"; mkdir -p "$W"; cp -r "$B/$dir/bench" "$W/"; cp -r "$SRC" "$W/src"
+  cd "$W"
+  python src/case_study.py init --workdir . > init.out 2>&1 || { echo "FAIL-init $W" >> "$ROOT/chain.status"; continue; }
   FLAG=""; [ $mode = nohint ] && FLAG="--no-index-hint"
   uptime > uptime_start.txt; t0=$(date +%s.%N)
-  python src/case_study.py run --workdir . --budget $budget $FLAG > run.out 2>&1; echo $? > run.rc
+  python src/case_study.py run --workdir . --budget $budget $FLAG > run.out 2>&1; rc=$?; echo $rc > run.rc
   echo "$(date +%s.%N) - $t0" | bc > wall_s.txt; uptime > uptime_run_end.txt
+  # rc 0/1/3 are verdicts (done / stuck in decide / llm_timeout); a traceback or rc >= 2 is a crash and is rerun next time
+  if [ $rc -ge 2 -a $rc -ne 3 ] || grep -q '^Traceback' run.out; then echo "CRASH $W rc=$rc" >> "$ROOT/chain.status"; continue; fi
   python src/case_study.py report --workdir . > report.out 2>&1
-  timeout 1800 python src/case_study.py vacuity --workdir . > vacuity.out 2>&1
+  timeout 1800 python src/case_study.py vacuity --workdir . > vacuity.out 2>&1; echo $? > vacuity.rc
   uptime > uptime_end.txt
-  rm -f flat_*.il *.btor2 *_k0.v *_k0.il *_reach.* *_nv.*
-  # rc 0/1/3 are verdicts (done / stuck in decide / llm_timeout); only a crash or missing interpreter is rerun
-  [ "$(cat run.rc)" -lt 126 ] && touch .done
-  echo "DONE $W rc=$(cat run.rc) wall=$(cat wall_s.txt)" >> $ROOT/chain.status
+  rm -f flat_*.il *.btor2 *_k0.v *_k0.il *_reach.* *_nv.*; touch .done
+  echo "DONE $W rc=$rc vacuity_rc=$(cat vacuity.rc) wall=$(cat wall_s.txt)" >> "$ROOT/chain.status"
 done
-echo CHAIN-FINISHED >> $ROOT/chain.status
+echo CHAIN-FINISHED >> "$ROOT/chain.status"

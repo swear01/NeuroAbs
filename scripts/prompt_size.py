@@ -58,6 +58,7 @@ def one(wd):
             out.update(pieces=len(todo), groups=len(groups), new_calls=len(sizes), new_bytes=sum(sizes), new_max_bytes=max(sizes))
         else:
             p = re.search(r"Piece (\S+) \(case", old).group(1)
+            st.build(pieces[p]["tag"], pieces[p]["cond"], pieces[p]["ops"])  # the run deleted its models
             real, depth, table, bad, coi = cs.replay(st, p)
             pieces[p]["cex"] = {"depth": depth, "table": table, "coi": coi}
             out.update(piece=p, coi_cells=None if coi is None else len(coi), new_bytes=len(cs.refine_prompt(st, p)))
@@ -65,5 +66,5 @@ def one(wd):
 
 
 if __name__ == "__main__":
-    for wd in sys.argv[1:]:
-        one(os.path.abspath(wd))
+    for wd in [os.path.abspath(x) for x in sys.argv[1:]]:  # Study chdirs into each workdir
+        one(wd)

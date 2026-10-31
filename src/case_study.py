@@ -599,11 +599,11 @@ def lemma_summary(st, p):
 
 
 def decide_groups(st, todo):
-    """Siblings with the same operators, fixed bits and direction differ only in their case: one decision covers them."""
+    """Pieces with the same operators, fixed bits and direction differ only in their case: one decision covers them."""
     groups = {}
     for p in todo:
         v = st.s["pieces"][p]
-        key = json.dumps([v.get("parent"), v["ops"], v["fixed"], v.get("direction")], sort_keys=True)
+        key = json.dumps([v["ops"], v["fixed"], v.get("direction")], sort_keys=True)
         groups.setdefault(key, []).append(p)
     return list(groups.values())
 
@@ -625,17 +625,19 @@ def decide_prompt(st, gids, rows, sums, auto, quota, made, cap):
     for g in gids.values():
         sets.setdefault(json.dumps(st.s["pieces"][g[0]]["ops"]), "O{:d}".format(len(sets) + 1))
     user.append("Operator sets:\n" + "\n".join("{:s}: {:s}".format(k, fmt_ops(json.loads(o))) for o, k in sets.items()))
-    user.append("Groups to decide ({:d}). The pieces of a group are siblings with the same operators and fixed bits and differ only "
+    user.append("Groups to decide ({:d}). The pieces of a group have the same operators and fixed bits and differ only "
                 "in their case. Decide once per group id (\"resplit\", \"abstract\" or \"both\", with a reason); the decision applies "
                 "to every piece of the group, and a split is applied to each piece's case. To treat one piece differently, add an "
                 "entry under its piece id.".format(len(gids)))
     for gid, g in gids.items():
         v = st.s["pieces"][g[0]]
-        par = st.s["pieces"].get(v.get("parent") or "")
-        user.append("- {:s}: {:d} pieces{:s}; operators {:s}; already fixed bits {:s}".format(
-            gid, len(g), ", parent {:s} with case {:s}".format(v["parent"], par["cond"]) if par else "",
-            sets[json.dumps(v["ops"])], json.dumps(v["fixed"])))
-        user += ["  - {:s}: case {:s}; {:s}".format(p, own_case(st, p), sums[p][1]) for p in g]
+        user.append("- {:s}: {:d} pieces; operators {:s}; already fixed bits {:s}".format(
+            gid, len(g), sets[json.dumps(v["ops"])], json.dumps(v["fixed"])))
+        for parent, kids in itertools.groupby(g, key=lambda p: st.s["pieces"][p].get("parent") or ""):
+            par = st.s["pieces"].get(parent)
+            if par:
+                user.append("  parent {:s} with case {:s}:".format(parent, par["cond"]))
+            user += ["  - {:s}: case {:s}; {:s}".format(p, own_case(st, p), sums[p][1]) for p in kids]
     user.append("Proved pieces are never touched again. Budget: {:d} new pieces left for this request ({:d} per round, {:d} "
                 "already made this round); the new pieces of all your splits together must fit in it. An index split of "
                 "b bits makes 2^b pieces per piece, minus those that contradict the piece's case. {:d} rounds in total ({:d} "

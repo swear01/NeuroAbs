@@ -24,6 +24,9 @@ class FakeState:
     def empty(self, expr):
         return False
 
+    def validate_op(self, op):
+        return op
+
     def event(self, *a, **kw):
         pass
 
@@ -52,9 +55,9 @@ class DecideTest(unittest.TestCase):
     def test_auto_pieces_ignored_and_quota_is_what_is_left(self):
         st = FakeState({"r3_c0": piece(), "r3_c1": piece()}, [
             # decides the auto-split piece too, and asks for 16 pieces while only 32 - 20 = 12 are left
-            {"pieces": {"r3_c0": {"action": "resplit", "reason": "r", "split": {"index": "head", "bits": 4}},
+            {"decisions": {"r3_c0": {"action": "resplit", "reason": "r", "split": {"index": "head", "bits": 4}},
                         "r3_c9": {"action": "resplit", "reason": "r", "split": {"index": "head", "bits": 1}}}},
-            {"pieces": {"r3_c0": {"action": "resplit", "reason": "r", "split": {"index": "head", "bits": 3}},
+            {"decisions": {"r3_c0": {"action": "resplit", "reason": "r", "split": {"index": "head", "bits": 3}},
                         "r3_c9": {"action": "abstract", "reason": "r", "ops": ["x"]}}},
         ])
         counter = [20]
@@ -68,10 +71,38 @@ class DecideTest(unittest.TestCase):
 
     def test_missing_piece_is_named(self):
         st = FakeState({"r3_c0": piece(), "r3_c1": piece()}, [
-            {"pieces": {"r3_c0": {"action": "resplit", "reason": "r", "split": {"index": "head", "bits": 1}}}}] * 3)
+            {"decisions": {"r3_c0": {"action": "resplit", "reason": "r", "split": {"index": "head", "bits": 1}}}}] * 3)
         with self.assertRaises(SystemExit):
             cs.cmd_decide(st, ["r3_c0", "r3_c1"], [], [0], 20)
         self.assertIn("no decision for ['r3_c1']", st.verdicts[0])
+
+    def test_siblings_decided_once_as_a_group(self):
+        ops = [{"op": "abstract_state", "target": "m_{:d}".format(i)} for i in range(5)]
+        pieces = {"r2_c0": dict(piece(), status="split"), "r3_c0": dict(piece(), cond="(x) & (a)", parent="r2_c0", ops=ops),
+                  "r3_c1": dict(piece(), cond="(x) & (b)", parent="r2_c0", ops=ops)}
+        st = FakeState(pieces, [{"decisions": {"g1": {"action": "resplit", "reason": "r", "split": {"index": "head", "bits": 1}},
+                                               "r3_c1": {"action": "abstract", "reason": "r", "ops": [{"op": "drop_assume"}]}}}])
+        cs.cmd_decide(st, ["r3_c0", "r3_c1"], [], [0], 20)
+        self.assertIn('O1: [{"op":"abstract_state","target":"m_{0..4}"}]', st.prompts[0])
+        self.assertIn("- g1: 2 pieces;", st.prompts[0])
+        self.assertIn("  parent r2_c0 with case x:", st.prompts[0])
+        self.assertIn("r3_c1: case parent & (b)", st.prompts[0])
+        self.assertEqual(st.s["pieces"]["r3_c0"]["status"], "split")
+        self.assertEqual(st.s["pieces"]["r3_c1"]["ops"], [{"op": "drop_assume"}])
+
+
+class FormatTest(unittest.TestCase):
+    def test_fold_and_range_targets_round_trip(self):
+        self.assertEqual(cs.fold(["a_0", "a_1", "a_2", "m_1", "m_2", "x"]), ["a_{0..2}", "m_1", "m_2", "x"])
+        self.assertEqual(cs.fold(["r_00", "r_01", "r_02"]), ["r_00", "r_01", "r_02"])
+        ops = [{"op": "abstract_state", "target": "f_{:d}".format(i)} for i in range(15)] + [{"op": "drop_assume"}]
+        self.assertEqual(cs.expand_ops(cs.json.loads(cs.fmt_ops(ops))), ops)
+
+    def test_cex_diff_keeps_differing_registers_in_the_cone(self):
+        cex = {"coi": [["m_1", 1]], "table": [{"cycle": 0, "m_1": [0, 0], "m_2": [5, 0]},
+                                              {"cycle": 1, "m_1": [3, 0], "m_2": [5, 0], "push": 1}]}
+        self.assertEqual(cs.cex_diff(cex), ["cycle 1: m_1 abs 3/conc 0"])
+        self.assertEqual(len(cs.cex_diff(dict(cex, coi=None))), 2)
 
 
 if __name__ == "__main__":

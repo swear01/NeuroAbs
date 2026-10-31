@@ -220,8 +220,9 @@ def simulate(model, frames):
     return values
 
 
-def dynamic_coi(model, values):
-    """Return {(node id, frame)} of the free values that the violated bad property depends on."""
+def dynamic_coi(model, values, visited=None):
+    """Return {(node id, frame)} of the free values that the violated bad property depends on; `visited` (a set)
+    receives every (node id, frame) on the way."""
     last = len(values) - 1
     violated = [b for b in model.bad if value_of(values[last], int(model.nodes[b][1][2])) == 1]
     if not violated:
@@ -263,6 +264,8 @@ def dynamic_coi(model, values):
                 stack.append((abs(deciding[0]), k))
                 continue
         stack.extend((abs(a), k) for a in args)
+    if visited is not None:
+        visited.update(seen)
     return free
 
 

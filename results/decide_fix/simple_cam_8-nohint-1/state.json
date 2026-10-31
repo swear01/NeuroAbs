@@ -1,0 +1,3568 @@
+{
+ "round": 6,
+ "calls": 8,
+ "signals": [
+  {
+   "name": "rst",
+   "id": "rst",
+   "width": 1,
+   "input": true,
+   "state": false
+  },
+  {
+   "name": "push_raw",
+   "id": "push_raw",
+   "width": 1,
+   "input": true,
+   "state": false
+  },
+  {
+   "name": "push_ptr",
+   "id": "push_ptr",
+   "width": 8,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "push_num_of_pops",
+   "id": "push_num_of_pops",
+   "width": 1,
+   "input": true,
+   "state": false
+  },
+  {
+   "name": "push_match",
+   "id": "push_match",
+   "width": 8,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "push_id",
+   "id": "push_id",
+   "width": 3,
+   "input": true,
+   "state": false
+  },
+  {
+   "name": "push",
+   "id": "push",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "pop_match",
+   "id": "pop_match",
+   "width": 8,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "pop_id",
+   "id": "pop_id",
+   "width": 3,
+   "input": true,
+   "state": false
+  },
+  {
+   "name": "pop_evict",
+   "id": "pop_evict",
+   "width": 8,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "pop",
+   "id": "pop",
+   "width": 1,
+   "input": true,
+   "state": false
+  },
+  {
+   "name": "lookup_match",
+   "id": "lookup_match",
+   "width": 8,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "lookup_id",
+   "id": "lookup_id",
+   "width": 3,
+   "input": true,
+   "state": false
+  },
+  {
+   "name": "lookup",
+   "id": "lookup",
+   "width": 1,
+   "input": true,
+   "state": false
+  },
+  {
+   "name": "l",
+   "id": "l",
+   "width": 32,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "k",
+   "id": "k",
+   "width": 32,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "j",
+   "id": "j",
+   "width": 32,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "i",
+   "id": "i",
+   "width": 32,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "entity_cnt_ns",
+   "id": "entity_cnt_ns",
+   "width": 8,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "entity_cnt",
+   "id": "entity_cnt",
+   "width": 8,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "chosen_push_id",
+   "id": "chosen_push_id",
+   "width": 3,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "chosen_push",
+   "id": "chosen_push",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "chosen_not_popped",
+   "id": "chosen_not_popped",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "chosen",
+   "id": "chosen",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "cam_valid_ns",
+   "id": "cam_valid_ns",
+   "width": 8,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "cam_valid",
+   "id": "cam_valid",
+   "width": 8,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "cam_ns",
+   "id": "cam_ns",
+   "width": 24,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "cam",
+   "id": "cam",
+   "width": 24,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "__bb_first",
+   "id": "bb_first",
+   "width": 1,
+   "input": false,
+   "state": true
+  },
+  {
+   "name": "prop_a",
+   "id": "prop_a",
+   "width": 1,
+   "input": false,
+   "state": false
+  },
+  {
+   "name": "prop_en",
+   "id": "prop_en",
+   "width": 1,
+   "input": false,
+   "state": false
+  }
+ ],
+ "pieces": {
+  "r1_c0": {
+   "cond": "!chosen",
+   "ops": [],
+   "status": "proved",
+   "round": 1,
+   "parent": null,
+   "fixed": {},
+   "direction": null,
+   "attempt": 0,
+   "tag": "r1_c0_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 2.2,
+    "timeout": 3
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r1_c1": {
+   "cond": "chosen && !chosen_not_popped",
+   "ops": [],
+   "status": "proved",
+   "round": 1,
+   "parent": null,
+   "fixed": {},
+   "direction": null,
+   "attempt": 0,
+   "tag": "r1_c1_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 5,
+    "timeout": 5,
+    "by": "ic3 summary run"
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r1_c2": {
+   "cond": "chosen && chosen_not_popped && (lookup_id != chosen_push_id)",
+   "ops": [],
+   "status": "proved",
+   "round": 1,
+   "parent": null,
+   "fixed": {},
+   "direction": null,
+   "attempt": 0,
+   "tag": "r1_c2_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 1.2,
+    "timeout": 3
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r1_c3": {
+   "cond": "chosen && chosen_not_popped && (lookup_id == chosen_push_id)",
+   "ops": [],
+   "status": "split",
+   "round": 1,
+   "parent": null,
+   "fixed": {},
+   "direction": null,
+   "attempt": 0,
+   "tag": "r1_c3_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 3.0,
+    "timeout": 3
+   },
+   "children": [
+    "r2_c0",
+    "r2_c1",
+    "r2_c2",
+    "r2_c3",
+    "r2_c4",
+    "r2_c5",
+    "r2_c6",
+    "r2_c7"
+   ]
+  },
+  "r2_c0": {
+   "cond": "(chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 2,
+   "parent": "r1_c3",
+   "fixed": {
+    "chosen_push_id": 0
+   },
+   "direction": {
+    "index": "chosen_push_id",
+    "auto": true
+   },
+   "attempt": 1,
+   "tag": "r2_c0_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r4_c0",
+    "r4_c1"
+   ]
+  },
+  "r2_c1": {
+   "cond": "(chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 2,
+   "parent": "r1_c3",
+   "fixed": {
+    "chosen_push_id": 0
+   },
+   "direction": {
+    "index": "chosen_push_id",
+    "auto": true
+   },
+   "attempt": 1,
+   "tag": "r2_c1_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r4_c2",
+    "r4_c3"
+   ]
+  },
+  "r2_c2": {
+   "cond": "(chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd2)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 2,
+   "parent": "r1_c3",
+   "fixed": {
+    "chosen_push_id": 0
+   },
+   "direction": {
+    "index": "chosen_push_id",
+    "auto": true
+   },
+   "attempt": 1,
+   "tag": "r2_c2_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r4_c4",
+    "r4_c5"
+   ]
+  },
+  "r2_c3": {
+   "cond": "(chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd3)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 2,
+   "parent": "r1_c3",
+   "fixed": {
+    "chosen_push_id": 0
+   },
+   "direction": {
+    "index": "chosen_push_id",
+    "auto": true
+   },
+   "attempt": 1,
+   "tag": "r2_c3_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r4_c6",
+    "r4_c7"
+   ]
+  },
+  "r2_c4": {
+   "cond": "(chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd4)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 2,
+   "parent": "r1_c3",
+   "fixed": {
+    "chosen_push_id": 0
+   },
+   "direction": {
+    "index": "chosen_push_id",
+    "auto": true
+   },
+   "attempt": 1,
+   "tag": "r2_c4_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r4_c8",
+    "r4_c9"
+   ]
+  },
+  "r2_c5": {
+   "cond": "(chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd5)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 2,
+   "parent": "r1_c3",
+   "fixed": {
+    "chosen_push_id": 0
+   },
+   "direction": {
+    "index": "chosen_push_id",
+    "auto": true
+   },
+   "attempt": 1,
+   "tag": "r2_c5_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r4_c10",
+    "r4_c11"
+   ]
+  },
+  "r2_c6": {
+   "cond": "(chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd6)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 2,
+   "parent": "r1_c3",
+   "fixed": {
+    "chosen_push_id": 0
+   },
+   "direction": {
+    "index": "chosen_push_id",
+    "auto": true
+   },
+   "attempt": 1,
+   "tag": "r2_c6_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r4_c12",
+    "r4_c13"
+   ]
+  },
+  "r2_c7": {
+   "cond": "(chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd7)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 2,
+   "parent": "r1_c3",
+   "fixed": {
+    "chosen_push_id": 0
+   },
+   "direction": {
+    "index": "chosen_push_id",
+    "auto": true
+   },
+   "attempt": 1,
+   "tag": "r2_c7_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r4_c14",
+    "r4_c15"
+   ]
+  },
+  "r4_c0": {
+   "cond": "((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd0)) & (!(chosen && chosen_not_popped && (lookup_id == chosen_push_id)) || (|lookup_match))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "proved",
+   "round": 4,
+   "parent": "r2_c0",
+   "fixed": {
+    "chosen_push_id": 0
+   },
+   "direction": null,
+   "attempt": 0,
+   "tag": "r4_c0_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 0.0,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r4_c1": {
+   "cond": "((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd0)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 4,
+   "parent": "r2_c0",
+   "fixed": {
+    "chosen_push_id": 0
+   },
+   "direction": null,
+   "attempt": 0,
+   "tag": "r4_c1_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r5_c0",
+    "r5_c1",
+    "r5_c2",
+    "r5_c3"
+   ]
+  },
+  "r4_c2": {
+   "cond": "((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd1)) & (!(chosen && chosen_not_popped && (lookup_id == chosen_push_id)) || (|lookup_match))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "proved",
+   "round": 4,
+   "parent": "r2_c1",
+   "fixed": {
+    "chosen_push_id": 0
+   },
+   "direction": null,
+   "attempt": 0,
+   "tag": "r4_c2_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 2.3,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r4_c3": {
+   "cond": "((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd1)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 4,
+   "parent": "r2_c1",
+   "fixed": {
+    "chosen_push_id": 0
+   },
+   "direction": null,
+   "attempt": 0,
+   "tag": "r4_c3_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r5_c4",
+    "r5_c5",
+    "r5_c6",
+    "r5_c7"
+   ]
+  },
+  "r4_c4": {
+   "cond": "((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd2)) & (!(chosen && chosen_not_popped && (lookup_id == chosen_push_id)) || (|lookup_match))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "proved",
+   "round": 4,
+   "parent": "r2_c2",
+   "fixed": {
+    "chosen_push_id": 0
+   },
+   "direction": null,
+   "attempt": 0,
+   "tag": "r4_c4_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 3.3,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r4_c5": {
+   "cond": "((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd2)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 4,
+   "parent": "r2_c2",
+   "fixed": {
+    "chosen_push_id": 0
+   },
+   "direction": null,
+   "attempt": 0,
+   "tag": "r4_c5_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r5_c8",
+    "r5_c9",
+    "r5_c10",
+    "r5_c11"
+   ]
+  },
+  "r4_c6": {
+   "cond": "((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd3)) & (!(chosen && chosen_not_popped && (lookup_id == chosen_push_id)) || (|lookup_match))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "proved",
+   "round": 4,
+   "parent": "r2_c3",
+   "fixed": {
+    "chosen_push_id": 0
+   },
+   "direction": null,
+   "attempt": 0,
+   "tag": "r4_c6_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 1.2,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r4_c7": {
+   "cond": "((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd3)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 4,
+   "parent": "r2_c3",
+   "fixed": {
+    "chosen_push_id": 0
+   },
+   "direction": null,
+   "attempt": 0,
+   "tag": "r4_c7_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r5_c12",
+    "r5_c13",
+    "r5_c14",
+    "r5_c15"
+   ]
+  },
+  "r4_c8": {
+   "cond": "((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd4)) & (!(chosen && chosen_not_popped && (lookup_id == chosen_push_id)) || (|lookup_match))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "proved",
+   "round": 4,
+   "parent": "r2_c4",
+   "fixed": {
+    "chosen_push_id": 0
+   },
+   "direction": null,
+   "attempt": 0,
+   "tag": "r4_c8_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 4.2,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r4_c9": {
+   "cond": "((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd4)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 4,
+   "parent": "r2_c4",
+   "fixed": {
+    "chosen_push_id": 0
+   },
+   "direction": null,
+   "attempt": 0,
+   "tag": "r4_c9_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r5_c16",
+    "r5_c17",
+    "r5_c18",
+    "r5_c19"
+   ]
+  },
+  "r4_c10": {
+   "cond": "((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd5)) & (!(chosen && chosen_not_popped && (lookup_id == chosen_push_id)) || (|lookup_match))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "proved",
+   "round": 4,
+   "parent": "r2_c5",
+   "fixed": {
+    "chosen_push_id": 0
+   },
+   "direction": null,
+   "attempt": 0,
+   "tag": "r4_c10_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 2.9,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r4_c11": {
+   "cond": "((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd5)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 4,
+   "parent": "r2_c5",
+   "fixed": {
+    "chosen_push_id": 0
+   },
+   "direction": null,
+   "attempt": 0,
+   "tag": "r4_c11_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r5_c20",
+    "r5_c21",
+    "r5_c22",
+    "r5_c23"
+   ]
+  },
+  "r4_c12": {
+   "cond": "((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd6)) & (!(chosen && chosen_not_popped && (lookup_id == chosen_push_id)) || (|lookup_match))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "proved",
+   "round": 4,
+   "parent": "r2_c6",
+   "fixed": {
+    "chosen_push_id": 0
+   },
+   "direction": null,
+   "attempt": 0,
+   "tag": "r4_c12_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 1.8,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r4_c13": {
+   "cond": "((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd6)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 4,
+   "parent": "r2_c6",
+   "fixed": {
+    "chosen_push_id": 0
+   },
+   "direction": null,
+   "attempt": 0,
+   "tag": "r4_c13_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r5_c24",
+    "r5_c25",
+    "r5_c26",
+    "r5_c27"
+   ]
+  },
+  "r4_c14": {
+   "cond": "((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd7)) & (!(chosen && chosen_not_popped && (lookup_id == chosen_push_id)) || (|lookup_match))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "proved",
+   "round": 4,
+   "parent": "r2_c7",
+   "fixed": {
+    "chosen_push_id": 0
+   },
+   "direction": null,
+   "attempt": 0,
+   "tag": "r4_c14_k0",
+   "last": {
+    "verdict": "UNSAT",
+    "seconds": 1.2,
+    "timeout": 20
+   },
+   "vacuity": {
+    "case_reachable_bmc": "SAT",
+    "assertion_violable_when_registers_free": true
+   }
+  },
+  "r4_c15": {
+   "cond": "((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd7)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 4,
+   "parent": "r2_c7",
+   "fixed": {
+    "chosen_push_id": 0
+   },
+   "direction": null,
+   "attempt": 0,
+   "tag": "r4_c15_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 20.0,
+    "timeout": 20
+   },
+   "children": [
+    "r5_c28",
+    "r5_c29",
+    "r5_c30",
+    "r5_c31"
+   ]
+  },
+  "r5_c0": {
+   "cond": "(((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd0)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 5,
+   "parent": "r4_c1",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 6
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": false
+   },
+   "attempt": 0,
+   "tag": "r5_c0_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 120.0,
+    "timeout": 120
+   },
+   "children": [
+    "r6_c0",
+    "r6_c1"
+   ]
+  },
+  "r5_c1": {
+   "cond": "(((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd0)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 5,
+   "parent": "r4_c1",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 6
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r5_c1_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 53.0,
+    "timeout": 53
+   }
+  },
+  "r5_c2": {
+   "cond": "(((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd0)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd2)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 5,
+   "parent": "r4_c1",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 6
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": false
+   },
+   "attempt": 0,
+   "tag": "r5_c2_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 120.0,
+    "timeout": 120
+   },
+   "children": [
+    "r6_c2",
+    "r6_c3"
+   ]
+  },
+  "r5_c3": {
+   "cond": "(((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd0)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd3)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 5,
+   "parent": "r4_c1",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 6
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r5_c3_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 53.0,
+    "timeout": 53
+   }
+  },
+  "r5_c4": {
+   "cond": "(((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd1)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 5,
+   "parent": "r4_c3",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 6
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": false
+   },
+   "attempt": 0,
+   "tag": "r5_c4_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 120.0,
+    "timeout": 120
+   },
+   "children": [
+    "r6_c4",
+    "r6_c5"
+   ]
+  },
+  "r5_c5": {
+   "cond": "(((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd1)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 5,
+   "parent": "r4_c3",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 6
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r5_c5_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 53.0,
+    "timeout": 53
+   }
+  },
+  "r5_c6": {
+   "cond": "(((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd1)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd2)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 5,
+   "parent": "r4_c3",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 6
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": false
+   },
+   "attempt": 0,
+   "tag": "r5_c6_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 120.0,
+    "timeout": 120
+   },
+   "children": [
+    "r6_c6",
+    "r6_c7"
+   ]
+  },
+  "r5_c7": {
+   "cond": "(((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd1)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd3)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 5,
+   "parent": "r4_c3",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 6
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r5_c7_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 53.0,
+    "timeout": 53
+   }
+  },
+  "r5_c8": {
+   "cond": "(((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd2)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 5,
+   "parent": "r4_c5",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 6
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": false
+   },
+   "attempt": 0,
+   "tag": "r5_c8_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 120.0,
+    "timeout": 120
+   },
+   "children": [
+    "r6_c8",
+    "r6_c9"
+   ]
+  },
+  "r5_c9": {
+   "cond": "(((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd2)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 5,
+   "parent": "r4_c5",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 6
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r5_c9_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 53.0,
+    "timeout": 53
+   }
+  },
+  "r5_c10": {
+   "cond": "(((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd2)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd2)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 5,
+   "parent": "r4_c5",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 6
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": false
+   },
+   "attempt": 0,
+   "tag": "r5_c10_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 120.0,
+    "timeout": 120
+   },
+   "children": [
+    "r6_c10",
+    "r6_c11"
+   ]
+  },
+  "r5_c11": {
+   "cond": "(((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd2)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd3)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 5,
+   "parent": "r4_c5",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 6
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r5_c11_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 53.0,
+    "timeout": 53
+   }
+  },
+  "r5_c12": {
+   "cond": "(((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd3)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 5,
+   "parent": "r4_c7",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 6
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": false
+   },
+   "attempt": 0,
+   "tag": "r5_c12_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 120.0,
+    "timeout": 120
+   },
+   "children": [
+    "r6_c12",
+    "r6_c13"
+   ]
+  },
+  "r5_c13": {
+   "cond": "(((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd3)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 5,
+   "parent": "r4_c7",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 6
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r5_c13_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 53.0,
+    "timeout": 53
+   }
+  },
+  "r5_c14": {
+   "cond": "(((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd3)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd2)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 5,
+   "parent": "r4_c7",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 6
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": false
+   },
+   "attempt": 0,
+   "tag": "r5_c14_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 120.0,
+    "timeout": 120
+   },
+   "children": [
+    "r6_c14",
+    "r6_c15"
+   ]
+  },
+  "r5_c15": {
+   "cond": "(((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd3)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd3)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 5,
+   "parent": "r4_c7",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 6
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r5_c15_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 53.0,
+    "timeout": 53
+   }
+  },
+  "r5_c16": {
+   "cond": "(((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd4)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 5,
+   "parent": "r4_c9",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 6
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": false
+   },
+   "attempt": 0,
+   "tag": "r5_c16_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 120.0,
+    "timeout": 120
+   },
+   "children": [
+    "r6_c16",
+    "r6_c17"
+   ]
+  },
+  "r5_c17": {
+   "cond": "(((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd4)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 5,
+   "parent": "r4_c9",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 6
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r5_c17_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 53.0,
+    "timeout": 53
+   }
+  },
+  "r5_c18": {
+   "cond": "(((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd4)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd2)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 5,
+   "parent": "r4_c9",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 6
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": false
+   },
+   "attempt": 0,
+   "tag": "r5_c18_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 120.0,
+    "timeout": 120
+   },
+   "children": [
+    "r6_c18",
+    "r6_c19"
+   ]
+  },
+  "r5_c19": {
+   "cond": "(((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd4)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd3)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 5,
+   "parent": "r4_c9",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 6
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r5_c19_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 53.0,
+    "timeout": 53
+   }
+  },
+  "r5_c20": {
+   "cond": "(((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd5)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 5,
+   "parent": "r4_c11",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 6
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": false
+   },
+   "attempt": 0,
+   "tag": "r5_c20_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 120.0,
+    "timeout": 120
+   },
+   "children": [
+    "r6_c20",
+    "r6_c21"
+   ]
+  },
+  "r5_c21": {
+   "cond": "(((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd5)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 5,
+   "parent": "r4_c11",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 6
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r5_c21_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 53.0,
+    "timeout": 53
+   }
+  },
+  "r5_c22": {
+   "cond": "(((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd5)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd2)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 5,
+   "parent": "r4_c11",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 6
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": false
+   },
+   "attempt": 0,
+   "tag": "r5_c22_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 120.0,
+    "timeout": 120
+   },
+   "children": [
+    "r6_c22",
+    "r6_c23"
+   ]
+  },
+  "r5_c23": {
+   "cond": "(((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd5)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd3)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 5,
+   "parent": "r4_c11",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 6
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r5_c23_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 53.0,
+    "timeout": 53
+   }
+  },
+  "r5_c24": {
+   "cond": "(((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd6)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 5,
+   "parent": "r4_c13",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 6
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": false
+   },
+   "attempt": 0,
+   "tag": "r5_c24_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 120.0,
+    "timeout": 120
+   },
+   "children": [
+    "r6_c24",
+    "r6_c25"
+   ]
+  },
+  "r5_c25": {
+   "cond": "(((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd6)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 5,
+   "parent": "r4_c13",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 6
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r5_c25_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 53.0,
+    "timeout": 53
+   }
+  },
+  "r5_c26": {
+   "cond": "(((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd6)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd2)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 5,
+   "parent": "r4_c13",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 6
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": false
+   },
+   "attempt": 0,
+   "tag": "r5_c26_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 120.1,
+    "timeout": 120
+   },
+   "children": [
+    "r6_c26",
+    "r6_c27"
+   ]
+  },
+  "r5_c27": {
+   "cond": "(((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd6)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd3)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 5,
+   "parent": "r4_c13",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 6
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r5_c27_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 53.0,
+    "timeout": 53
+   }
+  },
+  "r5_c28": {
+   "cond": "(((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd7)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 5,
+   "parent": "r4_c15",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 6
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": false
+   },
+   "attempt": 0,
+   "tag": "r5_c28_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 120.0,
+    "timeout": 120
+   },
+   "children": [
+    "r6_c28",
+    "r6_c29"
+   ]
+  },
+  "r5_c29": {
+   "cond": "(((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd7)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 5,
+   "parent": "r4_c15",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 6
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r5_c29_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 53.0,
+    "timeout": 53
+   }
+  },
+  "r5_c30": {
+   "cond": "(((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd7)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd2)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 5,
+   "parent": "r4_c15",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 6
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": false
+   },
+   "attempt": 0,
+   "tag": "r5_c30_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 120.0,
+    "timeout": 120
+   },
+   "children": [
+    "r6_c30",
+    "r6_c31"
+   ]
+  },
+  "r5_c31": {
+   "cond": "(((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd7)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd3)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 5,
+   "parent": "r4_c15",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 6
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": false
+   },
+   "attempt": 1,
+   "tag": "r5_c31_k1",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 53.0,
+    "timeout": 53
+   }
+  },
+  "r6_c0": {
+   "cond": "((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd0)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd0)) & (cam_valid[5:5] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 6,
+   "parent": "r5_c0",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 5
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c0_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 53.0,
+    "timeout": 53
+   },
+   "children": [
+    "r7_c0",
+    "r7_c1"
+   ]
+  },
+  "r6_c1": {
+   "cond": "((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd0)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd0)) & (cam_valid[5:5] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 6,
+   "parent": "r5_c0",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 5
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c1_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 53.0,
+    "timeout": 53
+   },
+   "children": [
+    "r7_c2",
+    "r7_c3"
+   ]
+  },
+  "r6_c2": {
+   "cond": "((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd0)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd2)) & (cam_valid[5:5] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 6,
+   "parent": "r5_c2",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 5
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c2_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 53.0,
+    "timeout": 53
+   },
+   "children": [
+    "r7_c4",
+    "r7_c5"
+   ]
+  },
+  "r6_c3": {
+   "cond": "((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd0)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd2)) & (cam_valid[5:5] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 6,
+   "parent": "r5_c2",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 5
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c3_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 53.0,
+    "timeout": 53
+   },
+   "children": [
+    "r7_c6",
+    "r7_c7"
+   ]
+  },
+  "r6_c4": {
+   "cond": "((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd1)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd0)) & (cam_valid[5:5] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 6,
+   "parent": "r5_c4",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 5
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c4_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 53.0,
+    "timeout": 53
+   },
+   "children": [
+    "r7_c8",
+    "r7_c9"
+   ]
+  },
+  "r6_c5": {
+   "cond": "((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd1)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd0)) & (cam_valid[5:5] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 6,
+   "parent": "r5_c4",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 5
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c5_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 53.0,
+    "timeout": 53
+   },
+   "children": [
+    "r7_c10",
+    "r7_c11"
+   ]
+  },
+  "r6_c6": {
+   "cond": "((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd1)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd2)) & (cam_valid[5:5] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 6,
+   "parent": "r5_c6",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 5
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c6_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 53.0,
+    "timeout": 53
+   },
+   "children": [
+    "r7_c12",
+    "r7_c13"
+   ]
+  },
+  "r6_c7": {
+   "cond": "((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd1)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd2)) & (cam_valid[5:5] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 6,
+   "parent": "r5_c6",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 5
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c7_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 53.0,
+    "timeout": 53
+   },
+   "children": [
+    "r7_c14",
+    "r7_c15"
+   ]
+  },
+  "r6_c8": {
+   "cond": "((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd2)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd0)) & (cam_valid[5:5] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    },
+    {
+     "op": "abstract_value",
+     "target": "entity_cnt_ns"
+    }
+   ],
+   "status": "open",
+   "round": 6,
+   "parent": "r5_c8",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 5
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c8_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 53.0,
+    "timeout": 53
+   }
+  },
+  "r6_c9": {
+   "cond": "((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd2)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd0)) & (cam_valid[5:5] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    },
+    {
+     "op": "abstract_value",
+     "target": "entity_cnt_ns"
+    }
+   ],
+   "status": "open",
+   "round": 6,
+   "parent": "r5_c8",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 5
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c9_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 53.0,
+    "timeout": 53
+   }
+  },
+  "r6_c10": {
+   "cond": "((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd2)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd2)) & (cam_valid[5:5] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    },
+    {
+     "op": "abstract_value",
+     "target": "entity_cnt_ns"
+    }
+   ],
+   "status": "open",
+   "round": 6,
+   "parent": "r5_c10",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 5
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c10_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 53.0,
+    "timeout": 53
+   }
+  },
+  "r6_c11": {
+   "cond": "((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd2)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd2)) & (cam_valid[5:5] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 6,
+   "parent": "r5_c10",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 5
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c11_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 53.0,
+    "timeout": 53
+   },
+   "children": [
+    "r7_c16",
+    "r7_c17"
+   ]
+  },
+  "r6_c12": {
+   "cond": "((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd3)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd0)) & (cam_valid[5:5] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    },
+    {
+     "op": "abstract_value",
+     "target": "entity_cnt_ns"
+    }
+   ],
+   "status": "open",
+   "round": 6,
+   "parent": "r5_c12",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 5
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c12_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 53.0,
+    "timeout": 53
+   }
+  },
+  "r6_c13": {
+   "cond": "((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd3)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd0)) & (cam_valid[5:5] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    },
+    {
+     "op": "abstract_value",
+     "target": "entity_cnt_ns"
+    }
+   ],
+   "status": "open",
+   "round": 6,
+   "parent": "r5_c12",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 5
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c13_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 53.0,
+    "timeout": 53
+   }
+  },
+  "r6_c14": {
+   "cond": "((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd3)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd2)) & (cam_valid[5:5] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    },
+    {
+     "op": "abstract_value",
+     "target": "entity_cnt_ns"
+    }
+   ],
+   "status": "open",
+   "round": 6,
+   "parent": "r5_c14",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 5
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c14_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 53.0,
+    "timeout": 53
+   }
+  },
+  "r6_c15": {
+   "cond": "((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd3)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd2)) & (cam_valid[5:5] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 6,
+   "parent": "r5_c14",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 5
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c15_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 53.0,
+    "timeout": 53
+   },
+   "children": [
+    "r7_c18",
+    "r7_c19"
+   ]
+  },
+  "r6_c16": {
+   "cond": "((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd4)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd0)) & (cam_valid[5:5] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    },
+    {
+     "op": "abstract_value",
+     "target": "entity_cnt_ns"
+    }
+   ],
+   "status": "open",
+   "round": 6,
+   "parent": "r5_c16",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 5
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c16_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 53.0,
+    "timeout": 53
+   }
+  },
+  "r6_c17": {
+   "cond": "((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd4)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd0)) & (cam_valid[5:5] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    },
+    {
+     "op": "abstract_value",
+     "target": "entity_cnt_ns"
+    }
+   ],
+   "status": "open",
+   "round": 6,
+   "parent": "r5_c16",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 5
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c17_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 53.0,
+    "timeout": 53
+   }
+  },
+  "r6_c18": {
+   "cond": "((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd4)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd2)) & (cam_valid[5:5] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    },
+    {
+     "op": "abstract_value",
+     "target": "entity_cnt_ns"
+    }
+   ],
+   "status": "open",
+   "round": 6,
+   "parent": "r5_c18",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 5
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c18_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 53.0,
+    "timeout": 53
+   }
+  },
+  "r6_c19": {
+   "cond": "((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd4)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd2)) & (cam_valid[5:5] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 6,
+   "parent": "r5_c18",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 5
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c19_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 53.0,
+    "timeout": 53
+   },
+   "children": [
+    "r7_c20",
+    "r7_c21"
+   ]
+  },
+  "r6_c20": {
+   "cond": "((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd5)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd0)) & (cam_valid[5:5] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 6,
+   "parent": "r5_c20",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 5
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c20_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 53.0,
+    "timeout": 53
+   },
+   "children": [
+    "r7_c22",
+    "r7_c23"
+   ]
+  },
+  "r6_c21": {
+   "cond": "((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd5)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd0)) & (cam_valid[5:5] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    },
+    {
+     "op": "abstract_value",
+     "target": "entity_cnt_ns"
+    }
+   ],
+   "status": "open",
+   "round": 6,
+   "parent": "r5_c20",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 5
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c21_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 53.0,
+    "timeout": 53
+   }
+  },
+  "r6_c22": {
+   "cond": "((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd5)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd2)) & (cam_valid[5:5] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    },
+    {
+     "op": "abstract_value",
+     "target": "entity_cnt_ns"
+    }
+   ],
+   "status": "open",
+   "round": 6,
+   "parent": "r5_c22",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 5
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c22_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 53.0,
+    "timeout": 53
+   }
+  },
+  "r6_c23": {
+   "cond": "((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd5)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd2)) & (cam_valid[5:5] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 6,
+   "parent": "r5_c22",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 5
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c23_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 53.0,
+    "timeout": 53
+   },
+   "children": [
+    "r7_c24",
+    "r7_c25"
+   ]
+  },
+  "r6_c24": {
+   "cond": "((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd6)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd0)) & (cam_valid[5:5] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 6,
+   "parent": "r5_c24",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 5
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c24_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 53.0,
+    "timeout": 53
+   },
+   "children": [
+    "r7_c26",
+    "r7_c27"
+   ]
+  },
+  "r6_c25": {
+   "cond": "((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd6)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd0)) & (cam_valid[5:5] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    },
+    {
+     "op": "abstract_value",
+     "target": "entity_cnt_ns"
+    }
+   ],
+   "status": "open",
+   "round": 6,
+   "parent": "r5_c24",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 5
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c25_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 53.0,
+    "timeout": 53
+   }
+  },
+  "r6_c26": {
+   "cond": "((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd6)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd2)) & (cam_valid[5:5] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    },
+    {
+     "op": "abstract_value",
+     "target": "entity_cnt_ns"
+    }
+   ],
+   "status": "open",
+   "round": 6,
+   "parent": "r5_c26",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 5
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c26_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 53.0,
+    "timeout": 53
+   }
+  },
+  "r6_c27": {
+   "cond": "((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd6)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd2)) & (cam_valid[5:5] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 6,
+   "parent": "r5_c26",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 5
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c27_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 53.0,
+    "timeout": 53
+   },
+   "children": [
+    "r7_c28",
+    "r7_c29"
+   ]
+  },
+  "r6_c28": {
+   "cond": "((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd7)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd0)) & (cam_valid[5:5] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    },
+    {
+     "op": "abstract_value",
+     "target": "entity_cnt_ns"
+    }
+   ],
+   "status": "open",
+   "round": 6,
+   "parent": "r5_c28",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 5
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c28_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 53.0,
+    "timeout": 53
+   }
+  },
+  "r6_c29": {
+   "cond": "((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd7)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd0)) & (cam_valid[5:5] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    },
+    {
+     "op": "abstract_value",
+     "target": "entity_cnt_ns"
+    }
+   ],
+   "status": "open",
+   "round": 6,
+   "parent": "r5_c28",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 5
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c29_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 53.0,
+    "timeout": 53
+   }
+  },
+  "r6_c30": {
+   "cond": "((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd7)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd2)) & (cam_valid[5:5] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    },
+    {
+     "op": "abstract_value",
+     "target": "entity_cnt_ns"
+    }
+   ],
+   "status": "open",
+   "round": 6,
+   "parent": "r5_c30",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 5
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c30_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 53.0,
+    "timeout": 53
+   }
+  },
+  "r6_c31": {
+   "cond": "((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd7)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd2)) & (cam_valid[5:5] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "split",
+   "round": 6,
+   "parent": "r5_c30",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 5
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   },
+   "attempt": 0,
+   "tag": "r6_c31_k0",
+   "last": {
+    "verdict": "TIMEOUT",
+    "seconds": 53.0,
+    "timeout": 53
+   },
+   "children": [
+    "r7_c30",
+    "r7_c31"
+   ]
+  },
+  "r7_c0": {
+   "cond": "(((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd0)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd0)) & (cam_valid[5:5] == 1'd0)) & (cam_valid[4:4] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 7,
+   "parent": "r6_c0",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 4
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   }
+  },
+  "r7_c1": {
+   "cond": "(((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd0)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd0)) & (cam_valid[5:5] == 1'd0)) & (cam_valid[4:4] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 7,
+   "parent": "r6_c0",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 4
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   }
+  },
+  "r7_c2": {
+   "cond": "(((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd0)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd0)) & (cam_valid[5:5] == 1'd1)) & (cam_valid[4:4] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 7,
+   "parent": "r6_c1",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 4
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   }
+  },
+  "r7_c3": {
+   "cond": "(((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd0)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd0)) & (cam_valid[5:5] == 1'd1)) & (cam_valid[4:4] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 7,
+   "parent": "r6_c1",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 4
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   }
+  },
+  "r7_c4": {
+   "cond": "(((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd0)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd2)) & (cam_valid[5:5] == 1'd0)) & (cam_valid[4:4] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 7,
+   "parent": "r6_c2",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 4
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   }
+  },
+  "r7_c5": {
+   "cond": "(((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd0)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd2)) & (cam_valid[5:5] == 1'd0)) & (cam_valid[4:4] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 7,
+   "parent": "r6_c2",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 4
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   }
+  },
+  "r7_c6": {
+   "cond": "(((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd0)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd2)) & (cam_valid[5:5] == 1'd1)) & (cam_valid[4:4] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 7,
+   "parent": "r6_c3",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 4
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   }
+  },
+  "r7_c7": {
+   "cond": "(((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd0)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd2)) & (cam_valid[5:5] == 1'd1)) & (cam_valid[4:4] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 7,
+   "parent": "r6_c3",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 4
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   }
+  },
+  "r7_c8": {
+   "cond": "(((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd1)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd0)) & (cam_valid[5:5] == 1'd0)) & (cam_valid[4:4] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 7,
+   "parent": "r6_c4",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 4
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   }
+  },
+  "r7_c9": {
+   "cond": "(((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd1)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd0)) & (cam_valid[5:5] == 1'd0)) & (cam_valid[4:4] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 7,
+   "parent": "r6_c4",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 4
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   }
+  },
+  "r7_c10": {
+   "cond": "(((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd1)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd0)) & (cam_valid[5:5] == 1'd1)) & (cam_valid[4:4] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 7,
+   "parent": "r6_c5",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 4
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   }
+  },
+  "r7_c11": {
+   "cond": "(((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd1)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd0)) & (cam_valid[5:5] == 1'd1)) & (cam_valid[4:4] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 7,
+   "parent": "r6_c5",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 4
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   }
+  },
+  "r7_c12": {
+   "cond": "(((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd1)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd2)) & (cam_valid[5:5] == 1'd0)) & (cam_valid[4:4] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 7,
+   "parent": "r6_c6",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 4
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   }
+  },
+  "r7_c13": {
+   "cond": "(((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd1)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd2)) & (cam_valid[5:5] == 1'd0)) & (cam_valid[4:4] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 7,
+   "parent": "r6_c6",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 4
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   }
+  },
+  "r7_c14": {
+   "cond": "(((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd1)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd2)) & (cam_valid[5:5] == 1'd1)) & (cam_valid[4:4] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 7,
+   "parent": "r6_c7",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 4
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   }
+  },
+  "r7_c15": {
+   "cond": "(((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd1)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd2)) & (cam_valid[5:5] == 1'd1)) & (cam_valid[4:4] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 7,
+   "parent": "r6_c7",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 4
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   }
+  },
+  "r7_c16": {
+   "cond": "(((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd2)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd2)) & (cam_valid[5:5] == 1'd1)) & (cam_valid[4:4] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 7,
+   "parent": "r6_c11",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 4
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   }
+  },
+  "r7_c17": {
+   "cond": "(((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd2)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd2)) & (cam_valid[5:5] == 1'd1)) & (cam_valid[4:4] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 7,
+   "parent": "r6_c11",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 4
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   }
+  },
+  "r7_c18": {
+   "cond": "(((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd3)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd2)) & (cam_valid[5:5] == 1'd1)) & (cam_valid[4:4] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 7,
+   "parent": "r6_c15",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 4
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   }
+  },
+  "r7_c19": {
+   "cond": "(((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd3)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd2)) & (cam_valid[5:5] == 1'd1)) & (cam_valid[4:4] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 7,
+   "parent": "r6_c15",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 4
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   }
+  },
+  "r7_c20": {
+   "cond": "(((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd4)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd2)) & (cam_valid[5:5] == 1'd1)) & (cam_valid[4:4] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 7,
+   "parent": "r6_c19",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 4
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   }
+  },
+  "r7_c21": {
+   "cond": "(((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd4)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd2)) & (cam_valid[5:5] == 1'd1)) & (cam_valid[4:4] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 7,
+   "parent": "r6_c19",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 4
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   }
+  },
+  "r7_c22": {
+   "cond": "(((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd5)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd0)) & (cam_valid[5:5] == 1'd0)) & (cam_valid[4:4] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 7,
+   "parent": "r6_c20",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 4
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   }
+  },
+  "r7_c23": {
+   "cond": "(((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd5)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd0)) & (cam_valid[5:5] == 1'd0)) & (cam_valid[4:4] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 7,
+   "parent": "r6_c20",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 4
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   }
+  },
+  "r7_c24": {
+   "cond": "(((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd5)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd2)) & (cam_valid[5:5] == 1'd1)) & (cam_valid[4:4] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 7,
+   "parent": "r6_c23",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 4
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   }
+  },
+  "r7_c25": {
+   "cond": "(((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd5)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd2)) & (cam_valid[5:5] == 1'd1)) & (cam_valid[4:4] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 7,
+   "parent": "r6_c23",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 4
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   }
+  },
+  "r7_c26": {
+   "cond": "(((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd6)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd0)) & (cam_valid[5:5] == 1'd0)) & (cam_valid[4:4] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 7,
+   "parent": "r6_c24",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 4
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   }
+  },
+  "r7_c27": {
+   "cond": "(((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd6)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd0)) & (cam_valid[5:5] == 1'd0)) & (cam_valid[4:4] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 7,
+   "parent": "r6_c24",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 4
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   }
+  },
+  "r7_c28": {
+   "cond": "(((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd6)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd2)) & (cam_valid[5:5] == 1'd1)) & (cam_valid[4:4] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 7,
+   "parent": "r6_c27",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 4
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   }
+  },
+  "r7_c29": {
+   "cond": "(((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd6)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd2)) & (cam_valid[5:5] == 1'd1)) & (cam_valid[4:4] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 7,
+   "parent": "r6_c27",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 4
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   }
+  },
+  "r7_c30": {
+   "cond": "(((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd7)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd2)) & (cam_valid[5:5] == 1'd1)) & (cam_valid[4:4] == 1'd0)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 7,
+   "parent": "r6_c31",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 4
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   }
+  },
+  "r7_c31": {
+   "cond": "(((((chosen && chosen_not_popped && (lookup_id == chosen_push_id)) & (chosen_push_id[2:0] == 3'd7)) & (chosen && chosen_not_popped && (lookup_id == chosen_push_id) && !(|lookup_match))) & (cam_valid[7:6] == 2'd2)) & (cam_valid[5:5] == 1'd1)) & (cam_valid[4:4] == 1'd1)",
+   "ops": [
+    {
+     "op": "abstract_state",
+     "target": "entity_cnt"
+    }
+   ],
+   "status": "open",
+   "round": 7,
+   "parent": "r6_c31",
+   "fixed": {
+    "chosen_push_id": 0,
+    "cam_valid": 4
+   },
+   "direction": {
+    "index": "cam_valid",
+    "auto": true
+   }
+  }
+ },
+ "cum": {
+  "input_tokens": 56873,
+  "output_tokens": 87334,
+  "cache_hit": 0,
+  "cache_miss": 0,
+  "cost_usd": 0.11825002800000001,
+  "latency_s": 893.709132194519
+ }
+}

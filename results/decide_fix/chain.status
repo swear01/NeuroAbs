@@ -1,0 +1,15 @@
+DONE /var/tmp/neuroabs-runtime/decide-fix/fifo_ref_64-hint-1 rc=0 wall=2461.337119960
+DONE /var/tmp/neuroabs-runtime/decide-fix/fifo_ref_64-hint-2 rc=3 wall=2407.759608371
+DONE /var/tmp/neuroabs-runtime/decide-fix/fifo_ref_16-hint-1 rc=3 wall=1161.056088421
+DONE /var/tmp/neuroabs-runtime/decide-fix/fifo_vis-hint-1 rc=0 wall=2430.413495675
+DONE /var/tmp/neuroabs-runtime/decide-fix/fifo_vis-nohint-1 rc=0 wall=139.258462335
+DONE /var/tmp/neuroabs-runtime/decide-fix/simple_cam_8-nohint-1 rc=0 wall=1816.160333105
+DONE /var/tmp/neuroabs-runtime/decide-fix/fifo_ref_16-hint-2 rc=0 wall=793.285254833
+DONE /var/tmp/neuroabs-runtime/decide-fix/fifo_vis-hint-2 rc=0 wall=122.719123683
+DONE /var/tmp/neuroabs-runtime/decide-fix/fifo_vis-nohint-2 rc=0 wall=1634.716768511
+DONE /var/tmp/neuroabs-runtime/decide-fix/simple_cam_8-nohint-2 rc=0 wall=2097.717042651
+DONE /var/tmp/neuroabs-runtime/decide-fix/fifo_ref_16-hint-3 rc=0 wall=2018.124705322
+DONE /var/tmp/neuroabs-runtime/decide-fix/fifo_vis-hint-3 rc=0 wall=633.138865259
+DONE /var/tmp/neuroabs-runtime/decide-fix/fifo_vis-nohint-3 rc=0 wall=618.428092543
+DONE /var/tmp/neuroabs-runtime/decide-fix/simple_cam_8-nohint-3 rc=0 wall=1658.413071762
+CHAIN-FINISHED

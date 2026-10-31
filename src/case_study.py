@@ -7,6 +7,7 @@ coverage check, rIC3, replay) judge every answer; the LLM only splits and picks 
 """
 import argparse
 import concurrent.futures
+import itertools
 import json
 import os
 import re
@@ -33,10 +34,11 @@ HINT_USE = " Use this for an index or pointer register."
 HINT_PLAN = " (which index, pointer or slot does the proof quantify over)"
 RIC3 = "/var/tmp/agentic-ic3-tools/ric3-master-4d63899/target/release/ric3"
 MAX_CALLS, MAX_ROUNDS = 40, 8
-LLM_TIMEOUT = 300  # wall seconds per request; one retry, then the run stops as unsolved (llm_timeout)
+LLM_TIMEOUT = 600  # wall seconds per request; one retry, then the run stops as unsolved (llm_timeout)
 PARALLEL = 8       # pieces checked at once (rIC3 portfolio each; they share cores)
 CAPS = (3, 20, 120)  # rIC3 cap per piece in seconds: rounds 1-2, 3-4, 5+
 MAX_NEW = 32       # new pieces per round
+DECIDE_GROUPS = 8  # groups of sibling pieces per decide call; more groups are decided in further calls
 SUMMARY_S = 5      # single-engine IC3 run that feeds the lemma summary
 # class A operators; operator 8 of #24 ("k symbolic memory slots") is added here, in validate_op and in op_commands
 OPS = {"abstract_value": "-value", "abstract_state": "-state", "abstract_init": "-init"}
@@ -56,7 +58,7 @@ available as two 1-bit signals: prop_en (the assertion is enforced while it is h
 
 ## Signals
 Signals are named by the identifiers listed in each request (the flattened Yosys wire name with every non-alphanumeric \
-character replaced by '_', for example sr.tail is sr_tail and sr.mem[3] is sr_mem_3). Use only these identifiers.
+character replaced by '_', for example sr.tail is sr_tail and sr.mem[3] is sr_mem_3). Use only these identifiers. In signal and operator lists, name_{{a..b}} stands for name_a, ..., name_b; an operator target may use that form, a split expression may not.
 
 ## Split
 A split is a list of cases, each a Verilog boolean expression over signal identifiers (evaluated in every cycle, on the \
@@ -396,6 +398,48 @@ def sanitize(name):
     return re.sub(r"\W+", "_", name).strip("_")
 
 
+def fold(names):
+    """['m_1', 'm_2', 'm_3', 'x'] -> ['m_{1..3}', 'x']: runs of 3 or more consecutive numeric suffixes."""
+    out, i = [], 0
+    while i < len(names):
+        m, j = re.fullmatch(r"(.*_)(\d+)", names[i]), i
+        while m and j + 1 < len(names) and names[j + 1] == m.group(1) + str(int(m.group(2)) + j + 1 - i):
+            j += 1
+        out += names[i:j + 1] if j - i < 2 else ["{:s}{{{:s}..{:d}}}".format(m.group(1), m.group(2), int(m.group(2)) + j - i)]
+        i = j + 1
+    return out
+
+
+def unfold(name):
+    m = re.fullmatch(r"(.*)\{(\d+)\.\.(\d+)\}", name) if isinstance(name, str) else None
+    if not m:
+        return [name]
+    a, b = int(m.group(2)), int(m.group(3))
+    if not a <= b < a + 4096:
+        raise ValueError("bad range {!r}".format(name))
+    return [m.group(1) + str(k) for k in range(a, b + 1)]
+
+
+def fmt_ops(ops):
+    """Operator list as compact JSON: adjacent operators that differ only in target share one name_{a..b} target."""
+    out = []
+    for op in ops:
+        rest = {k: x for k, x in op.items() if k != "target"}
+        if out and "target" in op and out[-1][0] == rest:
+            out[-1][1].append(op["target"])
+        else:
+            out.append((rest, [op["target"]] if "target" in op else []))
+    flat = [dict(rest, target=t) if ts else rest for rest, ts in out for t in (fold(ts) or [None])]
+    return json.dumps(flat, separators=(",", ":"))
+
+
+def expand_ops(ops):
+    if not isinstance(ops, list):
+        raise ValueError("ops must be a list of operators")
+    return [dict(op, target=t) if isinstance(op, dict) and "target" in op else op
+            for op in ops for t in (unfold(op["target"]) if isinstance(op, dict) and "target" in op else [None])]
+
+
 def init(args):
     os.makedirs(args.workdir, exist_ok=True)
     wd = os.path.abspath(args.workdir)
@@ -442,9 +486,12 @@ def init(args):
 
 def signal_table(st):
     mem = re.compile(st.cfg["mem_re"] if st.cfg.get("mem_re") else r"(?!)")
-    rows = ["{:s}  width {:d}  {:s}".format(x["id"], x["width"], "input" if x["input"] else "register" if x["state"] else "wire")
+    rows = [(x["id"], "width {:d}  {:s}".format(x["width"], "input" if x["input"] else "register" if x["state"] else "wire"))
             for x in st.signals() if x["state"] is False or not mem.fullmatch(x["id"])]
-    return "\n".join(rows) + ("\n" + st.cfg["mem_note"] if st.cfg.get("mem_note") else "")
+    out = []
+    for desc, run in itertools.groupby(rows, key=lambda r: r[1]):  # arrays of registers become one row
+        out += ["{:s}  {:s}".format(n, desc) for n in fold([r[0] for r in run])]
+    return "\n".join(out) + ("\n" + st.cfg["mem_note"] if st.cfg.get("mem_note") else "")
 
 
 def sig_list(st):
@@ -541,21 +588,68 @@ def lemma_summary(st, p):
     frames = re.findall(r"frames \[\d+\]: ([\d ]+)", text)
     mic = [int(x) for x in re.findall(r"mic from \d+ to (\d+) len", text)][-200:]
     latches = re.findall(r"preprocessed ts has \d+ vars, \d+ inputs, (\d+) latches", text)
-    s = "single-engine IC3, {:d} s: ".format(SUMMARY_S)
     if verdict == "UNSAT":
         return verdict, "IC3 alone proved it in {:.1f} s".format(secs)
-    s += "reached depth {:s}".format(depth[-1] if depth else "0")
+    s = "IC3 {:d} s: depth {:s}".format(SUMMARY_S, depth[-1] if depth else "0")
     if frames:
-        s += "; lemmas per frame at the end [{:s}]".format(frames[-1].strip().replace(" ", ", "))
+        s += ", lemmas in last frames [{:s}]".format(", ".join(frames[-1].split()[-4:]))
     if mic:
-        s += "; recent lemmas have {:.1f} literals on average out of {:s} state bits (rIC3 does not name them)".format(
-            sum(mic) / len(mic), latches[-1] if latches else "?")
+        s += ", lemmas {:.1f}/{:s} state bits".format(sum(mic) / len(mic), latches[-1] if latches else "?")
     return verdict, s
 
 
+def decide_groups(st, todo):
+    """Siblings with the same operators, fixed bits and direction differ only in their case: one decision covers them."""
+    groups = {}
+    for p in todo:
+        v = st.s["pieces"][p]
+        key = json.dumps([v.get("parent"), v["ops"], v["fixed"], v.get("direction")], sort_keys=True)
+        groups.setdefault(key, []).append(p)
+    return list(groups.values())
+
+
+def own_case(st, p):
+    """The piece's case without its parent's case, which the group line shows once."""
+    v = st.s["pieces"][p]
+    par = st.s["pieces"].get(v.get("parent") or "")
+    head = "({:s}) & (".format(par["cond"]) if par else None
+    return "parent & " + v["cond"][len(head) - 1:] if head and v["cond"].startswith(head) else v["cond"]
+
+
+def decide_prompt(st, gids, rows, sums, auto, quota, made, cap):
+    rnd = st.s["round"]
+    user = ["Step: DECIDE (round {:d}). rIC3 portfolio, cap {:d} s per piece. Results of this round:".format(rnd, cap)]
+    user += ["- {:s}: {:s} {:.1f} s{:s}".format(*r, " (already split by the tool's auto index expansion: not yours to decide)"
+                                                   if r[0] in auto else "") for r in rows]
+    sets = {}
+    for g in gids.values():
+        sets.setdefault(json.dumps(st.s["pieces"][g[0]]["ops"]), "O{:d}".format(len(sets) + 1))
+    user.append("Operator sets:\n" + "\n".join("{:s}: {:s}".format(k, fmt_ops(json.loads(o))) for o, k in sets.items()))
+    user.append("Groups to decide ({:d}). The pieces of a group are siblings with the same operators and fixed bits and differ only "
+                "in their case. Decide once per group id (\"resplit\", \"abstract\" or \"both\", with a reason); the decision applies "
+                "to every piece of the group, and a split is applied to each piece's case. To treat one piece differently, add an "
+                "entry under its piece id.".format(len(gids)))
+    for gid, g in gids.items():
+        v = st.s["pieces"][g[0]]
+        par = st.s["pieces"].get(v.get("parent") or "")
+        user.append("- {:s}: {:d} pieces{:s}; operators {:s}; already fixed bits {:s}".format(
+            gid, len(g), ", parent {:s} with case {:s}".format(v["parent"], par["cond"]) if par else "",
+            sets[json.dumps(v["ops"])], json.dumps(v["fixed"])))
+        user += ["  - {:s}: case {:s}; {:s}".format(p, own_case(st, p), sums[p][1]) for p in g]
+    user.append("Proved pieces are never touched again. Budget: {:d} new pieces left for this request ({:d} per round, {:d} "
+                "already made this round); the new pieces of all your splits together must fit in it. An index split of "
+                "b bits makes 2^b pieces per piece, minus those that contradict the piece's case. {:d} rounds in total ({:d} "
+                "left); the cap grows to {:d} s in later rounds.".format(
+                    quota, MAX_NEW, made, MAX_ROUNDS, MAX_ROUNDS - rnd, CAPS[min(rnd // 2, len(CAPS) - 1)]))
+    user.append(sig_list(st))
+    user.append('Answer: {"decisions":{"<group id or piece id>":{"action":"resplit|abstract|both","reason":"...",'
+                '"split":<explicit cases or index direction, for resplit/both>,"ops":[<operator>, ...] (full list, for abstract/both)}, ...}}')
+    return "\n".join(user)
+
+
 def cmd_decide(st, timeouts, rows, counter, cap, auto=()):
-    """One LLM call for all pieces that timed out this round: resplit / abstract / both, each with a reason.
-    `auto` are timed-out pieces the tool already split itself; they are shown but not part of the decision."""
+    """LLM calls for the pieces that timed out this round, DECIDE_GROUPS groups of siblings per call: resplit / abstract /
+    both, each with a reason. `auto` are timed-out pieces the tool already split itself; they are shown but not decided."""
     rnd = st.s["round"]
     with concurrent.futures.ThreadPoolExecutor(PARALLEL) as ex:
         t0 = now()
@@ -567,57 +661,49 @@ def cmd_decide(st, timeouts, rows, counter, cap, auto=()):
             st.s["pieces"][p]["last"] = {"verdict": "UNSAT", "seconds": SUMMARY_S, "timeout": SUMMARY_S, "by": "ic3 summary run"}
             del sums[p]
         st.event("summary", piece=p, verdict=verdict, text=text)
-    todo = list(sums)
-    if not todo:
-        return
-    user = ["Step: DECIDE (round {:d}). rIC3 portfolio, cap {:d} s per piece. Results of this round:".format(rnd, cap)]
-    user += ["- {:s}: {:s} {:.1f} s{:s}".format(*r, " (already split by the tool's auto index expansion: not yours to decide)"
-                                                   if r[0] in auto else "") for r in rows]
-    user.append("Pieces to decide ({:d}; decide for exactly these ids, each: \"resplit\", \"abstract\" or \"both\", with a reason):".format(len(todo)))
-    for p in todo:
-        v = st.s["pieces"][p]
-        user.append("- {:s}: case {:s}\n  operators now: {:s}\n  already fixed bits: {:s}\n  {:s}".format(
-            p, v["cond"], json.dumps(v["ops"]), json.dumps(v["fixed"]), sums[p][1]))
-    left = MAX_NEW - counter[0]
-    user.append("Proved pieces are never touched again. Budget: {:d} new pieces left this round ({:d} per round, {:d} already "
-                "made by the tool's auto splits); the new pieces of all your splits together must fit in it. An index split of "
-                "b bits makes 2^b pieces, minus those that contradict the piece's case. {:d} rounds in total ({:d} left); the "
-                "cap grows to {:d} s in later rounds.".format(
-                    left, MAX_NEW, counter[0], MAX_ROUNDS, MAX_ROUNDS - rnd, CAPS[min(rnd // 2, len(CAPS) - 1)]))
-    user.append(sig_list(st))
-    user.append('Answer: {"pieces":{"<piece id>":{"action":"resplit|abstract|both","reason":"...",'
-                '"split":<explicit cases or index direction, for resplit/both>,"ops":[<operator>, ...] (for abstract/both)}, ...}}')
+    groups = decide_groups(st, list(sums))
+    for c in range(0, len(groups), DECIDE_GROUPS):
+        chunk = groups[c:c + DECIDE_GROUPS]
+        gids = {"g{:d}".format(c + i + 1): g for i, g in enumerate(chunk)}
+        n, rest = sum(map(len, chunk)), sum(map(len, groups[c:]))
+        quota = min(MAX_NEW - counter[0], -(-(MAX_NEW - counter[0]) * n // rest))  # this call's share of what is left
+        plan = decide_chunk(st, gids, decide_prompt(st, gids, rows, sums, auto, quota, counter[0], cap), quota, counter)
+        for p, x in plan.items():
+            if x["action"] == "abstract":
+                st.s["pieces"][p]["ops"], st.s["pieces"][p]["status"] = x["ops"], "open"
+            else:
+                add_children(st, p, x["kids"], x["ops"], rnd + 1, counter)
+            print(p, x["action"], "-", x["reason"])
 
+
+def decide_chunk(st, gids, user, quota, counter):
     def validate(data):
-        plan, total = {}, 0
-        missing = [p for p in todo if p not in data["pieces"]]
+        dec, plan, total = data["decisions"], {}, 0
+        missing = [p for gid, g in gids.items() for p in g if p not in dec and gid not in dec]
         if missing:
-            raise ValueError("no decision for {}; decide for exactly {} (other ids are ignored)".format(missing, todo))
-        for p in todo:
-            d = data["pieces"][p]
-            if d["action"] not in ("resplit", "abstract", "both") or not str(d.get("reason", "")).strip():
-                raise ValueError("{:s}: action must be resplit, abstract or both, and a reason is required".format(p))
-            ops = st.s["pieces"][p]["ops"]
-            if d["action"] != "resplit":
-                ops = [st.validate_op(op) for op in d["ops"]]
-                if d["action"] == "abstract" and ops == st.s["pieces"][p]["ops"]:
-                    raise ValueError("{:s}: the operator list is unchanged".format(p))
-            kids = expand(st, d["split"], p) if d["action"] != "abstract" else []
-            total += len(kids)
-            plan[p] = dict(action=d["action"], reason=d["reason"], ops=ops, kids=kids, split=d.get("split"))
-        if total > left:
-            raise ValueError("{:d} new pieces, but only {:d} are left this round ({:d} per round, {:d} already made by the "
-                             "tool's auto splits)".format(total, left, MAX_NEW, counter[0]))
+            raise ValueError("no decision for {}; decide per group id ({}) or per piece id (other ids are ignored)".format(
+                missing, ", ".join(gids)))
+        for gid, g in gids.items():
+            for p in g:
+                d = dec[p] if p in dec else dec[gid]
+                if d["action"] not in ("resplit", "abstract", "both") or not str(d.get("reason", "")).strip():
+                    raise ValueError("{:s}: action must be resplit, abstract or both, and a reason is required".format(p))
+                ops = st.s["pieces"][p]["ops"]
+                if d["action"] != "resplit":
+                    ops = [st.validate_op(op) for op in expand_ops(d["ops"])]
+                    if d["action"] == "abstract" and ops == st.s["pieces"][p]["ops"]:
+                        raise ValueError("{:s}: the operator list is unchanged".format(p))
+                kids = expand(st, d["split"], p) if d["action"] != "abstract" else []
+                total += len(kids)
+                plan[p] = dict(action=d["action"], reason=d["reason"], ops=ops, kids=kids, split=d.get("split"))
+        if total > quota:
+            raise ValueError("{:d} new pieces, but only {:d} are left for this request ({:d} per round, {:d} already made "
+                             "this round)".format(total, quota, MAX_NEW, counter[0]))
         return plan, "accepted: " + ", ".join("{:s} {:s}".format(p, x["action"]) for p, x in plan.items()), \
             {p: {"action": x["action"], "reason": x["reason"], "split": x["split"], "ops": x["ops"]} for p, x in plan.items()}
 
-    plan, rec = st.ask("decide", "\n".join(user), validate)
-    for p, x in plan.items():
-        if x["action"] == "abstract":
-            st.s["pieces"][p]["ops"], st.s["pieces"][p]["status"] = x["ops"], "open"
-        else:
-            add_children(st, p, x["kids"], x["ops"], rnd + 1, counter)
-        print(p, x["action"], "-", x["reason"])
+    plan, rec = st.ask("decide", user, validate)
+    return plan
 
 
 def run_check(st, p, timeout):
@@ -757,6 +843,12 @@ def replay(st, p):
         cf.append({"input": {cin[ain[i]]: val for i, val in fr["input"].items() if ain.get(i) in cin},
                    "state": {cst[ast[i]]: val for i, val in fr["state"].items() if k == 0 and ast.get(i) in cst}})
     av, cv = btor_witness.simulate(am, frames), btor_witness.simulate(cm, cf)
+    seen = set()
+    try:
+        btor_witness.dynamic_coi(am, av, seen)
+        coi = sorted({(aname[n], k) for n, k in seen if n in aname and am.nodes[n][0] == "state"}, key=lambda x: (x[1], x[0]))
+    except ValueError:  # the simulated witness does not violate the property: show every difference instead
+        coi = None
     bad_c = [any(btor_witness.value_of(c, int(cm.nodes[b][1][2])) == 1 for b in cm.bad) for c in cv]
     table = []
     for k in range(len(frames)):
@@ -771,47 +863,61 @@ def replay(st, p):
             if cm.names.get(n) and cm.names[n] != "clk":
                 row[cm.names[n]] = cv[k][n]
         table.append(row)
-    return any(bad_c), len(frames) - 1, table, bad_c
+    return any(bad_c), len(frames) - 1, table, bad_c, coi
 
 
 def cmd_cegar(st, args):
     for p in [p for p, v in st.s["pieces"].items() if v["status"] == "sat"]:
-        real, depth, table, bad_c = replay(st, p)
-        st.event("replay", piece=p, real=real, depth=depth, concrete_bad=bad_c, table=table)
+        real, depth, table, bad_c, coi = replay(st, p)
+        st.event("replay", piece=p, real=real, depth=depth, concrete_bad=bad_c, table=table, coi=coi)
         v = st.s["pieces"][p]
         if real:
             v["status"] = "real_cex"
             print(p, "REAL counterexample at depth", depth)
             continue
         v["status"] = "spurious"
-        v["cex"] = {"depth": depth, "table": table}
+        v["cex"] = {"depth": depth, "table": table, "coi": coi}
         print(p, "spurious at depth", depth)
     st.save()
+
+
+def cex_diff(cex):
+    """Cycles of the spurious counterexample, keeping only registers in its dynamic cone of influence whose abstract and
+    concrete values differ (every differing register when the cone is unknown)."""
+    coi = {tuple(x) for x in cex["coi"]} if cex.get("coi") is not None else None
+    rows = []
+    for r in cex["table"]:
+        cells = ["{:s} abs {}/conc {}".format(k, *x) for k, x in r.items() if isinstance(x, (list, tuple)) and x[0] is not None
+                 and x[0] != x[1] and (coi is None or (k, r["cycle"]) in coi)]
+        if cells:
+            rows.append("cycle {:d}: {:s}".format(r["cycle"], ", ".join(cells)))
+    return rows
+
+
+def refine_prompt(st, p):
+    v = st.s["pieces"][p]
+    rows = cex_diff(v["cex"]) or ["(no register in the cone differs: the difference enters through an abstracted wire)"]
+    return ("Step: CEGAR REFINE (round {:d}). Piece {:s} (case: {:s}) has the operators below. rIC3 found a counterexample "
+            "of depth {:d} on the abstract model; replay on the concrete model does NOT reproduce it (spurious). Below are the "
+            "registers in the counterexample's dynamic cone of influence (the values the violation depends on), shown only in "
+            "cycles where their abstract and concrete values differ; the property fails in the last cycle on the abstract "
+            "model only.\n\nOperators now: {:s}\n\n{:s}\n\nSignals:\n{:s}\n\n"
+            'Give a refined full operator list for this piece (restore as little as possible; prefer enable or slice '
+            'over restoring a whole signal). Answer: {{"ops":[<operator>, ...],"reason":"..."}}').format(
+        st.s["round"], p, v["cond"], v["cex"]["depth"], fmt_ops(v["ops"]), "\n".join(rows), signal_table(st))
 
 
 def cmd_refine(st, args):
     for p in [p for p, v in st.s["pieces"].items() if v["status"] == "spurious"]:
         v = st.s["pieces"][p]
-        rows = []
-        for r in v["cex"]["table"]:
-            rows.append("cycle {:d}: ".format(r["cycle"]) + ", ".join(
-                "{:s}={}".format(k, x if not isinstance(x, list) else "abs {}/conc {}".format(*x))
-                for k, x in r.items() if k != "cycle"))
-        user = ("Step: CEGAR REFINE (round {:d}). Piece {:s} (case: {:s}) has the operators below. rIC3 found a "
-                "counterexample on the abstract model; replay on the concrete model does NOT reproduce it (spurious). "
-                "Per cycle, registers are shown as (abstract value, concrete value); the property fails in the last "
-                "cycle on the abstract model only.\n\nOperators now: {:s}\n\n{:s}\n\nSignals:\n{:s}\n\n"
-                'Give a refined full operator list for this piece (restore as little as possible; prefer enable or slice '
-                'over restoring a whole signal). Answer: {{"ops":[<operator>, ...],"reason":"..."}}').format(
-            st.s["round"], p, v["cond"], json.dumps(v["ops"]), "\n".join(rows), signal_table(st))
 
         def validate(data, v=v):
-            ops = [st.validate_op(op) for op in data["ops"]]
+            ops = [st.validate_op(op) for op in expand_ops(data["ops"])]
             if ops == v["ops"]:
                 raise ValueError("the operator list is unchanged")
             return ops, "accepted refined list", {"ops": ops, "reason": data.get("reason")}
 
-        ops, rec = st.ask("cegar_refine", user, validate)
+        ops, rec = st.ask("cegar_refine", refine_prompt(st, p), validate)
         v["ops"], v["status"] = ops, "open"
         print(p, json.dumps(ops))
     st.save()

@@ -1,0 +1,145 @@
+{"kind": "load", "round": 1, "time": 1793467158.8704515, "cmd": "run", "phase": "start", "load": [1.1259765625, 2.09326171875, 10.98486328125]}
+{"kind": "coverage", "round": 1, "time": 1793467176.2345622, "scope": null, "cases": ["srEmpty", "~srEmpty & srFull", "~srEmpty & ~srFull"], "ok": true, "detail": ""}
+{"kind": "uext_rewrite", "round": 1, "time": 1793467176.3174345, "tag": "r1_c1_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 1, "time": 1793467176.3181605, "tag": "r1_c2_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 1, "time": 1793467176.3184218, "tag": "r1_c0_k0", "count": 2}
+{"kind": "check", "round": 1, "time": 1793467177.2851853, "piece": "r1_c0", "tag": "r1_c0_k0", "verdict": "UNSAT", "seconds": 0.9662168025970459, "timeout": 3, "ops": [], "cond": "srEmpty"}
+{"kind": "check", "round": 1, "time": 1793467179.3213148, "piece": "r1_c2", "tag": "r1_c2_k0", "verdict": "TIMEOUT", "seconds": 3.002648115158081, "timeout": 3, "ops": [], "cond": "~srEmpty & ~srFull"}
+{"kind": "check", "round": 1, "time": 1793467179.324381, "piece": "r1_c1", "tag": "r1_c1_k0", "verdict": "TIMEOUT", "seconds": 3.006718635559082, "timeout": 3, "ops": [], "cond": "~srEmpty & srFull"}
+{"kind": "check_pass", "round": 1, "time": 1793467179.324691, "pieces": ["r1_c0", "r1_c1", "r1_c2"], "timeout": 3, "wall_s": 3.0889711380004883}
+{"kind": "summary_pass", "round": 1, "time": 1793467184.3800228, "pieces": ["r1_c1", "r1_c2"], "timeout": 5, "wall_s": 5.05361008644104}
+{"kind": "summary", "round": 1, "time": 1793467184.380253, "piece": "r1_c1", "verdict": "TIMEOUT", "text": "IC3 5 s: depth 31, lemmas in last frames [255, 312, 1602, 10], lemmas 8.0/147 state bits"}
+{"kind": "summary", "round": 1, "time": 1793467184.3802674, "piece": "r1_c2", "verdict": "TIMEOUT", "text": "IC3 5 s: depth 19, lemmas in last frames [1112, 1018, 2290, 3], lemmas 7.5/147 state bits"}
+{"kind": "coverage", "round": 1, "time": 1793467347.0651398, "scope": "~srEmpty & srFull", "cases": ["(rbFull != srFull) | (rbEmpty != srEmpty)", "(rbFull == srFull) & (rbEmpty == srEmpty) & (srEmpty | (srDataOut == rbDataOut))", "(rbFull == srFull) & (rbEmpty == srEmpty) & ~srEmpty & (srDataOut != rbDataOut)"], "ok": true, "detail": ""}
+{"kind": "coverage", "round": 1, "time": 1793467347.1174273, "scope": "~srEmpty & ~srFull", "cases": ["(rbFull != srFull) | (rbEmpty != srEmpty)", "(rbFull == srFull) & (rbEmpty == srEmpty) & (srEmpty | (srDataOut == rbDataOut))", "(rbFull == srFull) & (rbEmpty == srEmpty) & ~srEmpty & (srDataOut != rbDataOut)"], "ok": true, "detail": ""}
+{"kind": "uext_rewrite", "round": 2, "time": 1793467347.184594, "tag": "r2_c4_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 2, "time": 1793467347.1848507, "tag": "r2_c5_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 2, "time": 1793467347.1868017, "tag": "r2_c2_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 2, "time": 1793467347.192871, "tag": "r2_c1_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 2, "time": 1793467347.1929727, "tag": "r2_c0_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 2, "time": 1793467347.193234, "tag": "r2_c3_k0", "count": 2}
+{"kind": "check", "round": 2, "time": 1793467348.0220866, "piece": "r2_c3", "tag": "r2_c3_k0", "verdict": "UNSAT", "seconds": 0.8278210163116455, "timeout": 3, "ops": [], "cond": "(~srEmpty & ~srFull) & ((rbFull != srFull) | (rbEmpty != srEmpty))"}
+{"kind": "check", "round": 2, "time": 1793467348.3661299, "piece": "r2_c4", "tag": "r2_c4_k0", "verdict": "UNSAT", "seconds": 1.1768193244934082, "timeout": 3, "ops": [], "cond": "(~srEmpty & ~srFull) & ((rbFull == srFull) & (rbEmpty == srEmpty) & (srEmpty | (srDataOut == rbDataOut)))"}
+{"kind": "check", "round": 2, "time": 1793467348.8184366, "piece": "r2_c0", "tag": "r2_c0_k0", "verdict": "UNSAT", "seconds": 1.624964952468872, "timeout": 3, "ops": [], "cond": "(~srEmpty & srFull) & ((rbFull != srFull) | (rbEmpty != srEmpty))"}
+{"kind": "check", "round": 2, "time": 1793467349.369254, "piece": "r2_c1", "tag": "r2_c1_k0", "verdict": "UNSAT", "seconds": 2.1757965087890625, "timeout": 3, "ops": [], "cond": "(~srEmpty & srFull) & ((rbFull == srFull) & (rbEmpty == srEmpty) & (srEmpty | (srDataOut == rbDataOut)))"}
+{"kind": "check", "round": 2, "time": 1793467350.1873682, "piece": "r2_c5", "tag": "r2_c5_k0", "verdict": "TIMEOUT", "seconds": 3.002164602279663, "timeout": 3, "ops": [], "cond": "(~srEmpty & ~srFull) & ((rbFull == srFull) & (rbEmpty == srEmpty) & ~srEmpty & (srDataOut != rbDataOut))"}
+{"kind": "check", "round": 2, "time": 1793467350.188709, "piece": "r2_c2", "tag": "r2_c2_k0", "verdict": "TIMEOUT", "seconds": 3.0016841888427734, "timeout": 3, "ops": [], "cond": "(~srEmpty & srFull) & ((rbFull == srFull) & (rbEmpty == srEmpty) & ~srEmpty & (srDataOut != rbDataOut))"}
+{"kind": "check_pass", "round": 2, "time": 1793467350.1892414, "pieces": ["r2_c0", "r2_c1", "r2_c2", "r2_c3", "r2_c4", "r2_c5"], "timeout": 3, "wall_s": 3.068254232406616}
+{"kind": "summary_pass", "round": 2, "time": 1793467355.2687657, "pieces": ["r2_c2", "r2_c5"], "timeout": 5, "wall_s": 5.077616453170776}
+{"kind": "summary", "round": 2, "time": 1793467355.2688317, "piece": "r2_c2", "verdict": "TIMEOUT", "text": "IC3 5 s: depth 34, lemmas in last frames [212, 301, 1391, 20], lemmas 7.2/147 state bits"}
+{"kind": "summary", "round": 2, "time": 1793467355.2688665, "piece": "r2_c5", "verdict": "TIMEOUT", "text": "IC3 5 s: depth 20, lemmas in last frames [1030, 712, 2973, 11], lemmas 7.2/147 state bits"}
+{"kind": "coverage", "round": 2, "time": 1793467370.0954473, "scope": "(~srEmpty & srFull) & ((rbFull == srFull) & (rbEmpty == srEmpty) & ~srEmpty & (srDataOut != rbDataOut))", "cases": ["rb_tail[3:2] == 2'd0", "rb_tail[3:2] == 2'd1", "rb_tail[3:2] == 2'd2", "rb_tail[3:2] == 2'd3"], "ok": true, "detail": ""}
+{"kind": "pruned_empty", "round": 2, "time": 1793467370.299094, "scope": "(~srEmpty & srFull) & ((rbFull == srFull) & (rbEmpty == srEmpty) & ~srEmpty & (srDataOut != rbDataOut))", "dropped": []}
+{"kind": "coverage", "round": 2, "time": 1793467370.3558633, "scope": "(~srEmpty & ~srFull) & ((rbFull == srFull) & (rbEmpty == srEmpty) & ~srEmpty & (srDataOut != rbDataOut))", "cases": ["rb_tail[3:2] == 2'd0", "rb_tail[3:2] == 2'd1", "rb_tail[3:2] == 2'd2", "rb_tail[3:2] == 2'd3"], "ok": true, "detail": ""}
+{"kind": "pruned_empty", "round": 2, "time": 1793467370.5456154, "scope": "(~srEmpty & ~srFull) & ((rbFull == srFull) & (rbEmpty == srEmpty) & ~srEmpty & (srDataOut != rbDataOut))", "dropped": []}
+{"kind": "uext_rewrite", "round": 3, "time": 1793467370.6091871, "tag": "r3_c3_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 3, "time": 1793467370.6131704, "tag": "r3_c0_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 3, "time": 1793467370.6136045, "tag": "r3_c5_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 3, "time": 1793467370.6145573, "tag": "r3_c4_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 3, "time": 1793467370.6152277, "tag": "r3_c7_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 3, "time": 1793467370.618321, "tag": "r3_c6_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 3, "time": 1793467370.619005, "tag": "r3_c1_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 3, "time": 1793467370.6205866, "tag": "r3_c2_k0", "count": 2}
+{"kind": "check", "round": 3, "time": 1793467380.6401672, "piece": "r3_c3", "tag": "r3_c3_k0", "verdict": "UNSAT", "seconds": 10.028345823287964, "timeout": 20, "ops": [], "cond": "((~srEmpty & srFull) & ((rbFull == srFull) & (rbEmpty == srEmpty) & ~srEmpty & (srDataOut != rbDataOut))) & (rb_tail[3:2] == 2'd3)"}
+{"kind": "check", "round": 3, "time": 1793467382.838157, "piece": "r3_c2", "tag": "r3_c2_k0", "verdict": "UNSAT", "seconds": 12.215543985366821, "timeout": 20, "ops": [], "cond": "((~srEmpty & srFull) & ((rbFull == srFull) & (rbEmpty == srEmpty) & ~srEmpty & (srDataOut != rbDataOut))) & (rb_tail[3:2] == 2'd2)"}
+{"kind": "check", "round": 3, "time": 1793467387.4221358, "piece": "r3_c0", "tag": "r3_c0_k0", "verdict": "UNSAT", "seconds": 16.807796716690063, "timeout": 20, "ops": [], "cond": "((~srEmpty & srFull) & ((rbFull == srFull) & (rbEmpty == srEmpty) & ~srEmpty & (srDataOut != rbDataOut))) & (rb_tail[3:2] == 2'd0)"}
+{"kind": "check", "round": 3, "time": 1793467390.6204138, "piece": "r3_c4", "tag": "r3_c4_k0", "verdict": "TIMEOUT", "seconds": 20.005613088607788, "timeout": 20, "ops": [], "cond": "((~srEmpty & ~srFull) & ((rbFull == srFull) & (rbEmpty == srEmpty) & ~srEmpty & (srDataOut != rbDataOut))) & (rb_tail[3:2] == 2'd0)"}
+{"kind": "check", "round": 3, "time": 1793467390.6211898, "piece": "r3_c5", "tag": "r3_c5_k0", "verdict": "TIMEOUT", "seconds": 20.007363319396973, "timeout": 20, "ops": [], "cond": "((~srEmpty & ~srFull) & ((rbFull == srFull) & (rbEmpty == srEmpty) & ~srEmpty & (srDataOut != rbDataOut))) & (rb_tail[3:2] == 2'd1)"}
+{"kind": "check", "round": 3, "time": 1793467390.6220202, "piece": "r3_c7", "tag": "r3_c7_k0", "verdict": "TIMEOUT", "seconds": 20.006561994552612, "timeout": 20, "ops": [], "cond": "((~srEmpty & ~srFull) & ((rbFull == srFull) & (rbEmpty == srEmpty) & ~srEmpty & (srDataOut != rbDataOut))) & (rb_tail[3:2] == 2'd3)"}
+{"kind": "check", "round": 3, "time": 1793467390.6252706, "piece": "r3_c6", "tag": "r3_c6_k0", "verdict": "TIMEOUT", "seconds": 20.006653308868408, "timeout": 20, "ops": [], "cond": "((~srEmpty & ~srFull) & ((rbFull == srFull) & (rbEmpty == srEmpty) & ~srEmpty & (srDataOut != rbDataOut))) & (rb_tail[3:2] == 2'd2)"}
+{"kind": "check", "round": 3, "time": 1793467390.626966, "piece": "r3_c1", "tag": "r3_c1_k0", "verdict": "TIMEOUT", "seconds": 20.007726669311523, "timeout": 20, "ops": [], "cond": "((~srEmpty & srFull) & ((rbFull == srFull) & (rbEmpty == srEmpty) & ~srEmpty & (srDataOut != rbDataOut))) & (rb_tail[3:2] == 2'd1)"}
+{"kind": "check_pass", "round": 3, "time": 1793467390.6277769, "pieces": ["r3_c0", "r3_c1", "r3_c2", "r3_c3", "r3_c4", "r3_c5", "r3_c6", "r3_c7"], "timeout": 20, "wall_s": 20.079649686813354}
+{"kind": "coverage", "round": 3, "time": 1793467390.646514, "scope": "((~srEmpty & srFull) & ((rbFull == srFull) & (rbEmpty == srEmpty) & ~srEmpty & (srDataOut != rbDataOut))) & (rb_tail[3:2] == 2'd1)", "cases": ["rb_tail[1:1] == 1'd0", "rb_tail[1:1] == 1'd1"], "ok": true, "detail": ""}
+{"kind": "pruned_empty", "round": 3, "time": 1793467390.6771984, "scope": "((~srEmpty & srFull) & ((rbFull == srFull) & (rbEmpty == srEmpty) & ~srEmpty & (srDataOut != rbDataOut))) & (rb_tail[3:2] == 2'd1)", "dropped": []}
+{"kind": "auto_expand", "round": 3, "time": 1793467390.6772661, "piece": "r3_c1", "index": "rb_tail", "fixed": {"rb_tail": 2}}
+{"kind": "coverage", "round": 3, "time": 1793467390.6925333, "scope": "((~srEmpty & ~srFull) & ((rbFull == srFull) & (rbEmpty == srEmpty) & ~srEmpty & (srDataOut != rbDataOut))) & (rb_tail[3:2] == 2'd0)", "cases": ["rb_tail[1:1] == 1'd0", "rb_tail[1:1] == 1'd1"], "ok": true, "detail": ""}
+{"kind": "pruned_empty", "round": 3, "time": 1793467390.7246604, "scope": "((~srEmpty & ~srFull) & ((rbFull == srFull) & (rbEmpty == srEmpty) & ~srEmpty & (srDataOut != rbDataOut))) & (rb_tail[3:2] == 2'd0)", "dropped": []}
+{"kind": "auto_expand", "round": 3, "time": 1793467390.7247221, "piece": "r3_c4", "index": "rb_tail", "fixed": {"rb_tail": 2}}
+{"kind": "coverage", "round": 3, "time": 1793467390.7625675, "scope": "((~srEmpty & ~srFull) & ((rbFull == srFull) & (rbEmpty == srEmpty) & ~srEmpty & (srDataOut != rbDataOut))) & (rb_tail[3:2] == 2'd1)", "cases": ["rb_tail[1:1] == 1'd0", "rb_tail[1:1] == 1'd1"], "ok": true, "detail": ""}
+{"kind": "pruned_empty", "round": 3, "time": 1793467390.8664975, "scope": "((~srEmpty & ~srFull) & ((rbFull == srFull) & (rbEmpty == srEmpty) & ~srEmpty & (srDataOut != rbDataOut))) & (rb_tail[3:2] == 2'd1)", "dropped": []}
+{"kind": "auto_expand", "round": 3, "time": 1793467390.8666298, "piece": "r3_c5", "index": "rb_tail", "fixed": {"rb_tail": 2}}
+{"kind": "coverage", "round": 3, "time": 1793467390.9339902, "scope": "((~srEmpty & ~srFull) & ((rbFull == srFull) & (rbEmpty == srEmpty) & ~srEmpty & (srDataOut != rbDataOut))) & (rb_tail[3:2] == 2'd2)", "cases": ["rb_tail[1:1] == 1'd0", "rb_tail[1:1] == 1'd1"], "ok": true, "detail": ""}
+{"kind": "pruned_empty", "round": 3, "time": 1793467391.0436494, "scope": "((~srEmpty & ~srFull) & ((rbFull == srFull) & (rbEmpty == srEmpty) & ~srEmpty & (srDataOut != rbDataOut))) & (rb_tail[3:2] == 2'd2)", "dropped": []}
+{"kind": "auto_expand", "round": 3, "time": 1793467391.0438032, "piece": "r3_c6", "index": "rb_tail", "fixed": {"rb_tail": 2}}
+{"kind": "coverage", "round": 3, "time": 1793467391.0917673, "scope": "((~srEmpty & ~srFull) & ((rbFull == srFull) & (rbEmpty == srEmpty) & ~srEmpty & (srDataOut != rbDataOut))) & (rb_tail[3:2] == 2'd3)", "cases": ["rb_tail[1:1] == 1'd0", "rb_tail[1:1] == 1'd1"], "ok": true, "detail": ""}
+{"kind": "pruned_empty", "round": 3, "time": 1793467391.1948748, "scope": "((~srEmpty & ~srFull) & ((rbFull == srFull) & (rbEmpty == srEmpty) & ~srEmpty & (srDataOut != rbDataOut))) & (rb_tail[3:2] == 2'd3)", "dropped": []}
+{"kind": "auto_expand", "round": 3, "time": 1793467391.195035, "piece": "r3_c7", "index": "rb_tail", "fixed": {"rb_tail": 2}}
+{"kind": "uext_rewrite", "round": 4, "time": 1793467391.2698765, "tag": "r4_c3_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 4, "time": 1793467391.380997, "tag": "r4_c4_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 4, "time": 1793467391.3836935, "tag": "r4_c1_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 4, "time": 1793467391.384141, "tag": "r4_c6_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 4, "time": 1793467391.3846776, "tag": "r4_c0_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 4, "time": 1793467391.384744, "tag": "r4_c7_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 4, "time": 1793467391.3858726, "tag": "r4_c5_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 4, "time": 1793467391.386348, "tag": "r4_c2_k0", "count": 2}
+{"kind": "check", "round": 4, "time": 1793467405.8851151, "piece": "r4_c0", "tag": "r4_c0_k0", "verdict": "UNSAT", "seconds": 14.498450756072998, "timeout": 20, "ops": [], "cond": "(((~srEmpty & srFull) & ((rbFull == srFull) & (rbEmpty == srEmpty) & ~srEmpty & (srDataOut != rbDataOut))) & (rb_tail[3:2] == 2'd1)) & (rb_tail[1:1] == 1'd0)"}
+{"kind": "uext_rewrite", "round": 4, "time": 1793467406.078216, "tag": "r4_c8_k0", "count": 2}
+{"kind": "check", "round": 4, "time": 1793467407.1957624, "piece": "r4_c2", "tag": "r4_c2_k0", "verdict": "UNSAT", "seconds": 15.808933019638062, "timeout": 20, "ops": [], "cond": "(((~srEmpty & ~srFull) & ((rbFull == srFull) & (rbEmpty == srEmpty) & ~srEmpty & (srDataOut != rbDataOut))) & (rb_tail[3:2] == 2'd0)) & (rb_tail[1:1] == 1'd0)"}
+{"kind": "uext_rewrite", "round": 4, "time": 1793467407.345533, "tag": "r4_c9_k0", "count": 2}
+{"kind": "check", "round": 4, "time": 1793467408.6657224, "piece": "r4_c6", "tag": "r4_c6_k0", "verdict": "UNSAT", "seconds": 17.280333042144775, "timeout": 20, "ops": [], "cond": "(((~srEmpty & ~srFull) & ((rbFull == srFull) & (rbEmpty == srEmpty) & ~srEmpty & (srDataOut != rbDataOut))) & (rb_tail[3:2] == 2'd2)) & (rb_tail[1:1] == 1'd0)"}
+{"kind": "check", "round": 4, "time": 1793467409.7131956, "piece": "r4_c1", "tag": "r4_c1_k0", "verdict": "UNSAT", "seconds": 18.326416969299316, "timeout": 20, "ops": [], "cond": "(((~srEmpty & srFull) & ((rbFull == srFull) & (rbEmpty == srEmpty) & ~srEmpty & (srDataOut != rbDataOut))) & (rb_tail[3:2] == 2'd1)) & (rb_tail[1:1] == 1'd1)"}
+{"kind": "check", "round": 4, "time": 1793467411.2753906, "piece": "r4_c3", "tag": "r4_c3_k0", "verdict": "TIMEOUT", "seconds": 20.005194425582886, "timeout": 20, "ops": [], "cond": "(((~srEmpty & ~srFull) & ((rbFull == srFull) & (rbEmpty == srEmpty) & ~srEmpty & (srDataOut != rbDataOut))) & (rb_tail[3:2] == 2'd0)) & (rb_tail[1:1] == 1'd1)"}
+{"kind": "check", "round": 4, "time": 1793467411.383069, "piece": "r4_c4", "tag": "r4_c4_k0", "verdict": "TIMEOUT", "seconds": 20.00174856185913, "timeout": 20, "ops": [], "cond": "(((~srEmpty & ~srFull) & ((rbFull == srFull) & (rbEmpty == srEmpty) & ~srEmpty & (srDataOut != rbDataOut))) & (rb_tail[3:2] == 2'd1)) & (rb_tail[1:1] == 1'd0)"}
+{"kind": "check", "round": 4, "time": 1793467411.3885717, "piece": "r4_c7", "tag": "r4_c7_k0", "verdict": "TIMEOUT", "seconds": 20.003260612487793, "timeout": 20, "ops": [], "cond": "(((~srEmpty & ~srFull) & ((rbFull == srFull) & (rbEmpty == srEmpty) & ~srEmpty & (srDataOut != rbDataOut))) & (rb_tail[3:2] == 2'd2)) & (rb_tail[1:1] == 1'd1)"}
+{"kind": "check", "round": 4, "time": 1793467411.3930922, "piece": "r4_c5", "tag": "r4_c5_k0", "verdict": "TIMEOUT", "seconds": 20.004451990127563, "timeout": 20, "ops": [], "cond": "(((~srEmpty & ~srFull) & ((rbFull == srFull) & (rbEmpty == srEmpty) & ~srEmpty & (srDataOut != rbDataOut))) & (rb_tail[3:2] == 2'd1)) & (rb_tail[1:1] == 1'd1)"}
+{"kind": "check", "round": 4, "time": 1793467415.7002964, "piece": "r4_c8", "tag": "r4_c8_k0", "verdict": "UNSAT", "seconds": 9.62171721458435, "timeout": 20, "ops": [], "cond": "(((~srEmpty & ~srFull) & ((rbFull == srFull) & (rbEmpty == srEmpty) & ~srEmpty & (srDataOut != rbDataOut))) & (rb_tail[3:2] == 2'd3)) & (rb_tail[1:1] == 1'd0)"}
+{"kind": "check", "round": 4, "time": 1793467417.3205385, "piece": "r4_c9", "tag": "r4_c9_k0", "verdict": "UNSAT", "seconds": 9.974629163742065, "timeout": 20, "ops": [], "cond": "(((~srEmpty & ~srFull) & ((rbFull == srFull) & (rbEmpty == srEmpty) & ~srEmpty & (srDataOut != rbDataOut))) & (rb_tail[3:2] == 2'd3)) & (rb_tail[1:1] == 1'd1)"}
+{"kind": "check_pass", "round": 4, "time": 1793467417.3216064, "pieces": ["r4_c0", "r4_c1", "r4_c2", "r4_c3", "r4_c4", "r4_c5", "r4_c6", "r4_c7", "r4_c8", "r4_c9"], "timeout": 20, "wall_s": 26.122422456741333}
+{"kind": "coverage", "round": 4, "time": 1793467417.3511333, "scope": "(((~srEmpty & ~srFull) & ((rbFull == srFull) & (rbEmpty == srEmpty) & ~srEmpty & (srDataOut != rbDataOut))) & (rb_tail[3:2] == 2'd0)) & (rb_tail[1:1] == 1'd1)", "cases": ["rb_tail[0:0] == 1'd0", "rb_tail[0:0] == 1'd1"], "ok": true, "detail": ""}
+{"kind": "pruned_empty", "round": 4, "time": 1793467417.4544113, "scope": "(((~srEmpty & ~srFull) & ((rbFull == srFull) & (rbEmpty == srEmpty) & ~srEmpty & (srDataOut != rbDataOut))) & (rb_tail[3:2] == 2'd0)) & (rb_tail[1:1] == 1'd1)", "dropped": []}
+{"kind": "auto_expand", "round": 4, "time": 1793467417.454539, "piece": "r4_c3", "index": "rb_tail", "fixed": {"rb_tail": 1}}
+{"kind": "coverage", "round": 4, "time": 1793467417.505884, "scope": "(((~srEmpty & ~srFull) & ((rbFull == srFull) & (rbEmpty == srEmpty) & ~srEmpty & (srDataOut != rbDataOut))) & (rb_tail[3:2] == 2'd1)) & (rb_tail[1:1] == 1'd0)", "cases": ["rb_tail[0:0] == 1'd0", "rb_tail[0:0] == 1'd1"], "ok": true, "detail": ""}
+{"kind": "pruned_empty", "round": 4, "time": 1793467417.600598, "scope": "(((~srEmpty & ~srFull) & ((rbFull == srFull) & (rbEmpty == srEmpty) & ~srEmpty & (srDataOut != rbDataOut))) & (rb_tail[3:2] == 2'd1)) & (rb_tail[1:1] == 1'd0)", "dropped": []}
+{"kind": "auto_expand", "round": 4, "time": 1793467417.600717, "piece": "r4_c4", "index": "rb_tail", "fixed": {"rb_tail": 1}}
+{"kind": "coverage", "round": 4, "time": 1793467417.6509836, "scope": "(((~srEmpty & ~srFull) & ((rbFull == srFull) & (rbEmpty == srEmpty) & ~srEmpty & (srDataOut != rbDataOut))) & (rb_tail[3:2] == 2'd1)) & (rb_tail[1:1] == 1'd1)", "cases": ["rb_tail[0:0] == 1'd0", "rb_tail[0:0] == 1'd1"], "ok": true, "detail": ""}
+{"kind": "pruned_empty", "round": 4, "time": 1793467417.7582123, "scope": "(((~srEmpty & ~srFull) & ((rbFull == srFull) & (rbEmpty == srEmpty) & ~srEmpty & (srDataOut != rbDataOut))) & (rb_tail[3:2] == 2'd1)) & (rb_tail[1:1] == 1'd1)", "dropped": []}
+{"kind": "auto_expand", "round": 4, "time": 1793467417.7583458, "piece": "r4_c5", "index": "rb_tail", "fixed": {"rb_tail": 1}}
+{"kind": "coverage", "round": 4, "time": 1793467417.8146644, "scope": "(((~srEmpty & ~srFull) & ((rbFull == srFull) & (rbEmpty == srEmpty) & ~srEmpty & (srDataOut != rbDataOut))) & (rb_tail[3:2] == 2'd2)) & (rb_tail[1:1] == 1'd1)", "cases": ["rb_tail[0:0] == 1'd0", "rb_tail[0:0] == 1'd1"], "ok": true, "detail": ""}
+{"kind": "pruned_empty", "round": 4, "time": 1793467417.912631, "scope": "(((~srEmpty & ~srFull) & ((rbFull == srFull) & (rbEmpty == srEmpty) & ~srEmpty & (srDataOut != rbDataOut))) & (rb_tail[3:2] == 2'd2)) & (rb_tail[1:1] == 1'd1)", "dropped": []}
+{"kind": "auto_expand", "round": 4, "time": 1793467417.912758, "piece": "r4_c7", "index": "rb_tail", "fixed": {"rb_tail": 1}}
+{"kind": "uext_rewrite", "round": 5, "time": 1793467417.9885318, "tag": "r5_c5_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 5, "time": 1793467417.9903944, "tag": "r5_c7_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 5, "time": 1793467417.9907584, "tag": "r5_c1_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 5, "time": 1793467417.9934862, "tag": "r5_c0_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 5, "time": 1793467417.9940636, "tag": "r5_c6_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 5, "time": 1793467417.9965816, "tag": "r5_c2_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 5, "time": 1793467417.9971404, "tag": "r5_c3_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 5, "time": 1793467417.9975102, "tag": "r5_c4_k0", "count": 2}
+{"kind": "check", "round": 5, "time": 1793467421.1921687, "piece": "r5_c7", "tag": "r5_c7_k0", "verdict": "UNSAT", "seconds": 3.1958463191986084, "timeout": 120, "ops": [], "cond": "((((~srEmpty & ~srFull) & ((rbFull == srFull) & (rbEmpty == srEmpty) & ~srEmpty & (srDataOut != rbDataOut))) & (rb_tail[3:2] == 2'd2)) & (rb_tail[1:1] == 1'd1)) & (rb_tail[0:0] == 1'd1)"}
+{"kind": "check", "round": 5, "time": 1793467429.2791495, "piece": "r5_c1", "tag": "r5_c1_k0", "verdict": "UNSAT", "seconds": 11.28780460357666, "timeout": 120, "ops": [], "cond": "((((~srEmpty & ~srFull) & ((rbFull == srFull) & (rbEmpty == srEmpty) & ~srEmpty & (srDataOut != rbDataOut))) & (rb_tail[3:2] == 2'd0)) & (rb_tail[1:1] == 1'd1)) & (rb_tail[0:0] == 1'd1)"}
+{"kind": "check", "round": 5, "time": 1793467430.1817493, "piece": "r5_c5", "tag": "r5_c5_k0", "verdict": "UNSAT", "seconds": 12.192984342575073, "timeout": 120, "ops": [], "cond": "((((~srEmpty & ~srFull) & ((rbFull == srFull) & (rbEmpty == srEmpty) & ~srEmpty & (srDataOut != rbDataOut))) & (rb_tail[3:2] == 2'd1)) & (rb_tail[1:1] == 1'd1)) & (rb_tail[0:0] == 1'd1)"}
+{"kind": "check", "round": 5, "time": 1793467430.2152696, "piece": "r5_c0", "tag": "r5_c0_k0", "verdict": "UNSAT", "seconds": 12.220465421676636, "timeout": 120, "ops": [], "cond": "((((~srEmpty & ~srFull) & ((rbFull == srFull) & (rbEmpty == srEmpty) & ~srEmpty & (srDataOut != rbDataOut))) & (rb_tail[3:2] == 2'd0)) & (rb_tail[1:1] == 1'd1)) & (rb_tail[0:0] == 1'd0)"}
+{"kind": "check", "round": 5, "time": 1793467430.8831363, "piece": "r5_c3", "tag": "r5_c3_k0", "verdict": "UNSAT", "seconds": 12.885314702987671, "timeout": 120, "ops": [], "cond": "((((~srEmpty & ~srFull) & ((rbFull == srFull) & (rbEmpty == srEmpty) & ~srEmpty & (srDataOut != rbDataOut))) & (rb_tail[3:2] == 2'd1)) & (rb_tail[1:1] == 1'd0)) & (rb_tail[0:0] == 1'd1)"}
+{"kind": "check", "round": 5, "time": 1793467431.016112, "piece": "r5_c4", "tag": "r5_c4_k0", "verdict": "UNSAT", "seconds": 13.017791509628296, "timeout": 120, "ops": [], "cond": "((((~srEmpty & ~srFull) & ((rbFull == srFull) & (rbEmpty == srEmpty) & ~srEmpty & (srDataOut != rbDataOut))) & (rb_tail[3:2] == 2'd1)) & (rb_tail[1:1] == 1'd1)) & (rb_tail[0:0] == 1'd0)"}
+{"kind": "check", "round": 5, "time": 1793467431.385856, "piece": "r5_c2", "tag": "r5_c2_k0", "verdict": "UNSAT", "seconds": 13.388963222503662, "timeout": 120, "ops": [], "cond": "((((~srEmpty & ~srFull) & ((rbFull == srFull) & (rbEmpty == srEmpty) & ~srEmpty & (srDataOut != rbDataOut))) & (rb_tail[3:2] == 2'd1)) & (rb_tail[1:1] == 1'd0)) & (rb_tail[0:0] == 1'd0)"}
+{"kind": "check", "round": 5, "time": 1793467431.825602, "piece": "r5_c6", "tag": "r5_c6_k0", "verdict": "UNSAT", "seconds": 13.83083963394165, "timeout": 120, "ops": [], "cond": "((((~srEmpty & ~srFull) & ((rbFull == srFull) & (rbEmpty == srEmpty) & ~srEmpty & (srDataOut != rbDataOut))) & (rb_tail[3:2] == 2'd2)) & (rb_tail[1:1] == 1'd1)) & (rb_tail[0:0] == 1'd0)"}
+{"kind": "check_pass", "round": 5, "time": 1793467431.8279269, "pieces": ["r5_c0", "r5_c1", "r5_c2", "r5_c3", "r5_c4", "r5_c5", "r5_c6", "r5_c7"], "timeout": 120, "wall_s": 13.90992259979248}
+{"kind": "load", "round": 6, "time": 1793467431.835283, "cmd": "run", "phase": "end", "load": [69.95703125, 21.7568359375, 15.501953125]}
+{"kind": "load", "round": 5, "time": 1793467431.9034755, "cmd": "report", "phase": "start", "load": [69.95703125, 21.7568359375, 15.501953125]}
+{"kind": "load", "round": 5, "time": 1793467431.9039264, "cmd": "report", "phase": "end", "load": [69.95703125, 21.7568359375, 15.501953125]}
+{"kind": "load", "round": 5, "time": 1793467431.9502695, "cmd": "vacuity", "phase": "start", "load": [69.95703125, 21.7568359375, 15.501953125]}
+{"kind": "uext_rewrite", "round": 5, "time": 1793467432.024343, "tag": "r1_c0_reach", "count": 2}
+{"kind": "vacuity", "round": 5, "time": 1793467432.0867763, "piece": "r1_c0", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "uext_rewrite", "round": 5, "time": 1793467432.1829703, "tag": "r2_c0_reach", "count": 2}
+{"kind": "vacuity", "round": 5, "time": 1793467440.7169242, "piece": "r2_c0", "case_reachable_bmc": "UNKNOWN", "assertion_violable_when_registers_free": true}
+{"kind": "uext_rewrite", "round": 5, "time": 1793467440.789593, "tag": "r2_c1_reach", "count": 2}
+{"kind": "vacuity", "round": 5, "time": 1793467440.909051, "piece": "r2_c1", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "uext_rewrite", "round": 5, "time": 1793467441.022052, "tag": "r2_c3_reach", "count": 2}
+{"kind": "vacuity", "round": 5, "time": 1793467456.6152837, "piece": "r2_c3", "case_reachable_bmc": "UNKNOWN", "assertion_violable_when_registers_free": true}
+{"kind": "uext_rewrite", "round": 5, "time": 1793467456.713614, "tag": "r2_c4_reach", "count": 2}
+{"kind": "vacuity", "round": 5, "time": 1793467456.7888887, "piece": "r2_c4", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "uext_rewrite", "round": 5, "time": 1793467456.8622496, "tag": "r3_c0_reach", "count": 2}
+{"kind": "vacuity", "round": 5, "time": 1793467756.885928, "piece": "r3_c0", "case_reachable_bmc": "TIMEOUT", "assertion_violable_when_registers_free": true}
+{"kind": "uext_rewrite", "round": 5, "time": 1793467756.9636593, "tag": "r3_c2_reach", "count": 2}
+{"kind": "vacuity", "round": 5, "time": 1793468057.018003, "piece": "r3_c2", "case_reachable_bmc": "TIMEOUT", "assertion_violable_when_registers_free": true}
+{"kind": "uext_rewrite", "round": 5, "time": 1793468057.1224604, "tag": "r3_c3_reach", "count": 2}
+{"kind": "vacuity", "round": 5, "time": 1793468057.6374617, "piece": "r3_c3", "case_reachable_bmc": "UNKNOWN", "assertion_violable_when_registers_free": true}
+{"kind": "uext_rewrite", "round": 5, "time": 1793468057.7375157, "tag": "r4_c0_reach", "count": 2}
+{"kind": "vacuity", "round": 5, "time": 1793468357.7831366, "piece": "r4_c0", "case_reachable_bmc": "TIMEOUT", "assertion_violable_when_registers_free": true}
+{"kind": "uext_rewrite", "round": 5, "time": 1793468357.9022536, "tag": "r4_c1_reach", "count": 2}
+{"kind": "vacuity", "round": 5, "time": 1793468657.9715395, "piece": "r4_c1", "case_reachable_bmc": "TIMEOUT", "assertion_violable_when_registers_free": true}
+{"kind": "uext_rewrite", "round": 5, "time": 1793468658.0630155, "tag": "r4_c2_reach", "count": 2}
+{"kind": "vacuity", "round": 5, "time": 1793468881.0621526, "piece": "r4_c2", "case_reachable_bmc": "UNKNOWN", "assertion_violable_when_registers_free": true}
+{"kind": "uext_rewrite", "round": 5, "time": 1793468881.179945, "tag": "r4_c6_reach", "count": 2}
+{"kind": "vacuity", "round": 5, "time": 1793469181.2331545, "piece": "r4_c6", "case_reachable_bmc": "TIMEOUT", "assertion_violable_when_registers_free": true}
+{"kind": "uext_rewrite", "round": 5, "time": 1793469181.3311372, "tag": "r4_c8_reach", "count": 2}

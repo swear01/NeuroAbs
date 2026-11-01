@@ -11,7 +11,9 @@ from ablation_summary import jl, row  # noqa: E402
 
 
 def cost(d, bench):
-    r = row(d, bench) if os.path.exists(d + "/state.json") else dict(verdict="-", rounds="-", wall=float(open(d + "/wall_s.txt").read()))
+    wall = d + "/wall_s.txt"
+    r = (row(d, bench) if os.path.exists(d + "/state.json") else
+         dict(verdict="-", rounds="-", wall=float(open(wall).read()) if os.path.exists(wall) else None))
     calls = jl(d + "/llm_calls.jsonl")
     kb = {k: [len(c["prompt"][-1]["content"]) / 1000 for c in calls if c["step"] == k and c.get("note") == "attempt 1"]
           for k in ("decide", "cegar_refine")}

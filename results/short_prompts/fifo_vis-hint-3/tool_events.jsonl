@@ -1,0 +1,89 @@
+{"kind": "load", "round": 1, "time": 1793520018.985534, "cmd": "run", "phase": "start", "load": [0.27978515625, 10.193359375, 23.86865234375]}
+{"kind": "coverage", "round": 1, "time": 1793520031.1637256, "scope": null, "cases": ["rb_tail[3:0] == 4'd0", "rb_tail[3:0] == 4'd1", "rb_tail[3:0] == 4'd2", "rb_tail[3:0] == 4'd3", "rb_tail[3:0] == 4'd4", "rb_tail[3:0] == 4'd5", "rb_tail[3:0] == 4'd6", "rb_tail[3:0] == 4'd7", "rb_tail[3:0] == 4'd8", "rb_tail[3:0] == 4'd9", "rb_tail[3:0] == 4'd10", "rb_tail[3:0] == 4'd11", "rb_tail[3:0] == 4'd12", "rb_tail[3:0] == 4'd13", "rb_tail[3:0] == 4'd14", "rb_tail[3:0] == 4'd15"], "ok": true, "detail": ""}
+{"kind": "uext_rewrite", "round": 1, "time": 1793520031.2376564, "tag": "r1_c2_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 1, "time": 1793520031.2423425, "tag": "r1_c7_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 1, "time": 1793520031.2426374, "tag": "r1_c5_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 1, "time": 1793520031.2432823, "tag": "r1_c3_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 1, "time": 1793520031.2438152, "tag": "r1_c4_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 1, "time": 1793520031.246901, "tag": "r1_c0_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 1, "time": 1793520031.2473469, "tag": "r1_c1_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 1, "time": 1793520031.2479265, "tag": "r1_c6_k0", "count": 2}
+{"kind": "check", "round": 1, "time": 1793520034.2498388, "piece": "r1_c2", "tag": "r1_c2_k0", "verdict": "TIMEOUT", "seconds": 3.0062808990478516, "timeout": 3, "ops": [], "cond": "rb_tail[3:0] == 4'd2"}
+{"kind": "check", "round": 1, "time": 1793520034.2499304, "piece": "r1_c4", "tag": "r1_c4_k0", "verdict": "TIMEOUT", "seconds": 3.0016984939575195, "timeout": 3, "ops": [], "cond": "rb_tail[3:0] == 4'd4"}
+{"kind": "check", "round": 1, "time": 1793520034.2499602, "piece": "r1_c7", "tag": "r1_c7_k0", "verdict": "TIMEOUT", "seconds": 3.0037548542022705, "timeout": 3, "ops": [], "cond": "rb_tail[3:0] == 4'd7"}
+{"kind": "check", "round": 1, "time": 1793520034.2499814, "piece": "r1_c5", "tag": "r1_c5_k0", "verdict": "TIMEOUT", "seconds": 3.0044422149658203, "timeout": 3, "ops": [], "cond": "rb_tail[3:0] == 4'd5"}
+{"kind": "check", "round": 1, "time": 1793520034.2500052, "piece": "r1_c0", "tag": "r1_c0_k0", "verdict": "TIMEOUT", "seconds": 3.0019445419311523, "timeout": 3, "ops": [], "cond": "rb_tail[3:0] == 4'd0"}
+{"kind": "check", "round": 1, "time": 1793520034.2500255, "piece": "r1_c1", "tag": "r1_c1_k0", "verdict": "TIMEOUT", "seconds": 3.00207257270813, "timeout": 3, "ops": [], "cond": "rb_tail[3:0] == 4'd1"}
+{"kind": "check", "round": 1, "time": 1793520034.2527032, "piece": "r1_c6", "tag": "r1_c6_k0", "verdict": "TIMEOUT", "seconds": 3.004265546798706, "timeout": 3, "ops": [], "cond": "rb_tail[3:0] == 4'd6"}
+{"kind": "check", "round": 1, "time": 1793520034.2550876, "piece": "r1_c3", "tag": "r1_c3_k0", "verdict": "TIMEOUT", "seconds": 3.0090339183807373, "timeout": 3, "ops": [], "cond": "rb_tail[3:0] == 4'd3"}
+{"kind": "uext_rewrite", "round": 1, "time": 1793520034.2974637, "tag": "r1_c14_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 1, "time": 1793520034.2976332, "tag": "r1_c12_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 1, "time": 1793520034.2991083, "tag": "r1_c8_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 1, "time": 1793520034.2999427, "tag": "r1_c11_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 1, "time": 1793520034.3129628, "tag": "r1_c13_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 1, "time": 1793520034.31767, "tag": "r1_c10_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 1, "time": 1793520034.3251255, "tag": "r1_c9_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 1, "time": 1793520034.3305144, "tag": "r1_c15_k0", "count": 2}
+{"kind": "check", "round": 1, "time": 1793520037.3016524, "piece": "r1_c12", "tag": "r1_c12_k0", "verdict": "TIMEOUT", "seconds": 3.0031261444091797, "timeout": 3, "ops": [], "cond": "rb_tail[3:0] == 4'd12"}
+{"kind": "check", "round": 1, "time": 1793520037.3047857, "piece": "r1_c11", "tag": "r1_c11_k0", "verdict": "TIMEOUT", "seconds": 3.0045998096466064, "timeout": 3, "ops": [], "cond": "rb_tail[3:0] == 4'd11"}
+{"kind": "check", "round": 1, "time": 1793520037.3063226, "piece": "r1_c14", "tag": "r1_c14_k0", "verdict": "TIMEOUT", "seconds": 3.00836181640625, "timeout": 3, "ops": [], "cond": "rb_tail[3:0] == 4'd14"}
+{"kind": "check", "round": 1, "time": 1793520037.3083777, "piece": "r1_c8", "tag": "r1_c8_k0", "verdict": "TIMEOUT", "seconds": 3.008922815322876, "timeout": 3, "ops": [], "cond": "rb_tail[3:0] == 4'd8"}
+{"kind": "check", "round": 1, "time": 1793520037.3147027, "piece": "r1_c13", "tag": "r1_c13_k0", "verdict": "TIMEOUT", "seconds": 3.001391649246216, "timeout": 3, "ops": [], "cond": "rb_tail[3:0] == 4'd13"}
+{"kind": "check", "round": 1, "time": 1793520037.323135, "piece": "r1_c10", "tag": "r1_c10_k0", "verdict": "TIMEOUT", "seconds": 3.0048797130584717, "timeout": 3, "ops": [], "cond": "rb_tail[3:0] == 4'd10"}
+{"kind": "check", "round": 1, "time": 1793520037.3385606, "piece": "r1_c15", "tag": "r1_c15_k0", "verdict": "TIMEOUT", "seconds": 3.004211664199829, "timeout": 3, "ops": [], "cond": "rb_tail[3:0] == 4'd15"}
+{"kind": "check", "round": 1, "time": 1793520037.3399084, "piece": "r1_c9", "tag": "r1_c9_k0", "verdict": "TIMEOUT", "seconds": 3.014371156692505, "timeout": 3, "ops": [], "cond": "rb_tail[3:0] == 4'd9"}
+{"kind": "check_pass", "round": 1, "time": 1793520037.340637, "pieces": ["r1_c0", "r1_c1", "r1_c2", "r1_c3", "r1_c4", "r1_c5", "r1_c6", "r1_c7", "r1_c8", "r1_c9", "r1_c10", "r1_c11", "r1_c12", "r1_c13", "r1_c14", "r1_c15"], "timeout": 3, "wall_s": 6.174957275390625}
+{"kind": "summary_pass", "round": 1, "time": 1793520046.193398, "pieces": ["r1_c0", "r1_c1", "r1_c2", "r1_c3", "r1_c4", "r1_c5", "r1_c6", "r1_c7", "r1_c8", "r1_c9", "r1_c10", "r1_c11", "r1_c12", "r1_c13", "r1_c14", "r1_c15"], "timeout": 5, "wall_s": 8.8510422706604}
+{"kind": "summary", "round": 1, "time": 1793520046.1934454, "piece": "r1_c0", "verdict": "UNSAT", "text": "IC3 alone proved it in 4.7 s"}
+{"kind": "summary", "round": 1, "time": 1793520046.1934576, "piece": "r1_c1", "verdict": "UNSAT", "text": "IC3 alone proved it in 5.0 s"}
+{"kind": "summary", "round": 1, "time": 1793520046.193467, "piece": "r1_c2", "verdict": "UNSAT", "text": "IC3 alone proved it in 3.9 s"}
+{"kind": "summary", "round": 1, "time": 1793520046.193475, "piece": "r1_c3", "verdict": "UNSAT", "text": "IC3 alone proved it in 4.9 s"}
+{"kind": "summary", "round": 1, "time": 1793520046.193483, "piece": "r1_c4", "verdict": "UNSAT", "text": "IC3 alone proved it in 4.6 s"}
+{"kind": "summary", "round": 1, "time": 1793520046.1934905, "piece": "r1_c5", "verdict": "UNSAT", "text": "IC3 alone proved it in 3.7 s"}
+{"kind": "summary", "round": 1, "time": 1793520046.1934984, "piece": "r1_c6", "verdict": "UNSAT", "text": "IC3 alone proved it in 3.5 s"}
+{"kind": "summary", "round": 1, "time": 1793520046.193509, "piece": "r1_c7", "verdict": "UNSAT", "text": "IC3 alone proved it in 4.7 s"}
+{"kind": "summary", "round": 1, "time": 1793520046.1935167, "piece": "r1_c8", "verdict": "UNSAT", "text": "IC3 alone proved it in 3.9 s"}
+{"kind": "summary", "round": 1, "time": 1793520046.1935246, "piece": "r1_c9", "verdict": "UNSAT", "text": "IC3 alone proved it in 3.0 s"}
+{"kind": "summary", "round": 1, "time": 1793520046.1935318, "piece": "r1_c10", "verdict": "UNSAT", "text": "IC3 alone proved it in 3.8 s"}
+{"kind": "summary", "round": 1, "time": 1793520046.1935391, "piece": "r1_c11", "verdict": "UNSAT", "text": "IC3 alone proved it in 3.6 s"}
+{"kind": "summary", "round": 1, "time": 1793520046.1935463, "piece": "r1_c12", "verdict": "UNSAT", "text": "IC3 alone proved it in 3.6 s"}
+{"kind": "summary", "round": 1, "time": 1793520046.1935534, "piece": "r1_c13", "verdict": "UNSAT", "text": "IC3 alone proved it in 3.1 s"}
+{"kind": "summary", "round": 1, "time": 1793520046.1935608, "piece": "r1_c14", "verdict": "UNSAT", "text": "IC3 alone proved it in 3.3 s"}
+{"kind": "summary", "round": 1, "time": 1793520046.193568, "piece": "r1_c15", "verdict": "UNSAT", "text": "IC3 alone proved it in 3.8 s"}
+{"kind": "load", "round": 2, "time": 1793520046.1939907, "cmd": "run", "phase": "end", "load": [10.18359375, 11.5673828125, 23.88525390625]}
+{"kind": "load", "round": 1, "time": 1793520046.251133, "cmd": "report", "phase": "start", "load": [10.18359375, 11.5673828125, 23.88525390625]}
+{"kind": "load", "round": 1, "time": 1793520046.2513804, "cmd": "report", "phase": "end", "load": [10.18359375, 11.5673828125, 23.88525390625]}
+{"kind": "load", "round": 1, "time": 1793520046.2929637, "cmd": "vacuity", "phase": "start", "load": [10.18359375, 11.5673828125, 23.88525390625]}
+{"kind": "uext_rewrite", "round": 1, "time": 1793520046.3510578, "tag": "r1_c0_reach", "count": 2}
+{"kind": "vacuity", "round": 1, "time": 1793520046.4014568, "piece": "r1_c0", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "uext_rewrite", "round": 1, "time": 1793520046.5138416, "tag": "r1_c1_reach", "count": 2}
+{"kind": "vacuity", "round": 1, "time": 1793520046.5790422, "piece": "r1_c1", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "uext_rewrite", "round": 1, "time": 1793520046.689838, "tag": "r1_c2_reach", "count": 2}
+{"kind": "vacuity", "round": 1, "time": 1793520046.750889, "piece": "r1_c2", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "uext_rewrite", "round": 1, "time": 1793520046.852534, "tag": "r1_c3_reach", "count": 2}
+{"kind": "vacuity", "round": 1, "time": 1793520046.938938, "piece": "r1_c3", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "uext_rewrite", "round": 1, "time": 1793520047.0444129, "tag": "r1_c4_reach", "count": 2}
+{"kind": "vacuity", "round": 1, "time": 1793520047.1038675, "piece": "r1_c4", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "uext_rewrite", "round": 1, "time": 1793520047.1686745, "tag": "r1_c5_reach", "count": 2}
+{"kind": "vacuity", "round": 1, "time": 1793520047.2106202, "piece": "r1_c5", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "uext_rewrite", "round": 1, "time": 1793520047.2994685, "tag": "r1_c6_reach", "count": 2}
+{"kind": "vacuity", "round": 1, "time": 1793520047.4085221, "piece": "r1_c6", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "uext_rewrite", "round": 1, "time": 1793520047.5117338, "tag": "r1_c7_reach", "count": 2}
+{"kind": "vacuity", "round": 1, "time": 1793520047.5772562, "piece": "r1_c7", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "uext_rewrite", "round": 1, "time": 1793520047.682416, "tag": "r1_c8_reach", "count": 2}
+{"kind": "vacuity", "round": 1, "time": 1793520047.7493842, "piece": "r1_c8", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "uext_rewrite", "round": 1, "time": 1793520047.8437455, "tag": "r1_c9_reach", "count": 2}
+{"kind": "vacuity", "round": 1, "time": 1793520047.925173, "piece": "r1_c9", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "uext_rewrite", "round": 1, "time": 1793520048.0462196, "tag": "r1_c10_reach", "count": 2}
+{"kind": "vacuity", "round": 1, "time": 1793520048.1636245, "piece": "r1_c10", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "uext_rewrite", "round": 1, "time": 1793520048.2698202, "tag": "r1_c11_reach", "count": 2}
+{"kind": "vacuity", "round": 1, "time": 1793520048.3833053, "piece": "r1_c11", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "uext_rewrite", "round": 1, "time": 1793520048.4852314, "tag": "r1_c12_reach", "count": 2}
+{"kind": "vacuity", "round": 1, "time": 1793520048.5904543, "piece": "r1_c12", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "uext_rewrite", "round": 1, "time": 1793520048.6944563, "tag": "r1_c13_reach", "count": 2}
+{"kind": "vacuity", "round": 1, "time": 1793520048.8022451, "piece": "r1_c13", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "uext_rewrite", "round": 1, "time": 1793520048.9019327, "tag": "r1_c14_reach", "count": 2}
+{"kind": "vacuity", "round": 1, "time": 1793520049.064655, "piece": "r1_c14", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "uext_rewrite", "round": 1, "time": 1793520049.1622212, "tag": "r1_c15_reach", "count": 2}
+{"kind": "vacuity", "round": 1, "time": 1793520049.3249655, "piece": "r1_c15", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "load", "round": 1, "time": 1793520049.326165, "cmd": "vacuity", "phase": "end", "load": [9.36767578125, 11.375, 23.7568359375]}

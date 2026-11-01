@@ -1,0 +1,153 @@
+{"kind": "load", "round": 1, "time": 1793470896.3324666, "cmd": "run", "phase": "start", "load": [1.1494140625, 1.26416015625, 3.12744140625]}
+{"kind": "coverage", "round": 1, "time": 1793471356.448148, "scope": null, "cases": ["srEmpty & rbEmpty", "srEmpty & ~rbEmpty", "~srEmpty & rbEmpty", "~srEmpty & ~rbEmpty"], "ok": true, "detail": ""}
+{"kind": "uext_rewrite", "round": 1, "time": 1793471356.5402932, "tag": "r1_c1_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 1, "time": 1793471356.5422955, "tag": "r1_c3_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 1, "time": 1793471356.542739, "tag": "r1_c0_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 1, "time": 1793471356.543356, "tag": "r1_c2_k0", "count": 2}
+{"kind": "check", "round": 1, "time": 1793471356.5811083, "piece": "r1_c0", "tag": "r1_c0_k0", "verdict": "UNSAT", "seconds": 0.03739356994628906, "timeout": 3, "ops": [], "cond": "srEmpty & rbEmpty"}
+{"kind": "check", "round": 1, "time": 1793471357.2598834, "piece": "r1_c2", "tag": "r1_c2_k0", "verdict": "UNSAT", "seconds": 0.7161922454833984, "timeout": 3, "ops": [], "cond": "~srEmpty & rbEmpty"}
+{"kind": "check", "round": 1, "time": 1793471357.6609826, "piece": "r1_c1", "tag": "r1_c1_k0", "verdict": "UNSAT", "seconds": 1.1203322410583496, "timeout": 3, "ops": [], "cond": "srEmpty & ~rbEmpty"}
+{"kind": "check", "round": 1, "time": 1793471359.5451238, "piece": "r1_c3", "tag": "r1_c3_k0", "verdict": "TIMEOUT", "seconds": 3.0024330615997314, "timeout": 3, "ops": [], "cond": "~srEmpty & ~rbEmpty"}
+{"kind": "check_pass", "round": 1, "time": 1793471359.5464828, "pieces": ["r1_c0", "r1_c1", "r1_c2", "r1_c3"], "timeout": 3, "wall_s": 3.0966579914093018}
+{"kind": "summary_pass", "round": 1, "time": 1793471364.5787518, "pieces": ["r1_c3"], "timeout": 5, "wall_s": 5.0304179191589355}
+{"kind": "summary", "round": 1, "time": 1793471364.5787916, "piece": "r1_c3", "verdict": "TIMEOUT", "text": "IC3 5 s: depth 19, lemmas in last frames [1143, 1115, 2143, 3], lemmas 8.5/147 state bits"}
+{"kind": "coverage", "round": 1, "time": 1793471423.0329046, "scope": "~srEmpty & ~rbEmpty", "cases": ["rb_tail[3:2] == 2'd0", "rb_tail[3:2] == 2'd1", "rb_tail[3:2] == 2'd2", "rb_tail[3:2] == 2'd3"], "ok": true, "detail": ""}
+{"kind": "pruned_empty", "round": 1, "time": 1793471423.227246, "scope": "~srEmpty & ~rbEmpty", "dropped": []}
+{"kind": "uext_rewrite", "round": 2, "time": 1793471423.2996547, "tag": "r2_c3_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 2, "time": 1793471423.3116763, "tag": "r2_c1_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 2, "time": 1793471423.3123045, "tag": "r2_c0_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 2, "time": 1793471423.312555, "tag": "r2_c2_k0", "count": 2}
+{"kind": "check", "round": 2, "time": 1793471426.3074245, "piece": "r2_c3", "tag": "r2_c3_k0", "verdict": "TIMEOUT", "seconds": 3.0075185298919678, "timeout": 3, "ops": [], "cond": "(~srEmpty & ~rbEmpty) & (rb_tail[3:2] == 2'd3)"}
+{"kind": "check", "round": 2, "time": 1793471426.3141599, "piece": "r2_c1", "tag": "r2_c1_k0", "verdict": "TIMEOUT", "seconds": 3.001948833465576, "timeout": 3, "ops": [], "cond": "(~srEmpty & ~rbEmpty) & (rb_tail[3:2] == 2'd1)"}
+{"kind": "check", "round": 2, "time": 1793471426.3172772, "piece": "r2_c2", "tag": "r2_c2_k0", "verdict": "TIMEOUT", "seconds": 3.0043656826019287, "timeout": 3, "ops": [], "cond": "(~srEmpty & ~rbEmpty) & (rb_tail[3:2] == 2'd2)"}
+{"kind": "check", "round": 2, "time": 1793471426.319369, "piece": "r2_c0", "tag": "r2_c0_k0", "verdict": "TIMEOUT", "seconds": 3.0065035820007324, "timeout": 3, "ops": [], "cond": "(~srEmpty & ~rbEmpty) & (rb_tail[3:2] == 2'd0)"}
+{"kind": "check_pass", "round": 2, "time": 1793471426.3198848, "pieces": ["r2_c0", "r2_c1", "r2_c2", "r2_c3"], "timeout": 3, "wall_s": 3.0909178256988525}
+{"kind": "coverage", "round": 2, "time": 1793471426.3389523, "scope": "(~srEmpty & ~rbEmpty) & (rb_tail[3:2] == 2'd0)", "cases": ["rb_tail[1:1] == 1'd0", "rb_tail[1:1] == 1'd1"], "ok": true, "detail": ""}
+{"kind": "pruned_empty", "round": 2, "time": 1793471426.370797, "scope": "(~srEmpty & ~rbEmpty) & (rb_tail[3:2] == 2'd0)", "dropped": []}
+{"kind": "auto_expand", "round": 2, "time": 1793471426.3708646, "piece": "r2_c0", "index": "rb_tail", "fixed": {"rb_tail": 2}}
+{"kind": "coverage", "round": 2, "time": 1793471426.385903, "scope": "(~srEmpty & ~rbEmpty) & (rb_tail[3:2] == 2'd1)", "cases": ["rb_tail[1:1] == 1'd0", "rb_tail[1:1] == 1'd1"], "ok": true, "detail": ""}
+{"kind": "pruned_empty", "round": 2, "time": 1793471426.4438393, "scope": "(~srEmpty & ~rbEmpty) & (rb_tail[3:2] == 2'd1)", "dropped": []}
+{"kind": "auto_expand", "round": 2, "time": 1793471426.4439673, "piece": "r2_c1", "index": "rb_tail", "fixed": {"rb_tail": 2}}
+{"kind": "coverage", "round": 2, "time": 1793471426.4916482, "scope": "(~srEmpty & ~rbEmpty) & (rb_tail[3:2] == 2'd2)", "cases": ["rb_tail[1:1] == 1'd0", "rb_tail[1:1] == 1'd1"], "ok": true, "detail": ""}
+{"kind": "pruned_empty", "round": 2, "time": 1793471426.59674, "scope": "(~srEmpty & ~rbEmpty) & (rb_tail[3:2] == 2'd2)", "dropped": []}
+{"kind": "auto_expand", "round": 2, "time": 1793471426.5968745, "piece": "r2_c2", "index": "rb_tail", "fixed": {"rb_tail": 2}}
+{"kind": "coverage", "round": 2, "time": 1793471426.6466777, "scope": "(~srEmpty & ~rbEmpty) & (rb_tail[3:2] == 2'd3)", "cases": ["rb_tail[1:1] == 1'd0", "rb_tail[1:1] == 1'd1"], "ok": true, "detail": ""}
+{"kind": "pruned_empty", "round": 2, "time": 1793471426.7347145, "scope": "(~srEmpty & ~rbEmpty) & (rb_tail[3:2] == 2'd3)", "dropped": []}
+{"kind": "auto_expand", "round": 2, "time": 1793471426.7348728, "piece": "r2_c3", "index": "rb_tail", "fixed": {"rb_tail": 2}}
+{"kind": "uext_rewrite", "round": 3, "time": 1793471426.8031738, "tag": "r3_c2_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 3, "time": 1793471426.8036745, "tag": "r3_c1_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 3, "time": 1793471426.8046718, "tag": "r3_c4_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 3, "time": 1793471426.80503, "tag": "r3_c6_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 3, "time": 1793471426.8148243, "tag": "r3_c0_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 3, "time": 1793471426.815458, "tag": "r3_c3_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 3, "time": 1793471426.81552, "tag": "r3_c5_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 3, "time": 1793471426.816464, "tag": "r3_c7_k0", "count": 2}
+{"kind": "check", "round": 3, "time": 1793471446.8078687, "piece": "r3_c2", "tag": "r3_c2_k0", "verdict": "TIMEOUT", "seconds": 20.004486083984375, "timeout": 20, "ops": [], "cond": "((~srEmpty & ~rbEmpty) & (rb_tail[3:2] == 2'd1)) & (rb_tail[1:1] == 1'd0)"}
+{"kind": "check", "round": 3, "time": 1793471446.8110716, "piece": "r3_c6", "tag": "r3_c6_k0", "verdict": "TIMEOUT", "seconds": 20.005127906799316, "timeout": 20, "ops": [], "cond": "((~srEmpty & ~rbEmpty) & (rb_tail[3:2] == 2'd3)) & (rb_tail[1:1] == 1'd0)"}
+{"kind": "check", "round": 3, "time": 1793471446.8130734, "piece": "r3_c1", "tag": "r3_c1_k0", "verdict": "TIMEOUT", "seconds": 20.008201122283936, "timeout": 20, "ops": [], "cond": "((~srEmpty & ~rbEmpty) & (rb_tail[3:2] == 2'd0)) & (rb_tail[1:1] == 1'd1)"}
+{"kind": "check", "round": 3, "time": 1793471446.8198557, "piece": "r3_c4", "tag": "r3_c4_k0", "verdict": "TIMEOUT", "seconds": 20.011521577835083, "timeout": 20, "ops": [], "cond": "((~srEmpty & ~rbEmpty) & (rb_tail[3:2] == 2'd2)) & (rb_tail[1:1] == 1'd0)"}
+{"kind": "check", "round": 3, "time": 1793471446.8199148, "piece": "r3_c5", "tag": "r3_c5_k0", "verdict": "TIMEOUT", "seconds": 20.002994775772095, "timeout": 20, "ops": [], "cond": "((~srEmpty & ~rbEmpty) & (rb_tail[3:2] == 2'd2)) & (rb_tail[1:1] == 1'd1)"}
+{"kind": "check", "round": 3, "time": 1793471446.81994, "piece": "r3_c7", "tag": "r3_c7_k0", "verdict": "TIMEOUT", "seconds": 20.0025417804718, "timeout": 20, "ops": [], "cond": "((~srEmpty & ~rbEmpty) & (rb_tail[3:2] == 2'd3)) & (rb_tail[1:1] == 1'd1)"}
+{"kind": "check", "round": 3, "time": 1793471446.820214, "piece": "r3_c3", "tag": "r3_c3_k0", "verdict": "TIMEOUT", "seconds": 20.00433111190796, "timeout": 20, "ops": [], "cond": "((~srEmpty & ~rbEmpty) & (rb_tail[3:2] == 2'd1)) & (rb_tail[1:1] == 1'd1)"}
+{"kind": "check", "round": 3, "time": 1793471446.8375041, "piece": "r3_c0", "tag": "r3_c0_k0", "verdict": "TIMEOUT", "seconds": 20.021785259246826, "timeout": 20, "ops": [], "cond": "((~srEmpty & ~rbEmpty) & (rb_tail[3:2] == 2'd0)) & (rb_tail[1:1] == 1'd0)"}
+{"kind": "check_pass", "round": 3, "time": 1793471446.8384547, "pieces": ["r3_c0", "r3_c1", "r3_c2", "r3_c3", "r3_c4", "r3_c5", "r3_c6", "r3_c7"], "timeout": 20, "wall_s": 20.100836992263794}
+{"kind": "coverage", "round": 3, "time": 1793471446.8559701, "scope": "((~srEmpty & ~rbEmpty) & (rb_tail[3:2] == 2'd0)) & (rb_tail[1:1] == 1'd0)", "cases": ["rb_tail[0:0] == 1'd0", "rb_tail[0:0] == 1'd1"], "ok": true, "detail": ""}
+{"kind": "pruned_empty", "round": 3, "time": 1793471446.8865504, "scope": "((~srEmpty & ~rbEmpty) & (rb_tail[3:2] == 2'd0)) & (rb_tail[1:1] == 1'd0)", "dropped": []}
+{"kind": "auto_expand", "round": 3, "time": 1793471446.8866136, "piece": "r3_c0", "index": "rb_tail", "fixed": {"rb_tail": 1}}
+{"kind": "coverage", "round": 3, "time": 1793471446.90124, "scope": "((~srEmpty & ~rbEmpty) & (rb_tail[3:2] == 2'd0)) & (rb_tail[1:1] == 1'd1)", "cases": ["rb_tail[0:0] == 1'd0", "rb_tail[0:0] == 1'd1"], "ok": true, "detail": ""}
+{"kind": "pruned_empty", "round": 3, "time": 1793471446.941425, "scope": "((~srEmpty & ~rbEmpty) & (rb_tail[3:2] == 2'd0)) & (rb_tail[1:1] == 1'd1)", "dropped": []}
+{"kind": "auto_expand", "round": 3, "time": 1793471446.9414866, "piece": "r3_c1", "index": "rb_tail", "fixed": {"rb_tail": 1}}
+{"kind": "coverage", "round": 3, "time": 1793471446.9566796, "scope": "((~srEmpty & ~rbEmpty) & (rb_tail[3:2] == 2'd1)) & (rb_tail[1:1] == 1'd0)", "cases": ["rb_tail[0:0] == 1'd0", "rb_tail[0:0] == 1'd1"], "ok": true, "detail": ""}
+{"kind": "pruned_empty", "round": 3, "time": 1793471447.006218, "scope": "((~srEmpty & ~rbEmpty) & (rb_tail[3:2] == 2'd1)) & (rb_tail[1:1] == 1'd0)", "dropped": []}
+{"kind": "auto_expand", "round": 3, "time": 1793471447.0063431, "piece": "r3_c2", "index": "rb_tail", "fixed": {"rb_tail": 1}}
+{"kind": "coverage", "round": 3, "time": 1793471447.060747, "scope": "((~srEmpty & ~rbEmpty) & (rb_tail[3:2] == 2'd1)) & (rb_tail[1:1] == 1'd1)", "cases": ["rb_tail[0:0] == 1'd0", "rb_tail[0:0] == 1'd1"], "ok": true, "detail": ""}
+{"kind": "pruned_empty", "round": 3, "time": 1793471447.1680827, "scope": "((~srEmpty & ~rbEmpty) & (rb_tail[3:2] == 2'd1)) & (rb_tail[1:1] == 1'd1)", "dropped": []}
+{"kind": "auto_expand", "round": 3, "time": 1793471447.1681998, "piece": "r3_c3", "index": "rb_tail", "fixed": {"rb_tail": 1}}
+{"kind": "coverage", "round": 3, "time": 1793471447.2206786, "scope": "((~srEmpty & ~rbEmpty) & (rb_tail[3:2] == 2'd2)) & (rb_tail[1:1] == 1'd0)", "cases": ["rb_tail[0:0] == 1'd0", "rb_tail[0:0] == 1'd1"], "ok": true, "detail": ""}
+{"kind": "pruned_empty", "round": 3, "time": 1793471447.3197517, "scope": "((~srEmpty & ~rbEmpty) & (rb_tail[3:2] == 2'd2)) & (rb_tail[1:1] == 1'd0)", "dropped": []}
+{"kind": "auto_expand", "round": 3, "time": 1793471447.3198547, "piece": "r3_c4", "index": "rb_tail", "fixed": {"rb_tail": 1}}
+{"kind": "coverage", "round": 3, "time": 1793471447.3639107, "scope": "((~srEmpty & ~rbEmpty) & (rb_tail[3:2] == 2'd2)) & (rb_tail[1:1] == 1'd1)", "cases": ["rb_tail[0:0] == 1'd0", "rb_tail[0:0] == 1'd1"], "ok": true, "detail": ""}
+{"kind": "pruned_empty", "round": 3, "time": 1793471447.4597685, "scope": "((~srEmpty & ~rbEmpty) & (rb_tail[3:2] == 2'd2)) & (rb_tail[1:1] == 1'd1)", "dropped": []}
+{"kind": "auto_expand", "round": 3, "time": 1793471447.4598987, "piece": "r3_c5", "index": "rb_tail", "fixed": {"rb_tail": 1}}
+{"kind": "coverage", "round": 3, "time": 1793471447.506634, "scope": "((~srEmpty & ~rbEmpty) & (rb_tail[3:2] == 2'd3)) & (rb_tail[1:1] == 1'd0)", "cases": ["rb_tail[0:0] == 1'd0", "rb_tail[0:0] == 1'd1"], "ok": true, "detail": ""}
+{"kind": "pruned_empty", "round": 3, "time": 1793471447.6071994, "scope": "((~srEmpty & ~rbEmpty) & (rb_tail[3:2] == 2'd3)) & (rb_tail[1:1] == 1'd0)", "dropped": []}
+{"kind": "auto_expand", "round": 3, "time": 1793471447.607332, "piece": "r3_c6", "index": "rb_tail", "fixed": {"rb_tail": 1}}
+{"kind": "coverage", "round": 3, "time": 1793471447.656089, "scope": "((~srEmpty & ~rbEmpty) & (rb_tail[3:2] == 2'd3)) & (rb_tail[1:1] == 1'd1)", "cases": ["rb_tail[0:0] == 1'd0", "rb_tail[0:0] == 1'd1"], "ok": true, "detail": ""}
+{"kind": "pruned_empty", "round": 3, "time": 1793471447.7268012, "scope": "((~srEmpty & ~rbEmpty) & (rb_tail[3:2] == 2'd3)) & (rb_tail[1:1] == 1'd1)", "dropped": []}
+{"kind": "auto_expand", "round": 3, "time": 1793471447.7269223, "piece": "r3_c7", "index": "rb_tail", "fixed": {"rb_tail": 1}}
+{"kind": "uext_rewrite", "round": 4, "time": 1793471447.7909477, "tag": "r4_c6_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 4, "time": 1793471447.7942307, "tag": "r4_c2_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 4, "time": 1793471447.7950184, "tag": "r4_c3_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 4, "time": 1793471447.795802, "tag": "r4_c1_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 4, "time": 1793471447.796377, "tag": "r4_c7_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 4, "time": 1793471447.7970128, "tag": "r4_c5_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 4, "time": 1793471447.7986877, "tag": "r4_c0_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 4, "time": 1793471447.7990024, "tag": "r4_c4_k0", "count": 2}
+{"kind": "check", "round": 4, "time": 1793471454.4092026, "piece": "r4_c1", "tag": "r4_c1_k0", "verdict": "UNSAT", "seconds": 6.606006383895874, "timeout": 20, "ops": [], "cond": "(((~srEmpty & ~rbEmpty) & (rb_tail[3:2] == 2'd0)) & (rb_tail[1:1] == 1'd0)) & (rb_tail[0:0] == 1'd1)"}
+{"kind": "uext_rewrite", "round": 4, "time": 1793471454.650314, "tag": "r4_c8_k0", "count": 2}
+{"kind": "check", "round": 4, "time": 1793471460.8831656, "piece": "r4_c2", "tag": "r4_c2_k0", "verdict": "UNSAT", "seconds": 13.08675765991211, "timeout": 20, "ops": [], "cond": "(((~srEmpty & ~rbEmpty) & (rb_tail[3:2] == 2'd0)) & (rb_tail[1:1] == 1'd1)) & (rb_tail[0:0] == 1'd0)"}
+{"kind": "check", "round": 4, "time": 1793471460.9751267, "piece": "r4_c4", "tag": "r4_c4_k0", "verdict": "UNSAT", "seconds": 13.175429582595825, "timeout": 20, "ops": [], "cond": "(((~srEmpty & ~rbEmpty) & (rb_tail[3:2] == 2'd1)) & (rb_tail[1:1] == 1'd0)) & (rb_tail[0:0] == 1'd0)"}
+{"kind": "check", "round": 4, "time": 1793471460.9851348, "piece": "r4_c6", "tag": "r4_c6_k0", "verdict": "UNSAT", "seconds": 13.193408489227295, "timeout": 20, "ops": [], "cond": "(((~srEmpty & ~rbEmpty) & (rb_tail[3:2] == 2'd1)) & (rb_tail[1:1] == 1'd1)) & (rb_tail[0:0] == 1'd0)"}
+{"kind": "uext_rewrite", "round": 4, "time": 1793471461.0790672, "tag": "r4_c9_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 4, "time": 1793471461.183554, "tag": "r4_c11_k0", "count": 2}
+{"kind": "uext_rewrite", "round": 4, "time": 1793471461.2152693, "tag": "r4_c10_k0", "count": 2}
+{"kind": "check", "round": 4, "time": 1793471462.2809112, "piece": "r4_c3", "tag": "r4_c3_k0", "verdict": "UNSAT", "seconds": 14.485426664352417, "timeout": 20, "ops": [], "cond": "(((~srEmpty & ~rbEmpty) & (rb_tail[3:2] == 2'd0)) & (rb_tail[1:1] == 1'd1)) & (rb_tail[0:0] == 1'd1)"}
+{"kind": "uext_rewrite", "round": 4, "time": 1793471462.4750574, "tag": "r4_c12_k0", "count": 2}
+{"kind": "check", "round": 4, "time": 1793471462.516437, "piece": "r4_c7", "tag": "r4_c7_k0", "verdict": "UNSAT", "seconds": 14.71948766708374, "timeout": 20, "ops": [], "cond": "(((~srEmpty & ~rbEmpty) & (rb_tail[3:2] == 2'd1)) & (rb_tail[1:1] == 1'd1)) & (rb_tail[0:0] == 1'd1)"}
+{"kind": "uext_rewrite", "round": 4, "time": 1793471462.7228158, "tag": "r4_c13_k0", "count": 2}
+{"kind": "check", "round": 4, "time": 1793471462.9251335, "piece": "r4_c5", "tag": "r4_c5_k0", "verdict": "UNSAT", "seconds": 15.127742767333984, "timeout": 20, "ops": [], "cond": "(((~srEmpty & ~rbEmpty) & (rb_tail[3:2] == 2'd1)) & (rb_tail[1:1] == 1'd0)) & (rb_tail[0:0] == 1'd1)"}
+{"kind": "uext_rewrite", "round": 4, "time": 1793471463.147558, "tag": "r4_c14_k0", "count": 2}
+{"kind": "check", "round": 4, "time": 1793471467.46868, "piece": "r4_c0", "tag": "r4_c0_k0", "verdict": "UNSAT", "seconds": 19.66924476623535, "timeout": 20, "ops": [], "cond": "(((~srEmpty & ~rbEmpty) & (rb_tail[3:2] == 2'd0)) & (rb_tail[1:1] == 1'd0)) & (rb_tail[0:0] == 1'd0)"}
+{"kind": "uext_rewrite", "round": 4, "time": 1793471467.6525803, "tag": "r4_c15_k0", "count": 2}
+{"kind": "check", "round": 4, "time": 1793471468.364839, "piece": "r4_c8", "tag": "r4_c8_k0", "verdict": "UNSAT", "seconds": 13.714126586914062, "timeout": 20, "ops": [], "cond": "(((~srEmpty & ~rbEmpty) & (rb_tail[3:2] == 2'd2)) & (rb_tail[1:1] == 1'd0)) & (rb_tail[0:0] == 1'd0)"}
+{"kind": "check", "round": 4, "time": 1793471471.236736, "piece": "r4_c11", "tag": "r4_c11_k0", "verdict": "UNSAT", "seconds": 10.052781581878662, "timeout": 20, "ops": [], "cond": "(((~srEmpty & ~rbEmpty) & (rb_tail[3:2] == 2'd2)) & (rb_tail[1:1] == 1'd1)) & (rb_tail[0:0] == 1'd1)"}
+{"kind": "check", "round": 4, "time": 1793471471.4111335, "piece": "r4_c10", "tag": "r4_c10_k0", "verdict": "UNSAT", "seconds": 10.195041179656982, "timeout": 20, "ops": [], "cond": "(((~srEmpty & ~rbEmpty) & (rb_tail[3:2] == 2'd2)) & (rb_tail[1:1] == 1'd1)) & (rb_tail[0:0] == 1'd0)"}
+{"kind": "check", "round": 4, "time": 1793471473.1970158, "piece": "r4_c13", "tag": "r4_c13_k0", "verdict": "UNSAT", "seconds": 10.473917007446289, "timeout": 20, "ops": [], "cond": "(((~srEmpty & ~rbEmpty) & (rb_tail[3:2] == 2'd3)) & (rb_tail[1:1] == 1'd0)) & (rb_tail[0:0] == 1'd1)"}
+{"kind": "check", "round": 4, "time": 1793471473.6558886, "piece": "r4_c12", "tag": "r4_c12_k0", "verdict": "UNSAT", "seconds": 11.179728031158447, "timeout": 20, "ops": [], "cond": "(((~srEmpty & ~rbEmpty) & (rb_tail[3:2] == 2'd3)) & (rb_tail[1:1] == 1'd0)) & (rb_tail[0:0] == 1'd0)"}
+{"kind": "check", "round": 4, "time": 1793471473.6741047, "piece": "r4_c9", "tag": "r4_c9_k0", "verdict": "UNSAT", "seconds": 12.594125270843506, "timeout": 20, "ops": [], "cond": "(((~srEmpty & ~rbEmpty) & (rb_tail[3:2] == 2'd2)) & (rb_tail[1:1] == 1'd0)) & (rb_tail[0:0] == 1'd1)"}
+{"kind": "check", "round": 4, "time": 1793471474.9029047, "piece": "r4_c15", "tag": "r4_c15_k0", "verdict": "UNSAT", "seconds": 7.249918699264526, "timeout": 20, "ops": [], "cond": "(((~srEmpty & ~rbEmpty) & (rb_tail[3:2] == 2'd3)) & (rb_tail[1:1] == 1'd1)) & (rb_tail[0:0] == 1'd1)"}
+{"kind": "check", "round": 4, "time": 1793471475.0397472, "piece": "r4_c14", "tag": "r4_c14_k0", "verdict": "UNSAT", "seconds": 11.891272783279419, "timeout": 20, "ops": [], "cond": "(((~srEmpty & ~rbEmpty) & (rb_tail[3:2] == 2'd3)) & (rb_tail[1:1] == 1'd1)) & (rb_tail[0:0] == 1'd0)"}
+{"kind": "check_pass", "round": 4, "time": 1793471475.041991, "pieces": ["r4_c0", "r4_c1", "r4_c2", "r4_c3", "r4_c4", "r4_c5", "r4_c6", "r4_c7", "r4_c8", "r4_c9", "r4_c10", "r4_c11", "r4_c12", "r4_c13", "r4_c14", "r4_c15"], "timeout": 20, "wall_s": 27.31028175354004}
+{"kind": "load", "round": 5, "time": 1793471475.0489044, "cmd": "run", "phase": "end", "load": [65.45263671875, 19.05224609375, 8.1787109375]}
+{"kind": "load", "round": 4, "time": 1793471475.1208317, "cmd": "report", "phase": "start", "load": [65.45263671875, 19.05224609375, 8.1787109375]}
+{"kind": "load", "round": 4, "time": 1793471475.1211903, "cmd": "report", "phase": "end", "load": [65.45263671875, 19.05224609375, 8.1787109375]}
+{"kind": "load", "round": 4, "time": 1793471475.1613142, "cmd": "vacuity", "phase": "start", "load": [65.45263671875, 19.05224609375, 8.1787109375]}
+{"kind": "uext_rewrite", "round": 4, "time": 1793471475.2185864, "tag": "r1_c0_reach", "count": 2}
+{"kind": "vacuity", "round": 4, "time": 1793471475.2832603, "piece": "r1_c0", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "uext_rewrite", "round": 4, "time": 1793471475.374642, "tag": "r1_c1_reach", "count": 2}
+{"kind": "vacuity", "round": 4, "time": 1793471484.453342, "piece": "r1_c1", "case_reachable_bmc": "UNKNOWN", "assertion_violable_when_registers_free": true}
+{"kind": "uext_rewrite", "round": 4, "time": 1793471484.5314791, "tag": "r1_c2_reach", "count": 2}
+{"kind": "vacuity", "round": 4, "time": 1793471490.7735155, "piece": "r1_c2", "case_reachable_bmc": "UNKNOWN", "assertion_violable_when_registers_free": true}
+{"kind": "uext_rewrite", "round": 4, "time": 1793471490.8919532, "tag": "r4_c0_reach", "count": 2}
+{"kind": "vacuity", "round": 4, "time": 1793471490.9814646, "piece": "r4_c0", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "uext_rewrite", "round": 4, "time": 1793471491.0817854, "tag": "r4_c1_reach", "count": 2}
+{"kind": "vacuity", "round": 4, "time": 1793471491.1675425, "piece": "r4_c1", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "uext_rewrite", "round": 4, "time": 1793471491.2696078, "tag": "r4_c2_reach", "count": 2}
+{"kind": "vacuity", "round": 4, "time": 1793471491.3469143, "piece": "r4_c2", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "uext_rewrite", "round": 4, "time": 1793471491.4662654, "tag": "r4_c3_reach", "count": 2}
+{"kind": "vacuity", "round": 4, "time": 1793471491.5507739, "piece": "r4_c3", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "uext_rewrite", "round": 4, "time": 1793471491.6633794, "tag": "r4_c4_reach", "count": 2}
+{"kind": "vacuity", "round": 4, "time": 1793471491.7224483, "piece": "r4_c4", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "uext_rewrite", "round": 4, "time": 1793471491.8021317, "tag": "r4_c5_reach", "count": 2}
+{"kind": "vacuity", "round": 4, "time": 1793471491.867034, "piece": "r4_c5", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "uext_rewrite", "round": 4, "time": 1793471491.9537385, "tag": "r4_c6_reach", "count": 2}
+{"kind": "vacuity", "round": 4, "time": 1793471492.0309129, "piece": "r4_c6", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "uext_rewrite", "round": 4, "time": 1793471492.1493604, "tag": "r4_c7_reach", "count": 2}
+{"kind": "vacuity", "round": 4, "time": 1793471492.2643547, "piece": "r4_c7", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "uext_rewrite", "round": 4, "time": 1793471492.3782072, "tag": "r4_c8_reach", "count": 2}
+{"kind": "vacuity", "round": 4, "time": 1793471492.4480453, "piece": "r4_c8", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "uext_rewrite", "round": 4, "time": 1793471492.544477, "tag": "r4_c9_reach", "count": 2}
+{"kind": "vacuity", "round": 4, "time": 1793471492.6593652, "piece": "r4_c9", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "uext_rewrite", "round": 4, "time": 1793471492.725335, "tag": "r4_c10_reach", "count": 2}
+{"kind": "vacuity", "round": 4, "time": 1793471492.8325245, "piece": "r4_c10", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "uext_rewrite", "round": 4, "time": 1793471492.90891, "tag": "r4_c11_reach", "count": 2}
+{"kind": "vacuity", "round": 4, "time": 1793471493.0180821, "piece": "r4_c11", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "uext_rewrite", "round": 4, "time": 1793471493.1132083, "tag": "r4_c12_reach", "count": 2}
+{"kind": "vacuity", "round": 4, "time": 1793471493.205355, "piece": "r4_c12", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "uext_rewrite", "round": 4, "time": 1793471493.3288872, "tag": "r4_c13_reach", "count": 2}
+{"kind": "vacuity", "round": 4, "time": 1793471493.4919713, "piece": "r4_c13", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "uext_rewrite", "round": 4, "time": 1793471493.5947752, "tag": "r4_c14_reach", "count": 2}
+{"kind": "vacuity", "round": 4, "time": 1793471493.7526045, "piece": "r4_c14", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "uext_rewrite", "round": 4, "time": 1793471493.8560395, "tag": "r4_c15_reach", "count": 2}
+{"kind": "vacuity", "round": 4, "time": 1793471493.9903476, "piece": "r4_c15", "case_reachable_bmc": "SAT", "assertion_violable_when_registers_free": true}
+{"kind": "load", "round": 4, "time": 1793471493.9932594, "cmd": "vacuity", "phase": "end", "load": [51.1748046875, 18.16748046875, 8.06298828125]}

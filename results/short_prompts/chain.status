@@ -1,0 +1,19 @@
+DONE /var/tmp/neuroabs-runtime/short-prompts/runs/fifo_ref_64-hint-1 rc=0 vacuity_rc=0 wall=3928.751926500
+DONE /var/tmp/neuroabs-runtime/short-prompts/runs/fifo_ref_64-hint-2 rc=0 vacuity_rc=0 wall=2225.839451603
+DONE /var/tmp/neuroabs-runtime/short-prompts/runs/fifo_ref_16-hint-1 rc=0 vacuity_rc=0 wall=1585.050070866
+DONE /var/tmp/neuroabs-runtime/short-prompts/runs/fifo_vis-hint-1 rc=0 vacuity_rc=0 wall=836.240866189
+DONE /var/tmp/neuroabs-runtime/short-prompts/runs/fifo_vis-nohint-1 rc=0 vacuity_rc=0 wall=371.233269959
+DONE /var/tmp/neuroabs-runtime/short-prompts/runs/simple_cam_8-nohint-1 rc=0 vacuity_rc=0 wall=1220.922568714
+DONE /var/tmp/neuroabs-runtime/short-prompts/runs/fifo_ref_16-hint-2 rc=0 vacuity_rc=0 wall=1781.412845002
+DONE /var/tmp/neuroabs-runtime/short-prompts/runs/fifo_vis-hint-2 rc=0 vacuity_rc=0 wall=1752.537962155
+DONE /var/tmp/neuroabs-runtime/short-prompts/runs/fifo_vis-nohint-2 rc=0 vacuity_rc=124 wall=273.032802530
+CRASH /var/tmp/neuroabs-runtime/short-prompts/runs/simple_cam_8-nohint-2 rc=1-traceback
+CRASH /var/tmp/neuroabs-runtime/short-prompts/runs/fifo_ref_16-hint-3 rc=1-traceback
+CRASH /var/tmp/neuroabs-runtime/short-prompts/runs/fifo_vis-hint-3 rc=1-traceback
+DONE /var/tmp/neuroabs-runtime/short-prompts/runs/fifo_vis-nohint-3 rc=0 vacuity_rc=0 wall=578.783990854
+DONE /var/tmp/neuroabs-runtime/short-prompts/runs/simple_cam_8-nohint-3 rc=1 vacuity_rc=0 wall=1414.589197273
+CHAIN-FINISHED
+DONE /var/tmp/neuroabs-runtime/short-prompts/runs/simple_cam_8-nohint-2 rc=0 vacuity_rc=0 wall=1615.933771907
+DONE /var/tmp/neuroabs-runtime/short-prompts/runs/fifo_ref_16-hint-3 rc=0 vacuity_rc=0 wall=1197.592246251
+DONE /var/tmp/neuroabs-runtime/short-prompts/runs/fifo_vis-hint-3 rc=0 vacuity_rc=0 wall=27.255971691
+CHAIN-FINISHED
